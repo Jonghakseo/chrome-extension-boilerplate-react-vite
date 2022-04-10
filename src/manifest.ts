@@ -1,7 +1,5 @@
-import { defineManifest } from "rollup-plugin-chrome-extension";
 import packageJson from "../package.json";
-
-type ManifestType = ReturnType<typeof defineManifest>;
+import { ManifestType } from "@src/manifest-type";
 
 const manifest: ManifestType = {
   manifest_version: 3,

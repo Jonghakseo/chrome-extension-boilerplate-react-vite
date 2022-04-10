@@ -30,7 +30,6 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "fs-extra": "^10.0.0",
     "prettier": "^2.5.1",
-    "rollup-plugin-chrome-extension": "^4.0.1-21",
     "sass": "^1.50.0",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.7.0",
