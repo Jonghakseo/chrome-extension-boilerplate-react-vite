@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 import { createHtmlPlugin } from "vite-plugin-html";
 import copyTemplate from "./plugins/copy-template";
-import copyManifest from "./plugins/copy-manifest";
+import makeManifest from "./plugins/make-manifest";
 
 const root = resolve(__dirname, "src");
 const pagesDir = resolve(root, "pages");
@@ -11,7 +11,7 @@ const assetsDir = resolve(root, "assets");
 const outDir = resolve(__dirname, "dist");
 const publicDir = resolve(__dirname, "public");
 
-const customPlugins: PluginOption[] = [copyTemplate(), copyManifest()];
+const customPlugins: PluginOption[] = [copyTemplate(), makeManifest()];
 
 export default defineConfig({
   resolve: {
