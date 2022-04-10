@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "esnext",
     "types": ["vite/client", "node"],
-    "typeRoots": ["node_modules/@types"],
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
     "skipLibCheck": true,
@@ -11,10 +10,10 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "es2022",
+    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "noEmit": false,
+    "noEmit": true,
     "jsx": "react",
     "baseUrl": ".",
     "paths": {
@@ -23,6 +22,5 @@
       "@pages/*": ["src/pages/*"]
     }
   },
-  "include": ["src", "vite.config.ts"],
-  "exclude": ["dist", "node_modules"]
+  "include": ["src", "plugins", "vite.config.ts"],
 }
