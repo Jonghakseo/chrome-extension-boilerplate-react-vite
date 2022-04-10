@@ -1,6 +1,6 @@
 <div align="center">
 <img src="public/icon-128.png" alt="logo"/>
-<h1> Chrome Extension Boilerplate with Typescript + React + Vite</h1>
+<h1> Chrome Extension Boilerplate with<br/>Typescript + React + Vite</h1>
 </div>
 
 ## Table of Contents
@@ -10,6 +10,7 @@
 - [Installation](#installation)
   - [Procedures](#procedures)
 - [Attention](#attention)
+- [Documents](#documents)
 
 
 ## Intro <a name="intro"></a>
@@ -17,13 +18,13 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 > The focus was on improving the build speed and development experience with Vite.
 
 ## Features <a name="features"></a>
-- React 17
-- Typescript
-- Vite
-- sass
-- eslint
-- prettier
-- Chrome Extension Manifest Version 3
+- [React 17](https://reactjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [sass](https://sass-lang.com/)
+- [eslint](https://eslint.org/)
+- [prettier](https://prettier.io/)
+- [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
 
 ## Installation <a name="installation"></a>
 
@@ -42,3 +43,13 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ## Attention <a name="attention"></a>
 - Html files in the public folder are automatically copied from inside the `src/pages` folder. So, if you want to edit the html template file, edit index.html in each page folder.
+
+## Documents <a name="documents"></a>
+- [Vite Plugin](https://vitejs.dev/guide/api-plugin.html)
+- [ChromeExtension](https://developer.chrome.com/docs/extensions/mv3/)
+- [Rollup](https://rollupjs.org/guide/en/)
+- [Rollup-plugin-chrome-extension](https://www.extend-chrome.dev/rollup-plugin)
+
+---
+
+[Jonghakseo](https://nookpi.tistory.com/)
