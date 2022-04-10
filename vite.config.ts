@@ -1,0 +1,84 @@
+import { defineConfig, PluginOption } from "vite";
+import react from "@vitejs/plugin-react";
+import { resolve } from "path";
+import { createHtmlPlugin } from "vite-plugin-html";
+import copyTemplate from "./plugins/copy-template";
+import copyManifest from "./plugins/copy-manifest";
+
+const root = resolve(__dirname, "src");
+const pagesDir = resolve(root, "pages");
+const assetsDir = resolve(root, "assets");
+const outDir = resolve(__dirname, "dist");
+const publicDir = resolve(__dirname, "public");
+
+const customPlugins: PluginOption[] = [copyTemplate(), copyManifest()];
+
+export default defineConfig({
+  resolve: {
+    alias: {
+      "@src": root,
+      "@assets": assetsDir,
+      "@pages": pagesDir,
+    },
+  },
+  plugins: [
+    react(),
+    ...customPlugins,
+    createHtmlPlugin({
+      minify: true,
+      pages: [
+        {
+          entry: resolve(pagesDir, "Newtab", "index.tsx"),
+          filename: "newtab.js",
+          template: "public/newtab.html",
+        },
+        {
+          entry: resolve(pagesDir, "Options", "index.tsx"),
+          filename: "options.js",
+          template: "public/options.html",
+        },
+        {
+          entry: resolve(pagesDir, "Panel", "index.tsx"),
+          filename: "panel.js",
+          template: "public/panel.html",
+        },
+        {
+          entry: resolve(pagesDir, "Popup", "index.tsx"),
+          filename: "popup.js",
+          template: "public/popup.html",
+        },
+        {
+          entry: resolve(pagesDir, "Devtools", "index.ts"),
+          filename: "devtools.js",
+          template: "public/devtools.html",
+        },
+      ],
+    }),
+  ],
+  publicDir,
+  build: {
+    outDir,
+    watch: {
+      include: "src",
+    },
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        // css
+        ContentStyle: resolve(pagesDir, "Content", "content.style.css"),
+        // ts
+        Content: resolve(pagesDir, "Content", "index.ts"),
+        Background: resolve(pagesDir, "Background", "index.ts"),
+      },
+      output: {
+        entryFileNames: (chunk) => {
+          if (chunk.name === "ContentStyle") {
+            return `content.styles.css`;
+          }
+          return `${chunk.name}.js`;
+        },
+      },
+      external: ["chrome"],
+    },
+  },
+});
