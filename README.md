@@ -15,6 +15,9 @@
 - [Installation](#installation)
   - [Procedures](#procedures)
 - [Attention](#attention)
+- [Screenshots](#screenshots)
+  - [NewTab](#newtab)
+  - [Popup](#popup)  
 - [Documents](#documents)
 
 
@@ -49,11 +52,25 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 ## Attention <a name="attention"></a>
 - Html files in the public folder are automatically copied from inside the `src/pages` folder. So, if you want to edit the html template file, edit index.html in each page folder.
 
+## Screenshots <a name="screenshots"></a>
+
+### New Tab <a name="newtab"></a>
+
+<img width="971" alt="스크린샷 2022-04-11 오전 2 22 00" src="https://user-images.githubusercontent.com/53500778/162631646-cd40976b-b737-43d0-8e6a-6ac090a2e2d4.png">
+
+### Popup <a name="popup"></a>
+
+<img width="305" alt="스크린샷 2022-04-11 오전 2 22 11" src="https://user-images.githubusercontent.com/53500778/162631660-d35c5f12-e0d7-4431-a020-97024cdda7a7.png">
+
+
+
 ## Documents <a name="documents"></a>
 - [Vite Plugin](https://vitejs.dev/guide/api-plugin.html)
 - [ChromeExtension](https://developer.chrome.com/docs/extensions/mv3/)
 - [Rollup](https://rollupjs.org/guide/en/)
 - [Rollup-plugin-chrome-extension](https://www.extend-chrome.dev/rollup-plugin)
+
+
 
 ---
 
