@@ -36,7 +36,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 ### Procedures <a name="procedures"></a>
 1. Clone this repository.
 2. Change `name` and `description` in package.json => **Auto synchronize with manifest** 
-3. Run `yarn` or `npm i`
+3. Run `yarn` or `npm i` (check your node version >= 16)
 4. Run `yarn dev` or `npm run dev`
 5. Load Extension on Chrome
    1. Open - Chrome browser
