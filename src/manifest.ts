@@ -1,12 +1,13 @@
 import { defineManifest } from "rollup-plugin-chrome-extension";
+import packageJson from "../package.json";
 
 type ManifestType = ReturnType<typeof defineManifest>;
 
 const manifest: ManifestType = {
   manifest_version: 3,
-  name: "Chrome Extension",
-  version: "0.0.1",
-  description: "A chrome extension",
+  name: packageJson.name,
+  version: packageJson.version,
+  description: packageJson.description,
   options_page: "options.html",
   background: { service_worker: "background.js" },
   action: {
