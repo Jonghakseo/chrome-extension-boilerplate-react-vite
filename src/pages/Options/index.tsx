@@ -1,7 +1,15 @@
 import React from "react";
-import {render} from "react-dom";
-
+import { createRoot } from "react-dom/client";
 import Options from "@pages/Options/Options";
 import "@pages/Options/index.css";
 
-render( <Options/>, window.document.querySelector("#app-container"));
+function init() {
+  const appContainer = document.querySelector("#app-container");
+  if (!appContainer) {
+    return;
+  }
+  const root = createRoot(appContainer);
+  root.render(<Options />);
+}
+
+init();

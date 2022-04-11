@@ -1,7 +1,15 @@
 import React from "react";
-import { render } from "react-dom";
-
+import { createRoot } from "react-dom/client";
 import Newtab from "@pages/Newtab/Newtab";
 import "@pages/Newtab/index.css";
 
-render(<Newtab />, window.document.querySelector("#app-container"));
+function init() {
+  const appContainer = document.querySelector("#app-container");
+  if (!appContainer) {
+    return;
+  }
+  const root = createRoot(appContainer);
+  root.render(<Newtab />);
+}
+
+init();

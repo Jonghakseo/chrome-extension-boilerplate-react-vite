@@ -1,7 +1,15 @@
 import React from "react";
-import { render } from "react-dom";
-
-import Popup from "@pages/Popup/Popup";
+import { createRoot } from "react-dom/client";
 import "@pages/Popup/index.css";
+import Popup from "@pages/Popup/Popup";
 
-render(<Popup />, window.document.querySelector("#app-container"));
+function init() {
+  const appContainer = document.querySelector("#app-container");
+  if (!appContainer) {
+    return;
+  }
+  const root = createRoot(appContainer);
+  root.render(<Popup />);
+}
+
+init();

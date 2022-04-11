@@ -26,7 +26,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 > The focus was on improving the build speed and development experience with Vite.
 
 ## Features <a name="features"></a>
-- [React 17](https://reactjs.org/)
+- [React 18](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
 - [sass](https://sass-lang.com/)
