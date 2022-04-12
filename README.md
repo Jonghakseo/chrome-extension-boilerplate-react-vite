@@ -30,7 +30,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
 - [SASS](https://sass-lang.com/)
-- [EsLint](https://eslint.org/)
+- [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
 
