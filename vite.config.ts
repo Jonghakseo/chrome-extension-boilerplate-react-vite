@@ -25,7 +25,6 @@ export default defineConfig({
     react(),
     ...customPlugins,
     createHtmlPlugin({
-      minify: true,
       pages: [
         {
           entry: resolve(pagesDir, "Newtab", "index.tsx"),
@@ -58,10 +57,6 @@ export default defineConfig({
   publicDir,
   build: {
     outDir,
-    watch: {
-      include: "src",
-    },
-    emptyOutDir: true,
     rollupOptions: {
       input: {
         // css
