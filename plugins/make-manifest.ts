@@ -11,6 +11,10 @@ export default function makeManifest() {
   return {
     name: "make-manifest",
     buildEnd() {
+      if (!fs.existsSync(outDir)) {
+        fs.mkdirSync(outDir);
+      }
+
       const manifestPath = resolve(outDir, "manifest.json");
 
       fs.writeFileSync(manifestPath, JSON.stringify(manifest));
