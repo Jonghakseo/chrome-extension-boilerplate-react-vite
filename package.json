@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "tsc --noEmit && vite build",
-    "dev": "node watch.cjs vite build",
+    "dev": "node watch.cjs vite build"
   },
   "type": "module",
   "dependencies": {
