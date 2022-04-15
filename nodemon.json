@@ -1,6 +1,7 @@
 {
   "watch": [
-    "src"
+    "src",
+    "plugins"
   ],
   "ext": "tsx,css,html,ts",
   "ignore": [
