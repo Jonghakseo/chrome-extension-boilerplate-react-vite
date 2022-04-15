@@ -5,7 +5,7 @@ import manifest from "../src/manifest";
 
 const { resolve } = path;
 
-const outDir = resolve(__dirname, "..", "dist");
+const outDir = resolve(__dirname, "..", "public");
 
 export default function makeManifest() {
   return {
@@ -17,7 +17,7 @@ export default function makeManifest() {
 
       const manifestPath = resolve(outDir, "manifest.json");
 
-      fs.writeFileSync(manifestPath, JSON.stringify(manifest));
+      fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
 
       colorLog(`Manifest file copy complete: ${manifestPath}`, "success");
     },

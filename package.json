@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "tsc --noEmit && vite build",
-    "dev": "node watch.cjs vite build"
+    "dev": "nodemon"
   },
   "type": "module",
   "dependencies": {
@@ -33,6 +33,7 @@
     "eslint-plugin-react": "^7.23.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "fs-extra": "^10.0.0",
+    "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
     "sass": "^1.50.0",
     "ts-loader": "^9.2.6",
