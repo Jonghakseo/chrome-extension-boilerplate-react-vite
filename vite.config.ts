@@ -60,14 +60,14 @@ export default defineConfig({
     rollupOptions: {
       input: {
         // css
-        ContentStyle: resolve(pagesDir, "Content", "content.style.css"),
+        contentStyle: resolve(pagesDir, "Content", "content.style.css"),
         // ts
-        Content: resolve(pagesDir, "Content", "index.ts"),
-        Background: resolve(pagesDir, "Background", "index.ts"),
+        content: resolve(pagesDir, "Content", "index.ts"),
+        background: resolve(pagesDir, "Background", "index.ts"),
       },
       output: {
         entryFileNames: (chunk) => {
-          if (chunk.name === "ContentStyle") {
+          if (chunk.name === "contentStyle") {
             return `content.styles.css`;
           }
           return `${chunk.name}.js`;
