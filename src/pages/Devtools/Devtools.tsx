@@ -1,7 +1,7 @@
 import React from "react";
-import "@pages/Panel/Panel.css";
+import "@pages/Devtools/Devtools.css";
 
-const Panel: React.FC = () => {
+const Devtools: React.FC = () => {
   return (
     <div className="container">
       <h1>Dev Tools Panel</h1>
@@ -9,4 +9,4 @@ const Panel: React.FC = () => {
   );
 };
 
-export default Panel;
+export default Devtools;

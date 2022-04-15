@@ -37,17 +37,12 @@ export default defineConfig({
           template: "public/options.html",
         },
         {
-          entry: resolve(pagesDir, "Panel", "index.tsx"),
-          filename: "panel.js",
-          template: "public/panel.html",
-        },
-        {
           entry: resolve(pagesDir, "Popup", "index.tsx"),
           filename: "popup.js",
           template: "public/popup.html",
         },
         {
-          entry: resolve(pagesDir, "Devtools", "index.ts"),
+          entry: resolve(pagesDir, "Devtools", "index.tsx"),
           filename: "devtools.js",
           template: "public/devtools.html",
         },

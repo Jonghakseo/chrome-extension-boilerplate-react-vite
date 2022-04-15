@@ -8,7 +8,7 @@ const { resolve } = path;
 const publicDir = resolve(__dirname, "../public");
 const pagesDir = resolve(__dirname, "../src/pages");
 
-const folders = ["Newtab", "Panel", "Devtools", "Options", "Popup"];
+const folders = ["Newtab", "Devtools", "Options", "Popup"];
 
 export default function copyTemplate() {
   const checker = checkCalled();
