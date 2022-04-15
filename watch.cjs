@@ -25,7 +25,12 @@ function run() {
 
   fs.watch(
     path.resolve(__dirname, "src"),
-    { recursive: true },
+    {
+      recursive:
+        process.platform === "win32" || process.platform === "darwin"
+          ? true
+          : false,
+    },
     debounce(onChange, 300)
   );
 }
