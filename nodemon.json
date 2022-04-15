@@ -6,5 +6,6 @@
   "ignore": [
     "src/**/*.spec.ts"
   ],
-  "exec": "vite build"
+  "exec": "vite build",
+  "delay": 300
 }
