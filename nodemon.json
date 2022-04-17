@@ -1,11 +1,10 @@
 {
   "watch": [
-    "src"
+    "src", "utils", "vite.config.ts"
   ],
   "ext": "tsx,css,html,ts",
   "ignore": [
     "src/**/*.spec.ts"
   ],
-  "exec": "vite build",
-  "delay": 300
+  "exec": "vite build"
 }

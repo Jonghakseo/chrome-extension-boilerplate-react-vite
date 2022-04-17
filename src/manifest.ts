@@ -7,7 +7,7 @@ const manifest: ManifestType = {
   version: packageJson.version,
   description: packageJson.description,
   options_page: "src/pages/options/index.html",
-  background: { service_worker: "background.js" },
+  background: { service_worker: "src/pages/background/index.js" },
   action: {
     default_popup: "src/pages/popup/index.html",
     default_icon: "icon-34.png",
@@ -22,17 +22,13 @@ const manifest: ManifestType = {
     {
       matches: ["http://*/*", "https://*/*", "<all_urls>"],
       js: ["src/pages/content/index.js"],
-      css: ["src/pages/content/styles.css"],
+      css: ["src/pages/content/style.css"],
     },
   ],
   devtools_page: "src/pages/devtools/index.html",
   web_accessible_resources: [
     {
-      resources: [
-        "src/pages/content/styles.css",
-        "icon-128.png",
-        "icon-34.png",
-      ],
+      resources: ["src/pages/content/style.css", "icon-128.png", "icon-34.png"],
       matches: [],
     },
   ],
