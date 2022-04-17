@@ -6,7 +6,7 @@ import { PluginOption } from "vite";
 
 const { resolve } = path;
 
-const outDir = resolve(__dirname, "..", "public");
+const outDir = resolve(__dirname, "..", "..", "public");
 
 export default function makeManifest(): PluginOption {
   return {
