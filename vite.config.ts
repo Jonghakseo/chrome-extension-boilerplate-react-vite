@@ -46,11 +46,6 @@ export default defineConfig({
           filename: "popup.js",
           template: "public/popup.html",
         },
-        {
-          entry: resolve(pagesDir, "Devtools", "index.ts"),
-          filename: "devtools.js",
-          template: "public/devtools.html",
-        },
       ],
     }),
   ],
@@ -62,6 +57,7 @@ export default defineConfig({
         // css
         contentStyle: resolve(pagesDir, "Content", "content.style.css"),
         // ts
+        devtools: resolve(pagesDir, "Devtools", "index.ts"),
         content: resolve(pagesDir, "Content", "index.ts"),
         background: resolve(pagesDir, "Background", "index.ts"),
       },
