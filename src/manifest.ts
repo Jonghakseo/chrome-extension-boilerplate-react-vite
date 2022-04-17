@@ -6,14 +6,14 @@ const manifest: ManifestType = {
   name: packageJson.name,
   version: packageJson.version,
   description: packageJson.description,
-  options_page: "options.html",
+  options_page: "src/pages/options/index.html",
   background: { service_worker: "background.js" },
   action: {
-    default_popup: "popup.html",
+    default_popup: "src/pages/popup/index.html",
     default_icon: "icon-34.png",
   },
   chrome_url_overrides: {
-    newtab: "newtab.html",
+    newtab: "src/pages/newtab/index.html",
   },
   icons: {
     "128": "icon-128.png",
@@ -21,14 +21,18 @@ const manifest: ManifestType = {
   content_scripts: [
     {
       matches: ["http://*/*", "https://*/*", "<all_urls>"],
-      js: ["content.js"],
-      css: ["content.styles.css"],
+      js: ["src/pages/content/index.js"],
+      css: ["src/pages/content/styles.css"],
     },
   ],
-  devtools_page: "devtools.html",
+  devtools_page: "src/pages/devtools/index.html",
   web_accessible_resources: [
     {
-      resources: ["content.styles.css", "icon-128.png", "icon-34.png"],
+      resources: [
+        "src/pages/content/styles.css",
+        "icon-128.png",
+        "icon-34.png",
+      ],
       matches: [],
     },
   ],
