@@ -19,7 +19,6 @@
 - [Features](#features)
 - [Installation](#installation)
   - [Procedures](#procedures)
-- [Attention](#attention)
 - [Screenshots](#screenshots)
   - [NewTab](#newtab)
   - [Popup](#popup)  
@@ -53,9 +52,6 @@ This boilerplate is made for creating chrome extensions using React and Typescri
    4. Find - Load unpacked extension
    5. Select - `dist` folder in this project (after dev or build)
 6. If you want to build in production, Just run `yarn build` or `npm run build`.
-
-## Attention <a name="attention"></a>
-- Html files in the public folder are automatically copied from inside the `src/pages` folder. So, if you want to edit the html template file, edit index.html in each page folder.
 
 ## Screenshots <a name="screenshots"></a>
 
