@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 import makeManifest from "./utils/plugins/make-manifest";
+import copyContentStyle from "./utils/plugins/copy-content-style";
 
 const root = resolve(__dirname, "src");
 const pagesDir = resolve(root, "pages");
@@ -17,13 +18,14 @@ export default defineConfig({
       "@pages": pagesDir,
     },
   },
-  plugins: [react(), makeManifest()],
+  plugins: [react(), makeManifest(), copyContentStyle()],
   publicDir,
   build: {
     outDir,
     rollupOptions: {
       input: {
-        devtools: resolve(pagesDir, "devtools", "index.ts"),
+        devtools: resolve(pagesDir, "devtools", "index.html"),
+        panel: resolve(pagesDir, "panel", "index.html"),
         content: resolve(pagesDir, "content", "index.ts"),
         contentStyle: resolve(pagesDir, "content", "style.css"),
         background: resolve(pagesDir, "background", "index.ts"),
@@ -32,12 +34,7 @@ export default defineConfig({
         options: resolve(pagesDir, "options", "index.html"),
       },
       output: {
-        entryFileNames: (chunk) => {
-          if (chunk.name === "contentStyle") {
-            return `src/pages/content/style.css`;
-          }
-          return `src/pages/${chunk.name}/index.js`;
-        },
+        entryFileNames: (chunk) => `src/pages/${chunk.name}/index.js`,
       },
     },
   },

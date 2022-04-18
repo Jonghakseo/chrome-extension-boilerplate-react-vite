@@ -1,2 +1,5 @@
-import "./style.css";
-console.log("content loaded");
+try {
+  console.log("content loaded");
+} catch (e) {
+  console.error(e);
+}

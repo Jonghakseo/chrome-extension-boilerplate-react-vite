@@ -22,13 +22,13 @@ const manifest: ManifestType = {
     {
       matches: ["http://*/*", "https://*/*", "<all_urls>"],
       js: ["src/pages/content/index.js"],
-      css: ["src/pages/content/style.css"],
+      css: ["contentStyle.css"],
     },
   ],
   devtools_page: "src/pages/devtools/index.html",
   web_accessible_resources: [
     {
-      resources: ["src/pages/content/style.css", "icon-128.png", "icon-34.png"],
+      resources: ["contentStyle.css", "icon-128.png", "icon-34.png"],
       matches: [],
     },
   ],
