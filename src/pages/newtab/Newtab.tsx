@@ -1,14 +1,15 @@
 import React from "react";
 import logo from "@assets/img/logo.svg";
-import "@pages/Popup/Popup.css";
+import "@pages/newtab/Newtab.css";
+import "@pages/newtab/Newtab.scss";
 
-const Popup = () => {
+const Newtab = () => {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/pages/Popup/Popup.jsx</code> and save to reload.
+          Edit <code>src/pages/newtab/Newtab.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -18,9 +19,10 @@ const Popup = () => {
         >
           Learn React!
         </a>
+        <h6>The color of this paragraph is defined using SASS.</h6>
       </header>
     </div>
   );
 };
 
-export default Popup;
+export default Newtab;

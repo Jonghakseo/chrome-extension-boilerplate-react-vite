@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Options from "@pages/Options/Options";
-import "@pages/Options/index.css";
+import "@pages/popup/index.css";
+import Popup from "@pages/popup/Popup";
 
 function init() {
   const appContainer = document.querySelector("#app-container");
@@ -9,7 +9,7 @@ function init() {
     throw new Error("Can not find AppContainer");
   }
   const root = createRoot(appContainer);
-  root.render(<Options />);
+  root.render(<Popup />);
 }
 
 init();

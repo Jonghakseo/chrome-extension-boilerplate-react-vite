@@ -1,7 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import Panel from "@pages/Panel/Panel";
-import "@pages/Panel/index.css";
+import Newtab from "@pages/newtab/Newtab";
+import "@pages/newtab/index.css";
 
 function init() {
   const appContainer = document.querySelector("#app-container");
@@ -9,7 +9,7 @@ function init() {
     throw new Error("Can not find AppContainer");
   }
   const root = createRoot(appContainer);
-  root.render(<Panel />);
+  root.render(<Newtab />);
 }
 
 init();

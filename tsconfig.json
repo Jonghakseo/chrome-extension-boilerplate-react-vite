@@ -22,5 +22,6 @@
       "@pages/*": ["src/pages/*"]
     }
   },
-  "include": ["src", "plugins", "vite.config.ts"],
+  "include": ["src",
+    "utils", "vite.config.ts"],
 }

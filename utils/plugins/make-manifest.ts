@@ -1,13 +1,14 @@
 import * as fs from "fs";
 import * as path from "path";
-import colorLog from "./utils/color-log";
-import manifest from "../src/manifest";
+import colorLog from "../log";
+import manifest from "../../src/manifest";
+import { PluginOption } from "vite";
 
 const { resolve } = path;
 
-const outDir = resolve(__dirname, "..", "public");
+const outDir = resolve(__dirname, "..", "..", "public");
 
-export default function makeManifest() {
+export default function makeManifest(): PluginOption {
   return {
     name: "make-manifest",
     buildEnd() {

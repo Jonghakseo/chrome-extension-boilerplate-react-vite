@@ -1,17 +1,14 @@
-import { defineConfig, PluginOption } from "vite";
+import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
-import { createHtmlPlugin } from "vite-plugin-html";
-import copyTemplate from "./plugins/copy-template";
-import makeManifest from "./plugins/make-manifest";
+import makeManifest from "./utils/plugins/make-manifest";
+import copyContentStyle from "./utils/plugins/copy-content-style";
 
 const root = resolve(__dirname, "src");
 const pagesDir = resolve(root, "pages");
 const assetsDir = resolve(root, "assets");
 const outDir = resolve(__dirname, "dist");
 const publicDir = resolve(__dirname, "public");
-
-const customPlugins: PluginOption[] = [copyTemplate(), makeManifest()];
 
 export default defineConfig({
   resolve: {
@@ -21,55 +18,23 @@ export default defineConfig({
       "@pages": pagesDir,
     },
   },
-  plugins: [
-    react(),
-    ...customPlugins,
-    createHtmlPlugin({
-      pages: [
-        {
-          entry: resolve(pagesDir, "Newtab", "index.tsx"),
-          filename: "newtab.js",
-          template: "public/newtab.html",
-        },
-        {
-          entry: resolve(pagesDir, "Options", "index.tsx"),
-          filename: "options.js",
-          template: "public/options.html",
-        },
-        {
-          entry: resolve(pagesDir, "Panel", "index.tsx"),
-          filename: "panel.js",
-          template: "public/panel.html",
-        },
-        {
-          entry: resolve(pagesDir, "Popup", "index.tsx"),
-          filename: "popup.js",
-          template: "public/popup.html",
-        },
-      ],
-    }),
-  ],
+  plugins: [react(), makeManifest(), copyContentStyle()],
   publicDir,
   build: {
     outDir,
     rollupOptions: {
       input: {
-        // css
-        contentStyle: resolve(pagesDir, "Content", "content.style.css"),
-        // ts
-        devtools: resolve(pagesDir, "Devtools", "index.ts"),
-        content: resolve(pagesDir, "Content", "index.ts"),
-        background: resolve(pagesDir, "Background", "index.ts"),
+        devtools: resolve(pagesDir, "devtools", "index.html"),
+        panel: resolve(pagesDir, "panel", "index.html"),
+        content: resolve(pagesDir, "content", "index.ts"),
+        background: resolve(pagesDir, "background", "index.ts"),
+        popup: resolve(pagesDir, "popup", "index.html"),
+        newtab: resolve(pagesDir, "newtab", "index.html"),
+        options: resolve(pagesDir, "options", "index.html"),
       },
       output: {
-        entryFileNames: (chunk) => {
-          if (chunk.name === "contentStyle") {
-            return `content.styles.css`;
-          }
-          return `${chunk.name}.js`;
-        },
+        entryFileNames: (chunk) => `src/pages/${chunk.name}/index.js`,
       },
-      external: ["chrome"],
     },
   },
 });
