@@ -43,7 +43,7 @@ export default defineConfig({
           : "assets/js/[name].[hash].js",
         assetFileNames: (assetInfo) => {
           const { dir, name: _name } = path.parse(assetInfo.name);
-          const assetFolder = getLastElement(dir.split("/"));
+          const assetFolder = dir.split("/").pop();
           const name = assetFolder + firstUpperCase(_name);
           return `assets/[ext]/${name}.chunk.[ext]`;
         },
@@ -51,12 +51,6 @@ export default defineConfig({
     },
   },
 });
-
-function getLastElement<T>(array: ArrayLike<T>): T {
-  const length = array.length;
-  const lastIndex = length - 1;
-  return array[lastIndex];
-}
 
 function firstUpperCase(str: string) {
   const firstAlphabet = new RegExp(/( |^)[a-z]/, "g");
