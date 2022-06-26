@@ -22,6 +22,7 @@ export default defineConfig({
   publicDir,
   build: {
     outDir,
+    sourcemap: process.env.__DEV__ === "true",
     rollupOptions: {
       input: {
         devtools: resolve(pagesDir, "devtools", "index.html"),
