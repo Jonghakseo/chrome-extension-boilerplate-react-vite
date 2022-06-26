@@ -28,8 +28,14 @@ const manifest: ManifestType = {
   devtools_page: "src/pages/devtools/index.html",
   web_accessible_resources: [
     {
-      resources: ["contentStyle.css", "icon-128.png", "icon-34.png"],
-      matches: [],
+      resources: [
+        "assets/jsx-runtime.*.js",
+        "src/pages/contentView/index.js",
+        "contentStyle.css",
+        "icon-128.png",
+        "icon-34.png",
+      ],
+      matches: ["*://*/*"],
     },
   ],
 };
