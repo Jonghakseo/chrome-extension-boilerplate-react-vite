@@ -36,8 +36,14 @@ export default defineConfig({
       output: {
         entryFileNames: (chunk) => `src/pages/${chunk.name}/index.js`,
         assetFileNames: (chunk) => {
-          // console.log(chunk.type, chunk.name);
-          return `src/pages/${chunk.name?.replace(/\.\w+$/, "")}/index.[ext]`;
+          let chunkNameShort = chunk.name;
+          if (chunkNameShort?.startsWith(__dirname)) {
+            chunkNameShort = chunkNameShort.replace(__dirname + "/", "");
+          }
+          if (!chunkNameShort?.startsWith("src")) {
+            chunkNameShort = `src/pages/${chunkNameShort}`;
+          }
+          return `${chunkNameShort}/index.[ext]`;
         },
       },
     },
