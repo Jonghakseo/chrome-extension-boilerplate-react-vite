@@ -1,3 +1,4 @@
+import "./style.scss";
 try {
   console.log("content loaded");
   injectContentViewScript();
