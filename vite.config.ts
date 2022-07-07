@@ -41,9 +41,13 @@ export default defineConfig({
             chunkNameShort = chunkNameShort.replace(__dirname + "/", "");
           }
           if (!chunkNameShort?.startsWith("src")) {
-            chunkNameShort = `src/pages/${chunkNameShort}`;
+            chunkNameShort = `src/pages/${chunkNameShort?.replace(
+              /\.\w+$/,
+              ""
+            )}`;
+            return `${chunkNameShort}/index.[ext]`;
           }
-          return `${chunkNameShort}/index.[ext]`;
+          return chunkNameShort;
         },
       },
     },
