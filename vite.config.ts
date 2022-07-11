@@ -27,28 +27,15 @@ export default defineConfig({
         devtools: resolve(pagesDir, "devtools", "index.html"),
         panel: resolve(pagesDir, "panel", "index.html"),
         content: resolve(pagesDir, "content", "index.ts"),
-        contentView: resolve(pagesDir, "contentView", "index.tsx"),
         background: resolve(pagesDir, "background", "index.ts"),
         popup: resolve(pagesDir, "popup", "index.html"),
         newtab: resolve(pagesDir, "newtab", "index.html"),
         options: resolve(pagesDir, "options", "index.html"),
       },
       output: {
-        entryFileNames: (chunk) => `src/pages/${chunk.name}/index.js`,
-        assetFileNames: (chunk) => {
-          let chunkNameShort = chunk.name;
-          if (chunkNameShort?.startsWith(__dirname)) {
-            chunkNameShort = chunkNameShort.replace(__dirname + "/", "");
-          }
-          if (!chunkNameShort?.startsWith("src")) {
-            chunkNameShort = `src/pages/${chunkNameShort?.replace(
-              /\.\w+$/,
-              ""
-            )}`;
-            return `${chunkNameShort}/index.[ext]`;
-          }
-          return chunkNameShort;
-        },
+        entryFileNames: "src/pages/[name]/index.js",
+        chunkFileNames: "assets/js/[name].[hash].js",
+        assetFileNames: "assets/[ext]/[name].chunk.[ext]",
       },
     },
   },
