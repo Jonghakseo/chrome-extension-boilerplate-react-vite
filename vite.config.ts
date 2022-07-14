@@ -28,6 +28,7 @@ export default defineConfig({
         panel: resolve(pagesDir, "panel", "index.html"),
         content: resolve(pagesDir, "content", "index.ts"),
         background: resolve(pagesDir, "background", "index.ts"),
+        contentStyle: resolve(pagesDir, "content", "style.scss"),
         popup: resolve(pagesDir, "popup", "index.html"),
         newtab: resolve(pagesDir, "newtab", "index.html"),
         options: resolve(pagesDir, "options", "index.html"),
@@ -35,7 +36,17 @@ export default defineConfig({
       output: {
         entryFileNames: "src/pages/[name]/index.js",
         chunkFileNames: "assets/js/[name].[hash].js",
-        assetFileNames: "assets/[ext]/[name].chunk.[ext]",
+        assetFileNames: (assetInfo) => {
+          const firstUpperCase = (str: string) =>
+            str.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+          const paths = assetInfo.name.split("/");
+          const name =
+            paths.length > 1
+              ? paths[paths.length - 2] +
+                firstUpperCase(paths[paths.length - 1].split(".")[0])
+              : paths[0].split(".")[0];
+          return `assets/[ext]/${name}.chunk.[ext]`;
+        },
       },
     },
   },
