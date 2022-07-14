@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import { resolve } from "path";
+import path, { resolve } from "path";
 import makeManifest from "./utils/plugins/make-manifest";
 
 const root = resolve(__dirname, "src");
@@ -37,17 +37,23 @@ export default defineConfig({
         entryFileNames: "src/pages/[name]/index.js",
         chunkFileNames: "assets/js/[name].[hash].js",
         assetFileNames: (assetInfo) => {
-          const firstUpperCase = (str: string) =>
-            str.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
-          const paths = assetInfo.name.split("/");
-          const name =
-            paths.length > 1
-              ? paths[paths.length - 2] +
-                firstUpperCase(paths[paths.length - 1].split(".")[0])
-              : paths[0].split(".")[0];
+          const { dir, name: _name } = path.parse(assetInfo.name);
+          const assetFolder = getLastElement(dir.split("/"));
+          const name = assetFolder + firstUpperCase(_name);
           return `assets/[ext]/${name}.chunk.[ext]`;
         },
       },
     },
   },
 });
+
+function getLastElement<T>(array: ArrayLike<T>): T {
+  const length = array.length;
+  const lastIndex = length - 1;
+  return array[lastIndex];
+}
+
+function firstUpperCase(str: string) {
+  const firstAlphabet = new RegExp(/( |^)[a-z]/, "g");
+  return str.toLowerCase().replace(firstAlphabet, (L) => L.toUpperCase());
+}
