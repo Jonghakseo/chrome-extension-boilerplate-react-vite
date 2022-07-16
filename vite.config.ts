@@ -9,6 +9,8 @@ const assetsDir = resolve(root, "assets");
 const outDir = resolve(__dirname, "dist");
 const publicDir = resolve(__dirname, "public");
 
+const isDev = process.env.__DEV__ === "true";
+
 export default defineConfig({
   resolve: {
     alias: {
@@ -21,7 +23,7 @@ export default defineConfig({
   publicDir,
   build: {
     outDir,
-    sourcemap: process.env.__DEV__ === "true",
+    sourcemap: isDev,
     rollupOptions: {
       input: {
         devtools: resolve(pagesDir, "devtools", "index.html"),
@@ -35,7 +37,9 @@ export default defineConfig({
       },
       output: {
         entryFileNames: "src/pages/[name]/index.js",
-        chunkFileNames: "assets/js/[name].[hash].js",
+        chunkFileNames: isDev
+          ? "assets/js/[name].js"
+          : "assets/js/[name].[hash].js",
         assetFileNames: (assetInfo) => {
           const { dir, name: _name } = path.parse(assetInfo.name);
           const assetFolder = getLastElement(dir.split("/"));
