@@ -32,6 +32,8 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 ## Features <a name="features"></a>
 - [React 18](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [Jest](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Vite](https://vitejs.dev/)
 - [SASS](https://sass-lang.com/)
 - [ESLint](https://eslint.org/)
