@@ -37,7 +37,6 @@ export default defineConfig({
         options: resolve(pagesDir, "options", "index.html"),
       },
       output: {
-        hoistTransitiveImports: true,
         entryFileNames: "src/pages/[name]/index.js",
         chunkFileNames: isDev
           ? "assets/js/[name].js"
