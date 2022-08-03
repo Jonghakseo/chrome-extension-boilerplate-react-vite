@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path, { resolve } from "path";
 import makeManifest from "./utils/plugins/make-manifest";
+import customDynamicImport from "./utils/plugins/custom-dynamic-import";
 
 const root = resolve(__dirname, "src");
 const pagesDir = resolve(root, "pages");
@@ -19,7 +20,7 @@ export default defineConfig({
       "@pages": pagesDir,
     },
   },
-  plugins: [react(), makeManifest()],
+  plugins: [react(), makeManifest(), customDynamicImport()],
   publicDir,
   build: {
     outDir,
@@ -36,6 +37,7 @@ export default defineConfig({
         options: resolve(pagesDir, "options", "index.html"),
       },
       output: {
+        hoistTransitiveImports: true,
         entryFileNames: "src/pages/[name]/index.js",
         chunkFileNames: isDev
           ? "assets/js/[name].js"
