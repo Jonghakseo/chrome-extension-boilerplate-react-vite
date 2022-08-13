@@ -78,9 +78,9 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 ---
 ## Thanks To
 
-[Jetbrains Open Source Support](https://jb.gg/OpenSourceSupport)
-
-<img width="200" src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo (Main) logo.">
+| [Jetbrains Open Source Support](https://jb.gg/OpenSourceSupport) | [Jackson Hong](https://www.linkedin.com/in/j-acks0n/)                                                                                                                                                          |
+| --- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <img width="200" src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo (Main) logo."> | <img width="200" src='https://avatars.githubusercontent.com/u/23139754?v=4' alt='Jackson Hong'/> |
 
 
 ---
