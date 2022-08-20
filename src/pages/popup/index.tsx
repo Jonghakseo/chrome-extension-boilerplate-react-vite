@@ -2,6 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "@pages/popup/index.css";
 import Popup from "@pages/popup/Popup";
+import reloadOnUpdated from "@src/reload/client";
 
 function init() {
   const appContainer = document.querySelector("#app-container");
@@ -13,3 +14,5 @@ function init() {
 }
 
 init();
+
+reloadOnUpdated();
