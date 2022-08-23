@@ -5,6 +5,7 @@ export default function reloadOnUpdated() {
   function reload() {
     window.location.reload();
     socket.send("remove");
+    needToReload = false;
   }
 
   // reload when document visible
