@@ -1,25 +1,28 @@
 import { WebSocketServer, WebSocket } from "ws";
 import chokidar from "chokidar";
 import { clearTimeout } from "timers";
-
-const LOCAL_RELOAD_SOCKET_PORT = 8081;
-const UPDATE_REQUEST_MESSAGE = "do_update";
-const UPDATE_COMPLETE_MESSAGE = "done_update";
-
-const wss = new WebSocketServer({ port: LOCAL_RELOAD_SOCKET_PORT });
+import {
+  LOCAL_RELOAD_SOCKET_PORT,
+  UPDATE_COMPLETE_MESSAGE,
+  UPDATE_REQUEST_MESSAGE,
+} from "./constant";
 
 const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
 
-wss.on("connection", (ws) => {
-  clientsThatNeedToUpdate.add(ws);
+function initReloadServer() {
+  const wss = new WebSocketServer({ port: LOCAL_RELOAD_SOCKET_PORT });
 
-  ws.addEventListener("close", () => clientsThatNeedToUpdate.delete(ws));
-  ws.addEventListener("message", (event) => {
-    if (event.data === UPDATE_COMPLETE_MESSAGE) {
-      ws.close();
-    }
+  wss.on("connection", (ws) => {
+    clientsThatNeedToUpdate.add(ws);
+
+    ws.addEventListener("close", () => clientsThatNeedToUpdate.delete(ws));
+    ws.addEventListener("message", (event) => {
+      if (event.data === UPDATE_COMPLETE_MESSAGE) {
+        ws.close();
+      }
+    });
   });
-});
+}
 
 chokidar.watch("dist").on("all", () => {
   sendUpdateMessageToAllSocketsWithDebounce();
@@ -44,3 +47,5 @@ function debounce(callback: () => void, delay: number) {
     timer = setTimeout(callback, delay);
   };
 }
+
+initReloadServer();

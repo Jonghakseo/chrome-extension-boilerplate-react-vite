@@ -4,6 +4,16 @@ declare namespace chrome {
   export default Chrome;
 }
 
+declare module "virtual:reload-on-update-in-background-script" {
+  export const reloadOnUpdate: () => void;
+  export default reloadOnUpdate;
+}
+
+declare module "virtual:reload-on-update-in-view" {
+  const refreshOnUpdate: () => void;
+  export default refreshOnUpdate;
+}
+
 declare module "*.svg" {
   import React = require("react");
   export const ReactComponent: React.SFC<React.SVGProps<SVGSVGElement>>;

@@ -3,8 +3,11 @@ import react from "@vitejs/plugin-react";
 import path, { resolve } from "path";
 import makeManifest from "./utils/plugins/make-manifest";
 import customDynamicImport from "./utils/plugins/custom-dynamic-import";
+import addHmr from "./utils/plugins/add-hmr";
+import { triggerAsyncId } from "async_hooks";
 
 const root = resolve(__dirname, "src");
+const utils = resolve(__dirname, "utils");
 const pagesDir = resolve(root, "pages");
 const assetsDir = resolve(root, "assets");
 const outDir = resolve(__dirname, "dist");
@@ -12,15 +15,24 @@ const publicDir = resolve(__dirname, "public");
 
 const isDev = process.env.__DEV__ === "true";
 
+// ENABLE HMR IN BACKGROUND SCRIPT
+const enableHmrInBackgroundScript = true;
+
 export default defineConfig({
   resolve: {
     alias: {
       "@src": root,
+      "@utils": utils,
       "@assets": assetsDir,
       "@pages": pagesDir,
     },
   },
-  plugins: [react(), makeManifest(), customDynamicImport()],
+  plugins: [
+    react(),
+    makeManifest(),
+    customDynamicImport(),
+    addHmr({ background: enableHmrInBackgroundScript, view: true }),
+  ],
   publicDir,
   build: {
     outDir,
