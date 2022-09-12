@@ -6,7 +6,6 @@ import customDynamicImport from "./utils/plugins/custom-dynamic-import";
 import addHmr from "./utils/plugins/add-hmr";
 
 const root = resolve(__dirname, "src");
-const utils = resolve(__dirname, "utils");
 const pagesDir = resolve(root, "pages");
 const assetsDir = resolve(root, "assets");
 const outDir = resolve(__dirname, "dist");
@@ -21,7 +20,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@src": root,
-      "@utils": utils,
       "@assets": assetsDir,
       "@pages": pagesDir,
     },
