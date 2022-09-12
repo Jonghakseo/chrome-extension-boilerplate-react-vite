@@ -10,23 +10,12 @@ const checkDevMode = (readFile: () => string): string => {
   return isDev ? readFile() : DUMMY_CODE;
 };
 
-const scriptHmrCode = checkDevMode(() =>
-  readFileSync(
-    path.resolve(__dirname, "..", "reload", "injections", "script.js"),
-    {
-      encoding: "utf8",
-    }
-  )
-);
-
-const viewHmrCode = checkDevMode(() =>
-  readFileSync(
-    path.resolve(__dirname, "..", "reload", "injections", "view.js"),
-    {
-      encoding: "utf8",
-    }
-  )
-);
+function getInjectionCode(fileName: string): string {
+  return readFileSync(
+    path.resolve(__dirname, "..", "reload", "injections", fileName),
+    { encoding: "utf8" }
+  );
+}
 
 type Config = {
   background?: boolean;
@@ -37,6 +26,9 @@ export default function addHmr(config?: Config): PluginOption {
   const { background = false, view = true } = config || {};
   const idInBackgroundScript = "virtual:reload-on-update-in-background-script";
   const idInView = "virtual:reload-on-update-in-view";
+
+  const scriptHmrCode = checkDevMode(() => getInjectionCode("script.js"));
+  const viewHmrCode = checkDevMode(() => getInjectionCode("view.js"));
 
   return {
     name: "add-hmr",
