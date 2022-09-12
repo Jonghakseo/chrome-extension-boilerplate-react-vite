@@ -2,20 +2,31 @@ import * as path from "path";
 import { PluginOption } from "vite";
 import { readFileSync } from "fs";
 
-const scriptHmrCode = readFileSync(
-  path.resolve(__dirname, "..", "reload", "injections", "script.js"),
-  {
-    encoding: "utf8",
-  }
-);
-const viewHmrCode = readFileSync(
-  path.resolve(__dirname, "..", "reload", "injections", "view.js"),
-  {
-    encoding: "utf8",
-  }
+const isDev = process.env.__DEV__ === "true";
+
+const DUMMY_CODE = `export default function(){};`;
+
+const checkDevMode = (readFile: () => string): string => {
+  return isDev ? readFile() : DUMMY_CODE;
+};
+
+const scriptHmrCode = checkDevMode(() =>
+  readFileSync(
+    path.resolve(__dirname, "..", "reload", "injections", "script.js"),
+    {
+      encoding: "utf8",
+    }
+  )
 );
 
-const dummyCode = `export default function(){};`;
+const viewHmrCode = checkDevMode(() =>
+  readFileSync(
+    path.resolve(__dirname, "..", "reload", "injections", "view.js"),
+    {
+      encoding: "utf8",
+    }
+  )
+);
 
 type Config = {
   background?: boolean;
@@ -30,20 +41,20 @@ export default function addHmr(config?: Config): PluginOption {
   return {
     name: "add-hmr",
     resolveId(id) {
-      switch (id) {
-        case idInBackgroundScript:
-          return getResolvedId(idInBackgroundScript);
-        case idInView:
-          return getResolvedId(idInView);
+      if (id === idInBackgroundScript) {
+        return getResolvedId(idInBackgroundScript);
+      }
+      if (id === idInView) {
+        return getResolvedId(idInView);
       }
     },
     load(id) {
       if (id === getResolvedId(idInBackgroundScript)) {
-        return background ? scriptHmrCode : dummyCode;
+        return background ? scriptHmrCode : DUMMY_CODE;
       }
 
       if (id === getResolvedId(idInView)) {
-        return view ? viewHmrCode : dummyCode;
+        return view ? viewHmrCode : DUMMY_CODE;
       }
     },
   };
