@@ -4,7 +4,6 @@ import path, { resolve } from "path";
 import makeManifest from "./utils/plugins/make-manifest";
 import customDynamicImport from "./utils/plugins/custom-dynamic-import";
 import addHmr from "./utils/plugins/add-hmr";
-import { triggerAsyncId } from "async_hooks";
 
 const root = resolve(__dirname, "src");
 const utils = resolve(__dirname, "utils");
