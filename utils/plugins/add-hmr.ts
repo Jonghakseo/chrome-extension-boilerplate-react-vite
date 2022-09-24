@@ -29,11 +29,8 @@ export default function addHmr(config?: Config): PluginOption {
   return {
     name: "add-hmr",
     resolveId(id) {
-      if (id === idInBackgroundScript) {
-        return getResolvedId(idInBackgroundScript);
-      }
-      if (id === idInView) {
-        return getResolvedId(idInView);
+      if (id === idInBackgroundScript || id === idInView) {
+        return getResolvedId(id);
       }
     },
     load(id) {
