@@ -27,40 +27,34 @@ function initReloadServer() {
   });
 }
 
+/** CHECK:: src file was updated **/
 chokidar.watch("src").on("all", (event, path) => {
-  sendPendingUpdateMessageToAllSocketsWithDebounce(path);
+  debounce(sendPendingUpdateMessageToAllSockets, 200)(path);
 });
 
-chokidar.watch("dist").on("all", () => {
-  sendUpdateMessageToAllSocketsWithDebounce();
-});
+function sendPendingUpdateMessageToAllSockets(path: string) {
+  const _sendPendingUpdateMessage = (ws: WebSocket) =>
+    sendPendingUpdateMessage(ws, path);
+
+  clientsThatNeedToUpdate.forEach(_sendPendingUpdateMessage);
+}
 
 function sendPendingUpdateMessage(ws: WebSocket, path: string) {
   ws.send(Interpreter.Send({ type: UPDATE_PENDING_MESSAGE, path }));
 }
 
-function sendPendingUpdateMessageToAllSockets(path: string) {
-  const _sendPendingUpdateMessage = (ws: WebSocket) =>
-    sendPendingUpdateMessage(ws, path);
-  clientsThatNeedToUpdate.forEach(_sendPendingUpdateMessage);
-}
+/** CHECK:: build was completed **/
+chokidar.watch("dist").on("all", () => {
+  debounce(sendUpdateMessageToAllSockets, 200);
+});
 
-const sendPendingUpdateMessageToAllSocketsWithDebounce = debounce(
-  sendPendingUpdateMessageToAllSockets,
-  200
-);
-
-function sendUpdateMessage(ws: WebSocket) {
-  ws.send(Interpreter.Send({ type: UPDATE_REQUEST_MESSAGE }));
-}
 function sendUpdateMessageToAllSockets() {
   clientsThatNeedToUpdate.forEach(sendUpdateMessage);
 }
 
-const sendUpdateMessageToAllSocketsWithDebounce = debounce(
-  sendUpdateMessageToAllSockets,
-  200
-);
+function sendUpdateMessage(ws: WebSocket) {
+  ws.send(Interpreter.Send({ type: UPDATE_REQUEST_MESSAGE }));
+}
 
 function debounce<A extends unknown[]>(
   callback: (...args: A) => void,

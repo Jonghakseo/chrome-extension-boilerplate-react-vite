@@ -17,24 +17,41 @@ export default function initReloadClient({
 }): WebSocket {
   const socket = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
 
+  function sendUpdateCompleteMessage() {
+    socket.send(Interpreter.Send({ type: UPDATE_COMPLETE_MESSAGE }));
+  }
+
   socket.addEventListener("message", (event) => {
     const message = Interpreter.Receive(String(event.data));
 
     switch (message.type) {
       case UPDATE_REQUEST_MESSAGE: {
         if (needToUpdate) {
-          socket.send(Interpreter.Send({ type: UPDATE_COMPLETE_MESSAGE }));
+          sendUpdateCompleteMessage();
           needToUpdate = false;
           onUpdate();
         }
         return;
       }
       case UPDATE_PENDING_MESSAGE: {
-        needToUpdate = message.path.includes(watchPath);
+        needToUpdate = checkUpdateIsNeeded({
+          watchPath,
+          updatedPath: message.path,
+        });
         return;
       }
     }
   });
 
   return socket;
+}
+
+function checkUpdateIsNeeded({
+  watchPath,
+  updatedPath,
+}: {
+  updatedPath: string;
+  watchPath: string;
+}): boolean {
+  return updatedPath.includes(watchPath);
 }
