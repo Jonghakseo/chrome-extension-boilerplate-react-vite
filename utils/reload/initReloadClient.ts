@@ -5,8 +5,10 @@ import {
 } from "./constant";
 
 export default function initReloadClient({
+  watchPath,
   onUpdate,
 }: {
+  watchPath: string;
   onUpdate: () => void;
 }): WebSocket {
   const socket = new WebSocket(LOCAL_RELOAD_SOCKET_URL);

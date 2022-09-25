@@ -1,9 +1,10 @@
 import initReloadClient from "../initReloadClient";
 
-export default function addHmrIntoView() {
+export default function addHmrIntoView(watchPath: string) {
   let pendingReload = false;
 
   initReloadClient({
+    watchPath,
     onUpdate: () => {
       // disable reload when tab is hidden
       if (document.hidden) {
