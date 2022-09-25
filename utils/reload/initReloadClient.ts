@@ -30,7 +30,6 @@ export default function initReloadClient({
         return;
       }
       case UPDATE_PENDING_MESSAGE: {
-        console.log(message.path, message.path.includes(watchPath));
         needToUpdate = message.path.includes(watchPath);
         return;
       }
