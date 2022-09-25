@@ -1,8 +1,12 @@
 import {
   LOCAL_RELOAD_SOCKET_URL,
   UPDATE_COMPLETE_MESSAGE,
+  UPDATE_PENDING_MESSAGE,
   UPDATE_REQUEST_MESSAGE,
 } from "./constant";
+import { Interpreter } from "./interpreter";
+
+let needToUpdate = false;
 
 export default function initReloadClient({
   watchPath,
@@ -14,11 +18,23 @@ export default function initReloadClient({
   const socket = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
 
   socket.addEventListener("message", (event) => {
-    if (event.data !== UPDATE_REQUEST_MESSAGE) {
-      return;
+    const message = Interpreter.Receive(String(event.data));
+
+    switch (message.type) {
+      case UPDATE_REQUEST_MESSAGE: {
+        if (needToUpdate) {
+          socket.send(Interpreter.Send({ type: UPDATE_COMPLETE_MESSAGE }));
+          needToUpdate = false;
+          onUpdate();
+        }
+        return;
+      }
+      case UPDATE_PENDING_MESSAGE: {
+        console.log(message.path, message.path.includes(watchPath));
+        needToUpdate = message.path.includes(watchPath);
+        return;
+      }
     }
-    socket.send(UPDATE_COMPLETE_MESSAGE);
-    onUpdate();
   });
 
   return socket;
