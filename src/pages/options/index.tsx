@@ -4,7 +4,7 @@ import Options from "@pages/options/Options";
 import "@pages/options/index.css";
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
 
-refreshOnUpdate();
+refreshOnUpdate("pages/options");
 
 function init() {
   const appContainer = document.querySelector("#app-container");
