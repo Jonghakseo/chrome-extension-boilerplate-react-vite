@@ -13,6 +13,13 @@ export default [
   },
   {
     plugins,
+    input: "lib/reload/initReloadClient.ts",
+    output: {
+      file: "lib/reload/initReloadClient.js",
+    },
+  },
+  {
+    plugins,
     input: "utils/reload/injections/script.ts",
     output: {
       file: "utils/reload/injections/script.js",
