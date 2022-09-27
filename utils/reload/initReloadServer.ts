@@ -1,6 +1,6 @@
 import { WebSocketServer, WebSocket } from "ws";
 import chokidar from "chokidar";
-import { clearTimeout } from "timers";
+import { debounce } from "./utils";
 import {
   LOCAL_RELOAD_SOCKET_PORT,
   UPDATE_COMPLETE_MESSAGE,
@@ -45,7 +45,7 @@ function sendPendingUpdateMessage(ws: WebSocket, path: string) {
 
 /** CHECK:: build was completed **/
 chokidar.watch("dist").on("all", () => {
-  debounce(sendUpdateMessageToAllSockets, 200);
+  debounce(sendUpdateMessageToAllSockets, 200)();
 });
 
 function sendUpdateMessageToAllSockets() {
@@ -54,17 +54,6 @@ function sendUpdateMessageToAllSockets() {
 
 function sendUpdateMessage(ws: WebSocket) {
   ws.send(Interpreter.Send({ type: UPDATE_REQUEST_MESSAGE }));
-}
-
-function debounce<A extends unknown[]>(
-  callback: (...args: A) => void,
-  delay: number
-) {
-  let timer: NodeJS.Timeout;
-  return function (...args: A) {
-    clearTimeout(timer);
-    timer = setTimeout(() => callback(...args), delay);
-  };
 }
 
 initReloadServer();
