@@ -4,6 +4,7 @@ import path, { resolve } from "path";
 import makeManifest from "./utils/plugins/make-manifest";
 import customDynamicImport from "./utils/plugins/custom-dynamic-import";
 import addHmr from "./utils/plugins/add-hmr";
+import manifest from "./manifest";
 
 const root = resolve(__dirname, "src");
 const pagesDir = resolve(root, "pages");
@@ -26,7 +27,7 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    makeManifest(),
+    makeManifest(manifest),
     customDynamicImport(),
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
   ],
