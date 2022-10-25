@@ -8,10 +8,10 @@
     "url": "https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite.git"
   },
   "scripts": {
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build --mode development",
     "build:hmr": "rollup --config utils/reload/rollup.config.ts",
     "wss": "node utils/reload/initReloadServer.js",
-    "dev": "yarn build:hmr && (yarn wss & nodemon)",
+    "dev": "npm run build:hmr && (npm run wss & nodemon)",
     "test": "jest"
   },
   "type": "module",
