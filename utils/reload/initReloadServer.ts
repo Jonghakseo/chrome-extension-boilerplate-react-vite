@@ -1,8 +1,9 @@
-import { WebSocketServer, WebSocket } from "ws";
+import { WebSocket, WebSocketServer } from "ws";
 import chokidar from "chokidar";
 import { debounce } from "./utils";
 import {
   LOCAL_RELOAD_SOCKET_PORT,
+  LOCAL_RELOAD_SOCKET_URL,
   UPDATE_COMPLETE_MESSAGE,
   UPDATE_PENDING_MESSAGE,
   UPDATE_REQUEST_MESSAGE,
@@ -13,6 +14,8 @@ const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
 
 function initReloadServer() {
   const wss = new WebSocketServer({ port: LOCAL_RELOAD_SOCKET_PORT });
+
+  wss.on("listening", () => console.log(`[HRS] Server listening at ${LOCAL_RELOAD_SOCKET_URL}`));
 
   wss.on("connection", (ws) => {
     clientsThatNeedToUpdate.add(ws);
@@ -28,32 +31,26 @@ function initReloadServer() {
 }
 
 /** CHECK:: src file was updated **/
-chokidar.watch("src").on("all", (event, path) => {
-  debounce(sendPendingUpdateMessageToAllSockets, 200)(path);
-});
-
-function sendPendingUpdateMessageToAllSockets(path: string) {
-  const _sendPendingUpdateMessage = (ws: WebSocket) =>
-    sendPendingUpdateMessage(ws, path);
-
-  clientsThatNeedToUpdate.forEach(_sendPendingUpdateMessage);
-}
-
-function sendPendingUpdateMessage(ws: WebSocket, path: string) {
-  ws.send(Interpreter.Send({ type: UPDATE_PENDING_MESSAGE, path }));
-}
+const debounceSrc = debounce(function (path: string) {
+  // Normalize path on Windows
+  const pathConverted = path.replace(/\\/g, "/");
+  clientsThatNeedToUpdate.forEach((ws: WebSocket) =>
+    ws.send(
+      Interpreter.Send({
+        type: UPDATE_PENDING_MESSAGE,
+        path: pathConverted,
+      })
+    )
+  );
+}, 200);
+chokidar.watch("src").on("all", (event, path) => debounceSrc(path));
 
 /** CHECK:: build was completed **/
-chokidar.watch("dist").on("all", () => {
-  debounce(sendUpdateMessageToAllSockets, 200)();
-});
-
-function sendUpdateMessageToAllSockets() {
-  clientsThatNeedToUpdate.forEach(sendUpdateMessage);
-}
-
-function sendUpdateMessage(ws: WebSocket) {
-  ws.send(Interpreter.Send({ type: UPDATE_REQUEST_MESSAGE }));
-}
+const debounceDist = debounce(() => {
+  clientsThatNeedToUpdate.forEach((ws: WebSocket) => {
+    ws.send(Interpreter.Send({ type: UPDATE_REQUEST_MESSAGE }));
+  });
+}, 200);
+chokidar.watch("dist").on("all", () => debounceDist());
 
 initReloadServer();
