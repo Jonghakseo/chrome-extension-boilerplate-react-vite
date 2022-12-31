@@ -11,7 +11,7 @@
     "build": "tsc --noEmit && vite build",
     "build:hmr": "rollup --config utils/reload/rollup.config.ts",
     "wss": "node utils/reload/initReloadServer.js",
-    "dev": "npm run build:hmr && (run-p wss dev:nodemon)",
+    "dev": "__DEV__=true npm run build:hmr && (run-p wss dev:nodemon)",
     "dev:nodemon": "nodemon",
     "test": "jest"
   },
