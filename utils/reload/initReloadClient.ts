@@ -34,24 +34,17 @@ export default function initReloadClient({
         return;
       }
       case UPDATE_PENDING_MESSAGE: {
-        needToUpdate = checkUpdateIsNeeded({
-          watchPath,
-          updatedPath: message.path,
-        });
+        if (!needToUpdate) {
+          needToUpdate = message.path.includes(watchPath);
+        }
         return;
       }
     }
   });
 
-  return socket;
-}
+  socket.addEventListener("close", () => {
+    console.log("Reload server disconnected.");
+  });
 
-function checkUpdateIsNeeded({
-  watchPath,
-  updatedPath,
-}: {
-  updatedPath: string;
-  watchPath: string;
-}): boolean {
-  return updatedPath.includes(watchPath);
+  return socket;
 }
