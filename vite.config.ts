@@ -13,6 +13,7 @@ const outDir = resolve(__dirname, "dist");
 const publicDir = resolve(__dirname, "public");
 
 const isDev = process.env.__DEV__ === "true";
+const isProduction = !isDev;
 
 // ENABLE HMR IN BACKGROUND SCRIPT
 const enableHmrInBackgroundScript = true;
@@ -34,7 +35,10 @@ export default defineConfig({
   publicDir,
   build: {
     outDir,
-    sourcemap: isDev,
+    /** Can slowDown build speed. */
+    // sourcemap: isDev,
+    minify: isProduction,
+    reportCompressedSize: isProduction,
     rollupOptions: {
       input: {
         devtools: resolve(pagesDir, "devtools", "index.html"),
