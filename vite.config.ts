@@ -50,6 +50,10 @@ export default defineConfig({
         newtab: resolve(pagesDir, "newtab", "index.html"),
         options: resolve(pagesDir, "options", "index.html"),
       },
+      watch: {
+        include: ["src/**", "vite.config.ts"],
+        exclude: ["node_modules/**", "src/**/*.spec.ts"],
+      },
       output: {
         entryFileNames: "src/pages/[name]/index.js",
         chunkFileNames: isDev

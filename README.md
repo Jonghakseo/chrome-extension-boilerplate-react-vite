@@ -39,7 +39,8 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
-- [HMR(incomplete)](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/25)
+- HMR(incomplete)
+  - [Refresh PR](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/25)
 
 ## Installation <a name="installation"></a>
 
