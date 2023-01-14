@@ -8,7 +8,7 @@ import {
   UPDATE_PENDING_MESSAGE,
   UPDATE_REQUEST_MESSAGE,
 } from "./constant";
-import { Interpreter } from "./interpreter";
+import MessageInterpreter from "./interpreter";
 
 const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
 
@@ -24,7 +24,7 @@ function initReloadServer() {
 
     ws.addEventListener("close", () => clientsThatNeedToUpdate.delete(ws));
     ws.addEventListener("message", (event) => {
-      const message = Interpreter.Receive(String(event.data));
+      const message = MessageInterpreter.receive(String(event.data));
       if (message.type === UPDATE_COMPLETE_MESSAGE) {
         ws.close();
       }
@@ -38,7 +38,7 @@ const debounceSrc = debounce(function (path: string) {
   const pathConverted = path.replace(/\\/g, "/");
   clientsThatNeedToUpdate.forEach((ws: WebSocket) =>
     ws.send(
-      Interpreter.Send({
+      MessageInterpreter.send({
         type: UPDATE_PENDING_MESSAGE,
         path: pathConverted,
       })
@@ -50,7 +50,7 @@ chokidar.watch("src").on("all", (event, path) => debounceSrc(path));
 /** CHECK:: build was completed **/
 const debounceDist = debounce(() => {
   clientsThatNeedToUpdate.forEach((ws: WebSocket) => {
-    ws.send(Interpreter.Send({ type: UPDATE_REQUEST_MESSAGE }));
+    ws.send(MessageInterpreter.send({ type: UPDATE_REQUEST_MESSAGE }));
   });
 }, 200);
 chokidar.watch("dist").on("all", () => debounceDist());
