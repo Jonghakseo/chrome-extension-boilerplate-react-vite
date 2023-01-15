@@ -6,7 +6,7 @@ import ManifestParser from "../manifest-parser";
 
 const { resolve } = path;
 
-const outDir = resolve(__dirname, "..", "..", "dist");
+const outDir = resolve(__dirname, "..", "..", "public");
 
 export default function makeManifest(
   manifest: chrome.runtime.ManifestV3
