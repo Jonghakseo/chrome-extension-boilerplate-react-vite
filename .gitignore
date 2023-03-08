@@ -12,7 +12,6 @@
 .env.local
 .idea
 
-#generated manifest
-public/manifest.json
+# compiled
 utils/reload/*.js
 utils/reload/injections/*.js

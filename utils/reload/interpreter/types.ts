@@ -2,20 +2,7 @@ import {
   UPDATE_COMPLETE_MESSAGE,
   UPDATE_PENDING_MESSAGE,
   UPDATE_REQUEST_MESSAGE,
-} from "./constant";
-
-export const Interpreter = {
-  Send: send,
-  Receive: receive,
-};
-
-function send(message: Messages) {
-  return JSON.stringify(message);
-}
-
-function receive(message: string): Messages {
-  return JSON.parse(message);
-}
+} from "../constant";
 
 type UpdatePendingMessage = {
   type: typeof UPDATE_PENDING_MESSAGE;
@@ -28,7 +15,8 @@ type UpdateRequestMessage = {
 
 type UpdateCompleteMessage = { type: typeof UPDATE_COMPLETE_MESSAGE };
 
-type Messages =
+export type SerializedMessage = string;
+export type ReloadMessage =
   | UpdateCompleteMessage
   | UpdateRequestMessage
   | UpdatePendingMessage;

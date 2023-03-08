@@ -39,13 +39,15 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
+- HMR(incomplete)
+  - [Refresh PR](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/25)
 
 ## Installation <a name="installation"></a>
 
 ### Procedures <a name="procedures"></a>
 1. Clone this repository.
 2. Change `name` and `description` in package.json => **Auto synchronize with manifest** 
-3. Run `yarn` or `npm i` (check your node version >= 16)
+3. Run `yarn install` or `npm i` (check your node version >= 16.6, recommended >= 18)
 4. Run `yarn dev` or `npm run dev`
 5. Load Extension on Chrome
    1. Open - Chrome browser

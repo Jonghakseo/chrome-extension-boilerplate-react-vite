@@ -1,7 +1,6 @@
 type Manifest = chrome.runtime.ManifestV3;
 
 class ManifestParser {
-  /** SINGLETON */
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   private constructor() {}
 
