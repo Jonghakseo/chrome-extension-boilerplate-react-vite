@@ -15,3 +15,4 @@
 # compiled
 utils/reload/*.js
 utils/reload/injections/*.js
+public/manifest.json
