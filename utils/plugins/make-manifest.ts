@@ -6,26 +6,48 @@ import ManifestParser from "../manifest-parser";
 
 const { resolve } = path;
 
-const outDir = resolve(__dirname, "..", "..", "public");
+const distDir = resolve(__dirname, "..", "..", "dist");
+const publicDir = resolve(__dirname, "..", "..", "public");
 
 export default function makeManifest(
-  manifest: chrome.runtime.ManifestV3
+  manifest: chrome.runtime.ManifestV3,
+  config: { isDev: boolean; contentScriptCssKey?: string }
 ): PluginOption {
+  function makeManifest(to: string) {
+    if (!fs.existsSync(to)) {
+      fs.mkdirSync(to);
+    }
+    const manifestPath = resolve(to, "manifest.json");
+
+    // Naming change for cache invalidation
+    if (config.contentScriptCssKey) {
+      manifest.content_scripts.forEach((script) => {
+        script.css = script.css.map((css) =>
+          css.replace("<KEY>", config.contentScriptCssKey)
+        );
+      });
+    }
+
+    fs.writeFileSync(
+      manifestPath,
+      ManifestParser.convertManifestToString(manifest)
+    );
+
+    colorLog(`Manifest file copy complete: ${manifestPath}`, "success");
+  }
+
   return {
     name: "make-manifest",
-    buildEnd() {
-      if (!fs.existsSync(outDir)) {
-        fs.mkdirSync(outDir);
+    buildStart() {
+      if (config.isDev) {
+        makeManifest(distDir);
       }
-
-      const manifestPath = resolve(outDir, "manifest.json");
-
-      fs.writeFileSync(
-        manifestPath,
-        ManifestParser.convertManifestToString(manifest)
-      );
-
-      colorLog(`Manifest file copy complete: ${manifestPath}`, "success");
+    },
+    buildEnd() {
+      if (config.isDev) {
+        return;
+      }
+      makeManifest(publicDir);
     },
   };
 }
