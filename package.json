@@ -31,7 +31,7 @@
     "@types/ws": "^8.5.3",
     "@typescript-eslint/eslint-plugin": "5.38.1",
     "@typescript-eslint/parser": "5.38.1",
-    "@vitejs/plugin-react": "2.1.0",
+    "@vitejs/plugin-react": "2.2.0",
     "chokidar": "^3.5.3",
     "eslint": "8.36.0",
     "eslint-config-prettier": "^8.5.0",
