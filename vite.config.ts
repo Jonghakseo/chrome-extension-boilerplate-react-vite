@@ -88,5 +88,5 @@ function regenerateCacheInvalidationKey() {
 }
 
 function generateKey(): string {
-  return `${Date.now()}`;
+  return `${(Date.now() / 100).toFixed()}`;
 }
