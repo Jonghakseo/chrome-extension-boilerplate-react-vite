@@ -5,12 +5,9 @@ export default function customDynamicImport(): PluginOption {
     name: "custom-dynamic-import",
     renderDynamicImport() {
       return {
-        left: `
-        {
-          const dynamicImport = (path) => import(path);
-          dynamicImport(
+        left: `() => import(
           `,
-        right: ")}",
+        right: ")",
       };
     },
   };
