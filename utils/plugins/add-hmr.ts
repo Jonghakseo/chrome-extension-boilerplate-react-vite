@@ -1,6 +1,6 @@
 import * as path from "path";
-import { PluginOption } from "vite";
 import { readFileSync } from "fs";
+import type { PluginOption } from "vite";
 
 const isDev = process.env.__DEV__ === "true";
 

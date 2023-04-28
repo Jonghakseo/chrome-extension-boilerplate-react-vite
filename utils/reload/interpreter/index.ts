@@ -1,4 +1,4 @@
-import { ReloadMessage, SerializedMessage } from "./types";
+import type { ReloadMessage, SerializedMessage } from "./types";
 
 export default class MessageInterpreter {
   // eslint-disable-next-line @typescript-eslint/no-empty-function

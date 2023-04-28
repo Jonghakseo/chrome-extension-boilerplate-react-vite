@@ -1,8 +1,8 @@
 import * as fs from "fs";
 import * as path from "path";
 import colorLog from "../log";
-import { PluginOption } from "vite";
 import ManifestParser from "../manifest-parser";
+import type { PluginOption } from "vite";
 
 const { resolve } = path;
 
