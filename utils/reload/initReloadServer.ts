@@ -59,9 +59,8 @@ chokidar.watch("dist").on("all", (event) => {
   // that will cause ws.send() if it takes more than 200ms
   // to build (which it might). This fixes:
   // https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/100
-  if (event !== 'add' && event !== 'addDir')
-    return;
-  debounceDist()
+  if (event !== "add" && event !== "addDir") return;
+  debounceDist();
 });
 
 initReloadServer();
