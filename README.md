@@ -76,6 +76,11 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [Rollup-plugin-chrome-extension](https://www.extend-chrome.dev/rollup-plugin)
 
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Jonghakseo/chrome-extension-boilerplate-react-vite&type=Date)](https://star-history.com/#Jonghakseo/chrome-extension-boilerplate-react-vite&Date)
+
+
 
 ---
 ## Thanks To
