@@ -1,4 +1,4 @@
-import { PluginOption } from "vite";
+import type { PluginOption } from "vite";
 
 export default function customDynamicImport(): PluginOption {
   return {
