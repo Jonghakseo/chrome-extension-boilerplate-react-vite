@@ -1,0 +1,32 @@
+name: Build And Upload Extension Zip Via Artifact
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
+
+      - uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+
+      - run: yarn install
+
+      - run: yarn build
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: dist/*
