@@ -68,6 +68,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ## Sample <a name="sample"></a>
 - https://github.com/Jonghakseo/drag-gpt-extension
+- https://github.com/Jonghakseo/pr-commit-noti
 
 ## Documents <a name="documents"></a>
 - [Vite Plugin](https://vitejs.dev/guide/api-plugin.html)
