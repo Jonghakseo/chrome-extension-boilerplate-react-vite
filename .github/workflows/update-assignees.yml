@@ -1,0 +1,17 @@
+name: Update Assignees
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+
+jobs:
+  update-assignees:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    steps:
+      - uses: actions-ecosystem/action-add-assignees@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          assignees: ${{ github.actor }}
