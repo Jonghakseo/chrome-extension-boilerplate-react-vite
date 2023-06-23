@@ -1,4 +1,6 @@
 import reloadOnUpdate from "virtual:reload-on-update-in-background-script";
+import browser from "webextension-polyfill";
+import supabase from "@src/utils/superbaseClient";
 
 reloadOnUpdate("pages/background");
 
