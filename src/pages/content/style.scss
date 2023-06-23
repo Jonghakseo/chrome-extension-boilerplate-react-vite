@@ -1,4 +1,7 @@
 @import "@assets/style/theme.scss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .content-view {
   font-size: 30px;
