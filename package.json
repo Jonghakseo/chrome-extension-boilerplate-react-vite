@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "tsc --noEmit && vite build",
-    "build:watch": "cross-env __DEV__=true vite build --watch",
+    "build:watch": "cross-env __DEV__=true vite build -w",
     "build:hmr": "rollup --config utils/reload/rollup.config.ts",
     "wss": "node utils/reload/initReloadServer.js",
     "dev": "npm run build:hmr && (run-p wss build:watch)",
