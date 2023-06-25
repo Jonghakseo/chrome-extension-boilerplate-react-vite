@@ -57,7 +57,7 @@ const debounceDist = debounce(() => {
 chokidar.watch("dist").on("all", (event) => {
   // Ignore unlink, unlinkDir and change events
   // that happen in beginning of build:watch and
-  // that will cause ws.send() if it takes more than 200ms
+  // that will cause ws.send() if it takes more than 400ms
   // to build (which it might). This fixes:
   // https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/100
   if (event !== "add" && event !== "addDir") return;
