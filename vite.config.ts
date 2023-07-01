@@ -4,13 +4,15 @@ import path, { resolve } from "path";
 import makeManifest from "./utils/plugins/make-manifest";
 import customDynamicImport from "./utils/plugins/custom-dynamic-import";
 import addHmr from "./utils/plugins/add-hmr";
+import watchRebuild from "./utils/plugins/watch-rebuild";
 import manifest from "./manifest";
 
-const root = resolve(__dirname, "src");
-const pagesDir = resolve(root, "pages");
-const assetsDir = resolve(root, "assets");
-const outDir = resolve(__dirname, "dist");
-const publicDir = resolve(__dirname, "public");
+const rootDir = resolve(__dirname);
+const srcDir = resolve(rootDir, "src");
+const pagesDir = resolve(srcDir, "pages");
+const assetsDir = resolve(srcDir, "assets");
+const outDir = resolve(rootDir, "dist");
+const publicDir = resolve(rootDir, "public");
 
 const isDev = process.env.__DEV__ === "true";
 const isProduction = !isDev;
@@ -21,7 +23,7 @@ const enableHmrInBackgroundScript = true;
 export default defineConfig({
   resolve: {
     alias: {
-      "@src": root,
+      "@src": srcDir,
       "@assets": assetsDir,
       "@pages": pagesDir,
     },
@@ -34,6 +36,7 @@ export default defineConfig({
     }),
     customDynamicImport(),
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
+    watchRebuild(),
   ],
   publicDir,
   build: {
