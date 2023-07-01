@@ -1,5 +1,5 @@
 import type EnMessage from "public/_locales/en/messages.json";
-import refreshOnUpdate from "virtual:refresh-on-update";
+import refreshOnUpdate from "virtual:reload-on-update-in-view";
 
 type Keys = keyof typeof EnMessage;
 
