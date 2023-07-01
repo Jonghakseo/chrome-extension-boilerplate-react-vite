@@ -85,6 +85,8 @@ export default {
     "^@src(.*)$": "<rootDir>/src$1",
     "^@assets(.*)$": "<rootDir>/src/assets$1",
     "^@pages(.*)$": "<rootDir>/src/pages$1",
+    "virtual:reload-on-update-in-view":
+      "<rootDir>/test-utils/reload-on-update-in-view.js",
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
