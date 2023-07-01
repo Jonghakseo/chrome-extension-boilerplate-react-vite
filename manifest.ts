@@ -5,6 +5,7 @@ import packageJson from "./package.json";
  */
 const manifest: chrome.runtime.ManifestV3 = {
   manifest_version: 3,
+  default_locale: "en",
   name: packageJson.name,
   version: packageJson.version,
   description: packageJson.description,

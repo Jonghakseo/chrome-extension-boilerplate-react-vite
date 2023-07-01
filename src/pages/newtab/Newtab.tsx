@@ -2,6 +2,7 @@ import React from "react";
 import logo from "@assets/img/logo.svg";
 import "@pages/newtab/Newtab.css";
 import "@pages/newtab/Newtab.scss";
+import { i18n } from "@src/chrome/i18n";
 
 const Newtab = () => {
   return (
@@ -17,7 +18,7 @@ const Newtab = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React!
+          {i18n("new_tab_learn_React")}
         </a>
         <h6>The color of this paragraph is defined using SASS.</h6>
         <span className="text-lime-400">

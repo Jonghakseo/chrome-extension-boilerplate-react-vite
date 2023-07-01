@@ -33,7 +33,7 @@ function initReloadServer() {
 }
 
 /** CHECK:: src file was updated **/
-const debounceSrc = debounce(function (path: string) {
+const checkUpdateWithDebounce = debounce(function (path: string) {
   // Normalize path on Windows
   const pathConverted = path.replace(/\\/g, "/");
   clientsThatNeedToUpdate.forEach((ws: WebSocket) =>
@@ -46,14 +46,18 @@ const debounceSrc = debounce(function (path: string) {
   );
   // Delay waiting for public assets to be copied
 }, 400);
-chokidar.watch("src").on("all", (event, path) => debounceSrc(path));
+
+// ** CHECK:: src file was updated **/
+chokidar.watch("src").on("all", (_, path) => checkUpdateWithDebounce(path));
+// ** CHECK:: public file was updated **/
+chokidar.watch("public").on("all", (_, path) => checkUpdateWithDebounce(path));
 
 /** CHECK:: build was completed **/
 const debounceDist = debounce(() => {
   clientsThatNeedToUpdate.forEach((ws: WebSocket) => {
     ws.send(MessageInterpreter.send({ type: UPDATE_REQUEST_MESSAGE }));
   });
-}, 100);
+}, 200);
 chokidar.watch("dist").on("all", (event) => {
   // Ignore unlink, unlinkDir and change events
   // that happen in beginning of build:watch and
