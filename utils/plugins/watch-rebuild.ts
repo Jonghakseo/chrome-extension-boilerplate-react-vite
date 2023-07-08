@@ -5,7 +5,7 @@ const rootDir = resolve(__dirname, "..", "..");
 const publicDir = resolve(rootDir, "public");
 const manifestFile = resolve(rootDir, "manifest.ts");
 const viteConfigFile = resolve(rootDir, "vite.config.ts");
-const enLocaleFile = resolve(publicDir, "_locales", "en", "messages.json");
+const localeFolder = resolve(publicDir, "_locales");
 
 export default function watchRebuild(): PluginOption {
   return {
@@ -13,8 +13,7 @@ export default function watchRebuild(): PluginOption {
     async buildStart() {
       this.addWatchFile(manifestFile);
       this.addWatchFile(viteConfigFile);
-      // locale file is not watched by default
-      this.addWatchFile(enLocaleFile);
+      this.addWatchFile(localeFolder);
     },
   };
 }
