@@ -59,7 +59,6 @@ export default defineConfig({
         exclude: ["node_modules/**", "src/**/*.spec.ts"],
       },
       output: {
-        // preserveModules: true,
         entryFileNames: "src/pages/[name]/index.js",
         chunkFileNames: isDev
           ? "assets/js/[name].js"
