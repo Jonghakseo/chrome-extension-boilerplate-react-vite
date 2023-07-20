@@ -46,8 +46,9 @@ export default defineConfig({
       input: {
         devtools: resolve(pagesDir, "devtools", "index.html"),
         panel: resolve(pagesDir, "panel", "index.html"),
-        content: resolve(pagesDir, "content", "index.ts"),
         background: resolve(pagesDir, "background", "index.ts"),
+        content: resolve(pagesDir, "content", "index.ts"),
+        contentView: resolve(pagesDir, "contentView", "index.tsx"),
         contentStyle: resolve(pagesDir, "content", "style.scss"),
         popup: resolve(pagesDir, "popup", "index.html"),
         newtab: resolve(pagesDir, "newtab", "index.html"),
@@ -58,6 +59,7 @@ export default defineConfig({
         exclude: ["node_modules/**", "src/**/*.spec.ts"],
       },
       output: {
+        // preserveModules: true,
         entryFileNames: "src/pages/[name]/index.js",
         chunkFileNames: isDev
           ? "assets/js/[name].js"
