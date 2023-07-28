@@ -22,7 +22,7 @@
 - [Screenshots](#screenshots)
   - [NewTab](#newtab)
   - [Popup](#popup)  
-- [Sample](#sample)
+- [Examples](#examples)
 - [Documents](#documents)
 
 ## Intro <a name="intro"></a>
@@ -67,9 +67,10 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 <img width="314" alt="popup" src="https://user-images.githubusercontent.com/53500778/203561728-23517d46-12e3-4139-8a4f-e0b2f22a6ab3.png">
 
-## Sample <a name="sample"></a>
+## Examples <a name="examples"></a>
 - https://github.com/Jonghakseo/drag-gpt-extension
 - https://github.com/Jonghakseo/pr-commit-noti
+- https://github.com/ariburaco/chatgpt-file-uploader-extended
 
 ## Documents <a name="documents"></a>
 - [Vite Plugin](https://vitejs.dev/guide/api-plugin.html)
