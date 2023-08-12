@@ -6,7 +6,7 @@ const storageMap: Map<BaseStorage<unknown>, WrappedPromise> = new Map();
 
 export default function useStorage<
   Storage extends BaseStorage<Data>,
-  Data = Storage extends BaseStorage<infer Data> ? Data : unknown
+  Data = Storage extends BaseStorage<infer Data> ? Data : unknown,
 >(storage: Storage) {
   const _data = useSyncExternalStore<Data | null>(
     storage.subscribe,
