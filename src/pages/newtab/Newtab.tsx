@@ -2,8 +2,12 @@ import React from "react";
 import logo from "@assets/img/logo.svg";
 import "@pages/newtab/Newtab.css";
 import "@pages/newtab/Newtab.scss";
+import useStorage from "@src/shared/hooks/useStorage";
+import exampleThemeStorage from "@src/shared/storages/exampleThemeStorage";
 
 const Newtab = () => {
+  const theme = useStorage(exampleThemeStorage);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -23,6 +27,14 @@ const Newtab = () => {
         <span className="text-lime-400">
           The color of this paragraph is defined using Tailwind CSS.
         </span>
+        <button
+          style={{
+            color: theme === "light" ? "#fff" : "#000",
+          }}
+          onClick={exampleThemeStorage.toggle}
+        >
+          Toggle theme: [{theme}]
+        </button>
       </header>
     </div>
   );
