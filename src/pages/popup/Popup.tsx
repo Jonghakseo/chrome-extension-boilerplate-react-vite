@@ -1,8 +1,12 @@
 import React from "react";
 import logo from "@assets/img/logo.svg";
 import "@pages/popup/Popup.css";
+import useStorage from "@src/shared/hooks/useStorage";
+import exampleThemeStorage from "@src/shared/storages/exampleThemeStorage";
 
 const Popup = () => {
+  const theme = useStorage(exampleThemeStorage);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +22,14 @@ const Popup = () => {
         >
           Learn React!
         </a>
+        <button
+          style={{
+            color: theme === "light" ? "#fff" : "#000",
+          }}
+          onClick={exampleThemeStorage.toggle}
+        >
+          Toggle theme: [{theme}]
+        </button>
       </header>
     </div>
   );
