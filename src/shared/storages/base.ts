@@ -6,17 +6,18 @@ export enum StorageType {
 }
 
 export type BaseStorage<D> = {
-  set: (value: D) => void;
-  getSnapshot: () => D;
+  get: () => Promise<D>;
+  set: (value: D) => Promise<void>;
+  getSnapshot: () => D | null;
   subscribe: (listener: () => void) => () => void;
 };
 
 export function createStorage<D>(
   key: string,
-  initial: D,
+  fallback: D,
   config?: { storageType?: StorageType }
 ): BaseStorage<D> {
-  let cache: D = initial;
+  let cache: D | null = null;
   let listeners: Array<() => void> = [];
   const storageType = config?.storageType ?? StorageType.Local;
 
@@ -27,18 +28,17 @@ export function createStorage<D>(
       );
     }
     const value = await chrome.storage[storageType].get([key]);
-    return value[key];
+    return value[key] ?? fallback;
   };
 
   const _emitChange = () => {
     listeners.forEach((listener) => listener());
   };
 
-  const set = (value: D) => {
+  const set = async (value: D) => {
     cache = value;
-    chrome.storage[storageType].set({ [key]: value }, () => {
-      _emitChange();
-    });
+    _emitChange();
+    await chrome.storage[storageType].set({ [key]: value });
   };
 
   const subscribe = (listener: () => void) => {
@@ -52,20 +52,13 @@ export function createStorage<D>(
     return cache;
   };
 
-  const init = async () => {
-    try {
-      const data = await _getDataFromStorage();
-      if (data && cache !== data) {
-        _emitChange();
-      }
-    } catch (error) {
-      console.warn(error);
-    }
-  };
-
-  void init();
+  _getDataFromStorage().then((data) => {
+    cache = data;
+    _emitChange();
+  });
 
   return {
+    get: _getDataFromStorage,
     set,
     getSnapshot,
     subscribe,

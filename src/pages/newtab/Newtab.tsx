@@ -4,9 +4,10 @@ import "@pages/newtab/Newtab.css";
 import "@pages/newtab/Newtab.scss";
 import useStorage from "@src/shared/hooks/useStorage";
 import exampleThemeStorage from "@src/shared/storages/exampleThemeStorage";
+import withSuspense from "@src/shared/hoc/withSuspense";
 
 const Newtab = () => {
-  const theme = useStorage(exampleThemeStorage);
+  const { data: theme } = useStorage(exampleThemeStorage);
 
   return (
     <div className="App">
@@ -40,4 +41,4 @@ const Newtab = () => {
   );
 };
 
-export default Newtab;
+export default withSuspense(Newtab);
