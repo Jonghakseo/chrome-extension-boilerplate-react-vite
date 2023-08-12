@@ -17,9 +17,7 @@ export default function useStorage<
     storageMap.set(storage, wrapPromise(storage.get()));
   }
 
-  return {
-    data: _data ?? (storageMap.get(storage)!.read() as Data),
-  };
+  return _data ?? (storageMap.get(storage)!.read() as Data);
 }
 
 function wrapPromise<R>(promise: Promise<R>) {

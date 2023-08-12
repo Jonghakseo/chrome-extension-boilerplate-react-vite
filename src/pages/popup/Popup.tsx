@@ -6,7 +6,7 @@ import exampleThemeStorage from "@src/shared/storages/exampleThemeStorage";
 import withSuspense from "@src/shared/hoc/withSuspense";
 
 const Popup = () => {
-  const { data: theme } = useStorage(exampleThemeStorage);
+  const theme = useStorage(exampleThemeStorage);
 
   return (
     <div className="App">
