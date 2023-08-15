@@ -5,5 +5,5 @@ export default function App() {
     console.log("content view loaded");
   }, []);
 
-  return <div className="content-view text-lime-400">content view</div>;
+  return <div className="text-lime-400">content view</div>;
 }
