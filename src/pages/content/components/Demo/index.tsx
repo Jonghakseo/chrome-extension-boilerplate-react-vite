@@ -1,7 +1,6 @@
 import { createRoot } from "react-dom/client";
 import App from "@src/pages/content/components/Demo/app";
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
-import "construct-style-sheets-polyfill";
 import { attachTwindStyle } from "@src/shared/style/twind";
 
 refreshOnUpdate("pages/content");
