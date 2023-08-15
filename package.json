@@ -33,7 +33,7 @@
     "@types/react": "18.0.21",
     "@types/react-dom": "18.2.4",
     "@types/ws": "^8.5.4",
-    "@typescript-eslint/eslint-plugin": "5.56.0",
+    "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.38.1",
     "@vitejs/plugin-react": "2.2.0",
     "chokidar": "^3.5.3",
