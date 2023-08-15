@@ -16,6 +16,9 @@ export default function colorLog(message: string, type?: ColorType) {
     case "warning":
       color = COLORS.FgYellow;
       break;
+    default:
+      color = COLORS[type];
+      break;
   }
 
   console.log(color, message);
