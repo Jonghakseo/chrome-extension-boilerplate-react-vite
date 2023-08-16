@@ -18,8 +18,9 @@ const exampleThemeStorage: ThemeStorage = {
   ...storage,
   // TODO: extends your own methods
   toggle: () => {
-    const current = storage.getSnapshot();
-    storage.set(current === "light" ? "dark" : "light");
+    storage.set((currentTheme) => {
+      return currentTheme === "light" ? "dark" : "light";
+    });
   },
 };
 
