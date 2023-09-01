@@ -1,7 +1,7 @@
 # Number of days of inactivity before an Issue or Pull Request becomes stale
-daysUntilStale: 30
+daysUntilStale: 90
 # Number of days of inactivity before a stale Issue or Pull Request is closed
-daysUntilClose: 5
+daysUntilClose: 30
 # Issues or Pull Requests with these labels will never be considered stale. Set to `[]` to disable
 exemptLabels:
   - pinned
