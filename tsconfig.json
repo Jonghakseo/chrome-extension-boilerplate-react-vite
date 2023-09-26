@@ -17,6 +17,7 @@
     "forceConsistentCasingInFileNames": true,
     "typeRoots": ["./src/global.d.ts"],
     "paths": {
+      "@root/*": ["./*"],
       "@src/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
       "@pages/*": ["src/pages/*"],

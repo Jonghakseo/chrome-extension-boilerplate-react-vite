@@ -44,7 +44,8 @@ const debounceSrc = debounce(function (path: string) {
       })
     )
   );
-}, 200);
+  // Delay waiting for public assets to be copied
+}, 400);
 chokidar.watch("src").on("all", (event, path) => debounceSrc(path));
 
 /** CHECK:: build was completed **/
@@ -52,11 +53,11 @@ const debounceDist = debounce(() => {
   clientsThatNeedToUpdate.forEach((ws: WebSocket) => {
     ws.send(MessageInterpreter.send({ type: UPDATE_REQUEST_MESSAGE }));
   });
-}, 200);
+}, 100);
 chokidar.watch("dist").on("all", (event) => {
   // Ignore unlink, unlinkDir and change events
   // that happen in beginning of build:watch and
-  // that will cause ws.send() if it takes more than 200ms
+  // that will cause ws.send() if it takes more than 400ms
   // to build (which it might). This fixes:
   // https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/100
   if (event !== "add" && event !== "addDir") return;

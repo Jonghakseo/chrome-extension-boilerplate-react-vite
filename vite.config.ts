@@ -4,13 +4,15 @@ import path, { resolve } from "path";
 import makeManifest from "./utils/plugins/make-manifest";
 import customDynamicImport from "./utils/plugins/custom-dynamic-import";
 import addHmr from "./utils/plugins/add-hmr";
+import watchRebuild from "./utils/plugins/watch-rebuild";
 import manifest from "./manifest";
 
-const root = resolve(__dirname, "src");
-const pagesDir = resolve(root, "pages");
-const assetsDir = resolve(root, "assets");
-const outDir = resolve(__dirname, "dist");
-const publicDir = resolve(__dirname, "public");
+const rootDir = resolve(__dirname);
+const srcDir = resolve(rootDir, "src");
+const pagesDir = resolve(srcDir, "pages");
+const assetsDir = resolve(srcDir, "assets");
+const outDir = resolve(rootDir, "dist");
+const publicDir = resolve(rootDir, "public");
 
 const isDev = process.env.__DEV__ === "true";
 const isProduction = !isDev;
@@ -21,7 +23,8 @@ const enableHmrInBackgroundScript = true;
 export default defineConfig({
   resolve: {
     alias: {
-      "@src": root,
+      "@root": rootDir,
+      "@src": srcDir,
       "@assets": assetsDir,
       "@pages": pagesDir,
     },
@@ -34,6 +37,7 @@ export default defineConfig({
     }),
     customDynamicImport(),
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
+    watchRebuild(),
   ],
   publicDir,
   build: {
@@ -53,10 +57,6 @@ export default defineConfig({
         popup: resolve(pagesDir, "popup", "index.html"),
         newtab: resolve(pagesDir, "newtab", "index.html"),
         options: resolve(pagesDir, "options", "index.html"),
-      },
-      watch: {
-        include: ["src/**", "vite.config.ts"],
-        exclude: ["node_modules/**", "src/**/*.spec.ts"],
       },
       output: {
         entryFileNames: "src/pages/[name]/index.js",
