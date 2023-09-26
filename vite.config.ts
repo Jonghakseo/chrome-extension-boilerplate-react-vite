@@ -50,16 +50,14 @@ export default defineConfig({
       input: {
         devtools: resolve(pagesDir, "devtools", "index.html"),
         panel: resolve(pagesDir, "panel", "index.html"),
-        background: resolve(pagesDir, "background", "index.ts"),
         content: resolve(pagesDir, "content", "index.ts"),
-        contentView: resolve(pagesDir, "contentView", "index.tsx"),
+        background: resolve(pagesDir, "background", "index.ts"),
         contentStyle: resolve(pagesDir, "content", "style.scss"),
         popup: resolve(pagesDir, "popup", "index.html"),
         newtab: resolve(pagesDir, "newtab", "index.html"),
         options: resolve(pagesDir, "options", "index.html"),
       },
       output: {
-        // preserveModules: true,
         entryFileNames: "src/pages/[name]/index.js",
         chunkFileNames: isDev
           ? "assets/js/[name].js"
