@@ -20,8 +20,6 @@
   },
   "type": "module",
   "dependencies": {
-    "@types/react": "18.2.0",
-    "@types/react-dom": "18.2.0",
     "construct-style-sheets-polyfill": "^3.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
@@ -35,6 +33,8 @@
     "@types/chrome": "0.0.224",
     "@types/jest": "29.0.3",
     "@types/node": "18.15.11",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.0",
     "@types/ws": "^8.5.4",
     "@typescript-eslint/eslint-plugin": "5.56.0",
     "@typescript-eslint/parser": "5.38.1",
