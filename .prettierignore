@@ -1,0 +1,12 @@
+dist
+node_modules
+.gitignore
+.github
+.eslintignore
+.husky
+.nvmrc
+.prettierignore
+LICENSE
+*.md
+package-lock.json
+yarn.lock
