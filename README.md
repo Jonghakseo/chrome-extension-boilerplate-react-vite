@@ -42,8 +42,11 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [Vite](https://vitejs.dev/)
 - [SASS](https://sass-lang.com/)
 - [Twind](https://twind.dev/)
-- [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
+- [ESLint](https://eslint.org/)
+- [Husky](https://typicode.github.io/husky/getting-started.html#automatic-recommended)
+- [Commitlint](https://commitlint.js.org/#/guides-local-setup?id=install-commitlint)
+- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary)
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
 - HRR(Hot Rebuild & Refresh/Reload)
 
