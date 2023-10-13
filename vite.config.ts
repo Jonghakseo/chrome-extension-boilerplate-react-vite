@@ -45,7 +45,7 @@ export default defineConfig({
 		/** Can slowDown build speed. */
 		// sourcemap: isDev,
 		minify: isProduction,
-    modulePreload: false,
+		modulePreload: false,
 		reportCompressedSize: isProduction,
 		rollupOptions: {
 			input: {
