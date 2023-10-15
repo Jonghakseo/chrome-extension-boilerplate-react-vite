@@ -188,6 +188,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "lookis",
+      "name": "Jingsi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/445022?v=4",
+      "profile": "https://github.com/lookis",
+      "contributions": [
+        "bug"
+      ]
     }
   ]
 }
