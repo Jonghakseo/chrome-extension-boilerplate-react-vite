@@ -227,6 +227,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "hector",
+      "name": "Hector Parra",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34079?v=4",
+      "profile": "https://hector.parra.cat",
+      "contributions": [
+        "bug"
+      ]
     }
   ]
 }
