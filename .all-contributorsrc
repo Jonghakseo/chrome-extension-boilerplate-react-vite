@@ -238,6 +238,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "rhea-so",
+      "name": "JeongHyeon Kim",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25793226?v=4",
+      "profile": "http://blog.rhea-so.link",
+      "contributions": [
+        "infra"
+      ]
     }
   ]
 }
