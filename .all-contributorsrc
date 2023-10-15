@@ -1,4 +1,21 @@
 {
   "projectName": "chrome-extension-boilerplate-react-vite",
-  "projectOwner": "Jonghakseo"
+  "projectOwner": "Jonghakseo",
+  "files": [
+    "README.md"
+  ],
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "JunyWuuuu91",
+      "name": "JunyWuuuu91",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33750626?v=4",
+      "profile": "https://github.com/JunyWuuuu91",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
 }
