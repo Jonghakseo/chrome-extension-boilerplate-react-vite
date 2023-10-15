@@ -1,4 +1,7 @@
 <div align="center">
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 <img src="public/icon-128.png" alt="logo"/>
 <h1> Chrome Extension Boilerplate with<br/>React + Vite + TypeScript</h1>
 
@@ -117,3 +120,25 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 ---
 
 [Jonghakseo](https://nookpi.tistory.com/)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/JunyWuuuu91"><img src="https://avatars.githubusercontent.com/u/33750626?v=4?s=100" width="100px;" alt="JunyWuuuu91"/><br /><sub><b>JunyWuuuu91</b></sub></a><br /><a href="https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/commits?author=JunyWuuuu91" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
