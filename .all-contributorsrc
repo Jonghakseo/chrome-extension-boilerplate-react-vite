@@ -98,6 +98,15 @@
       "contributions": [
         "question"
       ]
+    },
+    {
+      "login": "ShuLaPy",
+      "name": "Shubham Lad",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30789414?v=4",
+      "profile": "https://shubhamlad.in",
+      "contributions": [
+        "bug"
+      ]
     }
   ]
 }

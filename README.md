@@ -125,6 +125,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
       <td align="center" valign="top" width="14.28%"><a href="http://twitter.com/jordnb"><img src="https://avatars.githubusercontent.com/u/1463197?v=4?s=100" width="100px;" alt="Jordan Burgess"/><br /><sub><b>Jordan Burgess</b></sub></a><br /><a href="#ideas-jordn" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/NAMU1105"><img src="https://avatars.githubusercontent.com/u/47317129?v=4?s=100" width="100px;" alt="NAMEUN CHO"/><br /><sub><b>NAMEUN CHO</b></sub></a><br /><a href="#bug-NAMU1105" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Araneline"><img src="https://avatars.githubusercontent.com/u/2670262?v=4?s=100" width="100px;" alt="Andrew Mudrov"/><br /><sub><b>Andrew Mudrov</b></sub></a><br /><a href="#question-Araneline" title="Answering Questions">💬</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://shubhamlad.in"><img src="https://avatars.githubusercontent.com/u/30789414?v=4?s=100" width="100px;" alt="Shubham Lad"/><br /><sub><b>Shubham Lad</b></sub></a><br /><a href="#bug-ShuLaPy" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
