@@ -116,6 +116,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "koenidv",
+      "name": "Florian König",
+      "avatar_url": "https://avatars.githubusercontent.com/u/32238636?v=4",
+      "profile": "https://koeni.dev",
+      "contributions": [
+        "question"
+      ]
     }
   ]
 }
