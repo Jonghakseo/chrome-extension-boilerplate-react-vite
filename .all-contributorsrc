@@ -43,6 +43,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "spencerc99",
+      "name": "Spencer Chang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14796580?v=4",
+      "profile": "https://spencerchang.me",
+      "contributions": [
+        "bug"
+      ]
     }
   ]
 }
