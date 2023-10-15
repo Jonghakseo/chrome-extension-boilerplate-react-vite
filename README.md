@@ -143,6 +143,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/chrisozgo99"><img src="https://avatars.githubusercontent.com/u/46030410?v=4?s=100" width="100px;" alt="Chris Ozgo"/><br /><sub><b>Chris Ozgo</b></sub></a><br /><a href="#bug-chrisozgo99" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ssikyou"><img src="https://avatars.githubusercontent.com/u/5118469?v=4?s=100" width="100px;" alt="Cong"/><br /><sub><b>Cong</b></sub></a><br /><a href="#bug-ssikyou" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/PatrykKuniczak"><img src="https://avatars.githubusercontent.com/u/64608510?v=4?s=100" width="100px;" alt="PatrykKuniczak"/><br /><sub><b>PatrykKuniczak</b></sub></a><br /><a href="#ideas-PatrykKuniczak" title="Ideas, Planning, & Feedback">🤔</a> <a href="#code-PatrykKuniczak" title="Code">💻</a> <a href="#doc-PatrykKuniczak" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://hector.parra.cat"><img src="https://avatars.githubusercontent.com/u/34079?v=4?s=100" width="100px;" alt="Hector Parra"/><br /><sub><b>Hector Parra</b></sub></a><br /><a href="#bug-hector" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
