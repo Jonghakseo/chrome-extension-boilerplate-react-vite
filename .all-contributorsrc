@@ -198,6 +198,15 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "chrisozgo99",
+      "name": "Chris Ozgo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46030410?v=4",
+      "profile": "https://github.com/chrisozgo99",
+      "contributions": [
+        "bug"
+      ]
     }
   ]
 }
