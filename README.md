@@ -132,6 +132,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/tonychandesign"><img src="https://avatars.githubusercontent.com/u/22465526?v=4?s=100" width="100px;" alt="tonychandesign"/><br /><sub><b>tonychandesign</b></sub></a><br /><a href="#bug-tonychandesign" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/dellyn"><img src="https://avatars.githubusercontent.com/u/54443742?v=4?s=100" width="100px;" alt="Ihor Makarchuk"/><br /><sub><b>Ihor Makarchuk</b></sub></a><br /><a href="#bug-dellyn" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
