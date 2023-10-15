@@ -8,13 +8,13 @@ import { attachTwindStyle } from '@src/shared/style/twind';
 refreshOnUpdate('pages/popup');
 
 function init() {
-	const appContainer = document.querySelector('#app-container');
-	if (!appContainer) {
-		throw new Error('Can not find #app-container');
-	}
-	attachTwindStyle(appContainer, document);
-	const root = createRoot(appContainer);
-	root.render(<Popup />);
+  const appContainer = document.querySelector('#app-container');
+  if (!appContainer) {
+    throw new Error('Can not find #app-container');
+  }
+  attachTwindStyle(appContainer, document);
+  const root = createRoot(appContainer);
+  root.render(<Popup />);
 }
 
 init();

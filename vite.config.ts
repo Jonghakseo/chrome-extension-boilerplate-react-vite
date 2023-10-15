@@ -21,71 +21,71 @@ const isProduction = !isDev;
 const enableHmrInBackgroundScript = true;
 
 export default defineConfig({
-	resolve: {
-		alias: {
-			'@root': rootDir,
-			'@src': srcDir,
-			'@assets': assetsDir,
-			'@pages': pagesDir,
-		},
-	},
-	plugins: [
-		react(),
-		makeManifest(manifest, {
-			isDev,
-			contentScriptCssKey: regenerateCacheInvalidationKey(),
-		}),
-		customDynamicImport(),
-		addHmr({ background: enableHmrInBackgroundScript, view: true }),
-		watchRebuild(),
-	],
-	publicDir,
-	build: {
-		outDir,
-		/** Can slowDown build speed. */
-		// sourcemap: isDev,
-		minify: isProduction,
-		modulePreload: false,
-		reportCompressedSize: isProduction,
-		rollupOptions: {
-			input: {
-				devtools: resolve(pagesDir, 'devtools', 'index.html'),
-				panel: resolve(pagesDir, 'panel', 'index.html'),
-				content: resolve(pagesDir, 'content', 'index.ts'),
-				background: resolve(pagesDir, 'background', 'index.ts'),
-				contentStyle: resolve(pagesDir, 'content', 'style.scss'),
-				popup: resolve(pagesDir, 'popup', 'index.html'),
-				newtab: resolve(pagesDir, 'newtab', 'index.html'),
-				options: resolve(pagesDir, 'options', 'index.html'),
-			},
-			output: {
-				entryFileNames: 'src/pages/[name]/index.js',
-				chunkFileNames: isDev ? 'assets/js/[name].js' : 'assets/js/[name].[hash].js',
-				assetFileNames: assetInfo => {
-					const { dir, name: _name } = path.parse(assetInfo.name);
-					const assetFolder = dir.split('/').at(-1);
-					const name = assetFolder + firstUpperCase(_name);
-					if (name === 'contentStyle') {
-						return `assets/css/contentStyle${cacheInvalidationKey}.chunk.css`;
-					}
-					return `assets/[ext]/${name}.chunk.[ext]`;
-				},
-			},
-		},
-	},
+  resolve: {
+    alias: {
+      '@root': rootDir,
+      '@src': srcDir,
+      '@assets': assetsDir,
+      '@pages': pagesDir,
+    },
+  },
+  plugins: [
+    react(),
+    makeManifest(manifest, {
+      isDev,
+      contentScriptCssKey: regenerateCacheInvalidationKey(),
+    }),
+    customDynamicImport(),
+    addHmr({ background: enableHmrInBackgroundScript, view: true }),
+    watchRebuild(),
+  ],
+  publicDir,
+  build: {
+    outDir,
+    /** Can slowDown build speed. */
+    // sourcemap: isDev,
+    minify: isProduction,
+    modulePreload: false,
+    reportCompressedSize: isProduction,
+    rollupOptions: {
+      input: {
+        devtools: resolve(pagesDir, 'devtools', 'index.html'),
+        panel: resolve(pagesDir, 'panel', 'index.html'),
+        content: resolve(pagesDir, 'content', 'index.ts'),
+        background: resolve(pagesDir, 'background', 'index.ts'),
+        contentStyle: resolve(pagesDir, 'content', 'style.scss'),
+        popup: resolve(pagesDir, 'popup', 'index.html'),
+        newtab: resolve(pagesDir, 'newtab', 'index.html'),
+        options: resolve(pagesDir, 'options', 'index.html'),
+      },
+      output: {
+        entryFileNames: 'src/pages/[name]/index.js',
+        chunkFileNames: isDev ? 'assets/js/[name].js' : 'assets/js/[name].[hash].js',
+        assetFileNames: assetInfo => {
+          const { dir, name: _name } = path.parse(assetInfo.name);
+          const assetFolder = dir.split('/').at(-1);
+          const name = assetFolder + firstUpperCase(_name);
+          if (name === 'contentStyle') {
+            return `assets/css/contentStyle${cacheInvalidationKey}.chunk.css`;
+          }
+          return `assets/[ext]/${name}.chunk.[ext]`;
+        },
+      },
+    },
+  },
 });
 
 function firstUpperCase(str: string) {
-	const firstAlphabet = new RegExp(/( |^)[a-z]/, 'g');
-	return str.toLowerCase().replace(firstAlphabet, L => L.toUpperCase());
+  const firstAlphabet = new RegExp(/( |^)[a-z]/, 'g');
+  return str.toLowerCase().replace(firstAlphabet, L => L.toUpperCase());
 }
 
 let cacheInvalidationKey: string = generateKey();
 function regenerateCacheInvalidationKey() {
-	cacheInvalidationKey = generateKey();
-	return cacheInvalidationKey;
+  cacheInvalidationKey = generateKey();
+  return cacheInvalidationKey;
 }
 
 function generateKey(): string {
-	return `${(Date.now() / 100).toFixed()}`;
+  return `${(Date.now() / 100).toFixed()}`;
 }
