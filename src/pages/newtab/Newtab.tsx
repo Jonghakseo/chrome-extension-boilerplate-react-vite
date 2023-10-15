@@ -34,7 +34,4 @@ const Newtab = () => {
   );
 };
 
-export default withErrorBoundary(
-  withSuspense(Newtab, <div> Loading ... </div>),
-  <div> Error Occur </div>
-);
+export default withErrorBoundary(withSuspense(Newtab, <div> Loading ... </div>), <div> Error Occur </div>);

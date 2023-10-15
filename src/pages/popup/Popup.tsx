@@ -31,7 +31,4 @@ const Popup = () => {
   );
 };
 
-export default withErrorBoundary(
-  withSuspense(Popup, <div> Loading ... </div>),
-  <div> Error Occur </div>
-);
+export default withErrorBoundary(withSuspense(Popup, <div> Loading ... </div>), <div> Error Occur </div>);
