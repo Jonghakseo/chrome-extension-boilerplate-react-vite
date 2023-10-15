@@ -117,6 +117,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/dim0147"><img src="https://avatars.githubusercontent.com/u/44487221?v=4?s=100" width="100px;" alt="dim0147"/><br /><sub><b>dim0147</b></sub></a><br /><a href="#bug-dim0147" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://www.youtube.com/user/Learnbynet"><img src="https://avatars.githubusercontent.com/u/24865815?v=4?s=100" width="100px;" alt="jon lepage"/><br /><sub><b>jon lepage</b></sub></a><br /><a href="#bug-djmisterjon" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://lironhazan.com/"><img src="https://avatars.githubusercontent.com/u/9695142?v=4?s=100" width="100px;" alt="LironH"/><br /><sub><b>LironH</b></sub></a><br /><a href="#ideas-LironHazan" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://spencerchang.me"><img src="https://avatars.githubusercontent.com/u/14796580?v=4?s=100" width="100px;" alt="Spencer Chang"/><br /><sub><b>Spencer Chang</b></sub></a><br /><a href="#bug-spencerc99" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
