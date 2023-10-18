@@ -149,6 +149,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/PatrykKuniczak"><img src="https://avatars.githubusercontent.com/u/64608510?v=4?s=50" width="50px;" alt="PatrykKuniczak"/><br /><sub><b>PatrykKuniczak</b></sub></a><br /><a href="#ideas-PatrykKuniczak" title="Ideas, Planning, & Feedback">🤔</a> <a href="#code-PatrykKuniczak" title="Code">💻</a> <a href="#doc-PatrykKuniczak" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://hector.parra.cat"><img src="https://avatars.githubusercontent.com/u/34079?v=4?s=50" width="50px;" alt="Hector Parra"/><br /><sub><b>Hector Parra</b></sub></a><br /><a href="#bug-hector" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://blog.rhea-so.link"><img src="https://avatars.githubusercontent.com/u/25793226?v=4?s=50" width="50px;" alt="JeongHyeon Kim"/><br /><sub><b>JeongHyeon Kim</b></sub></a><br /><a href="#infra-rhea-so" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://terminels.com"><img src="https://avatars.githubusercontent.com/u/73331790?v=4?s=50" width="50px;" alt="Terminels"/><br /><sub><b>Terminels</b></sub></a><br /><a href="#code-PrinOrange" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

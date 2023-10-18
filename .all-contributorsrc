@@ -247,6 +247,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "PrinOrange",
+      "name": "Terminels",
+      "avatar_url": "https://avatars.githubusercontent.com/u/73331790?v=4",
+      "profile": "http://terminels.com",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
