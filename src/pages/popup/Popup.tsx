@@ -1,10 +1,10 @@
-import React from "react";
-import logo from "@assets/img/logo.svg";
-import "@pages/popup/Popup.css";
-import useStorage from "@src/shared/hooks/useStorage";
-import exampleThemeStorage from "@src/shared/storages/exampleThemeStorage";
-import withSuspense from "@src/shared/hoc/withSuspense";
-import withErrorBoundary from "@src/shared/hoc/withErrorBoundary";
+import React from 'react';
+import logo from '@assets/img/logo.svg';
+import '@pages/popup/Popup.css';
+import useStorage from '@src/shared/hooks/useStorage';
+import exampleThemeStorage from '@src/shared/storages/exampleThemeStorage';
+import withSuspense from '@src/shared/hoc/withSuspense';
+import withErrorBoundary from '@src/shared/hoc/withErrorBoundary';
 
 const Popup = () => {
   const theme = useStorage(exampleThemeStorage);
@@ -16,20 +16,14 @@ const Popup = () => {
         <p className="text-lime-400">
           Edit <code>src/pages/popup/Popup.tsx</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
           Learn React!
         </a>
         <button
           style={{
-            color: theme === "light" ? "#fff" : "#000",
+            color: theme === 'light' ? '#fff' : '#000',
           }}
-          onClick={exampleThemeStorage.toggle}
-        >
+          onClick={exampleThemeStorage.toggle}>
           Toggle theme: [{theme}]
         </button>
       </header>
@@ -37,7 +31,4 @@ const Popup = () => {
   );
 };
 
-export default withErrorBoundary(
-  withSuspense(Popup, <div> Loading ... </div>),
-  <div> Error Occur </div>
-);
+export default withErrorBoundary(withSuspense(Popup, <div> Loading ... </div>), <div> Error Occur </div>);

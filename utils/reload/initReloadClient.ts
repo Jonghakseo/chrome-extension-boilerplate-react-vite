@@ -3,8 +3,8 @@ import {
   UPDATE_COMPLETE_MESSAGE,
   UPDATE_PENDING_MESSAGE,
   UPDATE_REQUEST_MESSAGE,
-} from "./constant";
-import MessageInterpreter from "./interpreter";
+} from './constant';
+import MessageInterpreter from './interpreter';
 
 let needToUpdate = false;
 
@@ -21,7 +21,7 @@ export default function initReloadClient({
     socket.send(MessageInterpreter.send({ type: UPDATE_COMPLETE_MESSAGE }));
   }
 
-  socket.addEventListener("message", (event) => {
+  socket.addEventListener('message', event => {
     const message = MessageInterpreter.receive(String(event.data));
 
     switch (message.type) {
@@ -44,7 +44,7 @@ export default function initReloadClient({
 
   socket.onclose = () => {
     console.warn(
-      `Reload server disconnected.\nPlease check if the WebSocket server is running properly on ${LOCAL_RELOAD_SOCKET_URL}. This feature detects changes in the code and helps the browser to reload the extension or refresh the current tab.`
+      `Reload server disconnected.\nPlease check if the WebSocket server is running properly on ${LOCAL_RELOAD_SOCKET_URL}. This feature detects changes in the code and helps the browser to reload the extension or refresh the current tab.`,
     );
   };
 

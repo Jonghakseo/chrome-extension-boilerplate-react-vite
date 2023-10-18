@@ -1,4 +1,4 @@
-import { Component, ComponentType, ReactElement } from "react";
+import { Component, ComponentType, ReactElement } from 'react';
 
 class ErrorBoundary extends Component<
   {
@@ -30,7 +30,7 @@ class ErrorBoundary extends Component<
 
 export default function withErrorBoundary<T extends Record<string, unknown>>(
   Component: ComponentType<T>,
-  ErrorComponent: ReactElement
+  ErrorComponent: ReactElement,
 ) {
   return function WithErrorBoundary(props: T) {
     return (

@@ -1,10 +1,10 @@
-import type { PluginOption } from "vite";
+import type { PluginOption } from 'vite';
 
 export default function customDynamicImport(): PluginOption {
   return {
-    name: "custom-dynamic-import",
+    name: 'custom-dynamic-import',
     renderDynamicImport({ moduleId }) {
-      if (!moduleId.includes("node_modules")) {
+      if (!moduleId.includes('node_modules')) {
         // ↑ dont modify any import from node_modules
         if (process.env.__FIREFOX__) {
           return {
@@ -22,12 +22,12 @@ export default function customDynamicImport(): PluginOption {
             const dynamicImport = (path) => import(path);
             dynamicImport(
             `,
-          right: ")}",
+          right: ')}',
         };
       }
       return {
-        left: "import(",
-        right: ")",
+        left: 'import(',
+        right: ')',
       };
     },
   };

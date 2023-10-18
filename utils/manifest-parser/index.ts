@@ -18,7 +18,7 @@ class ManifestParser {
 
     manifestCopy.background = {
       scripts: [manifest.background?.service_worker],
-      type: "module",
+      type: 'module',
     };
     manifestCopy.options_ui = {
       page: manifest.options_page,
