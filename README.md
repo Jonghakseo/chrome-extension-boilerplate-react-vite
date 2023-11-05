@@ -89,7 +89,9 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ### Popup <a name="popup"></a>
 
-<img width="314" alt="popup" src="https://user-images.githubusercontent.com/53500778/203561728-23517d46-12e3-4139-8a4f-e0b2f22a6ab3.png">
+| Black | White |
+|--------|--------|
+| <img width="297" alt="black" src="https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/35423617-e6f5-4f65-adb3-03f068236648"> | <img width="300" alt="white" src="https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/99886d92-b6f0-4e41-b70e-5afc6d2f7eab"> |
 
 ## Examples <a name="examples"></a>
 
