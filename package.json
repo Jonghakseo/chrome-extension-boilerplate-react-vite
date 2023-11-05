@@ -26,7 +26,8 @@
   "dependencies": {
     "construct-style-sheets-polyfill": "^3.1.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "webextension-polyfill": "^0.10.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
@@ -61,9 +62,9 @@
     "prettier": "^2.8.8",
     "rollup": "2.79.1",
     "sass": "1.62.1",
-    "tslib": "^2.6.2",
     "ts-jest": "29.0.2",
     "ts-loader": "9.4.2",
+    "tslib": "^2.6.2",
     "typescript": "4.9.5",
     "vite": "3.2.7",
     "ws": "8.13.0"
