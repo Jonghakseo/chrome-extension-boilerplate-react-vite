@@ -41,7 +41,6 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Vite](https://vitejs.dev/)
 - [SASS](https://sass-lang.com/)
-- [Twind](https://twind.dev/)
 - [Prettier](https://prettier.io/)
 - [ESLint](https://eslint.org/)
 - [Husky](https://typicode.github.io/husky/getting-started.html#automatic-recommended)
