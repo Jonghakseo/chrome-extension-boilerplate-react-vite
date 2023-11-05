@@ -20,7 +20,8 @@
     "commitlint": "commitlint --edit",
     "lint": "eslint src --ext .ts",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write"
+    "prettier": "prettier . --write",
+    "prepare": "husky install"
   },
   "type": "module",
   "dependencies": {
