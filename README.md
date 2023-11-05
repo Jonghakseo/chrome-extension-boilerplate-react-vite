@@ -25,6 +25,7 @@
 - [Screenshots](#screenshots)
     - [NewTab](#newtab)
     - [Popup](#popup)
+    - [Devtools](#devtools)
 - [Examples](#examples)
 - [Documents](#documents)
 
@@ -92,6 +93,10 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 | Black | White |
 |--------|--------|
 | <img width="297" alt="black" src="https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/35423617-e6f5-4f65-adb3-03f068236648"> | <img width="300" alt="white" src="https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/99886d92-b6f0-4e41-b70e-5afc6d2f7eab"> |
+
+### Devtools <a name="devtools"></a>
+
+<img width="477" alt="devtools" src="https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/467d719d-a7db-4f77-8504-cd5ce7567793">
 
 ## Examples <a name="examples"></a>
 
