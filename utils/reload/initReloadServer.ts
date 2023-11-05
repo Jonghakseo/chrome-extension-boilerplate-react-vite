@@ -44,7 +44,7 @@ const debounceSrc = debounce(function (path: string) {
   );
   // Delay waiting for public assets to be copied
 }, 400);
-chokidar.watch('src').on('all', (event, path) => debounceSrc(path));
+chokidar.watch('src', { ignorePermissionErrors: true }).on('all', (_, path) => debounceSrc(path));
 
 /** CHECK:: build was completed **/
 const debounceDist = debounce(() => {
@@ -52,7 +52,7 @@ const debounceDist = debounce(() => {
     ws.send(MessageInterpreter.send({ type: UPDATE_REQUEST_MESSAGE }));
   });
 }, 100);
-chokidar.watch('dist').on('all', event => {
+chokidar.watch('dist', { ignorePermissionErrors: true }).on('all', event => {
   // Ignore unlink, unlinkDir and change events
   // that happen in beginning of build:watch and
   // that will cause ws.send() if it takes more than 400ms
