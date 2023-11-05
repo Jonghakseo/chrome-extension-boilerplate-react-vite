@@ -12,7 +12,7 @@ export default function customDynamicImport(): PluginOption {
       }
       return {
         left: 'import(',
-        right: ');',
+        right: ')',
       };
     },
   };
