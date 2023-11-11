@@ -94,11 +94,11 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ### New Tab <a name="newtab"></a>
 
-[Override Chrome pages](https://developer.chrome.com/docs/extensions/mv3/override/)<br/>`chrome://newtab/`
+[Override Chrome pages](https://developer.chrome.com/docs/extensions/mv3/override/)<br/>`chrome_url_overrides.newtab`
 
 ### Popup <a name="popup"></a>
 
-[Browser actions](https://developer.chrome.com/docs/extensions/reference/browserAction/)<br/>`default_pupup`
+[Browser actions](https://developer.chrome.com/docs/extensions/reference/browserAction/)<br/>`action.default_pupup`
 
 ### Devtools <a name="devtools"></a>
 
