@@ -1,9 +1,10 @@
-import packageJson from './package.json';
+import packageJson from './package.json' assert { type: 'json' };
 
 /**
  * After changing, please reload the extension at `chrome://extensions`
+ * @type {chrome.runtime.ManifestV3}
  */
-const manifest: chrome.runtime.ManifestV3 = {
+const manifest = {
   manifest_version: 3,
   name: packageJson.name,
   version: packageJson.version,
@@ -22,7 +23,7 @@ const manifest: chrome.runtime.ManifestV3 = {
     newtab: 'src/pages/newtab/index.html',
   },
   icons: {
-    '128': 'icon-128.png',
+    128: 'icon-128.png',
   },
   content_scripts: [
     {

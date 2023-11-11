@@ -6,13 +6,15 @@ import type { PluginOption } from 'vite';
 
 const { resolve } = path;
 
-const distDir = resolve(__dirname, '..', '..', 'dist');
+const rootDir = resolve(__dirname, '..', '..');
+const distDir = resolve(rootDir, 'dist');
+const manifestFile = resolve(rootDir, 'manifest.js');
 
-export default function makeManifest(
-  manifest: chrome.runtime.ManifestV3,
-  config: { contentScriptCssKey?: string },
-): PluginOption {
-  function makeManifest(to: string) {
+export default function makeManifest(config: {
+  getManifest: () => Promise<{ default: chrome.runtime.ManifestV3 }>;
+  contentScriptCssKey?: string;
+}): PluginOption {
+  function makeManifest(manifest: chrome.runtime.ManifestV3, to: string) {
     if (!fs.existsSync(to)) {
       fs.mkdirSync(to);
     }
@@ -32,8 +34,12 @@ export default function makeManifest(
 
   return {
     name: 'make-manifest',
-    writeBundle() {
-      makeManifest(distDir);
+    buildStart() {
+      this.addWatchFile(manifestFile);
+    },
+    async writeBundle() {
+      const manifest = await config.getManifest();
+      makeManifest(manifest.default, distDir);
     },
   };
 }
