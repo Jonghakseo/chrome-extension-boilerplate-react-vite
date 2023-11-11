@@ -1,9 +1,4 @@
-import {
-  LOCAL_RELOAD_SOCKET_URL,
-  UPDATE_COMPLETE_MESSAGE,
-  UPDATE_PENDING_MESSAGE,
-  UPDATE_REQUEST_MESSAGE,
-} from './constant';
+import { LOCAL_RELOAD_SOCKET_URL } from './constant';
 import MessageInterpreter from './interpreter';
 
 let needToUpdate = false;
@@ -18,14 +13,14 @@ export default function initReloadClient({
   const socket = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
 
   function sendUpdateCompleteMessage() {
-    socket.send(MessageInterpreter.send({ type: UPDATE_COMPLETE_MESSAGE }));
+    socket.send(MessageInterpreter.send({ type: 'done_update' }));
   }
 
   socket.addEventListener('message', event => {
     const message = MessageInterpreter.receive(String(event.data));
 
     switch (message.type) {
-      case UPDATE_REQUEST_MESSAGE: {
+      case 'do_update': {
         if (needToUpdate) {
           sendUpdateCompleteMessage();
           needToUpdate = false;
@@ -33,7 +28,7 @@ export default function initReloadClient({
         }
         return;
       }
-      case UPDATE_PENDING_MESSAGE: {
+      case 'wait_update': {
         if (!needToUpdate) {
           needToUpdate = message.path.includes(watchPath);
         }
@@ -43,9 +38,12 @@ export default function initReloadClient({
   });
 
   socket.onclose = () => {
-    console.warn(
+    console.log(
       `Reload server disconnected.\nPlease check if the WebSocket server is running properly on ${LOCAL_RELOAD_SOCKET_URL}. This feature detects changes in the code and helps the browser to reload the extension or refresh the current tab.`,
     );
+    setTimeout(() => {
+      initReloadClient({ watchPath, onUpdate });
+    }, 1000);
   };
 
   return socket;

@@ -32,12 +32,11 @@ export default defineConfig({
   plugins: [
     react(),
     makeManifest(manifest, {
-      isDev,
       contentScriptCssKey: regenerateCacheInvalidationKey(),
     }),
     customDynamicImport(),
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
-    watchRebuild(),
+    isDev && watchRebuild(),
   ],
   publicDir,
   build: {
@@ -47,6 +46,7 @@ export default defineConfig({
     minify: isProduction,
     modulePreload: false,
     reportCompressedSize: isProduction,
+    emptyOutDir: false,
     rollupOptions: {
       input: {
         devtools: resolve(pagesDir, 'devtools', 'index.html'),

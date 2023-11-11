@@ -7,11 +7,10 @@ import type { PluginOption } from 'vite';
 const { resolve } = path;
 
 const distDir = resolve(__dirname, '..', '..', 'dist');
-const publicDir = resolve(__dirname, '..', '..', 'public');
 
 export default function makeManifest(
   manifest: chrome.runtime.ManifestV3,
-  config: { isDev: boolean; contentScriptCssKey?: string },
+  config: { contentScriptCssKey?: string },
 ): PluginOption {
   function makeManifest(to: string) {
     if (!fs.existsSync(to)) {
@@ -33,16 +32,8 @@ export default function makeManifest(
 
   return {
     name: 'make-manifest',
-    buildStart() {
-      if (config.isDev) {
-        makeManifest(distDir);
-      }
-    },
-    buildEnd() {
-      if (config.isDev) {
-        return;
-      }
-      makeManifest(publicDir);
+    writeBundle() {
+      makeManifest(distDir);
     },
   };
 }

@@ -1,14 +1,8 @@
 import { WebSocket, WebSocketServer } from 'ws';
 import chokidar from 'chokidar';
-import { debounce } from './utils';
-import {
-  LOCAL_RELOAD_SOCKET_PORT,
-  LOCAL_RELOAD_SOCKET_URL,
-  UPDATE_COMPLETE_MESSAGE,
-  UPDATE_PENDING_MESSAGE,
-  UPDATE_REQUEST_MESSAGE,
-} from './constant';
+import { LOCAL_RELOAD_SOCKET_PORT, LOCAL_RELOAD_SOCKET_URL } from './constant';
 import MessageInterpreter from './interpreter';
+import { debounce } from './utils';
 
 const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
 
@@ -22,9 +16,15 @@ function initReloadServer() {
 
     ws.addEventListener('close', () => clientsThatNeedToUpdate.delete(ws));
     ws.addEventListener('message', event => {
-      const message = MessageInterpreter.receive(String(event.data));
-      if (message.type === UPDATE_COMPLETE_MESSAGE) {
+      if (typeof event.data !== 'string') return;
+
+      const message = MessageInterpreter.receive(event.data);
+
+      if (message.type === 'done_update') {
         ws.close();
+      }
+      if (message.type === 'build_complete') {
+        clientsThatNeedToUpdate.forEach((ws: WebSocket) => ws.send(MessageInterpreter.send({ type: 'do_update' })));
       }
     });
   });
@@ -35,31 +35,9 @@ const debounceSrc = debounce(function (path: string) {
   // Normalize path on Windows
   const pathConverted = path.replace(/\\/g, '/');
   clientsThatNeedToUpdate.forEach((ws: WebSocket) =>
-    ws.send(
-      MessageInterpreter.send({
-        type: UPDATE_PENDING_MESSAGE,
-        path: pathConverted,
-      }),
-    ),
+    ws.send(MessageInterpreter.send({ type: 'wait_update', path: pathConverted })),
   );
-  // Delay waiting for public assets to be copied
-}, 400);
-chokidar.watch('src', { ignorePermissionErrors: true }).on('all', (_, path) => debounceSrc(path));
-
-/** CHECK:: build was completed **/
-const debounceDist = debounce(() => {
-  clientsThatNeedToUpdate.forEach((ws: WebSocket) => {
-    ws.send(MessageInterpreter.send({ type: UPDATE_REQUEST_MESSAGE }));
-  });
 }, 100);
-chokidar.watch('dist', { ignorePermissionErrors: true }).on('all', event => {
-  // Ignore unlink, unlinkDir and change events
-  // that happen in beginning of build:watch and
-  // that will cause ws.send() if it takes more than 400ms
-  // to build (which it might). This fixes:
-  // https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/100
-  if (event !== 'add' && event !== 'addDir') return;
-  debounceDist();
-});
+chokidar.watch('src', { ignorePermissionErrors: true }).on('all', (_, path) => debounceSrc(path));
 
 initReloadServer();
