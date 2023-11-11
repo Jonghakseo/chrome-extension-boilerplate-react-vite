@@ -32,7 +32,6 @@ export default defineConfig({
   plugins: [
     react(),
     makeManifest(manifest, {
-      isDev,
       contentScriptCssKey: regenerateCacheInvalidationKey(),
     }),
     customDynamicImport(),
