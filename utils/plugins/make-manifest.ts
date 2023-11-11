@@ -10,10 +10,9 @@ const rootDir = resolve(__dirname, '..', '..');
 const distDir = resolve(rootDir, 'dist');
 const manifestFile = resolve(rootDir, 'manifest.js');
 
-export default function makeManifest(config: {
-  getManifest: () => Promise<{ default: chrome.runtime.ManifestV3 }>;
-  contentScriptCssKey?: string;
-}): PluginOption {
+const getManifestWithCacheBurst = () => import(manifestFile + '?' + Date.now().toString());
+
+export default function makeManifest(config: { contentScriptCssKey?: string }): PluginOption {
   function makeManifest(manifest: chrome.runtime.ManifestV3, to: string) {
     if (!fs.existsSync(to)) {
       fs.mkdirSync(to);
@@ -38,7 +37,7 @@ export default function makeManifest(config: {
       this.addWatchFile(manifestFile);
     },
     async writeBundle() {
-      const manifest = await config.getManifest();
+      const manifest = await getManifestWithCacheBurst();
       makeManifest(manifest.default, distDir);
     },
   };

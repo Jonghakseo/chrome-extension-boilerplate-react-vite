@@ -6,8 +6,6 @@ import customDynamicImport from './utils/plugins/custom-dynamic-import';
 import addHmr from './utils/plugins/add-hmr';
 import watchRebuild from './utils/plugins/watch-rebuild';
 
-const getManifestWithCacheBurst = () => import('./manifest.js' + '?' + Date.now().toString());
-
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');
 const pagesDir = resolve(srcDir, 'pages');
@@ -32,7 +30,6 @@ export default defineConfig({
   },
   plugins: [
     makeManifest({
-      getManifest: getManifestWithCacheBurst,
       contentScriptCssKey: regenerateCacheInvalidationKey(),
     }),
     react(),
