@@ -6,9 +6,11 @@ let needToUpdate = false;
 export default function initReloadClient({
   watchPath,
   onUpdate,
+  onForceReload,
 }: {
   watchPath: string;
   onUpdate: () => void;
+  onForceReload?: () => void;
 }): WebSocket {
   const socket = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
 
@@ -32,6 +34,10 @@ export default function initReloadClient({
         if (!needToUpdate) {
           needToUpdate = message.path.includes(watchPath);
         }
+        return;
+      }
+      case 'force_reload': {
+        onForceReload?.();
         return;
       }
     }

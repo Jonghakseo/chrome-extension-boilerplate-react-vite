@@ -5,6 +5,7 @@ import MessageInterpreter from './interpreter';
 import { debounce } from './utils';
 
 const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
+let needToForceReload = false;
 
 function initReloadServer() {
   const wss = new WebSocketServer({ port: LOCAL_RELOAD_SOCKET_PORT });
@@ -25,6 +26,12 @@ function initReloadServer() {
       }
       if (message.type === 'build_complete') {
         clientsThatNeedToUpdate.forEach((ws: WebSocket) => ws.send(MessageInterpreter.send({ type: 'do_update' })));
+        if (needToForceReload) {
+          needToForceReload = false;
+          clientsThatNeedToUpdate.forEach((ws: WebSocket) =>
+            ws.send(MessageInterpreter.send({ type: 'force_reload' })),
+          );
+        }
       }
     });
   });
@@ -39,5 +46,10 @@ const debounceSrc = debounce(function (path: string) {
   );
 }, 100);
 chokidar.watch('src', { ignorePermissionErrors: true }).on('all', (_, path) => debounceSrc(path));
+
+/** CHECK:: manifest.js was updated **/
+chokidar.watch('manifest.js', { ignorePermissionErrors: true }).on('all', () => {
+  needToForceReload = true;
+});
 
 initReloadServer();

@@ -5,7 +5,6 @@ import makeManifest from './utils/plugins/make-manifest';
 import customDynamicImport from './utils/plugins/custom-dynamic-import';
 import addHmr from './utils/plugins/add-hmr';
 import watchRebuild from './utils/plugins/watch-rebuild';
-import manifest from './manifest';
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');
@@ -30,10 +29,10 @@ export default defineConfig({
     },
   },
   plugins: [
-    react(),
-    makeManifest(manifest, {
+    makeManifest({
       contentScriptCssKey: regenerateCacheInvalidationKey(),
     }),
+    react(),
     customDynamicImport(),
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
     isDev && watchRebuild(),
@@ -46,7 +45,7 @@ export default defineConfig({
     minify: isProduction,
     modulePreload: false,
     reportCompressedSize: isProduction,
-    emptyOutDir: false,
+    emptyOutDir: !isDev,
     rollupOptions: {
       input: {
         devtools: resolve(pagesDir, 'devtools', 'index.html'),
