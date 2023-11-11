@@ -3,6 +3,8 @@ import * as path from 'path';
 import colorLog from '../log';
 import ManifestParser from '../manifest-parser';
 import type { PluginOption } from 'vite';
+import url from 'url';
+import * as process from 'process';
 
 const { resolve } = path;
 
@@ -10,7 +12,17 @@ const rootDir = resolve(__dirname, '..', '..');
 const distDir = resolve(rootDir, 'dist');
 const manifestFile = resolve(rootDir, 'manifest.js');
 
-const getManifestWithCacheBurst = () => import(manifestFile + '?' + Date.now().toString());
+const getManifestWithCacheBurst = (): Promise<{ default: chrome.runtime.ManifestV3 }> => {
+  const withCacheBurst = (path: string) => `${path}?${Date.now().toString()}`;
+  /**
+   * In Windows, import() doesn't work without file:// protocol.
+   * So, we need to convert path to file:// protocol. (url.pathToFileURL)
+   */
+  if (process.platform === 'win32') {
+    return import(withCacheBurst(url.pathToFileURL(manifestFile).href));
+  }
+  return import(withCacheBurst(manifestFile));
+};
 
 export default function makeManifest(config: { contentScriptCssKey?: string }): PluginOption {
   function makeManifest(manifest: chrome.runtime.ManifestV3, to: string) {
