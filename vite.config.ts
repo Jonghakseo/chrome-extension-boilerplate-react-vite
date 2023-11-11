@@ -46,6 +46,7 @@ export default defineConfig({
     minify: isProduction,
     modulePreload: false,
     reportCompressedSize: isProduction,
+    emptyOutDir: false,
     rollupOptions: {
       input: {
         devtools: resolve(pagesDir, 'devtools', 'index.html'),
