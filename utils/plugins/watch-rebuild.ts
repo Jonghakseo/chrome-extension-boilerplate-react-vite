@@ -8,9 +8,8 @@ const rootDir = resolve(__dirname, '..', '..');
 const manifestFile = resolve(rootDir, 'manifest.ts');
 const viteConfigFile = resolve(rootDir, 'vite.config.ts');
 
-const ws = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
-
 export default function watchRebuild(): PluginOption {
+  const ws = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
   return {
     name: 'watch-rebuild',
     buildStart() {

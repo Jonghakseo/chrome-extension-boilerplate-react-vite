@@ -36,7 +36,7 @@ export default defineConfig({
     }),
     customDynamicImport(),
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
-    watchRebuild(),
+    isDev && watchRebuild(),
   ],
   publicDir,
   build: {
