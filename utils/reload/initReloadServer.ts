@@ -19,7 +19,7 @@ function initReloadServer() {
 
       const message = MessageInterpreter.receive(event.data);
 
-      if (message.type === 'do_update') {
+      if (message.type === 'done_update') {
         ws.close();
       }
       if (message.type === 'build_complete') {
