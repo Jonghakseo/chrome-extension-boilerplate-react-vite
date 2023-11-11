@@ -2,6 +2,7 @@ import { WebSocket, WebSocketServer } from 'ws';
 import chokidar from 'chokidar';
 import { LOCAL_RELOAD_SOCKET_PORT, LOCAL_RELOAD_SOCKET_URL } from './constant';
 import MessageInterpreter from './interpreter';
+import { debounce } from './utils';
 
 const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
 
@@ -30,13 +31,13 @@ function initReloadServer() {
 }
 
 /** CHECK:: src file was updated **/
-const watchSrc = function (path: string) {
+const debounceSrc = debounce(function (path: string) {
   // Normalize path on Windows
   const pathConverted = path.replace(/\\/g, '/');
   clientsThatNeedToUpdate.forEach((ws: WebSocket) =>
     ws.send(MessageInterpreter.send({ type: 'wait_update', path: pathConverted })),
   );
-};
-chokidar.watch('src', { ignorePermissionErrors: true }).on('all', (_, path) => watchSrc(path));
+}, 100);
+chokidar.watch('src', { ignorePermissionErrors: true }).on('all', (_, path) => debounceSrc(path));
 
 initReloadServer();
