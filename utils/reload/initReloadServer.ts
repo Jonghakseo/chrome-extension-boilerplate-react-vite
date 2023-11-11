@@ -1,6 +1,5 @@
 import { WebSocket, WebSocketServer } from 'ws';
 import chokidar from 'chokidar';
-import { debounce } from './utils';
 import { LOCAL_RELOAD_SOCKET_PORT, LOCAL_RELOAD_SOCKET_URL } from './constant';
 import MessageInterpreter from './interpreter';
 
@@ -31,14 +30,13 @@ function initReloadServer() {
 }
 
 /** CHECK:: src file was updated **/
-const debounceSrc = debounce(function (path: string) {
+const watchSrc = function (path: string) {
   // Normalize path on Windows
   const pathConverted = path.replace(/\\/g, '/');
   clientsThatNeedToUpdate.forEach((ws: WebSocket) =>
     ws.send(MessageInterpreter.send({ type: 'wait_update', path: pathConverted })),
   );
-  // Delay waiting for public assets to be copied
-}, 400);
-chokidar.watch('src', { ignorePermissionErrors: true }).on('all', (_, path) => debounceSrc(path));
+};
+chokidar.watch('src', { ignorePermissionErrors: true }).on('all', (_, path) => watchSrc(path));
 
 initReloadServer();
