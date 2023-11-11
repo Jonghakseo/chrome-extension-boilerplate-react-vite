@@ -35,7 +35,7 @@
     "@commitlint/config-conventional": "18.1.0",
     "@rollup/plugin-typescript": "11.1.5",
     "@testing-library/react": "14.0.0",
-    "@types/chrome": "0.0.249",
+    "@types/chrome": "0.0.251",
     "@types/jest": "29.5.7",
     "@types/node": "20.8.10",
     "@types/react": "18.2.35",

@@ -22,6 +22,14 @@
     - [Procedures](#procedures)
       - [Chrome](#chrome) 
       - [Firefox](#firefox) 
+- [Pages](#pages)
+    - [NewTab](#newtab)
+    - [Popup](#popup)
+    - [Devtools](#devtools)
+    - [Background](#background)
+    - [ContentScript](#contentscript)
+    - [Options](#options)
+    - [SidePanel](#sidepanel)
 - [Screenshots](#screenshots)
     - [NewTab](#newtab)
     - [Popup](#popup)
@@ -81,6 +89,37 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 4. Select - `manifest.json` from `dist` folder
 
 ### <i>Remember in firefox you add plugin in temporary mode, that's mean it's disappear after close browser, you must do it again, on next launch.</i>
+
+## Pages <a name="pages"></a>
+
+### New Tab <a name="newtab"></a>
+
+[Override Chrome pages](https://developer.chrome.com/docs/extensions/mv3/override/)<br/>`chrome://newtab/`
+
+### Popup <a name="popup"></a>
+
+[Browser actions](https://developer.chrome.com/docs/extensions/reference/browserAction/)<br/>`default_pupup`
+
+### Devtools <a name="devtools"></a>
+
+[Devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/#creating)<br/>`devtools_page`
+
+### Background <a name="background"></a>
+
+[Background](https://developer.chrome.com/docs/extensions/mv3/background_pages/)<br/>`background.service_worker`
+
+### ContentScript <a name="contentscript"></a>
+
+[Content Script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts[0]`
+
+### Options <a name="options"></a>
+
+[Options](https://developer.chrome.com/docs/extensions/mv3/options/)<br/>`options_page`
+
+### SidePanel (Chrome 144+) <a name="sidepanel"></a>
+
+[SidePanel](https://developer.chrome.com/docs/extensions/reference/sidePanel/)<br/>`side_panel.default_path`
+
 
 ## Screenshots <a name="screenshots"></a>
 
