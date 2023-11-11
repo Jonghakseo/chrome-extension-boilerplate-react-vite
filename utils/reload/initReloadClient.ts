@@ -41,6 +41,9 @@ export default function initReloadClient({
     console.log(
       `Reload server disconnected.\nPlease check if the WebSocket server is running properly on ${LOCAL_RELOAD_SOCKET_URL}. This feature detects changes in the code and helps the browser to reload the extension or refresh the current tab.`,
     );
+    setInterval(() => {
+      initReloadClient({ watchPath, onUpdate });
+    }, 1000);
   };
 
   return socket;
