@@ -89,13 +89,13 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ### Chakra UI <a name="chakra-ui"></a>
 
-First, install the library:
+**First, install the library:**
 
 ```bash
 $ pnpm install @chakra-ui/react @emotion/cache @emotion/react
 ```
 
-Then, you should add the code to `vite.config.ts` for [Ignore unnecessary warnings](https://github.com/TanStack/query/pull/5161#issuecomment-1506683450)
+**Then, you should add the code to `vite.config.ts` for [Ignore unnecessary warnings](https://github.com/TanStack/query/pull/5161#issuecomment-1506683450)**
 
 <details>
 <summary>vite.config.ts</summary>
@@ -122,7 +122,7 @@ export default defineConfig({
 
 </details>
 
-Now, you can use Chakra UI in your project:
+**Now, you can use Chakra UI in your project:**
 
 <details>
 <summary>src/pages/popup/Popup.tsx</summary>
@@ -137,7 +137,7 @@ export default function Popup() {
 
 </details>
 
-If you want to use Chakra UI in the content script, you need to add the following code:
+**If you want to use Chakra UI in the content script, you need to add the following code:**
 
 <details>
 <summary>src/pages/content/ui/CustomChakraProvider.tsx</summary>
@@ -233,7 +233,7 @@ export default function EmotionCacheProvider({ children, rootId }: { rootId: str
 
 </details>
 
-And, fix the `src/pages/content/index.tsx` file:
+**And, fix the `src/pages/content/index.tsx` file:**
 
 <details>
 <summary>src/pages/content/index.tsx</summary>
