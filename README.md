@@ -87,31 +87,31 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ### New Tab <a name="newtab"></a>
 
-[Override Chrome pages](https://developer.chrome.com/docs/extensions/mv3/override/)<br/>`chrome_url_overrides.newtab`
+[Override Chrome pages](https://developer.chrome.com/docs/extensions/mv3/override/)<br/>`chrome_url_overrides.newtab` in manifest.json
 
 ### Popup <a name="popup"></a>
 
-[Browser actions](https://developer.chrome.com/docs/extensions/reference/browserAction/)<br/>`action.default_pupup`
+[Browser actions](https://developer.chrome.com/docs/extensions/reference/browserAction/)<br/>`action.default_pupup` in manifest.json
 
 ### Devtools <a name="devtools"></a>
 
-[Devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/#creating)<br/>`devtools_page`
+[Devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/#creating)<br/>`devtools_page` in manifest.json
 
 ### Background <a name="background"></a>
 
-[Background](https://developer.chrome.com/docs/extensions/mv3/background_pages/)<br/>`background.service_worker`
+[Background](https://developer.chrome.com/docs/extensions/mv3/background_pages/)<br/>`background.service_worker` in manifest.json
 
 ### ContentScript <a name="contentscript"></a>
 
-[Content Script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts[0]`
+[Content Script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts[0]` in manifest.json
 
 ### Options <a name="options"></a>
 
-[Options](https://developer.chrome.com/docs/extensions/mv3/options/)<br/>`options_page`
+[Options](https://developer.chrome.com/docs/extensions/mv3/options/)<br/>`options_page` in manifest.json
 
 ### SidePanel (Chrome 144+) <a name="sidepanel"></a>
 
-[SidePanel](https://developer.chrome.com/docs/extensions/reference/sidePanel/)<br/>`side_panel.default_path`
+[SidePanel](https://developer.chrome.com/docs/extensions/reference/sidePanel/)<br/>`side_panel.default_path` in manifest.json
 
 
 ## Screenshots <a name="screenshots"></a>
