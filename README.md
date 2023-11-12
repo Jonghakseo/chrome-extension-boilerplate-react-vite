@@ -22,14 +22,9 @@
     - [Procedures](#procedures)
       - [Chrome](#chrome) 
       - [Firefox](#firefox) 
+- [Add Style Library](#add-style-library)
+    - [Chakra UI](#chakra-ui) 
 - [Pages](#pages)
-    - [NewTab](#newtab)
-    - [Popup](#popup)
-    - [Devtools](#devtools)
-    - [Background](#background)
-    - [ContentScript](#contentscript)
-    - [Options](#options)
-    - [SidePanel](#sidepanel)
 - [Screenshots](#screenshots)
     - [NewTab](#newtab)
     - [Popup](#popup)
@@ -90,35 +85,212 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ### <i>Remember in firefox you add plugin in temporary mode, that's mean it's disappear after close browser, you must do it again, on next launch.</i>
 
+## Add Style Library <a name="add-style-library"></a>
+
+### Chakra UI <a name="chakra-ui"></a>
+
+**1. Install the library:**
+
+```bash
+$ pnpm install @chakra-ui/react @emotion/cache @emotion/react
+```
+
+**2. You should add the code to `vite.config.ts` for [Ignore unnecessary warnings](https://github.com/TanStack/query/pull/5161#issuecomment-1506683450)**
+
+<details>
+<summary>vite.config.ts</summary>
+
+```ts
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      // Add below code ~~~~~
+      onwarn(warning, warn) {
+        if (
+          warning.code === "MODULE_LEVEL_DIRECTIVE" &&
+          warning.message.includes(`"use client"`)
+        ) {
+          return;
+        }
+        warn(warning);
+      },
+      // Add above code ~~~~
+    },
+  },
+});
+```
+
+</details>
+
+**3. You can use Chakra UI in your project:**
+
+<details>
+<summary>src/pages/popup/Popup.tsx</summary>
+
+```tsx
+import { Button } from "@chakra-ui/react";
+
+export default function Popup() {
+  return <Button colorScheme="teal">Button</Button>;
+}
+```
+
+</details>
+
+---
+
+> if you don't want to use Chakra UI in the content script, you can skip 4,5 step.
+
+**4. If you want to use Chakra UI in the content script, you need to add the following code:**
+
+<details>
+<summary>src/pages/content/ui/CustomChakraProvider.tsx</summary>
+
+```tsx
+import { ReactNode, useCallback, useEffect, useState } from "react";
+import {
+  ColorMode,
+  ColorModeContext,
+  ColorModeScript,
+  CSSReset,
+  extendTheme,
+  GlobalStyle,
+  ThemeProvider
+} from "@chakra-ui/react";
+
+const theme = extendTheme();
+
+const getCurrentTheme = () => {
+  const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return isDark ? "dark" : "light";
+};
+
+type CustomChakraProviderProps = {
+  shadowRootId: string;
+  children: ReactNode;
+};
+export default function CustomChakraProvider({ children, shadowRootId }: CustomChakraProviderProps) {
+  const [colorMode, setColorMode] = useState<ColorMode>(getCurrentTheme());
+
+  useEffect(() => {
+    const darkThemeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const onChangeColorSchema = (event: MediaQueryListEvent) => {
+      const isDark = event.matches;
+      setColorMode(isDark ? "dark" : "light");
+    };
+
+    darkThemeMediaQuery.addEventListener("change", onChangeColorSchema);
+
+    return () => {
+      darkThemeMediaQuery.removeEventListener("change", onChangeColorSchema);
+    };
+  }, []);
+
+  const toggleColorMode = useCallback(() => {
+    setColorMode(prev => (prev === "dark" ? "light" : "dark"));
+  }, []);
+
+  return (
+    <ThemeProvider theme={theme} cssVarsRoot={`#${shadowRootId}`}>
+      <ColorModeScript initialColorMode="system" />
+      <ColorModeContext.Provider value={{ colorMode, setColorMode, toggleColorMode }}>
+        <CSSReset />
+        <GlobalStyle />
+        {children}
+      </ColorModeContext.Provider>
+    </ThemeProvider>
+  );
+}
+```
+
+</details>
+<details>
+<summary>src/pages/content/ui/EmotionCacheProvider.tsx</summary>
+
+```tsx
+import createCache from '@emotion/cache';
+import { CacheProvider, type EmotionCache } from '@emotion/react';
+import { ReactNode, useEffect, useState } from 'react';
+
+export default function EmotionCacheProvider({ children, rootId }: { rootId: string; children: ReactNode }) {
+  const [emotionCache, setEmotionCache] = useState<EmotionCache | null>(null);
+
+  useEffect(() => {
+    function setEmotionStyles(shadowRoot: ShadowRoot) {
+      setEmotionCache(
+        createCache({
+          key: rootId,
+          container: shadowRoot,
+        }),
+      );
+    }
+
+    const root = document.getElementById(rootId);
+    if (root && root.shadowRoot) {
+      setEmotionStyles(root.shadowRoot);
+    }
+  }, []);
+
+  return emotionCache ? <CacheProvider value={emotionCache}>{children}</CacheProvider> : null;
+}
+```
+
+</details>
+
+**5. Fix the `src/pages/content/index.tsx` file:**
+
+<details>
+<summary>src/pages/content/index.tsx</summary>
+
+```tsx
+import CustomChakraProvider from '@pages/content/ui/CustomChakraProvider';
+import EmotionCacheProvider from '@pages/content/ui/EmotionCacheProvider';
+
+// ...
+
+createRoot(rootIntoShadow).render(
+  // Add Providers
+  <EmotionCacheProvider rootId={root.id}>
+    <CustomChakraProvider shadowRootId={rootIntoShadow.id}>
+      <App />
+    </CustomChakraProvider>
+  </EmotionCacheProvider>,
+);
+
+```
+
+</details>
+
+
 ## Pages <a name="pages"></a>
 
 ### New Tab <a name="newtab"></a>
 
-[Override Chrome pages](https://developer.chrome.com/docs/extensions/mv3/override/)<br/>`chrome_url_overrides.newtab`
+[Override Chrome pages](https://developer.chrome.com/docs/extensions/mv3/override/)<br/>`chrome_url_overrides.newtab` in manifest.json
 
 ### Popup <a name="popup"></a>
 
-[Browser actions](https://developer.chrome.com/docs/extensions/reference/browserAction/)<br/>`action.default_pupup`
+[Browser actions](https://developer.chrome.com/docs/extensions/reference/browserAction/)<br/>`action.default_pupup` in manifest.json
 
 ### Devtools <a name="devtools"></a>
 
-[Devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/#creating)<br/>`devtools_page`
+[Devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/#creating)<br/>`devtools_page` in manifest.json
 
 ### Background <a name="background"></a>
 
-[Background](https://developer.chrome.com/docs/extensions/mv3/background_pages/)<br/>`background.service_worker`
+[Background](https://developer.chrome.com/docs/extensions/mv3/background_pages/)<br/>`background.service_worker` in manifest.json
 
 ### ContentScript <a name="contentscript"></a>
 
-[Content Script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts[0]`
+[Content Script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts[0]` in manifest.json
 
 ### Options <a name="options"></a>
 
-[Options](https://developer.chrome.com/docs/extensions/mv3/options/)<br/>`options_page`
+[Options](https://developer.chrome.com/docs/extensions/mv3/options/)<br/>`options_page` in manifest.json
 
 ### SidePanel (Chrome 144+) <a name="sidepanel"></a>
 
-[SidePanel](https://developer.chrome.com/docs/extensions/reference/sidePanel/)<br/>`side_panel.default_path`
+[SidePanel](https://developer.chrome.com/docs/extensions/reference/sidePanel/)<br/>`side_panel.default_path` in manifest.json
 
 
 ## Screenshots <a name="screenshots"></a>
