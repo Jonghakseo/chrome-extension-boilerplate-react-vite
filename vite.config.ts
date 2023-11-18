@@ -63,7 +63,6 @@ export default defineConfig({
         chunkFileNames: isDev ? 'assets/js/[name].js' : 'assets/js/[name].[hash].js',
         assetFileNames: assetInfo => {
           const { name } = path.parse(assetInfo.name);
-          console.log(assetInfo.name, name);
           if (name === 'contentStyle') {
             return `assets/css/contentStyle${cacheInvalidationKey}.chunk.css`;
           }
