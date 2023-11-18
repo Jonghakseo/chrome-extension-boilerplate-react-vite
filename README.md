@@ -23,6 +23,7 @@
       - [Chrome](#chrome) 
       - [Firefox](#firefox) 
 - [Add Style Library](#add-style-library)
+    - [Twind](#twind)
     - [Chakra UI](#chakra-ui) 
 - [Pages](#pages)
 - [Screenshots](#screenshots)
@@ -86,6 +87,70 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 ### <i>Remember in firefox you add plugin in temporary mode, that's mean it's disappear after close browser, you must do it again, on next launch.</i>
 
 ## Add Style Library <a name="add-style-library"></a>
+
+### Twind <a name="twind"></a>
+> The smallest, fastest, most feature complete Tailwind-in-JS solution in existence
+
+**1. Install the library:**
+
+```bash
+$ pnpm install -D @twind/core @twind/preset-autoprefix @twind/preset-tailwind
+```
+
+**2. Create twind.config.ts in the root folder**
+
+<details>
+<summary>twind.config.ts</summary>
+
+```ts
+import { defineConfig } from '@twind/core';
+import presetTailwind from '@twind/preset-tailwind';
+import presetAutoprefix from '@twind/preset-autoprefix';
+
+export default defineConfig({
+  presets: [presetAutoprefix(), presetTailwind()],
+});
+```
+</details>
+
+**3. Create src/shared/style/twind.ts for importing**
+
+<details>
+<summary>src/shared/style/twind.ts</summary>
+
+```ts
+import { twind, cssom, observe } from '@twind/core';
+import 'construct-style-sheets-polyfill';
+import config from '@root/twind.config';
+
+export function attachTwindStyle<T extends { adoptedStyleSheets: unknown }>(
+  observedElement: Element,
+  documentOrShadowRoot: T,
+) {
+  const sheet = cssom(new CSSStyleSheet());
+  const tw = twind(config, sheet);
+  observe(tw, observedElement);
+  documentOrShadowRoot.adoptedStyleSheets = [sheet.target];
+}
+```
+</details>
+
+**4. You can use Tailwind in your project:**
+
+<details>
+<summary>src/pages/popup/Popup.tsx</summary>
+
+```tsx
+import { attachTwindStyle } from '@src/shared/style/twind';
+
+...
+  attachTwindStyle(appContainer, document);
+  const root = createRoot(appContainer);
+  root.render(<Popup />);
+```
+</details>
+
+[See more examples](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/244/)
 
 ### Chakra UI <a name="chakra-ui"></a>
 
