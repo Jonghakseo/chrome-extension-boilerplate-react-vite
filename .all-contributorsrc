@@ -275,6 +275,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "govza",
+      "name": "Rasul",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1425574?v=4",
+      "profile": "https://github.com/govza",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }
