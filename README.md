@@ -150,6 +150,20 @@ import { attachTwindStyle } from '@src/shared/style/twind';
 ```
 </details>
 
+**5. If you want to use Twind in the content script, you need to add the following code:**
+
+<details>
+<summary>src/pages/content/ui/index.tsx</summary>
+
+"""tsx
+import { attachTwindStyle } from '@src/shared/style/twind';
+
+...
+attachTwindStyle(rootIntoShadow, shadowRoot);
+createRoot(rootIntoShadow).render(<App />);
+"""
+</details>
+
 [See more examples](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/244/)
 
 ### Chakra UI <a name="chakra-ui"></a>
