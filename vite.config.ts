@@ -18,6 +18,7 @@ const isProduction = !isDev;
 
 // ENABLE HMR IN BACKGROUND SCRIPT
 const enableHmrInBackgroundScript = true;
+let cacheInvalidationKey: string = generateKey();
 
 export default defineConfig({
   resolve: {
@@ -30,12 +31,12 @@ export default defineConfig({
   },
   plugins: [
     makeManifest({
-      contentScriptCssKey: regenerateCacheInvalidationKey(),
+      contentScriptCssKey: cacheInvalidationKey,
     }),
     react(),
     customDynamicImport(),
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
-    isDev && watchRebuild(),
+    isDev && watchRebuild({ whenWriteBundle: regenerateCacheInvalidationKey }),
   ],
   publicDir,
   build: {
@@ -73,12 +74,11 @@ export default defineConfig({
   },
 });
 
-let cacheInvalidationKey: string = generateKey();
 function regenerateCacheInvalidationKey() {
   cacheInvalidationKey = generateKey();
   return cacheInvalidationKey;
 }
 
 function generateKey(): string {
-  return `${(Date.now() / 100).toFixed()}`;
+  return `${Date.now().toFixed()}`;
 }
