@@ -18,6 +18,7 @@ const isProduction = !isDev;
 
 // ENABLE HMR IN BACKGROUND SCRIPT
 const enableHmrInBackgroundScript = true;
+let cacheInvalidationKey: string = generateKey();
 
 export default defineConfig({
   resolve: {
@@ -30,17 +31,17 @@ export default defineConfig({
   },
   plugins: [
     makeManifest({
-      contentScriptCssKey: regenerateCacheInvalidationKey(),
+      contentScriptCssKey: cacheInvalidationKey,
     }),
     react(),
     customDynamicImport(),
     addHmr({ background: enableHmrInBackgroundScript, view: true }),
-    isDev && watchRebuild(),
+    isDev && watchRebuild({ whenWriteBundle: regenerateCacheInvalidationKey }),
   ],
   publicDir,
   build: {
     outDir,
-    /** Can slowDown build speed. */
+    /** Can slow down build speed. */
     // sourcemap: isDev,
     minify: isProduction,
     modulePreload: false,
@@ -63,22 +64,19 @@ export default defineConfig({
         chunkFileNames: isDev ? 'assets/js/[name].js' : 'assets/js/[name].[hash].js',
         assetFileNames: assetInfo => {
           const { name } = path.parse(assetInfo.name);
-          if (name === 'contentStyle') {
-            return `assets/css/contentStyle${cacheInvalidationKey}.chunk.css`;
-          }
-          return `assets/[ext]/${name}.chunk.[ext]`;
+          const assetFileName = name === 'contentStyle' ? `${name}${cacheInvalidationKey}` : name;
+          return `assets/[ext]/${assetFileName}.chunk.[ext]`;
         },
       },
     },
   },
 });
 
-let cacheInvalidationKey: string = generateKey();
 function regenerateCacheInvalidationKey() {
   cacheInvalidationKey = generateKey();
   return cacheInvalidationKey;
 }
 
 function generateKey(): string {
-  return `${(Date.now() / 100).toFixed()}`;
+  return `${Date.now().toFixed()}`;
 }
