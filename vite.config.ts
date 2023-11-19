@@ -41,7 +41,7 @@ export default defineConfig({
   publicDir,
   build: {
     outDir,
-    /** Can slowDown build speed. */
+    /** Can slow down build speed. */
     // sourcemap: isDev,
     minify: isProduction,
     modulePreload: false,
