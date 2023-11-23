@@ -284,6 +284,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "gavinhow",
+      "name": "gavinhow",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16214376?v=4",
+      "profile": "https://github.com/gavinhow",
+      "contributions": [
+        "bug"
+      ]
     }
   ]
 }
