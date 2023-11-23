@@ -458,6 +458,7 @@ manifest.json
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/wangxinyugithub"><img src="https://avatars.githubusercontent.com/u/39206932?v=4?s=50" width="50px;" alt="wangxy"/><br /><sub><b>wangxy</b></sub></a><br /><a href="#bug-wangxinyugithub" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/govza"><img src="https://avatars.githubusercontent.com/u/1425574?v=4?s=50" width="50px;" alt="Rasul"/><br /><sub><b>Rasul</b></sub></a><br /><a href="#doc-govza" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/gavinhow"><img src="https://avatars.githubusercontent.com/u/16214376?v=4?s=50" width="50px;" alt="gavinhow"/><br /><sub><b>gavinhow</b></sub></a><br /><a href="#bug-gavinhow" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
