@@ -1,4 +1,3 @@
-
 <div align="center">
 <img src="public/icon-128.png" alt="logo"/>
 <h1> Chrome Extension Boilerplate with<br/>React + Vite + TypeScript</h1>
@@ -20,11 +19,11 @@
 - [Features](#features)
 - [Installation](#installation)
     - [Procedures](#procedures)
-      - [Chrome](#chrome) 
-      - [Firefox](#firefox) 
+        - [Chrome](#chrome)
+        - [Firefox](#firefox)
 - [Add Style Library](#add-style-library)
     - [Twind](#twind)
-    - [Chakra UI](#chakra-ui) 
+    - [Chakra UI](#chakra-ui)
 - [Pages](#pages)
 - [Screenshots](#screenshots)
     - [NewTab](#newtab)
@@ -61,7 +60,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 1. Clone this repository.
 2. Change `name` and `description` in package.json => **Auto synchronize with manifest**
 3. Install pnpm globally: `npm install -g pnpm` (check your node version >= 16.6, recommended >= 18)
-4. Run `pnpm install` 
+4. Run `pnpm install`
 
 ## And next, depending on the needs:
 
@@ -89,6 +88,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 ## Add Style Library <a name="add-style-library"></a>
 
 ### Twind <a name="twind"></a>
+
 > The smallest, fastest, most feature complete Tailwind-in-JS solution in existence
 
 **1. Install the library:**
@@ -111,6 +111,7 @@ export default defineConfig({
   presets: [presetAutoprefix(), presetTailwind()],
 });
 ```
+
 </details>
 
 **3. Create src/shared/style/twind.ts for importing**
@@ -133,6 +134,7 @@ export function attachTwindStyle<T extends { adoptedStyleSheets: unknown }>(
   documentOrShadowRoot.adoptedStyleSheets = [sheet.target];
 }
 ```
+
 </details>
 
 **4. You can use Tailwind in your project:**
@@ -144,10 +146,11 @@ export function attachTwindStyle<T extends { adoptedStyleSheets: unknown }>(
 import { attachTwindStyle } from '@src/shared/style/twind';
 
 ...
-  attachTwindStyle(appContainer, document);
-  const root = createRoot(appContainer);
-  root.render(<Popup />);
+attachTwindStyle(appContainer, document);
+const root = createRoot(appContainer);
+root.render(<Popup />);
 ```
+
 </details>
 
 **5. If you want to use Twind in the content script, you need to add the following code:**
@@ -174,7 +177,8 @@ createRoot(rootIntoShadow).render(<App />);
 $ pnpm install @chakra-ui/react @emotion/cache @emotion/react
 ```
 
-**2. You should add the code to `vite.config.ts` for [Ignore unnecessary warnings](https://github.com/TanStack/query/pull/5161#issuecomment-1506683450)**
+**2. You should add the code to `vite.config.ts`
+for [Ignore unnecessary warnings](https://github.com/TanStack/query/pull/5161#issuecomment-1506683450)**
 
 <details>
 <summary>vite.config.ts</summary>
@@ -340,16 +344,17 @@ createRoot(rootIntoShadow).render(
 
 </details>
 
-
 ## Pages <a name="pages"></a>
 
 ### New Tab <a name="newtab"></a>
 
-[Override Chrome pages](https://developer.chrome.com/docs/extensions/mv3/override/)<br/>`chrome_url_overrides.newtab` in manifest.json
+[Override Chrome pages](https://developer.chrome.com/docs/extensions/mv3/override/)<br/>`chrome_url_overrides.newtab` in
+manifest.json
 
 ### Popup <a name="popup"></a>
 
-[Browser actions](https://developer.chrome.com/docs/extensions/reference/browserAction/)<br/>`action.default_pupup` in manifest.json
+[Browser actions](https://developer.chrome.com/docs/extensions/reference/browserAction/)<br/>`action.default_popup` in
+manifest.json
 
 ### Devtools <a name="devtools"></a>
 
@@ -357,11 +362,13 @@ createRoot(rootIntoShadow).render(
 
 ### Background <a name="background"></a>
 
-[Background](https://developer.chrome.com/docs/extensions/mv3/background_pages/)<br/>`background.service_worker` in manifest.json
+[Background](https://developer.chrome.com/docs/extensions/mv3/background_pages/)<br/>`background.service_worker` in
+manifest.json
 
 ### ContentScript <a name="contentscript"></a>
 
-[Content Script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts[0]` in manifest.json
+[Content Script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts[0]` in
+manifest.json
 
 ### Options <a name="options"></a>
 
@@ -369,8 +376,8 @@ createRoot(rootIntoShadow).render(
 
 ### SidePanel (Chrome 144+) <a name="sidepanel"></a>
 
-[SidePanel](https://developer.chrome.com/docs/extensions/reference/sidePanel/)<br/>`side_panel.default_path` in manifest.json
-
+[SidePanel](https://developer.chrome.com/docs/extensions/reference/sidePanel/)<br/>`side_panel.default_path` in
+manifest.json
 
 ## Screenshots <a name="screenshots"></a>
 
@@ -380,8 +387,8 @@ createRoot(rootIntoShadow).render(
 
 ### Popup <a name="popup"></a>
 
-| Black | White |
-|--------|--------|
+| Black                                                                                                                                                          | White                                                                                                                                                          |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | <img width="300" alt="black" src="https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/35423617-e6f5-4f65-adb3-03f068236648"> | <img width="300" alt="white" src="https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/99886d92-b6f0-4e41-b70e-5afc6d2f7eab"> |
 
 ### Devtools <a name="devtools"></a>
