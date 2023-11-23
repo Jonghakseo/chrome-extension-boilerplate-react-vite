@@ -293,6 +293,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "anand-schultz",
+      "name": "Anand D.",
+      "avatar_url": "https://avatars.githubusercontent.com/u/133013727?v=4",
+      "profile": "https://github.com/anand-schultz",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }
