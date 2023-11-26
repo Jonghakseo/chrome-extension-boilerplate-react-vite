@@ -87,6 +87,17 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ## Add Style Library <a name="add-style-library"></a>
 
+> IMPORTANT: If you DO NOT want to use css file in the content script, you need to delete the css file in your manifest.js
+
+```js
+content_scripts: [
+  {
+    // YOU NEED TO DELETE THIS
+    css: ["assets/css/contentStyle<KEY>.chunk.css"]
+  }
+];
+```
+
 ### Twind <a name="twind"></a>
 
 > The smallest, fastest, most feature complete Tailwind-in-JS solution in existence
