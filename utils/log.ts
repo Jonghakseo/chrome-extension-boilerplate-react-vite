@@ -1,7 +1,7 @@
 type ColorType = 'success' | 'info' | 'error' | 'warning' | keyof typeof COLORS;
 type ValueOf<T> = T[keyof T];
 
-export default function colorLog(message: string, type?: ColorType) {
+export default function colorLog(message: string, type: ColorType) {
   let color: ValueOf<typeof COLORS>;
 
   switch (type) {
