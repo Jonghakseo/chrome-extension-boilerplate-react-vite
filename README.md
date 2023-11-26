@@ -87,7 +87,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ## Add Style Library <a name="add-style-library"></a>
 
-> IMPORTANT: If you want to use css file in the content script, you need to delete the css file in your manifest.js
+> IMPORTANT: If you DO NOT want to use css file in the content script, you need to delete the css file in your manifest.js
 
 ```js
 content_scripts: [
