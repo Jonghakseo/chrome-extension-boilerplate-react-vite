@@ -169,13 +169,13 @@ root.render(<Popup />);
 <details>
 <summary>src/pages/content/ui/index.tsx</summary>
 
-"""tsx
+```tsx
 import { attachTwindStyle } from '@src/shared/style/twind';
 
 ...
 attachTwindStyle(rootIntoShadow, shadowRoot);
 createRoot(rootIntoShadow).render(<App />);
-"""
+```
 </details>
 
 [See more examples](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/244/)
@@ -471,6 +471,9 @@ manifest.json
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/govza"><img src="https://avatars.githubusercontent.com/u/1425574?v=4?s=50" width="50px;" alt="Rasul"/><br /><sub><b>Rasul</b></sub></a><br /><a href="#doc-govza" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/gavinhow"><img src="https://avatars.githubusercontent.com/u/16214376?v=4?s=50" width="50px;" alt="gavinhow"/><br /><sub><b>gavinhow</b></sub></a><br /><a href="#bug-gavinhow" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/anand-schultz"><img src="https://avatars.githubusercontent.com/u/133013727?v=4?s=50" width="50px;" alt="Anand D."/><br /><sub><b>Anand D.</b></sub></a><br /><a href="#doc-anand-schultz" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.iotercom.com"><img src="https://avatars.githubusercontent.com/u/521473?v=4?s=50" width="50px;" alt="Romain Dequidt"/><br /><sub><b>Romain Dequidt</b></sub></a><br /><a href="#doc-romaindequidt" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://linkedin.com/in/jguddas"><img src="https://avatars.githubusercontent.com/u/25524993?v=4?s=50" width="50px;" alt="Jakob Guddas"/><br /><sub><b>Jakob Guddas</b></sub></a><br /><a href="#doc-jguddas" title="Documentation">📖</a> <a href="#bug-jguddas" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://din.ooo"><img src="https://avatars.githubusercontent.com/u/2397125?v=4?s=50" width="50px;" alt="Dino Scheidt"/><br /><sub><b>Dino Scheidt</b></sub></a><br /><a href="#code-D1no" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

@@ -302,6 +302,34 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "romaindequidt",
+      "name": "Romain Dequidt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/521473?v=4",
+      "profile": "http://www.iotercom.com",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "jguddas",
+      "name": "Jakob Guddas",
+      "avatar_url": "https://avatars.githubusercontent.com/u/25524993?v=4",
+      "profile": "http://linkedin.com/in/jguddas",
+      "contributions": [
+        "doc",
+        "bug"
+      ]
+    },
+    {
+      "login": "D1no",
+      "name": "Dino Scheidt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2397125?v=4",
+      "profile": "http://din.ooo",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
