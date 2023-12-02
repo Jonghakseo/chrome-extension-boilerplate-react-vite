@@ -171,6 +171,9 @@ export function createStorage<D>(key: string, fallback: D, config?: StorageConfi
 
   // Listener for live updates from the browser
   async function _updateFromStorageOnChanged(changes: { [key: string]: chrome.storage.StorageChange }) {
+    // Check if the key we are listening for is in the changes object
+    if (changes[key] === undefined) return;
+
     const valueOrUpdate: ValueOrUpdate<D> = changes[key].newValue;
 
     if (cache === valueOrUpdate) return;
