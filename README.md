@@ -169,13 +169,13 @@ root.render(<Popup />);
 <details>
 <summary>src/pages/content/ui/index.tsx</summary>
 
-"""tsx
+```tsx
 import { attachTwindStyle } from '@src/shared/style/twind';
 
 ...
 attachTwindStyle(rootIntoShadow, shadowRoot);
 createRoot(rootIntoShadow).render(<App />);
-"""
+```
 </details>
 
 [See more examples](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/244/)
