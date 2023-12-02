@@ -6,8 +6,12 @@ export default function customDynamicImport(): PluginOption {
     renderDynamicImport({ moduleId }) {
       if (!moduleId.includes('node_modules') && process.env.__FIREFOX__) {
         return {
-          left: `import(browser.runtime.getURL('./') + `,
-          right: ".split('../').join(''));",
+          left: `
+          {
+            const dynamicImport = (path) => import(path);
+            dynamicImport(browser.runtime.getURL('./') + 
+            `,
+          right: ".split('../').join(''))}",
         };
       }
       return {
