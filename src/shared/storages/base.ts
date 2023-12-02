@@ -61,6 +61,14 @@ type StorageConfig = {
    * @default false
    */
   sessionAccessForContentScripts?: boolean;
+  /**
+   * Keeps state live in sync between all instances of the extension. Like between popup, side panel and content scripts.
+   * To allow chrome background scripts to stay in sync as well, use {@link StorageType.Session} storage area with
+   * {@link StorageConfig.sessionAccessForContentScripts} potentially also set to true.
+   * @see https://stackoverflow.com/a/75637138/2763239
+   * @default false
+   */
+  liveUpdate?: boolean;
 };
 
 /**
@@ -82,6 +90,7 @@ export function createStorage<D>(key: string, fallback: D, config?: StorageConfi
   let cache: D | null = null;
   let listeners: Array<() => void> = [];
   const storageType = config?.storageType ?? StorageType.Local;
+  const liveUpdate = config?.liveUpdate ?? false;
 
   // Set global session storage access level for StoryType.Session, only when not already done but needed.
   if (
@@ -141,6 +150,35 @@ export function createStorage<D>(key: string, fallback: D, config?: StorageConfi
     cache = data;
     _emitChange();
   });
+
+  // Listener for live updates from the browser
+  async function _updateFromStorageOnChanged(changes: { [key: string]: chrome.storage.StorageChange }) {
+    const valueOrUpdate: ValueOrUpdate<D> = changes[key].newValue;
+
+    if (cache === valueOrUpdate) return;
+
+    if (typeof valueOrUpdate === 'function') {
+      // eslint-disable-next-line no-prototype-builtins
+      if (valueOrUpdate.hasOwnProperty('then')) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        cache = await valueOrUpdate(cache);
+      } else {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        cache = valueOrUpdate(cache);
+      }
+    } else {
+      cache = valueOrUpdate;
+    }
+
+    _emitChange();
+  }
+
+  // Register listener for live updates for our storage area
+  if (liveUpdate) {
+    chrome.storage[storageType].onChanged.addListener(_updateFromStorageOnChanged);
+  }
 
   return {
     get: _getDataFromStorage,
