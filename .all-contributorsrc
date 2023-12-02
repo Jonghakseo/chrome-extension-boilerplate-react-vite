@@ -321,6 +321,15 @@
         "doc",
         "bug"
       ]
+    },
+    {
+      "login": "D1no",
+      "name": "Dino Scheidt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2397125?v=4",
+      "profile": "http://din.ooo",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
