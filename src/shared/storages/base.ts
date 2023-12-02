@@ -72,6 +72,33 @@ type StorageConfig = {
 };
 
 /**
+ * Sets or updates an arbitrary cache with a new value or the result of an update function.
+ */
+async function updateCache<D>(valueOrUpdate: ValueOrUpdate<D>, cache: D | null): Promise<D> {
+  // Type guard to check if our value or update is a function
+  function isFunction<D>(value: ValueOrUpdate<D>): value is (prev: D) => D | Promise<D> {
+    return typeof value === 'function';
+  }
+
+  // Type guard to check in case of a function, if its a Promise
+  function returnsPromise<D>(func: (prev: D) => D | Promise<D>): boolean {
+    // Use ReturnType to infer the return type of the function and check if it's a Promise
+    return (func as (prev: D) => Promise<D>) instanceof Promise;
+  }
+
+  if (isFunction(valueOrUpdate)) {
+    // Check if the function returns a Promise
+    if (returnsPromise(valueOrUpdate)) {
+      return await valueOrUpdate(cache);
+    } else {
+      return valueOrUpdate(cache);
+    }
+  } else {
+    return valueOrUpdate;
+  }
+}
+
+/**
  * If one session storage needs access from content scripts, we need to enable it globally.
  * @default false
  */
@@ -86,6 +113,9 @@ function checkStoragePermission(storageType: StorageType): void {
   }
 }
 
+/**
+ * Creates a storage area for persisting and exchanging data.
+ */
 export function createStorage<D>(key: string, fallback: D, config?: StorageConfig): BaseStorage<D> {
   let cache: D | null = null;
   let listeners: Array<() => void> = [];
@@ -117,20 +147,8 @@ export function createStorage<D>(key: string, fallback: D, config?: StorageConfi
   };
 
   const set = async (valueOrUpdate: ValueOrUpdate<D>) => {
-    if (typeof valueOrUpdate === 'function') {
-      // eslint-disable-next-line no-prototype-builtins
-      if (valueOrUpdate.hasOwnProperty('then')) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        cache = await valueOrUpdate(cache);
-      } else {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        cache = valueOrUpdate(cache);
-      }
-    } else {
-      cache = valueOrUpdate;
-    }
+    cache = await updateCache(valueOrUpdate, cache);
+
     await chrome.storage[storageType].set({ [key]: cache });
     _emitChange();
   };
@@ -157,20 +175,7 @@ export function createStorage<D>(key: string, fallback: D, config?: StorageConfi
 
     if (cache === valueOrUpdate) return;
 
-    if (typeof valueOrUpdate === 'function') {
-      // eslint-disable-next-line no-prototype-builtins
-      if (valueOrUpdate.hasOwnProperty('then')) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        cache = await valueOrUpdate(cache);
-      } else {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        cache = valueOrUpdate(cache);
-      }
-    } else {
-      cache = valueOrUpdate;
-    }
+    cache = await updateCache(valueOrUpdate, cache);
 
     _emitChange();
   }
