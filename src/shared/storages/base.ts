@@ -66,6 +66,13 @@ export function createStorage<D>(key: string, fallback: D, config?: { storageTyp
     _emitChange();
   });
 
+  chrome.storage[storageType].onChanged.addListener(changes => {
+    if (changes[key]) {
+      cache = changes[key].newValue;
+      _emitChange();
+    }
+  });
+  
   return {
     get: _getDataFromStorage,
     set,
