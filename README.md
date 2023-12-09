@@ -385,7 +385,7 @@ manifest.json
 
 [Options](https://developer.chrome.com/docs/extensions/mv3/options/)<br/>`options_page` in manifest.json
 
-### SidePanel (Chrome 144+) <a name="sidepanel"></a>
+### SidePanel (Chrome 114+) <a name="sidepanel"></a>
 
 [SidePanel](https://developer.chrome.com/docs/extensions/reference/sidePanel/)<br/>`side_panel.default_path` in
 manifest.json
