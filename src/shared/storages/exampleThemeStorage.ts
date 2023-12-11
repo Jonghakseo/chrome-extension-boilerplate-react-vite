@@ -8,6 +8,7 @@ type ThemeStorage = BaseStorage<Theme> & {
 
 const storage = createStorage<Theme>('theme-storage-key', 'light', {
   storageType: StorageType.Local,
+  liveUpdate: true,
 });
 
 const exampleThemeStorage: ThemeStorage = {
