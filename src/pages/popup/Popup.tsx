@@ -9,6 +9,15 @@ import withErrorBoundary from '@src/shared/hoc/withErrorBoundary';
 const Popup = () => {
   const theme = useStorage(exampleThemeStorage);
 
+  const injectContentScript = () {
+    const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
+    console.log(tab.id)
+    chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            files: ['src/pages/injectedContent/index.js'],
+    });
+  }
+
   return (
     <div
       className="App"
@@ -35,6 +44,10 @@ const Popup = () => {
           }}
           onClick={exampleThemeStorage.toggle}>
           Toggle theme
+        </button>
+
+        <button onClick={injectContentScript}>
+          Click to inject Content Script
         </button>
       </header>
     </div>
