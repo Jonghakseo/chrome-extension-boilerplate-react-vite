@@ -14,8 +14,8 @@ const storage = createStorage<Theme>('theme-storage-key', 'light', {
 const exampleThemeStorage: ThemeStorage = {
   ...storage,
   // TODO: extends your own methods
-  toggle: () => {
-    storage.set(currentTheme => {
+  toggle: async () => {
+    await storage.set(currentTheme => {
       return currentTheme === 'light' ? 'dark' : 'light';
     });
   },
