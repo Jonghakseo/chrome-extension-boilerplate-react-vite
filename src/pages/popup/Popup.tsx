@@ -9,7 +9,7 @@ import withErrorBoundary from '@src/shared/hoc/withErrorBoundary';
 const Popup = () => {
   const theme = useStorage(exampleThemeStorage);
 
-  const injectContentScript = () {
+  const injectContentScript = async () => {
     const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
     console.log(tab.id)
     chrome.scripting.executeScript({
