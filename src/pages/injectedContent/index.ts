@@ -9,4 +9,4 @@
  */
 import('@pages/injectedContent/ui');
 
-console.log('content loaded');
+console.log('injected content loaded');
