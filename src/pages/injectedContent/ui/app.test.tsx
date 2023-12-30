@@ -5,7 +5,7 @@ import App from '@pages/injectedContent/ui/app';
 describe('appTest', () => {
   test('render text', () => {
     // given
-    const text = 'content view';
+    const text = 'injected content view';
 
     // when
     render(<App />);
