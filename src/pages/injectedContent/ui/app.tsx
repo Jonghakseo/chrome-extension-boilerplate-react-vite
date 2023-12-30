@@ -5,5 +5,5 @@ export default function App() {
     console.log('content view loaded');
   }, []);
 
-  return <div className="">content view</div>;
+  return <div className="">injected content view</div>;
 }
