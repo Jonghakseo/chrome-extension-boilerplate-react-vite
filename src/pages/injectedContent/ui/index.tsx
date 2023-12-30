@@ -3,7 +3,7 @@ import App from '@pages/injectedContent/ui/app';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import injectedStyle from './injected.css?inline';
 
-refreshOnUpdate('pages/content');
+refreshOnUpdate('pages/injectedContent');
 
 const root = document.createElement('div');
 root.id = 'chrome-extension-boilerplate-react-vite-content-view-root';
