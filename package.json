@@ -18,7 +18,7 @@
     "dev:firefox": "pnpm build:hmr && (run-p wss build:firefox:watch)",
     "test": "vitest",
     "commitlint": "commitlint --edit",
-    "lint": "eslint src --ext .ts",
+    "lint": "eslint src --ext .ts,.js,.tsx,.jsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write",
     "prepare": "husky install"
