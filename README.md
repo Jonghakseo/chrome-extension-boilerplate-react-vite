@@ -24,6 +24,7 @@
 - [Add Style Library](#add-style-library)
     - [Twind](#twind)
     - [Chakra UI](#chakra-ui)
+    - [Shadcn UI](#shadcn-ui)
 - [Pages](#pages)
 - [Screenshots](#screenshots)
     - [NewTab](#newtab)
@@ -355,7 +356,7 @@ createRoot(rootIntoShadow).render(
 
 </details>
 
-### Shadcn UI
+### Shadcn UI <a name="shadcn-ui"></a>
 
 **1. Init tailwind**
 
