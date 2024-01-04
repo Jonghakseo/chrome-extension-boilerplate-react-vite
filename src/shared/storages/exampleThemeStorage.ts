@@ -3,7 +3,7 @@ import { BaseStorage, createStorage, StorageType } from '@src/shared/storages/ba
 type Theme = 'light' | 'dark';
 
 type ThemeStorage = BaseStorage<Theme> & {
-  toggle: () => void;
+  toggle: () => Promise<void>;
 };
 
 const storage = createStorage<Theme>('theme-storage-key', 'light', {
