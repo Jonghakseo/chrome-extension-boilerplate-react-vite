@@ -475,6 +475,9 @@ manifest.json
       <td align="center" valign="top" width="14.28%"><a href="http://linkedin.com/in/jguddas"><img src="https://avatars.githubusercontent.com/u/25524993?v=4?s=50" width="50px;" alt="Jakob Guddas"/><br /><sub><b>Jakob Guddas</b></sub></a><br /><a href="#doc-jguddas" title="Documentation">📖</a> <a href="#bug-jguddas" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://din.ooo"><img src="https://avatars.githubusercontent.com/u/2397125?v=4?s=50" width="50px;" alt="Dino Scheidt"/><br /><sub><b>Dino Scheidt</b></sub></a><br /><a href="#code-D1no" title="Code">💻</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://weekeight.github.io"><img src="https://avatars.githubusercontent.com/u/1918022?v=4?s=50" width="50px;" alt="秋知"/><br /><sub><b>秋知</b></sub></a><br /><a href="#code-weekeight" title="Code">💻</a></td>
+    </tr>
   </tbody>
 </table>
 

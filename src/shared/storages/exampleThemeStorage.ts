@@ -3,7 +3,7 @@ import { BaseStorage, createStorage, StorageType } from '@src/shared/storages/ba
 type Theme = 'light' | 'dark';
 
 type ThemeStorage = BaseStorage<Theme> & {
-  toggle: () => void;
+  toggle: () => Promise<void>;
 };
 
 const storage = createStorage<Theme>('theme-storage-key', 'light', {
@@ -14,8 +14,8 @@ const storage = createStorage<Theme>('theme-storage-key', 'light', {
 const exampleThemeStorage: ThemeStorage = {
   ...storage,
   // TODO: extends your own methods
-  toggle: () => {
-    storage.set(currentTheme => {
+  toggle: async () => {
+    await storage.set(currentTheme => {
       return currentTheme === 'light' ? 'dark' : 'light';
     });
   },
