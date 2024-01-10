@@ -6,9 +6,14 @@ import packageJson from './package.json' assert { type: 'json' };
  */
 const manifest = {
   manifest_version: 3,
-  name: packageJson.name,
+  default_locale: 'en',
+  /**
+   * if you want to support multiple languages, you can use the following reference
+   * https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization
+   */
+  name: '__MSG_extensionName__',
   version: packageJson.version,
-  description: packageJson.description,
+  description: '__MSG_extensionDescription__',
   permissions: ['storage', 'sidePanel'],
   side_panel: {
     default_path: 'src/pages/sidepanel/index.html',
