@@ -151,7 +151,7 @@ export function attachTwindStyle<T extends { adoptedStyleSheets: unknown }>(
 **4. You can use Tailwind in your project:**
 
 <details>
-<summary>src/pages/popup/Popup.tsx</summary>
+<summary>src/pages/popup/index.tsx</summary>
 
 ```tsx
 import { attachTwindStyle } from '@src/shared/style/twind';
