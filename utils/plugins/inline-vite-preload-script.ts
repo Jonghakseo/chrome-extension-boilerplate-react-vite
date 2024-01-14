@@ -10,10 +10,9 @@ export default function inlineVitePreloadScript() {
       if (!/content/.test(chunk.fileName)) {
         return null;
       }
-      const chunkName = Object.keys(meta.chunks).find(key => /preload/.test(key));
-      const modules = meta.chunks[chunkName].modules;
-      console.log(modules);
       if (!__vitePreload) {
+        const chunkName = Object.keys(meta.chunks).find(key => /preload/.test(key));
+        const modules = meta.chunks[chunkName].modules;
         __vitePreload = modules[Object.keys(modules)[0]].code;
         __vitePreload = __vitePreload.replaceAll('const ', 'var ');
       }
