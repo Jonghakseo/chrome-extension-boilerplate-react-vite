@@ -339,6 +339,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "tngflx",
+      "name": "Hiverse",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36429783?v=4",
+      "profile": "https://github.com/tngflx",
+      "contributions": [
+        "bug"
+      ]
     }
   ]
 }
