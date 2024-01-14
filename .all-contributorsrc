@@ -357,6 +357,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "egor-xyz",
+      "name": "Egor Stronhin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6418221?v=4",
+      "profile": "http://devkitty.app",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }
