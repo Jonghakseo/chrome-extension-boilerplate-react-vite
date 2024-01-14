@@ -378,7 +378,7 @@ manifest.json
 
 ### ContentScript <a name="contentscript"></a>
 
-[Content Script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts[0]` in
+[Content Script (contentInjected/contentUI)](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts` in
 manifest.json
 
 ### Options <a name="options"></a>
@@ -477,6 +477,8 @@ manifest.json
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://weekeight.github.io"><img src="https://avatars.githubusercontent.com/u/1918022?v=4?s=50" width="50px;" alt="秋知"/><br /><sub><b>秋知</b></sub></a><br /><a href="#code-weekeight" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/tngflx"><img src="https://avatars.githubusercontent.com/u/36429783?v=4?s=50" width="50px;" alt="Hiverse"/><br /><sub><b>Hiverse</b></sub></a><br /><a href="#bug-tngflx" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/rosendolu"><img src="https://avatars.githubusercontent.com/u/42633099?v=4?s=50" width="50px;" alt="rosendolu"/><br /><sub><b>rosendolu</b></sub></a><br /><a href="#code-rosendolu" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

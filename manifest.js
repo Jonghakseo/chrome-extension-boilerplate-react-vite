@@ -37,9 +37,13 @@ const manifest = {
   content_scripts: [
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['src/pages/content/index.js'],
+      js: ['src/pages/contentInjected/index.js'],
       // KEY for cache invalidation
       css: ['assets/css/contentStyle<KEY>.chunk.css'],
+    },
+    {
+      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+      js: ['src/pages/contentUi/index.js'],
     },
   ],
   devtools_page: 'src/pages/devtools/index.html',
