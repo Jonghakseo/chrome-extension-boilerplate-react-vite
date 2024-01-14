@@ -7,7 +7,4 @@
  * If you want to use other modules in content scripts, you need to import them via these files.
  *
  */
-import('@pages/content/ui');
-import('@pages/content/injected');
-
-console.log('content loaded');
+import('@pages/content/ui/root');
