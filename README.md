@@ -378,7 +378,7 @@ manifest.json
 
 ### ContentScript <a name="contentscript"></a>
 
-[Content Script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts[0]` in
+[Content Script (contentInjected/contentUI)](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts` in
 manifest.json
 
 ### Options <a name="options"></a>
