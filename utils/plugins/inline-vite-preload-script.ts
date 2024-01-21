@@ -11,10 +11,13 @@ export default function inlineVitePreloadScript() {
         return null;
       }
       if (!__vitePreload) {
-        const chunkName = Object.keys(meta.chunks).find(key => /preload/.test(key));
-        const modules = meta.chunks[chunkName].modules;
-        __vitePreload = modules[Object.keys(modules)[0]].code;
-        __vitePreload = __vitePreload.replaceAll('const ', 'var ');
+        const chunkName: string | undefined = Object.keys(meta.chunks).find(key => /preload/.test(key));
+        const modules = meta.chunks?.[chunkName]?.modules;
+        __vitePreload = modules?.[Object.keys(modules)?.[0]]?.code;
+        __vitePreload = __vitePreload?.replaceAll('const ', 'var ');
+        if (!__vitePreload) {
+          return null;
+        }
       }
       return {
         code: __vitePreload + code.split(`\n`).slice(1).join(`\n`),
