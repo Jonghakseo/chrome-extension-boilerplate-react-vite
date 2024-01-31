@@ -1,6 +1,11 @@
-import typescript from '@rollup/plugin-typescript';
+import sucrase from '@rollup/plugin-sucrase';
 
-const plugins = [typescript()];
+const plugins = [
+  sucrase({
+    exclude: ['node_modules/**'],
+    transforms: ['typescript'],
+  }),
+];
 
 export default [
   {
