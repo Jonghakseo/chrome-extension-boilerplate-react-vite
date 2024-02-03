@@ -375,6 +375,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "aspiers",
+      "name": "Adam Spiers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/100738?v=4",
+      "profile": "https://adamspiers.org",
+      "contributions": [
+        "bug"
+      ]
     }
   ]
 }
