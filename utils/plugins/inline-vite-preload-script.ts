@@ -1,8 +1,11 @@
+import type { PluginOption } from 'vite';
+import MagicString from 'magic-string';
+
 /**
  * solution for multiple content scripts
  * https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/177#issuecomment-1784112536
  */
-export default function inlineVitePreloadScript() {
+export default function inlineVitePreloadScript(): PluginOption {
   let __vitePreload = '';
   return {
     name: 'replace-vite-preload-script-plugin',
@@ -21,6 +24,7 @@ export default function inlineVitePreloadScript() {
       }
       return {
         code: __vitePreload + code.split(`\n`).slice(1).join(`\n`),
+        map: new MagicString(code).generateMap({ hires: true }),
       };
     },
   };
