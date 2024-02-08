@@ -285,7 +285,7 @@ export default function CustomChakraProvider({ children, shadowRootId }: CustomC
   }, []);
 
   return (
-    <ThemeProvider theme={theme} cssVarsRoot={`#${shadowRootId}`}>
+    <ThemeProvider theme={{ ...theme, config: { ...theme.config, colorMode } }} cssVarsRoot={`#${shadowRootId}`}>
       <ColorModeScript initialColorMode="system" />
       <ColorModeContext.Provider value={{ colorMode, setColorMode, toggleColorMode }}>
         <CSSReset />
@@ -331,10 +331,10 @@ export default function EmotionCacheProvider({ children, rootId }: { rootId: str
 
 </details>
 
-**5. Fix the `src/pages/content/index.tsx` file:**
+**5. Fix the `src/pages/content/ui/root.tsx` file:**
 
 <details>
-<summary>src/pages/content/index.tsx</summary>
+<summary>src/pages/content/ui/root.tsx</summary>
 
 ```tsx
 import CustomChakraProvider from '@pages/content/ui/CustomChakraProvider';
