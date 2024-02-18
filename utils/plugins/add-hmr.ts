@@ -2,8 +2,6 @@ import * as path from 'path';
 import { readFileSync } from 'fs';
 import type { PluginOption } from 'vite';
 
-const isDev = process.env.__DEV__ === 'true';
-
 const DUMMY_CODE = `export default function(){};`;
 
 function getInjectionCode(fileName: string): string {
@@ -11,12 +9,13 @@ function getInjectionCode(fileName: string): string {
 }
 
 type Config = {
-  background?: boolean;
-  view?: boolean;
+  isDev: boolean;
+  background: boolean;
+  view: boolean;
 };
 
-export default function addHmr(config?: Config): PluginOption {
-  const { background = false, view = true } = config || {};
+export default function addHmr(config: Config): PluginOption {
+  const { background, view, isDev } = config;
   const idInBackgroundScript = 'virtual:reload-on-update-in-background-script';
   const idInView = 'virtual:reload-on-update-in-view';
 
