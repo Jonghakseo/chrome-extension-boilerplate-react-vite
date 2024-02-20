@@ -408,6 +408,7 @@ manifest.json
 
 ## Examples <a name="examples"></a>
 
+- https://github.com/Jonghakseo/react-code-finder-extension
 - https://github.com/Jonghakseo/drag-gpt-extension
 - https://github.com/Jonghakseo/pr-commit-noti
 - https://github.com/ariburaco/chatgpt-file-uploader-extended
