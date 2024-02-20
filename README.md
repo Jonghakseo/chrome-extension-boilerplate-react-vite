@@ -24,6 +24,7 @@
 - [Add Style Library](#add-style-library)
     - [Twind](#twind)
     - [Chakra UI](#chakra-ui)
+    - [Shadcn UI](#shadcn-ui)
 - [Pages](#pages)
 - [Screenshots](#screenshots)
     - [NewTab](#newtab)
@@ -354,6 +355,73 @@ createRoot(rootIntoShadow).render(
 ```
 
 </details>
+
+### Shadcn UI <a name="shadcn-ui"></a>
+
+**1. Init tailwind**
+
+```bash
+pnpm dlx tailwindcss init
+```
+
+It creates a file named `tailwind.config.js`.
+
+
+**2. Add postcss config**
+
+```bash
+# Add config file at the root of your project
+touch postcss.config.cjs
+```
+
+```cjs
+// postcss.config.cjs
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  }
+}
+```
+
+**3. Add twind setup**
+
+Follow the [twind](#twind) section.
+
+**4. Install the library**
+
+```bash
+# https://tailwindcss.com/docs/installation/using-postcss
+# tailwind, postcss related
+pnpm add -D tailwindcss postcss autoprefixer
+```
+
+```bash
+# https://ui.shadcn.com/docs/installation/manual
+# shadcn related
+pnpm add tailwindcss-animate class-variance-authority clsx tailwind-merge
+pnpm add lucide-react
+pnpm add @radix-ui/react-icons
+```
+
+**5. Init Shadcn**
+
+```bash
+pnpm dlx shadcn-ui@latest init
+```
+
+example
+
+> Where is your global CSS file? … @src/globals.css
+
+> Configure the import alias for components: … @src/components
+
+> Configure the import alias for utils: … @src/lib/utils
+
+**6. Import globals.css**
+
+Import `import '@src/globals.css';` in index.tsx for each page.
+
 
 ## Pages <a name="pages"></a>
 
