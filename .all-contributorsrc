@@ -384,6 +384,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "ofir-zeitoun",
+      "name": "Ofir Zeitoun",
+      "avatar_url": "https://avatars.githubusercontent.com/u/958929?v=4",
+      "profile": "https://github.com/ofir-zeitoun",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
