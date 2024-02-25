@@ -483,6 +483,7 @@ manifest.json
       <td align="center" valign="top" width="14.28%"><a href="http://devkitty.app"><img src="https://avatars.githubusercontent.com/u/6418221?v=4?s=50" width="50px;" alt="Egor Stronhin"/><br /><sub><b>Egor Stronhin</b></sub></a><br /><a href="#doc-egor-xyz" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/webLiang"><img src="https://avatars.githubusercontent.com/u/38065991?v=4?s=50" width="50px;" alt="webLiang"/><br /><sub><b>webLiang</b></sub></a><br /><a href="#code-webLiang" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://adamspiers.org"><img src="https://avatars.githubusercontent.com/u/100738?v=4?s=50" width="50px;" alt="Adam Spiers"/><br /><sub><b>Adam Spiers</b></sub></a><br /><a href="#bug-aspiers" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ofir-zeitoun"><img src="https://avatars.githubusercontent.com/u/958929?v=4?s=50" width="50px;" alt="Ofir Zeitoun"/><br /><sub><b>Ofir Zeitoun</b></sub></a><br /><a href="#code-ofir-zeitoun" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
