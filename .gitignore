@@ -2,14 +2,17 @@
 **/node_modules
 
 # testing
-/coverage
+**/coverage
 
 # build
 **/dist
 
+# env
+**/.env.local
+**/.env
+
 # etc
 .DS_Store
-.env.local
 .idea
 **/.turbo
 
