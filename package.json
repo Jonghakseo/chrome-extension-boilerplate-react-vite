@@ -13,9 +13,9 @@
     "test": "turbo test",
     "type-check": "turbo type-check",
     "commitlint": "commitlint --edit",
-    "lint": "eslint src --ext .ts,.js,.tsx,.jsx",
-    "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "prettier": "turbo prettier",
     "prepare": "husky install"
   },
   "type": "module",
