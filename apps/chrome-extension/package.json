@@ -11,7 +11,7 @@
     "wss": "node utils/reload/initReloadServer.js",
     "dev": "pnpm build:hmr && (run-p wss build:watch)",
     "dev:firefox": "pnpm build:hmr && (run-p wss build:firefox:watch)",
-    "test": "vitest",
+    "test": "vitest run",
     "lint": "eslint src --ext .ts,.js,.tsx,.jsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write",
