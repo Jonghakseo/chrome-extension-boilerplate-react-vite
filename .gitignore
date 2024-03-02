@@ -14,6 +14,6 @@
 **/.turbo
 
 # compiled
-utils/reload/*.js
-utils/reload/injections/*.js
-public/manifest.json
+apps/chrome-extension/utils/reload/*.js
+apps/chrome-extension/utils/reload/injections/*.js
+apps/chrome-extension/public/manifest.json
