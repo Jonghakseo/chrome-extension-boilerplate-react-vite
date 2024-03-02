@@ -3,7 +3,7 @@ import * as path from 'path';
 import colorLog from '../log';
 import ManifestParser from '../manifest-parser';
 import type { PluginOption } from 'vite';
-import url from 'url';
+import { pathToFileURL } from 'url';
 import * as process from 'process';
 
 const { resolve } = path;
@@ -18,7 +18,7 @@ const getManifestWithCacheBurst = (): Promise<{ default: chrome.runtime.Manifest
    * So, we need to convert path to file:// protocol. (url.pathToFileURL)
    */
   if (process.platform === 'win32') {
-    return import(withCacheBurst(url.pathToFileURL(manifestFile).href));
+    return import(withCacheBurst(pathToFileURL(manifestFile).href));
   }
   return import(withCacheBurst(manifestFile));
 };
