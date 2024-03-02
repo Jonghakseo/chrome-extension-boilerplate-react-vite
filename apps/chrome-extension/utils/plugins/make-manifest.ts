@@ -9,7 +9,6 @@ import * as process from 'process';
 const { resolve } = path;
 
 const rootDir = resolve(__dirname, '..', '..');
-const distDir = resolve(rootDir, 'dist');
 const manifestFile = resolve(rootDir, 'manifest.js');
 
 const getManifestWithCacheBurst = (): Promise<{ default: chrome.runtime.ManifestV3 }> => {
@@ -24,7 +23,7 @@ const getManifestWithCacheBurst = (): Promise<{ default: chrome.runtime.Manifest
   return import(withCacheBurst(manifestFile));
 };
 
-export default function makeManifest(config?: { getCacheInvalidationKey?: () => string }): PluginOption {
+export default function makeManifest(config: { getCacheInvalidationKey?: () => string; outDir: string }): PluginOption {
   function makeManifest(manifest: chrome.runtime.ManifestV3, to: string, cacheKey?: string) {
     if (!fs.existsSync(to)) {
       fs.mkdirSync(to);
@@ -49,8 +48,9 @@ export default function makeManifest(config?: { getCacheInvalidationKey?: () => 
     },
     async writeBundle() {
       const invalidationKey = config.getCacheInvalidationKey?.();
+      const outDir = config.outDir;
       const manifest = await getManifestWithCacheBurst();
-      makeManifest(manifest.default, distDir, invalidationKey);
+      makeManifest(manifest.default, outDir, invalidationKey);
     },
   };
 }

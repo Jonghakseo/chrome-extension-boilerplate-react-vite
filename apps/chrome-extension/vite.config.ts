@@ -11,6 +11,7 @@ const pagesDir = resolve(srcDir, 'pages');
 const isDev = process.env.__DEV__ === 'true';
 const isProduction = !isDev;
 
+const outDir = resolve(rootDir, '..', '..', 'dist');
 export default defineConfig({
   resolve: {
     alias: {
@@ -20,10 +21,10 @@ export default defineConfig({
       '@pages': pagesDir,
     },
   },
-  plugins: [...getPlugins(isDev), react()],
+  plugins: [...getPlugins(isDev, outDir), react()],
   publicDir: resolve(rootDir, 'public'),
   build: {
-    outDir: resolve(rootDir, 'dist'),
+    outDir,
     /** Can slow down build speed. */
     // sourcemap: isDev,
     minify: isProduction,

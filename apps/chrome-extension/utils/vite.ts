@@ -5,8 +5,8 @@ import addHmr from './plugins/add-hmr';
 import watchRebuild from './plugins/watch-rebuild';
 import inlineVitePreloadScript from './plugins/inline-vite-preload-script';
 
-export const getPlugins = (isDev: boolean): PluginOption[] => [
-  makeManifest({ getCacheInvalidationKey }),
+export const getPlugins = (isDev: boolean, outDir: string): PluginOption[] => [
+  makeManifest({ getCacheInvalidationKey, outDir }),
   customDynamicImport(),
   // You can toggle enable HMR in background script or view
   addHmr({ background: true, view: true, isDev }),

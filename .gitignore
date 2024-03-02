@@ -5,12 +5,13 @@
 /coverage
 
 # build
-/dist
+**/dist
 
 # etc
 .DS_Store
 .env.local
 .idea
+**/.turbo
 
 # compiled
 utils/reload/*.js
