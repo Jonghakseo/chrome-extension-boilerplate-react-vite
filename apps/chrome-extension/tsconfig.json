@@ -13,10 +13,6 @@
       "virtual:reload-on-update-in-view": ["./src/global.d.ts"]
     }
   },
-  "exclude": [
-    "./graphql/types.ts",
-    "./graphql/mock/index.ts",
-    "**/__generated__"
-  ],
+  "exclude": ["./graphql/types.ts", "./graphql/mock/index.ts", "**/__generated__"],
   "include": ["src", "utils", "vite.config.ts", "node_modules/@types"]
 }
