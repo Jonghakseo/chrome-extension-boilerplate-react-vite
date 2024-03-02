@@ -89,9 +89,9 @@ async function updateCache<D>(valueOrUpdate: ValueOrUpdate<D>, cache: D | null):
   if (isFunction(valueOrUpdate)) {
     // Check if the function returns a Promise
     if (returnsPromise(valueOrUpdate)) {
-      return await valueOrUpdate(cache);
+      return await valueOrUpdate(cache as D);
     } else {
-      return valueOrUpdate(cache);
+      return valueOrUpdate(cache as D);
     }
   } else {
     return valueOrUpdate;

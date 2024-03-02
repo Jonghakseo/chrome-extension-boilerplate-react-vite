@@ -1,20 +1,8 @@
 {
+  "extends": "@chrome-extension-boilerplate/tsconfig/app.json",
   "compilerOptions": {
-    "noEmit": true,
-    "baseUrl": ".",
-    "allowJs": false,
-    "target": "esnext",
-    "module": "esnext",
-    "jsx": "react-jsx",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "node",
+    "baseUrl": "./",
     "types": ["vite/client", "node"],
-    "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "forceConsistentCasingInFileNames": true,
     "typeRoots": ["./src/global.d.ts", "node_modules/@types"],
     "paths": {
       "@root/*": ["./*"],
@@ -25,5 +13,10 @@
       "virtual:reload-on-update-in-view": ["./src/global.d.ts"]
     }
   },
+  "exclude": [
+    "./graphql/types.ts",
+    "./graphql/mock/index.ts",
+    "**/__generated__"
+  ],
   "include": ["src", "utils", "vite.config.ts", "node_modules/@types"]
 }

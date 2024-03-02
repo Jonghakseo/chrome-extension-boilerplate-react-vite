@@ -31,7 +31,7 @@ export default function makeManifest(config: { getCacheInvalidationKey?: () => s
     const manifestPath = resolve(to, 'manifest.json');
     if (cacheKey) {
       // Naming change for cache invalidation
-      manifest.content_scripts.forEach(script => {
+      manifest.content_scripts?.forEach(script => {
         script.css &&= script.css.map(css => css.replace('<KEY>', cacheKey));
       });
     }

@@ -2,9 +2,10 @@ import { useSyncExternalStore } from 'react';
 import { BaseStorage } from '@src/shared/storages/base';
 
 type WrappedPromise = ReturnType<typeof wrapPromise>;
-const storageMap: Map<BaseStorage<unknown>, WrappedPromise> = new Map();
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const storageMap: Map<BaseStorage<any>, WrappedPromise> = new Map();
 
-export default function useStorage<
+export default function useStorageSuspense<
   Storage extends BaseStorage<Data>,
   Data = Storage extends BaseStorage<infer Data> ? Data : unknown,
 >(storage: Storage) {
@@ -36,12 +37,13 @@ function wrapPromise<R>(promise: Promise<R>) {
 
   return {
     read() {
-      if (status === 'pending') {
-        throw suspender;
-      } else if (status === 'error') {
-        throw result;
-      } else if (status === 'success') {
-        return result;
+      switch (status) {
+        case 'pending':
+          throw suspender;
+        case 'error':
+          throw result;
+        default:
+          return result;
       }
     },
   };

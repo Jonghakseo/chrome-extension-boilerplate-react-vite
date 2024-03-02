@@ -2,13 +2,13 @@ import React from 'react';
 import logo from '@assets/img/logo.svg';
 import '@pages/newtab/Newtab.css';
 import '@pages/newtab/Newtab.scss';
-import useStorage from '@src/shared/hooks/useStorage';
+import useStorageSuspense from '@src/shared/hooks/useStorageSuspense';
 import exampleThemeStorage from '@src/shared/storages/exampleThemeStorage';
 import withSuspense from '@src/shared/hoc/withSuspense';
 import withErrorBoundary from '@src/shared/hoc/withErrorBoundary';
 
 const Newtab = () => {
-  const theme = useStorage(exampleThemeStorage);
+  const theme = useStorageSuspense(exampleThemeStorage);
 
   return (
     <div
@@ -26,7 +26,7 @@ const Newtab = () => {
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: theme === 'light' && '#0281dc', marginBottom: '10px' }}>
+          style={{ color: theme === 'light' ? '#0281dc' : undefined, marginBottom: '10px' }}>
           Learn React!
         </a>
         <h6>The color of this paragraph is defined using SASS.</h6>

@@ -15,12 +15,19 @@ export default function inlineVitePreloadScript(): PluginOption {
       }
       if (!__vitePreload) {
         const chunkName: string | undefined = Object.keys(meta.chunks).find(key => /preload/.test(key));
-        const modules = meta.chunks?.[chunkName]?.modules;
-        __vitePreload = modules?.[Object.keys(modules)?.[0]]?.code;
-        __vitePreload = __vitePreload?.replaceAll('const ', 'var ');
-        if (!__vitePreload) {
+        if (!chunkName) {
           return null;
         }
+        const modules = meta.chunks?.[chunkName]?.modules;
+        const firstModuleId = Object.keys(modules)?.at(0);
+        if (!firstModuleId) {
+          return null;
+        }
+        const replacedCode = modules[firstModuleId]?.code;
+        if (!replacedCode) {
+          return null;
+        }
+        __vitePreload = replacedCode.replaceAll('const ', 'var ');
       }
       return {
         code: __vitePreload + code.split(`\n`).slice(1).join(`\n`),

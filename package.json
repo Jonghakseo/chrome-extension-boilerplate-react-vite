@@ -11,6 +11,7 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "test": "turbo test",
+    "type-check": "turbo type-check",
     "commitlint": "commitlint --edit",
     "lint": "eslint src --ext .ts,.js,.tsx,.jsx",
     "lint:fix": "pnpm lint --fix",

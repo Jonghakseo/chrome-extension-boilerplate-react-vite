@@ -14,7 +14,8 @@
     "test": "vitest",
     "lint": "eslint src --ext .ts,.js,.tsx,.jsx",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write"
+    "prettier": "prettier . --write",
+    "type-check": "tsc --noEmit"
   },
   "type": "module",
   "dependencies": {
@@ -22,6 +23,7 @@
     "webextension-polyfill": "0.10.0"
   },
   "devDependencies": {
+    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@rollup/plugin-typescript": "11.1.6",
     "@testing-library/react": "14.0.0",

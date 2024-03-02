@@ -28,6 +28,7 @@ export default function addHmr(config: Config): PluginOption {
       if (id === idInBackgroundScript || id === idInView) {
         return getResolvedId(id);
       }
+      return undefined;
     },
     load(id) {
       if (id === getResolvedId(idInBackgroundScript)) {
@@ -37,6 +38,7 @@ export default function addHmr(config: Config): PluginOption {
       if (id === getResolvedId(idInView)) {
         return view ? viewHmrCode : DUMMY_CODE;
       }
+      return undefined;
     },
   };
 }

@@ -7,6 +7,9 @@
     },
     "build": {
       "outputs": ["dist/**"]
+    },
+    "type-check": {
+      "cache": false
     }
   }
 }
