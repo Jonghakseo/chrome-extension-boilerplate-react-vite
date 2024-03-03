@@ -1,0 +1,18 @@
+{
+  "extends": "@chrome-extension-boilerplate/tsconfig/app.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "types": ["vite/client", "node"],
+    "typeRoots": ["./src/global.d.ts", "node_modules/@types"],
+    "paths": {
+      "@root/*": ["./*"],
+      "@src/*": ["src/*"],
+      "@assets/*": ["src/assets/*"],
+      "@pages/*": ["src/pages/*"],
+      "virtual:reload-on-update-in-background-script": ["./src/global.d.ts"],
+      "virtual:reload-on-update-in-view": ["./src/global.d.ts"]
+    }
+  },
+  "exclude": ["./graphql/types.ts", "./graphql/mock/index.ts", "**/__generated__"],
+  "include": ["src", "utils", "vite.config.ts", "node_modules/@types"]
+}
