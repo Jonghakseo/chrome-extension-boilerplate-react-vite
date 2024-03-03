@@ -5,7 +5,7 @@ import MagicString from 'magic-string';
  * solution for multiple content scripts
  * https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/177#issuecomment-1784112536
  */
-export default function inlineVitePreloadScript(): PluginOption {
+export default function inlineVitePreloadScriptPlugin(): PluginOption {
   let __vitePreload = '';
   return {
     name: 'replace-vite-preload-script-plugin',

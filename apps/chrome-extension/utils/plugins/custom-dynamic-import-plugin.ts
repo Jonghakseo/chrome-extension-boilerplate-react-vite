@@ -1,6 +1,6 @@
 import type { PluginOption } from 'vite';
 
-export default function customDynamicImport(): PluginOption {
+export default function customDynamicImportPlugin(): PluginOption {
   return {
     name: 'custom-dynamic-import',
     renderDynamicImport({ moduleId }) {

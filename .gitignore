@@ -6,6 +6,7 @@
 
 # build
 **/dist
+**/build
 
 # env
 **/.env.local
@@ -17,6 +18,4 @@
 **/.turbo
 
 # compiled
-apps/chrome-extension/utils/reload/*.js
-apps/chrome-extension/utils/reload/injections/*.js
 apps/chrome-extension/public/manifest.json

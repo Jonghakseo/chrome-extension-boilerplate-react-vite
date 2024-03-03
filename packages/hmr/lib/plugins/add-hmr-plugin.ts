@@ -3,9 +3,12 @@ import { readFileSync } from 'fs';
 import type { PluginOption } from 'vite';
 
 const DUMMY_CODE = `export default function(){};`;
+const HMR_PACKAGE_ROOT = path.resolve(__dirname, '..', '..', '..');
 
 function getInjectionCode(fileName: string): string {
-  return readFileSync(path.resolve(__dirname, '..', 'reload', 'injections', fileName), { encoding: 'utf8' });
+  return readFileSync(path.resolve(HMR_PACKAGE_ROOT, 'build', 'injections', fileName), {
+    encoding: 'utf8',
+  });
 }
 
 type Config = {
@@ -14,7 +17,7 @@ type Config = {
   view: boolean;
 };
 
-export default function addHmr(config: Config): PluginOption {
+export function addHmrPlugin(config: Config): PluginOption {
   const { background, view, isDev } = config;
   const idInBackgroundScript = 'virtual:reload-on-update-in-background-script';
   const idInView = 'virtual:reload-on-update-in-view';

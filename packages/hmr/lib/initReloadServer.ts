@@ -1,8 +1,10 @@
+#!/usr/bin/env node
+
 import { WebSocket, WebSocketServer } from 'ws';
 import chokidar from 'chokidar';
 import { LOCAL_RELOAD_SOCKET_PORT, LOCAL_RELOAD_SOCKET_URL } from './constant';
 import MessageInterpreter from './interpreter';
-import { debounce } from './utils';
+import { debounce } from './debounce';
 
 const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
 let needToForceReload = false;

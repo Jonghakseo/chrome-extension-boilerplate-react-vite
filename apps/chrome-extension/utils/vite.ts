@@ -1,18 +1,17 @@
 import { type PluginOption } from 'vite';
-import makeManifest from './plugins/make-manifest';
-import customDynamicImport from './plugins/custom-dynamic-import';
-import addHmr from './plugins/add-hmr';
-import watchRebuild from './plugins/watch-rebuild';
-import inlineVitePreloadScript from './plugins/inline-vite-preload-script';
+import makeManifestPlugin from './plugins/make-manifest-plugin';
+import customDynamicImportPlugin from './plugins/custom-dynamic-import-plugin';
+import inlineVitePreloadScriptPlugin from './plugins/inline-vite-preload-script-plugin';
+import { addHmrPlugin, watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
 
 export const getPlugins = (isDev: boolean, outDir: string): PluginOption[] => [
-  makeManifest({ getCacheInvalidationKey, outDir }),
-  customDynamicImport(),
+  makeManifestPlugin({ getCacheInvalidationKey, outDir }),
+  customDynamicImportPlugin(),
   // You can toggle enable HMR in background script or view
-  addHmr({ background: true, view: true, isDev }),
-  isDev && watchRebuild({ afterWriteBundle: regenerateCacheInvalidationKey }),
+  addHmrPlugin({ background: true, view: true, isDev }),
+  isDev && watchRebuildPlugin({ afterWriteBundle: regenerateCacheInvalidationKey }),
   // For fix issue#177 (https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/177)
-  inlineVitePreloadScript(),
+  inlineVitePreloadScriptPlugin(),
 ];
 
 const cacheInvalidationKeyRef = { current: generateKey() };
