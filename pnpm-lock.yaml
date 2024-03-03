@@ -94,6 +94,9 @@ importers:
         specifier: 0.10.0
         version: 0.10.0
     devDependencies:
+      '@chrome-extension-boilerplate/dev-utils':
+        specifier: workspace:*
+        version: link:../../packages/dev-utils
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -127,9 +130,6 @@ importers:
       npm-run-all:
         specifier: 4.1.5
         version: 4.1.5
-      prettier:
-        specifier: 3.2.5
-        version: 3.2.5
       rollup:
         specifier: 4.3.0
         version: 4.3.0
@@ -148,6 +148,12 @@ importers:
       ws:
         specifier: 8.14.2
         version: 8.14.2
+
+  packages/dev-utils:
+    devDependencies:
+      '@chrome-extension-boilerplate/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
 
   packages/tsconfig: {}
 

@@ -1,7 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import colorLog from '../log';
-import ManifestParser from '../manifest-parser';
+import { ManifestParser, colorLog } from '@chrome-extension-boilerplate/dev-utils';
 import type { PluginOption } from 'vite';
 import { pathToFileURL } from 'url';
 import * as process from 'process';
@@ -36,7 +35,8 @@ export default function makeManifest(config: { getCacheInvalidationKey?: () => s
       });
     }
 
-    fs.writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest));
+    const isFirefox = process.env.__FIREFOX__;
+    fs.writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox ? 'firefox' : 'chrome'));
 
     colorLog(`Manifest file copy complete: ${manifestPath}`, 'success');
   }

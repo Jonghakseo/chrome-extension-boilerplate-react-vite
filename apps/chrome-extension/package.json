@@ -23,6 +23,7 @@
     "webextension-polyfill": "0.10.0"
   },
   "devDependencies": {
+    "@chrome-extension-boilerplate/dev-utils": "workspace:*",
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@rollup/plugin-typescript": "11.1.6",
@@ -34,7 +35,6 @@
     "jsdom": "^22.1.0",
     "magic-string": "^0.30.6",
     "npm-run-all": "4.1.5",
-    "prettier": "3.2.5",
     "rollup": "4.3.0",
     "sass": "1.69.5",
     "ts-loader": "9.5.0",
