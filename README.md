@@ -486,7 +486,7 @@ manifest.json
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ofir-zeitoun"><img src="https://avatars.githubusercontent.com/u/958929?v=4?s=50" width="50px;" alt="Ofir Zeitoun"/><br /><sub><b>Ofir Zeitoun</b></sub></a><br /><a href="#code-ofir-zeitoun" title="Code">💻</a></td>
     </tr>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/barantaran"><img src="https://avatars.githubusercontent.com/u/5602094?v=4?s=50" width="50px;" alt="Dmitri Yourchev"/><br /><sub><b>Dmitri Yourchev</b></sub></a><br /><a href="#code-barantaran" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/barantaran"><img src="https://avatars.githubusercontent.com/u/5602094?v=4?s=50" width="50px;" alt="Dmitri Yourchev"/><br /><sub><b>Dmitri Yourchev</b></sub></a><br /><a href="#code-barantaran" title="Code">💻</a> <a href="#bug-barantaran" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://gaishi.dev"><img src="https://avatars.githubusercontent.com/u/23699120?v=4?s=50" width="50px;" alt="Gaishi Hirota"/><br /><sub><b>Gaishi Hirota</b></sub></a><br /><a href="#code-Gai-H" title="Code">💻</a></td>
     </tr>
   </tbody>
