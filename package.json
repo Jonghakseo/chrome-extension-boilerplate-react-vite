@@ -31,7 +31,7 @@
     "webextension-polyfill": "0.10.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "18.4.4",
+    "@commitlint/cli": "19.0.3",
     "@commitlint/config-conventional": "18.1.0",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@rollup/plugin-typescript": "11.1.6",
