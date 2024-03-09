@@ -2,8 +2,7 @@
   "extends": "@chrome-extension-boilerplate/tsconfig/app.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "types": ["vite/client", "node"],
-    "typeRoots": ["./src/global.d.ts", "node_modules/@types"],
+    "types": ["vite/client", "node", "chrome", "./src/global.d.ts"],
     "paths": {
       "@root/*": ["./*"],
       "@src/*": ["src/*"],

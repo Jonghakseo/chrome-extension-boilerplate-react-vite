@@ -1,18 +1,19 @@
 {
-  "name": "@chrome-extension-boilerplate/dev-utils",
+  "name": "@chrome-extension-boilerplate/shared",
   "version": "0.0.1",
-  "description": "chrome extension dev utils",
+  "description": "chrome extension shared code",
   "private": true,
   "sideEffects": false,
   "files": [
     "dist/**"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "clean": "rimraf ./dist && rimraf ./build",
-    "build": "pnpm run clean && tsc",
+    "clean": "rimraf ./dist",
+    "build": "tsup index.ts --format esm,cjs --dts --external react,chrome",
+    "dev": "tsc -w",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write",
@@ -20,6 +21,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*"
+    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "tsup": "8.0.2"
   }
 }

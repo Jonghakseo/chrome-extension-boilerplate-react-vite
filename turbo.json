@@ -7,8 +7,9 @@
       "persistent": true
     },
     "build": {
+      "dependsOn": ["clean"],
       "outputs": [
-        "dist/**"
+        "dist/**", "build/**"
       ]
     },
     "type-check": {

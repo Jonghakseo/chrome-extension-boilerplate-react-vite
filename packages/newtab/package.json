@@ -1,25 +1,29 @@
 {
-  "name": "@chrome-extension-boilerplate/dev-utils",
+  "name": "@chrome-extension-boilerplate/new-tab",
   "version": "0.0.1",
-  "description": "chrome extension dev utils",
+  "description": "chrome extension new tab",
   "private": true,
   "sideEffects": false,
   "files": [
     "dist/**"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rimraf ./dist && rimraf ./build",
-    "build": "pnpm run clean && tsc",
+    "clean": "rimraf ./dist",
+    "build": "pnpm run clean && tsc --noEmit && vite build",
+    "build:watch": "cross-env __DEV__=true vite build -w --mode development",
+    "dev": "pnpm build:watch",
+    "test": "vitest run",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write",
     "type-check": "tsc --noEmit"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@chrome-extension-boilerplate/shared": "workspace:*"
+  },
   "devDependencies": {
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*"
+    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "vite": "5.0.12",
+    "@vitejs/plugin-react": "4.2.0"
   }
 }

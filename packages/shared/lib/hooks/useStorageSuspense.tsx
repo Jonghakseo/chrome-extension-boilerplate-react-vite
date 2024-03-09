@@ -1,11 +1,11 @@
 import { useSyncExternalStore } from 'react';
-import { BaseStorage } from '@src/shared/storages/base';
+import { BaseStorage } from '@lib/storages/base';
 
 type WrappedPromise = ReturnType<typeof wrapPromise>;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const storageMap: Map<BaseStorage<any>, WrappedPromise> = new Map();
 
-export default function useStorageSuspense<
+export function useStorageSuspense<
   Storage extends BaseStorage<Data>,
   Data = Storage extends BaseStorage<infer Data> ? Data : unknown,
 >(storage: Storage) {

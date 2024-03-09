@@ -1,10 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Newtab from '@pages/newtab/Newtab';
-import '@pages/newtab/index.css';
-import refreshOnUpdate from 'virtual:reload-on-update-in-view';
-
-refreshOnUpdate('pages/newtab');
+import Newtab from '@src/Newtab';
+import '@src/index.css';
 
 function init() {
   const appContainer = document.querySelector('#app-container');

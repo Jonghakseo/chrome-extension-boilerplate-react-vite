@@ -22,8 +22,7 @@
   "type": "module",
   "dependencies": {
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "turbo": "^1.12.4"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "18.4.4",
@@ -48,6 +47,7 @@
     "prettier": "3.2.5",
     "rimraf": "^5.0.5",
     "tslib": "2.6.2",
+    "turbo": "^1.12.4",
     "typescript": "5.2.2"
   },
   "lint-staged": {

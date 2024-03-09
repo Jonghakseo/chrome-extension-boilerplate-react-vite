@@ -1,4 +1,4 @@
-import { BaseStorage, createStorage, StorageType } from '@src/shared/storages/base';
+import { BaseStorage, createStorage, StorageType } from '@lib/storages/base';
 
 type Theme = 'light' | 'dark';
 
@@ -11,7 +11,7 @@ const storage = createStorage<Theme>('theme-storage-key', 'light', {
   liveUpdate: true,
 });
 
-const exampleThemeStorage: ThemeStorage = {
+export const exampleThemeStorage: ThemeStorage = {
   ...storage,
   // TODO: extends your own methods
   toggle: async () => {
@@ -20,5 +20,3 @@ const exampleThemeStorage: ThemeStorage = {
     });
   },
 };
-
-export default exampleThemeStorage;
