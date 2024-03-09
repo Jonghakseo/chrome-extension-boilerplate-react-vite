@@ -103,6 +103,9 @@ importers:
       '@chrome-extension-boilerplate/hmr-old':
         specifier: workspace:*
         version: link:../../packages/hmr-old
+      '@chrome-extension-boilerplate/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig

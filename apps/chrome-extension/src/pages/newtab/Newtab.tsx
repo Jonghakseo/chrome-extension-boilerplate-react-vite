@@ -2,10 +2,12 @@ import React from 'react';
 import logo from '@assets/img/logo.svg';
 import '@pages/newtab/Newtab.css';
 import '@pages/newtab/Newtab.scss';
-import useStorageSuspense from '@src/shared/hooks/useStorageSuspense';
-import exampleThemeStorage from '@src/shared/storages/exampleThemeStorage';
-import withSuspense from '@src/shared/hoc/withSuspense';
-import withErrorBoundary from '@src/shared/hoc/withErrorBoundary';
+import {
+  exampleThemeStorage,
+  useStorageSuspense,
+  withSuspense,
+  withErrorBoundary,
+} from '@chrome-extension-boilerplate/shared';
 
 const Newtab = () => {
   const theme = useStorageSuspense(exampleThemeStorage);
