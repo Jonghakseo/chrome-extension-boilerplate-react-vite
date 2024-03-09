@@ -11,7 +11,10 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc -b tsconfig.build.json && rollup --config rollup.config.mjs",
+    "clean": "rimraf ./dist && rimraf ./build",
+    "build:tsc": "tsc -b tsconfig.build.json",
+    "build:rollup": "rollup --config rollup.config.mjs",
+    "build": "pnpm run clean && pnpm run build:tsc && pnpm run build:rollup",
     "dev": "node -r esm build/initReloadServer.js",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",

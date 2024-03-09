@@ -11,8 +11,8 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc -w",
+    "clean": "rimraf ./dist && rimraf ./build",
+    "build": "pnpm run clean && tsc",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write",
