@@ -1,5 +1,5 @@
 {
-  "name": "@chrome-extension-boilerplate/hmr",
+  "name": "@chrome-extension-boilerplate/hmr-old",
   "version": "0.0.1",
   "description": "chrome extension hot module reload or refresh",
   "private": true,

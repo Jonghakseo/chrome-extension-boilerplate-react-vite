@@ -2,7 +2,7 @@ import { type PluginOption } from 'vite';
 import makeManifestPlugin from './plugins/make-manifest-plugin';
 import customDynamicImportPlugin from './plugins/custom-dynamic-import-plugin';
 import inlineVitePreloadScriptPlugin from './plugins/inline-vite-preload-script-plugin';
-import { addHmrPlugin, watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
+import { addHmrPlugin, watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr-old';
 
 export const getPlugins = (isDev: boolean, outDir: string): PluginOption[] => [
   makeManifestPlugin({ getCacheInvalidationKey, outDir }),

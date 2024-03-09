@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@chrome-extension-boilerplate/dev-utils": "workspace:*",
-    "@chrome-extension-boilerplate/hmr": "workspace:*",
+    "@chrome-extension-boilerplate/hmr-old": "workspace:*",
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
     "@testing-library/react": "14.0.0",
     "@types/ws": "8.5.8",
