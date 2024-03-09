@@ -1,4 +1,5 @@
 import '@src/Newtab.css';
+import '@src/Newtab.scss';
 import {
   exampleThemeStorage,
   useStorageSuspense,
