@@ -8,9 +8,11 @@
       ]
     },
     "jsx": "react-jsx",
-    "types": ["chrome"]
+    "types": [
+      "chrome"
+    ]
   },
   "include": [
-    "src/**/*"
+    "src"
   ]
 }

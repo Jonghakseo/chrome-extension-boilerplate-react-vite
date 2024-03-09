@@ -1,4 +1,10 @@
-import { exampleThemeStorage, useStorageSuspense } from '@chrome-extension-boilerplate/shared';
+import '@src/Newtab.css';
+import {
+  exampleThemeStorage,
+  useStorageSuspense,
+  withErrorBoundary,
+  withSuspense,
+} from '@chrome-extension-boilerplate/shared';
 
 const Newtab = () => {
   const theme = useStorageSuspense(exampleThemeStorage);
@@ -10,7 +16,8 @@ const Newtab = () => {
         backgroundColor: theme === 'light' ? '#ffffff' : '#000000',
       }}>
       <header className="App-header" style={{ color: theme === 'light' ? '#000' : '#fff' }}>
-        <img src={chrome.runtime.getURL('./logo.svg')} className="App-logo" alt="logo" />
+        {/*TODO: ADD asset managing module or some other solution */}
+        <img src={chrome.runtime.getURL('./src/pages/newtab/logo.svg')} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/pages/newtab/Newtab.tsx</code> and save to reload.
         </p>
@@ -36,4 +43,4 @@ const Newtab = () => {
   );
 };
 
-export default Newtab;
+export default withErrorBoundary(withSuspense(Newtab, <div> Loading ... </div>), <div> Error Occur </div>);

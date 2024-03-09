@@ -1,7 +1,6 @@
-import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Newtab from '@src/Newtab';
 import '@src/index.css';
+import Newtab from '@src/Newtab';
 
 function init() {
   const appContainer = document.querySelector('#app-container');
