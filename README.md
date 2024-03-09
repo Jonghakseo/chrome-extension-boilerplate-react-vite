@@ -87,7 +87,8 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ## Add Style Library <a name="add-style-library"></a>
 
-> IMPORTANT: If you DO NOT want to use css file in the content script, you need to delete the css file in your manifest.js
+> IMPORTANT: If you DO NOT want to use css file in the content script, you need to delete the css file in your
+> manifest.js
 
 ```js
 content_scripts: [
@@ -167,7 +168,7 @@ root.render(<Popup />);
 **5. If you want to use Twind in the content script, you need to add the following code:**
 
 <details>
-<summary>src/pages/content/ui/index.tsx</summary>
+<summary>src/pages/content/ui/root.tsx</summary>
 
 ```tsx
 import { attachTwindStyle } from '@src/shared/style/twind';
@@ -176,6 +177,7 @@ import { attachTwindStyle } from '@src/shared/style/twind';
 attachTwindStyle(rootIntoShadow, shadowRoot);
 createRoot(rootIntoShadow).render(<App />);
 ```
+
 </details>
 
 [See more examples](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/244/)
@@ -378,7 +380,8 @@ manifest.json
 
 ### ContentScript <a name="contentscript"></a>
 
-[Content Script (contentInjected/contentUI)](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts` in
+[Content Script (contentInjected/contentUI)](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts`
+in
 manifest.json
 
 ### Options <a name="options"></a>
