@@ -14,9 +14,9 @@ const Newtab = () => {
     <div
       className="App"
       style={{
-        backgroundColor: theme === 'light' ? '#ffffff' : '#000000',
+        backgroundColor: theme === 'light' ? '#eee' : '#222',
       }}>
-      <header className="App-header" style={{ color: theme === 'light' ? '#000' : '#fff' }}>
+      <header className="App-header" style={{ color: theme === 'light' ? '#222' : '#eee' }}>
         {/*TODO: ADD asset managing module or some other solution */}
         <img src={chrome.runtime.getURL('newtab/logo.svg')} className="App-logo" alt="logo" />
         <p>
@@ -28,13 +28,13 @@ const Newtab = () => {
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: theme === 'light' ? '#0281dc' : undefined, marginBottom: '10px' }}>
-          Learn React!!12345
+          Learn React
         </a>
         <h6>The color of this paragraph is defined using SASS.</h6>
         <button
           style={{
-            backgroundColor: theme === 'light' ? '#fff' : '#000',
-            color: theme === 'light' ? '#000' : '#fff',
+            backgroundColor: theme === 'light' ? '#eee' : '#222',
+            color: theme === 'light' ? '#222' : '#eee',
           }}
           onClick={exampleThemeStorage.toggle}>
           Toggle theme
