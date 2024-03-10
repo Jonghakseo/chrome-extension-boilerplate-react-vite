@@ -12,7 +12,6 @@
     "build": "pnpm run clean && tsc --noEmit && vite build",
     "build:watch": "cross-env __DEV__=true vite build -w --mode development",
     "dev": "pnpm build:watch",
-    "test": "vitest run",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write",
