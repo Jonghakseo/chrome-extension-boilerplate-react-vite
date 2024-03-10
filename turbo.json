@@ -2,15 +2,15 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "dev": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "cache": false,
       "persistent": true
     },
     "build": {
-      "dependsOn": ["clean"],
-      "outputs": [
-        "dist/**", "build/**"
-      ]
+      "dependsOn": ["clean", "^clean", "^build"],
+      "outputs": ["dist/**", "build/**"]
     },
     "type-check": {
       "cache": false
@@ -25,7 +25,9 @@
       "cache": false
     },
     "test": {
-      "dependsOn": ["^test"]
+      "dependsOn": [
+        "^test"
+      ]
     },
     "clean": {
     }

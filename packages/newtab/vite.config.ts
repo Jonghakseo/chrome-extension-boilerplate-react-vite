@@ -17,7 +17,7 @@ export default defineConfig({
     },
   },
   base: '',
-  plugins: [react(), watchRebuildPlugin()],
+  plugins: [react(), isDev && watchRebuildPlugin()],
   publicDir: resolve(rootDir, 'public'),
   build: {
     outDir: resolve(rootDir, '..', '..', 'dist', 'newtab'),

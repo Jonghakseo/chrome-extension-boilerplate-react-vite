@@ -155,36 +155,6 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
 
-  packages/hmr-new:
-    devDependencies:
-      '@chrome-extension-boilerplate/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-      '@rollup/plugin-sucrase':
-        specifier: ^5.0.2
-        version: 5.0.2(rollup@4.12.0)
-      '@types/ws':
-        specifier: 8.5.8
-        version: 8.5.8
-      chokidar:
-        specifier: 3.5.3
-        version: 3.5.3
-      esm:
-        specifier: ^3.2.25
-        version: 3.2.25
-      rollup:
-        specifier: ^4.12.0
-        version: 4.12.0
-      ts-node:
-        specifier: ^10.9.2
-        version: 10.9.2(@types/node@20.8.10)(typescript@5.2.2)
-      vite:
-        specifier: 5.0.12
-        version: 5.0.12(@types/node@20.8.10)(sass@1.69.5)
-      ws:
-        specifier: 8.14.2
-        version: 8.14.2
-
   packages/hmr-old:
     dependencies:
       chokidar:

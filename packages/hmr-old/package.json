@@ -5,6 +5,7 @@
   "private": true,
   "sideEffects": true,
   "files": [
+    "dist/**",
     "build/injections/script.js",
     "build/injections/view.js",
     "build/injections/refresh.js",
