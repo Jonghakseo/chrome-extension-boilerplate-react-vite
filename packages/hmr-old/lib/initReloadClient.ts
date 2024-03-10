@@ -32,7 +32,9 @@ export default function initReloadClient({
       }
       case 'wait_update': {
         if (!needToUpdate) {
-          needToUpdate = message.path.includes(watchPath);
+          // needToUpdate = message.path.includes(watchPath);
+          // TODO: make without path
+          needToUpdate = true;
         }
         return;
       }
