@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
+import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr-old';
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');
@@ -16,10 +17,10 @@ export default defineConfig({
     },
   },
   base: '',
-  plugins: [react()],
+  plugins: [react(), watchRebuildPlugin()],
   publicDir: resolve(rootDir, 'public'),
   build: {
-    outDir: resolve(rootDir, '..', '..', 'dist', 'src', 'pages', 'newtab'),
+    outDir: resolve(rootDir, '..', '..', 'dist', 'newtab'),
     sourcemap: isDev,
     minify: isProduction,
     reportCompressedSize: isProduction,

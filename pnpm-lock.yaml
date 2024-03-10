@@ -209,6 +209,9 @@ importers:
       rollup:
         specifier: ^4.12.0
         version: 4.12.0
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.8.10)(typescript@5.2.2)
       vite:
         specifier: 5.0.12
         version: 5.0.12(@types/node@20.8.10)(sass@1.69.5)
@@ -219,9 +222,9 @@ importers:
         specifier: workspace:*
         version: link:../shared
     devDependencies:
-      '@chrome-extension-boilerplate/hmr-new':
+      '@chrome-extension-boilerplate/hmr-old':
         specifier: workspace:*
-        version: link:../hmr-new
+        version: link:../hmr-old
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig

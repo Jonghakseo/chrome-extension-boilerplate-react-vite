@@ -3,10 +3,11 @@ import { WebSocket } from 'ws';
 import MessageInterpreter from '../interpreter';
 import { LOCAL_RELOAD_SOCKET_URL } from '../constant';
 
-export function watchRebuildPlugin(config: { afterWriteBundle: () => unknown }): PluginOption {
+export function watchRebuildPlugin(config?: { afterWriteBundle?: () => unknown }): PluginOption {
   const ws = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
   return {
     name: 'watch-rebuild',
+    // TODO: send signal when build started and save this module info to send signal when build completed
     writeBundle() {
       /**
        * When the build is complete, send a message to the reload server.
@@ -15,7 +16,7 @@ export function watchRebuildPlugin(config: { afterWriteBundle: () => unknown }):
       ws.send(MessageInterpreter.send({ type: 'build_complete' }));
 
       sendNextQueue(() => {
-        config.afterWriteBundle();
+        config?.afterWriteBundle?.();
       });
     },
   };

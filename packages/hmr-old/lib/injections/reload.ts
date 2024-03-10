@@ -1,16 +1,16 @@
-import initReloadClient from '../initReloadClient';
+import initClient from '../initClient';
 
-function addHmrIntoScript() {
+function addReload() {
   const reload = () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     chrome.runtime.reload();
   };
 
-  initReloadClient({
+  initClient({
     onUpdate: reload,
     onForceReload: reload,
   });
 }
 
-addHmrIntoScript();
+addReload();

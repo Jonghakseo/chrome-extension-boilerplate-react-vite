@@ -8,9 +8,9 @@
     "url": "https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite.git"
   },
   "scripts": {
-    "clean": "turbo clean",
+    "clean": "rimraf dist && turbo clean",
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "pnpm -F hmr-old dev-server & turbo dev",
     "test": "turbo test",
     "type-check": "turbo type-check",
     "commitlint": "commitlint --edit",

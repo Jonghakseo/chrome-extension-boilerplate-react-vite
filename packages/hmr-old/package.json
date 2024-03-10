@@ -3,9 +3,12 @@
   "version": "0.0.1",
   "description": "chrome extension hot module reload or refresh",
   "private": true,
-  "sideEffects": false,
+  "sideEffects": true,
   "files": [
-    "dist/**"
+    "build/injections/script.js",
+    "build/injections/view.js",
+    "build/injections/refresh.js",
+    "build/injections/reload.js"
   ],
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -15,7 +18,7 @@
     "build:tsc": "tsc -b tsconfig.build.json",
     "build:rollup": "rollup --config rollup.config.mjs",
     "build": "pnpm run clean && pnpm run build:tsc && pnpm run build:rollup",
-    "dev": "node -r esm build/initReloadServer.js",
+    "dev-server": "ts-node-esm lib/initReloadServer.ts",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write",
@@ -29,6 +32,7 @@
     "vite": "5.0.12",
     "esm": "^3.2.25",
     "rollup": "^4.12.0",
+    "ts-node": "^10.9.2",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
     "@types/ws": "8.5.8"

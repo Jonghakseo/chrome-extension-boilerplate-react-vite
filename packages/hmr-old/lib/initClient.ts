@@ -1,8 +1,6 @@
 import { LOCAL_RELOAD_SOCKET_URL } from './constant';
 import MessageInterpreter from './interpreter';
 
-let needToUpdate = false;
-
 export default function initReloadClient({
   onUpdate,
   onForceReload,
@@ -18,18 +16,11 @@ export default function initReloadClient({
 
   socket.addEventListener('message', event => {
     const message = MessageInterpreter.receive(String(event.data));
-    console.log('message', message);
+
     switch (message.type) {
       case 'do_update': {
-        if (needToUpdate) {
-          sendUpdateCompleteMessage();
-          needToUpdate = false;
-          onUpdate();
-        }
-        return;
-      }
-      case 'wait_update': {
-        needToUpdate = true;
+        sendUpdateCompleteMessage();
+        onUpdate();
         return;
       }
       case 'force_reload': {

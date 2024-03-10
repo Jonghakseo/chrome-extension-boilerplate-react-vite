@@ -5,6 +5,7 @@ import chokidar from 'chokidar';
 import { LOCAL_RELOAD_SOCKET_PORT, LOCAL_RELOAD_SOCKET_URL } from './constant';
 import MessageInterpreter from './interpreter';
 import { debounce } from './debounce';
+import path from 'path';
 
 const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
 let needToForceReload = false;
@@ -41,17 +42,19 @@ function initReloadServer() {
 
 /** CHECK:: src file was updated **/
 const debounceSrc = debounce(function (path: string) {
+  if (path.includes('manifest.json')) {
+    needToForceReload = true;
+  }
   // Normalize path on Windows
   const pathConverted = path.replace(/\\/g, '/');
   clientsThatNeedToUpdate.forEach((ws: WebSocket) =>
+    // TODO: make without pathConverted
     ws.send(MessageInterpreter.send({ type: 'wait_update', path: pathConverted })),
   );
 }, 100);
-chokidar.watch('src', { ignorePermissionErrors: true }).on('all', (_, path) => debounceSrc(path));
 
-/** CHECK:: manifest.js was updated **/
-chokidar.watch('manifest.js', { ignorePermissionErrors: true }).on('all', () => {
-  needToForceReload = true;
-});
+const buildOutputDir = path.resolve(__dirname, '..', '..', '..', 'dist');
+
+chokidar.watch(buildOutputDir, { ignorePermissionErrors: true }).on('all', (_, path) => debounceSrc(path));
 
 initReloadServer();

@@ -1,3 +1,4 @@
+import '@chrome-extension-boilerplate/hmr-old/build/injections/refresh';
 import { createRoot } from 'react-dom/client';
 import '@src/index.css';
 import Newtab from '@src/Newtab';

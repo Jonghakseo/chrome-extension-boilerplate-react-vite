@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "chrome extension new tab",
   "private": true,
-  "sideEffects": false,
+  "sideEffects": true,
   "files": [
     "dist/**"
   ],
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "@chrome-extension-boilerplate/hmr-old": "workspace:*",
     "vite": "5.0.12",
     "@vitejs/plugin-react": "4.2.0"
   }

@@ -13,14 +13,6 @@ const plugins = [
 export default [
   {
     plugins,
-    input: "lib/initReloadServer.ts",
-    output: {
-      file: "build/initReloadServer.js"
-    },
-    external: ["ws", "chokidar"]
-  },
-  {
-    plugins,
     input: "lib/injections/script.ts",
     output: {
       file: "build/injections/script.js"
@@ -31,6 +23,22 @@ export default [
     input: "lib/injections/view.ts",
     output: {
       file: "build/injections/view.js"
+    }
+  },
+  {
+    plugins,
+    input: "lib/injections/reload.ts",
+    output: {
+      format: "iife",
+      file: "build/injections/reload.js"
+    }
+  },
+  {
+    plugins,
+    input: "lib/injections/refresh.ts",
+    output: {
+      format: "iife",
+      file: "build/injections/refresh.js"
     }
   }
 ];
