@@ -1,0 +1,34 @@
+{
+  "name": "@chrome-extension-boilerplate/hmr-new",
+  "version": "0.0.1",
+  "description": "chrome extension hot module reload or refresh",
+  "private": true,
+  "sideEffects": false,
+  "files": [
+    "dist/injections/script.js",
+    "dist/injections/view.js"
+  ],
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build:rollup": "rollup --config rollup.config.mjs",
+    "build": "pnpm run clean && pnpm run build:rollup",
+    "dev-server": "ts-node-esm lib/initReloadServer.ts",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "pnpm lint --fix",
+    "prettier": "prettier . --write",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@rollup/plugin-sucrase": "^5.0.2",
+    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "@types/ws": "8.5.8",
+    "chokidar": "3.5.3",
+    "vite": "5.0.12",
+    "esm": "^3.2.25",
+    "rollup": "^4.12.0",
+    "ts-node": "^10.9.2",
+    "ws": "8.14.2"
+  }
+}
