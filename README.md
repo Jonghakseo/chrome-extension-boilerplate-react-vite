@@ -224,10 +224,14 @@ export default defineConfig({
 <summary>src/pages/popup/Popup.tsx</summary>
 
 ```tsx
-import { Button } from "@chakra-ui/react";
+import { ChakraProvider, Button } from "@chakra-ui/react";
 
 export default function Popup() {
-  return <Button colorScheme="teal">Button</Button>;
+  return (
+    <ChakraProvider>
+        <Button colorScheme="teal">Button</Button>
+    </ChakraProvider>
+  );
 }
 ```
 
