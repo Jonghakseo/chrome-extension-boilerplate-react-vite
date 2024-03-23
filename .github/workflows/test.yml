@@ -20,9 +20,11 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 8
 
       - run: pnpm install --frozen-lockfile
 
