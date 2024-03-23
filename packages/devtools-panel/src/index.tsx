@@ -1,10 +1,7 @@
-import React from 'react';
+import '@chrome-extension-boilerplate/hmr-old/build/injections/refresh';
 import { createRoot } from 'react-dom/client';
-import Panel from '@pages/panel/Panel';
-import '@pages/panel/index.css';
-import refreshOnUpdate from 'virtual:reload-on-update-in-view';
-
-refreshOnUpdate('pages/panel');
+import '@src/index.css';
+import Panel from '@src/Panel';
 
 function init() {
   const appContainer = document.querySelector('#app-container');
@@ -12,6 +9,7 @@ function init() {
     throw new Error('Can not find #app-container');
   }
   const root = createRoot(appContainer);
+
   root.render(<Panel />);
 }
 

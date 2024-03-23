@@ -155,6 +155,44 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
 
+  packages/devtools:
+    dependencies:
+      '@chrome-extension-boilerplate/shared':
+        specifier: workspace:*
+        version: link:../shared
+    devDependencies:
+      '@chrome-extension-boilerplate/hmr-old':
+        specifier: workspace:*
+        version: link:../hmr-old
+      '@chrome-extension-boilerplate/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@vitejs/plugin-react':
+        specifier: 4.2.0
+        version: 4.2.0(vite@5.0.12)
+      vite:
+        specifier: 5.0.12
+        version: 5.0.12(@types/node@20.8.10)(sass@1.72.0)
+
+  packages/devtools-panel:
+    dependencies:
+      '@chrome-extension-boilerplate/shared':
+        specifier: workspace:*
+        version: link:../shared
+    devDependencies:
+      '@chrome-extension-boilerplate/hmr-old':
+        specifier: workspace:*
+        version: link:../hmr-old
+      '@chrome-extension-boilerplate/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@vitejs/plugin-react':
+        specifier: 4.2.0
+        version: 4.2.0(vite@5.0.12)
+      vite:
+        specifier: 5.0.12
+        version: 5.0.12(@types/node@20.8.10)(sass@1.72.0)
+
   packages/hmr-old:
     dependencies:
       chokidar:
