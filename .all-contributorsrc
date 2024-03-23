@@ -384,6 +384,43 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "ofir-zeitoun",
+      "name": "Ofir Zeitoun",
+      "avatar_url": "https://avatars.githubusercontent.com/u/958929?v=4",
+      "profile": "https://github.com/ofir-zeitoun",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "barantaran",
+      "name": "Dmitri Yourchev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5602094?v=4",
+      "profile": "https://github.com/barantaran",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    },
+    {
+      "login": "Gai-H",
+      "name": "Gaishi Hirota",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23699120?v=4",
+      "profile": "https://gaishi.dev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "debugtheworldbot",
+      "name": "pipizhu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62830430?v=4",
+      "profile": "https://github.com/debugtheworldbot",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
