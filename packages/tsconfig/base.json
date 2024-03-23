@@ -22,9 +22,6 @@
       "DOM",
       "ESNext"
     ]
-  },
-  "exclude": [
-    "node_modules"
-  ]
+  }
 }
 

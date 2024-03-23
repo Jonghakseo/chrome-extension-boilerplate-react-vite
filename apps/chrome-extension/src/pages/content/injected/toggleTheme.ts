@@ -1,5 +1,5 @@
-import exampleThemeStorage from '@src/shared/storages/exampleThemeStorage';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
+import { exampleThemeStorage } from '@chrome-extension-boilerplate/shared';
 
 refreshOnUpdate('pages/content/injected/toggleTheme');
 

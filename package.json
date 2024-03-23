@@ -8,8 +8,9 @@
     "url": "https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite.git"
   },
   "scripts": {
+    "clean": "rimraf dist && turbo clean",
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "pnpm -F hmr-old dev-server & turbo dev",
     "test": "turbo test",
     "type-check": "turbo type-check",
     "commitlint": "commitlint --edit",
@@ -21,8 +22,7 @@
   "type": "module",
   "dependencies": {
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "turbo": "^1.12.4"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@commitlint/cli": "18.4.4",
@@ -45,7 +45,9 @@
     "husky": "8.0.3",
     "lint-staged": "15.2.0",
     "prettier": "3.2.5",
+    "rimraf": "^5.0.5",
     "tslib": "2.6.2",
+    "turbo": "^1.12.4",
     "typescript": "5.2.2"
   },
   "lint-staged": {
