@@ -39,7 +39,6 @@ export default defineConfig({
         contentUI: resolve(pagesDir, 'content', 'ui', 'index.ts'),
         background: resolve(pagesDir, 'background', 'index.ts'),
         contentStyle: resolve(pagesDir, 'content', 'style.scss'),
-        popup: resolve(pagesDir, 'popup', 'index.html'),
         sidepanel: resolve(pagesDir, 'sidepanel', 'index.html'),
       },
       output: {

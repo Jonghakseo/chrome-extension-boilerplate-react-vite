@@ -20,7 +20,7 @@ const Newtab = () => {
         {/*TODO: ADD asset managing module or some other solution */}
         <img src={chrome.runtime.getURL('newtab/logo.svg')} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/pages/newtab/Newtab.tsx</code> and save to reload.
+          Edit <code>packages/newtab/src/Newtab.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"

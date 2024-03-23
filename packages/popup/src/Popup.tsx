@@ -1,11 +1,9 @@
-import React from 'react';
-import logo from '@assets/img/logo.svg';
-import '@pages/popup/Popup.css';
+import '@src/Popup.css';
 import {
   exampleThemeStorage,
   useStorageSuspense,
-  withSuspense,
   withErrorBoundary,
+  withSuspense,
 } from '@chrome-extension-boilerplate/shared';
 
 const Popup = () => {
@@ -18,9 +16,11 @@ const Popup = () => {
         backgroundColor: theme === 'light' ? '#fff' : '#000',
       }}>
       <header className="App-header" style={{ color: theme === 'light' ? '#000' : '#fff' }}>
-        <img src={logo} className="App-logo" alt="logo" />
+        {/*TODO: ADD asset managing module or some other solution */}
+        <img src={chrome.runtime.getURL('newtab/logo.svg')} className="App-logo" alt="logo" />
+
         <p>
-          Edit <code>src/pages/popup/Popup.tsx</code> and save to reload.
+          Edit <code>packages/popup/src/Popup.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"
