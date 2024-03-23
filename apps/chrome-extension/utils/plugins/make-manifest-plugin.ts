@@ -31,7 +31,7 @@ export default function makeManifestPlugin(config: {
       fs.mkdirSync(to);
     }
     const manifestPath = resolve(to, 'manifest.json');
-    if (cacheKey) {
+    if (cacheKey && manifest.content_scripts) {
       // Naming change for cache invalidation
       manifest.content_scripts?.forEach(script => {
         script.css &&= script.css.map(css => css.replace('<KEY>', cacheKey));

@@ -32,7 +32,7 @@
   "devDependencies": {
     "vite": "5.0.12",
     "esm": "^3.2.25",
-    "rollup": "^4.12.0",
+    "rollup": "4.3.0",
     "ts-node": "^10.9.2",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",

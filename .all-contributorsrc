@@ -400,7 +400,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/5602094?v=4",
       "profile": "https://github.com/barantaran",
       "contributions": [
-        "code"
+        "code",
+        "bug"
       ]
     },
     {
@@ -408,6 +409,15 @@
       "name": "Gaishi Hirota",
       "avatar_url": "https://avatars.githubusercontent.com/u/23699120?v=4",
       "profile": "https://gaishi.dev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "debugtheworldbot",
+      "name": "pipizhu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62830430?v=4",
+      "profile": "https://github.com/debugtheworldbot",
       "contributions": [
         "code"
       ]
