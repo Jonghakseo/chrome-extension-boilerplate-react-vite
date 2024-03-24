@@ -1,10 +1,9 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr-old';
 
 const rootDir = resolve(__dirname);
-const srcDir = resolve(rootDir, 'src');
+const libDir = resolve(rootDir, 'lib');
 
 const isDev = process.env.__DEV__ === 'true';
 const isProduction = !isDev;
@@ -12,18 +11,24 @@ const isProduction = !isDev;
 export default defineConfig({
   resolve: {
     alias: {
-      '@src': srcDir,
+      '@lib': libDir,
     },
   },
-  base: '',
-  plugins: [react(), isDev && watchRebuildPlugin()],
+  plugins: [isDev && watchRebuildPlugin()],
   publicDir: resolve(rootDir, 'public'),
   build: {
-    outDir: resolve(rootDir, '..', '..', 'dist', 'devtools-panel'),
+    lib: {
+      formats: ['iife'],
+      entry: resolve(__dirname, 'lib/index.ts'),
+      name: 'ContentScript',
+      fileName: 'index',
+    },
+    outDir: resolve(rootDir, '..', '..', 'dist', 'content'),
     sourcemap: isDev,
     minify: isProduction,
     reportCompressedSize: isProduction,
     emptyOutDir: !isDev,
+    modulePreload: true,
     rollupOptions: {
       external: ['chrome'],
     },

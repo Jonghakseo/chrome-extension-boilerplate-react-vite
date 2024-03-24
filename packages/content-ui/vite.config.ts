@@ -19,7 +19,13 @@ export default defineConfig({
   plugins: [react(), isDev && watchRebuildPlugin()],
   publicDir: resolve(rootDir, 'public'),
   build: {
-    outDir: resolve(rootDir, '..', '..', 'dist', 'devtools-panel'),
+    lib: {
+      entry: resolve(srcDir, 'index.tsx'),
+      name: 'contentUI',
+      formats: ['iife'],
+      fileName: 'index',
+    },
+    outDir: resolve(rootDir, '..', '..', 'dist', 'content-ui'),
     sourcemap: isDev,
     minify: isProduction,
     reportCompressedSize: isProduction,

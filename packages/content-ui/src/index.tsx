@@ -1,9 +1,9 @@
+import '@chrome-extension-boilerplate/hmr-old/build/injections/refresh';
 import { createRoot } from 'react-dom/client';
-import App from '@pages/content/ui/app';
-import refreshOnUpdate from 'virtual:reload-on-update-in-view';
-import injectedStyle from './injected.css?inline';
-
-refreshOnUpdate('pages/content');
+import App from '@src/app';
+// eslint-disable-next-line
+// @ts-ignore
+import injectedStyle from '@src/injected.css?inline';
 
 const root = document.createElement('div');
 root.id = 'chrome-extension-boilerplate-react-vite-content-view-root';
