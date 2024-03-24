@@ -13,9 +13,9 @@ const Popup = () => {
     <div
       className="App"
       style={{
-        backgroundColor: theme === 'light' ? '#fff' : '#000',
+        backgroundColor: theme === 'light' ? '#eee' : '#222',
       }}>
-      <header className="App-header" style={{ color: theme === 'light' ? '#000' : '#fff' }}>
+      <header className="App-header" style={{ color: theme === 'light' ? '#222' : '#eee' }}>
         {/*TODO: ADD asset managing module or some other solution */}
         <img src={chrome.runtime.getURL('newtab/logo.svg')} className="App-logo" alt="logo" />
 
@@ -32,8 +32,8 @@ const Popup = () => {
         </a>
         <button
           style={{
-            backgroundColor: theme === 'light' ? '#fff' : '#000',
-            color: theme === 'light' ? '#000' : '#fff',
+            backgroundColor: theme === 'light' ? '#eee' : '#222',
+            color: theme === 'light' ? '#222' : '#eee',
           }}
           onClick={exampleThemeStorage.toggle}>
           Toggle theme

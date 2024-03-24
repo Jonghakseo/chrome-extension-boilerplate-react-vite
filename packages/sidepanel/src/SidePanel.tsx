@@ -1,11 +1,9 @@
-import React from 'react';
-import logo from '@assets/img/logo.svg';
-import '@pages/sidepanel/SidePanel.css';
+import '@src/SidePanel.css';
 import {
   exampleThemeStorage,
   useStorageSuspense,
-  withSuspense,
   withErrorBoundary,
+  withSuspense,
 } from '@chrome-extension-boilerplate/shared';
 
 const SidePanel = () => {
@@ -15,12 +13,13 @@ const SidePanel = () => {
     <div
       className="App"
       style={{
-        backgroundColor: theme === 'light' ? '#fff' : '#000',
+        backgroundColor: theme === 'light' ? '#eee' : '#222',
       }}>
-      <header className="App-header" style={{ color: theme === 'light' ? '#000' : '#fff' }}>
-        <img src={logo} className="App-logo" alt="logo" />
+      <header className="App-header" style={{ color: theme === 'light' ? '#222' : '#eee' }}>
+        {/*TODO: ADD asset managing module or some other solution */}
+        <img src={chrome.runtime.getURL('sidepanel/logo.svg')} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/pages/sidepanel/SidePanel.tsx</code> and save to reload.
+          Edit <code>packages/sidepanel/src/SidePanel.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -28,12 +27,13 @@ const SidePanel = () => {
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: theme === 'light' ? '#0281dc' : undefined, marginBottom: '10px' }}>
-          Learn React!
+          Learn React
         </a>
+        <h6>The color of this paragraph is defined using SASS.</h6>
         <button
           style={{
-            backgroundColor: theme === 'light' ? '#fff' : '#000',
-            color: theme === 'light' ? '#000' : '#fff',
+            backgroundColor: theme === 'light' ? '#eee' : '#222',
+            color: theme === 'light' ? '#222' : '#eee',
           }}
           onClick={exampleThemeStorage.toggle}>
           Toggle theme

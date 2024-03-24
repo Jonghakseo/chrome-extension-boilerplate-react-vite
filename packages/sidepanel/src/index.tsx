@@ -1,10 +1,7 @@
-import React from 'react';
+import '@chrome-extension-boilerplate/hmr-old/build/injections/refresh';
 import { createRoot } from 'react-dom/client';
-import '@pages/sidepanel/index.css';
-import refreshOnUpdate from 'virtual:reload-on-update-in-view';
-import SidePanel from '@pages/sidepanel/SidePanel';
-
-refreshOnUpdate('pages/sidepanel');
+import '@src/index.css';
+import SidePanel from '@src/SidePanel';
 
 function init() {
   const appContainer = document.querySelector('#app-container');

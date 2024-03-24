@@ -17,7 +17,7 @@ const manifest = {
   description: '__MSG_extensionDescription__',
   permissions: ['storage', 'sidePanel'],
   side_panel: {
-    default_path: 'src/pages/sidepanel/index.html',
+    default_path: 'sidepanel/index.html',
   },
   options_page: 'options/index.html',
   background: {

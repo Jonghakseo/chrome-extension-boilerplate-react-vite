@@ -13,12 +13,9 @@ const Panel = () => {
     <div
       className="App"
       style={{
-        backgroundColor: theme === 'light' ? '#fff' : '#000',
+        backgroundColor: theme === 'light' ? '#eee' : '#222',
       }}>
-      <header className="App-header" style={{ color: theme === 'light' ? '#000' : '#fff' }}>
-        {/*TODO: ADD asset managing module or some other solution */}
-        <img src={chrome.runtime.getURL('devtools-panel/logo.svg')} className="App-logo" alt="logo" />
-
+      <header className="App-header" style={{ color: theme === 'light' ? '#222' : '#eee' }}>
         <p>
           Edit <code>packages/devtools-panel/src/Panel.tsx</code> and save to reload.
         </p>
@@ -32,8 +29,8 @@ const Panel = () => {
         </a>
         <button
           style={{
-            backgroundColor: theme === 'light' ? '#fff' : '#000',
-            color: theme === 'light' ? '#000' : '#fff',
+            backgroundColor: theme === 'light' ? '#eee' : '#222',
+            color: theme === 'light' ? '#222' : '#eee',
           }}
           onClick={exampleThemeStorage.toggle}>
           Toggle theme
