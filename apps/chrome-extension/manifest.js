@@ -17,15 +17,15 @@ const manifest = {
   description: '__MSG_extensionDescription__',
   permissions: ['storage', 'sidePanel'],
   side_panel: {
-    default_path: 'src/pages/sidepanel/index.html',
+    default_path: 'sidepanel/index.html',
   },
-  options_page: 'src/pages/options/index.html',
+  options_page: 'options/index.html',
   background: {
     service_worker: 'src/pages/background/index.js',
     type: 'module',
   },
   action: {
-    default_popup: 'src/pages/popup/index.html',
+    default_popup: 'popup/index.html',
     default_icon: 'icon-34.png',
   },
   chrome_url_overrides: {
@@ -37,16 +37,19 @@ const manifest = {
   content_scripts: [
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['src/pages/contentInjected/index.js'],
+      js: ['content/index.iife.js'],
+    },
+    {
+      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
       // KEY for cache invalidation
       css: ['assets/css/contentStyle<KEY>.chunk.css'],
     },
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['src/pages/contentUI/index.js'],
+      js: ['content-ui/index.iife.js'],
     },
   ],
-  devtools_page: 'src/pages/devtools/index.html',
+  devtools_page: 'devtools/index.html',
   web_accessible_resources: [
     {
       resources: ['assets/js/*.js', 'assets/css/*.css', 'icon-128.png', 'icon-34.png'],

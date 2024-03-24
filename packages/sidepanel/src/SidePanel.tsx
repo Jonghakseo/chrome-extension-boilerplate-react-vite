@@ -1,5 +1,4 @@
-import '@src/Newtab.css';
-import '@src/Newtab.scss';
+import '@src/SidePanel.css';
 import {
   exampleThemeStorage,
   useStorageSuspense,
@@ -7,7 +6,7 @@ import {
   withSuspense,
 } from '@chrome-extension-boilerplate/shared';
 
-const Newtab = () => {
+const SidePanel = () => {
   const theme = useStorageSuspense(exampleThemeStorage);
 
   return (
@@ -18,9 +17,9 @@ const Newtab = () => {
       }}>
       <header className="App-header" style={{ color: theme === 'light' ? '#222' : '#eee' }}>
         {/*TODO: ADD asset managing module or some other solution */}
-        <img src={chrome.runtime.getURL('newtab/logo.svg')} className="App-logo" alt="logo" />
+        <img src={chrome.runtime.getURL('sidepanel/logo.svg')} className="App-logo" alt="logo" />
         <p>
-          Edit <code>packages/newtab/src/Newtab.tsx</code> and save to reload.
+          Edit <code>packages/sidepanel/src/SidePanel.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -44,4 +43,4 @@ const Newtab = () => {
   );
 };
 
-export default withErrorBoundary(withSuspense(Newtab, <div> Loading ... </div>), <div> Error Occur </div>);
+export default withErrorBoundary(withSuspense(SidePanel, <div> Loading ... </div>), <div> Error Occur </div>);

@@ -19,7 +19,7 @@ export default defineConfig({
   plugins: [react(), isDev && watchRebuildPlugin()],
   publicDir: resolve(rootDir, 'public'),
   build: {
-    outDir: resolve(rootDir, '..', '..', 'dist', 'newtab'),
+    outDir: resolve(rootDir, '..', '..', 'dist', 'devtools'),
     sourcemap: isDev,
     minify: isProduction,
     reportCompressedSize: isProduction,

@@ -1,5 +1,4 @@
-import '@src/Newtab.css';
-import '@src/Newtab.scss';
+import '@src/Popup.css';
 import {
   exampleThemeStorage,
   useStorageSuspense,
@@ -7,7 +6,7 @@ import {
   withSuspense,
 } from '@chrome-extension-boilerplate/shared';
 
-const Newtab = () => {
+const Popup = () => {
   const theme = useStorageSuspense(exampleThemeStorage);
 
   return (
@@ -19,8 +18,9 @@ const Newtab = () => {
       <header className="App-header" style={{ color: theme === 'light' ? '#222' : '#eee' }}>
         {/*TODO: ADD asset managing module or some other solution */}
         <img src={chrome.runtime.getURL('newtab/logo.svg')} className="App-logo" alt="logo" />
+
         <p>
-          Edit <code>packages/newtab/src/Newtab.tsx</code> and save to reload.
+          Edit <code>packages/popup/src/Popup.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -28,9 +28,8 @@ const Newtab = () => {
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: theme === 'light' ? '#0281dc' : undefined, marginBottom: '10px' }}>
-          Learn React
+          Learn React!
         </a>
-        <h6>The color of this paragraph is defined using SASS.</h6>
         <button
           style={{
             backgroundColor: theme === 'light' ? '#eee' : '#222',
@@ -44,4 +43,4 @@ const Newtab = () => {
   );
 };
 
-export default withErrorBoundary(withSuspense(Newtab, <div> Loading ... </div>), <div> Error Occur </div>);
+export default withErrorBoundary(withSuspense(Popup, <div> Loading ... </div>), <div> Error Occur </div>);
