@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "18.4.4",
-    "@commitlint/config-conventional": "18.1.0",
+    "@commitlint/config-conventional": "19.1.0",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@rollup/plugin-typescript": "11.1.6",
     "@testing-library/react": "14.0.0",
