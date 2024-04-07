@@ -22,21 +22,12 @@ const getManifestWithCacheBurst = (): Promise<{ default: chrome.runtime.Manifest
   return import(withCacheBurst(manifestFile));
 };
 
-export default function makeManifestPlugin(config: {
-  getCacheInvalidationKey?: () => string;
-  outDir: string;
-}): PluginOption {
-  function makeManifest(manifest: chrome.runtime.ManifestV3, to: string, cacheKey?: string) {
+export default function makeManifestPlugin(config: { outDir: string }): PluginOption {
+  function makeManifest(manifest: chrome.runtime.ManifestV3, to: string) {
     if (!fs.existsSync(to)) {
       fs.mkdirSync(to);
     }
     const manifestPath = resolve(to, 'manifest.json');
-    if (cacheKey && manifest.content_scripts) {
-      // Naming change for cache invalidation
-      manifest.content_scripts?.forEach(script => {
-        script.css &&= script.css.map(css => css.replace('<KEY>', cacheKey));
-      });
-    }
 
     const isFirefox = process.env.__FIREFOX__;
     fs.writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox ? 'firefox' : 'chrome'));
@@ -50,10 +41,9 @@ export default function makeManifestPlugin(config: {
       this.addWatchFile(manifestFile);
     },
     async writeBundle() {
-      const invalidationKey = config.getCacheInvalidationKey?.();
       const outDir = config.outDir;
       const manifest = await getManifestWithCacheBurst();
-      makeManifest(manifest.default, outDir, invalidationKey);
+      makeManifest(manifest.default, outDir);
     },
   };
 }

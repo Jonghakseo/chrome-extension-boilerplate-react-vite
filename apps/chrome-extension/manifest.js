@@ -41,11 +41,6 @@ const manifest = {
     },
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      // KEY for cache invalidation
-      css: ['assets/css/contentStyle<KEY>.chunk.css'],
-    },
-    {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
       js: ['content-ui/index.iife.js'],
     },
   ],

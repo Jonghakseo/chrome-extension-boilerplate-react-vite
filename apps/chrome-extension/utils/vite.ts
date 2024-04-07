@@ -5,7 +5,7 @@ import inlineVitePreloadScriptPlugin from './plugins/inline-vite-preload-script-
 import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr-old';
 
 export const getPlugins = (isDev: boolean, outDir: string): PluginOption[] => [
-  makeManifestPlugin({ getCacheInvalidationKey, outDir }),
+  makeManifestPlugin({ outDir }),
   customDynamicImportPlugin(),
   // You can toggle enable HMR in background script or view
   // addHmrPlugin({ background: true, view: true, isDev }),
@@ -15,10 +15,6 @@ export const getPlugins = (isDev: boolean, outDir: string): PluginOption[] => [
 ];
 
 const cacheInvalidationKeyRef = { current: generateKey() };
-
-export function getCacheInvalidationKey() {
-  return cacheInvalidationKeyRef.current;
-}
 
 function regenerateCacheInvalidationKey() {
   cacheInvalidationKeyRef.current = generateKey();
