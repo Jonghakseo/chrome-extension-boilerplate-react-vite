@@ -30,6 +30,15 @@ function initReloadServer() {
       }
     });
   });
+
+  function ping() {
+    clientsThatNeedToUpdate.forEach(ws => ws.send(MessageInterpreter.send({ type: 'ping' })));
+    setTimeout(() => {
+      ping();
+    }, 15_000);
+  }
+
+  ping();
 }
 
 initReloadServer();
