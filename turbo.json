@@ -7,7 +7,7 @@
     },
     "build": {
       "dependsOn": ["clean", "^clean", "^build"],
-      "outputs": ["dist/**", "build/**"]
+      "outputs": ["../../dist/**", "dist/**", "build/**"]
     },
     "type-check": {
       "cache": false
