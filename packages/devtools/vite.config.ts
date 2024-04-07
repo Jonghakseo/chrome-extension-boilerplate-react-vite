@@ -16,7 +16,7 @@ export default defineConfig({
     },
   },
   base: '',
-  plugins: [react(), isDev && watchRebuildPlugin()],
+  plugins: [react(), isDev && watchRebuildPlugin({ refresh: true })],
   publicDir: resolve(rootDir, 'public'),
   build: {
     outDir: resolve(rootDir, '..', '..', 'dist', 'devtools'),

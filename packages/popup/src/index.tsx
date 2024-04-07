@@ -1,4 +1,3 @@
-import '@chrome-extension-boilerplate/hmr/build/injections/refresh';
 import { createRoot } from 'react-dom/client';
 import '@src/index.css';
 import Popup from '@src/Popup';

@@ -14,7 +14,7 @@ export default defineConfig({
       '@lib': libDir,
     },
   },
-  plugins: [isDev && watchRebuildPlugin()],
+  plugins: [isDev && watchRebuildPlugin({ refresh: true })],
   publicDir: resolve(rootDir, 'public'),
   build: {
     lib: {

@@ -19,7 +19,7 @@ export default defineConfig({
       '@assets': resolve(libDir, 'assets'),
     },
   },
-  plugins: [makeManifestPlugin({ outDir }), isDev && watchRebuildPlugin(), react()],
+  plugins: [makeManifestPlugin({ outDir }), isDev && watchRebuildPlugin({ reload: true }), react()],
   publicDir: resolve(rootDir, 'public'),
   build: {
     lib: {

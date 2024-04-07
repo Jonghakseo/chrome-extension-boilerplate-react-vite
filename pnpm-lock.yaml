@@ -99,7 +99,7 @@ importers:
         version: link:../../packages/dev-utils
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
-        version: link:../../packages/hmr-old
+        version: link:../../packages/hmr
       '@chrome-extension-boilerplate/shared':
         specifier: workspace:*
         version: link:../../packages/shared
@@ -123,7 +123,7 @@ importers:
         version: 9.5.0(typescript@5.2.2)(webpack@5.90.3)
       vite:
         specifier: 5.0.12
-        version: 5.0.12(@types/node@20.8.10)
+        version: 5.0.12(@types/node@20.8.10)(sass@1.74.1)
 
   packages/content:
     dependencies:
@@ -133,13 +133,13 @@ importers:
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
-        version: link:../hmr-old
+        version: link:../hmr
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       vite:
         specifier: 5.0.12
-        version: 5.0.12(@types/node@20.8.10)
+        version: 5.0.12(@types/node@20.8.10)(sass@1.74.1)
 
   packages/content-ui:
     dependencies:
@@ -149,7 +149,7 @@ importers:
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
-        version: link:../hmr-old
+        version: link:../hmr
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -158,7 +158,7 @@ importers:
         version: 4.2.0(vite@5.0.12)
       vite:
         specifier: 5.0.12
-        version: 5.0.12(@types/node@20.8.10)
+        version: 5.0.12(@types/node@20.8.10)(sass@1.74.1)
 
   packages/dev-utils:
     devDependencies:
@@ -174,7 +174,7 @@ importers:
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
-        version: link:../hmr-old
+        version: link:../hmr
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -183,7 +183,7 @@ importers:
         version: 4.2.0(vite@5.0.12)
       vite:
         specifier: 5.0.12
-        version: 5.0.12(@types/node@20.8.10)
+        version: 5.0.12(@types/node@20.8.10)(sass@1.74.1)
 
   packages/devtools-panel:
     dependencies:
@@ -193,7 +193,7 @@ importers:
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
-        version: link:../hmr-old
+        version: link:../hmr
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -202,9 +202,9 @@ importers:
         version: 4.2.0(vite@5.0.12)
       vite:
         specifier: 5.0.12
-        version: 5.0.12(@types/node@20.8.10)
+        version: 5.0.12(@types/node@20.8.10)(sass@1.74.1)
 
-  packages/hmr-old:
+  packages/hmr:
     dependencies:
       chokidar:
         specifier: 3.5.3
@@ -233,7 +233,7 @@ importers:
         version: 10.9.2(@types/node@20.8.10)(typescript@5.2.2)
       vite:
         specifier: 5.0.12
-        version: 5.0.12(@types/node@20.8.10)
+        version: 5.0.12(@types/node@20.8.10)(sass@1.74.1)
 
   packages/newtab:
     dependencies:
@@ -243,16 +243,19 @@ importers:
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
-        version: link:../hmr-old
+        version: link:../hmr
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       '@vitejs/plugin-react':
         specifier: 4.2.0
         version: 4.2.0(vite@5.0.12)
+      sass:
+        specifier: 1.74.1
+        version: 1.74.1
       vite:
         specifier: 5.0.12
-        version: 5.0.12(@types/node@20.8.10)
+        version: 5.0.12(@types/node@20.8.10)(sass@1.74.1)
 
   packages/options:
     dependencies:
@@ -262,7 +265,7 @@ importers:
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
-        version: link:../hmr-old
+        version: link:../hmr
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -271,7 +274,7 @@ importers:
         version: 4.2.0(vite@5.0.12)
       vite:
         specifier: 5.0.12
-        version: 5.0.12(@types/node@20.8.10)
+        version: 5.0.12(@types/node@20.8.10)(sass@1.74.1)
 
   packages/popup:
     dependencies:
@@ -281,7 +284,7 @@ importers:
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
-        version: link:../hmr-old
+        version: link:../hmr
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -290,7 +293,7 @@ importers:
         version: 4.2.0(vite@5.0.12)
       vite:
         specifier: 5.0.12
-        version: 5.0.12(@types/node@20.8.10)
+        version: 5.0.12(@types/node@20.8.10)(sass@1.74.1)
 
   packages/shared:
     devDependencies:
@@ -309,7 +312,7 @@ importers:
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
-        version: link:../hmr-old
+        version: link:../hmr
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -318,7 +321,7 @@ importers:
         version: 4.2.0(vite@5.0.12)
       vite:
         specifier: 5.0.12
-        version: 5.0.12(@types/node@20.8.10)
+        version: 5.0.12(@types/node@20.8.10)(sass@1.74.1)
 
   packages/tsconfig: {}
 
@@ -1536,7 +1539,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.23.3(@babel/core@7.24.0)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.0
-      vite: 5.0.12(@types/node@20.8.10)
+      vite: 5.0.12(@types/node@20.8.10)(sass@1.74.1)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3170,6 +3173,10 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /immutable@4.3.5:
+    resolution: {integrity: sha512-8eabxkth9gZatlwl5TBuJnCsoTADlL6ftEr7A4qgdaTsPyreilDSnUk57SO+jfKcNtxPa22U5KK6DSeAYhpBJw==}
+    dev: true
+
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -4466,6 +4473,16 @@ packages:
       is-regex: 1.1.4
     dev: true
 
+  /sass@1.74.1:
+    resolution: {integrity: sha512-w0Z9p/rWZWelb88ISOLyvqTWGmtmu2QJICqDBGyNnfG4OUnPX9BBjjYIXUpXCMOOg5MQWNpqzt876la1fsTvUA==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.3
+      immutable: 4.3.5
+      source-map-js: 1.0.2
+    dev: true
+
   /scheduler@0.23.0:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
@@ -5209,7 +5226,7 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite@5.0.12(@types/node@20.8.10):
+  /vite@5.0.12(@types/node@20.8.10)(sass@1.74.1):
     resolution: {integrity: sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -5241,6 +5258,7 @@ packages:
       esbuild: 0.19.12
       postcss: 8.4.35
       rollup: 4.3.0
+      sass: 1.74.1
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
