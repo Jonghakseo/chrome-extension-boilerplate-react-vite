@@ -8,8 +8,10 @@ function addReload() {
   };
 
   initClient({
+    // eslint-disable-next-line
+    // @ts-ignore
+    id: __HMR_ID,
     onUpdate: reload,
-    onForceReload: reload,
   });
 }
 

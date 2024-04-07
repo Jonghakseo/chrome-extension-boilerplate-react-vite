@@ -1,14 +1,10 @@
 #!/usr/bin/env node
 
 import { WebSocket, WebSocketServer } from 'ws';
-import chokidar from 'chokidar';
 import { LOCAL_RELOAD_SOCKET_PORT, LOCAL_RELOAD_SOCKET_URL } from './constant';
 import MessageInterpreter from './interpreter';
-import { debounce } from './debounce';
-import path from 'path';
 
 const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
-let needToForceReload = false;
 
 function initReloadServer() {
   const wss = new WebSocketServer({ port: LOCAL_RELOAD_SOCKET_PORT });
@@ -28,33 +24,12 @@ function initReloadServer() {
         ws.close();
       }
       if (message.type === 'build_complete') {
-        clientsThatNeedToUpdate.forEach((ws: WebSocket) => ws.send(MessageInterpreter.send({ type: 'do_update' })));
-        if (needToForceReload) {
-          needToForceReload = false;
-          clientsThatNeedToUpdate.forEach((ws: WebSocket) =>
-            ws.send(MessageInterpreter.send({ type: 'force_reload' })),
-          );
-        }
+        clientsThatNeedToUpdate.forEach((ws: WebSocket) =>
+          ws.send(MessageInterpreter.send({ type: 'do_update', id: message.id })),
+        );
       }
     });
   });
 }
-
-/** CHECK:: src file was updated **/
-const debounceSrc = debounce(function (path: string) {
-  if (path.includes('manifest.json')) {
-    needToForceReload = true;
-  }
-  // Normalize path on Windows
-  const pathConverted = path.replace(/\\/g, '/');
-  clientsThatNeedToUpdate.forEach((ws: WebSocket) =>
-    // TODO: make without pathConverted
-    ws.send(MessageInterpreter.send({ type: 'wait_update', path: pathConverted })),
-  );
-}, 100);
-
-const buildOutputDir = path.resolve(__dirname, '..', '..', '..', 'dist');
-
-chokidar.watch(buildOutputDir, { ignorePermissionErrors: true }).on('all', (_, path) => debounceSrc(path));
 
 initReloadServer();

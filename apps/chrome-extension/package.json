@@ -22,9 +22,10 @@
   },
   "devDependencies": {
     "@chrome-extension-boilerplate/dev-utils": "workspace:*",
-    "@chrome-extension-boilerplate/shared": "workspace:*",
     "@chrome-extension-boilerplate/hmr": "workspace:*",
+    "@chrome-extension-boilerplate/shared": "workspace:*",
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "@laynezh/vite-plugin-lib-assets": "^0.5.21",
     "@types/ws": "8.5.8",
     "@vitejs/plugin-react": "4.2.0",
     "magic-string": "^0.30.6",

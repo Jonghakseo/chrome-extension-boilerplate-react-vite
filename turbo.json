@@ -1,6 +1,9 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
+    "dev-server": {
+      "persistent": true
+    },
     "dev": {
       "dependsOn": [
         "^build"

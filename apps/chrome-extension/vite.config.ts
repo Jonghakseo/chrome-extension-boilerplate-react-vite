@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
+import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets';
 import makeManifestPlugin from './utils/plugins/make-manifest-plugin';
 import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
 
@@ -19,16 +20,23 @@ export default defineConfig({
       '@assets': resolve(libDir, 'assets'),
     },
   },
-  plugins: [makeManifestPlugin({ outDir }), isDev && watchRebuildPlugin({ reload: true }), react()],
+  plugins: [
+    libAssetsPlugin({
+      outputPath: outDir,
+    }),
+    makeManifestPlugin({ outDir }),
+    isDev && watchRebuildPlugin({ reload: true }),
+    react(),
+  ],
   publicDir: resolve(rootDir, 'public'),
   build: {
     lib: {
       formats: ['iife'],
       entry: resolve(__dirname, 'lib/background/index.ts'),
       name: 'BackgroundScript',
-      fileName: 'index',
+      fileName: 'background',
     },
-    outDir: resolve(outDir, 'background'),
+    outDir,
     sourcemap: isDev,
     minify: isProduction,
     reportCompressedSize: isProduction,

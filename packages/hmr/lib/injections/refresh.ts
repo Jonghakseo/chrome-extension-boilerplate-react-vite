@@ -4,6 +4,9 @@ function addRefresh() {
   let pendingReload = false;
 
   initClient({
+    // eslint-disable-next-line
+    // @ts-ignore
+    id: __HMR_ID,
     onUpdate: () => {
       // disable reload when tab is hidden
       if (document.hidden) {

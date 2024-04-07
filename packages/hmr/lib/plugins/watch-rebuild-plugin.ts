@@ -16,23 +16,36 @@ const refreshCode = fs.readFileSync(path.resolve(injectionsPath, 'refresh.js'), 
 const reloadCode = fs.readFileSync(path.resolve(injectionsPath, 'reload.js'), 'utf-8');
 
 export function watchRebuildPlugin(config: PluginConfig): PluginOption {
+  let ws: WebSocket | null = null;
+  const id = Math.random().toString(36);
   const { refresh, reload } = config;
-  const ws = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
-  const hmrCode = (refresh ? refreshCode : '\n') + (reload ? reloadCode : '\n');
+
+  const hmrCode = (refresh ? refreshCode : '') + (reload ? reloadCode : '');
+
   return {
     name: 'watch-rebuild',
-    // TODO: send signal when build started and save this module info to send signal when build completed
     writeBundle() {
+      if (!ws) {
+        try {
+          ws ??= new WebSocket(LOCAL_RELOAD_SOCKET_URL);
+        } catch (e) {
+          console.warn(e);
+        }
+        return;
+      }
       /**
        * When the build is complete, send a message to the reload server.
        * The reload server will send a message to the client to reload or refresh the extension.
        */
-      ws.send(MessageInterpreter.send({ type: 'build_complete' }));
+      if (!ws) {
+        throw new Error('WebSocket is not initialized');
+      }
+      ws.send(MessageInterpreter.send({ type: 'build_complete', id }));
     },
     generateBundle(_options, bundle) {
       for (const module of Object.values(bundle)) {
         if (module.type === 'chunk') {
-          module.code = hmrCode + module.code;
+          module.code = `let __HMR_ID = "${id}";\n` + hmrCode + '\n' + module.code;
         }
       }
     },

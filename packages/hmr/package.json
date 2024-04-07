@@ -24,7 +24,6 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "chokidar": "3.5.3",
     "ws": "8.14.2"
   },
   "devDependencies": {
