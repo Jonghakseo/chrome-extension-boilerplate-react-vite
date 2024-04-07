@@ -93,6 +93,9 @@ importers:
       construct-style-sheets-polyfill:
         specifier: 3.1.0
         version: 3.1.0
+      webextension-polyfill:
+        specifier: 0.10.0
+        version: 0.10.0
     devDependencies:
       '@chrome-extension-boilerplate/dev-utils':
         specifier: workspace:*
@@ -145,25 +148,6 @@ importers:
       ws:
         specifier: 8.14.2
         version: 8.14.2
-
-  packages/background:
-    dependencies:
-      '@chrome-extension-boilerplate/shared':
-        specifier: workspace:*
-        version: link:../shared
-      webextension-polyfill:
-        specifier: 0.10.0
-        version: 0.10.0
-    devDependencies:
-      '@chrome-extension-boilerplate/hmr-old':
-        specifier: workspace:*
-        version: link:../hmr-old
-      '@chrome-extension-boilerplate/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-      vite:
-        specifier: 5.0.12
-        version: 5.0.12(@types/node@20.8.10)(sass@1.72.0)
 
   packages/content:
     dependencies:
