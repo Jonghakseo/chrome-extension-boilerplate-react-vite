@@ -1,13 +1,11 @@
 {
-  "name": "@chrome-extension-boilerplate/hmr-old",
+  "name": "@chrome-extension-boilerplate/hmr",
   "version": "0.0.1",
   "description": "chrome extension hot module reload or refresh",
   "private": true,
   "sideEffects": true,
   "files": [
     "dist/**",
-    "build/injections/script.js",
-    "build/injections/view.js",
     "build/injections/refresh.js",
     "build/injections/reload.js"
   ],

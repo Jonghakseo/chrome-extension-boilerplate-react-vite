@@ -1,4 +1,4 @@
-import '@chrome-extension-boilerplate/hmr-old/build/injections/reload';
+import '@chrome-extension-boilerplate/hmr/build/injections/reload';
 import 'webextension-polyfill';
 
 /**

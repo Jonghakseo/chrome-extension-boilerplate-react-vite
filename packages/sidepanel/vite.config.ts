@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
-import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr-old';
+import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');

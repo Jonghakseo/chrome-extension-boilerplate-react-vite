@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr-old';
+import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
 
 const rootDir = resolve(__dirname);
 const libDir = resolve(rootDir, 'lib');

@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
-import { getPlugins } from './utils/vite';
+import makeManifestPlugin from './utils/plugins/make-manifest-plugin';
+import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
 
 const rootDir = resolve(__dirname);
 const libDir = resolve(rootDir, 'src');
@@ -18,7 +19,7 @@ export default defineConfig({
       '@assets': resolve(libDir, 'assets'),
     },
   },
-  plugins: [...getPlugins(isDev, outDir), react()],
+  plugins: [makeManifestPlugin({ outDir }), isDev && watchRebuildPlugin(), react()],
   publicDir: resolve(rootDir, 'public'),
   build: {
     lib: {

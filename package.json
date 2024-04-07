@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "rimraf dist && turbo clean",
     "build": "turbo build",
-    "dev-server": "pnpm -F hmr-old dev-server",
+    "dev-server": "pnpm -F hmr dev-server",
     "dev": "turbo dev --concurrency 20",
     "test": "turbo test",
     "type-check": "turbo type-check",
