@@ -5,9 +5,7 @@
   "private": true,
   "sideEffects": true,
   "files": [
-    "dist/**",
-    "build/injections/refresh.js",
-    "build/injections/reload.js"
+    "dist/**"
   ],
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -16,7 +14,7 @@
     "clean": "rimraf ./dist && rimraf ./build",
     "build:tsc": "tsc -b tsconfig.build.json",
     "build:rollup": "rollup --config rollup.config.mjs",
-    "build": "pnpm run clean && pnpm run build:tsc && pnpm run build:rollup",
+    "build-dev-server": "pnpm run build:tsc && pnpm run build:rollup",
     "dev-server": "ts-node-esm lib/initReloadServer.ts",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",

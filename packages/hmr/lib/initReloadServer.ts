@@ -9,7 +9,7 @@ const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
 function initReloadServer() {
   const wss = new WebSocketServer({ port: LOCAL_RELOAD_SOCKET_PORT });
 
-  wss.on('listening', () => console.log(`[HRS] Server listening at ${LOCAL_RELOAD_SOCKET_URL}`));
+  wss.on('listening', () => console.log(`[HMR] Server listening at ${LOCAL_RELOAD_SOCKET_URL}`));
 
   wss.on('connection', ws => {
     clientsThatNeedToUpdate.add(ws);

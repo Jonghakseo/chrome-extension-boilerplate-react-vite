@@ -33,7 +33,7 @@ const Panel = () => {
             color: theme === 'light' ? '#222' : '#eee',
           }}
           onClick={exampleThemeStorage.toggle}>
-          Toggle theme
+          Toggle Theme
         </button>
       </header>
     </div>
