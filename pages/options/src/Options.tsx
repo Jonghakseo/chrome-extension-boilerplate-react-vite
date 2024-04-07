@@ -15,9 +15,17 @@ const Options = () => {
       style={{
         backgroundColor: theme === 'light' ? '#eee' : '#222',
       }}>
-      {/*TODO: ADD asset managing module or some other solution */}
       <img src={chrome.runtime.getURL('options/logo.svg')} className="App-logo" alt="logo" />
       <span style={{ color: theme === 'light' ? '#0281dc' : undefined, marginBottom: '10px' }}>Options</span>
+      Edit <code>pages/options/src/Options.tsx</code> and save to reload.
+      <button
+        style={{
+          backgroundColor: theme === 'light' ? '#eee' : '#222',
+          color: theme === 'light' ? '#222' : '#eee',
+        }}
+        onClick={exampleThemeStorage.toggle}>
+        Toggle Theme
+      </button>
     </div>
   );
 };

@@ -102,7 +102,7 @@ importers:
         version: link:../../packages/hmr
       '@chrome-extension-boilerplate/shared':
         specifier: workspace:*
-        version: link:../../pages/shared
+        version: link:../../packages/shared
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -166,7 +166,7 @@ importers:
     dependencies:
       '@chrome-extension-boilerplate/shared':
         specifier: workspace:*
-        version: link:../../pages/shared
+        version: link:../shared
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
@@ -181,13 +181,22 @@ importers:
         specifier: 5.0.12
         version: 5.0.12(@types/node@20.8.10)(sass@1.74.1)
 
+  packages/shared:
+    devDependencies:
+      '@chrome-extension-boilerplate/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      tsup:
+        specifier: 8.0.2
+        version: 8.0.2(typescript@5.2.2)
+
   packages/tsconfig: {}
 
   pages/content:
     dependencies:
       '@chrome-extension-boilerplate/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../packages/shared
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
@@ -203,7 +212,7 @@ importers:
     dependencies:
       '@chrome-extension-boilerplate/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../packages/shared
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
@@ -222,7 +231,7 @@ importers:
     dependencies:
       '@chrome-extension-boilerplate/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../packages/shared
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
@@ -241,7 +250,7 @@ importers:
     dependencies:
       '@chrome-extension-boilerplate/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../packages/shared
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
@@ -260,7 +269,7 @@ importers:
     dependencies:
       '@chrome-extension-boilerplate/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../packages/shared
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
@@ -282,7 +291,7 @@ importers:
     dependencies:
       '@chrome-extension-boilerplate/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../packages/shared
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
@@ -297,20 +306,11 @@ importers:
         specifier: 5.0.12
         version: 5.0.12(@types/node@20.8.10)(sass@1.74.1)
 
-  pages/shared:
-    devDependencies:
-      '@chrome-extension-boilerplate/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
-      tsup:
-        specifier: 8.0.2
-        version: 8.0.2(typescript@5.2.2)
-
   pages/sidepanel:
     dependencies:
       '@chrome-extension-boilerplate/shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../../packages/shared
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*

@@ -5,5 +5,9 @@ export default function App() {
     console.log('content ui loaded');
   }, []);
 
-  return <div className="">content view</div>;
+  return (
+    <div>
+      Edit <code>pages/content-ui/src/app.tsx</code> and save to reload.
+    </div>
+  );
 }

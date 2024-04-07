@@ -17,10 +17,9 @@ const Newtab = () => {
         backgroundColor: theme === 'light' ? '#eee' : '#222',
       }}>
       <header className="App-header" style={{ color: theme === 'light' ? '#222' : '#eee' }}>
-        {/*TODO: ADD asset managing module or some other solution */}
         <img src={chrome.runtime.getURL('newtab/logo.svg')} className="App-logo" alt="logo" />
         <p>
-          Edit <code>packages/newtab/src/Newtab.tsx</code> and save to reload.
+          Edit <code>pages/newtab/src/Newtab.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"
