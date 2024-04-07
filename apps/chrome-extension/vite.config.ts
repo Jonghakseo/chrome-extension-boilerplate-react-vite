@@ -33,7 +33,6 @@ export default defineConfig({
     emptyOutDir: !isDev,
     rollupOptions: {
       input: {
-        background: resolve(pagesDir, 'background', 'index.ts'),
         contentStyle: resolve(pagesDir, 'content', 'style.scss'),
       },
       output: {

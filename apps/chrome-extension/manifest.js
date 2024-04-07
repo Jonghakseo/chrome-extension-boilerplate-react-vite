@@ -21,7 +21,7 @@ const manifest = {
   },
   options_page: 'options/index.html',
   background: {
-    service_worker: 'src/pages/background/index.js',
+    service_worker: 'background/index.iife.js',
     type: 'module',
   },
   action: {

@@ -13,20 +13,6 @@ const plugins = [
 export default [
   {
     plugins,
-    input: "lib/injections/script.ts",
-    output: {
-      file: "build/injections/script.js"
-    }
-  },
-  {
-    plugins,
-    input: "lib/injections/view.ts",
-    output: {
-      file: "build/injections/view.js"
-    }
-  },
-  {
-    plugins,
     input: "lib/injections/reload.ts",
     output: {
       format: "iife",
