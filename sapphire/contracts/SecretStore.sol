@@ -20,7 +20,7 @@ contract SecretStore {
     function setSecret(
         string calldata _domain,
         string calldata _secret
-    ) public {
+    ) external {
         // console.log("Hit setSecret: %s%s", _domain, _secret);
 
         // Find if service already exists
