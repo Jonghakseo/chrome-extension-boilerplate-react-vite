@@ -31,7 +31,7 @@ contract SecretStore {
                 keccak256(abi.encodePacked(_domain))
             ) {
                 // Update the secret
-                s_secrets[msg.sender][i].domain = _secret;
+                s_secrets[msg.sender][i].secret = _secret;
                 serviceFound = true;
                 emit SecretUpdated(msg.sender, _domain);
                 break;
