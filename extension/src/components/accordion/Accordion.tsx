@@ -43,20 +43,26 @@ const Accordion: React.FC = () => {
   return (
     <>
       {secrets.map((secret, index) => (
-        <div className="collapse collapse-arrow bg-base-200 my-0.5	" key={index}>
+        <div
+          className="collapse collapse-arrow bg-background2 border-solid border-[0.5px] my-2 border-text2"
+          key={index}>
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium">{secret.name}</div>
 
           <div className="collapse-content">
             <div className="w-full flex justify-center gap-20">
-              <div className="border border-white py-2 px-5">{secret.value}</div>
+              <div className="flex py-2 px-5 w-3/6 rounded-md ml-2.5 bg-text3">{secret.value}</div>
 
-              <div>
-                <button onClick={() => handleUpdateClick('dummy')} className="btn btn-primary">
-                  Edit
+              <div className=" width-full flex gap-10 items-end">
+                <button
+                  onClick={() => handleUpdateClick('dummy')}
+                  className="btn  btn-sm rounded-xl text-primary1 border-solid border-0.25 border-text2">
+                  Update
                 </button>
 
-                <button onClick={() => handleDeleteClick('dummy')} className="btn btn-primary">
+                <button
+                  onClick={() => handleDeleteClick('dummy')}
+                  className="btn  btn-sm rounded-xl text-primary1 border-solid border-0.25 border-text2">
                   Delete
                 </button>
               </div>
