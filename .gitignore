@@ -1,0 +1,14 @@
+**/node_modules
+**/.env
+
+# Hardhat files
+sapphire/cache
+sapphire/artifacts
+
+# TypeChain files
+sapphire/typechain
+sapphire/typechain-types
+
+# solidity-coverage files
+sapphire/coverage
+sapphire/coverage.json
