@@ -30,7 +30,7 @@ const manifest = {
   content_scripts: [
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['src/pages/contentInjected/index.js'],
+      js: ['src/pages/contentUI/index.js'],
       // KEY for cache invalidation
     },
     {
