@@ -7,11 +7,11 @@ const Options: React.FC = () => {
     <>
     <Navbar/>
       
-      <div className="width-full bg-red-600 flex justify-center items-center" >
+      <div className="width-full flex justify-center items-center" >
         
-        <div className='w-2/4	 text-center	'>
+        <div className='w-2/4	 	'>
         
-      <h1 className='text-xl font-bold	'>Password Manager</h1>
+      <h1 className='text-xl font-bold	py-8	'>BlockLock Password Manager</h1>
         <Main />
         </div>
       </div>
