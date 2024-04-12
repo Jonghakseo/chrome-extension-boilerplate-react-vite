@@ -1,10 +1,10 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import Newtab from '@pages/newtab/Newtab';
-import '@pages/newtab/index.css';
+import '@pages/app/index.css';
+import App from '@pages/app/App';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 
-refreshOnUpdate('pages/newtab');
+refreshOnUpdate('pages/options');
 
 function init() {
   const appContainer = document.querySelector('#app-container');
@@ -12,8 +12,7 @@ function init() {
     throw new Error('Can not find #app-container');
   }
   const root = createRoot(appContainer);
-
-  root.render(<Newtab />);
+  root.render(<App />);
 }
 
 init();

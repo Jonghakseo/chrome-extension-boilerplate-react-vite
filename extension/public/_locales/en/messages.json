@@ -1,0 +1,10 @@
+{
+  "extensionDescription": {
+    "description": "A decentralised password manager",
+    "message": "A decentralised chromium password manager built with Oasis"
+  },
+  "extensionName": {
+    "description": "Block Lock",
+    "message": "Block Lock"
+  }
+}
