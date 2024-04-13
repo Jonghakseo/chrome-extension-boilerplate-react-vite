@@ -9,7 +9,7 @@ interface UpdateModalProps {
 
 const UpdateModal: React.FC<UpdateModalProps> = ({ isOpen, onClose, secretDomain }) => {
   return (
-    <GenericModal isOpen={isOpen} onClose={onClose} title="Update Item">
+    <GenericModal isOpen={isOpen} onClose={onClose} title={`Update password for: ${secretDomain}`}>
       <div>This is a thing</div>
     </GenericModal>
   );

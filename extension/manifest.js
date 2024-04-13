@@ -22,10 +22,10 @@ const manifest = {
   },
   action: {
     default_popup: 'src/pages/popup/index.html',
-    default_icon: 'icon-34.png',
+    default_icon: 'blocklock-34.png',
   },
   icons: {
-    128: 'icon-128.png',
+    128: 'blocklock-128.png',
   },
   content_scripts: [
     {
@@ -40,7 +40,7 @@ const manifest = {
   ],
   web_accessible_resources: [
     {
-      resources: ['assets/js/*.js', 'assets/css/*.css', 'icon-128.png', 'icon-34.png', 'assets/svg/*.svg'],
+      resources: ['assets/js/*.js', 'assets/css/*.css', 'blocklock-128.png', 'blocklock-34.png', 'assets/svg/*.svg'],
       matches: ['*://*/*', 'http://*/*', 'https://*/*', '<all_urls>'],
     },
   ],

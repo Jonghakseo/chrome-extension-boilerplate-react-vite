@@ -50,7 +50,10 @@ const Accordion = ({ secrets }) => {
           // <div className={`border-b-2 border-background4 ${index === secrets.length - 1 ? '' : ''}`}>
           <div className="collapse collapse-arrow" key={index}>
             <input type="checkbox" />
-            <div className="collapse-title text-xl font-medium">{secret.domain.replace(/^www\./, '')}</div>
+            <div className="flex collapse-title text-xl font-medium gap-2">
+              <img src={`https://${secret.domain}/favicon.ico`} className="max-w-5 max-h-5 my-1" />
+              {secret.domain.replace(/^www\./, '')}
+            </div>
             <div className="collapse-content">
               <div className="w-full flex justify-between">
                 <div className="flex justify-between items-center py-2 px-4 w-1/2 rounded-md bg-text3">
@@ -72,12 +75,12 @@ const Accordion = ({ secrets }) => {
                 </div>
                 <div className="width-full flex gap-10 items-end">
                   <button
-                    onClick={() => handleUpdateClick('dummy')}
+                    onClick={() => handleUpdateClick(secret.domain)}
                     className="whitespace-nowrap flex justify-between w-full h-full text-primary1 hover:bg-primary2 hover:text-background3 focus:ring-4 focus:ring-primary2 border border-solid border-0.25 border-text2 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">
                     Update
                   </button>
                   <button
-                    onClick={() => handleDeleteClick('dummy')}
+                    onClick={() => handleDeleteClick(secret.domain)}
                     className="whitespace-nowrap flex justify-between w-full h-full text-primary1 hover:bg-primary2 hover:text-background3 focus:ring-4 focus:ring-primary2 border border-solid border-0.25 border-text2 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">
                     Delete
                   </button>
