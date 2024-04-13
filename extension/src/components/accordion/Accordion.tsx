@@ -5,28 +5,36 @@ import DeleteModal from '../modals/DeleteModal';
 const Accordion: React.FC = () => {
   const dummyData = [
     {
-      name: 'FaceBook',
-      value: '*********',
+      domain: 'www.facebook.com',
+      secret: 'test1',
     },
     {
-      name: 'Instagram',
-      value: '**********',
+      domain: 'www.youtube.com',
+      secret: 'test2',
     },
     {
-      name: 'Github',
-      value: '************',
+      domain: 'www.trello.com',
+      secret: 'test3',
     },
     {
-      name: 'MetaMask',
-      value: '*********',
+      domain: 'www.discord.com',
+      secret: 'test4',
     },
   ];
 
   const [secrets, setSecrets] = useState(dummyData);
+  const [hiddenSecrets, setHiddenSecrets] = useState({});
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [secretToUpdate, setSecretToUpdate] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [secretToDelete, setSecretToDelete] = useState(null);
+
+  const toggleReveal = domain => {
+    setHiddenSecrets({
+      ...hiddenSecrets,
+      [domain]: !hiddenSecrets[domain],
+    });
+  };
 
   const handleUpdateClick = secret => {
     setSecretToUpdate('dummy');
@@ -47,13 +55,13 @@ const Accordion: React.FC = () => {
           // <div className={`border-b-2 border-background4 ${index === secrets.length - 1 ? '' : ''}`}>
           <div className="collapse collapse-arrow" key={index}>
             <input type="checkbox" />
-            <div className="collapse-title text-xl font-medium">{secret.name}</div>
+            <div className="collapse-title text-xl font-medium">{secret.domain.replace(/^www\./, '')}</div>
             <div className="collapse-content">
               <div className="w-full flex justify-between">
                 <div className="flex justify-between items-center py-2 px-4 w-1/2 rounded-md bg-text3">
-                  {secret.value}
-                  <span className="gap-4">
-                    <button className="hover:bg-primary2 hover:text-background3 focus:ring-1 focus:ring-primary2 p-1 rounded-lg">
+                  {hiddenSecrets[secret.domain] ? '********' : secret.secret}
+                  <span className="space-x-1">
+                    <button className="hover:bg-primary2 hover:text-background3 p-1 rounded-lg">
                       <i className="fa-light fa-eye w-4 h-4"></i>
                     </button>
                     <button className="hover:bg-primary2 hover:text-background3 p-1 rounded-lg">
