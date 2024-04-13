@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from '../../components/main/Main';
+import Accordion from '../../components/accordion/Accordion';
 import Navbar from '../../components/nav/Navbar';
 import { useEthereum } from '@root/src/shared/providers/EthereumContext';
 import { useEffect } from 'react';
@@ -18,10 +18,10 @@ const Options: React.FC = () => {
     <>
       <Navbar />
 
-      <div className="width-full bg-red-600 flex justify-center items-center">
-        <div className="w-2/4	 text-center	">
-          <h1 className="text-xl font-bold	">Password Manager</h1>
-          <Main />
+      <div className="width-full flex justify-center items-center pt-10">
+        <div className="w-1/2 text-left">
+          <h1 className="text-xl font-bold pb-6">Blocklock Password Manager</h1>
+          <Accordion />
         </div>
       </div>
     </>
