@@ -42,34 +42,43 @@ const Accordion: React.FC = () => {
 
   return (
     <>
-      {secrets.map((secret, index) => (
-        <div
-          className="collapse collapse-arrow bg-background2 border-solid border-[0.5px] my-2 border-text2"
-          key={index}>
-          <input type="checkbox" />
-          <div className="collapse-title text-xl font-medium">{secret.name}</div>
-
-          <div className="collapse-content">
-            <div className="w-full flex justify-center gap-20">
-              <div className="flex py-2 px-5 w-3/6 rounded-md ml-2.5 bg-text3">{secret.value}</div>
-
-              <div className=" width-full flex gap-10 items-end">
-                <button
-                  onClick={() => handleUpdateClick('dummy')}
-                  className="btn  btn-sm rounded-xl text-primary1 border-solid border-0.25 border-text2">
-                  Update
-                </button>
-
-                <button
-                  onClick={() => handleDeleteClick('dummy')}
-                  className="btn  btn-sm rounded-xl text-primary1 border-solid border-0.25 border-text2">
-                  Delete
-                </button>
+      <div className="border-solid border-[0.5px] my-2 border-background4  bg-background3 rounded-lg">
+        {secrets.map((secret, index) => (
+          // <div className={`border-b-2 border-background4 ${index === secrets.length - 1 ? '' : ''}`}>
+          <div className="collapse collapse-arrow" key={index}>
+            <input type="checkbox" />
+            <div className="collapse-title text-xl font-medium">{secret.name}</div>
+            <div className="collapse-content">
+              <div className="w-full flex justify-between">
+                <div className="flex justify-between items-center py-2 px-4 w-1/2 rounded-md bg-text3">
+                  {secret.value}
+                  <span className="gap-4">
+                    <button className="hover:bg-primary2 hover:text-background3 focus:ring-1 focus:ring-primary2 p-1 rounded-lg">
+                      <i className="fa-light fa-eye w-4 h-4"></i>
+                    </button>
+                    <button className="hover:bg-primary2 hover:text-background3 p-1 rounded-lg">
+                      <i className="fa-regular fa-copy w-4 h-4"></i>
+                    </button>
+                  </span>
+                </div>
+                <div className="width-full flex gap-10 items-end">
+                  <button
+                    onClick={() => handleUpdateClick('dummy')}
+                    className="whitespace-nowrap flex justify-between w-full h-full text-primary1 hover:bg-primary2 hover:text-background3 focus:ring-4 focus:ring-primary2 border border-solid border-0.25 border-text2 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">
+                    Update
+                  </button>
+                  <button
+                    onClick={() => handleDeleteClick('dummy')}
+                    className="whitespace-nowrap flex justify-between w-full h-full text-primary1 hover:bg-primary2 hover:text-background3 focus:ring-4 focus:ring-primary2 border border-solid border-0.25 border-text2 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+          // </div>
+        ))}
+      </div>
       {isUpdateModalOpen && (
         <UpdateModal
           isOpen={isUpdateModalOpen}
