@@ -11,7 +11,7 @@ import { forwardRef } from 'react';
 interface ModalProps {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
-  input: Ref<HTMLInputElement>;
+  input: any;
   password: string;
 }
 function CreatePasswordModal({ isOpen, setIsOpen, input, password }: ModalProps) {
@@ -49,7 +49,9 @@ function CreatePasswordModal({ isOpen, setIsOpen, input, password }: ModalProps)
   }, []);
 
   const store = async () => {
-    setIsPending(true);
+    console.log('calling store');
+    console.log('Are we connected?', isConnected);
+    console.log('Signer', signer);
     if (!isConnected) {
       await connectToMetaMask();
     } else {
@@ -86,14 +88,27 @@ function CreatePasswordModal({ isOpen, setIsOpen, input, password }: ModalProps)
     }, 3000);
 
     //@ts-ignore
-    input.current.value = password;
+    if (input.current) {
+      input.current.value = password; // Set the value directly
+
+      // Create a new 'input' event
+      const eventInput = new Event('input', { bubbles: true });
+      // Create a new 'change' event
+      const eventChange = new Event('change', { bubbles: true });
+
+      // Dispatch it
+      input.current.dispatchEvent(eventInput);
+      input.current.dispatchEvent(eventChange);
+
+      // Optionally focus and blur to ensure all interactions are captured
+      input.current.focus();
+      input.current.blur();
+    }
   };
 
   useEffect(() => {
-    if (signer) {
-      storeSecret();
-    }
-  }, [signer]);
+    connectToMetaMask();
+  }, []);
 
   return (
     <div>

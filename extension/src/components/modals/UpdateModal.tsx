@@ -6,11 +6,10 @@ import { getStorageContract } from '@root/utils/utils';
 interface UpdateModalProps {
   isOpen: boolean;
   onClose: () => void;
-  updateSecret: (domain: string, secret: string) => void;
   secretDomain: string;
 }
 
-const UpdateModal: React.FC<UpdateModalProps> = ({ isOpen, onClose, updateSecret, secretDomain }) => {
+const UpdateModal: React.FC<UpdateModalProps> = ({ isOpen, onClose, secretDomain }) => {
   const { signer, connectToMetaMask, isConnected } = useEthereum();
   const [isPending, setIsPending] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -60,7 +59,6 @@ const UpdateModal: React.FC<UpdateModalProps> = ({ isOpen, onClose, updateSecret
 
     //@ts-ignore
     input.current.value = password;
-    updateSecret(secretDomain, password);
   };
 
   // useEffect(() => {

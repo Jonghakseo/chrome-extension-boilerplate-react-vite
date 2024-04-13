@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Accordion from '../accordion/Accordion';
 import { getStorageContract } from '@root/utils/utils';
 import { useEthereum } from '@root/src/shared/providers/EthereumContext';
+import { useSecrets } from '@root/src/shared/providers/SecretsContext';
 
 const Body: React.FC = () => {
-  const [secrets, setSecrets] = useState([]);
+  const { secrets, addSecret } = useSecrets();
 
   const { signer, connectToMetaMask, isConnected } = useEthereum();
 
@@ -13,15 +14,17 @@ const Body: React.FC = () => {
     const tx = await contract?.getSecrets();
     console.log('TX:', tx);
     let secretsArray = [];
+
     if (tx) {
       tx.forEach(item => {
         const secret = {
           domain: item[0],
           value: item[1],
         };
+        addSecret(secret);
         secretsArray.push(secret);
       });
-      console.log(secretsArray);
+
       chrome.runtime.sendMessage(
         {
           action: 'addSecretsToMemory',
@@ -30,20 +33,23 @@ const Body: React.FC = () => {
         response => {
           if (response?.success) {
             console.log('Secrets added to memory in background script.');
-            setSecrets(secretsArray);
           }
         },
       );
     }
   };
 
-  const updateSecret = (domain, newSecret) => {
-    console.log('hit updateSecret');
-    setSecrets(prevSecrets =>
-      prevSecrets.map(secret => (secret.domain === domain ? { ...secret, value: newSecret } : secret)),
-    );
-    console.log('Secrets:', secrets);
-  };
+  useEffect(() => {
+    chrome.runtime.sendMessage({ action: 'getSecretsFromMemory' }, response => {
+      if (response?.secrets) {
+        console.log(response);
+        console.log('Secrets retrieved from memory:', response.secrets);
+        response.secrets.forEach(secret => {
+          addSecret(secret);
+        });
+      }
+    });
+  }, []);
 
   return (
     <div className="width-full flex justify-center pt-10">
@@ -59,7 +65,7 @@ const Body: React.FC = () => {
           </button>
         </div>
 
-        <Accordion secrets={secrets} updateSecret={updateSecret} />
+        <Accordion />
       </div>
     </div>
   );
