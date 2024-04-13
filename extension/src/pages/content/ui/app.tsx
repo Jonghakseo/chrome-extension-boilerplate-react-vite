@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CreatePasswordModal from '@root/src/components/modals/CreatePasswordModal';
-import BlockLockFavicon from '@assets/img/blocklock_favicon.svg';
+import BlockLockFavicon from '../../../assets/img/blocklock_favicon_2.svg';
 import { generateRandomPassword } from '@root/utils/utils';
 import SuggestPasswordModal from '@root/src/components/modals/SuggestPasswordModal';
 
