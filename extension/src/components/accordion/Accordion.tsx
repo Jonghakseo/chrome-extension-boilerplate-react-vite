@@ -55,7 +55,10 @@ const Accordion: React.FC = () => {
           // <div className={`border-b-2 border-background4 ${index === secrets.length - 1 ? '' : ''}`}>
           <div className="collapse collapse-arrow" key={index}>
             <input type="checkbox" />
-            <div className="collapse-title text-xl font-medium">{secret.domain.replace(/^www\./, '')}</div>
+            <div className="collapse-title text-xl font-medium flex">
+              <img src= {`https://${secret.domain}/favicon.ico`} className='max-w-5	 max-h-5 my-1'/> 
+              {secret.domain.replace(/^www\./, '')}
+            </div>
             <div className="collapse-content">
               <div className="w-full flex justify-between">
                 <div className="flex justify-between items-center py-2 px-4 w-1/2 rounded-md bg-text3">
