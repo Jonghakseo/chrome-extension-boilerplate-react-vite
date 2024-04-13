@@ -7,7 +7,7 @@ import { EthereumProvider } from '@src/shared/providers/EthereumContext';
 refreshOnUpdate('pages/content');
 
 const root = document.createElement('div');
-root.id = 'chrome-extension-boilerplate-react-vite-content-view-root';
+root.id = 'blocklock-content-view-root';
 
 document.body.append(root);
 
@@ -21,6 +21,13 @@ shadowRoot.appendChild(rootIntoShadow);
 const styleElement = document.createElement('style');
 styleElement.innerHTML = injectedStyle;
 shadowRoot.appendChild(styleElement);
+
+const linkElement = document.createElement('link');
+linkElement.href = 'https://kit.fontawesome.com/cd3d201a06.css';
+linkElement.rel = 'stylesheet';
+linkElement.crossOrigin = 'anonymous';
+
+shadowRoot.appendChild(linkElement);
 
 /**
  * https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/174
