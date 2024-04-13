@@ -4,6 +4,7 @@ import '@pages/app/index.css';
 import App from '@pages/app/App';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import { EthereumProvider } from '@root/src/shared/providers/EthereumContext';
+import { SecretsProvider } from '@root/src/shared/providers/SecretsContext';
 
 refreshOnUpdate('pages/options');
 
@@ -15,7 +16,9 @@ function init() {
   const root = createRoot(appContainer);
   root.render(
     <EthereumProvider>
-      <App />
+      <SecretsProvider>
+        <App />
+      </SecretsProvider>
     </EthereumProvider>,
   );
 }

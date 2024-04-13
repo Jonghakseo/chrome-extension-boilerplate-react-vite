@@ -11,7 +11,7 @@ import UpArrowIcon from '../images/UpArrowIcon';
 interface ModalProps {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
-  input: Ref<HTMLInputElement>;
+  input: any;
   password: string;
 }
 function SuggestPasswordModal({ isOpen, setIsOpen, input, password }: ModalProps) {
@@ -41,8 +41,24 @@ function SuggestPasswordModal({ isOpen, setIsOpen, input, password }: ModalProps
 
   const useSuggestedPassword = async () => {
     //@ts-ignore
-    input.current.value = password;
-    setIsOpen(false);
+    if (input.current) {
+      input.current.value = password; // Set the value directly
+
+      // Create a new 'input' event
+      const eventInput = new Event('input', { bubbles: true });
+      // Create a new 'change' event
+      const eventChange = new Event('change', { bubbles: true });
+
+      // Dispatch it
+      input.current.dispatchEvent(eventInput);
+      input.current.dispatchEvent(eventChange);
+
+      // Optionally focus and blur to ensure all interactions are captured
+      input.current.focus();
+      input.current.blur();
+
+      setIsOpen(false);
+    }
   };
 
   return (

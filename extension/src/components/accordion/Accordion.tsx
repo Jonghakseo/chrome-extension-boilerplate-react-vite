@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import UpdateModal from '../modals/UpdateModal';
 import DeleteModal from '../modals/DeleteModal';
 import { json } from 'stream/consumers';
+import { useSecrets } from '@root/src/shared/providers/SecretsContext';
 
-const Accordion = ({ secrets }) => {
+const Accordion = () => {
+  const { secrets, addSecret } = useSecrets();
+
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [secretToUpdate, setSecretToUpdate] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -41,8 +44,6 @@ const Accordion = ({ secrets }) => {
     setVisibleSecrets(prev => ({ ...prev, [index]: !prev[index] }));
   };
 
-  console.log(secrets);
-
   return (
     <>
       <div className="border-solid border-[0.5px] my-2 border-background4  bg-background3 rounded-lg">
@@ -67,7 +68,7 @@ const Accordion = ({ secrets }) => {
                       <i className="fa-light fa-eye w-4 h-4"></i>
                     </button>
                     <button
-                      onClick={() => copyToClipboard(secret.password)}
+                      onClick={() => copyToClipboard(secret.value)}
                       className="hover:bg-primary2 hover:text-background3 p-1 rounded-lg">
                       <i className="fa-regular fa-copy w-4 h-4"></i>
                     </button>

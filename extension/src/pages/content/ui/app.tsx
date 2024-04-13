@@ -22,8 +22,12 @@ export default function App() {
 
   const appendPasswordInput = () => {
     const passwordInputs = Array.from(document.querySelectorAll('input[type="password"]'));
-    console.log('password inputs: ', passwordInputs);
     passwordInputs.forEach(input => {
+      if (input.dataset.blocklockProcessed) {
+        return; // Skip if already processed
+      }
+      input.dataset.blocklockProcessed = 'true'; // Mark as processed
+
       const blocklockIcon = document.createElement('img');
       blocklockIcon.src = BlockLockFavicon;
       blocklockIcon.style.cssText =
@@ -37,7 +41,6 @@ export default function App() {
 
       const showSuggestions = event => {
         event.stopPropagation(); // Prevents click from closing modal immediately
-        //@ts-ignore
         inputRef.current = input;
         setIsOpen(true);
       };
@@ -55,26 +58,32 @@ export default function App() {
       }
     };
 
-    const handleClickOutside = event => {
-      const targetId = event.target.id;
-
-      if (isOpen && !inputRef.current?.contains(event.target) && targetId !== 'blocklock-content-view-root') {
-        setIsOpen(false);
-      }
-    };
-
     checkForSavedSecret();
 
+    let intervalId = null;
+    const startPolling = () => {
+      intervalId = setInterval(appendPasswordInput, 1000); // Poll every second
+    };
+
+    const observer = new MutationObserver(appendPasswordInput);
+    observer.observe(document.body, { childList: true, subtree: true });
+
     document.addEventListener('click', handleClickOutside);
-    window.addEventListener('load', appendPasswordInput);
+    startPolling();
 
     return () => {
+      clearInterval(intervalId);
+      observer.disconnect();
       document.removeEventListener('click', handleClickOutside);
-      window.removeEventListener('load', appendPasswordInput);
     };
-  }, [isOpen]); // Only re-run if isOpen changes
+  }, [isOpen]);
 
-  //Add event listener to the modal ref
+  const handleClickOutside = event => {
+    const targetId = event.target.id;
+    if (isOpen && !inputRef.current?.contains(event.target) && targetId !== 'blocklock-content-view-root') {
+      setIsOpen(false);
+    }
+  };
 
   return (
     <>

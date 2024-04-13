@@ -13,7 +13,7 @@ declare global {
 export interface EthereumData {
   provider: ethers.providers.Web3Provider | null;
   signer: ethers.Signer | null;
-  connectToMetaMask: () => Promise<void>;
+  connectToMetaMask: () => Promise<boolean>;
   disconnect: () => void;
   isConnected: boolean;
   connectedAddress?: string;
@@ -56,6 +56,7 @@ export const EthereumProvider = ({ children }) => {
       if (accounts.length > 0) {
         setIsConnected(true);
         setConnectedAddress(accounts[0]);
+        return true;
       }
     } else {
       console.error('MetaMask (or another provider) is not installed.');

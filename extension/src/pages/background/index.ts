@@ -12,13 +12,33 @@ reloadOnUpdate('pages/content/style.scss');
 
 console.log('background loaded');
 
-const addSecretsToStorage = secrets => {
-  secrets.forEach(async secret => {
+const addSecretsToStorage = async secrets => {
+  let keys = [];
+
+  const pushAndStore = async domain => {
+    keys.push(domain);
+    await util.setSessionStorageItem('allKeys', JSON.stringify(keys));
+  };
+
+  for (const secret of secrets) {
     const { domain, value } = secret;
     console.log('Adding secret to storage:', domain, value);
+
+    // Also add the keys to all keys item
+    const keysStr = await util.getSessionStorageItem('allKeys');
+    if (!keysStr) {
+      pushAndStore(domain);
+    } else {
+      keys = JSON.parse(keysStr as string);
+      if (!keys.includes(domain)) {
+        pushAndStore(domain);
+      }
+    }
+
     await util.setSessionStorageItem(domain, value);
-  });
+  }
 };
+
 const addSecretToStorage = async secret => {
   const { domain, value } = secret;
   console.log('Adding secret to storage:', domain, value);
@@ -27,6 +47,20 @@ const addSecretToStorage = async secret => {
 
 const getSecretForDomain = async domain => {
   return (await util.getSessionStorageItem(domain)) || null;
+};
+
+const getAllSecrets = async () => {
+  const keysStr = await util.getSessionStorageItem('allKeys');
+  if (!keysStr) {
+    return null;
+  }
+  const keys = JSON.parse((await util.getSessionStorageItem('allKeys')) as string);
+  const secrets = [];
+  for (const key of keys) {
+    const value = await util.getSessionStorageItem(key);
+    secrets.push({ domain: key, value });
+  }
+  return secrets;
 };
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -40,6 +74,19 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         response = { success: true, secret: secret };
       } else {
         response = { success: false, secret: null };
+      }
+      sendResponse(response);
+    });
+    return true;
+  }
+  if (request.action == 'getSecretsFromMemory') {
+    console.log('Getting all secrets from storage');
+    getAllSecrets().then(secrets => {
+      let response;
+      if (secrets) {
+        response = { success: true, secrets: secrets };
+      } else {
+        response = { success: false, secrets: null };
       }
       sendResponse(response);
     });
