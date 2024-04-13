@@ -71,12 +71,12 @@ const Accordion: React.FC = () => {
                 </div>
                 <div className="width-full flex gap-10 items-end">
                   <button
-                    onClick={() => handleUpdateClick('dummy')}
+                    onClick={() => handleUpdateClick(secret.domain)}
                     className="whitespace-nowrap flex justify-between w-full h-full text-primary1 hover:bg-primary2 hover:text-background3 focus:ring-4 focus:ring-primary2 border border-solid border-0.25 border-text2 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">
                     Update
                   </button>
                   <button
-                    onClick={() => handleDeleteClick('dummy')}
+                    onClick={() => handleDeleteClick(secret.domain)}
                     className="whitespace-nowrap flex justify-between w-full h-full text-primary1 hover:bg-primary2 hover:text-background3 focus:ring-4 focus:ring-primary2 border border-solid border-0.25 border-text2 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">
                     Delete
                   </button>

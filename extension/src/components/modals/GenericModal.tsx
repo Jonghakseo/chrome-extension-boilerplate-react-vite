@@ -37,25 +37,11 @@ const GenericModal: React.FC<GenericModalProps> = ({ isOpen, onClose, title, chi
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95">
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-slate-700 p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-background3 p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-white">
                     {title}
                   </Dialog.Title>
                   {children}
-                  <div className="mt-4 flex justify-between">
-                    <button
-                      type="button"
-                      className="inline-flex rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={onClose}>
-                      Close
-                    </button>
-                    <button
-                      type="button"
-                      className="inline-flex rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={onClose}>
-                      Ok
-                    </button>
-                  </div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
