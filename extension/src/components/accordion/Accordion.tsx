@@ -5,28 +5,36 @@ import DeleteModal from '../modals/DeleteModal';
 const Accordion: React.FC = () => {
   const dummyData = [
     {
-      name: 'namecheap.com',
-      value: '*********',
+      domain: 'www.facebook.com',
+      secret: 'test1',
     },
     {
-      name: 'openai.com',
-      value: '**********',
+      domain: 'www.youtube.com',
+      secret: 'test2',
     },
     {
-      name: 'github.com',
-      value: '************',
+      domain: 'www.trello.com',
+      secret: 'test3',
     },
     {
-      name: 'dexscreener.com',
-      value: '*********',
+      domain: 'www.discord.com',
+      secret: 'test4',
     },
   ];
 
   const [secrets, setSecrets] = useState(dummyData);
+  const [hiddenSecrets, setHiddenSecrets] = useState({});
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [secretToUpdate, setSecretToUpdate] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [secretToDelete, setSecretToDelete] = useState(null);
+
+  const toggleReveal = domain => {
+    setHiddenSecrets({
+      ...hiddenSecrets,
+      [domain]: !hiddenSecrets[domain],
+    });
+  };
 
   const handleUpdateClick = secret => {
     setSecretToUpdate('dummy');
@@ -47,19 +55,16 @@ const Accordion: React.FC = () => {
           // <div className={`border-b-2 border-background4 ${index === secrets.length - 1 ? '' : ''}`}>
           <div className="collapse collapse-arrow" key={index}>
             <input type="checkbox" />
-            <div className="collapse-title text-xl font-medium">
-              <div className='flex content-between gap-5 w-2/4 items-start	align-middle'>
-            <img src= {`https://${secret.name}/favicon.ico`} className='max-w-5	 max-h-5 my-1'/> 
-            {secret.name}
-            </div>
-            
+            <div className="collapse-title text-xl font-medium flex">
+              <img src= {`https://${secret.domain}/favicon.ico`} className='max-w-5	 max-h-5 my-1'/> 
+              {secret.domain.replace(/^www\./, '')}
             </div>
             <div className="collapse-content">
               <div className="w-full flex justify-between">
                 <div className="flex justify-between items-center py-2 px-4 w-1/2 rounded-md bg-text3">
-                  {secret.value}
-                  <span className="gap-4">
-                    <button className="hover:bg-primary2 hover:text-background3 focus:ring-1 focus:ring-primary2 p-1 rounded-lg">
+                  {hiddenSecrets[secret.domain] ? '********' : secret.secret}
+                  <span className="space-x-1">
+                    <button className="hover:bg-primary2 hover:text-background3 p-1 rounded-lg">
                       <i className="fa-light fa-eye w-4 h-4"></i>
                     </button>
                     <button className="hover:bg-primary2 hover:text-background3 p-1 rounded-lg">
@@ -69,12 +74,12 @@ const Accordion: React.FC = () => {
                 </div>
                 <div className="width-full flex gap-10 items-end">
                   <button
-                    onClick={() => handleUpdateClick('dummy')}
+                    onClick={() => handleUpdateClick(secret.domain)}
                     className="whitespace-nowrap flex justify-between w-full h-full text-primary1 hover:bg-primary2 hover:text-background3 focus:ring-4 focus:ring-primary2 border border-solid border-0.25 border-text2 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">
                     Update
                   </button>
                   <button
-                    onClick={() => handleDeleteClick('dummy')}
+                    onClick={() => handleDeleteClick(secret.domain)}
                     className="whitespace-nowrap flex justify-between w-full h-full text-primary1 hover:bg-primary2 hover:text-background3 focus:ring-4 focus:ring-primary2 border border-solid border-0.25 border-text2 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">
                     Delete
                   </button>
