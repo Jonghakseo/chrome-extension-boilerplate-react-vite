@@ -1,6 +1,6 @@
 import React from 'react';
 import Body from '../../components/body/Body';
-import Navbar from '../../components/nav/Navbar';
+import Navbar from '../../components/header/Header';
 import { useEthereum } from '@root/src/shared/providers/EthereumContext';
 import { useEffect } from 'react';
 

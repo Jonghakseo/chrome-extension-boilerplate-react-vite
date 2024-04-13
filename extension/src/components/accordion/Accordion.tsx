@@ -1,39 +1,27 @@
 import React, { useState } from 'react';
 import UpdateModal from '../modals/UpdateModal';
 import DeleteModal from '../modals/DeleteModal';
+import { json } from 'stream/consumers';
 
-const Accordion: React.FC = () => {
-  const dummyData = [
-    {
-      domain: 'www.facebook.com',
-      secret: 'test1',
-    },
-    {
-      domain: 'www.youtube.com',
-      secret: 'test2',
-    },
-    {
-      domain: 'www.trello.com',
-      secret: 'test3',
-    },
-    {
-      domain: 'www.discord.com',
-      secret: 'test4',
-    },
-  ];
-
-  const [secrets, setSecrets] = useState(dummyData);
-  const [hiddenSecrets, setHiddenSecrets] = useState({});
+const Accordion = ({ secrets }) => {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [secretToUpdate, setSecretToUpdate] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [secretToDelete, setSecretToDelete] = useState(null);
+  const [visibleSecrets, setVisibleSecrets] = useState(
+    secrets.reduce((acc, secret, idx) => {
+      acc[idx] = false; // Initialize all secrets as not visible
+      return acc;
+    }, {}),
+  );
 
-  const toggleReveal = domain => {
-    setHiddenSecrets({
-      ...hiddenSecrets,
-      [domain]: !hiddenSecrets[domain],
-    });
+  const copyToClipboard = async text => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert('Password copied to clipboard!'); // Optionally, replace this with a more subtle notification
+    } catch (err) {
+      alert('Failed to copy password. Please try again!'); // Optionally, handle this error more gracefully
+    }
   };
 
   const handleUpdateClick = secret => {
@@ -48,6 +36,13 @@ const Accordion: React.FC = () => {
     setIsDeleteModalOpen(true);
   };
 
+  const toggleVisibility = index => {
+    console.log(JSON.stringify(visibleSecrets));
+    setVisibleSecrets(prev => ({ ...prev, [index]: !prev[index] }));
+  };
+
+  console.log(secrets);
+
   return (
     <>
       <div className="border-solid border-[0.5px] my-2 border-background4  bg-background3 rounded-lg">
@@ -59,12 +54,18 @@ const Accordion: React.FC = () => {
             <div className="collapse-content">
               <div className="w-full flex justify-between">
                 <div className="flex justify-between items-center py-2 px-4 w-1/2 rounded-md bg-text3">
-                  {hiddenSecrets[secret.domain] ? '********' : secret.secret}
+                  {visibleSecrets[index] ? secret.value : '********'}
                   <span className="space-x-1">
-                    <button className="hover:bg-primary2 hover:text-background3 p-1 rounded-lg">
+                    <button
+                      onClick={() => {
+                        toggleVisibility(index);
+                      }}
+                      className="hover:bg-primary2 hover:text-background3 p-1 rounded-lg">
                       <i className="fa-light fa-eye w-4 h-4"></i>
                     </button>
-                    <button className="hover:bg-primary2 hover:text-background3 p-1 rounded-lg">
+                    <button
+                      onClick={() => copyToClipboard(secret.password)}
+                      className="hover:bg-primary2 hover:text-background3 p-1 rounded-lg">
                       <i className="fa-regular fa-copy w-4 h-4"></i>
                     </button>
                   </span>
