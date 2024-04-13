@@ -1,9 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect, Ref } from 'react';
 import { useEthereum } from '@src/shared/providers/EthereumContext';
-import { useEffect } from 'react';
-import { Ref } from 'react';
 import { getStorageContract } from '@root/utils/utils';
-// import BlockLockLogo from '@assets/img/blocklock_logo.svg';
 import CheckedIcon from '../images/CheckedIcon';
 import BlockLockLogo from '../images/BlockLockLogo';
 import UpRightIcon from '../images/UpRightIcon';

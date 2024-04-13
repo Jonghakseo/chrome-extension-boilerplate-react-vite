@@ -3,7 +3,7 @@ import UpdateModal from '../modals/UpdateModal';
 import DeleteModal from '../modals/DeleteModal';
 import { json } from 'stream/consumers';
 
-const Accordion = ({ secrets }) => {
+const Accordion = ({ secrets, updateSecret }) => {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [secretToUpdate, setSecretToUpdate] = useState(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -25,13 +25,13 @@ const Accordion = ({ secrets }) => {
   };
 
   const handleUpdateClick = secret => {
-    setSecretToUpdate('dummy');
+    setSecretToUpdate(secret);
     console.log('isUpdateModalOpen changed to:', !isUpdateModalOpen);
     setIsUpdateModalOpen(true);
   };
 
   const handleDeleteClick = secret => {
-    setSecretToDelete('dummy');
+    setSecretToDelete(secret);
     console.log('isDeleteModalOpen changed to:', !isDeleteModalOpen);
     setIsDeleteModalOpen(true);
   };
@@ -95,6 +95,7 @@ const Accordion = ({ secrets }) => {
         <UpdateModal
           isOpen={isUpdateModalOpen}
           onClose={() => setIsUpdateModalOpen(false)}
+          updateSecret={updateSecret}
           secretDomain={secretToUpdate} // Pass the secret data
         />
       )}

@@ -49,6 +49,15 @@ export function setSessionStorageItem(key, value) {
   });
 }
 
+export function deleteSessionStorageItem(key) {
+  return new Promise((resolve, reject) => {
+    chrome.storage.session.remove(key, function () {
+      chrome.runtime.lastError ? reject(Error(chrome.runtime.lastError.message)) : '';
+      return resolve(true);
+    });
+  });
+}
+
 export async function clearLocalStorage(removeItems) {
   chrome.storage.sync.remove(removeItems, () => {
     return true;

@@ -53,4 +53,19 @@ describe("SecretStore", () => {
     expect(secrets[0].domain).to.equal(secretdomain);
     expect(secrets[0].secret).to.equal(secret2);
   });
+
+  it("should delete correct secret", async () => {
+    const { contract } = await deploySecretStore();
+    const secret = { domain: "www.test.com", secret: "test" };
+    await contract.setSecret(secret.domain, secret.secret);
+
+    let secrets = await contract.getSecrets();
+    console.log(`secrets: ${secrets}`);
+    expect(secrets[0].domain).to.equal(secret.domain);
+    expect(secrets[0].secret).to.equal(secret.secret);
+
+    await contract.deleteSecret(secret.domain);
+    secrets = await contract.getSecrets();
+    expect(secrets).to.be.an("array").that.is.empty;
+  });
 });
