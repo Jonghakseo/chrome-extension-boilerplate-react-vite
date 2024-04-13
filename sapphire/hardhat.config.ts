@@ -15,6 +15,12 @@ const config: HardhatUserConfig = {
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
       chainId: 0x5aff,
     },
+    "sapphire": {
+      //Mainet.
+      url: "https://sapphire.oasis.io",
+      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      chainId: 0x5afe,
+    }
   },
 };
 

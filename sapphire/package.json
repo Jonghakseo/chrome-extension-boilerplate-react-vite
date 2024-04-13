@@ -7,6 +7,7 @@
     "hardhat": "^2.22.2"
   },
   "dependencies": {
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "solc": "^0.8.25"
   }
 }
