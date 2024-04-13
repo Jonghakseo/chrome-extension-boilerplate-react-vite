@@ -15,6 +15,25 @@ export const abi = [
         type: 'string',
       },
     ],
+    name: 'SecretDeleted',
+    type: 'event',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'owner',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'string',
+        name: 'domain',
+        type: 'string',
+      },
+    ],
     name: 'SecretStored',
     type: 'event',
   },
@@ -36,6 +55,19 @@ export const abi = [
     ],
     name: 'SecretUpdated',
     type: 'event',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'string',
+        name: '_domain',
+        type: 'string',
+      },
+    ],
+    name: 'deleteSecret',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
   },
   {
     inputs: [],

@@ -37,6 +37,14 @@ const Body: React.FC = () => {
     }
   };
 
+  const updateSecret = (domain, newSecret) => {
+    console.log('hit updateSecret');
+    setSecrets(prevSecrets =>
+      prevSecrets.map(secret => (secret.domain === domain ? { ...secret, value: newSecret } : secret)),
+    );
+    console.log('Secrets:', secrets);
+  };
+
   return (
     <div className="width-full flex justify-center pt-10">
       <div className="w-1/2 text-left">
@@ -51,7 +59,7 @@ const Body: React.FC = () => {
           </button>
         </div>
 
-        <Accordion secrets={secrets} />
+        <Accordion secrets={secrets} updateSecret={updateSecret} />
       </div>
     </div>
   );

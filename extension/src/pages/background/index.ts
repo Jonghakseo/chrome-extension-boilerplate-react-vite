@@ -19,10 +19,16 @@ const addSecretsToStorage = secrets => {
     await util.setSessionStorageItem(domain, value);
   });
 };
+
 const addSecretToStorage = async secret => {
   const { domain, value } = secret;
   console.log('Adding secret to storage:', domain, value);
   await util.setSessionStorageItem(domain, value);
+};
+
+const deleteSecretFromStorage = async domain => {
+  console.log('Removing secret from storage:', domain);
+  await util.deleteSessionStorageItem(domain);
 };
 
 const getSecretForDomain = async domain => {
@@ -54,6 +60,12 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action == 'addSecretToMemory') {
     const secret = request.secret;
     addSecretToStorage(secret);
+    sendResponse({ success: true });
+    return true;
+  }
+  if (request.action == 'deleteSecretFromStorage') {
+    const domain = request.domain;
+    deleteSecretFromStorage(domain);
     sendResponse({ success: true });
     return true;
   }

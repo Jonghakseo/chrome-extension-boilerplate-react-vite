@@ -1,13 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useEthereum } from '@src/shared/providers/EthereumContext';
-import { useEffect } from 'react';
 import { Ref } from 'react';
 import { getStorageContract } from '@root/utils/utils';
-// import BlockLockLogo from '@assets/img/blocklock_logo.svg';
 import CheckedIcon from '../images/CheckedIcon';
 import BlockLockLogo from '../images/BlockLockLogo';
 import UpRightIcon from '../images/UpRightIcon';
 import InformationIcon from '../images/InformationIcon';
+import { forwardRef } from 'react';
 
 interface ModalProps {
   isOpen: boolean;
@@ -15,8 +14,7 @@ interface ModalProps {
   input: Ref<HTMLInputElement>;
   password: string;
 }
-
-function PasswordModal({ isOpen, setIsOpen, input, password }: ModalProps) {
+function CreatePasswordModal({ isOpen, setIsOpen, input, password }: ModalProps) {
   const [isPending, setIsPending] = useState(false);
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [modalStyle, setModalStyle] = useState({});
@@ -155,4 +153,4 @@ function PasswordModal({ isOpen, setIsOpen, input, password }: ModalProps) {
   );
 }
 
-export default PasswordModal;
+export default CreatePasswordModal;
