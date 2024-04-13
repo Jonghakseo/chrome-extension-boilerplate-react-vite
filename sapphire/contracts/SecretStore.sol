@@ -17,7 +17,10 @@ contract SecretStore {
     event SecretStored(address indexed owner, string indexed domain); // Event for store success
     event SecretUpdated(address indexed owner, string indexed domain); // Event for update success
 
-    function(string calldata _domain, string calldata _secret) external {
+    function setSecret(
+        string calldata _domain,
+        string calldata _secret
+    ) external {
         // console.log("Hit setSecret: %s%s", _domain, _secret);
 
         // Find if service already exists
