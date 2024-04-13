@@ -4,6 +4,25 @@ export default {
   content: [],
   theme: {
     extend: {
+      fontFamily: {
+        sans: [
+          'DMSans',
+          'ui-sans-serif',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'Noto Sans',
+          'sans-serif',
+          'Apple Color Emoji',
+          'Segoe UI Emoji',
+          'Segoe UI Symbol',
+          'Noto Color Emoji',
+        ],
+      },
       colors: {
         primary1: '#2FE4AB',
         primary2: '#16968E',

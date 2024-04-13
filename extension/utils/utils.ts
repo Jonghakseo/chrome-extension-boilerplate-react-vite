@@ -1,3 +1,11 @@
+import { ethers } from 'ethers';
+import { abi } from '@src/shared/abi/secretStorageAbi';
+
+export function getStorageContract(signer: ethers.Signer) {
+  const address = import.meta.env.VITE_STORAGE_CONTRACT_ADDRESS;
+  return new ethers.Contract(address, abi, signer);
+}
+
 export function generateRandomPassword(length = 12) {
   const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&()}{[]/-=';
   let password = '';

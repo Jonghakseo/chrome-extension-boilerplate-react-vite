@@ -42,18 +42,16 @@ export const EthereumProvider = ({ children }) => {
   const connectToMetaMask = useCallback(async () => {
     const metamaskPort = chrome.runtime.connect(METAMASK_EXT_ID);
     const pluginStream = new PortStream(metamaskPort);
-
     initializeProvider({
       connectionStream: pluginStream,
     });
-
+    console.log(window.ethereum);
     if (window.ethereum) {
       const ethProvider = new ethers.providers.Web3Provider(window.ethereum);
       await ethProvider.send('eth_requestAccounts', []);
       const ethSigner = sapphire.wrap(await ethProvider.getSigner());
       setProvider(ethProvider);
       setSigner(ethSigner);
-
       const accounts = await ethProvider.listAccounts();
       if (accounts.length > 0) {
         setIsConnected(true);

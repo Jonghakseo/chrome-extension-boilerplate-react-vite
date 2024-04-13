@@ -2,11 +2,12 @@ import { createRoot } from 'react-dom/client';
 import App from '@pages/content/ui/app';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import injectedStyle from './injected.css?inline';
+import { EthereumProvider } from '@src/shared/providers/EthereumContext';
 
 refreshOnUpdate('pages/content');
 
 const root = document.createElement('div');
-root.id = 'block-lock-view-root';
+root.id = 'blocklock-content-view-root';
 
 document.body.append(root);
 
@@ -21,6 +22,13 @@ const styleElement = document.createElement('style');
 styleElement.innerHTML = injectedStyle;
 shadowRoot.appendChild(styleElement);
 
+const linkElement = document.createElement('link');
+linkElement.href = 'https://kit.fontawesome.com/cd3d201a06.css';
+linkElement.rel = 'stylesheet';
+linkElement.crossOrigin = 'anonymous';
+
+shadowRoot.appendChild(linkElement);
+
 /**
  * https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/174
  *
@@ -28,4 +36,8 @@ shadowRoot.appendChild(styleElement);
  * Please refer to the PR link above and go back to the contentStyle.css implementation, or raise a PR if you have a better way to improve it.
  */
 
-createRoot(rootIntoShadow).render(<App />);
+createRoot(rootIntoShadow).render(
+  <EthereumProvider>
+    <App />
+  </EthereumProvider>,
+);
