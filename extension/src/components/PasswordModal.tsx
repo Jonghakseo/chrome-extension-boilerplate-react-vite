@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useEthereum } from '@src/shared/providers/EthereumContext';
 import { useEffect } from 'react';
 import { Ref } from 'react';
+import { getStorageContract } from '@root/utils/utils';
 
 interface ModalProps {
   isOpen: boolean;
@@ -12,63 +13,103 @@ interface ModalProps {
 
 function PasswordModal({ isOpen, setIsOpen, input, password }: ModalProps) {
   const [isLoading, setIsLoading] = useState(false);
+  const [positionClasses, setPositionClasses] = useState('');
+  const [modalStyle, setModalStyle] = useState({});
+
+  //@ts-ignore
+  console.log(input);
 
   console.log('Password Modal is alive');
 
-  //   const { provider, signer, connectToMetaMask, isConnected } = useEthereum();
+  const { signer, connectToMetaMask, isConnected } = useEthereum();
+
+  useEffect(() => {
+    //@ts-ignore
+    if (isOpen && input.current) {
+      //@ts-ignore
+      const rect = input.current.getBoundingClientRect();
+      const top = rect.top + rect.height + window.scrollY + 10; // 10px below the input
+      const left = rect.left + window.scrollX;
+      //   const left = rect.left + window.scrollX;
+      const topStyle = `top-[${top}px]`;
+      const leftStyle = `left-[${left}px]`;
+
+      console.log(topStyle, leftStyle);
+
+      setPositionClasses(`${topStyle} ${leftStyle}`);
+
+      setModalStyle({
+        top: `${rect.top + rect.height + window.scrollY + 10}px`, // 10px below the input
+        left: `${rect.left + window.scrollX}px`,
+        position: 'absolute',
+        zIndex: 1000, // Ensure it's above most content
+      });
+    }
+  }, []);
 
   const store = async () => {
     setIsLoading(true);
-    //   if (!isConnected) {
-    //     await connectToMetaMask();
-    //   } else {
-    //     storeSecret();
-    //   }
+    if (!isConnected) {
+      await connectToMetaMask();
+    } else {
+      storeSecret();
+    }
   };
 
-  const storeSecret = async () => {};
+  const storeSecret = async () => {
+    setIsLoading(true);
 
-  //   useEffect(() => {
-  //     if (signer) {
-  //       storeSecret();
-  //     }
-  //   }, [signer]);
+    const domainName = window.location.hostname;
+    console.log(domainName);
+
+    const contract = getStorageContract(signer);
+    const tx = await contract?.setSecret(domainName, password);
+    console.log('TX:', tx);
+    const txReceipt = await tx.wait();
+    console.log('Transaction Receipt:', txReceipt);
+
+    if (txReceipt.status === 1) {
+      console.log('Secret stored successfully.');
+      const response = await chrome.runtime.sendMessage({
+        action: 'addSecretToMemory',
+        secret: { domain: domainName, value: password },
+      });
+      console.log('Response:', response);
+    }
+
+    setIsLoading(false);
+    setIsOpen(false);
+    //@ts-ignore
+    input.current.value = password;
+  };
+
+  useEffect(() => {
+    if (signer) {
+      storeSecret();
+    }
+  }, [signer]);
 
   return (
-    <div id="modal" className="relative z-[900]">
-      <div className="fixed inset-0 bg-black/60" />
-      <div className="fixed inset-0 flex  items-center justify-center py-4 text-xs md:text-base">
-        <div className="card flex flex-col gap-4 bg-gray-800  opacity-100 border border-gray-400 shadow-2xl px-5 py-2 w-full max-w-sm rounded">
-          <div className="flex items-center">
-            <h2 className="text-4xl">🔑</h2>
-            <h2 className="text-white ml-5">Save Password</h2>
-          </div>
-          <div className="flex rounded-md shadow-lg justify-center items-center w-1/2 mx-auto border py-2 px-4 border-gray-300">
-            <p className="text-white ">{password}</p>
-          </div>
-          <div className="flex  gap-4 justify-center items-center">
-            <div className="w-full flex justify-center items-center h-12">
-              <button
-                onClick={() => setIsOpen(false)}
-                className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                Close
-              </button>
-            </div>
-            <div className="w-full flex justify-center h-12">
-              {isLoading ? (
-                <span className="loading text-white loading-spinner"></span>
-              ) : (
-                <button
-                  disabled={isLoading}
-                  onClick={store}
-                  className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  Store
-                </button>
-              )}
-            </div>
+    <div>
+      {modalStyle && (
+        <div style={modalStyle} className={` bg-white rounded shadow-lg p-6 text-black w-full max-w-md`}>
+          <h2 className="text-xl font-bold mb-4">Save Password</h2>
+          <p>{password}</p>
+          <div className="mt-4 flex justify-between">
+            <button
+              onClick={() => setIsOpen(false)}
+              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+              Close
+            </button>
+            <button
+              onClick={store}
+              disabled={isLoading}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              {isLoading ? 'Storing...' : 'Store'}
+            </button>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

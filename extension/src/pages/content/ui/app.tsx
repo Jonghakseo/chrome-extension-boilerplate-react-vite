@@ -7,10 +7,8 @@ import { useRef } from 'react';
 export default function App() {
   const [isOpen, setIsOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  console.log('We are alive');
-
   const [randomPassword, setRandomPassword] = useState<string>(generateRandomPassword());
+  const [positionClasses, setPositionClasses] = useState('');
 
   const createPasswordSuggestionDiv = () => {
     const passwordSuggestionDiv = document.createElement('div');
@@ -77,7 +75,9 @@ export default function App() {
       document.body.appendChild(passwordSuggestionDiv);
 
       const showSuggestions = () => {
-        passwordSuggestionDiv.style.display = 'flex'; // Show the suggestion div
+        inputRef.current = input;
+        setIsOpen(true);
+        // passwordSuggestionDiv.style.display = 'flex'; // Show the suggestion div
       };
       const hideSuggestions = () => {
         passwordSuggestionDiv.style.display = 'none'; // Hide the suggestion div
@@ -85,7 +85,8 @@ export default function App() {
 
       passwordSuggestionDiv.addEventListener('click', () => {
         console.log('Clicked on suggestion');
-        // input.value = randomPassword;
+        inputRef.current = input;
+        console.log(inputRef);
         setIsOpen(true);
         hideSuggestions();
       });

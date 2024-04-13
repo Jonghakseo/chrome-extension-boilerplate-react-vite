@@ -1,18 +1,13 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 const Popup = () => {
-  const launchApp = () => {
+  useEffect(() => {
     const url = chrome.runtime.getURL('src/pages/app/index.html');
     chrome.tabs.create({ url });
-  };
+  }, []);
 
-  return (
-    <div className="p-10">
-      <button onClick={launchApp} className="btn btn-primary">
-        Launch
-      </button>
-    </div>
-  );
+  return <></>;
 };
 
 export default Popup;
