@@ -10,6 +10,8 @@
 
 
 > This project is listed in the [Awesome Vite](https://github.com/vitejs/awesome-vite)
+---
+> **This boilerplate has [legacy version](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/tree/legacy)**
 
 </div>
 
@@ -29,7 +31,6 @@
     - [NewTab](#newtab)
     - [Popup](#popup)
     - [Devtools](#devtools)
-- [Examples](#examples)
 - [Documents](#documents)
 
 ## Intro <a name="intro"></a>
@@ -39,17 +40,11 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ## Features <a name="features"></a>
 
-- [React 18](https://reactjs.org/)
+- [React18](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Vitest](https://vitest.dev/)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Vite](https://vitejs.dev/)
-- [SASS](https://sass-lang.com/)
 - [Prettier](https://prettier.io/)
 - [ESLint](https://eslint.org/)
-- [Husky](https://typicode.github.io/husky/get-started.html#automatic-recommended)
-- [Commitlint](https://commitlint.js.org/#/guides-local-setup?id=install-commitlint)
-- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary)
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
 - HRR(Hot Rebuild & Refresh/Reload)
 
@@ -67,8 +62,8 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 ### For Chrome: <a name="chrome"></a>
 
 1. Run:
-    - Dev: `pnpm dev` or `npm run dev`
-    - Prod: `pnpm build` or `npm run build`
+    - Dev: `pnpm dev-server` & `pnpm dev`
+    - Prod: `pnpm build`
 2. Open in browser - `chrome://extensions`
 3. Check - `Developer mode`
 4. Find and Click - `Load unpacked extension`
@@ -77,289 +72,14 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 ### For Firefox: <a name="firefox"></a>
 
 1. Run:
-    - Dev: `pnpm dev:firefox` or `npm run dev:firefox`
-    - Prod: `pnpm build:firefox` or `npm run build:firefox`
+    - Dev: `pnpm dev-server` & `pnpm dev:firefox`
+    - Prod: `pnpm build:firefox`
 2. Open in browser - `about:debugging#/runtime/this-firefox`
 3. Find and Click - `Load Temporary Add-on...`
 4. Select - `manifest.json` from `dist` folder
 
 ### <i>Remember in firefox you add plugin in temporary mode, that's mean it's disappear after close browser, you must do it again, on next launch.</i>
 
-## Add Style Library <a name="add-style-library"></a>
-
-> IMPORTANT: If you DO NOT want to use css file in the content script, you need to delete the css file in your
-> manifest.js
-
-```js
-content_scripts: [
-  {
-    // YOU NEED TO DELETE THIS
-    css: ["assets/css/contentStyle<KEY>.chunk.css"]
-  }
-];
-```
-
-### Twind <a name="twind"></a>
-
-> The smallest, fastest, most feature complete Tailwind-in-JS solution in existence
-
-**1. Install the library:**
-
-```bash
-$ pnpm install -D @twind/core @twind/preset-autoprefix @twind/preset-tailwind
-```
-
-**2. Create twind.config.ts in the root folder**
-
-<details>
-<summary>twind.config.ts</summary>
-
-```ts
-import { defineConfig } from '@twind/core';
-import presetTailwind from '@twind/preset-tailwind';
-import presetAutoprefix from '@twind/preset-autoprefix';
-
-export default defineConfig({
-  presets: [presetAutoprefix(), presetTailwind()],
-});
-```
-
-</details>
-
-**3. Create src/shared/style/twind.ts for importing**
-
-<details>
-<summary>src/shared/style/twind.ts</summary>
-
-```ts
-import { twind, cssom, observe } from '@twind/core';
-import 'construct-style-sheets-polyfill';
-import config from '@root/twind.config';
-
-export function attachTwindStyle<T extends { adoptedStyleSheets: unknown }>(
-  observedElement: Element,
-  documentOrShadowRoot: T,
-) {
-  const sheet = cssom(new CSSStyleSheet());
-  const tw = twind(config, sheet);
-  observe(tw, observedElement);
-  documentOrShadowRoot.adoptedStyleSheets = [sheet.target];
-}
-```
-
-</details>
-
-**4. You can use Tailwind in your project:**
-
-<details>
-<summary>src/pages/popup/index.tsx</summary>
-
-```tsx
-import { attachTwindStyle } from '@src/shared/style/twind';
-
-...
-attachTwindStyle(appContainer, document);
-const root = createRoot(appContainer);
-root.render(<Popup />);
-```
-
-</details>
-
-**5. If you want to use Twind in the content script, you need to add the following code:**
-
-<details>
-<summary>src/pages/content/ui/root.tsx</summary>
-
-```tsx
-import { attachTwindStyle } from '@src/shared/style/twind';
-
-...
-attachTwindStyle(rootIntoShadow, shadowRoot);
-createRoot(rootIntoShadow).render(<App />);
-```
-
-</details>
-
-[See more examples](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/244/)
-
-### Chakra UI <a name="chakra-ui"></a>
-
-**1. Install the library:**
-
-```bash
-$ pnpm install @chakra-ui/react @emotion/cache @emotion/react
-```
-
-**2. You should add the code to `vite.config.ts`
-for [Ignore unnecessary warnings](https://github.com/TanStack/query/pull/5161#issuecomment-1506683450)**
-
-<details>
-<summary>vite.config.ts</summary>
-
-```ts
-export default defineConfig({
-  build: {
-    rollupOptions: {
-      // Add below code ~~~~~
-      onwarn(warning, warn) {
-        if (
-          warning.code === "MODULE_LEVEL_DIRECTIVE" &&
-          warning.message.includes(`"use client"`)
-        ) {
-          return;
-        }
-        warn(warning);
-      },
-      // Add above code ~~~~
-    },
-  },
-});
-```
-
-</details>
-
-**3. You can use Chakra UI in your project:**
-
-<details>
-<summary>src/pages/popup/Popup.tsx</summary>
-
-```tsx
-import { Button } from "@chakra-ui/react";
-
-export default function Popup() {
-  return (
-    <ChakraProvider>
-      <Button colorScheme="teal">Button</Button>;
-    </ChakraProvider>
-  ); 
-}
-```
-
-</details>
-
----
-
-> if you don't want to use Chakra UI in the content script, you can skip 4,5 step.
-
-**4. If you want to use Chakra UI in the content script, you need to add the following code:**
-
-<details>
-<summary>src/pages/content/ui/CustomChakraProvider.tsx</summary>
-
-```tsx
-import { ReactNode, useCallback, useEffect, useState } from "react";
-import {
-  ColorMode,
-  ColorModeContext,
-  ColorModeScript,
-  CSSReset,
-  extendTheme,
-  GlobalStyle,
-  ThemeProvider
-} from "@chakra-ui/react";
-
-const theme = extendTheme();
-
-const getCurrentTheme = () => {
-  const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  return isDark ? "dark" : "light";
-};
-
-type CustomChakraProviderProps = {
-  shadowRootId: string;
-  children: ReactNode;
-};
-export default function CustomChakraProvider({ children, shadowRootId }: CustomChakraProviderProps) {
-  const [colorMode, setColorMode] = useState<ColorMode>(getCurrentTheme());
-
-  useEffect(() => {
-    const darkThemeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChangeColorSchema = (event: MediaQueryListEvent) => {
-      const isDark = event.matches;
-      setColorMode(isDark ? "dark" : "light");
-    };
-
-    darkThemeMediaQuery.addEventListener("change", onChangeColorSchema);
-
-    return () => {
-      darkThemeMediaQuery.removeEventListener("change", onChangeColorSchema);
-    };
-  }, []);
-
-  const toggleColorMode = useCallback(() => {
-    setColorMode(prev => (prev === "dark" ? "light" : "dark"));
-  }, []);
-
-  return (
-    <ThemeProvider theme={{ ...theme, config: { ...theme.config, colorMode } }} cssVarsRoot={`#${shadowRootId}`}>
-      <ColorModeScript initialColorMode="system" />
-      <ColorModeContext.Provider value={{ colorMode, setColorMode, toggleColorMode }}>
-        <CSSReset />
-        <GlobalStyle />
-        {children}
-      </ColorModeContext.Provider>
-    </ThemeProvider>
-  );
-}
-```
-
-</details>
-<details>
-<summary>src/pages/content/ui/EmotionCacheProvider.tsx</summary>
-
-```tsx
-import createCache from '@emotion/cache';
-import { CacheProvider, type EmotionCache } from '@emotion/react';
-import { ReactNode, useEffect, useState } from 'react';
-
-export default function EmotionCacheProvider({ children, rootId }: { rootId: string; children: ReactNode }) {
-  const [emotionCache, setEmotionCache] = useState<EmotionCache | null>(null);
-
-  useEffect(() => {
-    function setEmotionStyles(shadowRoot: ShadowRoot) {
-      setEmotionCache(
-        createCache({
-          key: rootId,
-          container: shadowRoot,
-        }),
-      );
-    }
-
-    const root = document.getElementById(rootId);
-    if (root && root.shadowRoot) {
-      setEmotionStyles(root.shadowRoot);
-    }
-  }, []);
-
-  return emotionCache ? <CacheProvider value={emotionCache}>{children}</CacheProvider> : null;
-}
-```
-
-</details>
-
-**5. Fix the `src/pages/content/ui/root.tsx` file:**
-
-<details>
-<summary>src/pages/content/ui/root.tsx</summary>
-
-```tsx
-import CustomChakraProvider from '@pages/content/ui/CustomChakraProvider';
-import EmotionCacheProvider from '@pages/content/ui/EmotionCacheProvider';
-
-// ...
-
-createRoot(rootIntoShadow).render(
-  // Add Providers
-  <EmotionCacheProvider rootId={root.id}>
-    <CustomChakraProvider shadowRootId={rootIntoShadow.id}>
-      <App />
-    </CustomChakraProvider>
-  </EmotionCacheProvider>,
-);
-
-```
-
-</details>
 
 ## Pages <a name="pages"></a>
 
@@ -412,13 +132,6 @@ manifest.json
 ### Devtools <a name="devtools"></a>
 
 <img width="450" alt="devtools" src="https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/467d719d-a7db-4f77-8504-cd5ce7567793">
-
-## Examples <a name="examples"></a>
-
-- https://github.com/Jonghakseo/react-code-finder-extension
-- https://github.com/Jonghakseo/drag-gpt-extension
-- https://github.com/Jonghakseo/pr-commit-noti
-- https://github.com/ariburaco/chatgpt-file-uploader-extended
 
 ## Documents <a name="documents"></a>
 
