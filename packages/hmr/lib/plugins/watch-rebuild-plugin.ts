@@ -26,11 +26,11 @@ export function watchRebuildPlugin(config: PluginConfig): PluginOption {
     name: 'watch-rebuild',
     writeBundle() {
       if (!ws) {
-        try {
-          ws ??= new WebSocket(LOCAL_RELOAD_SOCKET_URL);
-        } catch (e) {
-          console.warn(e);
-        }
+        ws ??= new WebSocket(LOCAL_RELOAD_SOCKET_URL);
+        ws.onerror = () => {
+          console.error(`[HMR] Failed to start server at ${LOCAL_RELOAD_SOCKET_URL}`);
+          console.error('PLEASE MAKE SURE YOU ARE RUNNING `pnpm dev-server`');
+        };
         return;
       }
       /**

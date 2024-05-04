@@ -14,7 +14,7 @@
     "clean": "rimraf ./dist && rimraf ./build",
     "build:tsc": "tsc -b tsconfig.build.json",
     "build:rollup": "rollup --config rollup.config.mjs",
-    "build-dev-server": "pnpm run build:tsc && pnpm run build:rollup",
+    "build": "pnpm run build:tsc && pnpm run build:rollup",
     "dev-server": "ts-node-esm lib/initReloadServer.ts",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
