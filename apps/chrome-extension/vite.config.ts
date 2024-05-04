@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets';
 import makeManifestPlugin from './utils/plugins/make-manifest-plugin';
@@ -26,7 +25,6 @@ export default defineConfig({
     }),
     makeManifestPlugin({ outDir }),
     isDev && watchRebuildPlugin({ reload: true }),
-    react(),
   ],
   publicDir: resolve(rootDir, 'public'),
   build: {
