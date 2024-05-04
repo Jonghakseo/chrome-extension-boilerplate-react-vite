@@ -10,8 +10,10 @@
   "scripts": {
     "clean": "rimraf dist && turbo clean",
     "build": "turbo build",
+    "build:firefox": "cross-env __FIREFOX__=true turbo build",
     "dev-server": "pnpm -F hmr build && pnpm -F hmr dev-server",
-    "dev": "turbo dev --concurrency 20",
+    "dev": "cross-env __DEV__=true turbo dev --concurrency 20",
+    "dev:firefox": "cross-env __DEV__=true __FIREFOX__=true turbo dev --concurrency 20",
     "test": "turbo test",
     "type-check": "turbo type-check",
     "commitlint": "commitlint --edit",
