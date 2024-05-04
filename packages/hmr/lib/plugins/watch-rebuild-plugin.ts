@@ -45,7 +45,7 @@ export function watchRebuildPlugin(config: PluginConfig): PluginOption {
     generateBundle(_options, bundle) {
       for (const module of Object.values(bundle)) {
         if (module.type === 'chunk') {
-          module.code = `let __HMR_ID = "${id}";\n` + hmrCode + '\n' + module.code;
+          module.code = `(function() {let __HMR_ID = "${id}";\n` + hmrCode + '\n' + module.code + '})();';
         }
       }
     },
