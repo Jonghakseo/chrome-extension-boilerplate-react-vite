@@ -22,15 +22,27 @@ export function watchRebuildPlugin(config: PluginConfig): PluginOption {
 
   const hmrCode = (refresh ? refreshCode : '') + (reload ? reloadCode : '');
 
+  function initializeWebSocket() {
+    if (!ws) {
+      ws = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
+      ws.onopen = () => {
+        console.log(`[HMR] Connected to dev-server at ${LOCAL_RELOAD_SOCKET_URL}`);
+      };
+      ws.onerror = () => {
+        console.error(`[HMR] Failed to start server at ${LOCAL_RELOAD_SOCKET_URL}`);
+        console.error('PLEASE MAKE SURE YOU ARE RUNNING `pnpm dev-server`');
+        console.warn('Retrying in 5 seconds...');
+        ws = null;
+        setTimeout(() => initializeWebSocket(), 5_000);
+      };
+    }
+  }
+
   return {
     name: 'watch-rebuild',
     writeBundle() {
       if (!ws) {
-        ws ??= new WebSocket(LOCAL_RELOAD_SOCKET_URL);
-        ws.onerror = () => {
-          console.error(`[HMR] Failed to start server at ${LOCAL_RELOAD_SOCKET_URL}`);
-          console.error('PLEASE MAKE SURE YOU ARE RUNNING `pnpm dev-server`');
-        };
+        initializeWebSocket();
         return;
       }
       /**
