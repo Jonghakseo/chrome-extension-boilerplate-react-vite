@@ -22,8 +22,6 @@
   },
   "devDependencies": {
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "@chrome-extension-boilerplate/hmr": "workspace:*",
-    "vite": "5.0.12",
-    "@vitejs/plugin-react": "4.2.0"
+    "@chrome-extension-boilerplate/hmr": "workspace:*"
   }
 }

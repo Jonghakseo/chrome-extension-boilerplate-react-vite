@@ -32,6 +32,7 @@
     "@types/react-dom": "18.2.18",
     "@typescript-eslint/eslint-plugin": "6.10.0",
     "@typescript-eslint/parser": "6.18.1",
+    "@vitejs/plugin-react-swc": "^3.6.0",
     "cross-env": "7.0.3",
     "eslint": "8.56.0",
     "eslint-config-airbnb-typescript": "17.1.0",
@@ -46,7 +47,8 @@
     "tailwindcss": "^3.4.3",
     "tslib": "2.6.2",
     "turbo": "^1.12.4",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "vite": "^5.2.11"
   },
   "packageManager": "pnpm@8.9.2",
   "engines": {
