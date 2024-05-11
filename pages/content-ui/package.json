@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "clean": "rimraf ./dist && rimraf .turbo",
-    "build": "pnpm run clean && tsc --noEmit && vite build",
+    "build:tailwindcss": "tailwindcss -i src/tailwind-input.css -o src/tailwind-output.css",
+    "build": "pnpm build:tailwindcss && pnpm run clean && tsc --noEmit && vite build",
     "build:watch": "cross-env __DEV__=true vite build -w --mode development",
     "dev": "pnpm build:watch",
     "lint": "eslint . --ext .ts,.tsx",
@@ -22,6 +23,7 @@
     "@chrome-extension-boilerplate/shared": "workspace:*"
   },
   "devDependencies": {
+    "@chrome-extension-boilerplate/tailwindcss-config": "workspace:*",
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
     "@chrome-extension-boilerplate/hmr": "workspace:*",
     "vite": "5.0.12",
