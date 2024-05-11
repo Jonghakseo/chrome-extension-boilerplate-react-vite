@@ -21,11 +21,9 @@
     "@chrome-extension-boilerplate/shared": "workspace:*"
   },
   "devDependencies": {
-    "@chrome-extension-boilerplate/hmr": "workspace:*",
     "@chrome-extension-boilerplate/tailwindcss-config": "workspace:*",
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
+    "@chrome-extension-boilerplate/hmr": "workspace:*",
     "sass": "1.74.1"
   }
 }

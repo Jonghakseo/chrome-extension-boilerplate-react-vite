@@ -23,8 +23,6 @@
   "devDependencies": {
     "@chrome-extension-boilerplate/tailwindcss-config": "workspace:*",
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "@chrome-extension-boilerplate/hmr": "workspace:*",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38"
+    "@chrome-extension-boilerplate/hmr": "workspace:*"
   }
 }

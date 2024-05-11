@@ -36,6 +36,9 @@ importers:
       '@vitejs/plugin-react-swc':
         specifier: ^3.6.0
         version: 3.6.0(vite@5.2.11)
+      autoprefixer:
+        specifier: ^10.4.19
+        version: 10.4.19(postcss@8.4.38)
       cross-env:
         specifier: 7.0.3
         version: 7.0.3
@@ -63,6 +66,9 @@ importers:
       eslint-plugin-react-hooks:
         specifier: 4.6.0
         version: 4.6.0(eslint@8.56.0)
+      postcss:
+        specifier: ^8.4.38
+        version: 8.4.38
       prettier:
         specifier: 3.2.5
         version: 3.2.5
@@ -220,12 +226,6 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      autoprefixer:
-        specifier: ^10.4.19
-        version: 10.4.19(postcss@8.4.38)
-      postcss:
-        specifier: ^8.4.38
-        version: 8.4.38
 
   pages/newtab:
     dependencies:
@@ -242,12 +242,6 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      autoprefixer:
-        specifier: ^10.4.19
-        version: 10.4.19(postcss@8.4.38)
-      postcss:
-        specifier: ^8.4.38
-        version: 8.4.38
       sass:
         specifier: 1.74.1
         version: 1.74.1
@@ -261,6 +255,9 @@ importers:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
+      '@chrome-extension-boilerplate/tailwindcss-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -274,6 +271,9 @@ importers:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
+      '@chrome-extension-boilerplate/tailwindcss-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -287,6 +287,9 @@ importers:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
+      '@chrome-extension-boilerplate/tailwindcss-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
