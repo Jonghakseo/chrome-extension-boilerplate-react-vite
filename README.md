@@ -1,5 +1,5 @@
 <div align="center">
-<img src="apps/chrome-extension/public/icon-128.png" alt="logo"/>
+<img src="chrome-extension/public/icon-128.png" alt="logo"/>
 <h1> Chrome Extension Boilerplate with<br/>React + Vite + TypeScript</h1>
 
 ![](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
@@ -8,12 +8,18 @@
 ![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/build-zip.yml/badge.svg)
 <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Jonghakseo/chrome-extension-boilerplate-react-viteFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
 
-
-> This project is listed in the [Awesome Vite](https://github.com/vitejs/awesome-vite)
----
-> **This boilerplate has [Legacy version](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/tree/legacy)**
+> This boilerplate has [Legacy version](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/tree/legacy)
 
 </div>
+
+> [!TIP]
+> This project is listed in the [Awesome Vite](https://github.com/vitejs/awesome-vite)
+
+> [!IMPORTANT]
+> Share storage state between every page
+> 
+> https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/1992e46c-032a-4743-bbd2-c421757517d7
+
 
 ## Table of Contents
 
@@ -27,7 +33,6 @@
     - [Procedures](#procedures)
         - [Chrome](#chrome)
         - [Firefox](#firefox)
-- [Preview](#preview)
 - [Reference](#reference)
 - [Star History](#starhistory)
 - [Contributors](#contributors)
@@ -113,12 +118,6 @@ Some shared packages
 - `popup` - [popup](https://developer.chrome.com/docs/extensions/reference/browserAction/) for chrome extension (`action.default_popup` in
   manifest.json)
 - `sidepanel` - [sidepanel(Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/sidePanel/) for chrome extension (`side_panel.default_path` in manifest.json)
-
-### Preview <a name="preview"></a>
-
-> share storage state between every page
-
-https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/1992e46c-032a-4743-bbd2-c421757517d7
 
 ## Reference <a name="reference"></a>
 
