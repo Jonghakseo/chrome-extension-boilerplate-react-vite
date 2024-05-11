@@ -11,7 +11,7 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rimraf ./dist && rimraf ./build",
+    "clean": "rimraf ./dist && rimraf ./build && rimraf .turbo",
     "build:tsc": "tsc -b tsconfig.build.json",
     "build:rollup": "rollup --config rollup.config.mjs",
     "build": "pnpm run build:tsc && pnpm run build:rollup",

@@ -9,7 +9,7 @@
     "dist/**"
   ],
   "scripts": {
-    "clean": "rimraf ./dist",
+    "clean": "rimraf ./dist && rimraf .turbo",
     "build": "pnpm run clean && tsc --noEmit && vite build",
     "build:watch": "cross-env __DEV__=true vite build -w --mode development",
     "dev": "pnpm build:watch",
