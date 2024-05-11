@@ -17,6 +17,7 @@
 
 > [!IMPORTANT]
 > Share storage state between every page
+> 
 > https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/1992e46c-032a-4743-bbd2-c421757517d7
 
 
