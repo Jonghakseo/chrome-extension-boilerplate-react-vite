@@ -115,7 +115,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 > share storage state between every page
 
-https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/a850820c-640f-4258-b9ea-bb91545810c1
+https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/1992e46c-032a-4743-bbd2-c421757517d7
 
 ## Reference <a name="reference"></a>
 
