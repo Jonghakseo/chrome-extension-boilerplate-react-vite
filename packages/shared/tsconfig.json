@@ -1,0 +1,18 @@
+{
+  "extends": "@chrome-extension-boilerplate/tsconfig/utils",
+  "compilerOptions": {
+    "outDir": "dist",
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@lib/*": [
+        "lib/*"
+      ]
+    },
+    "types": ["chrome"]
+  },
+  "include": [
+    "index.ts",
+    "lib"
+  ]
+}
