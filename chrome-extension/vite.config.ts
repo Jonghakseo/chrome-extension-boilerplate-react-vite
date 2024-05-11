@@ -10,7 +10,7 @@ const libDir = resolve(rootDir, 'src');
 const isDev = process.env.__DEV__ === 'true';
 const isProduction = !isDev;
 
-const outDir = resolve(rootDir, '..', '..', 'dist');
+const outDir = resolve(rootDir, '..', 'dist');
 export default defineConfig({
   resolve: {
     alias: {

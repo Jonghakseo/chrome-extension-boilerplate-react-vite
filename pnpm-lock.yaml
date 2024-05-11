@@ -91,7 +91,7 @@ importers:
         specifier: ^5.2.11
         version: 5.2.11(@types/node@20.12.11)
 
-  apps/chrome-extension:
+  chrome-extension:
     dependencies:
       webextension-polyfill:
         specifier: ^0.11.0
@@ -99,16 +99,16 @@ importers:
     devDependencies:
       '@chrome-extension-boilerplate/dev-utils':
         specifier: workspace:*
-        version: link:../../packages/dev-utils
+        version: link:../packages/dev-utils
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
-        version: link:../../packages/hmr
+        version: link:../packages/hmr
       '@chrome-extension-boilerplate/shared':
         specifier: workspace:*
-        version: link:../../packages/shared
+        version: link:../packages/shared
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
-        version: link:../../packages/tsconfig
+        version: link:../packages/tsconfig
       '@laynezh/vite-plugin-lib-assets':
         specifier: ^0.5.21
         version: 0.5.21

@@ -20,7 +20,7 @@
 - [Intro](#intro)
 - [Features](#features)
 - [Structure](#structure)
-    - [Apps](#apps)
+    - [ChromeExtension](#chrome-extension)
     - [Packages](#packages)
     - [Pages](#pages)
 - [Install](#install)
@@ -83,15 +83,18 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ## Structure <a name="structure"></a>
 
-### Apps <a name="apps"></a>
+### ChromeExtension <a name="chrome-extension"></a>
 
-- `chrome-extension` - Main app for chrome extension
-  - `manifest.js` - manifest for chrome extension   
-  - `lib/background` - [background script](https://developer.chrome.com/docs/extensions/mv3/background_pages/) for chrome extension (`background.service_worker` in
-    manifest.json)   
-  - `public/content.css` - content css for user's page injection
+Main app with background script, manifest
+
+- `manifest.js` - manifest for chrome extension   
+- `lib/background` - [background script](https://developer.chrome.com/docs/extensions/mv3/background_pages/) for chrome extension (`background.service_worker` in
+  manifest.json)   
+- `public/content.css` - content css for user's page injection
 
 ### Packages <a name="packages"></a>
+
+Some shared packages
 
 - `dev-utils` - utils for chrome extension development (manifest-parser, logger)
 - `hmr` - custom HMR plugin for vite, injection script for reload/refresh, hmr dev-server
