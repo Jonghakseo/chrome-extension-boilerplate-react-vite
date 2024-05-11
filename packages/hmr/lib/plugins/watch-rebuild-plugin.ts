@@ -6,6 +6,7 @@ import * as fs from 'fs';
 import path from 'path';
 
 type PluginConfig = {
+  onStart?: () => void;
   reload?: boolean;
   refresh?: boolean;
 };
@@ -41,6 +42,7 @@ export function watchRebuildPlugin(config: PluginConfig): PluginOption {
   return {
     name: 'watch-rebuild',
     writeBundle() {
+      config.onStart?.();
       if (!ws) {
         initializeWebSocket();
         return;
