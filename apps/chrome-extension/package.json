@@ -11,7 +11,7 @@
     "dev": "pnpm build:watch",
     "dev:firefox": "pnpm build:firefox:watch",
     "test": "vitest run",
-    "lint": "eslint src --ext .ts,.js,.tsx,.jsx",
+    "lint": "eslint ./ --ext .ts,.js,.tsx,.jsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write",
     "type-check": "tsc --noEmit"
