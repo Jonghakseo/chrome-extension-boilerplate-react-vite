@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
+import { makeEntryPointPlugin, watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
 
 const rootDir = resolve(__dirname);
 const libDir = resolve(rootDir, 'lib');
@@ -14,7 +14,7 @@ export default defineConfig({
       '@lib': libDir,
     },
   },
-  plugins: [isDev && watchRebuildPlugin({ refresh: true })],
+  plugins: [isDev && watchRebuildPlugin({ refresh: true }), isDev && makeEntryPointPlugin()],
   publicDir: resolve(rootDir, 'public'),
   build: {
     lib: {

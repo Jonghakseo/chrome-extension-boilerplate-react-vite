@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
-import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
+import { makeEntryPointPlugin, watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');
@@ -16,7 +16,7 @@ export default defineConfig({
     },
   },
   base: '',
-  plugins: [react(), isDev && watchRebuildPlugin({ refresh: true })],
+  plugins: [react(), isDev && watchRebuildPlugin({ refresh: true }), isDev && makeEntryPointPlugin()],
   publicDir: resolve(rootDir, 'public'),
   build: {
     lib: {
