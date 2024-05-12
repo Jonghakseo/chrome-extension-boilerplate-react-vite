@@ -19,7 +19,7 @@ const Options = () => {
       <img src={chrome.runtime.getURL('options/logo.svg')} className="App-logo" alt="logo" />
       <span style={{ color: theme === 'light' ? '#0281dc' : undefined, marginBottom: '10px' }}>Options</span>
       Edit <code>pages/options/src/Options.tsx</code> and save to reload.
-      <ToggleButton>Toggle theme (tailwind)</ToggleButton>
+      <ToggleButton>Toggle theme</ToggleButton>
     </div>
   );
 };

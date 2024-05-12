@@ -30,7 +30,7 @@ const SidePanel = () => {
           Learn React
         </a>
         <h6>The color of this paragraph is defined using SASS.</h6>
-        <ToggleButton>Toggle theme (tailwind)</ToggleButton>
+        <ToggleButton>Toggle theme</ToggleButton>
       </header>
     </div>
   );

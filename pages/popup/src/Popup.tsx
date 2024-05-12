@@ -30,7 +30,7 @@ const Popup = () => {
           style={{ color: theme === 'light' ? '#0281dc' : undefined, marginBottom: '10px' }}>
           Learn React!
         </a>
-        <ToggleButton>Toggle theme (tailwind)</ToggleButton>
+        <ToggleButton>Toggle theme</ToggleButton>
       </header>
     </div>
   );
