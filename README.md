@@ -69,6 +69,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 1. Run:
     - Dev: `pnpm dev-server` & `pnpm dev` (parallel run)
+      - When you run with Windows, you should run as administrator. [(Issue#456)](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/456)
     - Prod: `pnpm build`
 2. Open in browser - `chrome://extensions`
 3. Check - `Developer mode`
