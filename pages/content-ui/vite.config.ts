@@ -38,7 +38,6 @@ export default defineConfig({
     sourcemap: isDev,
     minify: isProduction,
     reportCompressedSize: isProduction,
-    emptyOutDir: !isDev,
     rollupOptions: {
       external: ['chrome'],
     },
