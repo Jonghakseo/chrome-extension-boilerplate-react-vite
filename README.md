@@ -46,6 +46,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 - [React18](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [Tailwindcss](https://tailwindcss.com/)
 - [Vite](https://vitejs.dev/)
 - [Turborepo](https://turbo.build/repo)
 - [Prettier](https://prettier.io/)
