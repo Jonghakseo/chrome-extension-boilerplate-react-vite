@@ -150,7 +150,7 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
         accessLevel: SessionAccessLevel.ExtensionPagesAndContentScripts,
       })
       .catch(error => {
-        console.error(error);
+        console.warn(error);
         console.warn('Please call setAccessLevel into different context, like a background script.');
       });
     globalSessionAccessLevelFlag = true;
