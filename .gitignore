@@ -1,18 +1,21 @@
 # dependencies
-/node_modules
+**/node_modules
 
 # testing
-/coverage
+**/coverage
 
 # build
-/dist
+**/dist
+**/build
+
+# env
+**/.env.local
+**/.env
 
 # etc
 .DS_Store
-.env.local
 .idea
+**/.turbo
 
 # compiled
-utils/reload/*.js
-utils/reload/injections/*.js
-public/manifest.json
+apps/chrome-extension/public/manifest.json

@@ -8,44 +8,33 @@
     "url": "https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite.git"
   },
   "scripts": {
-    "build": "tsc --noEmit && vite build",
-    "build:firefox": "tsc --noEmit && cross-env __FIREFOX__=true vite build",
-    "build:watch": "cross-env __DEV__=true vite build -w --mode development",
-    "build:firefox:watch": "cross-env __DEV__=true __FIREFOX__=true vite build -w --mode development",
-    "build:hmr": "rollup --config utils/reload/rollup.config.mjs",
-    "wss": "node utils/reload/initReloadServer.js",
-    "dev": "pnpm build:hmr && (run-p wss build:watch)",
-    "dev:firefox": "pnpm build:hmr && (run-p wss build:firefox:watch)",
-    "test": "vitest",
-    "commitlint": "commitlint --edit",
-    "lint": "eslint src --ext .ts,.js,.tsx,.jsx",
-    "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write",
-    "prepare": "husky install"
+    "clean": "rimraf dist && rimraf .turbo && turbo clean",
+    "build": "turbo build",
+    "build:firefox": "cross-env __FIREFOX__=true turbo build",
+    "dev-server": "pnpm -F hmr build && pnpm -F hmr dev-server",
+    "dev": "cross-env __DEV__=true turbo dev --concurrency 20",
+    "dev:firefox": "cross-env __DEV__=true __FIREFOX__=true turbo dev --concurrency 20",
+    "test": "turbo test",
+    "type-check": "turbo type-check",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint:fix",
+    "prettier": "turbo prettier"
   },
   "type": "module",
   "dependencies": {
-    "construct-style-sheets-polyfill": "3.1.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "webextension-polyfill": "0.10.0"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "18.4.4",
-    "@commitlint/config-conventional": "18.1.0",
-    "@rollup/plugin-sucrase": "^5.0.2",
-    "@rollup/plugin-typescript": "11.1.6",
-    "@testing-library/react": "14.0.0",
-    "@types/chrome": "0.0.263",
-    "@types/node": "20.8.10",
-    "@types/react": "18.2.37",
-    "@types/react-dom": "18.2.18",
-    "@types/ws": "8.5.8",
-    "@typescript-eslint/eslint-plugin": "6.10.0",
-    "@typescript-eslint/parser": "6.18.1",
-    "@vitejs/plugin-react": "4.2.0",
-    "chokidar": "3.5.3",
-    "cross-env": "7.0.3",
+    "@types/chrome": "^0.0.268",
+    "@types/node": "^20.12.11",
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "autoprefixer": "^10.4.19",
+    "cross-env": "^7.0.3",
     "eslint": "8.56.0",
     "eslint-config-airbnb-typescript": "17.1.0",
     "eslint-config-prettier": "9.0.0",
@@ -54,27 +43,17 @@
     "eslint-plugin-prettier": "5.1.3",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-react-hooks": "4.6.0",
-    "fs-extra": "11.1.1",
-    "husky": "8.0.3",
-    "jsdom": "^22.1.0",
-    "lint-staged": "15.2.0",
-    "magic-string": "^0.30.6",
-    "npm-run-all": "4.1.5",
-    "prettier": "3.2.5",
-    "rollup": "4.3.0",
-    "sass": "1.72.0",
-    "ts-loader": "9.5.0",
-    "tslib": "2.6.2",
+    "postcss": "^8.4.38",
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.6",
+    "tailwindcss": "^3.4.3",
+    "tslib": "^2.6.2",
+    "turbo": "^1.13.3",
     "typescript": "5.2.2",
-    "vite": "5.0.12",
-    "vitest": "^1.2.2",
-    "ws": "8.14.2"
+    "vite": "^5.2.11"
   },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ]
-  },
-  "packageManager": "pnpm@8.9.2"
+  "packageManager": "pnpm@9.1.1",
+  "engines": {
+    "node": ">=18.12.0"
+  }
 }

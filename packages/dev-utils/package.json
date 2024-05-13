@@ -1,0 +1,25 @@
+{
+  "name": "@chrome-extension-boilerplate/dev-utils",
+  "version": "0.0.1",
+  "description": "chrome extension dev utils",
+  "private": true,
+  "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rimraf ./dist && rimraf ./build && rimraf .turbo",
+    "build": "pnpm run clean && tsc",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "pnpm lint --fix",
+    "prettier": "prettier . --write",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@chrome-extension-boilerplate/tsconfig": "workspace:*"
+  }
+}
