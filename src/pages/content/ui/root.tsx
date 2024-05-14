@@ -21,6 +21,8 @@ const styleElement = document.createElement('style');
 styleElement.innerHTML = injectedStyle;
 shadowRoot.appendChild(styleElement);
 
+const asideElement: HTMLElement = document.querySelector('[class^="style_aside__"]');
+
 /**
  * https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/174
  *
@@ -28,4 +30,14 @@ shadowRoot.appendChild(styleElement);
  * Please refer to the PR link above and go back to the contentStyle.css implementation, or raise a PR if you have a better way to improve it.
  */
 
-createRoot(rootIntoShadow).render(<App />);
+const renderReactComponent = () => {
+  if (asideElement) {
+    const appElement = document.createElement('div');
+    createRoot(appElement).render(<App />);
+    asideElement.appendChild(appElement);
+    // createRoot(asideElement).render(<App />);
+  }
+};
+renderReactComponent();
+
+// createRoot(rootIntoShadow).render(<App />);

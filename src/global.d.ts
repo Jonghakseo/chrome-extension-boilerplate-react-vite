@@ -29,3 +29,10 @@ declare module '*.json' {
   const content: string;
   export default content;
 }
+
+declare module 'child-props' {
+  export interface ChildProps {
+    text: string;
+  }
+  // export default ChildProps;
+}

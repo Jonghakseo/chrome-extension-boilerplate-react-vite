@@ -10,3 +10,5 @@ reloadOnUpdate('pages/background');
 reloadOnUpdate('pages/content/style.scss');
 
 console.log('background loaded');
+
+// 여기서 background 통신에 대한 로직을 작성하면 됩니다.

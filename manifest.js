@@ -28,21 +28,22 @@ const manifest = {
     default_popup: 'src/pages/popup/index.html',
     default_icon: 'icon-34.png',
   },
-  chrome_url_overrides: {
-    newtab: 'src/pages/newtab/index.html',
-  },
+  // 새로 열리는 탭을 커스텀할 수 있습니다.
+  // chrome_url_overrides: {
+  //   newtab: 'src/pages/newtab/index.html',
+  // },
   icons: {
     128: 'icon-128.png',
   },
   content_scripts: [
     {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+      matches: ['https://search.shopping.naver.com/catalog/37574599618*', 'https://*/*', '<all_urls>'],
       js: ['src/pages/contentInjected/index.js'],
       // KEY for cache invalidation
-      css: ['assets/css/contentStyle<KEY>.chunk.css'],
+      // css: ['assets/css/contentStyle<KEY>.chunk.css'],
     },
     {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+      matches: ['https://search.shopping.naver.com/catalog/37574599618*', 'https://*/*', '<all_urls>'],
       js: ['src/pages/contentUI/index.js'],
     },
   ],
