@@ -15,7 +15,7 @@ const manifest = {
   name: '__MSG_extensionName__',
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
-  permissions: ['storage', 'sidePanel'],
+  permissions: ['storage', 'sidePanel', 'activeTab', 'tabs', 'runtime', 'scripting'],
   side_panel: {
     default_path: 'src/pages/sidepanel/index.html',
   },
@@ -37,7 +37,7 @@ const manifest = {
   content_scripts: [
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['src/pages/contentInjected/index.js'],
+      js: ['src/pages/contentInjected/index.js', 'content_script.js'],
       // KEY for cache invalidation
       css: ['assets/css/contentStyle<KEY>.chunk.css'],
     },
