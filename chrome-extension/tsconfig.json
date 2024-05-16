@@ -8,5 +8,5 @@
       "@lib/*": ["lib/*"],
     }
   },
-  "include": ["src", "utils", "vite.config.ts", "node_modules/@types"]
+  "include": ["lib", "utils", "vite.config.ts", "node_modules/@types"]
 }
