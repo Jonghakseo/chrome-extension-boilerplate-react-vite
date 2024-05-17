@@ -15,3 +15,11 @@ init();
 chrome.runtime.sendMessage({ greeting: 'Hello' }, function (response) {
   console.log(response.farewell);
 });
+
+chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message.action === 'getContent') {
+      const content = 'This is the content from the background script';
+      sendResponse({content: content});
+  }
+  return true;
+});
