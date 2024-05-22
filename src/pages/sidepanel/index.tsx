@@ -1,8 +1,5 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
 import '@pages/sidepanel/index.css';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
-import SidePanel from '@pages/sidepanel/SidePanel';
 
 refreshOnUpdate('pages/sidepanel');
 
@@ -11,8 +8,18 @@ function init() {
   if (!appContainer) {
     throw new Error('Can not find #app-container');
   }
-  const root = createRoot(appContainer);
-  root.render(<SidePanel />);
 }
 
 init();
+
+chrome.runtime.sendMessage({ greeting: 'Hello' }, function (response) {
+  console.log(response.farewell);
+});
+
+chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message.action === 'getContent') {
+    const content = 'This is the content from the background script';
+    sendResponse({ content: content });
+  }
+  return true;
+});
