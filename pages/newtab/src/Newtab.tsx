@@ -1,11 +1,7 @@
 import '@src/Newtab.css';
 import '@src/Newtab.scss';
-import {
-  exampleThemeStorage,
-  useStorageSuspense,
-  withErrorBoundary,
-  withSuspense,
-} from '@chrome-extension-boilerplate/shared';
+import { useStorageSuspense, withErrorBoundary, withSuspense } from '@chrome-extension-boilerplate/shared';
+import { exampleThemeStorage } from '@chrome-extension-boilerplate/storage';
 import { ComponentPropsWithoutRef } from 'react';
 
 const Newtab = () => {

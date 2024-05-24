@@ -1,4 +1,4 @@
-import { BaseStorage, createStorage, StorageType } from '@lib/storages/base';
+import { BaseStorage, createStorage, StorageType } from './base';
 
 type Theme = 'light' | 'dark';
 
