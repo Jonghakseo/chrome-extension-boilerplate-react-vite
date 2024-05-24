@@ -1,4 +1,4 @@
-import { exampleThemeStorage } from '@chrome-extension-boilerplate/shared';
+import { exampleThemeStorage } from '@chrome-extension-boilerplate/storage';
 
 export async function toggleTheme() {
   console.log('initial theme:', await exampleThemeStorage.get());

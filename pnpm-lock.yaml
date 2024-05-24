@@ -189,6 +189,9 @@ importers:
       '@chrome-extension-boilerplate/shared':
         specifier: workspace:*
         version: link:../../packages/shared
+      '@chrome-extension-boilerplate/storage':
+        specifier: workspace:*
+        version: link:../../packages/storage
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
