@@ -1,7 +1,7 @@
 {
-  "name": "@chrome-extension-boilerplate/shared",
+  "name": "@chrome-extension-boilerplate/storage",
   "version": "0.0.1",
-  "description": "chrome extension shared code",
+  "description": "chrome extension storage",
   "private": true,
   "sideEffects": false,
   "files": [
@@ -12,7 +12,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "clean": "rimraf ./dist && rimraf .turbo",
-    "build": "tsup index.ts --format esm,cjs --dts --external react,chrome",
+    "build": "tsup index.ts --format esm,cjs --dts",
     "dev": "tsc -w",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
@@ -21,7 +21,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@chrome-extension-boilerplate/storage": "workspace:*",
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
     "tsup": "8.0.2"
   }
