@@ -53,7 +53,7 @@
     "typescript": "5.2.2",
     "vite": "^5.2.11"
   },
-  "packageManager": "pnpm@9.1.1",
+  "packageManager": "^pnpm@9.1.1",
   "engines": {
     "node": ">=18.12.0"
   }
