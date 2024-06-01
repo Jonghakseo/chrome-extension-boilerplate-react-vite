@@ -8,6 +8,8 @@ import type { PluginOption } from 'vite';
 
 export function makeEntryPointPlugin(): PluginOption {
   const cleanupTargets = new Set<string>();
+  const isFirefox = process.env.__FIREFOX__ === 'true';
+
   return {
     name: 'make-entry-point-plugin',
     generateBundle(options, bundle) {
@@ -32,7 +34,12 @@ export function makeEntryPointPlugin(): PluginOption {
             break;
           case 'chunk': {
             fs.writeFileSync(path.resolve(outputDir, newFileName), module.code);
-            module.code = `import('./${newFileName}');`;
+            if (isFirefox) {
+              const contentDirectory = extractContentDir(outputDir);
+              module.code = `import(browser.runtime.getURL("${contentDirectory}/${newFileName}"));`;
+            } else {
+              module.code = `import('./${newFileName}');`;
+            }
             break;
           }
         }
@@ -44,4 +51,17 @@ export function makeEntryPointPlugin(): PluginOption {
       });
     },
   };
+}
+
+/**
+ * Extract content directory from output directory for Firefox
+ * @param outputDir
+ */
+function extractContentDir(outputDir: string) {
+  const parts = outputDir.split(path.sep);
+  const distIndex = parts.indexOf('dist');
+  if (distIndex !== -1 && distIndex < parts.length - 1) {
+    return parts.slice(distIndex + 1);
+  }
+  throw new Error('Output directory does not contain "dist"');
 }
