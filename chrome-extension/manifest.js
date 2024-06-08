@@ -3,10 +3,7 @@ import fs from 'node:fs';
 const packageJson = JSON.parse(fs.readFileSync('../package.json', 'utf8'));
 
 const isFirefox = process.env.__FIREFOX__ === 'true';
-/**
- * After changing, please reload the extension at `chrome://extensions`
- * @type {chrome.runtime.ManifestV3}
- */
+
 const sidePanelConfig = {
   side_panel: {
     default_path: 'sidepanel/index.html',
@@ -14,6 +11,10 @@ const sidePanelConfig = {
   permissions: !isFirefox ? ['sidePanel'] : [],
 };
 
+/**
+ * After changing, please reload the extension at `chrome://extensions`
+ * @type {chrome.runtime.ManifestV3}
+ */
 const manifest = Object.assign(
   {
     manifest_version: 3,
