@@ -5,7 +5,7 @@ type WrappedPromise = ReturnType<typeof wrapPromise>;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const storageMap: Map<BaseStorage<any>, WrappedPromise> = new Map();
 
-export function useStorageSuspense<
+export function useStorage<
   Storage extends BaseStorage<Data>,
   Data = Storage extends BaseStorage<infer Data> ? Data : unknown,
 >(storage: Storage) {
@@ -47,4 +47,27 @@ function wrapPromise<R>(promise: Promise<R>) {
       }
     },
   };
+}
+
+export function useStorage<
+  Storage extends BaseStorage<Data>,
+  Data = Storage extends BaseStorage<infer Data> ? Data : unknown,
+>(storage: Storage) {
+  const _data = useSyncExternalStore<Data | null>(storage.subscribe, storage.getSnapshot);
+
+  // eslint-disable-next-line
+  // @ts-ignore
+  if (!storageMap.has(storage)) {
+    // eslint-disable-next-line
+    // @ts-ignore
+    storageMap.set(storage, wrapPromise(storage.get()));
+  }
+  if (_data !== null) {
+    // eslint-disable-next-line
+    // @ts-ignore
+    storageMap.set(storage, { read: () => _data });
+  }
+  // eslint-disable-next-line
+  // @ts-ignore
+  return _data ?? (storageMap.get(storage)!.read() as Data);
 }
