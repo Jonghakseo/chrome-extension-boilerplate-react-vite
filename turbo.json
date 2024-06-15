@@ -8,8 +8,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["../../dist/**", "dist/**", "build/**"],
-      "cache": false
+      "outputs": ["../../dist/**", "dist/**", "build/**"]
     },
     "type-check": {
       "cache": false
