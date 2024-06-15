@@ -34,7 +34,6 @@
     "@typescript-eslint/parser": "^6.21.0",
     "@vitejs/plugin-react-swc": "^3.6.0",
     "autoprefixer": "^10.4.19",
-    "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "eslint": "8.56.0",
     "eslint-config-airbnb-typescript": "17.1.0",
