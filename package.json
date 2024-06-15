@@ -22,13 +22,13 @@
   },
   "type": "module",
   "dependencies": {
-    "react": "18.2.0",
+    "react": "18.3.1",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.268",
     "@types/node": "^20.12.11",
-    "@types/react": "^18.3.2",
+    "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
