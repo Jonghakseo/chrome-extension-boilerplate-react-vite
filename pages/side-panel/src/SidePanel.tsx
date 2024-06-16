@@ -13,9 +13,9 @@ const SidePanel = () => {
         backgroundColor: theme === 'light' ? '#eee' : '#222',
       }}>
       <header className="App-header" style={{ color: theme === 'light' ? '#222' : '#eee' }}>
-        <img src={chrome.runtime.getURL('sidepanel/logo.svg')} className="App-logo" alt="logo" />
+        <img src={chrome.runtime.getURL('side-panel/logo.svg')} className="App-logo" alt="logo" />
         <p>
-          Edit <code>pages/sidepanel/src/SidePanel.tsx</code> and save to reload.
+          Edit <code>pages/side-panel/src/SidePanel.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"

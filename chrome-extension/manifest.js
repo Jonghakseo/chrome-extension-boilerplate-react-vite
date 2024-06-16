@@ -6,7 +6,7 @@ const isFirefox = process.env.__FIREFOX__ === 'true';
 
 const sidePanelConfig = {
   side_panel: {
-    default_path: 'sidepanel/index.html',
+    default_path: 'side-panel/index.html',
   },
   permissions: !isFirefox ? ['sidePanel'] : [],
 };
