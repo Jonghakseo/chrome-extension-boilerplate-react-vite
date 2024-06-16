@@ -10,7 +10,7 @@ export default function inlineVitePreloadScript(): PluginOption {
   return {
     name: 'replace-vite-preload-script-plugin',
     async renderChunk(code, chunk, options, meta) {
-      if (!/content/.test(chunk.fileName)) {
+      if (!/content/.test(chunk.fileName.toLowerCase())) {
         return null;
       }
       if (!__vitePreload) {
