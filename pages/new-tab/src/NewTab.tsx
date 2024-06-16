@@ -1,18 +1,18 @@
-import '@src/Newtab.css';
-import '@src/Newtab.scss';
+import '@src/NewTab.css';
+import '@src/NewTab.scss';
 import { useStorageSuspense, withErrorBoundary, withSuspense } from '@chrome-extension-boilerplate/shared';
 import { exampleThemeStorage } from '@chrome-extension-boilerplate/storage';
 import { ComponentPropsWithoutRef } from 'react';
 
-const Newtab = () => {
+const NewTab = () => {
   const theme = useStorageSuspense(exampleThemeStorage);
 
   return (
     <div className="App" style={{ backgroundColor: theme === 'light' ? '#eee' : '#222' }}>
       <header className="App-header" style={{ color: theme === 'light' ? '#222' : '#eee' }}>
-        <img src={chrome.runtime.getURL('newtab/logo.svg')} className="App-logo" alt="logo" />
+        <img src={chrome.runtime.getURL('new-tab/logo.svg')} className="App-logo" alt="logo" />
         <p>
-          Edit <code>pages/newtab/src/Newtab.tsx</code> and save to reload.
+          Edit <code>pages/new-tab/src/NewTab.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -45,4 +45,4 @@ const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
   );
 };
 
-export default withErrorBoundary(withSuspense(Newtab, <div> Loading ... </div>), <div> Error Occur </div>);
+export default withErrorBoundary(withSuspense(NewTab, <div> Loading ... </div>), <div> Error Occur </div>);
