@@ -14,7 +14,7 @@ const Popup = () => {
         backgroundColor: theme === 'light' ? '#eee' : '#222',
       }}>
       <header className="App-header" style={{ color: theme === 'light' ? '#222' : '#eee' }}>
-        <img src={chrome.runtime.getURL('newtab/logo.svg')} className="App-logo" alt="logo" />
+        <img src={chrome.runtime.getURL('new-tab/logo.svg')} className="App-logo" alt="logo" />
 
         <p>
           Edit <code>pages/popup/src/Popup.tsx</code> and save to reload.
