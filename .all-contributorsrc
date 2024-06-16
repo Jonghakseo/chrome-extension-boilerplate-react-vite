@@ -330,6 +330,97 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "weekeight",
+      "name": "秋知",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1918022?v=4",
+      "profile": "http://weekeight.github.io",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "tngflx",
+      "name": "Hiverse",
+      "avatar_url": "https://avatars.githubusercontent.com/u/36429783?v=4",
+      "profile": "https://github.com/tngflx",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "rosendolu",
+      "name": "rosendolu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42633099?v=4",
+      "profile": "https://github.com/rosendolu",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "egor-xyz",
+      "name": "Egor Stronhin",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6418221?v=4",
+      "profile": "http://devkitty.app",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "webLiang",
+      "name": "webLiang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38065991?v=4",
+      "profile": "https://github.com/webLiang",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "aspiers",
+      "name": "Adam Spiers",
+      "avatar_url": "https://avatars.githubusercontent.com/u/100738?v=4",
+      "profile": "https://adamspiers.org",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "ofir-zeitoun",
+      "name": "Ofir Zeitoun",
+      "avatar_url": "https://avatars.githubusercontent.com/u/958929?v=4",
+      "profile": "https://github.com/ofir-zeitoun",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "barantaran",
+      "name": "Dmitri Yourchev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5602094?v=4",
+      "profile": "https://github.com/barantaran",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    },
+    {
+      "login": "Gai-H",
+      "name": "Gaishi Hirota",
+      "avatar_url": "https://avatars.githubusercontent.com/u/23699120?v=4",
+      "profile": "https://gaishi.dev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "debugtheworldbot",
+      "name": "pipizhu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62830430?v=4",
+      "profile": "https://github.com/debugtheworldbot",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }

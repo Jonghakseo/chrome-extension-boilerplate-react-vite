@@ -50,7 +50,7 @@ export type BaseStorage<D> = {
   subscribe: (listener: () => void) => () => void;
 };
 
-type StorageConfig = {
+type StorageConfig<D = string> = {
   /**
    * Assign the {@link StorageType} to use.
    * @default Local
@@ -69,6 +69,20 @@ type StorageConfig = {
    * @default false
    */
   liveUpdate?: boolean;
+  /**
+   * An optional props for converting values from storage and into it.
+   * @default undefined
+   */
+  serialization?: {
+    /**
+     * convert non-native values to string to be saved in storage
+     */
+    serialize: (value: D) => string;
+    /**
+     * convert string value from storage to non-native values
+     */
+    deserialize: (text: string) => D;
+  };
 };
 
 /**
@@ -81,7 +95,7 @@ async function updateCache<D>(valueOrUpdate: ValueOrUpdate<D>, cache: D | null):
   }
 
   // Type guard to check in case of a function, if its a Promise
-  function returnsPromise<D>(func: (prev: D) => D | Promise<D>): boolean {
+  function returnsPromise<D>(func: (prev: D) => D | Promise<D>): func is (prev: D) => Promise<D> {
     // Use ReturnType to infer the return type of the function and check if it's a Promise
     return (func as (prev: D) => Promise<D>) instanceof Promise;
   }
@@ -116,11 +130,13 @@ function checkStoragePermission(storageType: StorageType): void {
 /**
  * Creates a storage area for persisting and exchanging data.
  */
-export function createStorage<D>(key: string, fallback: D, config?: StorageConfig): BaseStorage<D> {
+export function createStorage<D = string>(key: string, fallback: D, config?: StorageConfig<D>): BaseStorage<D> {
   let cache: D | null = null;
   let listeners: Array<() => void> = [];
   const storageType = config?.storageType ?? StorageType.Local;
   const liveUpdate = config?.liveUpdate ?? false;
+  const serialize = config?.serialization?.serialize ?? ((v: D) => v);
+  const deserialize = config?.serialization?.deserialize ?? (v => v as D);
 
   // Set global session storage access level for StoryType.Session, only when not already done but needed.
   if (
@@ -139,7 +155,7 @@ export function createStorage<D>(key: string, fallback: D, config?: StorageConfi
   const _getDataFromStorage = async (): Promise<D> => {
     checkStoragePermission(storageType);
     const value = await chrome.storage[storageType].get([key]);
-    return value[key] ?? fallback;
+    return deserialize(value[key]) ?? fallback;
   };
 
   const _emitChange = () => {
@@ -149,7 +165,7 @@ export function createStorage<D>(key: string, fallback: D, config?: StorageConfi
   const set = async (valueOrUpdate: ValueOrUpdate<D>) => {
     cache = await updateCache(valueOrUpdate, cache);
 
-    await chrome.storage[storageType].set({ [key]: cache });
+    await chrome.storage[storageType].set({ [key]: serialize(cache) });
     _emitChange();
   };
 
@@ -174,7 +190,7 @@ export function createStorage<D>(key: string, fallback: D, config?: StorageConfi
     // Check if the key we are listening for is in the changes object
     if (changes[key] === undefined) return;
 
-    const valueOrUpdate: ValueOrUpdate<D> = changes[key].newValue;
+    const valueOrUpdate: ValueOrUpdate<D> = deserialize(changes[key].newValue);
 
     if (cache === valueOrUpdate) return;
 

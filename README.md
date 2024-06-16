@@ -47,7 +47,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [SASS](https://sass-lang.com/)
 - [Prettier](https://prettier.io/)
 - [ESLint](https://eslint.org/)
-- [Husky](https://typicode.github.io/husky/getting-started.html#automatic-recommended)
+- [Husky](https://typicode.github.io/husky/get-started.html#automatic-recommended)
 - [Commitlint](https://commitlint.js.org/#/guides-local-setup?id=install-commitlint)
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary)
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
@@ -58,7 +58,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 ## Procedures: <a name="procedures"></a>
 
 1. Clone this repository.
-2. Change `name` and `description` in package.json => **Auto synchronize with manifest**
+2. Change `extensionDescription` and `extensionName` in messages.json
 3. Install pnpm globally: `npm install -g pnpm` (check your node version >= 16.6, recommended >= 18)
 4. Run `pnpm install`
 
@@ -87,7 +87,8 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ## Add Style Library <a name="add-style-library"></a>
 
-> IMPORTANT: If you DO NOT want to use css file in the content script, you need to delete the css file in your manifest.js
+> IMPORTANT: If you DO NOT want to use css file in the content script, you need to delete the css file in your
+> manifest.js
 
 ```js
 content_scripts: [
@@ -151,7 +152,7 @@ export function attachTwindStyle<T extends { adoptedStyleSheets: unknown }>(
 **4. You can use Tailwind in your project:**
 
 <details>
-<summary>src/pages/popup/Popup.tsx</summary>
+<summary>src/pages/popup/index.tsx</summary>
 
 ```tsx
 import { attachTwindStyle } from '@src/shared/style/twind';
@@ -167,7 +168,7 @@ root.render(<Popup />);
 **5. If you want to use Twind in the content script, you need to add the following code:**
 
 <details>
-<summary>src/pages/content/ui/index.tsx</summary>
+<summary>src/pages/content/ui/root.tsx</summary>
 
 ```tsx
 import { attachTwindStyle } from '@src/shared/style/twind';
@@ -176,6 +177,7 @@ import { attachTwindStyle } from '@src/shared/style/twind';
 attachTwindStyle(rootIntoShadow, shadowRoot);
 createRoot(rootIntoShadow).render(<App />);
 ```
+
 </details>
 
 [See more examples](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/244/)
@@ -225,7 +227,11 @@ export default defineConfig({
 import { Button } from "@chakra-ui/react";
 
 export default function Popup() {
-  return <Button colorScheme="teal">Button</Button>;
+  return (
+    <ChakraProvider>
+      <Button colorScheme="teal">Button</Button>;
+    </ChakraProvider>
+  ); 
 }
 ```
 
@@ -285,7 +291,7 @@ export default function CustomChakraProvider({ children, shadowRootId }: CustomC
   }, []);
 
   return (
-    <ThemeProvider theme={theme} cssVarsRoot={`#${shadowRootId}`}>
+    <ThemeProvider theme={{ ...theme, config: { ...theme.config, colorMode } }} cssVarsRoot={`#${shadowRootId}`}>
       <ColorModeScript initialColorMode="system" />
       <ColorModeContext.Provider value={{ colorMode, setColorMode, toggleColorMode }}>
         <CSSReset />
@@ -331,10 +337,10 @@ export default function EmotionCacheProvider({ children, rootId }: { rootId: str
 
 </details>
 
-**5. Fix the `src/pages/content/index.tsx` file:**
+**5. Fix the `src/pages/content/ui/root.tsx` file:**
 
 <details>
-<summary>src/pages/content/index.tsx</summary>
+<summary>src/pages/content/ui/root.tsx</summary>
 
 ```tsx
 import CustomChakraProvider from '@pages/content/ui/CustomChakraProvider';
@@ -378,7 +384,8 @@ manifest.json
 
 ### ContentScript <a name="contentscript"></a>
 
-[Content Script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts[0]` in
+[Content Script (contentInjected/contentUI)](https://developer.chrome.com/docs/extensions/mv3/content_scripts/)<br/>`content_scripts`
+in
 manifest.json
 
 ### Options <a name="options"></a>
@@ -408,6 +415,7 @@ manifest.json
 
 ## Examples <a name="examples"></a>
 
+- https://github.com/Jonghakseo/react-code-finder-extension
 - https://github.com/Jonghakseo/drag-gpt-extension
 - https://github.com/Jonghakseo/pr-commit-noti
 - https://github.com/ariburaco/chatgpt-file-uploader-extended
@@ -474,6 +482,20 @@ manifest.json
       <td align="center" valign="top" width="14.28%"><a href="http://www.iotercom.com"><img src="https://avatars.githubusercontent.com/u/521473?v=4?s=50" width="50px;" alt="Romain Dequidt"/><br /><sub><b>Romain Dequidt</b></sub></a><br /><a href="#doc-romaindequidt" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://linkedin.com/in/jguddas"><img src="https://avatars.githubusercontent.com/u/25524993?v=4?s=50" width="50px;" alt="Jakob Guddas"/><br /><sub><b>Jakob Guddas</b></sub></a><br /><a href="#doc-jguddas" title="Documentation">📖</a> <a href="#bug-jguddas" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://din.ooo"><img src="https://avatars.githubusercontent.com/u/2397125?v=4?s=50" width="50px;" alt="Dino Scheidt"/><br /><sub><b>Dino Scheidt</b></sub></a><br /><a href="#code-D1no" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://weekeight.github.io"><img src="https://avatars.githubusercontent.com/u/1918022?v=4?s=50" width="50px;" alt="秋知"/><br /><sub><b>秋知</b></sub></a><br /><a href="#code-weekeight" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/tngflx"><img src="https://avatars.githubusercontent.com/u/36429783?v=4?s=50" width="50px;" alt="Hiverse"/><br /><sub><b>Hiverse</b></sub></a><br /><a href="#bug-tngflx" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/rosendolu"><img src="https://avatars.githubusercontent.com/u/42633099?v=4?s=50" width="50px;" alt="rosendolu"/><br /><sub><b>rosendolu</b></sub></a><br /><a href="#code-rosendolu" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://devkitty.app"><img src="https://avatars.githubusercontent.com/u/6418221?v=4?s=50" width="50px;" alt="Egor Stronhin"/><br /><sub><b>Egor Stronhin</b></sub></a><br /><a href="#doc-egor-xyz" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/webLiang"><img src="https://avatars.githubusercontent.com/u/38065991?v=4?s=50" width="50px;" alt="webLiang"/><br /><sub><b>webLiang</b></sub></a><br /><a href="#code-webLiang" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://adamspiers.org"><img src="https://avatars.githubusercontent.com/u/100738?v=4?s=50" width="50px;" alt="Adam Spiers"/><br /><sub><b>Adam Spiers</b></sub></a><br /><a href="#bug-aspiers" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ofir-zeitoun"><img src="https://avatars.githubusercontent.com/u/958929?v=4?s=50" width="50px;" alt="Ofir Zeitoun"/><br /><sub><b>Ofir Zeitoun</b></sub></a><br /><a href="#code-ofir-zeitoun" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/barantaran"><img src="https://avatars.githubusercontent.com/u/5602094?v=4?s=50" width="50px;" alt="Dmitri Yourchev"/><br /><sub><b>Dmitri Yourchev</b></sub></a><br /><a href="#code-barantaran" title="Code">💻</a> <a href="#bug-barantaran" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://gaishi.dev"><img src="https://avatars.githubusercontent.com/u/23699120?v=4?s=50" width="50px;" alt="Gaishi Hirota"/><br /><sub><b>Gaishi Hirota</b></sub></a><br /><a href="#code-Gai-H" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/debugtheworldbot"><img src="https://avatars.githubusercontent.com/u/62830430?v=4?s=50" width="50px;" alt="pipizhu"/><br /><sub><b>pipizhu</b></sub></a><br /><a href="#code-debugtheworldbot" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
