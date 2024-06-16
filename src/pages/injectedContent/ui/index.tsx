@@ -6,7 +6,7 @@ import injectedStyle from './injected.css?inline';
 refreshOnUpdate('pages/injectedContent');
 
 const root = document.createElement('div');
-root.id = 'chrome-extension-boilerplate-react-vite-content-view-root';
+root.id = 'chrome-extension-boilerplate-react-vite-injected-content-view-root';
 
 document.body.append(root);
 
