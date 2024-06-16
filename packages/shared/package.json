@@ -11,7 +11,7 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "clean": "rimraf ./dist && rimraf .turbo",
+    "clean": "rimraf ./dist",
     "build": "tsup index.ts --format esm,cjs --dts --external react,chrome",
     "dev": "tsc -w",
     "lint": "eslint . --ext .ts,.tsx",
