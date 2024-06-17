@@ -8,10 +8,12 @@
     "dev": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", "build/**"],
+      "env": ["__FIREFOX__"],
       "persistent": true
     },
     "build": {
       "dependsOn": ["^build", "^ready"],
+      "env": ["__FIREFOX__"],
       "outputs": ["../../dist/**", "dist/**", "build/**"]
     },
     "type-check": {
