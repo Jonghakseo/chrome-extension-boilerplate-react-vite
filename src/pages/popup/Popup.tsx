@@ -14,7 +14,7 @@ const Popup = () => {
 
     await chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      files: ['src/pages/injectedContent/index.js'],
+      files: ['src/pages/contentRuntime/index.js'],
     });
   };
 
