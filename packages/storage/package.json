@@ -22,6 +22,6 @@
   "dependencies": {},
   "devDependencies": {
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "tsup": "8.0.2"
+    "tsup": "8.1.0"
   }
 }
