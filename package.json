@@ -10,8 +10,8 @@
   "scripts": {
     "clean": "rimraf dist && turbo clean",
     "build": "turbo build",
-    "build-dev-server": "pnpm build && pnpm -F=hmr build",
-    "dev": "cross-env __DEV__=true pnpm build-dev-server && turbo watch dev --concurrency 20",
+    "ready": "turbo ready",
+    "dev": "cross-env __DEV__=true pnpm ready && turbo watch dev --concurrency 20",
     "dev:firefox": "cross-env __FIREFOX__=true && pnpm dev",
     "test": "turbo test",
     "type-check": "turbo type-check",
