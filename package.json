@@ -10,6 +10,7 @@
   "scripts": {
     "clean": "rimraf dist && turbo clean",
     "build": "turbo build",
+    "build:firefox": "cross-env __FIREFOX__=true turbo build --env-mode=loose",
     "ready": "turbo ready",
     "dev": "pnpm ready && turbo watch dev --concurrency 20",
     "dev:firefox": "pnpm ready && cross-env __FIREFOX__=true turbo watch dev --concurrency 20 --env-mode=loose",
