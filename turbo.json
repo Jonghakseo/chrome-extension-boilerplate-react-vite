@@ -11,7 +11,7 @@
       "persistent": true
     },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "^ready"],
       "outputs": ["../../dist/**", "dist/**", "build/**"]
     },
     "type-check": {
