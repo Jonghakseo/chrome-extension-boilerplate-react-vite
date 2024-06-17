@@ -13,7 +13,8 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "tsup index.ts --format esm,cjs --dts --external react,chrome",
-    "dev": "tsc -w",
+    "ready": "pnpm build",
+    "dev": "tsup index.ts --format esm,cjs --dts --external react,chrome --watch",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write",
