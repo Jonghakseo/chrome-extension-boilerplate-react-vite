@@ -18,4 +18,4 @@
 **/.turbo
 
 # compiled
-apps/chrome-extension/public/manifest.json
+chrome-extension/public/manifest.json
