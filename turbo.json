@@ -6,13 +6,13 @@
       "outputs": ["dist/**", "build/**"]
     },
     "dev": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "ready"],
       "outputs": ["dist/**", "build/**"],
       "env": ["__FIREFOX__"],
       "persistent": true
     },
     "build": {
-      "dependsOn": ["^build", "^ready"],
+      "dependsOn": ["^build", "ready"],
       "env": ["__FIREFOX__"],
       "outputs": ["../../dist/**", "dist/**", "build/**"]
     },
