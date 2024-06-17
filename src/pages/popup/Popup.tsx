@@ -11,12 +11,12 @@ const Popup = () => {
 
   const injectContentScript = async () => {
     const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
-    console.log(tab.id)
-    chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            files: ['src/pages/injectedContent/index.js'],
+
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ['src/pages/injectedContent/index.js'],
     });
-  }
+  };
 
   return (
     <div
@@ -46,9 +46,7 @@ const Popup = () => {
           Toggle theme
         </button>
 
-        <button onClick={injectContentScript}>
-          Click to inject Content Script
-        </button>
+        <button onClick={injectContentScript}>Click to inject Content Script</button>
       </header>
     </div>
   );
