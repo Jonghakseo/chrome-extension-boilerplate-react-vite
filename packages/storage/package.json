@@ -12,8 +12,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "clean": "rimraf ./dist",
-    "build": "tsup index.ts --format esm,cjs --dts",
-    "dev": "pnpm build --watch",
+    "build": "tsc",
+    "dev": "tsc -w",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write",
@@ -21,7 +21,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "tsup": "8.1.0"
+    "@chrome-extension-boilerplate/tsconfig": "workspace:*"
   }
 }
