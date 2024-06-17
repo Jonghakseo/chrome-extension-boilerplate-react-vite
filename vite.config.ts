@@ -37,7 +37,6 @@ export default defineConfig({
         injectedContent: resolve(pagesDir, 'injectedContent', 'index.ts'),
         contentInjected: resolve(pagesDir, 'content', 'injected', 'index.ts'),
         contentUI: resolve(pagesDir, 'content', 'ui', 'index.ts'),
-
         background: resolve(pagesDir, 'background', 'index.ts'),
         contentStyle: resolve(pagesDir, 'content', 'style.scss'),
         popup: resolve(pagesDir, 'popup', 'index.html'),
