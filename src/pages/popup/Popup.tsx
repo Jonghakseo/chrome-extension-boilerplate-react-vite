@@ -46,7 +46,14 @@ const Popup = () => {
           Toggle theme
         </button>
 
-        <button onClick={injectContentScript}>Click to inject Content Script</button>
+        <button
+          style={{
+            backgroundColor: theme === 'light' ? '#fff' : '#000',
+            color: theme === 'light' ? '#000' : '#fff',
+          }}
+          onClick={injectContentScript}>
+          Click to inject Content Script
+        </button>
       </header>
     </div>
   );
