@@ -1,13 +1,18 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
+    "ready": {
+      "outputs": ["dist/**", "build/**"]
+    },
     "dev": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**", "build/**"],
+      "env": ["__FIREFOX__"],
       "persistent": true
     },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "ready"],
+      "env": ["__FIREFOX__"],
       "outputs": ["../../dist/**", "dist/**", "build/**"]
     },
     "type-check": {

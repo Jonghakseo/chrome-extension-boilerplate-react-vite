@@ -12,7 +12,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "clean": "rimraf ./dist && rimraf ./build",
-    "build": "pnpm run clean && tsc",
+    "ready": "tsc",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write",
