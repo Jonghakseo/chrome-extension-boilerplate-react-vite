@@ -2,11 +2,10 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "ready": {
-      "dependsOn": ["^ready"],
       "outputs": ["dist/**", "build/**"]
     },
     "dev": {
-      "dependsOn": ["^build", "ready"],
+      "dependsOn": ["^build"],
       "outputs": ["dist/**", "build/**"],
       "env": ["__FIREFOX__"],
       "persistent": true
