@@ -18,7 +18,7 @@
     "dev": "pnpm build:esm -w && pnpm build:cjs -w",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write",
+    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {},
