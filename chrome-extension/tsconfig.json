@@ -5,7 +5,7 @@
     "types": ["vite/client", "node", "chrome"],
     "paths": {
       "@root/*": ["./*"],
-      "@lib/*": ["lib/*"],
+      "@lib/*": ["lib/*"]
     }
   },
   "include": ["lib", "utils", "vite.config.ts", "node_modules/@types"]
