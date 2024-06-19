@@ -1,9 +1,12 @@
 {
-  "name": "@chrome-extension-boilerplate/tailwindcss-config",
-  "version": "1.0.0",
-  "description": "Tailwind CSS configuration for boilerplate",
-  "main": "./tailwind.config.js",
+  "name": "@chrome-extension-boilerplate/prettier-config",
+  "version": "0.0.1",
+  "description": "prettier config for chrome extension",
   "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
@@ -13,8 +16,6 @@
   "dependencies": {},
   "devDependencies": {
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "@chrome-extension-boilerplate/eslint-config": "workspace:*",
-    "@chrome-extension-boilerplate/prettier-config": "workspace:*",
     "eslint": "8.57.0"
   },
   "eslintConfig": {

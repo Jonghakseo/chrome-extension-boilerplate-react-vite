@@ -27,6 +27,7 @@
     "@chrome-extension-boilerplate/hmr": "workspace:*",
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
     "@chrome-extension-boilerplate/eslint-config": "workspace:*",
+    "@chrome-extension-boilerplate/prettier-config": "workspace:*",
     "@laynezh/vite-plugin-lib-assets": "^0.5.21",
     "@types/ws": "^8.5.10",
     "magic-string": "^0.30.10",
@@ -38,5 +39,6 @@
     "extends": [
       "@chrome-extension-boilerplate/eslint-config/base"
     ]
-  }
+  },
+  "prettier": "@chrome-extension-boilerplate/prettier-config"
 }

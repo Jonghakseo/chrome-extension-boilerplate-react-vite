@@ -1,4 +1,4 @@
 {
-    "extends": "@chrome-extension-boilerplate/tsconfig/base",
-    "include": ["."]
+  "extends": "@chrome-extension-boilerplate/tsconfig/base",
+  "include": ["."]
 }

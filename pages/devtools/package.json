@@ -24,6 +24,7 @@
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
     "@chrome-extension-boilerplate/hmr": "workspace:*",
     "@chrome-extension-boilerplate/eslint-config": "workspace:*",
+    "@chrome-extension-boilerplate/prettier-config": "workspace:*",
     "eslint": "8.57.0"
   },
   "eslintConfig": {
@@ -31,5 +32,6 @@
     "extends": [
       "@chrome-extension-boilerplate/eslint-config/base"
     ]
-  }
+  },
+  "prettier": "@chrome-extension-boilerplate/prettier-config"
 }

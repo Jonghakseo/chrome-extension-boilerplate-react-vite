@@ -82,6 +82,9 @@ importers:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../packages/hmr
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../packages/prettier
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../packages/tsconfig
@@ -106,6 +109,9 @@ importers:
       '@chrome-extension-boilerplate/eslint-config':
         specifier: workspace:*
         version: link:../eslint
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../prettier
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -115,6 +121,9 @@ importers:
 
   packages/eslint:
     devDependencies:
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../prettier
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -158,6 +167,9 @@ importers:
       '@chrome-extension-boilerplate/eslint-config':
         specifier: workspace:*
         version: link:../eslint
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../prettier
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -180,11 +192,26 @@ importers:
         specifier: ^10.9.2
         version: 10.9.2(@swc/core@1.6.1)(@types/node@20.14.2)(typescript@5.4.5)
 
+  packages/prettier:
+    devDependencies:
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: 'link:'
+      '@chrome-extension-boilerplate/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
+
   packages/shared:
     devDependencies:
       '@chrome-extension-boilerplate/eslint-config':
         specifier: workspace:*
         version: link:../eslint
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../prettier
       '@chrome-extension-boilerplate/storage':
         specifier: workspace:*
         version: link:../storage
@@ -200,6 +227,9 @@ importers:
       '@chrome-extension-boilerplate/eslint-config':
         specifier: workspace:*
         version: link:../eslint
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../prettier
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -212,6 +242,9 @@ importers:
       '@chrome-extension-boilerplate/eslint-config':
         specifier: workspace:*
         version: link:../eslint
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../prettier
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -236,6 +269,9 @@ importers:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../../packages/prettier
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -255,6 +291,9 @@ importers:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../../packages/prettier
       '@chrome-extension-boilerplate/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
@@ -277,6 +316,9 @@ importers:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../../packages/prettier
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -299,6 +341,9 @@ importers:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../../packages/prettier
       '@chrome-extension-boilerplate/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
@@ -324,6 +369,9 @@ importers:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../../packages/prettier
       '@chrome-extension-boilerplate/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
@@ -352,6 +400,9 @@ importers:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../../packages/prettier
       '@chrome-extension-boilerplate/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
@@ -377,6 +428,9 @@ importers:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../../packages/prettier
       '@chrome-extension-boilerplate/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
@@ -402,6 +456,9 @@ importers:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
+      '@chrome-extension-boilerplate/prettier-config':
+        specifier: workspace:*
+        version: link:../../packages/prettier
       '@chrome-extension-boilerplate/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
