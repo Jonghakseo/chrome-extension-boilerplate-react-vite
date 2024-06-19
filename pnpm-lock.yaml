@@ -194,9 +194,6 @@ importers:
 
   packages/prettier:
     devDependencies:
-      '@chrome-extension-boilerplate/prettier-config':
-        specifier: workspace:*
-        version: 'link:'
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
