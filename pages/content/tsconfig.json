@@ -3,15 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@lib/*": [
-        "lib/*"
-      ]
+      "@lib/*": ["lib/*"]
     },
-    "types": [
-      "chrome"
-    ]
+    "types": ["chrome"]
   },
-  "include": [
-    "lib"
-  ]
+  "include": ["lib"]
 }

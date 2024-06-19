@@ -13,7 +13,7 @@
     "test": "vitest run",
     "lint": "eslint ./ --ext .ts,.js,.tsx,.jsx",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write",
+    "prettier": "prettier . --write --ignore-path ../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "type": "module",

@@ -1,9 +1,9 @@
-import sucrase from "@rollup/plugin-sucrase";
+import sucrase from '@rollup/plugin-sucrase';
 
 const plugins = [
   sucrase({
-    exclude: ["node_modules/**"],
-    transforms: ["typescript"]
+    exclude: ['node_modules/**'],
+    transforms: ['typescript'],
   }),
 ];
 
@@ -13,18 +13,18 @@ const plugins = [
 export default [
   {
     plugins,
-    input: "lib/injections/reload.ts",
+    input: 'lib/injections/reload.ts',
     output: {
-      format: "iife",
-      file: "build/injections/reload.js"
-    }
+      format: 'iife',
+      file: 'build/injections/reload.js',
+    },
   },
   {
     plugins,
-    input: "lib/injections/refresh.ts",
+    input: 'lib/injections/refresh.ts',
     output: {
-      format: "iife",
-      file: "build/injections/refresh.js"
-    }
-  }
+      format: 'iife',
+      file: 'build/injections/refresh.js',
+    },
+  },
 ];
