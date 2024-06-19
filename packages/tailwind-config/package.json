@@ -3,5 +3,23 @@
   "version": "1.0.0",
   "description": "Tailwind CSS configuration for boilerplate",
   "main": "./tailwind.config.js",
-  "private": true
+  "private": true,
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "pnpm lint --fix",
+    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "@chrome-extension-boilerplate/eslint-config": "workspace:*",
+    "eslint": "8.57.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@chrome-extension-boilerplate/eslint-config/base"
+    ]
+  }
 }

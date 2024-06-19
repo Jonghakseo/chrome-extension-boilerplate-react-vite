@@ -26,10 +26,18 @@
   },
   "devDependencies": {
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "@chrome-extension-boilerplate/eslint-config": "workspace:*",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@types/ws": "^8.5.10",
     "esm": "^3.2.25",
     "rollup": "^4.18.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "eslint": "8.57.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@chrome-extension-boilerplate/eslint-config/base"
+    ]
   }
 }

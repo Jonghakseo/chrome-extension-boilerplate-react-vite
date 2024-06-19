@@ -27,12 +27,6 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.0
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^6.21.0
-        version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
-      '@typescript-eslint/parser':
-        specifier: ^6.21.0
-        version: 6.21.0(eslint@8.57.0)(typescript@5.4.5)
       '@vitejs/plugin-react-swc':
         specifier: ^3.6.0
         version: 3.7.0(vite@5.3.1(@types/node@20.14.2)(sass@1.77.5)(terser@5.28.1))
@@ -42,30 +36,6 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
-      eslint:
-        specifier: 8.57.0
-        version: 8.57.0
-      eslint-config-airbnb-typescript:
-        specifier: 17.1.0
-        version: 17.1.0(@typescript-eslint/eslint-plugin@6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5))(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)
-      eslint-config-prettier:
-        specifier: 9.1.0
-        version: 9.1.0(eslint@8.57.0)
-      eslint-plugin-import:
-        specifier: 2.29.1
-        version: 2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)
-      eslint-plugin-jsx-a11y:
-        specifier: 6.8.0
-        version: 6.8.0(eslint@8.57.0)
-      eslint-plugin-prettier:
-        specifier: 5.1.3
-        version: 5.1.3(@types/eslint@8.56.5)(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.3.2)
-      eslint-plugin-react:
-        specifier: 7.33.2
-        version: 7.33.2(eslint@8.57.0)
-      eslint-plugin-react-hooks:
-        specifier: 4.6.2
-        version: 4.6.2(eslint@8.57.0)
       postcss:
         specifier: ^8.4.38
         version: 8.4.38
@@ -106,6 +76,9 @@ importers:
       '@chrome-extension-boilerplate/dev-utils':
         specifier: workspace:*
         version: link:../packages/dev-utils
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../packages/eslint
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../packages/hmr
@@ -118,6 +91,9 @@ importers:
       '@types/ws':
         specifier: ^8.5.10
         version: 8.5.10
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
       magic-string:
         specifier: ^0.30.10
         version: 0.30.10
@@ -127,9 +103,51 @@ importers:
 
   packages/dev-utils:
     devDependencies:
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
+
+  packages/eslint:
+    devDependencies:
+      '@chrome-extension-boilerplate/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.21.0
+        version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/parser':
+        specifier: ^6.21.0
+        version: 6.21.0(eslint@8.57.0)(typescript@5.4.5)
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
+      eslint-config-airbnb-typescript:
+        specifier: 17.1.0
+        version: 17.1.0(@typescript-eslint/eslint-plugin@6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5))(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)
+      eslint-config-prettier:
+        specifier: 9.1.0
+        version: 9.1.0(eslint@8.57.0)
+      eslint-plugin-import:
+        specifier: 2.29.1
+        version: 2.29.1(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)
+      eslint-plugin-jsx-a11y:
+        specifier: 6.8.0
+        version: 6.8.0(eslint@8.57.0)
+      eslint-plugin-prettier:
+        specifier: 5.1.3
+        version: 5.1.3(@types/eslint@8.56.5)(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.3.2)
+      eslint-plugin-react:
+        specifier: 7.33.2
+        version: 7.33.2(eslint@8.57.0)
+      eslint-plugin-react-hooks:
+        specifier: 4.6.2
+        version: 4.6.2(eslint@8.57.0)
 
   packages/hmr:
     dependencies:
@@ -137,6 +155,9 @@ importers:
         specifier: 8.17.1
         version: 8.17.1
     devDependencies:
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -146,6 +167,9 @@ importers:
       '@types/ws':
         specifier: ^8.5.10
         version: 8.5.10
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
       esm:
         specifier: ^3.2.25
         version: 3.2.25
@@ -158,20 +182,42 @@ importers:
 
   packages/shared:
     devDependencies:
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint
       '@chrome-extension-boilerplate/storage':
         specifier: workspace:*
         version: link:../storage
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
 
   packages/storage:
     devDependencies:
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
 
-  packages/tailwind-config: {}
+  packages/tailwind-config:
+    devDependencies:
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint
+      '@chrome-extension-boilerplate/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
 
   packages/tsconfig: {}
 
@@ -184,12 +230,18 @@ importers:
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
 
   pages/content-ui:
     dependencies:
@@ -197,6 +249,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/shared
     devDependencies:
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
@@ -206,6 +261,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
 
   pages/devtools:
     dependencies:
@@ -213,12 +271,18 @@ importers:
         specifier: workspace:*
         version: link:../../packages/shared
     devDependencies:
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
 
   pages/devtools-panel:
     dependencies:
@@ -229,6 +293,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
@@ -238,6 +305,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
 
   pages/new-tab:
     dependencies:
@@ -248,6 +318,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
@@ -257,6 +330,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
       sass:
         specifier: 1.77.5
         version: 1.77.5
@@ -270,6 +346,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
@@ -279,6 +358,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
 
   pages/popup:
     dependencies:
@@ -289,6 +371,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
@@ -298,6 +383,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
 
   pages/side-panel:
     dependencies:
@@ -308,6 +396,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
+      '@chrome-extension-boilerplate/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
@@ -317,6 +408,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      eslint:
+        specifier: 8.57.0
+        version: 8.57.0
 
 packages:
 

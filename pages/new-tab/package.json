@@ -25,6 +25,14 @@
     "@chrome-extension-boilerplate/tailwindcss-config": "workspace:*",
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
     "@chrome-extension-boilerplate/hmr": "workspace:*",
+    "@chrome-extension-boilerplate/eslint-config": "workspace:*",
+    "eslint": "8.57.0",
     "sass": "1.77.5"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@chrome-extension-boilerplate/eslint-config/base"
+    ]
   }
 }
