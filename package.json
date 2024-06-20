@@ -11,7 +11,6 @@
     "clean": "rimraf dist && turbo clean",
     "build": "turbo build",
     "build:firefox": "cross-env __FIREFOX__=true turbo build",
-    "dev-server": "pnpm -F hmr ready && pnpm -F hmr dev",
     "dev": "turbo ready && turbo watch dev --concurrency 20",
     "dev:firefox": "turbo ready && cross-env __FIREFOX__=true turbo watch dev --concurrency 20",
     "test": "turbo test",

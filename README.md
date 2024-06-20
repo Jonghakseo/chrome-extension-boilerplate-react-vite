@@ -68,9 +68,9 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 ### For Chrome: <a name="chrome"></a>
 
 1. Run:
-    - Dev: `pnpm dev` (it's run parallel with `pnpm dev-server` automatically)
-        - When you run with Windows, you should run as
-          administrator. [(Issue#456)](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/456)
+    - Dev: `pnpm dev`
+      - When you run with Windows, you should run as
+        administrator. [(Issue#456)](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/456)
     - Prod: `pnpm build`
 2. Open in browser - `chrome://extensions`
 3. Check - `Developer mode`
@@ -80,7 +80,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 ### For Firefox: <a name="firefox"></a>
 
 1. Run:
-    - Dev: `pnpm dev:firefox` (it's run parallel with `pnpm dev-server` automatically)
+    - Dev: `pnpm dev:firefox`
     - Prod: `pnpm build:firefox`
 2. Open in browser - `about:debugging#/runtime/this-firefox`
 3. Find and Click - `Load Temporary Add-on...`
