@@ -22,6 +22,6 @@
       "DOM",
       "ESNext"
     ]
-  }
+  },
+  "exclude": ["node_modules", "build", "dist"]
 }
-
