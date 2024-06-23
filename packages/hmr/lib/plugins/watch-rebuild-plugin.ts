@@ -31,7 +31,6 @@ export function watchRebuildPlugin(config: PluginConfig): PluginOption {
       };
       ws.onerror = () => {
         console.error(`[HMR] Failed to start server at ${LOCAL_RELOAD_SOCKET_URL}`);
-        console.error('PLEASE MAKE SURE YOU ARE RUNNING `pnpm dev-server`');
         console.warn('Retrying in 5 seconds...');
         ws = null;
         setTimeout(() => initializeWebSocket(), 5_000);

@@ -18,7 +18,7 @@
     "dev": "node dist/lib/initReloadServer.js",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write",
+    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
