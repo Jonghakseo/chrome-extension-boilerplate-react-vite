@@ -16,9 +16,9 @@
     "dev:firefox": "turbo ready && cross-env __FIREFOX__=true turbo watch dev --concurrency 20",
     "test": "turbo test",
     "type-check": "turbo type-check",
-    "lint": "turbo lint",
-    "lint:fix": "turbo lint:fix",
-    "prettier": "turbo prettier"
+    "lint": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
+    "lint:fix": "turbo lint:fix --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
+    "prettier": "turbo prettier --continue -- --cache --cache-location node_modules/.cache/.prettiercache"
   },
   "type": "module",
   "dependencies": {
