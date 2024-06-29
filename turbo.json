@@ -5,7 +5,6 @@
       "outputs": ["dist/**", "build/**"]
     },
     "dev": {
-      "dependsOn": ["^build"],
       "outputs": ["dist/**", "build/**"],
       "env": ["__FIREFOX__"],
       "persistent": true
