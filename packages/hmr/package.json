@@ -9,7 +9,7 @@
   ],
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "index.ts",
   "scripts": {
     "clean": "rimraf ./dist && rimraf ./build",
     "build:tsc": "tsc -b tsconfig.build.json",

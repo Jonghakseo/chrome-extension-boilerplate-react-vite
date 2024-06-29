@@ -9,7 +9,7 @@
   ],
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
-  "types": "./dist/esm/index.d.ts",
+  "types": "index.ts",
   "scripts": {
     "clean": "rimraf ./dist",
     "build:esm": "tsc --module es2015 --target es5 --outDir dist/esm",
