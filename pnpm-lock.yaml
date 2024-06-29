@@ -119,8 +119,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/tsconfig
       '@laynezh/vite-plugin-lib-assets':
-        specifier: ^0.5.21
-        version: 0.5.21
+        specifier: ^0.5.23
+        version: 0.5.23(vite@5.3.1(@types/node@20.14.2)(sass@1.77.5)(terser@5.28.1))
       '@types/ws':
         specifier: ^8.5.10
         version: 8.5.10
@@ -539,8 +539,10 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@laynezh/vite-plugin-lib-assets@0.5.21':
-    resolution: {integrity: sha512-XeOSCwzh0JqMNPchPRX2U/aAcO7S13LAK3GDuBn8T5AuKF5lbeJoUd7iqdlcYfUJjhPwqXoK8UwM1NCoAj1eaA==}
+  '@laynezh/vite-plugin-lib-assets@0.5.23':
+    resolution: {integrity: sha512-17df7hIpAM/wO+2z6cI7OIBuoJCHz1pRtY5A6g+R72KVKhjp8KrqCObDapuWEGY+RliSTBjvwi6rfQfFj/1JKg==}
+    peerDependencies:
+      vite: ^3.0.0 || ^4.0.0 || ^5.0.0
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -2741,12 +2743,13 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@laynezh/vite-plugin-lib-assets@0.5.21':
+  '@laynezh/vite-plugin-lib-assets@0.5.23(vite@5.3.1(@types/node@20.14.2)(sass@1.77.5)(terser@5.28.1))':
     dependencies:
       escape-string-regexp: 4.0.0
       loader-utils: 3.2.1
       mrmime: 1.0.1
       semver: 7.6.0
+      vite: 5.3.1(@types/node@20.14.2)(sass@1.77.5)(terser@5.28.1)
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
