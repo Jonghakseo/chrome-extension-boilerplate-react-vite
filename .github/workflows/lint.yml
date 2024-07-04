@@ -1,4 +1,4 @@
-name: Lint
+name: Lint Check
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  build:
+  eslint:
 
     runs-on: ubuntu-latest
 
