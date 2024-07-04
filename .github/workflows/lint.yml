@@ -1,4 +1,4 @@
-name: Build And Upload Extension Zip Via Artifact
+name: Lint
 
 on:
   push:
