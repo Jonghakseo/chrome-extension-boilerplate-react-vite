@@ -1,12 +1,12 @@
 import { createRoot } from 'react-dom/client';
-import App from '@pages/content/ui/app';
+import App from '@pages/content/runtime/app';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
-import injectedStyle from '@pages/content/ui/index.css?inline';
+import injectedStyle from '@pages/content/runtime/index.css?inline';
 
 refreshOnUpdate('pages/content');
 
 const root = document.createElement('div');
-root.id = 'chrome-extension-boilerplate-react-vite-content-view-root';
+root.id = 'chrome-extension-boilerplate-react-vite-runtime-content-view-root';
 
 document.body.append(root);
 
