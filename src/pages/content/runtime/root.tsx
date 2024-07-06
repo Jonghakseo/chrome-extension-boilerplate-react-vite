@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import App from '@pages/content/ui/app';
+import App from '@pages/content/runtime/app';
 import refreshOnUpdate from 'virtual:reload-on-update-in-view';
 import injectedStyle from '@pages/content/runtime/index.css?inline';
 

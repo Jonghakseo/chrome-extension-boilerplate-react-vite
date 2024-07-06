@@ -5,5 +5,5 @@ export default function App() {
     console.log('runtime content view loaded');
   }, []);
 
-  return <div className="">runtime content view</div>;
+  return <div className="runtime-content-view-text">runtime content view</div>;
 }
