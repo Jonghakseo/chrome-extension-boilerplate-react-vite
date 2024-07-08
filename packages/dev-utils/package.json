@@ -1,6 +1,6 @@
 {
   "name": "@chrome-extension-boilerplate/dev-utils",
-  "version": "0.0.1",
+  "version": "0.1.15",
   "description": "chrome extension dev utils",
   "private": true,
   "sideEffects": false,

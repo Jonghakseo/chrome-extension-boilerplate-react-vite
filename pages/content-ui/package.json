@@ -1,6 +1,6 @@
 {
   "name": "@chrome-extension-boilerplate/content-ui",
-  "version": "0.0.1",
+  "version": "0.1.15",
   "description": "chrome extension content ui",
   "type": "module",
   "private": true,
