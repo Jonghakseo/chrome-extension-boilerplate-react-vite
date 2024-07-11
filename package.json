@@ -24,7 +24,7 @@
   "type": "module",
   "dependencies": {
     "react": "18.3.1",
-    "react-dom": "18.2.0"
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.268",
