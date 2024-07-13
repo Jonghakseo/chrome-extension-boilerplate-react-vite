@@ -22,13 +22,14 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "ws": "8.17.1"
+    "ws": "8.18.0"
   },
   "devDependencies": {
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@types/ws": "^8.5.10",
     "esm": "^3.2.25",
+    "fast-glob": "^3.3.2",
     "rollup": "^4.18.0",
     "ts-node": "^10.9.2"
   }

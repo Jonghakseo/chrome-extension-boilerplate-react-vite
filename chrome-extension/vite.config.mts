@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets';
 import makeManifestPlugin from './utils/plugins/make-manifest-plugin';
-import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
+import { watchPublicPlugin, watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
 
 const rootDir = resolve(__dirname);
 const libDir = resolve(rootDir, 'lib');
@@ -23,6 +23,7 @@ export default defineConfig({
     libAssetsPlugin({
       outputPath: outDir,
     }),
+    watchPublicPlugin(),
     makeManifestPlugin({ outDir }),
     isDev && watchRebuildPlugin({ reload: true }),
   ],
