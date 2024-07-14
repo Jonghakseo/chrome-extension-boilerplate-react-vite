@@ -2,7 +2,7 @@ import { resolve } from 'path';
 import { makeEntryPointPlugin, watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
 import * as child_process from 'child_process';
 import baseConfig, {isDev} from '@chrome-extension-boilerplate/vite-base-config/vite.base.config.mjs';
-import { mergeWithBaseViteConfig } from '@chrome-extension-boilerplate/utils';
+import { mergeViteConfigs } from '@chrome-extension-boilerplate/utils';
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');
@@ -11,7 +11,7 @@ function buildTailwindCss() {
   child_process.execSync('pnpm build:tailwindcss', { stdio: 'inherit' });
 }
 
-export default mergeWithBaseViteConfig(baseConfig, {
+export default mergeViteConfigs(baseConfig, {
   resolve: {
     alias: {
       '@src': srcDir,

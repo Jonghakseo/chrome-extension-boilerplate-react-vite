@@ -3,14 +3,14 @@ import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets';
 import makeManifestPlugin from './utils/plugins/make-manifest-plugin';
 import { watchPublicPlugin } from '@chrome-extension-boilerplate/hmr';
 import baseConfig from '@chrome-extension-boilerplate/vite-base-config/vite.base.config.mjs';
-import { mergeWithBaseViteConfig } from '@chrome-extension-boilerplate/utils';
+import { mergeViteConfigs } from '@chrome-extension-boilerplate/utils';
 
 const rootDir = resolve(__dirname);
 const libDir = resolve(rootDir, 'lib');
 
 const outDir = resolve(rootDir, '..', 'dist');
 
-export default mergeWithBaseViteConfig(baseConfig, {
+export default mergeViteConfigs(baseConfig, {
   resolve: {
     alias: {
       '@root': rootDir,
