@@ -36,6 +36,7 @@ export default defineConfig({
       fileName: 'background',
     },
     outDir,
+    emptyOutDir: false,
     sourcemap: isDev,
     minify: isProduction,
     reportCompressedSize: isProduction,

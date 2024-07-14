@@ -24,6 +24,7 @@ export default defineConfig({
       fileName: 'index',
     },
     outDir: resolve(rootDir, '..', '..', 'dist', 'content'),
+    emptyOutDir: true,
     sourcemap: isDev,
     minify: isProduction,
     reportCompressedSize: isProduction,
