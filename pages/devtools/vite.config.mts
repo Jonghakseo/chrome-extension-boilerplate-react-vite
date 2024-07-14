@@ -1,34 +1,18 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
 import { resolve } from 'path';
-import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
+import baseConfig from '@chrome-extension-boilerplate/vite-base-config/vite.base.config.mjs';
+import { mergeWithBaseViteConfig } from '@chrome-extension-boilerplate/utils/dist/lib/configMerger';
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');
 
-const isDev = process.env.__DEV__ === 'true';
-const isProduction = !isDev;
-
-export default defineConfig({
+export default mergeWithBaseViteConfig(baseConfig, {
   resolve: {
     alias: {
       '@src': srcDir,
     },
   },
-  base: '',
-  plugins: [react(), isDev && watchRebuildPlugin({ refresh: true })],
   publicDir: resolve(rootDir, 'public'),
   build: {
     outDir: resolve(rootDir, '..', '..', 'dist', 'devtools'),
-    emptyOutDir: true,
-    sourcemap: isDev,
-    minify: isProduction,
-    reportCompressedSize: isProduction,
-    rollupOptions: {
-      external: ['chrome'],
-    },
-  },
-  define: {
-    'process.env.NODE_ENV': isDev ? `"development"` : `"production"`,
-  },
+  }
 });

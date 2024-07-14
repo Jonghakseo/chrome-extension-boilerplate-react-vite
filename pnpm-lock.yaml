@@ -118,6 +118,12 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../packages/tsconfig
+      '@chrome-extension-boilerplate/utils':
+        specifier: workspace:*
+        version: link:../packages/utils
+      '@chrome-extension-boilerplate/vite-base-config':
+        specifier: workspace:*
+        version: link:../packages/vite-base-config
       '@laynezh/vite-plugin-lib-assets':
         specifier: ^0.5.23
         version: 0.5.23(vite@5.3.3(@types/node@20.14.10)(sass@1.77.6)(terser@5.31.1))
@@ -184,6 +190,27 @@ importers:
 
   packages/tsconfig: {}
 
+  packages/utils:
+    devDependencies:
+      '@chrome-extension-boilerplate/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/lodash':
+        specifier: ^4.17.6
+        version: 4.17.6
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+
+  packages/vite-base-config:
+    devDependencies:
+      '@chrome-extension-boilerplate/hmr':
+        specifier: workspace:*
+        version: link:../hmr
+      '@chrome-extension-boilerplate/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+
   pages/content:
     dependencies:
       '@chrome-extension-boilerplate/shared':
@@ -199,6 +226,12 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      '@chrome-extension-boilerplate/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      '@chrome-extension-boilerplate/vite-base-config':
+        specifier: workspace:*
+        version: link:../../packages/vite-base-config
 
   pages/content-ui:
     dependencies:
@@ -215,6 +248,12 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      '@chrome-extension-boilerplate/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      '@chrome-extension-boilerplate/vite-base-config':
+        specifier: workspace:*
+        version: link:../../packages/vite-base-config
 
   pages/devtools:
     dependencies:
@@ -222,12 +261,15 @@ importers:
         specifier: workspace:*
         version: link:../../packages/shared
     devDependencies:
-      '@chrome-extension-boilerplate/hmr':
-        specifier: workspace:*
-        version: link:../../packages/hmr
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      '@chrome-extension-boilerplate/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      '@chrome-extension-boilerplate/vite-base-config':
+        specifier: workspace:*
+        version: link:../../packages/vite-base-config
 
   pages/devtools-panel:
     dependencies:
@@ -238,15 +280,18 @@ importers:
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
-      '@chrome-extension-boilerplate/hmr':
-        specifier: workspace:*
-        version: link:../../packages/hmr
       '@chrome-extension-boilerplate/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      '@chrome-extension-boilerplate/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      '@chrome-extension-boilerplate/vite-base-config':
+        specifier: workspace:*
+        version: link:../../packages/vite-base-config
 
   pages/new-tab:
     dependencies:
@@ -257,15 +302,18 @@ importers:
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
-      '@chrome-extension-boilerplate/hmr':
-        specifier: workspace:*
-        version: link:../../packages/hmr
       '@chrome-extension-boilerplate/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      '@chrome-extension-boilerplate/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      '@chrome-extension-boilerplate/vite-base-config':
+        specifier: workspace:*
+        version: link:../../packages/vite-base-config
       sass:
         specifier: 1.77.6
         version: 1.77.6
@@ -279,15 +327,18 @@ importers:
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
-      '@chrome-extension-boilerplate/hmr':
-        specifier: workspace:*
-        version: link:../../packages/hmr
       '@chrome-extension-boilerplate/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      '@chrome-extension-boilerplate/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      '@chrome-extension-boilerplate/vite-base-config':
+        specifier: workspace:*
+        version: link:../../packages/vite-base-config
 
   pages/popup:
     dependencies:
@@ -298,15 +349,18 @@ importers:
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
-      '@chrome-extension-boilerplate/hmr':
-        specifier: workspace:*
-        version: link:../../packages/hmr
       '@chrome-extension-boilerplate/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      '@chrome-extension-boilerplate/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      '@chrome-extension-boilerplate/vite-base-config':
+        specifier: workspace:*
+        version: link:../../packages/vite-base-config
 
   pages/side-panel:
     dependencies:
@@ -317,15 +371,18 @@ importers:
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
-      '@chrome-extension-boilerplate/hmr':
-        specifier: workspace:*
-        version: link:../../packages/hmr
       '@chrome-extension-boilerplate/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      '@chrome-extension-boilerplate/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
+      '@chrome-extension-boilerplate/vite-base-config':
+        specifier: workspace:*
+        version: link:../../packages/vite-base-config
 
 packages:
 
@@ -601,55 +658,46 @@ packages:
     resolution: {integrity: sha512-C/zbRYRXFjWvz9Z4haRxcTdnkPt1BtCkz+7RtBSuNmKzMzp3ZxdM28Mpccn6pt28/UWUCTXa+b0Mx1k3g6NOMA==}
     cpu: [arm]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.18.0':
     resolution: {integrity: sha512-l3m9ewPgjQSXrUMHg93vt0hYCGnrMOcUpTz6FLtbwljo2HluS4zTXFy2571YQbisTnfTKPZ01u/ukJdQTLGh9A==}
     cpu: [arm]
     os: [linux]
-    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.18.0':
     resolution: {integrity: sha512-rJ5D47d8WD7J+7STKdCUAgmQk49xuFrRi9pZkWoRD1UeSMakbcepWXPF8ycChBoAqs1pb2wzvbY6Q33WmN2ftw==}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.18.0':
     resolution: {integrity: sha512-be6Yx37b24ZwxQ+wOQXXLZqpq4jTckJhtGlWGZs68TgdKXJgw54lUUoFYrg6Zs/kjzAQwEwYbp8JxZVzZLRepQ==}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
 
   '@rollup/rollup-linux-powerpc64le-gnu@4.18.0':
     resolution: {integrity: sha512-hNVMQK+qrA9Todu9+wqrXOHxFiD5YmdEi3paj6vP02Kx1hjd2LLYR2eaN7DsEshg09+9uzWi2W18MJDlG0cxJA==}
     cpu: [ppc64]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-gnu@4.18.0':
     resolution: {integrity: sha512-ROCM7i+m1NfdrsmvwSzoxp9HFtmKGHEqu5NNDiZWQtXLA8S5HBCkVvKAxJ8U+CVctHwV2Gb5VUaK7UAkzhDjlg==}
     cpu: [riscv64]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-s390x-gnu@4.18.0':
     resolution: {integrity: sha512-0UyyRHyDN42QL+NbqevXIIUnKA47A+45WyasO+y2bGJ1mhQrfrtXUpTxCOrfxCR4esV3/RLYyucGVPiUsO8xjg==}
     cpu: [s390x]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.18.0':
     resolution: {integrity: sha512-xuglR2rBVHA5UsI8h8UbX4VJ470PtGCf5Vpswh7p2ukaqBGFTnsfzxUBetoWBWymHMxbIG0Cmx7Y9qDZzr648w==}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.18.0':
     resolution: {integrity: sha512-LKaqQL9osY/ir2geuLVvRRs+utWUNilzdE90TpyoX0eNqPzWjRm14oMEE+YLve4k/NAqCdPkGYDaDF5Sw+xBfg==}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   '@rollup/rollup-win32-arm64-msvc@4.18.0':
     resolution: {integrity: sha512-7J6TkZQFGo9qBKH0pk2cEVSRhJbL6MtfWxth7Y5YmZs57Pi+4x6c2dStAUvaQkHQLnEQv1jzBUW43GvZW8OFqA==}
@@ -689,28 +737,24 @@ packages:
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
 
   '@swc/core-linux-arm64-musl@1.6.13':
     resolution: {integrity: sha512-2OysYSYtdw79prJYuKIiux/Gj0iaGEbpS2QZWCIY4X9sGoETJ5iMg+lY+YCrIxdkkNYd7OhIbXdYFyGs/w5LDg==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
 
   '@swc/core-linux-x64-gnu@1.6.13':
     resolution: {integrity: sha512-PkR4CZYJNk5hcd2+tMWBpnisnmYsUzazI1O5X7VkIGFcGePTqJ/bWlfUIVVExWxvAI33PQFzLbzmN5scyIUyGQ==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   '@swc/core-linux-x64-musl@1.6.13':
     resolution: {integrity: sha512-OdsY7wryTxCKwGQcwW9jwWg3cxaHBkTTHi91+5nm7hFPpmZMz1HivJrWAMwVE7iXFw+M4l6ugB/wCvpYrUAAjA==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   '@swc/core-win32-arm64-msvc@1.6.13':
     resolution: {integrity: sha512-ap6uNmYjwk9M/+bFEuWRNl3hq4VqgQ/Lk+ID/F5WGqczNr0L7vEf+pOsRAn0F6EV+o/nyb3ePt8rLhE/wjHpPg==}
@@ -783,6 +827,9 @@ packages:
 
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+
+  '@types/lodash@4.17.6':
+    resolution: {integrity: sha512-OpXEVoCKSS3lQqjx9GGGOapBeuW5eUboYHRlHP9urXPX25IKZ6AnP5ZRxtVf63iieUbsHxLn8NQ5Nlftc6yzAA==}
 
   '@types/node@20.14.10':
     resolution: {integrity: sha512-MdiXf+nDuMvY0gJKxyfZ7/6UFsETO7mGKF54MVD/ekJS6HdFtpZFBgrh6Pseu64XTb2MLyFPlbW6hj8HYRQNOQ==}
@@ -1850,6 +1897,9 @@ packages:
 
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
+
+  lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
 
   log-update@6.0.0:
     resolution: {integrity: sha512-niTvB4gqvtof056rRIrTZvjNYE4rCUzO6X/X+kYjd7WFxXeJ0NwEFnRxX6ehkvv3jTwrXnNdtAak5XYZuIyPFw==}
@@ -2990,6 +3040,8 @@ snapshots:
   '@types/json-schema@7.0.15': {}
 
   '@types/json5@0.0.29': {}
+
+  '@types/lodash@4.17.6': {}
 
   '@types/node@20.14.10':
     dependencies:
@@ -4303,6 +4355,8 @@ snapshots:
       p-locate: 5.0.0
 
   lodash.merge@4.6.2: {}
+
+  lodash@4.17.21: {}
 
   log-update@6.0.0:
     dependencies:

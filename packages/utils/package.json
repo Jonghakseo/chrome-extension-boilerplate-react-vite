@@ -1,0 +1,26 @@
+{
+  "name": "@chrome-extension-boilerplate/utils",
+  "version": "0.1.15",
+  "description": "chrome extension utils",
+  "private": true,
+  "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "index.ts",
+  "scripts": {
+    "clean": "rimraf ./dist && rimraf ./build",
+    "ready": "tsc",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "pnpm lint --fix",
+    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "@types/lodash": "^4.17.6",
+    "lodash": "^4.17.21"
+  }
+}

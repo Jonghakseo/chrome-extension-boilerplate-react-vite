@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "@chrome-extension-boilerplate/hmr": "workspace:*"
+    "@chrome-extension-boilerplate/vite-base-config": "workspace:*",
+    "@chrome-extension-boilerplate/utils": "workspace:*"
   }
 }
