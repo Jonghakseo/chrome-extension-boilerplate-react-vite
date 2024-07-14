@@ -34,6 +34,7 @@ export default mergeWithBaseViteConfig(baseConfig, {
       fileName: 'background',
     },
     outDir,
+    emptyOutDir: false,
     modulePreload: true,
   },
 });

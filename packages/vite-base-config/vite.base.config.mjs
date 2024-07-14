@@ -11,6 +11,7 @@ export default {
     sourcemap: isDev,
     minify: isProduction,
     reportCompressedSize: isProduction,
+    emptyOutDir: true,
     rollupOptions: {
       external: ['chrome'],
     },
