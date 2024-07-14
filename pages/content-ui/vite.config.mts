@@ -10,10 +10,6 @@ const srcDir = resolve(rootDir, 'src');
 const isDev = process.env.__DEV__ === 'true';
 const isProduction = !isDev;
 
-if (isDev) {
-  child_process.execSync('pnpm build:tailwindcss -- --watch', { stdio: 'inherit' });
-}
-
 export default defineConfig({
   resolve: {
     alias: {
@@ -21,11 +17,7 @@ export default defineConfig({
     },
   },
   base: '',
-  plugins: [
-    react(),
-    isDev && watchRebuildPlugin({ refresh: true }),
-    isDev && makeEntryPointPlugin(),
-  ],
+  plugins: [react(), isDev && watchRebuildPlugin({ refresh: true }), isDev && makeEntryPointPlugin()],
   publicDir: resolve(rootDir, 'public'),
   build: {
     lib: {
