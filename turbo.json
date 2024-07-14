@@ -3,17 +3,34 @@
   "ui": "tui",
   "tasks": {
     "ready": {
-      "outputs": ["dist/**", "build/**"]
+      "outputs": [
+        "dist/**",
+        "build/**"
+      ]
     },
     "dev": {
-      "outputs": ["dist/**", "build/**"],
-      "env": ["__FIREFOX__"],
+      "outputs": [
+        "dist/**",
+        "build/**"
+      ],
+      "env": [
+        "__FIREFOX__"
+      ],
       "persistent": true
     },
     "build": {
-      "dependsOn": ["^build", "ready"],
-      "env": ["__FIREFOX__"],
-      "outputs": ["../../dist/**", "dist/**", "build/**"]
+      "dependsOn": [
+        "^build",
+        "ready"
+      ],
+      "env": [
+        "__FIREFOX__"
+      ],
+      "outputs": [
+        "../../dist/**",
+        "dist/**",
+        "build/**"
+      ]
     },
     "type-check": {
       "cache": false
@@ -29,7 +46,8 @@
     },
     "test": {
       "dependsOn": [
-        "^test", "^build"
+        "^test",
+        "^build"
       ],
       "cache": false
     },
