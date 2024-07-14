@@ -16,8 +16,10 @@ const shadowRoot = root.attachShadow({ mode: 'open' });
 shadowRoot.appendChild(rootIntoShadow);
 
 /** Inject styles into shadow dom */
-const styleElement = document.createElement('style');
-styleElement.innerHTML = tailwindcssOutput;
-shadowRoot.appendChild(styleElement);
+const globalStyleSheet = new CSSStyleSheet();
+globalStyleSheet.replaceSync(tailwindcssOutput);
+
+shadowRoot.adoptedStyleSheets = [globalStyleSheet];
+shadowRoot.appendChild(rootIntoShadow);
 
 createRoot(rootIntoShadow).render(<App />);
