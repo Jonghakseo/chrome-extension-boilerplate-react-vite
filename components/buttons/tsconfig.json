@@ -1,0 +1,13 @@
+{
+  "extends": "@chrome-extension-boilerplate/tsconfig/utils",
+  "compilerOptions": {
+    "outDir": "dist",
+    "types": ["chrome"],
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "module": "ESNext"
+  },
+  "include": ["lib",
+    "index.ts"
+  ]
+}

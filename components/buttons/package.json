@@ -1,0 +1,34 @@
+{
+  "name": "@chrome-extension-boilerplate/buttons",
+  "version": "0.0.1",
+  "description": "chrome extension buttons components",
+  "private": true,
+  "sideEffects": true,
+  "files": [
+    "dist/**"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "index.ts",
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build:tsc": "tsc -b tsconfig.json",
+    "build:rollup": "rollup --config rollup.config.mjs",
+    "ready": "pnpm run build:tsc && pnpm run build:rollup",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "pnpm lint --fix",
+    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@chrome-extension-boilerplate/shared": "workspace:*",
+    "@chrome-extension-boilerplate/storage": "workspace:*"
+  },
+  "devDependencies": {
+    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "@chrome-extension-boilerplate/tailwindcss-config": "workspace:*",
+    "@rollup/plugin-sucrase": "^5.0.2",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@rollup/plugin-commonjs": "^26.0.1"
+  }
+}
