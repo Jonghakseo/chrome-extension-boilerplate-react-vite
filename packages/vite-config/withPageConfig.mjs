@@ -1,10 +1,11 @@
-import { defineConfig, UserConfig } from 'vite';
+import { defineConfig } from 'vite';
 import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
 import react from '@vitejs/plugin-react-swc';
 import deepmerge from 'deepmerge';
 import { isDev, isProduction } from './env.mjs';
 
 /**
+ * @typedef {import('vite').UserConfig} UserConfig
  * @param {UserConfig} config
  * @returns {UserConfig}
  */
