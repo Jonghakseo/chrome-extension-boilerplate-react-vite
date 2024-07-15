@@ -1,16 +1,15 @@
+import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets';
 import makeManifestPlugin from './utils/plugins/make-manifest-plugin';
-import { watchPublicPlugin } from '@chrome-extension-boilerplate/hmr';
-import baseConfig from '@chrome-extension-boilerplate/vite-base-config/vite.base.config.mjs';
-import { mergeViteConfigs } from '@chrome-extension-boilerplate/utils';
+import { watchPublicPlugin, watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
+import { isDev, isProduction } from '@chrome-extension-boilerplate/vite-config';
 
 const rootDir = resolve(__dirname);
 const libDir = resolve(rootDir, 'lib');
 
 const outDir = resolve(rootDir, '..', 'dist');
-
-export default mergeViteConfigs(baseConfig, {
+export default defineConfig({
   resolve: {
     alias: {
       '@root': rootDir,
@@ -24,6 +23,7 @@ export default mergeViteConfigs(baseConfig, {
     }),
     watchPublicPlugin(),
     makeManifestPlugin({ outDir }),
+    isDev && watchRebuildPlugin({ reload: true }),
   ],
   publicDir: resolve(rootDir, 'public'),
   build: {
@@ -35,6 +35,12 @@ export default mergeViteConfigs(baseConfig, {
     },
     outDir,
     emptyOutDir: false,
+    sourcemap: isDev,
+    minify: isProduction,
+    reportCompressedSize: isProduction,
     modulePreload: true,
+    rollupOptions: {
+      external: ['chrome'],
+    },
   },
 });

@@ -1,12 +1,11 @@
 import { resolve } from 'path';
 import { makeEntryPointPlugin } from '@chrome-extension-boilerplate/hmr';
-import baseConfig, {isDev} from '@chrome-extension-boilerplate/vite-base-config/vite.base.config.mjs';
-import { mergeViteConfigs } from '@chrome-extension-boilerplate/utils';
+import { withPageConfig, isDev } from '@chrome-extension-boilerplate/vite-config';
 
 const rootDir = resolve(__dirname);
 const libDir = resolve(rootDir, 'lib');
 
-export default mergeViteConfigs(baseConfig, {
+export default withPageConfig({
   resolve: {
     alias: {
       '@lib': libDir,
