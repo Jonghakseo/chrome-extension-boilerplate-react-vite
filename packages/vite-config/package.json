@@ -6,8 +6,9 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
     "@chrome-extension-boilerplate/hmr": "workspace:*",
+    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "@vitejs/plugin-react-swc": "^3.6.0",
     "deepmerge": "^4.3.1"
   }
 }
