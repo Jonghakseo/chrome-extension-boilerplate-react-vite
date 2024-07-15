@@ -1,0 +1,8 @@
+{
+  "extends": "@typetrans/tsconfig/utils",
+  "compilerOptions": {
+    "outDir": "dist",
+    "types": ["chrome","node"]
+  },
+  "include": ["index.ts", "lib"]
+}
