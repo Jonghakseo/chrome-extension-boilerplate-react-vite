@@ -64,8 +64,8 @@ export const zipBundle = async (
   );
 
   return new Promise<void>((pResolve, pReject) => {
-    let size = 0;
     let aborted = false;
+    let totalSize = 0;
     const timer = Date.now();
     const zip = new Zip((err, data, final) => {
       if (aborted) return;
@@ -73,10 +73,10 @@ export const zipBundle = async (
       if (err) {
         pReject(err);
       } else {
-        size += data.length;
+        totalSize += data.length;
         output.write(data);
         if (final) {
-          logPackageSize(size, timer);
+          logPackageSize(totalSize, timer);
           output.end();
           pResolve();
         }
