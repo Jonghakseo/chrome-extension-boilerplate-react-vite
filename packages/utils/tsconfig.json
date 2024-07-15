@@ -1,8 +1,0 @@
-{
-  "extends": "@chrome-extension-boilerplate/tsconfig/utils",
-  "compilerOptions": {
-    "outDir": "dist",
-    "types": ["chrome"]
-  },
-  "include": ["index.ts", "lib"]
-}

@@ -118,12 +118,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../packages/tsconfig
-      '@chrome-extension-boilerplate/utils':
+      '@chrome-extension-boilerplate/vite-config':
         specifier: workspace:*
-        version: link:../packages/utils
-      '@chrome-extension-boilerplate/vite-base-config':
-        specifier: workspace:*
-        version: link:../packages/vite-base-config
+        version: link:../packages/vite-config
       '@laynezh/vite-plugin-lib-assets':
         specifier: ^0.5.23
         version: 0.5.23(vite@5.3.3(@types/node@20.14.10)(sass@1.77.6)(terser@5.31.1))
@@ -190,19 +187,7 @@ importers:
 
   packages/tsconfig: {}
 
-  packages/utils:
-    devDependencies:
-      '@chrome-extension-boilerplate/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-      '@types/lodash':
-        specifier: ^4.17.6
-        version: 4.17.6
-      lodash:
-        specifier: ^4.17.21
-        version: 4.17.21
-
-  packages/vite-base-config:
+  packages/vite-config:
     devDependencies:
       '@chrome-extension-boilerplate/hmr':
         specifier: workspace:*
@@ -210,6 +195,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      deepmerge:
+        specifier: ^4.3.1
+        version: 4.3.1
 
   pages/content:
     dependencies:
@@ -226,12 +214,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/utils':
+      '@chrome-extension-boilerplate/vite-config':
         specifier: workspace:*
-        version: link:../../packages/utils
-      '@chrome-extension-boilerplate/vite-base-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-base-config
+        version: link:../../packages/vite-config
 
   pages/content-ui:
     dependencies:
@@ -248,12 +233,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/utils':
+      '@chrome-extension-boilerplate/vite-config':
         specifier: workspace:*
-        version: link:../../packages/utils
-      '@chrome-extension-boilerplate/vite-base-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-base-config
+        version: link:../../packages/vite-config
 
   pages/devtools:
     dependencies:
@@ -264,12 +246,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/utils':
+      '@chrome-extension-boilerplate/vite-config':
         specifier: workspace:*
-        version: link:../../packages/utils
-      '@chrome-extension-boilerplate/vite-base-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-base-config
+        version: link:../../packages/vite-config
 
   pages/devtools-panel:
     dependencies:
@@ -286,12 +265,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/utils':
+      '@chrome-extension-boilerplate/vite-config':
         specifier: workspace:*
-        version: link:../../packages/utils
-      '@chrome-extension-boilerplate/vite-base-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-base-config
+        version: link:../../packages/vite-config
 
   pages/new-tab:
     dependencies:
@@ -308,12 +284,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/utils':
+      '@chrome-extension-boilerplate/vite-config':
         specifier: workspace:*
-        version: link:../../packages/utils
-      '@chrome-extension-boilerplate/vite-base-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-base-config
+        version: link:../../packages/vite-config
       sass:
         specifier: 1.77.6
         version: 1.77.6
@@ -333,12 +306,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/utils':
+      '@chrome-extension-boilerplate/vite-config':
         specifier: workspace:*
-        version: link:../../packages/utils
-      '@chrome-extension-boilerplate/vite-base-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-base-config
+        version: link:../../packages/vite-config
 
   pages/popup:
     dependencies:
@@ -355,12 +325,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/utils':
+      '@chrome-extension-boilerplate/vite-config':
         specifier: workspace:*
-        version: link:../../packages/utils
-      '@chrome-extension-boilerplate/vite-base-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-base-config
+        version: link:../../packages/vite-config
 
   pages/side-panel:
     dependencies:
@@ -377,12 +344,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/utils':
+      '@chrome-extension-boilerplate/vite-config':
         specifier: workspace:*
-        version: link:../../packages/utils
-      '@chrome-extension-boilerplate/vite-base-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-base-config
+        version: link:../../packages/vite-config
 
 packages:
 
@@ -828,9 +792,6 @@ packages:
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
 
-  '@types/lodash@4.17.6':
-    resolution: {integrity: sha512-OpXEVoCKSS3lQqjx9GGGOapBeuW5eUboYHRlHP9urXPX25IKZ6AnP5ZRxtVf63iieUbsHxLn8NQ5Nlftc6yzAA==}
-
   '@types/node@20.14.10':
     resolution: {integrity: sha512-MdiXf+nDuMvY0gJKxyfZ7/6UFsETO7mGKF54MVD/ekJS6HdFtpZFBgrh6Pseu64XTb2MLyFPlbW6hj8HYRQNOQ==}
 
@@ -1238,6 +1199,10 @@ packages:
 
   deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
+
+  deepmerge@4.3.1:
+    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
+    engines: {node: '>=0.10.0'}
 
   define-data-property@1.1.4:
     resolution: {integrity: sha512-rBMvIzlpA8v6E+SJZoo++HAYqsLrkg7MSfIinMPFhmkorw7X+dOXVJQs+QT69zGkzMyfDnIMN2Wid1+NbL3T+A==}
@@ -1897,9 +1862,6 @@ packages:
 
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
-
-  lodash@4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
 
   log-update@6.0.0:
     resolution: {integrity: sha512-niTvB4gqvtof056rRIrTZvjNYE4rCUzO6X/X+kYjd7WFxXeJ0NwEFnRxX6ehkvv3jTwrXnNdtAak5XYZuIyPFw==}
@@ -3041,8 +3003,6 @@ snapshots:
 
   '@types/json5@0.0.29': {}
 
-  '@types/lodash@4.17.6': {}
-
   '@types/node@20.14.10':
     dependencies:
       undici-types: 5.26.5
@@ -3536,6 +3496,8 @@ snapshots:
       which-typed-array: 1.1.15
 
   deep-is@0.1.4: {}
+
+  deepmerge@4.3.1: {}
 
   define-data-property@1.1.4:
     dependencies:
@@ -4355,8 +4317,6 @@ snapshots:
       p-locate: 5.0.0
 
   lodash.merge@4.6.2: {}
-
-  lodash@4.17.21: {}
 
   log-update@6.0.0:
     dependencies:
