@@ -1,7 +1,7 @@
 {
-  "name": "@chrome-extension-boilerplate/popup",
+  "name": "@chrome-extension-boilerplate/content-runtime-script",
   "version": "0.0.1",
-  "description": "chrome extension popup",
+  "description": "chrome extension content runtime script",
   "private": true,
   "sideEffects": true,
   "files": [
@@ -18,14 +18,9 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@chrome-extension-boilerplate/shared": "workspace:*",
-    "@chrome-extension-boilerplate/storage": "workspace:*",
-    "@chrome-extension-boilerplate/content-runtime-script": "workspace:*",
-    "@types/node": "^20.14.10"
   },
   "devDependencies": {
-    "@chrome-extension-boilerplate/tailwindcss-config": "workspace:*",
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "@chrome-extension-boilerplate/vite-config": "workspace:*"
+    "@chrome-extension-boilerplate/hmr": "workspace:*"
   }
 }

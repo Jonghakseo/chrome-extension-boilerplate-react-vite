@@ -218,6 +218,15 @@ importers:
         specifier: workspace:*
         version: link:../../packages/vite-config
 
+  pages/content-runtime:
+    devDependencies:
+      '@chrome-extension-boilerplate/hmr':
+        specifier: workspace:*
+        version: link:../../packages/hmr
+      '@chrome-extension-boilerplate/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
+
   pages/content-ui:
     dependencies:
       '@chrome-extension-boilerplate/shared':
@@ -312,12 +321,18 @@ importers:
 
   pages/popup:
     dependencies:
+      '@chrome-extension-boilerplate/content-runtime-script':
+        specifier: workspace:*
+        version: link:../content-runtime
       '@chrome-extension-boilerplate/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       '@chrome-extension-boilerplate/storage':
         specifier: workspace:*
         version: link:../../packages/storage
+      '@types/node':
+        specifier: ^20.14.10
+        version: 20.14.10
     devDependencies:
       '@chrome-extension-boilerplate/tailwindcss-config':
         specifier: workspace:*

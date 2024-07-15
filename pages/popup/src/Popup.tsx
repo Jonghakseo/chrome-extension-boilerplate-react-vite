@@ -1,13 +1,21 @@
 import '@src/Popup.css';
 import { useStorageSuspense, withErrorBoundary, withSuspense } from '@chrome-extension-boilerplate/shared';
 import { exampleThemeStorage } from '@chrome-extension-boilerplate/storage';
-
 import { ComponentPropsWithoutRef } from 'react';
 
 const Popup = () => {
   const theme = useStorageSuspense(exampleThemeStorage);
   const isLight = theme === 'light';
   const logo = isLight ? 'popup/logo_vertical.svg' : 'popup/logo_vertical_dark.svg';
+
+  const injectContentScript = async () => {
+    const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
+
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id! },
+      files: ['content-runtime/index.iife.js'],
+    });
+  };
 
   return (
     <div className={`App ${isLight ? 'bg-slate-50' : 'bg-gray-800'}`}>
@@ -16,6 +24,14 @@ const Popup = () => {
         <p>
           Edit <code>pages/popup/src/Popup.tsx</code>
         </p>
+        <button
+          style={{
+            backgroundColor: theme === 'light' ? '#fff' : '#000',
+            color: theme === 'light' ? '#000' : '#fff',
+          }}
+          onClick={injectContentScript}>
+          Click to inject Content Script
+        </button>
         <ToggleButton>Toggle theme</ToggleButton>
       </header>
     </div>

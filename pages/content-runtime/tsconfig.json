@@ -1,0 +1,11 @@
+{
+  "extends": "@chrome-extension-boilerplate/tsconfig/base",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@lib/*": ["lib/*"]
+    },
+    "types": ["chrome"]
+  },
+  "include": ["lib"]
+}
