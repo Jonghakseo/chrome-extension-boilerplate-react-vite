@@ -1,0 +1,14 @@
+{
+  "name": "@chrome-extension-boilerplate/vite-config",
+  "version": "0.0.1",
+  "description": "Vite base configuration",
+  "main": "index.mjs",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@chrome-extension-boilerplate/hmr": "workspace:*",
+    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "deepmerge": "^4.3.1"
+  }
+}

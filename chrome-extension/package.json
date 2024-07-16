@@ -26,6 +26,7 @@
     "@chrome-extension-boilerplate/dev-utils": "workspace:*",
     "@chrome-extension-boilerplate/hmr": "workspace:*",
     "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "@chrome-extension-boilerplate/vite-config": "workspace:*",
     "@laynezh/vite-plugin-lib-assets": "^0.5.23",
     "@types/ws": "^8.5.10",
     "magic-string": "^0.30.10",
