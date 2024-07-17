@@ -1,20 +1,17 @@
-import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import { makeEntryPointPlugin, watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
+import { makeEntryPointPlugin } from '@chrome-extension-boilerplate/hmr';
+import { withPageConfig, isDev } from '@chrome-extension-boilerplate/vite-config';
 
 const rootDir = resolve(__dirname);
 const libDir = resolve(rootDir, 'lib');
 
-const isDev = process.env.__DEV__ === 'true';
-const isProduction = !isDev;
-
-export default defineConfig({
+export default withPageConfig({
   resolve: {
     alias: {
       '@lib': libDir,
     },
   },
-  plugins: [isDev && watchRebuildPlugin({ refresh: true }), isDev && makeEntryPointPlugin()],
+  plugins: [isDev && makeEntryPointPlugin()],
   publicDir: resolve(rootDir, 'public'),
   build: {
     lib: {
@@ -24,16 +21,5 @@ export default defineConfig({
       fileName: 'index',
     },
     outDir: resolve(rootDir, '..', '..', 'dist', 'content-runtime'),
-    emptyOutDir: true,
-    sourcemap: isDev,
-    minify: isProduction,
-    reportCompressedSize: isProduction,
-    modulePreload: true,
-    rollupOptions: {
-      external: ['chrome'],
-    },
-  },
-  define: {
-    'process.env.NODE_ENV': isDev ? `"development"` : `"production"`,
   },
 });

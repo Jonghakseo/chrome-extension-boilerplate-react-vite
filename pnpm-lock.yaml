@@ -226,6 +226,9 @@ importers:
       '@chrome-extension-boilerplate/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      '@chrome-extension-boilerplate/vite-config':
+        specifier: workspace:*
+        version: link:../../packages/vite-config
 
   pages/content-ui:
     dependencies:
