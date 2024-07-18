@@ -20,7 +20,7 @@
   "dependencies": {
     "@chrome-extension-boilerplate/shared": "workspace:*",
     "@chrome-extension-boilerplate/storage": "workspace:*",
-    "@chrome-extension-boilerplate/buttons": "workspace:*"
+    "@chrome-extension-boilerplate/ui": "workspace:*"
   },
   "devDependencies": {
     "@chrome-extension-boilerplate/tailwindcss-config": "workspace:*",
