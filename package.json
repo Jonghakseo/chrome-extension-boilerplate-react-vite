@@ -8,7 +8,9 @@
     "url": "https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite.git"
   },
   "scripts": {
-    "clean": "rimraf dist && turbo clean",
+    "clean": "rimraf dist && rimraf .turbo && turbo clean",
+    "clean:node_modules": "rimraf **/node_modules && rimraf ./node_modules",
+    "clean:install": "pnpm clean:node_modules && pnpm install --frozen-lockfile",
     "build": "turbo build",
     "build:firefox": "cross-env __FIREFOX__=true turbo build",
     "dev-server": "pnpm -F hmr ready && pnpm -F hmr dev",
