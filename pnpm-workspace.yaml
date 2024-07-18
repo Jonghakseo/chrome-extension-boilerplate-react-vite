@@ -2,4 +2,3 @@ packages:
   - "chrome-extension"
   - "pages/*"
   - "packages/*"
-  - "components/*"

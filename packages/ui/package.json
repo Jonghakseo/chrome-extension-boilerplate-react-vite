@@ -1,0 +1,33 @@
+{
+  "name": "@chrome-extension-boilerplate/ui",
+  "version": "0.0.1",
+  "description": "ui components",
+  "private": true,
+  "sideEffects": false,
+  "files": [
+    "dist/**",
+    "dist/global.css"
+  ],
+  "types": "index.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "scripts": {
+    "clean": "rimraf ./dist && rimraf .turbo",
+    "build:esm": "tsc --module es2015 --target es5 --outDir dist/esm",
+    "build:cjs": "tsc --module commonjs --target es5 --outDir dist/cjs",
+    "cp:css": "cp ./lib/global.css ./dist/global.css",
+    "ready": "pnpm build:esm && pnpm build:cjs && pnpm cp:css",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "pnpm lint --fix",
+    "prettier": "prettier . --write",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "deepmerge": "^4.3.1"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.4.0"
+  }
+}
