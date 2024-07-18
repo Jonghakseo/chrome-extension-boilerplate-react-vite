@@ -2,7 +2,7 @@ import '@src/NewTab.css';
 import '@src/NewTab.scss';
 import { useStorageSuspense, withErrorBoundary, withSuspense } from '@chrome-extension-boilerplate/shared';
 import { exampleThemeStorage } from '@chrome-extension-boilerplate/storage';
-import { ComponentPropsWithoutRef } from 'react';
+import { Button } from '@chrome-extension-boilerplate/ui';
 
 const NewTab = () => {
   const theme = useStorageSuspense(exampleThemeStorage);
@@ -19,29 +19,15 @@ const NewTab = () => {
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: theme === 'light' ? '#0281dc' : undefined, marginBottom: '10px' }}>
+          style={{ color: theme === 'light' ? '#0281dc' : '', marginBottom: '10px' }}>
           Learn React
         </a>
         <h6>The color of this paragraph is defined using SASS.</h6>
-        <ToggleButton>Toggle theme</ToggleButton>
+        <Button onClick={exampleThemeStorage.toggle} theme={theme}>
+          Toggle Theme
+        </Button>
       </header>
     </div>
-  );
-};
-
-const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
-  const theme = useStorageSuspense(exampleThemeStorage);
-  return (
-    <button
-      className={
-        props.className +
-        ' ' +
-        'font-bold mt-4 py-1 px-4 rounded shadow hover:scale-105 ' +
-        (theme === 'light' ? 'bg-white text-black' : 'bg-black text-white')
-      }
-      onClick={exampleThemeStorage.toggle}>
-      {props.children}
-    </button>
   );
 };
 
