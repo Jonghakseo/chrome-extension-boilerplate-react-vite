@@ -50,7 +50,7 @@ import '@chrome-extension-boilerplate/ui/dist/global.css';
 Add the following to the `lib/components/index.ts` file.
 
 ```tsx
-export * from "./Button";
+export * from './Button';
 ```
 
 Add the following to the `lib/components/Button.tsx` file.
@@ -85,12 +85,16 @@ import { Button } from '@chrome-extension-boilerplate/ui';
 
 export default function ToggleButton() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  
+
   const toggle = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
-  }
-  
-  return <Button theme={theme} onClick={toggle}>Toggle</Button>;
+  };
+
+  return (
+    <Button theme={theme} onClick={toggle}>
+      Toggle
+    </Button>
+  );
 }
 ```
 
