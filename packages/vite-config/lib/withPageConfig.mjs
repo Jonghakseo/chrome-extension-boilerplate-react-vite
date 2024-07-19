@@ -4,9 +4,6 @@ import react from '@vitejs/plugin-react-swc';
 import deepmerge from 'deepmerge';
 import { isDev, isProduction } from './env.mjs';
 
-/**
- * @type {import('vite')} UserConfig
- */
 export const watchOption = isDev ? {
   buildDelay: 50,
   chokidar: {
@@ -14,7 +11,7 @@ export const watchOption = isDev ? {
       /\/packages\/.*\.(ts|tsx)$/,
     ]
   }
-}: {};
+}: undefined;
 
 /**
  * @typedef {import('vite').UserConfig} UserConfig
