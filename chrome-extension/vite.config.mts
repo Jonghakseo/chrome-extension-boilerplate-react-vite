@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets';
 import makeManifestPlugin from './utils/plugins/make-manifest-plugin';
 import { watchPublicPlugin, watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
-import { isDev, isProduction } from '@chrome-extension-boilerplate/vite-config';
+import { isDev, isProduction, watchOption } from '@chrome-extension-boilerplate/vite-config';
 
 const rootDir = resolve(__dirname);
 const libDir = resolve(rootDir, 'lib');
@@ -38,6 +38,7 @@ export default defineConfig({
     sourcemap: isDev,
     minify: isProduction,
     reportCompressedSize: isProduction,
+    watch: watchOption,
     rollupOptions: {
       external: ['chrome'],
     },

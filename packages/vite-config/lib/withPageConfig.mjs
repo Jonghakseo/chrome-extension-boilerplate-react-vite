@@ -5,6 +5,18 @@ import deepmerge from 'deepmerge';
 import { isDev, isProduction } from './env.mjs';
 
 /**
+ * @type {import('vite')} UserConfig
+ */
+export const watchOption = isDev ? {
+  buildDelay: 50,
+  chokidar: {
+    ignored:[
+      /\/packages\/.*\.(ts|tsx)$/,
+    ]
+  }
+}: {};
+
+/**
  * @typedef {import('vite').UserConfig} UserConfig
  * @param {UserConfig} config
  * @returns {UserConfig}
@@ -20,6 +32,7 @@ export function withPageConfig(config) {
           minify: isProduction,
           reportCompressedSize: isProduction,
           emptyOutDir: true,
+          watch: watchOption,
           rollupOptions: {
             external: ['chrome'],
           },

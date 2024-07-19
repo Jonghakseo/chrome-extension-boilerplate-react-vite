@@ -12,7 +12,7 @@
     "clean": "rimraf ./dist",
     "build:tailwindcss": "tailwindcss -i src/tailwind-input.css -o src/tailwind-output.css",
     "build": "pnpm run clean && pnpm type-check && pnpm build:tailwindcss && vite build",
-    "build:watch": "cross-env __DEV__=true vite build -w --mode development & pnpm build:tailwindcss -- --watch",
+    "build:watch": "cross-env __DEV__=true vite build --mode development & pnpm build:tailwindcss -- --watch",
     "dev": "pnpm build:watch",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
