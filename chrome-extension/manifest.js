@@ -9,7 +9,7 @@ const sidePanelConfig = {
   side_panel: {
     default_path: 'side-panel/index.html',
   },
-  permissions: !isFirefox && ['sidePanel'],
+  permissions: ['sidePanel'],
 };
 
 /**
