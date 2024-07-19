@@ -1,4 +1,6 @@
 import * as esbuild from "esbuild"
+import * as fs from "fs";
+import { resolve } from "node:path";
 
 /**
  * @type { import("esbuild").BuildOptions }
@@ -13,3 +15,4 @@ const buildOptions = {
 }
 
 await esbuild.build(buildOptions);
+fs.copyFileSync(resolve("lib", "global.css"),resolve("dist", "global.css"))

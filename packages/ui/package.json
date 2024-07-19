@@ -12,8 +12,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "clean": "rimraf ./dist && rimraf .turbo",
-    "cp:css": "cp ./lib/global.css ./dist/global.css",
-    "ready": "node build.mjs && pnpm cp:css",
+    "ready": "node build.mjs",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write",
