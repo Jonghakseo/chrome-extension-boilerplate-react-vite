@@ -18,7 +18,7 @@
 > This project is listed in the [Awesome Vite](https://github.com/vitejs/awesome-vite)
 
 > [!TIP]
-> Share storage state between every page
+> Share storage state between all pages
 >
 > https://github.com/user-attachments/assets/3b8e189f-6443-490e-a455-4f9570267f8c
 
