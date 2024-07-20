@@ -1,7 +1,7 @@
 import '@src/Options.css';
-import { useStorageSuspense, withErrorBoundary, withSuspense } from '@chrome-extension-boilerplate/shared';
-import { exampleThemeStorage } from '@chrome-extension-boilerplate/storage';
-import { Button } from '@chrome-extension-boilerplate/ui';
+import { useStorageSuspense, withErrorBoundary, withSuspense } from '@extension/shared';
+import { exampleThemeStorage } from '@extension/storage';
+import { Button } from '@extension/ui';
 
 const Options = () => {
   const theme = useStorageSuspense(exampleThemeStorage);

@@ -1,4 +1,4 @@
-const baseConfig = require('@chrome-extension-boilerplate/tailwindcss-config');
+const baseConfig = require('@extension/tailwindcss-config');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {

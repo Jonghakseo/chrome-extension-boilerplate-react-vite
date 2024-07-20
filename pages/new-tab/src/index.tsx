@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import '@src/index.css';
-import '@chrome-extension-boilerplate/ui/lib/global.css';
+import '@extension/ui/lib/global.css';
 import NewTab from '@src/NewTab';
 
 function init() {

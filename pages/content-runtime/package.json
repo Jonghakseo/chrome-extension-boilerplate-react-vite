@@ -1,5 +1,5 @@
 {
-  "name": "@chrome-extension-boilerplate/content-runtime-script",
+  "name": "@extension/content-runtime-script",
   "version": "0.2.0",
   "description": "chrome extension content runtime script",
   "private": true,
@@ -19,8 +19,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "@chrome-extension-boilerplate/hmr": "workspace:*",
-    "@chrome-extension-boilerplate/vite-config": "workspace:*"
+    "@extension/tsconfig": "workspace:*",
+    "@extension/hmr": "workspace:*",
+    "@extension/vite-config": "workspace:*"
   }
 }

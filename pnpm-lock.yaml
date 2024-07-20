@@ -99,26 +99,26 @@ importers:
 
   chrome-extension:
     dependencies:
-      '@chrome-extension-boilerplate/shared':
+      '@extension/shared':
         specifier: workspace:*
         version: link:../packages/shared
-      '@chrome-extension-boilerplate/storage':
+      '@extension/storage':
         specifier: workspace:*
         version: link:../packages/storage
       webextension-polyfill:
         specifier: ^0.12.0
         version: 0.12.0
     devDependencies:
-      '@chrome-extension-boilerplate/dev-utils':
+      '@extension/dev-utils':
         specifier: workspace:*
         version: link:../packages/dev-utils
-      '@chrome-extension-boilerplate/hmr':
+      '@extension/hmr':
         specifier: workspace:*
         version: link:../packages/hmr
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../packages/tsconfig
-      '@chrome-extension-boilerplate/vite-config':
+      '@extension/vite-config':
         specifier: workspace:*
         version: link:../packages/vite-config
       '@laynezh/vite-plugin-lib-assets':
@@ -139,7 +139,7 @@ importers:
 
   packages/dev-utils:
     devDependencies:
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
 
@@ -149,7 +149,7 @@ importers:
         specifier: 8.18.0
         version: 8.18.0
     devDependencies:
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       '@rollup/plugin-sucrase':
@@ -173,16 +173,16 @@ importers:
 
   packages/shared:
     devDependencies:
-      '@chrome-extension-boilerplate/storage':
+      '@extension/storage':
         specifier: workspace:*
         version: link:../storage
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
 
   packages/storage:
     devDependencies:
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
 
@@ -199,7 +199,7 @@ importers:
         specifier: ^2.4.0
         version: 2.4.0
     devDependencies:
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       deepmerge:
@@ -208,10 +208,10 @@ importers:
 
   packages/vite-config:
     devDependencies:
-      '@chrome-extension-boilerplate/hmr':
+      '@extension/hmr':
         specifier: workspace:*
         version: link:../hmr
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       '@vitejs/plugin-react-swc':
@@ -223,7 +223,7 @@ importers:
 
   packages/zipper:
     devDependencies:
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       fast-glob:
@@ -238,105 +238,105 @@ importers:
 
   pages/content:
     dependencies:
-      '@chrome-extension-boilerplate/shared':
+      '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@chrome-extension-boilerplate/storage':
+      '@extension/storage':
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
-      '@chrome-extension-boilerplate/hmr':
+      '@extension/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/vite-config':
+      '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
 
   pages/content-runtime:
     devDependencies:
-      '@chrome-extension-boilerplate/hmr':
+      '@extension/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/vite-config':
+      '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
 
   pages/content-ui:
     dependencies:
-      '@chrome-extension-boilerplate/shared':
+      '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
     devDependencies:
-      '@chrome-extension-boilerplate/hmr':
+      '@extension/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
-      '@chrome-extension-boilerplate/tailwindcss-config':
+      '@extension/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/vite-config':
+      '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
 
   pages/devtools:
     dependencies:
-      '@chrome-extension-boilerplate/shared':
+      '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
     devDependencies:
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/vite-config':
+      '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
 
   pages/devtools-panel:
     dependencies:
-      '@chrome-extension-boilerplate/shared':
+      '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@chrome-extension-boilerplate/storage':
+      '@extension/storage':
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
-      '@chrome-extension-boilerplate/tailwindcss-config':
+      '@extension/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/vite-config':
+      '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
 
   pages/new-tab:
     dependencies:
-      '@chrome-extension-boilerplate/shared':
+      '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@chrome-extension-boilerplate/storage':
+      '@extension/storage':
         specifier: workspace:*
         version: link:../../packages/storage
-      '@chrome-extension-boilerplate/ui':
+      '@extension/ui':
         specifier: workspace:*
         version: link:../../packages/ui
     devDependencies:
-      '@chrome-extension-boilerplate/tailwindcss-config':
+      '@extension/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/vite-config':
+      '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
       sass:
@@ -345,67 +345,67 @@ importers:
 
   pages/options:
     dependencies:
-      '@chrome-extension-boilerplate/shared':
+      '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@chrome-extension-boilerplate/storage':
+      '@extension/storage':
         specifier: workspace:*
         version: link:../../packages/storage
-      '@chrome-extension-boilerplate/ui':
+      '@extension/ui':
         specifier: workspace:*
         version: link:../../packages/ui
     devDependencies:
-      '@chrome-extension-boilerplate/tailwindcss-config':
+      '@extension/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/vite-config':
+      '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
 
   pages/popup:
     dependencies:
-      '@chrome-extension-boilerplate/content-runtime-script':
+      '@extension/content-runtime-script':
         specifier: workspace:*
         version: link:../content-runtime
-      '@chrome-extension-boilerplate/shared':
+      '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@chrome-extension-boilerplate/storage':
+      '@extension/storage':
         specifier: workspace:*
         version: link:../../packages/storage
       '@types/node':
         specifier: ^20.14.10
         version: 20.14.10
     devDependencies:
-      '@chrome-extension-boilerplate/tailwindcss-config':
+      '@extension/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/vite-config':
+      '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
 
   pages/side-panel:
     dependencies:
-      '@chrome-extension-boilerplate/shared':
+      '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@chrome-extension-boilerplate/storage':
+      '@extension/storage':
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
-      '@chrome-extension-boilerplate/tailwindcss-config':
+      '@extension/tailwindcss-config':
         specifier: workspace:*
         version: link:../../packages/tailwind-config
-      '@chrome-extension-boilerplate/tsconfig':
+      '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
-      '@chrome-extension-boilerplate/vite-config':
+      '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
 

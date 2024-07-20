@@ -1,6 +1,6 @@
 import '@src/Popup.css';
-import { useStorageSuspense, withErrorBoundary, withSuspense } from '@chrome-extension-boilerplate/shared';
-import { exampleThemeStorage } from '@chrome-extension-boilerplate/storage';
+import { useStorageSuspense, withErrorBoundary, withSuspense } from '@extension/shared';
+import { exampleThemeStorage } from '@extension/storage';
 import { ComponentPropsWithoutRef } from 'react';
 
 const Popup = () => {

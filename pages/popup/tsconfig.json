@@ -1,5 +1,5 @@
 {
-  "extends": "@chrome-extension-boilerplate/tsconfig/base",
+  "extends": "@extension/tsconfig/base",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

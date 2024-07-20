@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import '@src/index.css';
-import '@chrome-extension-boilerplate/ui/dist/global.css';
+import '@extension/ui/dist/global.css';
 import Options from '@src/Options';
 
 function init() {

@@ -1,5 +1,5 @@
 {
-  "name": "@chrome-extension-boilerplate/options",
+  "name": "@extension/options",
   "version": "0.2.0",
   "description": "chrome extension options",
   "private": true,
@@ -18,13 +18,13 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@chrome-extension-boilerplate/shared": "workspace:*",
-    "@chrome-extension-boilerplate/storage": "workspace:*",
-    "@chrome-extension-boilerplate/ui": "workspace:*"
+    "@extension/shared": "workspace:*",
+    "@extension/storage": "workspace:*",
+    "@extension/ui": "workspace:*"
   },
   "devDependencies": {
-    "@chrome-extension-boilerplate/tailwindcss-config": "workspace:*",
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "@chrome-extension-boilerplate/vite-config": "workspace:*"
+    "@extension/tailwindcss-config": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
+    "@extension/vite-config": "workspace:*"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@chrome-extension-boilerplate/devtools",
+  "name": "@extension/devtools",
   "version": "0.2.0",
   "description": "chrome extension devtools",
   "private": true,
@@ -18,10 +18,10 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@chrome-extension-boilerplate/shared": "workspace:*"
+    "@extension/shared": "workspace:*"
   },
   "devDependencies": {
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "@chrome-extension-boilerplate/vite-config": "workspace:*"
+    "@extension/tsconfig": "workspace:*",
+    "@extension/vite-config": "workspace:*"
   }
 }

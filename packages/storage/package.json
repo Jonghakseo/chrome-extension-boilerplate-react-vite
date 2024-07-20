@@ -1,5 +1,5 @@
 {
-  "name": "@chrome-extension-boilerplate/storage",
+  "name": "@extension/storage",
   "version": "0.2.0",
   "description": "chrome extension storage",
   "private": true,
@@ -22,6 +22,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*"
+    "@extension/tsconfig": "workspace:*"
   }
 }

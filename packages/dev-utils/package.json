@@ -1,5 +1,5 @@
 {
-  "name": "@chrome-extension-boilerplate/dev-utils",
+  "name": "@extension/dev-utils",
   "version": "0.2.0",
   "description": "chrome extension dev utils",
   "private": true,
@@ -20,6 +20,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*"
+    "@extension/tsconfig": "workspace:*"
   }
 }

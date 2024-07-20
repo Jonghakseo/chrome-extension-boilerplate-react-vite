@@ -2,8 +2,8 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets';
 import makeManifestPlugin from './utils/plugins/make-manifest-plugin';
-import { watchPublicPlugin, watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
-import { isDev, isProduction, watchOption } from '@chrome-extension-boilerplate/vite-config';
+import { watchPublicPlugin, watchRebuildPlugin } from '@extension/hmr';
+import { isDev, isProduction, watchOption } from '@extension/vite-config';
 
 const rootDir = resolve(__dirname);
 const libDir = resolve(rootDir, 'lib');

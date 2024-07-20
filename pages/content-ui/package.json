@@ -1,5 +1,5 @@
 {
-  "name": "@chrome-extension-boilerplate/content-ui",
+  "name": "@extension/content-ui",
   "version": "0.2.0",
   "description": "chrome extension content ui",
   "type": "module",
@@ -20,12 +20,12 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@chrome-extension-boilerplate/shared": "workspace:*"
+    "@extension/shared": "workspace:*"
   },
   "devDependencies": {
-    "@chrome-extension-boilerplate/tailwindcss-config": "workspace:*",
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "@chrome-extension-boilerplate/hmr": "workspace:*",
-    "@chrome-extension-boilerplate/vite-config": "workspace:*"
+    "@extension/tailwindcss-config": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
+    "@extension/hmr": "workspace:*",
+    "@extension/vite-config": "workspace:*"
   }
 }

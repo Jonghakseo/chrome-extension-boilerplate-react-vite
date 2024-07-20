@@ -1,5 +1,5 @@
 {
-  "extends": "@chrome-extension-boilerplate/tsconfig/app.json",
+  "extends": "@extension/tsconfig/app.json",
   "compilerOptions": {
     "baseUrl": "./",
     "types": ["vite/client", "node", "chrome"],

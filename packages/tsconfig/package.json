@@ -1,5 +1,5 @@
 {
-  "name": "@chrome-extension-boilerplate/tsconfig",
+  "name": "@extension/tsconfig",
   "version": "0.2.0",
   "description": "tsconfig for chrome extension",
   "private": true
