@@ -1,6 +1,6 @@
 {
   "name": "@chrome-extension-boilerplate/new-tab",
-  "version": "0.0.1",
+  "version": "0.1.19",
   "description": "chrome extension new tab",
   "private": true,
   "sideEffects": true,
@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "clean": "rimraf ./dist",
-    "build": "pnpm run clean && tsc --noEmit && vite build",
+    "build": "pnpm run clean&& pnpm type-check && vite build",
     "build:watch": "cross-env __DEV__=true vite build --mode development",
     "dev": "pnpm build:watch",
     "lint": "eslint . --ext .ts,.tsx",

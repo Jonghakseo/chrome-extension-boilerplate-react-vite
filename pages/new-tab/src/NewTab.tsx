@@ -6,25 +6,19 @@ import { Button } from '@chrome-extension-boilerplate/ui';
 
 const NewTab = () => {
   const theme = useStorageSuspense(exampleThemeStorage);
+  const isLight = theme === 'light';
+  const logo = isLight ? 'new-tab/logo_horizontal.svg' : 'new-tab/logo_horizontal_dark.svg';
 
   return (
-    <div className="App" style={{ backgroundColor: theme === 'light' ? '#eee' : '#222' }}>
-      <header className="App-header" style={{ color: theme === 'light' ? '#222' : '#eee' }}>
-        <img src={chrome.runtime.getURL('new-tab/logo.svg')} className="App-logo" alt="logo" />
+    <div className={`App ${isLight ? 'bg-slate-50' : 'bg-gray-800'}`}>
+      <header className={`App-header ${isLight ? 'text-gray-900' : 'text-gray-100'}`}>
+        <img src={chrome.runtime.getURL(logo)} className="App-logo" alt="logo" />
         <p>
-          Edit <code>pages/new-tab/src/NewTab.tsx</code> and save to reload.
+          Edit <code>pages/new-tab/src/NewTab.tsx</code>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: theme === 'light' ? '#0281dc' : '', marginBottom: '10px' }}>
-          Learn React
-        </a>
         <h6>The color of this paragraph is defined using SASS.</h6>
         <Button onClick={exampleThemeStorage.toggle} theme={theme}>
-          Toggle Theme
+          Toggle theme
         </Button>
       </header>
     </div>

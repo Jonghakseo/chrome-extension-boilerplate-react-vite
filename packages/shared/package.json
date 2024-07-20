@@ -1,6 +1,6 @@
 {
   "name": "@chrome-extension-boilerplate/shared",
-  "version": "0.0.1",
+  "version": "0.1.19",
   "description": "chrome extension shared code",
   "private": true,
   "sideEffects": false,

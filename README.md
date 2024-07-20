@@ -1,10 +1,11 @@
 <div align="center">
-<img src="chrome-extension/public/icon-128.png" alt="logo"/>
-<h1> Chrome Extension Boilerplate with<br/>React + Vite + TypeScript</h1>
+
+![](https://github.com/user-attachments/assets/9f98908b-128b-4fd8-9a1e-17a17a3169fb)
 
 ![](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![](https://badges.aleen42.com/src/vitejs.svg)
+
 ![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/build-zip.yml/badge.svg)
 <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Jonghakseo/chrome-extension-boilerplate-react-viteFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
 
@@ -13,13 +14,13 @@
 
 </div>
 
-> [!TIP]
+> [!NOTE]
 > This project is listed in the [Awesome Vite](https://github.com/vitejs/awesome-vite)
 
-> [!IMPORTANT]
-> Share storage state between every page
+> [!TIP]
+> Share storage state between all pages
 >
-> https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/assets/53500778/1992e46c-032a-4743-bbd2-c421757517d7
+> https://github.com/user-attachments/assets/3b8e189f-6443-490e-a455-4f9570267f8c
 
 ## Table of Contents
 
