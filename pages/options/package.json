@@ -1,6 +1,6 @@
 {
   "name": "@chrome-extension-boilerplate/options",
-  "version": "0.1.19",
+  "version": "0.2.0",
   "description": "chrome extension options",
   "private": true,
   "sideEffects": true,

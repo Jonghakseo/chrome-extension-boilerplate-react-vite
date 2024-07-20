@@ -1,6 +1,6 @@
 {
   "name": "@chrome-extension-boilerplate/vite-config",
-  "version": "0.1.19",
+  "version": "0.2.0",
   "description": "Vite base configuration",
   "main": "index.mjs",
   "type": "module",

@@ -1,6 +1,6 @@
 {
   "name": "@chrome-extension-boilerplate/zipper",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "chrome extension zipper",
   "private": true,
   "sideEffects": false,
