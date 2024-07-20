@@ -6,7 +6,7 @@ To use the code in the package, you need to add the following to the package.jso
 ```json
 {
   "dependencies": {
-    "@chrome-extension-boilerplate/shared": "workspace:*"
+    "@extension/shared": "workspace:*"
   }
 }
 ```
