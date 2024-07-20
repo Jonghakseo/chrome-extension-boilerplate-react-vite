@@ -1,7 +1,7 @@
 {
-  "name": "@chrome-extension-boilerplate/dev-utils",
-  "version": "0.1.19",
-  "description": "chrome extension dev utils",
+  "name": "@chrome-extension-boilerplate/zipper",
+  "version": "0.0.1",
+  "description": "chrome extension zipper",
   "private": true,
   "sideEffects": false,
   "files": [
@@ -12,14 +12,17 @@
   "types": "index.ts",
   "scripts": {
     "clean": "rimraf ./dist && rimraf ./build",
+    "zip": "tsx index.ts",
     "ready": "tsc",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*"
+    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "fast-glob": "^3.3.2",
+    "fflate": "^0.8.2",
+    "tsx": "^4.16.2"
   }
 }

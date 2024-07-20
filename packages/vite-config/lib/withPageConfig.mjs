@@ -4,6 +4,15 @@ import react from '@vitejs/plugin-react-swc';
 import deepmerge from 'deepmerge';
 import { isDev, isProduction } from './env.mjs';
 
+export const watchOption = isDev ? {
+  buildDelay: 50,
+  chokidar: {
+    ignored:[
+      /\/packages\/.*\.(ts|tsx|map)$/,
+    ]
+  }
+}: undefined;
+
 /**
  * @typedef {import('vite').UserConfig} UserConfig
  * @param {UserConfig} config
@@ -20,6 +29,7 @@ export function withPageConfig(config) {
           minify: isProduction,
           reportCompressedSize: isProduction,
           emptyOutDir: true,
+          watch: watchOption,
           rollupOptions: {
             external: ['chrome'],
           },

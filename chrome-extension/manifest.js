@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import deepmerge from 'deepmerge';
 
 const packageJson = JSON.parse(fs.readFileSync('../package.json', 'utf8'));
 
@@ -8,14 +9,14 @@ const sidePanelConfig = {
   side_panel: {
     default_path: 'side-panel/index.html',
   },
-  permissions: !isFirefox ? ['sidePanel'] : [],
+  permissions: ['sidePanel'],
 };
 
 /**
  * After changing, please reload the extension at `chrome://extensions`
  * @type {chrome.runtime.ManifestV3}
  */
-const manifest = Object.assign(
+const manifest = deepmerge(
   {
     manifest_version: 3,
     default_locale: 'en',
@@ -27,7 +28,7 @@ const manifest = Object.assign(
     version: packageJson.version,
     description: '__MSG_extensionDescription__',
     host_permissions: ['<all_urls>'],
-    permissions: ['storage', 'scripting'].concat(sidePanelConfig.permissions),
+    permissions: ['storage'],
     options_page: 'options/index.html',
     background: {
       service_worker: 'background.iife.js',
@@ -65,7 +66,7 @@ const manifest = Object.assign(
       },
     ],
   },
-  !isFirefox && { side_panel: { ...sidePanelConfig.side_panel } },
+  !isFirefox && sidePanelConfig,
 );
 
 export default manifest;

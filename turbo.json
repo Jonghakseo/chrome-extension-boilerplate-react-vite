@@ -9,6 +9,9 @@
       ]
     },
     "dev": {
+      "dependsOn": [
+        "ready"
+      ],
       "outputs": [
         "dist/**",
         "build/**"
@@ -31,6 +34,12 @@
         "dist/**",
         "build/**"
       ]
+    },
+    "zip": {
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": false
     },
     "type-check": {
       "cache": false
