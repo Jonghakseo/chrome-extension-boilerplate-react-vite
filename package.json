@@ -1,6 +1,6 @@
 {
   "name": "chrome-extension-boilerplate-react-vite",
-  "version": "0.0.1",
+  "version": "0.1.19",
   "description": "chrome extension boilerplate",
   "license": "MIT",
   "repository": {
@@ -22,7 +22,8 @@
     "lint": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:fix": "turbo lint:fix --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
     "prettier": "turbo prettier --continue -- --cache --cache-location node_modules/.cache/.prettiercache",
-    "prepare": "husky"
+    "prepare": "husky",
+    "update-version": "./update_version.sh"
   },
   "type": "module",
   "dependencies": {

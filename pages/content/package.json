@@ -1,6 +1,6 @@
 {
   "name": "@chrome-extension-boilerplate/content-script",
-  "version": "0.0.1",
+  "version": "0.1.19",
   "description": "chrome extension content script",
   "private": true,
   "sideEffects": true,
