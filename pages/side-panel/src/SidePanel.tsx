@@ -5,27 +5,16 @@ import { ComponentPropsWithoutRef } from 'react';
 
 const SidePanel = () => {
   const theme = useStorageSuspense(exampleThemeStorage);
+  const isLight = theme === 'light';
+  const logo = isLight ? 'side-panel/logo_vertical.svg' : 'side-panel/logo_vertical_dark.svg';
 
   return (
-    <div
-      className="App"
-      style={{
-        backgroundColor: theme === 'light' ? '#eee' : '#222',
-      }}>
-      <header className="App-header" style={{ color: theme === 'light' ? '#222' : '#eee' }}>
-        <img src={chrome.runtime.getURL('side-panel/logo.svg')} className="App-logo" alt="logo" />
+    <div className={`App ${isLight ? 'bg-slate-50' : 'bg-gray-800'}`}>
+      <header className={`App-header ${isLight ? 'text-gray-900' : 'text-gray-100'}`}>
+        <img src={chrome.runtime.getURL(logo)} className="App-logo" alt="logo" />
         <p>
-          Edit <code>pages/side-panel/src/SidePanel.tsx</code> and save to reload.
+          Edit <code>pages/side-panel/src/SidePanel.tsx</code>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: theme === 'light' ? '#0281dc' : undefined, marginBottom: '10px' }}>
-          Learn React
-        </a>
-        <h6>The color of this paragraph is defined using SASS.</h6>
         <ToggleButton>Toggle theme</ToggleButton>
       </header>
     </div>

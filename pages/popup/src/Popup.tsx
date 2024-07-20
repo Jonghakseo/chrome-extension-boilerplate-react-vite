@@ -6,27 +6,16 @@ import { ComponentPropsWithoutRef } from 'react';
 
 const Popup = () => {
   const theme = useStorageSuspense(exampleThemeStorage);
+  const isLight = theme === 'light';
+  const logo = isLight ? 'popup/logo_vertical.svg' : 'popup/logo_vertical_dark.svg';
 
   return (
-    <div
-      className="App"
-      style={{
-        backgroundColor: theme === 'light' ? '#eee' : '#222',
-      }}>
-      <header className="App-header" style={{ color: theme === 'light' ? '#222' : '#eee' }}>
-        <img src={chrome.runtime.getURL('popup/logo.svg')} className="App-logo" alt="logo" />
-
+    <div className={`App ${isLight ? 'bg-slate-50' : 'bg-gray-800'}`}>
+      <header className={`App-header ${isLight ? 'text-gray-900' : 'text-gray-100'}`}>
+        <img src={chrome.runtime.getURL(logo)} className="App-logo" alt="logo" />
         <p>
-          Edit <code>pages/popup/src/Popup.tsx</code> and save to reload.
+          Edit <code>pages/popup/src/Popup.tsx</code>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: theme === 'light' ? '#0281dc' : undefined, marginBottom: '10px' }}>
-          Learn React!
-        </a>
         <ToggleButton>Toggle theme</ToggleButton>
       </header>
     </div>
