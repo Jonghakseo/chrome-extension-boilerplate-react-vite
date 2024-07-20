@@ -25,10 +25,10 @@ const Popup = () => {
           Edit <code>pages/popup/src/Popup.tsx</code>
         </p>
         <button
-          style={{
-            backgroundColor: theme === 'light' ? '#fff' : '#000',
-            color: theme === 'light' ? '#000' : '#fff',
-          }}
+          className={
+            'font-bold mt-4 py-1 px-4 rounded shadow hover:scale-105 ' +
+            (isLight ? 'bg-blue-200 text-black' : 'bg-gray-700 text-white')
+          }
           onClick={injectContentScript}>
           Click to inject Content Script
         </button>
