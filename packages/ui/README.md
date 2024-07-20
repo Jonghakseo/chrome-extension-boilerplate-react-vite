@@ -15,7 +15,7 @@ Add the following to the dependencies in `package.json`.
 ```json
 {
   "dependencies": {
-    "@chrome-extension-boilerplate/ui": "workspace:*"
+    "@extension/ui": "workspace:*"
   }
 }
 ```
@@ -29,8 +29,8 @@ pnpm install
 Add the following to the `tailwind.config.js` file.
 
 ```js
-const baseConfig = require('@chrome-extension-boilerplate/tailwindcss-config');
-const { withUI } = require('@chrome-extension-boilerplate/ui');
+const baseConfig = require('@extension/tailwindcss-config');
+const { withUI } = require('@extension/ui');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = withUI({
@@ -42,7 +42,7 @@ module.exports = withUI({
 Add the following to the `index.tsx` file.
 
 ```tsx
-import '@chrome-extension-boilerplate/ui/dist/global.css';
+import '@extension/ui/dist/global.css';
 ```
 
 ## Add Component
@@ -81,7 +81,7 @@ export function Button({ theme, className, children, ...props }: ButtonProps) {
 ## Usage
 
 ```tsx
-import { Button } from '@chrome-extension-boilerplate/ui';
+import { Button } from '@extension/ui';
 
 export default function ToggleButton() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
