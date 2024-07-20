@@ -1,6 +1,5 @@
 import { resolve } from 'path';
-import { makeEntryPointPlugin } from '@chrome-extension-boilerplate/hmr';
-import { withPageConfig, isDev } from '@chrome-extension-boilerplate/vite-config';
+import { withPageConfig } from '@chrome-extension-boilerplate/vite-config';
 
 const rootDir = resolve(__dirname);
 const libDir = resolve(rootDir, 'lib');
@@ -11,7 +10,6 @@ export default withPageConfig({
       '@lib': libDir,
     },
   },
-  plugins: [isDev && makeEntryPointPlugin()],
   publicDir: resolve(rootDir, 'public'),
   build: {
     lib: {
