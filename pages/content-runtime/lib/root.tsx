@@ -16,15 +16,23 @@ const shadowRoot = root.attachShadow({ mode: 'open' });
 shadowRoot.appendChild(rootIntoShadow);
 
 /** Inject styles into shadow dom */
-const styleElement = document.createElement('style');
-styleElement.innerHTML = injectedStyle;
-shadowRoot.appendChild(styleElement);
-
+const globalStyleSheet = new CSSStyleSheet();
+globalStyleSheet.replaceSync(injectedStyle);
+shadowRoot.adoptedStyleSheets = [globalStyleSheet];
+shadowRoot.appendChild(rootIntoShadow);
 /**
- * https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/174
+ * In the firefox environment, the adoptedStyleSheets bug may prevent style from being applied properly.
  *
- * In the firefox environment, the adoptedStyleSheets bug may prevent contentStyle from being applied properly.
- * Please refer to the PR link above and go back to the contentStyle.css implementation, or raise a PR if you have a better way to improve it.
+ * @url https://bugzilla.mozilla.org/show_bug.cgi?id=1770592
+ * @url https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/174
+ *
+ * Please refer to the links above and try the following code if you encounter the issue.
+ *
+ * ```ts
+ * const styleElement = document.createElement('style');
+ * styleElement.innerHTML = injectedStyle;
+ * shadowRoot.appendChild(styleElement);
+ * ```
  */
 
 createRoot(rootIntoShadow).render(<App />);
