@@ -32,6 +32,12 @@
         "build/**"
       ]
     },
+    "zip": {
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": false
+    },
     "type-check": {
       "cache": false
     },
