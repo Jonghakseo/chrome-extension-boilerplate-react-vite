@@ -1,15 +1,15 @@
-import * as esbuild from "esbuild"
+import * as esbuild from 'esbuild';
 
 /**
  * @type { import("esbuild").BuildOptions }
  */
 const buildOptions = {
-  entryPoints: ["./index.ts", "./lib/**/*.ts", "./lib/**/*.tsx"],
-  tsconfig: "./tsconfig.json",
+  entryPoints: ['./index.ts', './lib/**/*.ts', './lib/**/*.tsx'],
+  tsconfig: './tsconfig.json',
   bundle: false,
   target: 'es6',
-  outdir: "./dist",
+  outdir: './dist',
   sourcemap: true,
-}
+};
 
 await esbuild.build(buildOptions);

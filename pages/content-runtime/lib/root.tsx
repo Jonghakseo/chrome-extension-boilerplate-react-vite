@@ -1,11 +1,11 @@
 import { createRoot } from 'react-dom/client';
-import App from '@src/app';
+import App from '@lib/app';
 // eslint-disable-next-line
 // @ts-ignore
-import tailwindcssOutput from '@src/tailwind-output.css?inline';
+import injectedStyle from '@lib/index.css?inline';
 
 const root = document.createElement('div');
-root.id = 'chrome-extension-boilerplate-react-vite-content-view-root';
+root.id = 'chrome-extension-boilerplate-react-vite-runtime-content-view-root';
 
 document.body.append(root);
 
@@ -17,7 +17,7 @@ shadowRoot.appendChild(rootIntoShadow);
 
 /** Inject styles into shadow dom */
 const globalStyleSheet = new CSSStyleSheet();
-globalStyleSheet.replaceSync(tailwindcssOutput);
+globalStyleSheet.replaceSync(injectedStyle);
 shadowRoot.adoptedStyleSheets = [globalStyleSheet];
 shadowRoot.appendChild(rootIntoShadow);
 /**
@@ -28,9 +28,9 @@ shadowRoot.appendChild(rootIntoShadow);
  *
  * Please refer to the links above and try the following code if you encounter the issue.
  *
-
+ * ```ts
  * const styleElement = document.createElement('style');
- * styleElement.innerHTML = tailwindcssOutput;
+ * styleElement.innerHTML = injectedStyle;
  * shadowRoot.appendChild(styleElement);
  * ```
  */
