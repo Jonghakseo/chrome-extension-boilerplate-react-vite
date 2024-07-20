@@ -1,6 +1,6 @@
 {
   "name": "chrome-extension",
-  "version": "0.1.19",
+  "version": "0.2.0",
   "description": "chrome extension",
   "scripts": {
     "clean": "rimraf ../../dist",
@@ -19,14 +19,14 @@
   "type": "module",
   "dependencies": {
     "webextension-polyfill": "^0.12.0",
-    "@chrome-extension-boilerplate/shared": "workspace:*",
-    "@chrome-extension-boilerplate/storage": "workspace:*"
+    "@extension/shared": "workspace:*",
+    "@extension/storage": "workspace:*"
   },
   "devDependencies": {
-    "@chrome-extension-boilerplate/dev-utils": "workspace:*",
-    "@chrome-extension-boilerplate/hmr": "workspace:*",
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "@chrome-extension-boilerplate/vite-config": "workspace:*",
+    "@extension/dev-utils": "workspace:*",
+    "@extension/hmr": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
+    "@extension/vite-config": "workspace:*",
     "@laynezh/vite-plugin-lib-assets": "^0.5.23",
     "@types/ws": "^8.5.10",
     "magic-string": "^0.30.10",

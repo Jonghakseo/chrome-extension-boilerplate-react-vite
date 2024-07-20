@@ -1,7 +1,7 @@
 {
-  "name": "@chrome-extension-boilerplate/ui",
-  "version": "0.0.1",
-  "description": "ui components",
+  "name": "@extension/ui",
+  "version": "0.2.0",
+  "description": "chrome extension ui components",
   "private": true,
   "sideEffects": false,
   "files": [
@@ -19,7 +19,7 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
     "deepmerge": "^4.3.1"
   },
   "dependencies": {

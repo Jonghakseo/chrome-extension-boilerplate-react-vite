@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { watchRebuildPlugin } from '@chrome-extension-boilerplate/hmr';
+import { watchRebuildPlugin } from '@extension/hmr';
 import react from '@vitejs/plugin-react-swc';
 import deepmerge from 'deepmerge';
 import { isDev, isProduction } from './env.mjs';

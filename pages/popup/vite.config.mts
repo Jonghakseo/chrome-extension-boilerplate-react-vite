@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import { withPageConfig } from '@chrome-extension-boilerplate/vite-config';
+import { withPageConfig } from '@extension/vite-config';
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');

@@ -1,6 +1,6 @@
 {
-  "name": "@chrome-extension-boilerplate/zipper",
-  "version": "0.0.1",
+  "name": "@extension/zipper",
+  "version": "0.2.0",
   "description": "chrome extension zipper",
   "private": true,
   "sideEffects": false,
@@ -20,7 +20,7 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
     "fast-glob": "^3.3.2",
     "fflate": "^0.8.2",
     "tsx": "^4.16.2"

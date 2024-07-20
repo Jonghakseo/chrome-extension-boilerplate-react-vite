@@ -1,6 +1,6 @@
 {
-  "name": "@chrome-extension-boilerplate/content-script",
-  "version": "0.1.19",
+  "name": "@extension/content-script",
+  "version": "0.2.0",
   "description": "chrome extension content script",
   "private": true,
   "sideEffects": true,
@@ -18,12 +18,12 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@chrome-extension-boilerplate/shared": "workspace:*",
-    "@chrome-extension-boilerplate/storage": "workspace:*"
+    "@extension/shared": "workspace:*",
+    "@extension/storage": "workspace:*"
   },
   "devDependencies": {
-    "@chrome-extension-boilerplate/hmr": "workspace:*",
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*",
-    "@chrome-extension-boilerplate/vite-config": "workspace:*"
+    "@extension/hmr": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
+    "@extension/vite-config": "workspace:*"
   }
 }

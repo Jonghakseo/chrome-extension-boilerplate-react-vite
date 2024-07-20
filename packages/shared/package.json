@@ -1,6 +1,6 @@
 {
-  "name": "@chrome-extension-boilerplate/shared",
-  "version": "0.1.19",
+  "name": "@extension/shared",
+  "version": "0.2.0",
   "description": "chrome extension shared code",
   "private": true,
   "sideEffects": false,
@@ -19,7 +19,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@chrome-extension-boilerplate/storage": "workspace:*",
-    "@chrome-extension-boilerplate/tsconfig": "workspace:*"
+    "@extension/storage": "workspace:*",
+    "@extension/tsconfig": "workspace:*"
   }
 }
