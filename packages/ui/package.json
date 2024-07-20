@@ -9,14 +9,10 @@
     "dist/global.css"
   ],
   "types": "index.ts",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "clean": "rimraf ./dist && rimraf .turbo",
-    "build:esm": "tsc --module es2015 --target es5 --outDir dist/esm",
-    "build:cjs": "tsc --module commonjs --target es5 --outDir dist/cjs",
-    "cp:css": "cp ./lib/global.css ./dist/global.css",
-    "ready": "pnpm build:esm && pnpm build:cjs && pnpm cp:css",
+    "ready": "node build.mjs",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write",

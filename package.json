@@ -39,6 +39,7 @@
     "@typescript-eslint/parser": "^7.16.0",
     "autoprefixer": "^10.4.19",
     "cross-env": "^7.0.3",
+    "esbuild": "^0.23.0",
     "eslint": "8.56.0",
     "eslint-config-airbnb-typescript": "18.0.0",
     "eslint-config-prettier": "9.1.0",
@@ -54,7 +55,7 @@
     "rimraf": "^6.0.1",
     "tailwindcss": "^3.4.4",
     "tslib": "^2.6.3",
-    "turbo": "^2.0.6",
+    "turbo": "^2.0.9",
     "typescript": "5.5.3",
     "vite": "5.3.3"
   },
@@ -63,7 +64,7 @@
       "prettier --write"
     ]
   },
-   "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@9.5.0",
   "engines": {
     "node": ">=18.12.0"
   }
