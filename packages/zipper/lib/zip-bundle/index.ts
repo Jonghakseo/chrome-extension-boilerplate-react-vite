@@ -1,5 +1,5 @@
 import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'fs';
-import { resolve } from 'path';
+import { resolve, relative } from 'path';
 import glob from 'fast-glob';
 import { AsyncZipDeflate, Zip } from 'fflate';
 
@@ -21,8 +21,14 @@ function logPackageSize(size: number, startTime: number): void {
 }
 
 // Handles file streaming and zipping
-function streamFileToZip(absPath: string, zip: Zip, onAbort: () => void, onError: (error: Error) => void): void {
-  const data = new AsyncZipDeflate(absPath, { level: 9 });
+function streamFileToZip(
+  absPath: string,
+  relPath: string,
+  zip: Zip,
+  onAbort: () => void,
+  onError: (error: Error) => void,
+): void {
+  const data = new AsyncZipDeflate(relPath, { level: 9 });
   zip.add(data);
 
   createReadStream(absPath)
@@ -88,8 +94,10 @@ export const zipBundle = async (
       if (aborted) return;
 
       const absPath = resolve(distDirectory, file);
+      const relPath = relative(distDirectory, absPath); // Get the relative path
       streamFileToZip(
         absPath,
+        relPath, // Use relative path
         zip,
         () => {
           aborted = true;
