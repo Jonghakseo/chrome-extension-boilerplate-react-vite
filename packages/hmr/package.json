@@ -1,6 +1,6 @@
 {
   "name": "@chrome-extension-boilerplate/hmr",
-  "version": "0.1.15",
+  "version": "0.1.19",
   "description": "chrome extension hot module reload or refresh",
   "private": true,
   "sideEffects": true,

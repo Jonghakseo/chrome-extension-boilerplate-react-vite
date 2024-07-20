@@ -1,6 +1,6 @@
 {
   "name": "@chrome-extension-boilerplate/tailwindcss-config",
-  "version": "0.1.15",
+  "version": "0.1.19",
   "description": "Tailwind CSS configuration for boilerplate",
   "main": "./tailwind.config.js",
   "private": true

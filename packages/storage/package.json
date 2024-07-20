@@ -1,6 +1,6 @@
 {
   "name": "@chrome-extension-boilerplate/storage",
-  "version": "0.1.15",
+  "version": "0.1.19",
   "description": "chrome extension storage",
   "private": true,
   "sideEffects": false,

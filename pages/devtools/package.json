@@ -1,6 +1,6 @@
 {
   "name": "@chrome-extension-boilerplate/devtools",
-  "version": "0.1.15",
+  "version": "0.1.19",
   "description": "chrome extension devtools",
   "private": true,
   "sideEffects": true,

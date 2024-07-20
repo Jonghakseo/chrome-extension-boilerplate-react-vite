@@ -1,6 +1,6 @@
 {
   "name": "@chrome-extension-boilerplate/devtools-panel",
-  "version": "0.1.15",
+  "version": "0.1.19",
   "description": "chrome extension devtools panel",
   "private": true,
   "sideEffects": true,
