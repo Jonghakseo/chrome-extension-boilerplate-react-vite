@@ -18,7 +18,7 @@ export function useStorageSuspense<
     storageMap.set(storage, { read: () => _data });
   }
 
-  return _data ?? (storageMap.get(storage)!.read() as Data);
+  return (_data ?? storageMap.get(storage)!.read()) as Exclude<Data, PromiseLike<unknown>>;
 }
 
 function wrapPromise<R>(promise: Promise<R>) {
@@ -55,19 +55,12 @@ export function useStorage<
 >(storage: Storage) {
   const _data = useSyncExternalStore<Data | null>(storage.subscribe, storage.getSnapshot);
 
-  // eslint-disable-next-line
-  // @ts-ignore
   if (!storageMap.has(storage)) {
-    // eslint-disable-next-line
-    // @ts-ignore
     storageMap.set(storage, wrapPromise(storage.get()));
   }
   if (_data !== null) {
-    // eslint-disable-next-line
-    // @ts-ignore
     storageMap.set(storage, { read: () => _data });
   }
-  // eslint-disable-next-line
-  // @ts-ignore
-  return _data ?? (storageMap.get(storage)!.read() as Data);
+
+  return (_data ?? storageMap.get(storage)!.read()) as Exclude<Data, PromiseLike<unknown>>;
 }
