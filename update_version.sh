@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Usage: ./update_version.sh <new_version>
 # FORMAT IS <0.0.0>
 
