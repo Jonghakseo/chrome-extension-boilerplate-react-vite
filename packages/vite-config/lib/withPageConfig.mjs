@@ -28,7 +28,7 @@ export function withPageConfig(config) {
           sourcemap: isDev,
           minify: isProduction,
           reportCompressedSize: isProduction,
-          emptyOutDir: true,
+          emptyOutDir: isProduction,
           watch: watchOption,
           rollupOptions: {
             external: ['chrome'],

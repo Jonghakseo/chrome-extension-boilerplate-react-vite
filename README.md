@@ -1,6 +1,6 @@
 <div align="center">
 
-![](https://github.com/user-attachments/assets/9f98908b-128b-4fd8-9a1e-17a17a3169fb)
+![](https://github.com/user-attachments/assets/99cb6303-64e4-4bed-bf3f-35735353e6de)
 
 ![](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
