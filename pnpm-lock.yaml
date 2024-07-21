@@ -272,6 +272,9 @@ importers:
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
+      content-ui-inject:
+        specifier: ^0.0.2
+        version: 0.0.2
     devDependencies:
       '@extension/hmr':
         specifier: workspace:*
@@ -1347,6 +1350,9 @@ packages:
   confusing-browser-globals@1.0.11:
     resolution: {integrity: sha512-JsPKdmh8ZkmnHxDk55FZ1TqVLvEQTvoByJZRN9jzI0UjxK/QgAmsphz7PGtqgPieQZ/CQcHWXCR7ATDNhGe+YA==}
 
+  content-ui-inject@0.0.2:
+    resolution: {integrity: sha512-b37IBLRves4uVNmQGKmNzlkCUs5eRG4iXvdHmja8pDDT8dT8f20rTVKgyroDsbCfqpsqZq/UyZsvRuk4rhuDhQ==}
+
   create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
 
@@ -1939,6 +1945,9 @@ packages:
   is-path-inside@3.0.3:
     resolution: {integrity: sha512-Fd4gABb+ycGAmKou8eMftCupSir5lRxqf4aD/vd0cD2qc4HL07OjCeuHMr8Ro4CoMaeCKDB0/ECBOVWjTwUvPQ==}
     engines: {node: '>=8'}
+
+  is-potential-custom-element-name@1.0.1:
+    resolution: {integrity: sha512-bCYeRA2rVibKZd+s2625gGnGF/t7DSqDs4dP7CrLA1m7jKWz6pps0LpYLJN8Q64HtmPKJ1hrN3nzPNKFEKOUiQ==}
 
   is-regex@1.1.4:
     resolution: {integrity: sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg==}
@@ -3724,6 +3733,10 @@ snapshots:
 
   confusing-browser-globals@1.0.11: {}
 
+  content-ui-inject@0.0.2:
+    dependencies:
+      is-potential-custom-element-name: 1.0.1
+
   create-require@1.1.1: {}
 
   cross-env@7.0.3:
@@ -4496,6 +4509,8 @@ snapshots:
   is-number@7.0.0: {}
 
   is-path-inside@3.0.3: {}
+
+  is-potential-custom-element-name@1.0.1: {}
 
   is-regex@1.1.4:
     dependencies:
