@@ -1,4 +1,10 @@
 /**
+ * Chrome reference error while running `processTailwindFeatures` in tailwindcss.
+ *  To avoid this, we need to check if the globalThis.chrome is available and add fallback logic.
+ */
+const chrome = globalThis.chrome;
+
+/**
  * Storage area type for persisting and exchanging data.
  * @see https://developer.chrome.com/docs/extensions/reference/storage/#overview
  */
@@ -122,6 +128,9 @@ let globalSessionAccessLevelFlag: StorageConfig['sessionAccessForContentScripts'
  * Checks if the storage permission is granted in the manifest.json.
  */
 function checkStoragePermission(storageType: StorageType): void {
+  if (!chrome) {
+    return;
+  }
   if (chrome.storage[storageType] === undefined) {
     throw new Error(`Check your storage permission in manifest.json: ${storageType} is not defined`);
   }
@@ -145,7 +154,7 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
     config?.sessionAccessForContentScripts === true
   ) {
     checkStoragePermission(storageType);
-    chrome.storage[storageType]
+    chrome?.storage[storageType]
       .setAccessLevel({
         accessLevel: SessionAccessLevel.ExtensionPagesAndContentScripts,
       })
@@ -159,7 +168,10 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
   // Register life cycle methods
   const _getDataFromStorage = async (): Promise<D> => {
     checkStoragePermission(storageType);
-    const value = await chrome.storage[storageType].get([key]);
+    const value = await chrome?.storage[storageType].get([key]);
+    if (!value) {
+      return fallback;
+    }
     return deserialize(value[key]) ?? fallback;
   };
 
@@ -170,7 +182,7 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
   const set = async (valueOrUpdate: ValueOrUpdate<D>) => {
     cache = await updateCache(valueOrUpdate, cache);
 
-    await chrome.storage[storageType].set({ [key]: serialize(cache) });
+    await chrome?.storage[storageType].set({ [key]: serialize(cache) });
     _emitChange();
   };
 
@@ -206,7 +218,7 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
 
   // Register listener for live updates for our storage area
   if (liveUpdate) {
-    chrome.storage[storageType].onChanged.addListener(_updateFromStorageOnChanged);
+    chrome?.storage[storageType].onChanged.addListener(_updateFromStorageOnChanged);
   }
 
   return {

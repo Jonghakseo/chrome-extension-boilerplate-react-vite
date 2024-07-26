@@ -13,13 +13,12 @@ const rootIntoShadow = document.createElement('div');
 rootIntoShadow.id = 'shadow-root';
 
 const shadowRoot = root.attachShadow({ mode: 'open' });
-shadowRoot.appendChild(rootIntoShadow);
 
 /** Inject styles into shadow dom */
 const globalStyleSheet = new CSSStyleSheet();
 globalStyleSheet.replaceSync(injectedStyle);
 shadowRoot.adoptedStyleSheets = [globalStyleSheet];
-shadowRoot.appendChild(rootIntoShadow);
+
 /**
  * In the firefox environment, the adoptedStyleSheets bug may prevent style from being applied properly.
  *
@@ -34,5 +33,5 @@ shadowRoot.appendChild(rootIntoShadow);
  * shadowRoot.appendChild(styleElement);
  * ```
  */
-
+shadowRoot.appendChild(rootIntoShadow);
 createRoot(rootIntoShadow).render(<App />);
