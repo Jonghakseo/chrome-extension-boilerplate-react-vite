@@ -8,6 +8,7 @@
 **/dist
 **/build
 **/dist-zip
+**/tailwind-output.css
 
 # env
 **/.env.local
