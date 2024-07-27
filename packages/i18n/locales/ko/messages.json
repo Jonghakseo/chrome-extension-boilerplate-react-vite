@@ -14,7 +14,7 @@
     "message": "로딩 중..."
   },
   "hello": {
-    "message": "안녕 $1",
-    "description": "Placeholder 예시"
+    "description": "Placeholder 예시",
+    "message": "안녕 $1"
   }
 }
