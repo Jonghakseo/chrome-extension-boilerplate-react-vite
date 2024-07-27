@@ -13,7 +13,7 @@
     "clean": "rimraf ./dist",
     "genenrate-i8n": "node genenrate-i8n.mjs",
     "ready": "pnpm genenrate-i8n && node build.dev.mjs",
-    "build": "pnpm genenrate-i8n && node build.mjs",
+    "build": "pnpm genenrate-i8n && node build.prod.mjs",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
