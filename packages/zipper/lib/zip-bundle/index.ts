@@ -1,5 +1,5 @@
 import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'fs';
-import { resolve, relative } from 'path';
+import { resolve, posix } from 'path';
 import glob from 'fast-glob';
 import { AsyncZipDeflate, Zip } from 'fflate';
 
@@ -94,10 +94,13 @@ export const zipBundle = async (
       if (aborted) return;
 
       const absPath = resolve(distDirectory, file);
-      const relPath = relative(distDirectory, absPath); // Get the relative path
+      const absPosixPath = posix.resolve(distDirectory, file);
+      const relPosixPath = posix.relative(distDirectory, absPosixPath);
+
+      console.log(`Adding file: ${relPosixPath}`);
       streamFileToZip(
         absPath,
-        relPath, // Use relative path
+        relPosixPath, // Use relative path
         zip,
         () => {
           aborted = true;
