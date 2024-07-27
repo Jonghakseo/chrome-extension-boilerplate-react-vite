@@ -11,7 +11,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "clean": "rimraf ./dist",
-    "ready": "cross-env __DEV__=true node build.mjs",
+    "ready": "node build.dev.mjs",
     "build": "node build.mjs",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
