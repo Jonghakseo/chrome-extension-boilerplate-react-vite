@@ -53,7 +53,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [Prettier](https://prettier.io/)
 - [ESLint](https://eslint.org/)
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
-- [Custom I18n Package](/packages/i18n/README.md)
+- [Custom I18n Package](/packages/i18n/)
 - Custom HMR(Hot Module Rebuild) Plugin
 
 ## Install <a name="install"></a>
