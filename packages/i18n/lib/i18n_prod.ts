@@ -1,5 +1,7 @@
-import { MessageKey, TranslateOption } from './type';
+import { MessageKey } from './type';
 
-export function t(key: MessageKey, options?: TranslateOption) {
-  return chrome.i18n.getMessage(key, options?.substitutions);
+export function t(key: MessageKey, substitutions?: string | string[]) {
+  return chrome.i18n.getMessage(key, substitutions);
 }
+
+t.devLocale = '';

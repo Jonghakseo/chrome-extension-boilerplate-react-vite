@@ -2,23 +2,24 @@
 import KoMessage from '../locales/ko/messages.json';
 import EnMessage from '../locales/en/messages.json';
 
-import { MessageKey, TranslateOption } from './type';
+import { MessageKey } from './type';
 
-export function t(key: MessageKey, options?: TranslateOption) {
-  const { substitutions, devLocale = 'en' } = options ?? {};
-  const message = getMessageFromLocale(devLocale)[key].message;
+function translate(key: MessageKey, substitutions?: string | string[]) {
+  const message = getMessageFromLocale(t.devLocale)[key].message;
 
   if (!substitutions) {
     return message;
   }
 
-  // TODO: Implement all substitution logic (placeholders)
-  if (typeof substitutions === 'string') {
-    return message.replace(/\$[^$]*\$/g, substitutions);
+  // TODO: Implement all substitution logic (placeholders fields)
+  if (Array.isArray(substitutions)) {
+    return substitutions.reduce((acc, cur, idx) => acc.replace(`$${idx + 1}`, cur), message);
   }
-  return substitutions.reduce((acc, substitution) => {
-    return acc.replace(/\$[^$]*\$/g, substitution);
-  }, message);
+  return message.replace(/\$(\d+)/, substitutions);
+}
+
+function removePlaceholder(message: string) {
+  return message.replace(/\$\d+/g, '');
 }
 
 function getMessageFromLocale(locale: string) {
@@ -32,3 +33,9 @@ function getMessageFromLocale(locale: string) {
       throw new Error('Unsupported locale');
   }
 }
+
+export const t = (...args: Parameters<typeof translate>) => {
+  return removePlaceholder(translate(...args));
+};
+
+t.devLocale = 'en' as 'ko' | 'en';

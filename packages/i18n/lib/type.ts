@@ -6,8 +6,3 @@ type EnsureSameKeys<T, U> = keyof T extends keyof U ? (keyof U extends keyof T ?
 type KeyCheck = EnsureSameKeys<typeof KoMessage, typeof EnMessage>;
 
 export type MessageKey = KeyCheck extends true ? keyof typeof KoMessage : never;
-
-export type TranslateOption = {
-  substitutions?: string | string[];
-  devLocale?: 'en' | 'ko';
-};

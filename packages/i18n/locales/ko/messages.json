@@ -8,13 +8,13 @@
     "message": "크롬 익스텐션 보일러플레이트"
   },
   "toggleTheme": {
-    "message": "테마 변경"
+    "message": "테마 변경!!!"
   },
   "loading": {
     "message": "로딩 중..."
   },
   "hello": {
-    "message": "Hello $world$.",
+    "message": "안녕 $1",
     "description": "Placeholder 예시"
   }
 }

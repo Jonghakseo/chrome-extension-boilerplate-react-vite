@@ -14,7 +14,7 @@
     "message": "Loading..."
   },
   "hello": {
-    "message": "Hello $world$.",
+    "message": "Hello $1",
     "description": "Placeholder example"
   }
 }
