@@ -3,11 +3,14 @@ import '@src/NewTab.scss';
 import { useStorageSuspense, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
 import { Button } from '@extension/ui';
+import { t } from '@extension/i18n';
 
 const NewTab = () => {
   const theme = useStorageSuspense(exampleThemeStorage);
   const isLight = theme === 'light';
   const logo = isLight ? 'new-tab/logo_horizontal.svg' : 'new-tab/logo_horizontal_dark.svg';
+
+  console.log(t('hello', { substitutions: 'World' }));
 
   return (
     <div className={`App ${isLight ? 'bg-slate-50' : 'bg-gray-800'}`}>
@@ -18,11 +21,11 @@ const NewTab = () => {
         </p>
         <h6>The color of this paragraph is defined using SASS.</h6>
         <Button onClick={exampleThemeStorage.toggle} theme={theme}>
-          Toggle theme
+          {t('toggleTheme', { devLocale: 'en' })}
         </Button>
       </header>
     </div>
   );
 };
 
-export default withErrorBoundary(withSuspense(NewTab, <div> Loading ... </div>), <div> Error Occur </div>);
+export default withErrorBoundary(withSuspense(NewTab, <div>{t('loading')}</div>), <div> Error Occur </div>);
