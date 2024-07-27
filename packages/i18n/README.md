@@ -104,7 +104,7 @@ import { t } from '@extension/i18n';
 
 console.log(t('helloWorld')); // Hello, World!
 console.log(t('helloAnd', 'World')); // Hello, World
-console.log(t('helloAnd', ['World', "~!"])); // Hello, World~!
+console.log(t('helloAnd', ['World', "~!"])); // Hello, World ~!
 ```
 
 If you want to show specific language, you can set the `devLocale` property. (only for development)
