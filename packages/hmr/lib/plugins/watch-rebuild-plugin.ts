@@ -1,9 +1,8 @@
 import type { PluginOption } from 'vite';
 import { type WebSocket } from 'ws';
 import MessageInterpreter from '../interpreter';
-import { readFileSync } from 'fs';
-import path from 'path';
 import { initializeWSS } from '../initializeWSS';
+import { getTranspiledHMRCode } from '../getTranspiledHMRCode';
 
 type PluginConfig = {
   onStart?: () => void;
@@ -11,17 +10,11 @@ type PluginConfig = {
   refresh?: boolean;
 };
 
-const injectionsPath = path.resolve(__dirname, '..', '..', '..', 'build', 'injections');
-
-const refreshCode = readFileSync(path.resolve(injectionsPath, 'refresh.js'), 'utf-8');
-const reloadCode = readFileSync(path.resolve(injectionsPath, 'reload.js'), 'utf-8');
-
 export function watchRebuildPlugin(config: PluginConfig): PluginOption {
   let ws: WebSocket | null = null;
   const id = Math.random().toString(36);
-  const { refresh, reload } = config;
-
-  const hmrCode = (refresh ? refreshCode : '') + (reload ? reloadCode : '');
+  const { refresh = false, reload = false } = config;
+  const hmrCode = getTranspiledHMRCode({ refresh, reload });
 
   return {
     name: 'watch-rebuild',
