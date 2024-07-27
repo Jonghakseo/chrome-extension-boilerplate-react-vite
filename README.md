@@ -53,6 +53,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [Prettier](https://prettier.io/)
 - [ESLint](https://eslint.org/)
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
+- [Custom I18n Package](/packages/i18n/README.md)
 - Custom HMR(Hot Module Rebuild) Plugin
 
 ## Install <a name="install"></a>
@@ -106,9 +107,15 @@ Main app with background script, manifest
 Some shared packages
 
 - `dev-utils` - utils for chrome extension development (manifest-parser, logger)
+- `i18n` - custom i18n package for chrome extension. provide i18n function with type safety and other validation.
 - `hmr` - custom HMR plugin for vite, injection script for reload/refresh, hmr dev-server
 - `shared` - shared code for entire project. (types, constants, custom hooks, components, etc.)
+- `storage` - shared storage for entire project. ([chrome storage api](https://developer.chrome.com/docs/extensions/reference/api/storage))
+- `tailwind-config` - shared tailwind config for entire project.
 - `tsconfig` - shared tsconfig for entire project.
+- `ui` - shared UI components for entire project.
+- `vite-config` - provide shared page's vite-config via withPageConfig function.
+- `zipper` - provide zip function for chrome extension build. you can use with `pnpm zip` command.
 
 ### Pages <a name="pages"></a>
 
@@ -116,6 +123,7 @@ Some shared packages
   extension (`content_scripts` in manifest.json)
 - `content-ui` - [content script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/) for render UI in
   user's page (`content_scripts` in manifest.json)
+- `content-runtime` - if you want to inject script via executeScript, you can use this page. ([Popup.tsx L:14](/pages/popup/src/Popup.tsx#L14)) 
 - `devtools` - [devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/#creating) for chrome
   extension (`devtools_page` in manifest.json)
 - `devtools-panel` - devtools panel for [devtools](pages/devtools/src/index.ts)
