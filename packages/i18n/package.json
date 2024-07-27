@@ -11,8 +11,9 @@
   "main": "./dist/index.js",
   "scripts": {
     "clean": "rimraf ./dist",
-    "ready": "node build.dev.mjs",
-    "build": "node build.mjs",
+    "genenrate-i8n": "node genenrate-i8n.mjs",
+    "ready": "pnpm genenrate-i8n && node build.dev.mjs",
+    "build": "pnpm genenrate-i8n && node build.mjs",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
