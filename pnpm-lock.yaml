@@ -81,6 +81,9 @@ importers:
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
+      run-script-os:
+        specifier: ^1.1.6
+        version: 1.1.6
       tailwindcss:
         specifier: ^3.4.6
         version: 3.4.6(ts-node@10.9.2(@types/node@20.14.10)(typescript@5.5.3))
@@ -2448,6 +2451,10 @@ packages:
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
+
+  run-script-os@1.1.6:
+    resolution: {integrity: sha512-ql6P2LzhBTTDfzKts+Qo4H94VUKpxKDFz6QxxwaUZN0mwvi7L3lpOI7BqPCq7lgDh3XLl0dpeXwfcVIitlrYrw==}
+    hasBin: true
 
   safe-array-concat@1.1.2:
     resolution: {integrity: sha512-vj6RsCsWBCf19jIeHEfkRMw8DPiBb+DMXklQ/1SGDHOMlHdPUkZXFQ2YdplS23zESTijAcurb1aSgJA3AgMu1Q==}
@@ -5000,6 +5007,8 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
+
+  run-script-os@1.1.6: {}
 
   safe-array-concat@1.1.2:
     dependencies:
