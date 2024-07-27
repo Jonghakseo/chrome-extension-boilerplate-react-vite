@@ -2,7 +2,7 @@ import esbuild from "esbuild";
 import fs from "node:fs";
 import path from "node:path";
 
-const i18nPath = path.resolve("lib", "i18n_dev.ts");
+const i18nPath = path.resolve("lib", "i18n-dev.ts");
 fs.cpSync(i18nPath, path.resolve("lib", "i18n.ts"));
 
 /**

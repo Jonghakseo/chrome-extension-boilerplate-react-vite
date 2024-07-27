@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { rimraf } from "rimraf";
 
-const i18nPath = path.resolve("lib", "i18n_prod.ts");
+const i18nPath = path.resolve("lib", "i18n-prod.ts");
 fs.cpSync(i18nPath, path.resolve("lib", "i18n.ts"));
 
 /**
