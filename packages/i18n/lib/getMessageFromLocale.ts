@@ -16,4 +16,16 @@ export function getMessageFromLocale(locale: string) {
   }
 }
 
-export const defaultLocale = Intl.DateTimeFormat().resolvedOptions().locale.split('_')[0];
+export const defaultLocale = (() => {
+  const locales = ['en', 'ko'];
+  const firstLocale = locales[0];
+  const defaultLocale = Intl.DateTimeFormat().resolvedOptions().locale.replace('-', '_');
+  if (locales.includes(defaultLocale)) {
+    return defaultLocale;
+  }
+  const defaultLocaleWithoutRegion = defaultLocale.split('_')[0];
+  if (locales.includes(defaultLocaleWithoutRegion)) {
+    return defaultLocaleWithoutRegion;
+  }
+  return firstLocale;
+})();
