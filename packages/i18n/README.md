@@ -50,12 +50,16 @@ If you want to use placeholders, you can use the following format.
 
 https://developer.chrome.com/docs/extensions/how-to/ui/localization-message-formats#placeholders
 
+> [!Caution]
+> You should use placeholders in this format: `$1`, `$2`, `$3`, ... $/d+
+> Still, We don't support the placeholders field in the `messages.json` file.
+
 ### locales/en/messages.json
 
 ```json
 {
   "helloAnd": {
-    "message": "Hello, $1$2"
+    "message": "Hello, $1 $2"
   }
 }
 ```
@@ -65,7 +69,7 @@ https://developer.chrome.com/docs/extensions/how-to/ui/localization-message-form
 ```json
 {
   "helloAnd": {
-    "message": "안녕하세요, $1$2"
+    "message": "안녕하세요, $1 $2"
   }
 }
 ```
