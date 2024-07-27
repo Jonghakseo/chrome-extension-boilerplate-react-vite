@@ -89,13 +89,13 @@ export type DevLocale = ${locales.map((locale) => `'${locale}'`).join(" | ")};
 
 function makeGetMessageFromLocaleFile(locales) {
   const defaultLocaleCode = `(() => {
-  const locales = ${JSON.stringify(locales)};
+  const locales = ${JSON.stringify(locales).replace(/"/g, "'").replace(",", ", ")};
   const firstLocale = locales[0];
-  const defaultLocale = Intl.DateTimeFormat().resolvedOptions().locale.replace("-", "_");
+  const defaultLocale = Intl.DateTimeFormat().resolvedOptions().locale.replace('-', '_');
   if (locales.includes(defaultLocale)) {
     return defaultLocale;
   }
-  const defaultLocaleWithoutRegion = defaultLocale.split("_")[0];
+  const defaultLocaleWithoutRegion = defaultLocale.split('_')[0];
   if (locales.includes(defaultLocaleWithoutRegion)) {
     return defaultLocaleWithoutRegion;
   }
