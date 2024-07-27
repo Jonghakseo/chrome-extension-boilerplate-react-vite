@@ -26,7 +26,7 @@ pnpm install
 
 You can manage translations in the `locales` directory.
 
-### locales/en/messages.json
+`locales/en/messages.json`
 
 ```json
 {
@@ -36,7 +36,7 @@ You can manage translations in the `locales` directory.
 }
 ```
 
-### locales/ko/messages.json
+`locales/ko/messages.json`
 
 ```json
 {
@@ -54,7 +54,7 @@ https://developer.chrome.com/docs/extensions/how-to/ui/localization-message-form
 > You should use placeholders in this format: `$1`, `$2`, `$3`, ... $/d+
 > Still, We don't support the placeholders field in the `messages.json` file.
 
-### locales/en/messages.json
+`locales/en/messages.json`
 
 ```json
 {
@@ -64,7 +64,7 @@ https://developer.chrome.com/docs/extensions/how-to/ui/localization-message-form
 }
 ```
 
-### locales/ko/messages.json
+`locales/ko/messages.json`
 
 ```json
 {
@@ -74,8 +74,55 @@ https://developer.chrome.com/docs/extensions/how-to/ui/localization-message-form
 }
 ```
 
+## Delete or Add a new language
+
+When you want to delete or add a new language, you don't need to edit some util files like `lib/types.ts` or `lib/getMessageFromLocale.ts`. 
+That's because we provide a script to generate util files automatically by the `generate-i18n.mjs` file.
+
+Following the steps below to delete or add a new language.
+
+### Delete a language
+
+If you want to delete unused languages, you can delete the corresponding directory in the `locales` directory.
+
+```
+locales
+├── en
+│   └── messages.json
+└── ko // delete this directory
+    └── messages.json 
+```
+
+Then run the following command. (or just run `pnpm dev` or `pnpm build` on root)
+
+```bash
+pnpm genenrate-i8n
+```
+
+### Add a new language
+
+If you want to add a new language, you can create a new directory in the `locales` directory.
+
+```
+locales
+├── en
+│   └── messages.json
+├── ko
+│   └── messages.json
+└── ja // create this directory
+    └── messages.json // and create this file 
+```
+
+Then same as above, run the following command. (or just run `pnpm dev` or `pnpm build` on root)
+
+```bash
+pnpm genenrate-i8n
+```
+
 
 ## Usage
+
+### Translation function
 
 Just import the `t` function and use it to translate the key.
 
@@ -97,6 +144,8 @@ const Component = () => {
 };
 ```
 
+### Placeholders
+
 If you want to use placeholders, you can pass the second argument as a string or an array.
 
 ```typescript
@@ -115,4 +164,35 @@ import { t } from '@extension/i18n';
 t.devLocale = "ko";
 
 console.log(t('helloWorld')); // 안녕하세요, 여러분!
+```
+
+### Type Safety
+
+When you forget to add a key to all language's `messages.json` files, you will get a Typescript error.
+
+`locales/en/messages.json`
+
+```json
+{
+  "hello": {
+    "message": "Hello World!"
+  }
+}
+```
+
+`locales/ko/messages.json`
+
+```json
+{
+  "helloWorld": {
+    "message": "안녕하세요, 여러분!"
+  }
+}
+```
+
+```typescript
+import { t } from '@extension/i18n';
+
+// Error: TS2345: Argument of type "hello" is not assignable to parameter of type
+console.log(t('hello'));
 ```

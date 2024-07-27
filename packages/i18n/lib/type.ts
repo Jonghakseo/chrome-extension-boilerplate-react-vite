@@ -5,10 +5,6 @@
 import type enMessage from '../locales/en/messages.json';
 import type koMessage from '../locales/ko/messages.json';
 
-type EnsureSameKeys<T, U> = keyof T extends keyof U ? (keyof U extends keyof T ? true : never) : never;
-
-type KeyCheck = EnsureSameKeys<typeof enMessage, typeof koMessage>;
-
-export type MessageKey = KeyCheck extends true ? keyof typeof enMessage : never;
+export type MessageKey = keyof typeof enMessage & keyof typeof koMessage;
 
 export type DevLocale = 'en' | 'ko';

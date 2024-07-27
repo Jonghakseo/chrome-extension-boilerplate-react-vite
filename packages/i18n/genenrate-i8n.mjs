@@ -79,11 +79,7 @@ function makeTypeFile(locales) {
  */
 ${locales.map((locale) => `import type ${locale}Message from '../locales/${locale}/messages.json';`).join("\n")}
 
-type EnsureSameKeys<T, U> = keyof T extends keyof U ? (keyof U extends keyof T ? true : never) : never;
-
-type KeyCheck = EnsureSameKeys<${locales.map((locale) => `typeof ${locale}Message`).join(", ")}>;
-
-export type MessageKey = KeyCheck extends true ? keyof typeof ${locales.at(0)}Message : never;
+export type MessageKey = ${locales.map((locale) => `keyof typeof ${locale}Message`).join(" & ")};
 
 export type DevLocale = ${locales.map((locale) => `'${locale}'`).join(" | ")};
 `;
