@@ -1,0 +1,20 @@
+{
+  "extensionDescription": {
+    "description": "Extension description",
+    "message": "Chrome extension boilerplate developed with Vite, React and Typescript"
+  },
+  "extensionName": {
+    "description": "Extension name",
+    "message": "Chrome extension boilerplate"
+  },
+  "toggleTheme": {
+    "message": "Toggle theme"
+  },
+  "loading": {
+    "message": "Loading..."
+  },
+  "hello": {
+    "message": "Hello $world$.",
+    "description": "Placeholder example"
+  }
+}
