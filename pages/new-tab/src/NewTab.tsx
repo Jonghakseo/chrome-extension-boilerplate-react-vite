@@ -5,8 +5,6 @@ import { exampleThemeStorage } from '@extension/storage';
 import { Button } from '@extension/ui';
 import { t } from '@extension/i18n';
 
-t.devLocale = 'en';
-
 const NewTab = () => {
   const theme = useStorageSuspense(exampleThemeStorage);
   const isLight = theme === 'light';

@@ -1,8 +1,5 @@
-// TODO: auto-generate this import
-import KoMessage from '../locales/ko/messages.json';
-import EnMessage from '../locales/en/messages.json';
-
-import { MessageKey } from './type';
+import { DevLocale, MessageKey } from './type';
+import { defaultLocale, getMessageFromLocale } from './getMessageFromLocale';
 
 function translate(key: MessageKey, substitutions?: string | string[]) {
   const message = getMessageFromLocale(t.devLocale)[key].message;
@@ -22,20 +19,8 @@ function removePlaceholder(message: string) {
   return message.replace(/\$\d+/g, '');
 }
 
-function getMessageFromLocale(locale: string) {
-  switch (locale) {
-    case 'ko':
-      return KoMessage;
-    case 'en':
-      return EnMessage;
-    // TODO auto-generate this switch case
-    default:
-      throw new Error('Unsupported locale');
-  }
-}
-
 export const t = (...args: Parameters<typeof translate>) => {
   return removePlaceholder(translate(...args));
 };
 
-t.devLocale = 'en' as 'ko' | 'en';
+t.devLocale = defaultLocale as DevLocale;
