@@ -47,7 +47,7 @@ const manifest = deepmerge(
     content_scripts: [
       {
         matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-        js: ['content/index.iife.js'],
+        js: ['content/index.iife.js'], // Ensure this file includes tooltipScript.ts or imports it
       },
       {
         matches: ['http://*/*', 'https://*/*', '<all_urls>'],

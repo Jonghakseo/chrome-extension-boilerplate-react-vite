@@ -1,15 +1,15 @@
-import { toggleTheme } from '@lib/toggleTheme';
-import { renderTooltip } from './Tooltip';
-
-console.log('content script loaded');
-
-void toggleTheme();
+// src/tooltipScript.ts
 
 /**
  * Initialize the tooltip functionality.
  * @returns A cleanup function to remove event listeners and the tooltip.
  */
-function initializeTooltip() {
+export function initializeTooltip() {
+  // Create the tooltip element
+  const tooltip = document.createElement('div');
+  tooltip.className = 'custom-tooltip';
+  document.body.appendChild(tooltip);
+
   // Function to get the appropriate regex based on the URL
   function getRegex(): RegExp {
     const currentUrl = window.location.href;
@@ -36,25 +36,36 @@ function initializeTooltip() {
   const handleContextMenu = (event: MouseEvent) => {
     const regex = getRegex();
     const elementUnderCursor = document.elementFromPoint(event.clientX, event.clientY);
-
+    console.log('WORKING');
     if (elementUnderCursor && elementUnderCursor.textContent) {
       const textUnderCursor = elementUnderCursor.textContent.trim();
       if (regex.test(textUnderCursor)) {
-        renderTooltip(event.clientX, event.clientY);
-        // Prevent the default context menu only if the regex matches
-        event.preventDefault();
+        tooltip.textContent = 'Address Found'; // Tooltip content
+        tooltip.style.display = 'block';
+        tooltip.style.left = `${event.clientX + 10}px`; // Position right of cursor
+        tooltip.style.top = `${event.clientY + 10}px`; // Position below cursor
+        event.preventDefault(); // Prevent default context menu
+      } else {
+        tooltip.style.display = 'none';
       }
+    } else {
+      tooltip.style.display = 'none';
     }
   };
 
-  // Add event listener for context menu (right click)
-  document.addEventListener('contextmenu', handleContextMenu);
+  // Function to handle clicks to hide the tooltip
+  const handleClick = () => {
+    tooltip.style.display = 'none'; // Hide tooltip on click
+  };
 
-  // Return a cleanup function to remove the event listener
+  // Add event listeners
+  document.addEventListener('contextmenu', handleContextMenu);
+  document.addEventListener('click', handleClick);
+
+  // Return a cleanup function to remove event listeners and the tooltip
   return () => {
     document.removeEventListener('contextmenu', handleContextMenu);
+    document.removeEventListener('click', handleClick);
+    document.body.removeChild(tooltip);
   };
 }
-
-// Initialize the tooltip functionality
-initializeTooltip();
