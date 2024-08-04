@@ -7,7 +7,9 @@
 ![](https://badges.aleen42.com/src/vitejs.svg)
 
 ![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/build-zip.yml/badge.svg)
-<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Jonghakseo/chrome-extension-boilerplate-react-viteFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
+![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/lint.yml/badge.svg)
+
+<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Jonghakseo/chrome-extension-boilerplate-react-viteFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>![Discord Shield](https://discord.com/api/guilds/1263404974830915637/widget.png)
 
 > This boilerplate
 > has [Legacy version](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/tree/legacy)
@@ -34,6 +36,7 @@
     - [Procedures](#procedures)
         - [Chrome](#chrome)
         - [Firefox](#firefox)
+- [Community](#community)
 - [Reference](#reference)
 - [Star History](#starhistory)
 - [Contributors](#contributors)
@@ -129,6 +132,13 @@ Some shared packages
   manifest.json)
 - `sidepanel` - [sidepanel(Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/sidePanel/) for chrome
   extension (`side_panel.default_path` in manifest.json)
+
+## Community <a name="community"></a>
+
+To chat with other community members, you can join the [Discord](https://discord.gg/Nu5Rf8xr) server.
+You can ask questions on that server, and you can also help others.
+
+Also, suggest new features or share any challenges you've faced while developing Chrome extensions!
 
 ## Reference <a name="reference"></a>
 
