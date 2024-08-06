@@ -55,7 +55,7 @@
     "rimraf": "^6.0.1",
     "tailwindcss": "^3.4.6",
     "tslib": "^2.6.3",
-    "turbo": "^2.0.9",
+    "turbo": "^2.0.12",
     "typescript": "5.5.3",
     "vite": "5.3.3",
     "run-script-os": "^1.1.6"
