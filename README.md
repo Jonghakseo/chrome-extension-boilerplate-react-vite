@@ -116,7 +116,12 @@ Some shared packages
 - `dev-utils` - utils for chrome extension development (manifest-parser, logger)
 - `hmr` - custom HMR plugin for vite, injection script for reload/refresh, hmr dev-server
 - `shared` - shared code for entire project. (types, constants, custom hooks, components, etc.)
-- `tsconfig` - shared tsconfig for entire project.
+- `storage` - helpers for storage easier integration with, e.g local, session storages
+- `tailwind-config` - shared tailwind config for entire project
+- `tsconfig` - shared tsconfig for entire project
+- `ui` - here's a function to merge your tailwind config with global one, and you can save components here
+- `vite-config` - shared vite config for entire project
+- `zipper` - By ```pnpm zip``` you can pack ```dist``` folder into ```extension.zip``` inside newly created ```dist-zip``` 
 
 ### Pages <a name="pages"></a>
 
@@ -124,18 +129,19 @@ Some shared packages
   extension (`content_scripts` in manifest.json)
 - `content-ui` - [content script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/) for render UI in
   user's page (`content_scripts` in manifest.json)
+- `content-runtime` - [content runtime script](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts#functionality)
+   this can be inject from `popup` like standard `content`
 - `devtools` - [devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/#creating) for chrome
   extension (`devtools_page` in manifest.json)
 - `devtools-panel` - devtools panel for [devtools](pages/devtools/src/index.ts)
-- `newtab` - [new tab](https://developer.chrome.com/docs/extensions/mv3/override/) for chrome
-  extension (`chrome_url_overrides.newtab` in
-  manifest.json)
+- `new-tab` - [new tab](https://developer.chrome.com/docs/extensions/mv3/override/) for chrome
+extension (`chrome_url_overrides.newtab` in manifest.json)
 - `options` - [options](https://developer.chrome.com/docs/extensions/mv3/options/) for chrome extension (`options_page`
   in manifest.json)
 - `popup` - [popup](https://developer.chrome.com/docs/extensions/reference/browserAction/) for chrome
   extension (`action.default_popup` in
   manifest.json)
-- `sidepanel` - [sidepanel(Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/sidePanel/) for chrome
+- `side-panel` - [sidepanel(Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/sidePanel/) for chrome
   extension (`side_panel.default_path` in manifest.json)
 
 ## Community <a name="community"></a>
