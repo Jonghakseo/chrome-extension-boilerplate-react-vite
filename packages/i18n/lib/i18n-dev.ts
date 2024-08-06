@@ -3,7 +3,7 @@ import { defaultLocale, getMessageFromLocale } from './getMessageFromLocale';
 
 type I18nValue = {
   message: string;
-  placeholders?: Record<string, { content?: string; exampe?: string }>;
+  placeholders?: Record<string, { content?: string; example?: string }>;
 };
 
 function translate(key: MessageKey, substitutions?: string | string[]) {
