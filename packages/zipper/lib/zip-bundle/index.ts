@@ -45,17 +45,17 @@ export const zipBundle = async (
   {
     distDirectory,
     buildDirectory,
-    distDirectoryName,
+    archiveName,
   }: {
     distDirectory: string;
     buildDirectory: string;
-    distDirectoryName: string;
+    archiveName: string;
   },
   withMaps = false,
 ): Promise<void> => {
   ensureBuildDirectoryExists(buildDirectory);
 
-  const zipFilePath = resolve(buildDirectory, `${distDirectoryName}.zip`);
+  const zipFilePath = resolve(buildDirectory, archiveName);
   const output = createWriteStream(zipFilePath);
 
   const fileList = await glob(
