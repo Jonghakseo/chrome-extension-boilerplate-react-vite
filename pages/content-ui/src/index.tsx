@@ -14,24 +14,22 @@ rootIntoShadow.id = 'shadow-root';
 
 const shadowRoot = root.attachShadow({ mode: 'open' });
 
-/** Inject styles into shadow dom */
-const globalStyleSheet = new CSSStyleSheet();
-globalStyleSheet.replaceSync(tailwindcssOutput);
-shadowRoot.adoptedStyleSheets = [globalStyleSheet];
-/**
- * In the firefox environment, the adoptedStyleSheets bug may prevent style from being applied properly.
- *
- * @url https://bugzilla.mozilla.org/show_bug.cgi?id=1770592
- * @url https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/174
- *
- * Please refer to the links above and try the following code if you encounter the issue.
- *
-
- * const styleElement = document.createElement('style');
- * styleElement.innerHTML = tailwindcssOutput;
- * shadowRoot.appendChild(styleElement);
- * ```
- */
+if (navigator.userAgent.includes('Firefox')) {
+  /**
+   * In the firefox environment, adoptedStyleSheets cannot be used due to the bug
+   * @url https://bugzilla.mozilla.org/show_bug.cgi?id=1770592
+   *
+   * Injecting styles into the document, this may cause style conflicts with the host page
+   */
+  const styleElement = document.createElement('style');
+  styleElement.innerHTML = tailwindcssOutput;
+  shadowRoot.appendChild(styleElement);
+} else {
+  /** Inject styles into shadow dom */
+  const globalStyleSheet = new CSSStyleSheet();
+  globalStyleSheet.replaceSync(tailwindcssOutput);
+  shadowRoot.adoptedStyleSheets = [globalStyleSheet];
+}
 
 shadowRoot.appendChild(rootIntoShadow);
 createRoot(rootIntoShadow).render(<App />);

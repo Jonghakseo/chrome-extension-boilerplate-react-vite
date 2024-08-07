@@ -13,12 +13,7 @@ const Popup = () => {
 
     await chrome.scripting.executeScript({
       target: { tabId: tab.id! },
-      /**
-       * If you are using Firefox, you should use a relative path. :(
-       * @example
-       * files: ['../content-runtime/index.iife.js'],
-       */
-      files: ['content-runtime/index.iife.js'],
+      files: ['/content-runtime/index.iife.js'],
     });
   };
 
