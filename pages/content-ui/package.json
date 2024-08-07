@@ -10,9 +10,9 @@
   ],
   "scripts": {
     "clean": "rimraf ./dist",
-    "build:tailwindcss": "tailwindcss -i src/tailwind-input.css -o src/tailwind-output.css",
+    "build:tailwindcss": "pnpm dlx tailwindcss -i ./src/tailwind-input.css -o ./src/tailwind-output.css --watch",
     "build": "pnpm run clean && pnpm type-check && pnpm build:tailwindcss && vite build",
-    "build:watch": "cross-env __DEV__=true vite build --mode development & pnpm build:tailwindcss -- --watch",
+    "build:watch": "cross-env __DEV__=true vite build --mode development && pnpm build:tailwindcss",
     "dev": "pnpm build:watch",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
