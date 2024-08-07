@@ -1,9 +1,6 @@
-import { toggleTheme } from '@lib/toggleTheme';
-import { renderTooltip } from './Tooltip';
+import { showTooltip, closeTooltip } from './Tooltip';
 
 console.log('content script loaded');
-
-void toggleTheme();
 
 /**
  * Initialize the tooltip functionality.
@@ -34,25 +31,43 @@ function initializeTooltip() {
 
   // Function to handle the context menu event
   const handleContextMenu = (event: MouseEvent) => {
+    console.log('Context menu triggered');
     const regex = getRegex();
     const elementUnderCursor = document.elementFromPoint(event.clientX, event.clientY);
 
-    if (elementUnderCursor && elementUnderCursor.textContent) {
-      const textUnderCursor = elementUnderCursor.textContent.trim();
+    if (elementUnderCursor) {
+      console.log('Element under cursor:', elementUnderCursor);
+      const textUnderCursor = elementUnderCursor.textContent?.trim() || '';
+      console.log('Text under cursor:', textUnderCursor);
+
       if (regex.test(textUnderCursor)) {
-        renderTooltip(event.clientX, event.clientY);
+        console.log('Matched regex:', textUnderCursor);
+        showTooltip(event.clientX, event.clientY);
         // Prevent the default context menu only if the regex matches
         event.preventDefault();
       }
     }
+    // Always log "hello" when the context menu is triggered
+    console.log('hello');
   };
 
-  // Add event listener for context menu (right click)
-  document.addEventListener('contextmenu', handleContextMenu);
+  // Function to handle clicks outside the tooltip
+  const handleClickOutside = (event: MouseEvent) => {
+    const tooltipContainer = document.getElementById('tooltip-container');
+    if (tooltipContainer && !tooltipContainer.contains(event.target as Node)) {
+      console.log('Click outside detected');
+      closeTooltip();
+    }
+  };
 
-  // Return a cleanup function to remove the event listener
+  // Add event listeners
+  document.addEventListener('contextmenu', handleContextMenu);
+  document.addEventListener('click', handleClickOutside);
+
+  // Return a cleanup function to remove the event listeners
   return () => {
     document.removeEventListener('contextmenu', handleContextMenu);
+    document.removeEventListener('click', handleClickOutside);
   };
 }
 

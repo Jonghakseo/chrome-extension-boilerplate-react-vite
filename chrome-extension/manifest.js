@@ -1,7 +1,4 @@
-import fs from 'node:fs';
 import deepmerge from 'deepmerge';
-
-const packageJson = JSON.parse(fs.readFileSync('../package.json', 'utf8'));
 
 const isFirefox = process.env.__FIREFOX__ === 'true';
 
@@ -25,7 +22,7 @@ const manifest = deepmerge(
      * https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization
      */
     name: '__MSG_extensionName__',
-    version: packageJson.version,
+    version: '1.17.6',
     description: '__MSG_extensionDescription__',
     host_permissions: ['<all_urls>'],
     permissions: ['storage', 'scripting'],
@@ -37,9 +34,6 @@ const manifest = deepmerge(
     action: {
       default_popup: 'popup/index.html',
       default_icon: 'icon-34.png',
-    },
-    chrome_url_overrides: {
-      newtab: 'new-tab/index.html',
     },
     icons: {
       128: 'icon-128.png',
