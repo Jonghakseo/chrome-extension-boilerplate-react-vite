@@ -4,7 +4,7 @@ import * as esbuild from 'esbuild';
  * @type { import("esbuild").BuildOptions }
  */
 const buildOptions = {
-  entryPoints: ['./index.ts', './lib/**/*.ts', './lib/**/*.tsx'],
+  entryPoints: ['./index.ts', './lib/**/*.ts'],
   tsconfig: './tsconfig.json',
   bundle: false,
   target: 'es6',
