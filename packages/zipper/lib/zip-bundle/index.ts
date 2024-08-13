@@ -98,7 +98,7 @@ export const zipBundle = async (
       console.log(`Adding file: ${relPosixPath}`);
       streamFileToZip(
         absPath,
-        relPosixPath, // Use relative path
+        relPosixPath,
         zip,
         () => {
           aborted = true;
