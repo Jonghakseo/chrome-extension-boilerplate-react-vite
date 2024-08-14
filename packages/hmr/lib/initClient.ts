@@ -10,8 +10,8 @@ export default function initClient({ id, onUpdate }: { id: string; onUpdate: () 
       const message = MessageInterpreter.receive(String(event.data));
 
       if (message.type === DO_UPDATE && message.id === id) {
-        ws.send(MessageInterpreter.send({ type: DONE_UPDATE }));
         onUpdate();
+        ws.send(MessageInterpreter.send({ type: DONE_UPDATE }));
         return;
       }
     });
