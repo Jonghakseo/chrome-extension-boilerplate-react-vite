@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import type { WebSocket } from 'ws';
 import { WebSocketServer } from 'ws';
 import { LOCAL_RELOAD_SOCKET_PORT, LOCAL_RELOAD_SOCKET_URL } from './constant';
