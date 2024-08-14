@@ -15,3 +15,9 @@ type BuildCompletionMessage = { type: typeof BUILD_COMPLETE; id: string };
 export type SerializedMessage = string;
 
 export type WebSocketMessage = UpdateCompleteMessage | UpdateRequestMessage | BuildCompletionMessage | ErrorMessage;
+
+export type PluginConfig = {
+  onStart?: () => void;
+  reload?: boolean;
+  refresh?: boolean;
+};

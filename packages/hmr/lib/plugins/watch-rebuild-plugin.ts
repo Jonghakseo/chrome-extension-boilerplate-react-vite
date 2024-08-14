@@ -4,12 +4,7 @@ import MessageInterpreter from '../interpreter';
 import { LOCAL_RELOAD_SOCKET_URL } from '../constant';
 import * as fs from 'fs';
 import path from 'path';
-
-type PluginConfig = {
-  onStart?: () => void;
-  reload?: boolean;
-  refresh?: boolean;
-};
+import { PluginConfig } from '../types';
 
 const injectionsPath = path.resolve(__dirname, '..', '..', '..', 'build', 'injections');
 
