@@ -37,10 +37,6 @@ function initReloadServer() {
     });
   });
 
-  wss.on('close', () => {
-    clientsThatNeedToUpdate.clear();
-  });
-
   wss.on('error', () => {
     console.error(`[HMR] Failed to start server at ${LOCAL_RELOAD_SOCKET_URL}`);
   });
