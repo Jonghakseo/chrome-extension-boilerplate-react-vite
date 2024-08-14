@@ -1,6 +1,6 @@
 import { LOCAL_RELOAD_SOCKET_URL } from './constant';
 import MessageInterpreter from './interpreter';
-import { DO_UPDATE, DONE_UPDATE } from './interpreter/types';
+import { DO_UPDATE, DONE_UPDATE } from './types';
 
 export default function initWsClient({ id, onUpdate }: { id: string; onUpdate: () => void }) {
   const ws = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
