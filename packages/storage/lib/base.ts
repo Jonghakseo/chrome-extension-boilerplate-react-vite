@@ -25,7 +25,7 @@ async function updateCache<D>(valueOrUpdate: ValueOrUpdate<D>, cache: D | null):
   if (isFunction(valueOrUpdate)) {
     // Check if the function returns a Promise
     if (returnsPromise(valueOrUpdate)) {
-      return await valueOrUpdate(cache as D);
+      return valueOrUpdate(cache as D);
     } else {
       return valueOrUpdate(cache as D);
     }
@@ -47,6 +47,7 @@ function checkStoragePermission(storageEnum: StorageEnum): void {
   if (!chrome) {
     return;
   }
+
   if (chrome.storage[storageEnum] === undefined) {
     throw new Error(`Check your storage permission in manifest.json: ${storageEnum} is not defined`);
   }
@@ -58,8 +59,10 @@ function checkStoragePermission(storageEnum: StorageEnum): void {
 export function createStorage<D = string>(key: string, fallback: D, config?: StorageConfig<D>): BaseStorage<D> {
   let cache: D | null = null;
   let listeners: Array<() => void> = [];
+
   const storageEnum = config?.storageEnum ?? StorageEnum.Local;
   const liveUpdate = config?.liveUpdate ?? false;
+
   const serialize = config?.serialization?.serialize ?? ((v: D) => v);
   const deserialize = config?.serialization?.deserialize ?? (v => v as D);
 
@@ -82,12 +85,14 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
   }
 
   // Register life cycle methods
-  const _getDataFromStorage = async (): Promise<D> => {
+  const get = async (): Promise<D> => {
     checkStoragePermission(storageEnum);
     const value = await chrome?.storage[storageEnum].get([key]);
+
     if (!value) {
       return fallback;
     }
+
     return deserialize(value[key]) ?? fallback;
   };
 
@@ -104,6 +109,7 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
 
   const subscribe = (listener: () => void) => {
     listeners = [...listeners, listener];
+
     return () => {
       listeners = listeners.filter(l => l !== listener);
     };
@@ -113,7 +119,7 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
     return cache;
   };
 
-  _getDataFromStorage().then(data => {
+  get().then(data => {
     cache = data;
     _emitChange();
   });
@@ -138,7 +144,7 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
   }
 
   return {
-    get: _getDataFromStorage,
+    get,
     set,
     getSnapshot,
     subscribe,
