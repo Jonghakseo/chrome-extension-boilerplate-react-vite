@@ -22,7 +22,6 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "ws": "8.18.0"
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
@@ -31,6 +30,7 @@
     "esm": "^3.2.25",
     "fast-glob": "^3.3.2",
     "rollup": "^4.20.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "ws": "8.18.0"
   }
 }

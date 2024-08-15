@@ -147,10 +147,6 @@ importers:
         version: link:../tsconfig
 
   packages/hmr:
-    dependencies:
-      ws:
-        specifier: 8.18.0
-        version: 8.18.0
     devDependencies:
       '@extension/tsconfig':
         specifier: workspace:*
@@ -173,6 +169,9 @@ importers:
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@swc/core@1.6.13)(@types/node@20.14.10)(typescript@5.5.3)
+      ws:
+        specifier: 8.18.0
+        version: 8.18.0
 
   packages/i18n:
     devDependencies:
