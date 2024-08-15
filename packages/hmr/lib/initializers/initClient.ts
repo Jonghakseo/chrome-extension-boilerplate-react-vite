@@ -1,4 +1,4 @@
-import { LOCAL_RELOAD_SOCKET_URL } from '../constant';
+import { DO_UPDATE, DONE_UPDATE, LOCAL_RELOAD_SOCKET_URL } from '../constant';
 import MessageInterpreter from '../interpreter';
 import { DO_UPDATE, DONE_UPDATE } from '../types';
 

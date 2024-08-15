@@ -1,10 +1,10 @@
 import type { PluginOption } from 'vite';
 import { WebSocket } from 'ws';
 import MessageInterpreter from '../interpreter';
-import { LOCAL_RELOAD_SOCKET_URL } from '../constant';
+import { BUILD_COMPLETE, LOCAL_RELOAD_SOCKET_URL } from '../constant';
 import * as fs from 'fs';
 import path from 'path';
-import { BUILD_COMPLETE, PluginConfig } from '../types';
+import { PluginConfig } from '../types';
 
 const injectionsPath = path.resolve(__dirname, '..', '..', '..', 'build', 'injections');
 
