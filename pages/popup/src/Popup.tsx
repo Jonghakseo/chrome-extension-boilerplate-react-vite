@@ -1,7 +1,7 @@
 import '@src/Popup.css';
 import { useStorageSuspense, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
 const Popup = () => {
   const theme = useStorageSuspense(exampleThemeStorage);

@@ -1,7 +1,7 @@
 import '@src/SidePanel.css';
 import { useStorageSuspense, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
 const SidePanel = () => {
   const theme = useStorageSuspense(exampleThemeStorage);

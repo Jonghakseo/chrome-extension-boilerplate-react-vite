@@ -21,7 +21,14 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "react-hooks", "import", "jsx-a11y", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "react-hooks",
+    "import",
+    "jsx-a11y",
+    "prettier"
+  ],
   "settings": {
     "react": {
       "version": "detect"
@@ -29,10 +36,14 @@
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "import/no-unresolved": "off"
+    "import/no-unresolved": "off",
+    "@typescript-eslint/consistent-type-imports": "error"
   },
   "globals": {
     "chrome": "readonly"
   },
-  "ignorePatterns": ["watch.js", "dist/**"]
+  "ignorePatterns": [
+    "watch.js",
+    "dist/**"
+  ]
 }

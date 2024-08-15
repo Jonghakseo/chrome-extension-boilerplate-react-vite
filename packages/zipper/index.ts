@@ -1,5 +1,4 @@
 import { resolve } from 'path';
-
 import { zipBundle } from './lib/zip-bundle';
 
 // package the root dist file
