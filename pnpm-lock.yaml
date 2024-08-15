@@ -145,6 +145,9 @@ importers:
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      '@extension/utils':
+        specifier: workspace:*
+        version: link:../utils
 
   packages/hmr:
     devDependencies:
@@ -216,6 +219,12 @@ importers:
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
+
+  packages/utils:
+    devDependencies:
+      '@extension/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
 
   packages/vite-config:
     devDependencies:

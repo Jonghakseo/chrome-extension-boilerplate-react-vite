@@ -1,7 +1,7 @@
 {
-  "name": "@extension/dev-utils",
-  "version": "0.3.1",
-  "description": "chrome extension dev utils",
+  "name": "@extension/utils",
+  "version": "0.2.2",
+  "description": "chrome extension utils",
   "private": true,
   "sideEffects": false,
   "files": [
@@ -20,7 +20,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@extension/tsconfig": "workspace:*",
-    "@extension/utils": "workspace:*"
+    "@extension/tsconfig": "workspace:*"
   }
 }
