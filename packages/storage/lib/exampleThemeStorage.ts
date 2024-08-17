@@ -3,7 +3,7 @@ import { StorageEnum } from './enums';
 import type { Theme, ThemeStorage } from './types';
 
 const storage = createStorage<Theme>('theme-storage-key', 'light', {
-  storageType: StorageEnum.Local,
+  storageEnum: StorageEnum.Local,
   liveUpdate: true,
 });
 
