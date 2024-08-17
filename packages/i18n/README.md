@@ -171,8 +171,12 @@ Function `t` has exactly the same interface as the `chrome.i18n.getMessage` func
 ```typescript
 import { t } from '@extension/i18n';
 
+console.log(t('greeting', 'John Doe')); // Hello, My name is John Doe
+console.log(t('greeting', ['John Doe'])); // Hello, My name is John Doe
+
 console.log(t('hello')); // Hello
 console.log(t('hello', 'World')); // Hello World
+console.log(t('hello', ['World'])); // Hello World
 ```
 
 ### Locale setting on development
