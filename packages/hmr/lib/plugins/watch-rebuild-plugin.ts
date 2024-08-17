@@ -4,7 +4,7 @@ import MessageInterpreter from '../interpreter';
 import { BUILD_COMPLETE, LOCAL_RELOAD_SOCKET_URL } from '../constant';
 import * as fs from 'fs';
 import path from 'path';
-import { PluginConfig } from '../types';
+import type { PluginConfig } from '../types';
 
 const injectionsPath = path.resolve(__dirname, '..', '..', '..', 'build', 'injections');
 
