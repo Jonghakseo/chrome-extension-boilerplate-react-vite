@@ -1,4 +1,4 @@
-import { BaseStorage, StorageConfig, ValueOrUpdate } from './types';
+import type { BaseStorage, StorageConfig, ValueOrUpdate } from './types';
 import { SessionAccessLevelEnum, StorageEnum } from './enums';
 
 /**

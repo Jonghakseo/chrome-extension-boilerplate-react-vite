@@ -1,4 +1,4 @@
-import { StorageEnum } from './enums';
+import type { StorageEnum } from './enums';
 
 export type ValueOrUpdate<D> = D | ((prev: D) => Promise<D> | D);
 
