@@ -124,7 +124,6 @@ If you want to use placeholders, you can use the following format.
 
 `locales/en/messages.json`
 
-
 ```json
 {
   "greeting": {
