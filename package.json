@@ -58,7 +58,7 @@
     "tslib": "^2.6.3",
     "turbo": "^2.0.12",
     "typescript": "5.5.3",
-    "vite": "5.3.3",
+    "vite": "5.4.1",
     "run-script-os": "^1.1.6"
   },
   "lint-staged": {
