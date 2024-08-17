@@ -61,6 +61,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [Prettier](https://prettier.io/)
 - [ESLint](https://eslint.org/)
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
+- [Custom I18n Package](/packages/i18n/)
 - Custom HMR(Hot Module Rebuild) Plugin
 
 ## Install <a name="install"></a>
@@ -114,9 +115,10 @@ Main app with background script, manifest
 Some shared packages
 
 - `dev-utils` - utils for chrome extension development (manifest-parser, logger)
+- `i18n` - custom i18n package for chrome extension. provide i18n function with type safety and other validation.
 - `hmr` - custom HMR plugin for vite, injection script for reload/refresh, hmr dev-server
 - `shared` - shared code for entire project. (types, constants, custom hooks, components, etc.)
-- `storage` - helpers for storage easier integration with, e.g local, session storages
+- `storage` - helpers for [storage](https://developer.chrome.com/docs/extensions/reference/api/storage) easier integration with, e.g local, session storages
 - `tailwind-config` - shared tailwind config for entire project
 - `tsconfig` - shared tsconfig for entire project
 - `ui` - here's a function to merge your tailwind config with global one, and you can save components here
