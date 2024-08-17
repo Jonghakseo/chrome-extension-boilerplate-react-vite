@@ -1,4 +1,4 @@
-import { ManifestParserInterface, Manifest } from './type';
+import type { ManifestParserInterface, Manifest } from './type';
 
 export const ManifestParserImpl: ManifestParserInterface = {
   convertManifestToString: (manifest, env) => {

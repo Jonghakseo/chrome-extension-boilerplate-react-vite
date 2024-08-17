@@ -1,7 +1,7 @@
 import '@src/Panel.css';
 import { useStorageSuspense, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { ComponentPropsWithoutRef } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
 const Panel = () => {
   const theme = useStorageSuspense(exampleThemeStorage);

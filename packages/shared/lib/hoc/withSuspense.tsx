@@ -1,4 +1,5 @@
-import { ComponentType, ReactElement, Suspense } from 'react';
+import type { ComponentType, ReactElement } from 'react';
+import { Suspense } from 'react';
 
 export function withSuspense<T extends Record<string, unknown>>(
   Component: ComponentType<T>,
