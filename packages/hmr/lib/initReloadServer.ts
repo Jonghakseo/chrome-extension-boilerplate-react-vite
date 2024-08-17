@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import { WebSocket, WebSocketServer } from 'ws';
+import type { WebSocket } from 'ws';
+import { WebSocketServer } from 'ws';
 import { LOCAL_RELOAD_SOCKET_PORT, LOCAL_RELOAD_SOCKET_URL } from './constant';
 import MessageInterpreter from './interpreter';
 

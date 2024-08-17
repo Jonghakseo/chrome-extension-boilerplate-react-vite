@@ -1,4 +1,4 @@
-import { DevLocale, MessageKey } from './type';
+import type { DevLocale, MessageKey } from './type';
 
 export function t(key: MessageKey, substitutions?: string | string[]) {
   return chrome.i18n.getMessage(key, substitutions);

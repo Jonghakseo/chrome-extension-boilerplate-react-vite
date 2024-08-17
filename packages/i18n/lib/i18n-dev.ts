@@ -1,4 +1,4 @@
-import { DevLocale, MessageKey } from './type';
+import type { DevLocale, MessageKey } from './type';
 import { defaultLocale, getMessageFromLocale } from './getMessageFromLocale';
 
 type I18nValue = {
