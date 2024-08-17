@@ -15,7 +15,8 @@
       ],
       "outputs": [
         "dist/**",
-        "build/**"
+        "build/**",
+        "i18n/locales/**"
       ],
       "persistent": true
     },

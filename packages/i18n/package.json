@@ -1,0 +1,27 @@
+{
+  "name": "@extension/i18n",
+  "version": "0.2.2",
+  "description": "chrome extension internationalization",
+  "private": true,
+  "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
+  "types": "index.ts",
+  "main": "./dist/index.js",
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "genenrate-i8n": "node genenrate-i18n.mjs",
+    "ready": "pnpm genenrate-i8n && node build.dev.mjs",
+    "build": "pnpm genenrate-i8n && node build.prod.mjs",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "pnpm lint --fix",
+    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@extension/tsconfig": "workspace:*",
+    "@extension/hmr": "workspace:*"
+  }
+}
