@@ -4,34 +4,34 @@ import App from '@lib/app';
 // @ts-ignore
 import injectedStyle from '@lib/index.css?inline';
 
-const root = document.createElement('div');
-root.id = 'chrome-extension-boilerplate-react-vite-runtime-content-view-root';
+export function mount() {
+  const root = document.createElement('div');
+  root.id = 'chrome-extension-boilerplate-react-vite-runtime-content-view-root';
 
-document.body.append(root);
+  document.body.append(root);
 
-const rootIntoShadow = document.createElement('div');
-rootIntoShadow.id = 'shadow-root';
+  const rootIntoShadow = document.createElement('div');
+  rootIntoShadow.id = 'shadow-root';
 
-const shadowRoot = root.attachShadow({ mode: 'open' });
+  const shadowRoot = root.attachShadow({ mode: 'open' });
 
-/** Inject styles into shadow dom */
-const globalStyleSheet = new CSSStyleSheet();
-globalStyleSheet.replaceSync(injectedStyle);
-shadowRoot.adoptedStyleSheets = [globalStyleSheet];
+  if (navigator.userAgent.includes('Firefox')) {
+    /**
+     * In the firefox environment, adoptedStyleSheets cannot be used due to the bug
+     * @url https://bugzilla.mozilla.org/show_bug.cgi?id=1770592
+     *
+     * Injecting styles into the document, this may cause style conflicts with the host page
+     */
+    const styleElement = document.createElement('style');
+    styleElement.innerHTML = injectedStyle;
+    shadowRoot.appendChild(styleElement);
+  } else {
+    /** Inject styles into shadow dom */
+    const globalStyleSheet = new CSSStyleSheet();
+    globalStyleSheet.replaceSync(injectedStyle);
+    shadowRoot.adoptedStyleSheets = [globalStyleSheet];
+  }
 
-/**
- * In the firefox environment, the adoptedStyleSheets bug may prevent style from being applied properly.
- *
- * @url https://bugzilla.mozilla.org/show_bug.cgi?id=1770592
- * @url https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/pull/174
- *
- * Please refer to the links above and try the following code if you encounter the issue.
- *
- * ```ts
- * const styleElement = document.createElement('style');
- * styleElement.innerHTML = injectedStyle;
- * shadowRoot.appendChild(styleElement);
- * ```
- */
-shadowRoot.appendChild(rootIntoShadow);
-createRoot(rootIntoShadow).render(<App />);
+  shadowRoot.appendChild(rootIntoShadow);
+  createRoot(rootIntoShadow).render(<App />);
+}

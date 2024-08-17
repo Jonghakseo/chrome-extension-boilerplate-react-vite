@@ -1,13 +1,20 @@
 <div align="center">
 
-![](https://github.com/user-attachments/assets/99cb6303-64e4-4bed-bf3f-35735353e6de)
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/99cb6303-64e4-4bed-bf3f-35735353e6de" />
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/a5dbf71c-c509-4c4f-80f4-be88a1943b0a" />
+    <img alt="Logo" src="https://github.com/user-attachments/assets/99cb6303-64e4-4bed-bf3f-35735353e6de" />
+</picture>
 
 ![](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
 ![](https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![](https://badges.aleen42.com/src/vitejs.svg)
 
 ![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/build-zip.yml/badge.svg)
+![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/lint.yml/badge.svg)
+
 <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Jonghakseo/chrome-extension-boilerplate-react-viteFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
+<a href="https://discord.gg/Nu5Rf8xr" target="_blank"><img src="https://discord.com/api/guilds/1263404974830915637/widget.png"/></a>
 
 > This boilerplate
 > has [Legacy version](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/tree/legacy)
@@ -34,6 +41,7 @@
     - [Procedures](#procedures)
         - [Chrome](#chrome)
         - [Firefox](#firefox)
+- [Community](#community)
 - [Reference](#reference)
 - [Star History](#starhistory)
 - [Contributors](#contributors)
@@ -110,12 +118,12 @@ Some shared packages
 - `i18n` - custom i18n package for chrome extension. provide i18n function with type safety and other validation.
 - `hmr` - custom HMR plugin for vite, injection script for reload/refresh, hmr dev-server
 - `shared` - shared code for entire project. (types, constants, custom hooks, components, etc.)
-- `storage` - shared storage for entire project. ([chrome storage api](https://developer.chrome.com/docs/extensions/reference/api/storage))
-- `tailwind-config` - shared tailwind config for entire project.
-- `tsconfig` - shared tsconfig for entire project.
-- `ui` - shared UI components for entire project.
-- `vite-config` - provide shared page's vite-config via withPageConfig function.
-- `zipper` - provide zip function for chrome extension build. you can use with `pnpm zip` command.
+- `storage` - helpers for [storage](https://developer.chrome.com/docs/extensions/reference/api/storage) easier integration with, e.g local, session storages
+- `tailwind-config` - shared tailwind config for entire project
+- `tsconfig` - shared tsconfig for entire project
+- `ui` - here's a function to merge your tailwind config with global one, and you can save components here
+- `vite-config` - shared vite config for entire project
+- `zipper` - By ```pnpm zip``` you can pack ```dist``` folder into ```extension.zip``` inside newly created ```dist-zip``` 
 
 ### Pages <a name="pages"></a>
 
@@ -123,20 +131,27 @@ Some shared packages
   extension (`content_scripts` in manifest.json)
 - `content-ui` - [content script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/) for render UI in
   user's page (`content_scripts` in manifest.json)
-- `content-runtime` - if you want to inject script via executeScript, you can use this page. ([Popup.tsx L:14](/pages/popup/src/Popup.tsx#L14)) 
+- `content-runtime` - [content runtime script](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts#functionality)
+   this can be inject from `popup` like standard `content`
 - `devtools` - [devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/#creating) for chrome
   extension (`devtools_page` in manifest.json)
 - `devtools-panel` - devtools panel for [devtools](pages/devtools/src/index.ts)
-- `newtab` - [new tab](https://developer.chrome.com/docs/extensions/mv3/override/) for chrome
-  extension (`chrome_url_overrides.newtab` in
-  manifest.json)
+- `new-tab` - [new tab](https://developer.chrome.com/docs/extensions/mv3/override/) for chrome
+extension (`chrome_url_overrides.newtab` in manifest.json)
 - `options` - [options](https://developer.chrome.com/docs/extensions/mv3/options/) for chrome extension (`options_page`
   in manifest.json)
 - `popup` - [popup](https://developer.chrome.com/docs/extensions/reference/browserAction/) for chrome
   extension (`action.default_popup` in
   manifest.json)
-- `sidepanel` - [sidepanel(Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/sidePanel/) for chrome
+- `side-panel` - [sidepanel(Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/sidePanel/) for chrome
   extension (`side_panel.default_path` in manifest.json)
+
+## Community <a name="community"></a>
+
+To chat with other community members, you can join the [Discord](https://discord.gg/Nu5Rf8xr) server.
+You can ask questions on that server, and you can also help others.
+
+Also, suggest new features or share any challenges you've faced while developing Chrome extensions!
 
 ## Reference <a name="reference"></a>
 
@@ -173,4 +188,4 @@ This Boilerplate is made possible thanks to all of its contributors.
 
 ---
 
-Made by [Jonghakseo](https://nookpi.tistory.com/)
+Made by [Jonghakseo](https://jonghakseo.github.io/)

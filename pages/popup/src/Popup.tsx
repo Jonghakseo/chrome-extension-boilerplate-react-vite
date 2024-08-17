@@ -13,7 +13,7 @@ const Popup = () => {
 
     await chrome.scripting.executeScript({
       target: { tabId: tab.id! },
-      files: ['content-runtime/index.iife.js'],
+      files: ['/content-runtime/index.iife.js'],
     });
   };
 
