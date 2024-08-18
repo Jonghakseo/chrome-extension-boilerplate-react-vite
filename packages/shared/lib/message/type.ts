@@ -1,16 +1,24 @@
 interface BaseMessage<D = unknown, P = unknown> {
   type: unknown;
   payload?: P;
-  response: D;
+  response?: D;
 }
 
-export type Message = SidePanelMessage | SearchWeatherMessage;
+/**
+ * Define the type of messages
+ */
+export type Message = SearchWeatherMessage | GreetingMessage;
 
-export interface SidePanelMessage extends BaseMessage {
-  type: 'SidePanel';
+/**
+ * If you want to add a new message type, you can add it here.
+ */
+
+export interface GreetingMessage extends BaseMessage {
+  type: 'Greeting';
   payload: {
-    open: boolean;
+    name: string;
   };
+  response: string;
 }
 
 export interface SearchWeatherMessage extends BaseMessage {
@@ -18,10 +26,10 @@ export interface SearchWeatherMessage extends BaseMessage {
   payload: {
     search: string;
   };
-  response: {
+  response: Array<{
     city: string;
     temperature: number;
     humidity: number;
     description: string;
-  };
+  }>;
 }

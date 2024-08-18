@@ -1,38 +1,35 @@
 import type { Message } from './type';
 
+type Payload<Type> = Type extends Message['type'] ? (Message & { type: Type })['payload'] : never;
+type Response<Type> = Type extends Message['type'] ? (Message & { type: Type })['response'] : never;
+
 const ERROR_SUFFIX = '__Error';
 
 /**
  * To receive messages, use `chrome.runtime.onConnect.addListener`.
+ * Or use `addMessageHandler` to add multiple message handlers.
  *
  * @example
  * ```ts
- * chrome.runtime.onConnect.addListener((port) => {
- *   const { response, handleError } = createPortUtils(port);
- *   port.onMessage.addListener(async (message: Message) => {
- *    try {
- *       switch (message.type) {
- *        case 'Hi': {
- *          response({ type: 'Hi', response: 'Hello' });
- *          break;
- *         }
- *       }
- *    } catch (error) {
- *      handleError(message, error);
- *    }
- *   });
- * });
+ *  messaging.addMessageHandler({
+ *     Greeting: async ({ name }) => {
+ *      return `Hello, ${name}!`;
+ *     },
+ *    SearchWeather: async payload => {
+ *       return await searchWeather(payload.search);
+ *     },
+ *  });
  * ```
  */
-function post<T extends Message['type'], M extends Message & { type: T }>(type: T, payload?: M['payload']) {
-  return new Promise<M['response']>((resolve, reject) => {
+function post<T extends Message['type']>(type: T, payload?: Payload<T>): Promise<Response<T>> {
+  return new Promise((resolve, reject) => {
     const port = chrome.runtime.connect();
 
-    port.onMessage.addListener((message: M) => {
+    port.onMessage.addListener((message: Message) => {
       if (message.type.endsWith(ERROR_SUFFIX)) {
         reject(message.response);
       } else {
-        resolve(message.response as M['response']);
+        resolve(message.response as Response<T>);
       }
       port.disconnect();
     });
@@ -47,13 +44,18 @@ function post<T extends Message['type'], M extends Message & { type: T }>(type: 
 
 /**
  * To receive messages, use `chrome.runtime.onMessage.addListener`.
+ * Or use `addMessageHandler` to add multiple message handlers.
  *
  * @example
  * ```ts
- * chrome.runtime.onMessage.addListener((message: Message) => {
- *   switch (message.type) {
- *   //...
- * });
+ *  messaging.addMessageHandler({
+ *     Greeting: async ({ name }) => {
+ *      return `Hello, ${name}!`;
+ *     },
+ *    SearchWeather: async payload => {
+ *       return await searchWeather(payload.search);
+ *     },
+ *  });
  * ```
  */
 const sendToCurrentTab = <M extends Message>(type: M['type'], payload?: M['payload']) => {
@@ -65,10 +67,10 @@ const sendToCurrentTab = <M extends Message>(type: M['type'], payload?: M['paylo
   });
 };
 
-const createPortUtils = (port: chrome.runtime.Port) => {
+const createPortUtils = (sendMessage: (message: unknown) => unknown) => {
   function response<M extends Message>(message: Omit<M, 'payload'>) {
     try {
-      port.postMessage(message);
+      sendMessage(message);
     } catch (error) {
       console.error('Error in `sendResponse`', error);
     }
@@ -88,8 +90,48 @@ const createPortUtils = (port: chrome.runtime.Port) => {
   };
 };
 
-export const message = {
+type Handlers = {
+  [Type in Message['type']]?: (
+    payload: Payload<Type>,
+    sender?: chrome.runtime.MessageSender,
+  ) => Promise<Response<Type>> | Response<Type>;
+};
+
+function addMessageHandler(handlers: Handlers) {
+  chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) => {
+    const { response, handleError } = createPortUtils(sendResponse);
+    const handler = handlers[message.type];
+    if (handler) {
+      (async () => {
+        try {
+          // @ts-expect-error `handler` guaranteed to be defined
+          response({ type: message.type, response: await handler(message.payload, sender) });
+        } catch (error) {
+          handleError(message, error);
+        }
+      })();
+    }
+    return true;
+  });
+
+  chrome.runtime.onConnect.addListener(port => {
+    const { response, handleError } = createPortUtils(message => port.postMessage(message));
+    port.onMessage.addListener(async (message: Message) => {
+      try {
+        const handler = handlers[message.type];
+        if (handler) {
+          // @ts-expect-error `handler` guaranteed to be defined
+          response({ type: message.type, response: await handler(message.payload, port.sender) });
+        }
+      } catch (error) {
+        handleError(message, error);
+      }
+    });
+  });
+}
+
+export const messaging = {
   post,
   sendToCurrentTab,
-  createPortUtils,
+  addMessageHandler,
 };
