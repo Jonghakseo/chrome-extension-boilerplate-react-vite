@@ -6,6 +6,7 @@ export function watchPublicPlugin(): PluginOption {
     name: 'watch-public-plugin',
     async buildStart() {
       const files = await fg(['public/**/*']);
+
       for (const file of files) {
         this.addWatchFile(file);
       }

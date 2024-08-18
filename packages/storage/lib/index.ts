@@ -1,5 +1,7 @@
-import type { BaseStorage } from './base';
-import { createStorage, SessionAccessLevel, StorageType } from './base';
+import { createStorage } from './base';
 import { exampleThemeStorage } from './exampleThemeStorage';
+import { SessionAccessLevelEnum, StorageEnum } from './enums';
+import type { BaseStorage } from './types';
 
-export { exampleThemeStorage, createStorage, StorageType, SessionAccessLevel, BaseStorage };
+export { exampleThemeStorage, createStorage, StorageEnum, SessionAccessLevelEnum };
+export type { BaseStorage };
