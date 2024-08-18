@@ -14,7 +14,7 @@ const Options = () => {
       <p>
         Edit <code>pages/options/src/Options.tsx</code>
       </p>
-      <Button onClick={exampleThemeStorage.toggle} theme={theme}>
+      <Button className="mt-4" onClick={exampleThemeStorage.toggle} theme={theme}>
         Toggle theme
       </Button>
     </div>

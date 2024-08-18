@@ -20,7 +20,7 @@ const NewTab = () => {
           Edit <code>pages/new-tab/src/NewTab.tsx</code>
         </p>
         <h6>The color of this paragraph is defined using SASS.</h6>
-        <Button onClick={exampleThemeStorage.toggle} theme={theme}>
+        <Button className="mt-4" onClick={exampleThemeStorage.toggle} theme={theme}>
           {t('toggleTheme')}
         </Button>
       </header>

@@ -5,7 +5,7 @@ import deepmerge from 'deepmerge';
 import { isDev, isProduction } from './env.mjs';
 
 export const watchOption = isDev ? {
-  buildDelay: 50,
+  buildDelay: 100,
   chokidar: {
     ignored:[
       /\/packages\/.*\.(ts|tsx|map)$/,
