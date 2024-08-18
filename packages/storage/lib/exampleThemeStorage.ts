@@ -1,20 +1,15 @@
-import type { BaseStorage } from './base';
-import { createStorage, StorageType } from './base';
-
-type Theme = 'light' | 'dark';
-
-type ThemeStorage = BaseStorage<Theme> & {
-  toggle: () => Promise<void>;
-};
+import { createStorage } from './base';
+import { StorageEnum } from './enums';
+import type { Theme, ThemeStorage } from './types';
 
 const storage = createStorage<Theme>('theme-storage-key', 'light', {
-  storageType: StorageType.Local,
+  storageEnum: StorageEnum.Local,
   liveUpdate: true,
 });
 
+// You can extend it with your own methods
 export const exampleThemeStorage: ThemeStorage = {
   ...storage,
-  // TODO: extends your own methods
   toggle: async () => {
     await storage.set(currentTheme => {
       return currentTheme === 'light' ? 'dark' : 'light';
