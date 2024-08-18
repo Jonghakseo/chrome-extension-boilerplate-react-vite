@@ -1,6 +1,6 @@
 {
   "name": "@extension/tailwindcss-config",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Tailwind CSS configuration for boilerplate",
   "main": "./tailwind.config.js",
   "private": true
