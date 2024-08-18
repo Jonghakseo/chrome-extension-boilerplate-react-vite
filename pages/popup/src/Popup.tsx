@@ -11,10 +11,16 @@ const Popup = () => {
   const injectContentScript = async () => {
     const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
 
-    await chrome.scripting.executeScript({
-      target: { tabId: tab.id! },
-      files: ['/content-runtime/index.iife.js'],
-    });
+    await chrome.scripting
+      .executeScript({
+        target: { tabId: tab.id! },
+        files: ['/content-runtime/index.iife.js'],
+      })
+      .catch(err => {
+        if (err.message.includes('Cannot access a chrome:// URL')) {
+          alert('You cannot inject script here!');
+        }
+      });
   };
 
   return (
