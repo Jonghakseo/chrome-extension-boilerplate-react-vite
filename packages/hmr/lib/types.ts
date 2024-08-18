@@ -1,4 +1,4 @@
-import type { BUILD_COMPLETE, DO_UPDATE, DONE_UPDATE, ERROR } from './constant';
+import type { BUILD_COMPLETE, DO_UPDATE, DONE_UPDATE } from './constant';
 
 type UpdateRequestMessage = {
   type: typeof DO_UPDATE;
@@ -6,12 +6,11 @@ type UpdateRequestMessage = {
 };
 
 type UpdateCompleteMessage = { type: typeof DONE_UPDATE };
-type ErrorMessage = { type: typeof ERROR };
 type BuildCompletionMessage = { type: typeof BUILD_COMPLETE; id: string };
 
 export type SerializedMessage = string;
 
-export type WebSocketMessage = UpdateCompleteMessage | UpdateRequestMessage | BuildCompletionMessage | ErrorMessage;
+export type WebSocketMessage = UpdateCompleteMessage | UpdateRequestMessage | BuildCompletionMessage;
 
 export type PluginConfig = {
   onStart?: () => void;
