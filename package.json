@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/chrome": "^0.0.270",
-    "@types/node": "^20.14.10",
+    "@types/node": "^22.4.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
