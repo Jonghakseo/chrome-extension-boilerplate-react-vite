@@ -4,7 +4,7 @@
     "message": "Chrome extension boilerplate developed with Vite, React and Typescript"
   },
   "extensionName": {
-    "description": "Extension name",
+    "description": "Anti YouTube Spoil",
     "message": "Chrome extension boilerplate"
   },
   "toggleTheme": {
