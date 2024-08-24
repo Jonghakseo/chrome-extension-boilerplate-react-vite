@@ -37,7 +37,7 @@ export default function App() {
 }
 
 const searchWeather = async (search: string) => {
-  const results = await messaging.post('SearchWeather', { search });
+  const results = await messaging.sendMessage('SearchWeather', { search });
   const weatherInfo = results.at(0);
   if (!weatherInfo) {
     alert('No weather information found');

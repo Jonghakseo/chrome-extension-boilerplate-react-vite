@@ -5,23 +5,7 @@ type Response<Type> = Type extends Message['type'] ? (Message & { type: Type })[
 
 const ERROR_SUFFIX = '__Error';
 
-/**
- * To receive messages, use `chrome.runtime.onConnect.addListener`.
- * Or use `addMessageHandler` to add multiple message handlers.
- *
- * @example
- * ```ts
- *  messaging.addMessageHandler({
- *     Greeting: async ({ name }) => {
- *      return `Hello, ${name}!`;
- *     },
- *    SearchWeather: async payload => {
- *       return await searchWeather(payload.search);
- *     },
- *  });
- * ```
- */
-function post<T extends Message['type']>(type: T, payload?: Payload<T>): Promise<Response<T>> {
+function sendMessageByPort<T extends Message['type']>(type: T, payload?: Payload<T>): Promise<Response<T>> {
   return new Promise((resolve, reject) => {
     const port = chrome.runtime.connect();
 
@@ -42,6 +26,22 @@ function post<T extends Message['type']>(type: T, payload?: Payload<T>): Promise
   });
 }
 
+function sendMessage<T extends Message['type']>(type: T, payload?: Payload<T>): Promise<Response<T>> {
+  return new Promise((resolve, reject) => {
+    try {
+      chrome.runtime.sendMessage({ type, payload }, response => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError);
+        } else {
+          resolve(response as Response<T>);
+        }
+      });
+    } catch (error) {
+      console.error('Error in `sendMessage`', error);
+    }
+  });
+}
+
 /**
  * To receive messages, use `chrome.runtime.onMessage.addListener`.
  * Or use `addMessageHandler` to add multiple message handlers.
@@ -58,7 +58,7 @@ function post<T extends Message['type']>(type: T, payload?: Payload<T>): Promise
  *  });
  * ```
  */
-const sendToCurrentTab = <M extends Message>(type: M['type'], payload?: M['payload']) => {
+const sendMessageToCurrentTab = <M extends Message>(type: M['type'], payload?: M['payload']) => {
   chrome.tabs.query({ active: true, currentWindow: true }, pages => {
     const currentTabId = pages.at(0)?.id;
     if (currentTabId) {
@@ -97,6 +97,22 @@ type Handlers = {
   ) => Promise<Response<Type>> | Response<Type>;
 };
 
+/**
+ * To receive messages, use `chrome.runtime.onConnect.addListener`.
+ * Or use `addMessageHandler` to add multiple message handlers.
+ *
+ * @example
+ * ```ts
+ *  messaging.addMessageHandler({
+ *     Greeting: async ({ name }) => {
+ *      return `Hello, ${name}!`;
+ *     },
+ *    SearchWeather: async payload => {
+ *       return await searchWeather(payload.search);
+ *     },
+ *  });
+ * ```
+ */
 function addMessageHandler(handlers: Handlers) {
   chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) => {
     const { response, handleError } = createPortUtils(sendResponse);
@@ -131,7 +147,8 @@ function addMessageHandler(handlers: Handlers) {
 }
 
 export const messaging = {
-  post,
-  sendToCurrentTab,
+  sendMessageByPort,
+  sendMessage,
+  sendMessageToCurrentTab,
   addMessageHandler,
 };
