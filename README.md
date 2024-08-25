@@ -70,7 +70,7 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 1. Clone this repository.
 2. Change `extensionDescription` and `extensionName` in `messages.json` file.
-3. Install pnpm globally: `npm install -g pnpm` (check your node version >= 18.12.0)
+3. Install pnpm globally: `npm install -g pnpm` (check your node version >= 18.19.1)
 4. Run `pnpm install`
 
 ### And then, depending on needs:
