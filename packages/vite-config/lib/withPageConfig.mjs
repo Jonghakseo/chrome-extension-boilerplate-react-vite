@@ -37,6 +37,7 @@ export function withPageConfig(config) {
         define: {
           'process.env.NODE_ENV': isDev ? `"development"` : `"production"`,
         },
+        envDir: '../..'
       },
       config,
     ),
