@@ -5,7 +5,7 @@
     "paths": {
       "@lib/*": ["lib/*"]
     },
-    "types": ["chrome"]
+    "types": ["chrome", "../../vite-env.d.ts"]
   },
   "include": ["lib"]
 }

@@ -43,4 +43,5 @@ export default defineConfig({
       external: ['chrome'],
     },
   },
+  envDir: '../',
 });
