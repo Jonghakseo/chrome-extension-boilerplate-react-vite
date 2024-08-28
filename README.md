@@ -98,6 +98,21 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ### <i>Remember in firefox you add plugin in temporary mode, that's mean it's disappear after close browser, you must do it again, on next launch.</i>
 
+## Env Variables
+
+1. Copy `.example.env` and past it as `.env` in the same path
+2. Add a new record inside `.env`
+3. Add this key with type for value to `vite-end.d.ts` (root) to `ImportMetaEnv`
+4. Then you can use it with `import.meta.env.{YOUR_KEY}` like with standard [Vite Env](https://vitejs.dev/guide/env-and-mode)
+
+#### If you want to set it for each package independently:
+
+1. Create `.env` inside that package
+2. Open related `vite.config.mts` and add `envDir: '.'` at the end of this config
+3. Rest steps like above
+
+#### Remember you can't use global and local at the same time for the same package(It will be overwritten)
+
 ## Structure <a name="structure"></a>
 
 ### ChromeExtension <a name="chrome-extension"></a>

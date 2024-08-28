@@ -10,7 +10,7 @@
 **/dist-zip
 
 # env
-**/.env.local
+**/.env.*
 **/.env
 
 # etc

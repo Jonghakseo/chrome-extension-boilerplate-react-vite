@@ -1,6 +1,5 @@
 import { createRoot } from 'react-dom/client';
 import App from '@src/app';
-// @ts-expect-error That's because output file is create during build
 import tailwindcssOutput from '../dist/tailwind-output.css?inline';
 
 const root = document.createElement('div');

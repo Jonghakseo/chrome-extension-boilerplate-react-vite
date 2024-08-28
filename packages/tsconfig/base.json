@@ -16,6 +16,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
+    "module": "esnext",
     "noImplicitReturns": true,
     "jsx": "react-jsx",
     "lib": [
