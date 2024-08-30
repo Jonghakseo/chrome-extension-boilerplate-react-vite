@@ -42,22 +42,6 @@ function sendMessage<T extends Message['type']>(type: T, payload?: Payload<T>): 
   });
 }
 
-/**
- * To receive messages, use `chrome.runtime.onMessage.addListener`.
- * Or use `addMessageHandler` to add multiple message handlers.
- *
- * @example
- * ```ts
- *  messaging.addMessageHandler({
- *     Greeting: async ({ name }) => {
- *      return `Hello, ${name}!`;
- *     },
- *    SearchWeather: async payload => {
- *       return await searchWeather(payload.search);
- *     },
- *  });
- * ```
- */
 const sendMessageToCurrentTab = <M extends Message>(type: M['type'], payload?: M['payload']) => {
   chrome.tabs.query({ active: true, currentWindow: true }, pages => {
     const currentTabId = pages.at(0)?.id;
@@ -97,23 +81,7 @@ type Handlers = {
   ) => Promise<Response<Type>> | Response<Type>;
 };
 
-/**
- * To receive messages, use `chrome.runtime.onConnect.addListener`.
- * Or use `addMessageHandler` to add multiple message handlers.
- *
- * @example
- * ```ts
- *  messaging.addMessageHandler({
- *     Greeting: async ({ name }) => {
- *      return `Hello, ${name}!`;
- *     },
- *    SearchWeather: async payload => {
- *       return await searchWeather(payload.search);
- *     },
- *  });
- * ```
- */
-function addMessageHandler(handlers: Handlers) {
+function addHandlerBySendMessage(handlers: Handlers) {
   chrome.runtime.onMessage.addListener((message: Message, sender, sendResponse) => {
     const { response, handleError } = createPortUtils(sendResponse);
     const handler = handlers[message.type];
@@ -129,7 +97,9 @@ function addMessageHandler(handlers: Handlers) {
     }
     return true;
   });
+}
 
+function addHandlerByPort(handlers: Handlers) {
   chrome.runtime.onConnect.addListener(port => {
     const { response, handleError } = createPortUtils(message => port.postMessage(message));
     port.onMessage.addListener(async (message: Message) => {
@@ -146,9 +116,16 @@ function addMessageHandler(handlers: Handlers) {
   });
 }
 
+function addMessageHandler(handlers: Handlers) {
+  addHandlerBySendMessage(handlers);
+  addHandlerByPort(handlers);
+}
+
 export const messaging = {
   sendMessageByPort,
   sendMessage,
   sendMessageToCurrentTab,
+  addHandlerByPort,
+  addHandlerBySendMessage,
   addMessageHandler,
 };
