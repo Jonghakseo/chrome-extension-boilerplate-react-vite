@@ -139,10 +139,11 @@ function on<T extends MessageType>(
   handleMessage: (payload: Payload<T>, sender?: chrome.runtime.MessageSender) => Promise<Response<T>> | Response<T>,
   options?: AddMessageHandlerOptions,
 ) {
-  if (options?.by === 'sendMessage' || options?.by === 'both') {
+  const { by = 'both' } = options ?? {};
+  if (by === 'sendMessage' || by === 'both') {
     addHandlerBySendMessage(type, handleMessage);
   }
-  if (options?.by === 'port' || options?.by === 'both') {
+  if (by === 'port' || by === 'both') {
     addHandlerByPort(type, handleMessage);
   }
 }
