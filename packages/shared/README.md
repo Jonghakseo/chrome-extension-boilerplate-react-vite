@@ -10,3 +10,19 @@ To use the code in the package, you need to add the following to the package.jso
   }
 }
 ```
+
+## Messaging
+
+You can use messaging api to send/receive messages between context.
+
+```typescript
+import { messaging } from '@extension/shared';
+
+// Send message
+messaging.send('message', { data: 'data' });
+
+// Receive message
+messaging.on('message', (data) => {
+  console.log(data);
+});
+```

@@ -1,13 +1,9 @@
 import { messaging } from '@extension/shared';
 
 export function addMessageHandler() {
-  messaging.addMessageHandler({
-    Greeting: async ({ name }) => {
-      return `Hello, ${name}!`;
-    },
-    SearchWeather: async payload => {
-      return await searchWeather(payload.search);
-    },
+  messaging.on('Greeting', async ({ name }) => `Hello, ${name}!`);
+  messaging.on('SearchWeather', async ({ search }) => {
+    return await searchWeather(search);
   });
 }
 
