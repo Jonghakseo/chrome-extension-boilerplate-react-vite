@@ -1,12 +1,12 @@
 import '@src/NewTab.css';
 import '@src/NewTab.scss';
-import { useStorageSuspense, withErrorBoundary, withSuspense } from '@extension/shared';
+import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
 import { Button } from '@extension/ui';
 import { t } from '@extension/i18n';
 
 const NewTab = () => {
-  const theme = useStorageSuspense(exampleThemeStorage);
+  const theme = useStorage(exampleThemeStorage);
   const isLight = theme === 'light';
   const logo = isLight ? 'new-tab/logo_horizontal.svg' : 'new-tab/logo_horizontal_dark.svg';
 
