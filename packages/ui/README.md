@@ -26,14 +26,13 @@ Then, run `pnpm install`.
 pnpm install
 ```
 
-Add the following to the `tailwind.config.js` file.
+Add the following to the `tailwind.config.ts` file.
 
-```js
-const baseConfig = require('@extension/tailwindcss-config');
-const { withUI } = require('@extension/ui');
+```ts
+import baseConfig from '@extension/tailwindcss-config';
+import { withUI } from '@extension/ui';
 
-/** @type {import('tailwindcss').Config} */
-module.exports = withUI({
+export default withUI({
   ...baseConfig,
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
 });
