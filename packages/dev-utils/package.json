@@ -21,6 +21,6 @@
   "dependencies": {},
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
-    "@extension/utils": "workspace:*"
+    "@extension/shared": "workspace:*"
   }
 }
