@@ -11,7 +11,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "clean": "rimraf ./dist",
-    "ready:once": "node build.mjs",
+    "ready": "node build.mjs",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
