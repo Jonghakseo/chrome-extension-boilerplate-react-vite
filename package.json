@@ -9,7 +9,7 @@
   },
   "scripts": {
     "clean:node_modules": "pnpx rimraf --glob **/node_modules",
-    "clean": "turbo clean && turbo daemon stop && rimraf dist && rimraf .turbo",
+    "clean": "turbo clean && turbo daemon stop && rimraf dist && rimraf .turbo && pnpm clean:node_modules",
     "clean:install": "pnpm clean:node_modules && pnpm install --frozen-lockfile",
     "build": "turbo build",
     "build:firefox": "cross-env __FIREFOX__=true turbo build",
