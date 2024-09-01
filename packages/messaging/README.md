@@ -32,29 +32,20 @@ messaging.on('message', (payload) => {
 
 ### Message Types
 
-You should define message types in the `message/types.ts` file.
+You should define message types in the `type.ts` file.
 
 ```typescript
-
-interface BaseMessage<D = unknown, P = unknown> {
-  type: unknown;
-  payload?: P;
-  response?: D;
+export interface PayloadAndResponse<P = unknown, D = unknown> {
+  payload: P;
+  response: D;
 }
-
 /**
  * Define the type of messages
- */
-export type Message = GreetingMessage // | AnotherMessage | ...;
-
-/**
  * If you want to add a new message type, you can add it here.
  */
-
-export interface GreetingMessage extends BaseMessage {
-  type: 'greeting'; // Define the message type(string) here.
-  payload: string // Define the payload type here.
-  response: string // Define the response type here.
+export interface Messages {
+  greeting: PayloadAndResponse<string, string>;
+  //...
 }
 ```
 
