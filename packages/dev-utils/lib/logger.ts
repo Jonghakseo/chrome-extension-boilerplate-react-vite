@@ -1,5 +1,6 @@
+import type { ValueOf } from '@extension/shared';
+
 type ColorType = 'success' | 'info' | 'error' | 'warning' | keyof typeof COLORS;
-type ValueOf<T> = T[keyof T];
 
 export function colorLog(message: string, type: ColorType) {
   let color: ValueOf<typeof COLORS>;

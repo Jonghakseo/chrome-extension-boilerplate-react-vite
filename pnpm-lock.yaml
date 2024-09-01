@@ -142,6 +142,9 @@ importers:
 
   packages/dev-utils:
     devDependencies:
+      '@extension/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
