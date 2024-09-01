@@ -3,10 +3,10 @@ import * as fs from 'fs';
 import { resolve } from 'node:path';
 
 /**
- * @type { import("esbuild").BuildOptions }
+ * @type { import('esbuild').BuildOptions }
  */
 const buildOptions = {
-  entryPoints: ['./index.ts', './tailwind.config.ts', './lib/**/*.ts', './lib/**/*.tsx'],
+  entryPoints: ['./index.ts', './lib/**/*.ts', './lib/**/*.tsx'],
   tsconfig: './tsconfig.json',
   bundle: false,
   target: 'es6',
