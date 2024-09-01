@@ -9,6 +9,7 @@
   },
   "scripts": {
     "clean": "turbo clean && turbo daemon stop && rimraf dist && rimraf .turbo",
+    "clean:node_modules": "rimraf --glob **/node_modules",
     "build": "turbo build",
     "build:firefox": "cross-env __FIREFOX__=true turbo build",
     "zip": "turbo zip",
