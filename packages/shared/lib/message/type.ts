@@ -1,35 +1,26 @@
-interface BaseMessage<D = unknown, P = unknown> {
-  type: unknown;
-  payload?: P;
-  response?: D;
+export type MessageType = keyof Messages extends never ? string : keyof Messages;
+// @ts-expect-error This is a placeholder type
+export type Message<K extends MessageType = unknown> = PayloadAndResponse & Messages[K] & { type: K };
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+
+export type Payload<Type extends MessageType> = Messages[Type] extends PayloadAndResponse<infer P, unknown> ? P : never;
+
+export type Response<Type extends MessageType> =
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  Messages[Type] extends PayloadAndResponse<unknown, infer D> ? D : never;
+
+export interface PayloadAndResponse<P = unknown, D = unknown> {
+  payload: P;
+  response: D;
 }
 
 /**
  * Define the type of messages
- */
-export type Message = SearchWeatherMessage | GreetingMessage;
-
-/**
  * If you want to add a new message type, you can add it here.
  */
-
-export interface GreetingMessage extends BaseMessage {
-  type: 'Greeting';
-  payload: {
-    name: string;
-  };
-  response: string;
-}
-
-export interface SearchWeatherMessage extends BaseMessage {
-  type: 'SearchWeather';
-  payload: {
-    search: string;
-  };
-  response: Array<{
-    city: string;
-    temperature: number;
-    humidity: number;
-    description: string;
-  }>;
+export interface Messages {
+  foo: PayloadAndResponse<{ bar: string }, string>;
 }

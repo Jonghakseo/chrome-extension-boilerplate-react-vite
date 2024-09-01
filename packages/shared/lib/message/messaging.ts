@@ -1,8 +1,4 @@
-import type { Message } from './type';
-
-type MessageType = Message['type'];
-type Payload<Type> = Type extends MessageType ? (Message & { type: Type })['payload'] : never;
-type Response<Type> = Type extends MessageType ? (Message & { type: Type })['response'] : never;
+import type { Message, MessageType, Response, Payload } from './type';
 
 const ERROR_SUFFIX = '__Error';
 
@@ -10,11 +6,13 @@ function sendByPort<T extends MessageType>(type: T, payload?: Payload<T>): Promi
   return new Promise((resolve, reject) => {
     const port = chrome.runtime.connect();
 
-    port.onMessage.addListener((message: Message) => {
-      if (message.type.endsWith(ERROR_SUFFIX)) {
-        reject(message.response);
+    port.onMessage.addListener((message: Message<T>) => {
+      const type = message.type;
+      const response = message.response as Response<T>;
+      if (type.endsWith(ERROR_SUFFIX)) {
+        reject(response);
       } else {
-        resolve(message.response as Response<T>);
+        resolve(response);
       }
       port.disconnect();
     });
