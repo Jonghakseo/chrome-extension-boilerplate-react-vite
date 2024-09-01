@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { messaging } from '@extension/shared';
+import { messaging } from '@extension/messaging';
 
 export default function App() {
   useEffect(() => {

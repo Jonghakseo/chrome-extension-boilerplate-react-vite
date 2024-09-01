@@ -1,0 +1,10 @@
+{
+  "extends": "@extension/tsconfig/utils",
+  "compilerOptions": {
+    "outDir": "dist",
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "types": ["chrome"]
+  },
+  "include": ["index.ts", "lib"]
+}

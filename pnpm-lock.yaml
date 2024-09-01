@@ -102,6 +102,9 @@ importers:
 
   chrome-extension:
     dependencies:
+      '@extension/messaging':
+        specifier: workspace:*
+        version: link:../packages/messaging
       '@extension/shared':
         specifier: workspace:*
         version: link:../packages/shared
@@ -181,6 +184,12 @@ importers:
       '@extension/hmr':
         specifier: workspace:*
         version: link:../hmr
+      '@extension/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+
+  packages/messaging:
+    devDependencies:
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -283,6 +292,9 @@ importers:
 
   pages/content-ui:
     dependencies:
+      '@extension/messaging':
+        specifier: workspace:*
+        version: link:../../packages/messaging
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared

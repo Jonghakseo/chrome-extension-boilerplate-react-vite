@@ -1,13 +1,13 @@
 {
-  "name": "@extension/shared",
+  "name": "@extension/messaging",
   "version": "0.3.1",
-  "description": "chrome extension shared code",
+  "description": "chrome extension messaging api",
   "private": true,
   "sideEffects": false,
   "files": [
     "dist/**"
   ],
-  "types": "index.ts",
+  "types": "./index.ts",
   "main": "./dist/index.js",
   "scripts": {
     "clean": "rimraf ./dist",
@@ -19,7 +19,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@extension/storage": "workspace:*",
     "@extension/tsconfig": "workspace:*"
   }
 }

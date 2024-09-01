@@ -1,4 +1,17 @@
-import type { Message, MessageType, Response, Payload } from './type';
+import type { Messages, PayloadAndResponse } from './type';
+
+type MessageType = keyof Messages extends never ? string : keyof Messages;
+// @ts-expect-error This is a placeholder type
+type Message<K extends MessageType = unknown> = PayloadAndResponse & Messages[K] & { type: K };
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+type Payload<Type extends MessageType> = Messages[Type] extends PayloadAndResponse<infer P, unknown> ? P : never;
+
+export type Response<Type extends MessageType> =
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  Messages[Type] extends PayloadAndResponse<unknown, infer D> ? D : never;
 
 const ERROR_SUFFIX = '__Error';
 

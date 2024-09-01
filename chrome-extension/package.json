@@ -20,7 +20,8 @@
   "dependencies": {
     "webextension-polyfill": "^0.12.0",
     "@extension/shared": "workspace:*",
-    "@extension/storage": "workspace:*"
+    "@extension/storage": "workspace:*",
+    "@extension/messaging": "workspace:*"
   },
   "devDependencies": {
     "@extension/dev-utils": "workspace:*",
