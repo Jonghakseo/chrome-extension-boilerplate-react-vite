@@ -10,7 +10,7 @@
   "scripts": {
     "clean:node_modules": "pnpx rimraf --glob **/node_modules",
     "clean:turbo": "turbo clean && turbo daemon stop && rimraf dist && rimraf .turbo",
-    "clean": "pnpm clean:turbo && pnpm clean:node_modules" ,
+    "clean": "pnpm clean:turbo && pnpm clean:node_modules",
     "clean:install": "pnpm clean:node_modules && pnpm install --frozen-lockfile",
     "build": "turbo build",
     "build:firefox": "cross-env __FIREFOX__=true turbo build",
@@ -62,8 +62,7 @@
     "turbo": "^2.0.12",
     "typescript": "5.5.4",
     "vite": "5.4.1",
-    "run-script-os": "^1.1.6",
-    "rimraf": "^6.0.1"
+    "run-script-os": "^1.1.6"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
