@@ -1,10 +1,10 @@
 import '@src/Popup.css';
-import { useStorageSuspense, withErrorBoundary, withSuspense } from '@extension/shared';
+import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const Popup = () => {
-  const theme = useStorageSuspense(exampleThemeStorage);
+  const theme = useStorage(exampleThemeStorage);
   const isLight = theme === 'light';
   const logo = isLight ? 'popup/logo_vertical.svg' : 'popup/logo_vertical_dark.svg';
 
@@ -45,7 +45,7 @@ const Popup = () => {
 };
 
 const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
-  const theme = useStorageSuspense(exampleThemeStorage);
+  const theme = useStorage(exampleThemeStorage);
   return (
     <button
       className={

@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Button } from '@extension/ui';
-import { useStorageSuspense } from '@extension/shared';
+import { useStorage } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
 
 export default function App() {
-  const theme = useStorageSuspense(exampleThemeStorage);
+  const theme = useStorage(exampleThemeStorage);
 
   useEffect(() => {
     console.log('content ui loaded');
