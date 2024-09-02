@@ -17,7 +17,7 @@
     "zip": "turbo zip",
     "zip:firefox": "cross-env __FIREFOX__=true turbo zip",
     "dev-server": "pnpm -F hmr ready && pnpm -F hmr dev",
-    "dev": "turbo ready && turbo watch dev --concurrency 20",
+    "dev": "turbo ready && turbo run dev --concurrency 20",
     "dev:firefox": "turbo ready && cross-env __FIREFOX__=true turbo watch dev --concurrency 20",
     "test": "turbo test",
     "type-check": "turbo type-check",
