@@ -1,7 +1,7 @@
 {
   "name": "@extension/storage",
   "version": "0.3.1",
-  "description": "chrome extension storage",
+  "description": "chrome extension - storage",
   "private": true,
   "sideEffects": false,
   "files": [
@@ -20,7 +20,6 @@
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
-  "dependencies": {},
   "devDependencies": {
     "@extension/tsconfig": "workspace:*"
   }

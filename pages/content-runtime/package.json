@@ -1,7 +1,7 @@
 {
   "name": "@extension/content-runtime-script",
   "version": "0.3.1",
-  "description": "chrome extension content runtime script",
+  "description": "chrome extension - content runtime script",
   "private": true,
   "sideEffects": true,
   "files": [

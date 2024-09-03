@@ -1,7 +1,7 @@
 {
   "name": "@extension/options",
   "version": "0.3.1",
-  "description": "chrome extension options",
+  "description": "chrome extension - options",
   "private": true,
   "sideEffects": true,
   "files": [

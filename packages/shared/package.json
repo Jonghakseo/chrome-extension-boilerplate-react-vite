@@ -1,7 +1,7 @@
 {
   "name": "@extension/shared",
   "version": "0.3.1",
-  "description": "chrome extension shared code",
+  "description": "chrome extension - shared code",
   "private": true,
   "sideEffects": false,
   "files": [
@@ -20,7 +20,6 @@
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
-  "dependencies": {},
   "devDependencies": {
     "@extension/storage": "workspace:*",
     "@extension/tsconfig": "workspace:*"
