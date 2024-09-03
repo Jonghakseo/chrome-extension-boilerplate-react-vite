@@ -1,7 +1,6 @@
 import type { SerializedMessage, WebSocketMessage } from '../types';
 
 export default class MessageInterpreter {
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   private constructor() {}
 
   static send(message: WebSocketMessage): SerializedMessage {
