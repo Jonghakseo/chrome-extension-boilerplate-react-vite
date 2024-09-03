@@ -12,7 +12,7 @@ import ts from 'typescript-eslint';
 export default ts.config(
   // Ignore patterns (.eslintignore)
   {
-    ignores: ['dist', 'node_modules', 'tailwind.config.ts', 'watch.js'],
+    ignores: ['**/build/**', '**/dist/**', '**/node_modules/**', 'tailwind.config.ts', 'watch.js'],
   },
 
   // Files to scan
@@ -30,7 +30,7 @@ export default ts.config(
   ...fixupConfigRules(new FlatCompat().extends('plugin:react-hooks/recommended')),
   // ...fixupConfigRules(new FlatCompat().extends('plugin:react-hooks/recommended', 'plugin:import/recommended')),
 
-  // General
+  // Custom config
   {
     languageOptions: {
       ecmaVersion: 'latest',
