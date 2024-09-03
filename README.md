@@ -37,10 +37,12 @@
     - [ChromeExtension](#chrome-extension)
     - [Packages](#packages)
     - [Pages](#pages)
-- [Install](#install)
-    - [Procedures](#procedures)
-        - [Chrome](#chrome)
-        - [Firefox](#firefox)
+- [Getting started](#getting-started)
+    - [Chrome](#getting-started-chrome)
+    - [Firefox](#getting-started-firefox)
+- [Install dependency](#install-dependency)
+  - [For root](#install-dependency-for-root)
+  - [For module](#install-dependency-for-module)
 - [Community](#community)
 - [Reference](#reference)
 - [Star History](#starhistory)
@@ -64,30 +66,26 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [Custom I18n Package](/packages/i18n/)
 - Custom HMR(Hot Module Rebuild) Plugin
 
-## Install <a name="install"></a>
-
-## Procedures: <a name="procedures"></a>
+## Getting started: <a name="getting-started"></a>
 
 1. Clone this repository.
 2. Change `extensionDescription` and `extensionName` in `messages.json` file.
 3. Install pnpm globally: `npm install -g pnpm` (check your node version >= 18.12.0)
 4. Run `pnpm install`
 
-## And next, depending on the needs:
+### And then, depending on needs:
 
-### For Chrome: <a name="chrome"></a>
+### For Chrome: <a name="getting-started-chrome"></a>
 
 1. Run:
-    - Dev: `pnpm dev`
-      - When you run with Windows, you should run as
-        administrator. [(Issue#456)](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/456)
+    - Dev: `pnpm dev` (On windows, you should run as administrator. [(Issue#456)](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/456)
     - Prod: `pnpm build`
 2. Open in browser - `chrome://extensions`
 3. Check - `Developer mode`
 4. Find and Click - `Load unpacked extension`
 5. Select - `dist` folder at root
 
-### For Firefox: <a name="firefox"></a>
+### For Firefox: <a name="getting-started-firefox"></a>
 
 1. Run:
     - Dev: `pnpm dev:firefox`
@@ -96,7 +94,22 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 3. Find and Click - `Load Temporary Add-on...`
 4. Select - `manifest.json` from `dist` folder at root
 
-### <i>Remember in firefox you add plugin in temporary mode, that's mean it's disappear after close browser, you must do it again, on next launch.</i>
+<h3>
+<i>Remember in firefox you add plugin in temporary mode, that's mean it'll disappear after each browser close.
+
+You have to do it on every browser launch.</i> 
+</h3>
+
+## Install dependency for turborepo: <a name="install-dependency"></a>
+
+### For root: <a name="install-dependency-for-root"></a>
+1. Run `pnpm i <package> -w`
+
+### For module: <a name="install-dependency-for-module"></a>
+1. Run `pnpm i <package> -F <module name>`
+
+`package` - Name of the package you want to install e.g. `nodemon` \
+`module-name` - You can find it inside each `package.json` under the key `name`, e.g. `@extension/content-script`
 
 ## Env Variables
 
