@@ -1,7 +1,7 @@
 {
   "name": "chrome-extension",
   "version": "0.3.1",
-  "description": "chrome extension",
+  "description": "chrome extension - core settings",
   "type": "module",
   "scripts": {
     "clean:node_modules": "pnpx rimraf node_modules",
