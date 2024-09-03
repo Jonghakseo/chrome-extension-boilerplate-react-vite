@@ -20,7 +20,7 @@
       "persistent": true
     },
     "build": {
-      "dependsOn": ["^build", "^ready"],
+      "dependsOn": ["clean:bundle", "type-check", "ready", "^build"],
       "outputs": [
         "../../dist/**",
         "dist/**",
@@ -44,7 +44,7 @@
       "cache": false
     },
     "test": {
-      "dependsOn": ["^test", "^build"],
+      "dependsOn": ["build", "^test"],
       "cache": false
     },
     "clean:node_modules": {
