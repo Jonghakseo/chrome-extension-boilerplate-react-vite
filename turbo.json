@@ -11,9 +11,7 @@
       ]
     },
     "dev": {
-      "dependsOn": [
-        "ready"
-      ],
+      "dependsOn": ["ready"],
       "outputs": [
         "dist/**",
         "build/**",
@@ -22,10 +20,7 @@
       "persistent": true
     },
     "build": {
-      "dependsOn": [
-        "^build",
-        "ready"
-      ],
+      "dependsOn": ["^build", "ready"],
       "outputs": [
         "../../dist/**",
         "dist/**",
@@ -33,9 +28,7 @@
       ]
     },
     "zip": {
-      "dependsOn": [
-        "build"
-      ],
+      "dependsOn": ["build"],
       "cache": false
     },
     "type-check": {
@@ -51,10 +44,7 @@
       "cache": false
     },
     "test": {
-      "dependsOn": [
-        "^test",
-        "^build"
-      ],
+      "dependsOn": ["^test", "^build"],
       "cache": false
     },
     "clean:node_modules": {
