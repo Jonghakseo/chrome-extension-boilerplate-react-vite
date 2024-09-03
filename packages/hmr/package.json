@@ -14,7 +14,6 @@
     "clean:bundle": "pnpx rimraf dist && pnpx rimraf build",
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "pnpx rimraf .turbo",
-    "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
     "build:tsc": "tsc -b tsconfig.build.json",
     "build:rollup": "rollup --config rollup.config.mjs",
     "ready": "pnpm run build:tsc && pnpm run build:rollup",

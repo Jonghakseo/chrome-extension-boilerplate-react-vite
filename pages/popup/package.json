@@ -10,7 +10,6 @@
   "scripts": {
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "pnpx rimraf .turbo",
-    "clean": "pnpm clean:node_modules && pnpm clean:turbo",
     "build": "pnpm type-check && vite build",
     "dev": "cross-env __DEV__=true vite build --mode development",
     "lint": "eslint . --ext .ts,.tsx",
