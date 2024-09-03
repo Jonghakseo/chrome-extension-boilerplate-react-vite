@@ -56,7 +56,20 @@
       ],
       "cache": false
     },
+    "clean:node_modules": {
+      "dependsOn": ["^clean:node_modules"],
+      "cache": false
+    },
+    "clean:turbo": {
+      "dependsOn": ["^clean:turbo"],
+      "cache": false
+    },
+    "clean:bundle": {
+      "dependsOn": ["^clean:bundle"],
+      "cache": false
+    },
     "clean": {
+      "dependsOn": ["clean:node_modules", "clean:turbo", "clean:bundle"],
       "cache": false
     }
   }

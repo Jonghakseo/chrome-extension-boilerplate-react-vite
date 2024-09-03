@@ -9,9 +9,12 @@
     "dist/**"
   ],
   "scripts": {
-    "clean": "rimraf ./dist",
+    "clean:bundle": "pnpx rimraf dist",
+    "clean:node_modules": "pnpx rimraf node_modules",
+    "clean:turbo": "pnpx rimraf .turbo",
+    "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
     "build:tailwindcss": "pnpm dlx tailwindcss -i ./src/tailwind-input.css -o ./dist/tailwind-output.css -m",
-    "build": "pnpm clean && pnpm type-check && pnpm build:tailwindcss && vite build",
+    "build": "pnpm clean:bundle && pnpm type-check && pnpm build:tailwindcss && vite build",
     "build:watch": "concurrently \"cross-env __DEV__=true vite build --mode development\" \"pnpm build:tailwindcss -- -w\"",
     "dev": "pnpm build:tailwindcss && pnpm build:watch",
     "lint": "eslint . --ext .ts,.tsx",

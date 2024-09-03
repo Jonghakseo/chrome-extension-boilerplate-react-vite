@@ -10,7 +10,10 @@
   "types": "index.ts",
   "main": "./dist/index.js",
   "scripts": {
-    "clean": "rimraf ./dist",
+    "clean:bundle": "pnpx rimraf dist",
+    "clean:node_modules": "pnpx rimraf node_modules",
+    "clean:turbo": "pnpx rimraf .turbo",
+    "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
     "ready": "node build.mjs",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",

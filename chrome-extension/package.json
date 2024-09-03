@@ -2,9 +2,12 @@
   "name": "chrome-extension",
   "version": "0.3.1",
   "description": "chrome extension",
+  "type": "module",
   "scripts": {
-    "clean": "rimraf ../../dist",
     "build": "tsc --noEmit && vite build",
+    "clean:node_modules": "pnpx rimraf node_modules",
+    "clean:turbo": "pnpx rimraf .turbo",
+    "clean": "pnpm clean:node_modules && pnpm clean:turbo",
     "build:firefox": "tsc --noEmit && cross-env __FIREFOX__=true vite build",
     "build:watch": "cross-env __DEV__=true vite build --mode development",
     "build:firefox:watch": "cross-env __DEV__=true __FIREFOX__=true vite build --mode development",
@@ -16,7 +19,6 @@
     "prettier": "prettier . --write --ignore-path ../.prettierignore",
     "type-check": "tsc --noEmit"
   },
-  "type": "module",
   "dependencies": {
     "webextension-polyfill": "^0.12.0",
     "@extension/shared": "workspace:*",
