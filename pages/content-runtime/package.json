@@ -12,14 +12,12 @@
     "clean:turbo": "pnpx rimraf .turbo",
     "clean": "pnpm clean:node_modules && pnpm clean:turbo",
     "build": "pnpm type-check && vite build",
-    "build:watch": "cross-env __DEV__=true vite build -w --mode development",
-    "dev": "pnpm build:watch",
+    "dev": "cross-env __DEV__=true vite build --mode development",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
-  "dependencies": {},
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
     "@extension/hmr": "workspace:*",

@@ -24,7 +24,6 @@
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
-  "dependencies": {},
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
     "@rollup/plugin-sucrase": "^5.0.2",

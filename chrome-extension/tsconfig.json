@@ -1,7 +1,7 @@
 {
   "extends": "@extension/tsconfig/app",
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "types": ["vite/client", "node", "chrome"],
     "paths": {
       "@root/*": ["./*"],

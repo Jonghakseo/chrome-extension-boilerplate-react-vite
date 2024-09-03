@@ -15,8 +15,11 @@
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
     "build:tailwindcss": "pnpm dlx tailwindcss -i ./src/tailwind-input.css -o ./dist/tailwind-output.css -m",
     "build": "pnpm clean:bundle && pnpm type-check && pnpm build:tailwindcss && vite build",
+    "build:firefox": "pnpm clean:bundle && pnpm type-check && pnpm build:tailwindcss && cross-env __FIREFOX__=true vite build",
     "build:watch": "concurrently \"cross-env __DEV__=true vite build --mode development\" \"pnpm build:tailwindcss -- -w\"",
+    "build:firefox:watch": "concurrently \"cross-env __DEV__=true __FIREFOX__=true vite build --mode development\" \"pnpm build:tailwindcss -- -w\"",
     "dev": "pnpm build:tailwindcss && pnpm build:watch",
+    "dev:firefox": "pnpm build:tailwindcss && pnpm build:firefox:watch",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
@@ -32,6 +35,7 @@
     "@extension/tsconfig": "workspace:*",
     "@extension/hmr": "workspace:*",
     "@extension/vite-config": "workspace:*",
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3"
   }
 }

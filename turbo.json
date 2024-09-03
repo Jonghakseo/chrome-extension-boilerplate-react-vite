@@ -4,6 +4,7 @@
   "globalEnv": ["__FIREFOX__"],
   "tasks": {
     "ready": {
+      "dependsOn": ["^ready"],
       "outputs": [
         "dist/**",
         "build/**"
