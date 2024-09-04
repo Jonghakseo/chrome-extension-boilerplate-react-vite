@@ -52,7 +52,7 @@
       "cache": false
     },
     "clean": {
-      "dependsOn": ["clean:node_modules", "clean:turbo", "clean:bundle"],
+      "dependsOn": ["^clean"],
       "cache": false
     }
   }

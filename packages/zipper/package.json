@@ -14,6 +14,7 @@
     "clean:bundle": "pnpx rimraf dist",
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "pnpx rimraf .turbo",
+    "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
     "zip": "tsx index.ts",
     "ready": "tsc",
     "lint": "eslint . --ext .ts,.tsx",
