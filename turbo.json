@@ -20,7 +20,7 @@
       "persistent": true
     },
     "build": {
-      "dependsOn": ["clean:bundle", "type-check", "ready", "^build"],
+      "dependsOn": ["^build"],
       "outputs": [
         "../../dist/**",
         "dist/**",
