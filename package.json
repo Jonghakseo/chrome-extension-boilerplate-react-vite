@@ -24,7 +24,6 @@
     "zip:firefox": "turbo build && cross-env __FIREFOX__=true pnpm -F zipper zip",
     "dev": "cross-env __DEV__=true turbo watch dev --concurrency 20",
     "dev:firefox": "cross-env __DEV__=true __FIREFOX__=true turbo watch dev --concurrency 20",
-    "test": "turbo test",
     "type-check": "turbo type-check",
     "lint": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:fix": "turbo lint:fix --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
