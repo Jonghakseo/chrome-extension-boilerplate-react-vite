@@ -41,8 +41,8 @@
     - [Chrome](#getting-started-chrome)
     - [Firefox](#getting-started-firefox)
 - [Install dependency](#install-dependency)
-  - [For root](#install-dependency-for-root)
-  - [For module](#install-dependency-for-module)
+    - [For root](#install-dependency-for-root)
+    - [For module](#install-dependency-for-module)
 - [Community](#community)
 - [Reference](#reference)
 - [Star History](#starhistory)
@@ -97,19 +97,21 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 <h3>
 <i>Remember in firefox you add plugin in temporary mode, that's mean it'll disappear after each browser close.
 
-You have to do it on every browser launch.</i> 
+You have to do it on every browser launch.</i>
 </h3>
 
 ## Install dependency for turborepo: <a name="install-dependency"></a>
 
 ### For root: <a name="install-dependency-for-root"></a>
+
 1. Run `pnpm i <package> -w`
 
 ### For module: <a name="install-dependency-for-module"></a>
+
 1. Run `pnpm i <package> -F <module name>`
 
 `package` - Name of the package you want to install e.g. `nodemon` \
-`module-name` - You can find it inside each `package.json` under the key `name`, e.g. `@extension/content-script`
+`module-name` - You can find it inside each `package.json` under the key `name`, e.g. `@extension/content-script`, you can use only `content-script` without `@extension/` prefix
 
 ## Env Variables
 
@@ -151,7 +153,7 @@ Some shared packages
 - `tsconfig` - shared tsconfig for entire project
 - `ui` - here's a function to merge your tailwind config with global one, and you can save components here
 - `vite-config` - shared vite config for entire project
-- `zipper` - By ```pnpm zip``` you can pack ```dist``` folder into ```extension.zip``` inside newly created ```dist-zip``` 
+- `zipper` - By ```pnpm zip``` you can pack ```dist``` folder into ```extension.zip``` inside newly created ```dist-zip```
 
 ### Pages <a name="pages"></a>
 
@@ -160,12 +162,12 @@ Some shared packages
 - `content-ui` - [content script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/) for render UI in
   user's page (`content_scripts` in manifest.json)
 - `content-runtime` - [content runtime script](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts#functionality)
-   this can be inject from `popup` like standard `content`
+  this can be inject from `popup` like standard `content`
 - `devtools` - [devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/#creating) for chrome
   extension (`devtools_page` in manifest.json)
 - `devtools-panel` - devtools panel for [devtools](pages/devtools/src/index.ts)
 - `new-tab` - [new tab](https://developer.chrome.com/docs/extensions/mv3/override/) for chrome
-extension (`chrome_url_overrides.newtab` in manifest.json)
+  extension (`chrome_url_overrides.newtab` in manifest.json)
 - `options` - [options](https://developer.chrome.com/docs/extensions/mv3/options/) for chrome extension (`options_page`
   in manifest.json)
 - `popup` - [popup](https://developer.chrome.com/docs/extensions/reference/browserAction/) for chrome
