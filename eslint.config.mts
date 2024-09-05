@@ -1,5 +1,3 @@
-// @ts-check
-
 import { fixupConfigRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
@@ -26,7 +24,7 @@ export default ts.config(
   eslintPluginPrettierRecommended,
 
   // Add compatibility
-  // @ts-expect-error - mismatched typings
+  // ts-expect-error - mismatched typings
   ...fixupConfigRules(new FlatCompat().extends('plugin:react-hooks/recommended')),
   // ...fixupConfigRules(new FlatCompat().extends('plugin:react-hooks/recommended', 'plugin:import/recommended')),
 

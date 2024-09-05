@@ -81,6 +81,9 @@ importers:
       husky:
         specifier: ^9.1.4
         version: 9.1.7
+      jiti:
+        specifier: ^1.21.6
+        version: 1.21.7
       lint-staged:
         specifier: ^15.2.7
         version: 15.3.0

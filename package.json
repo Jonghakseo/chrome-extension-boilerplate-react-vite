@@ -56,6 +56,7 @@
     "eslint-plugin-react-hooks": "5.1.0-rc-4f604941-20240830",
     "globals": "^15.9.0",
     "husky": "^9.1.4",
+    "jiti": "^1.21.6",
     "lint-staged": "^15.2.7",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",

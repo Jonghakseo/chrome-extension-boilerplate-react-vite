@@ -17,7 +17,7 @@
     "genenrate-i8n": "node genenrate-i18n.mjs",
     "ready": "pnpm genenrate-i8n && node build.dev.mjs",
     "build": "pnpm genenrate-i8n && node build.prod.mjs",
-    "lint": "eslint .",
+    "lint": "eslint . --flag unstable_ts_config",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
