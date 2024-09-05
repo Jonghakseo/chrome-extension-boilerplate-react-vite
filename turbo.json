@@ -4,36 +4,29 @@
   "globalEnv": ["__FIREFOX__"],
   "tasks": {
     "ready": {
+      "dependsOn": ["^ready"],
       "outputs": [
         "dist/**",
         "build/**"
-      ]
+      ],
+      "cache": false
     },
     "dev": {
-      "dependsOn": [
-        "ready"
-      ],
+      "dependsOn": ["ready"],
       "outputs": [
         "dist/**",
         "build/**",
         "i18n/locales/**"
       ],
+      "cache": false,
       "persistent": true
     },
     "build": {
-      "dependsOn": [
-        "^build",
-        "ready"
-      ],
+      "dependsOn": ["^build"],
       "outputs": [
         "../../dist/**",
         "dist/**",
         "build/**"
-      ]
-    },
-    "zip": {
-      "dependsOn": [
-        "build"
       ],
       "cache": false
     },
@@ -49,14 +42,20 @@
     "prettier": {
       "cache": false
     },
-    "test": {
-      "dependsOn": [
-        "^test",
-        "^build"
-      ],
+    "clean:node_modules": {
+      "dependsOn": ["^clean:node_modules"],
+      "cache": false
+    },
+    "clean:turbo": {
+      "dependsOn": ["^clean:turbo"],
+      "cache": false
+    },
+    "clean:bundle": {
+      "dependsOn": ["^clean:bundle"],
       "cache": false
     },
     "clean": {
+      "dependsOn": ["^clean"],
       "cache": false
     }
   }

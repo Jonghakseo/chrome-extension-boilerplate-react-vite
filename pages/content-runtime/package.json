@@ -1,23 +1,23 @@
 {
   "name": "@extension/content-runtime-script",
   "version": "0.3.1",
-  "description": "chrome extension content runtime script",
+  "description": "chrome extension - content runtime script",
   "private": true,
   "sideEffects": true,
   "files": [
     "dist/**"
   ],
   "scripts": {
-    "clean": "rimraf ./dist",
-    "build": "pnpm run clean && pnpm type-check && vite build",
-    "build:watch": "cross-env __DEV__=true vite build -w --mode development",
-    "dev": "pnpm build:watch",
+    "clean:node_modules": "pnpx rimraf node_modules",
+    "clean:turbo": "pnpx rimraf .turbo",
+    "clean": "pnpm clean:node_modules && pnpm clean:turbo",
+    "build": "vite build",
+    "dev": "cross-env __DEV__=true vite build --mode development",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
-  "dependencies": {},
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
     "@extension/hmr": "workspace:*",
