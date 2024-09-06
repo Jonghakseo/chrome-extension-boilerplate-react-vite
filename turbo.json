@@ -10,7 +10,6 @@
       ]
     },
     "ready": {
-      "dependsOn": ["^ready"],
       "outputs": [
         "dist/**",
         "build/**"
