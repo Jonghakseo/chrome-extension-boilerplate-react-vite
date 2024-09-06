@@ -9,5 +9,5 @@
     },
     "noEmit": false
   },
-  "include": ["index.ts", "lib"]
+  "include": ["index.mts", "lib"]
 }
