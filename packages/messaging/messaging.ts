@@ -41,9 +41,9 @@ function sendByPort<T extends MessageType>(type: T, payload?: Payload<T>): Promi
 function sendBySendMessage<T extends MessageType>(type: T, payload?: Payload<T>): Promise<Response<T>> {
   return new Promise((resolve, reject) => {
     try {
-      chrome.runtime.sendMessage({ type, payload }, response => {
-        if (chrome.runtime.lastError) {
-          reject(chrome.runtime.lastError);
+      chrome.runtime.sendMessage({ type, payload }, ({ type, response }) => {
+        if (type.endsWith(ERROR_SUFFIX)) {
+          reject(response);
         } else {
           resolve(response as Response<T>);
         }
@@ -66,6 +66,7 @@ const sendToCurrentTab = <T extends MessageType>(type: T, payload?: Payload<T>) 
 };
 
 type SendOptions = {
+  /** @default 'port' */
   by?: 'port' | 'sendMessage';
 };
 
@@ -162,5 +163,9 @@ function on<T extends MessageType>(
 export const messaging = {
   sendToCurrentTab,
   send,
+  sendByPort,
+  sendBySendMessage,
   on,
+  onByPort: addHandlerByPort,
+  onBySendMessage: addHandlerBySendMessage,
 };
