@@ -1,7 +1,7 @@
 {
   "name": "@extension/messaging",
   "version": "0.3.1",
-  "description": "chrome extension messaging api",
+  "description": "chrome extension - messaging api",
   "private": true,
   "sideEffects": false,
   "files": [
