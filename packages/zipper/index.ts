@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import { zipBundle } from './lib/zip-bundle';
 
 // package the root dist file

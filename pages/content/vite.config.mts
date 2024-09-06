@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import { makeEntryPointPlugin } from '@extension/hmr';
 import { isDev, withPageConfig } from '@extension/vite-config';
 
