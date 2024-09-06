@@ -3,6 +3,13 @@ import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
 import type { ComponentPropsWithoutRef } from 'react';
 
+const notificationOptions = {
+  type: 'basic',
+  iconUrl: 'icon-34.png',
+  title: 'Injecting content script error',
+  message: 'You cannot inject script here!',
+} as const;
+
 const Popup = () => {
   const theme = useStorage(exampleThemeStorage);
   const isLight = theme === 'light';
@@ -11,14 +18,19 @@ const Popup = () => {
   const injectContentScript = async () => {
     const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
 
+    if (tab.url!.startsWith('about:') || tab.url!.startsWith('chrome:')) {
+      chrome.notifications.create('inject-error', notificationOptions);
+    }
+
     await chrome.scripting
       .executeScript({
         target: { tabId: tab.id! },
         files: ['/content-runtime/index.iife.js'],
       })
       .catch(err => {
+        // Handling errors related to other paths
         if (err.message.includes('Cannot access a chrome:// URL')) {
-          alert('You cannot inject script here!');
+          chrome.notifications.create('inject-error', notificationOptions);
         }
       });
   };
