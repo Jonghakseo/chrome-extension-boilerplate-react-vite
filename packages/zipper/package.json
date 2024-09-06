@@ -1,7 +1,7 @@
 {
   "name": "@extension/zipper",
   "version": "0.3.1",
-  "description": "chrome extension zipper",
+  "description": "chrome extension - zipper",
   "private": true,
   "sideEffects": false,
   "files": [
@@ -11,7 +11,10 @@
   "module": "dist/index.js",
   "types": "index.ts",
   "scripts": {
-    "clean": "rimraf ./dist && rimraf ./build",
+    "clean:bundle": "pnpx rimraf dist",
+    "clean:node_modules": "pnpx rimraf node_modules",
+    "clean:turbo": "pnpx rimraf .turbo",
+    "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
     "zip": "tsx index.ts",
     "ready:once": "tsc",
     "lint": "eslint . --ext .ts,.tsx",

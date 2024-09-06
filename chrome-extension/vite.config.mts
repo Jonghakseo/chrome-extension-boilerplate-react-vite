@@ -6,15 +6,15 @@ import { watchPublicPlugin, watchRebuildPlugin } from '@extension/hmr';
 import { isDev, isProduction, watchOption } from '@extension/vite-config';
 
 const rootDir = resolve(__dirname);
-const libDir = resolve(rootDir, 'lib');
+const srcDir = resolve(rootDir, 'src');
 
 const outDir = resolve(rootDir, '..', 'dist');
 export default defineConfig({
   resolve: {
     alias: {
       '@root': rootDir,
-      '@lib': libDir,
-      '@assets': resolve(libDir, 'assets'),
+      '@src': srcDir,
+      '@assets': resolve(srcDir, 'assets'),
     },
   },
   plugins: [
@@ -29,7 +29,7 @@ export default defineConfig({
   build: {
     lib: {
       formats: ['iife'],
-      entry: resolve(__dirname, 'lib/background/index.ts'),
+      entry: resolve(__dirname, 'src/background/index.ts'),
       name: 'BackgroundScript',
       fileName: 'background',
     },

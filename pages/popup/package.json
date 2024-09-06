@@ -1,17 +1,18 @@
 {
   "name": "@extension/popup",
   "version": "0.3.1",
-  "description": "chrome extension popup",
+  "description": "chrome extension - popup",
   "private": true,
   "sideEffects": true,
   "files": [
     "dist/**"
   ],
   "scripts": {
-    "clean": "rimraf ./dist",
-    "build": "pnpm run clean&& pnpm type-check && vite build",
-    "build:watch": "cross-env __DEV__=true vite build --mode development",
-    "dev": "pnpm build:watch",
+    "clean:node_modules": "pnpx rimraf node_modules",
+    "clean:turbo": "pnpx rimraf .turbo",
+    "clean": "pnpm clean:node_modules && pnpm clean:turbo",
+    "build": "vite build",
+    "dev": "cross-env __DEV__=true vite build --mode development",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
@@ -20,13 +21,13 @@
   "dependencies": {
     "@extension/shared": "workspace:*",
     "@extension/storage": "workspace:*",
-    "@extension/content-runtime-script": "workspace:*",
-    "@types/node": "^20.14.10"
+    "@extension/content-runtime-script": "workspace:*"
   },
   "devDependencies": {
     "@extension/tailwindcss-config": "workspace:*",
     "@extension/tsconfig": "workspace:*",
     "@extension/vite-config": "workspace:*",
-    "postcss-load-config": "^6.0.1"
+    "postcss-load-config": "^6.0.1",
+    "cross-env": "^7.0.3"
   }
 }

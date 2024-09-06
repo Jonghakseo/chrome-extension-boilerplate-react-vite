@@ -1,22 +1,20 @@
 {
   "name": "chrome-extension",
   "version": "0.3.1",
-  "description": "chrome extension",
+  "description": "chrome extension - core settings",
+  "type": "module",
   "scripts": {
-    "clean": "rimraf ../../dist",
-    "build": "tsc --noEmit && vite build",
-    "build:firefox": "tsc --noEmit && cross-env __FIREFOX__=true vite build",
-    "build:watch": "cross-env __DEV__=true vite build --mode development",
-    "build:firefox:watch": "cross-env __DEV__=true __FIREFOX__=true vite build --mode development",
-    "dev": "pnpm build:watch",
-    "dev:firefox": "pnpm build:firefox:watch",
+    "clean:node_modules": "pnpx rimraf node_modules",
+    "clean:turbo": "pnpx rimraf .turbo",
+    "clean": "pnpm clean:node_modules && pnpm clean:turbo",
+    "build": "vite build",
+    "dev": "cross-env __DEV__=true vite build --mode development",
     "test": "vitest run",
     "lint": "eslint ./ --ext .ts,.js,.tsx,.jsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../.prettierignore",
     "type-check": "tsc --noEmit"
   },
-  "type": "module",
   "dependencies": {
     "webextension-polyfill": "^0.12.0",
     "@extension/shared": "workspace:*",
@@ -32,6 +30,7 @@
     "@types/ws": "^8.5.12",
     "magic-string": "^0.30.10",
     "ts-loader": "^9.5.1",
-    "deepmerge": "^4.3.1"
+    "deepmerge": "^4.3.1",
+    "cross-env": "^7.0.3"
   }
 }

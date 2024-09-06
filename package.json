@@ -7,17 +7,19 @@
     "type": "git",
     "url": "https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite.git"
   },
+  "type": "module",
   "scripts": {
-    "clean": "turbo clean && turbo daemon stop && rimraf dist && rimraf .turbo",
-    "ready": "turbo ready:once && turbo ready",
-    "build": "turbo build",
-    "build:firefox": "cross-env __FIREFOX__=true turbo build",
-    "zip": "turbo zip",
-    "zip:firefox": "cross-env __FIREFOX__=true turbo zip",
-    "dev-server": "pnpm -F hmr ready:once && pnpm -F hmr dev",
-    "dev": "pnpm ready && turbo watch dev --concurrency 20",
-    "dev:firefox": "pnpm ready && cross-env __FIREFOX__=true turbo watch dev --concurrency 20",
-    "test": "turbo test",
+    "clean:bundle": "pnpx rimraf dist && pnpx rimraf dist-zip && pnpx turbo clean:bundle",
+    "clean:node_modules": "pnpx turbo daemon stop && pnpx rimraf node_modules && pnpx turbo clean:node_modules",
+    "clean:turbo": "pnpx turbo daemon stop && pnpx rimraf .turbo && pnpx turbo clean:turbo",
+    "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
+    "clean:install": "pnpm clean:node_modules && pnpm install --frozen-lockfile",
+    "build": "pnpm clean:bundle && turbo ready && turbo build",
+    "build:firefox": "pnpm clean:bundle && turbo ready && cross-env __FIREFOX__=true turbo build",
+    "zip": "turbo build && pnpm -F zipper zip",
+    "zip:firefox": "turbo build && cross-env __FIREFOX__=true pnpm -F zipper zip",
+    "dev": "turbo ready && cross-env __DEV__=true turbo watch dev --concurrency 20",
+    "dev:firefox": "turbo ready && cross-env __DEV__=true __FIREFOX__=true turbo watch dev --concurrency 20",
     "type-check": "turbo type-check",
     "lint": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:fix": "turbo lint:fix --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
@@ -27,14 +29,13 @@
     "update-version:win32": "bash update_version.sh",
     "update-version:default": "./update_version.sh"
   },
-  "type": "module",
   "dependencies": {
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.270",
-    "@types/node": "^20.14.10",
+    "@types/node": "^20.16.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
@@ -59,7 +60,7 @@
     "tslib": "^2.6.3",
     "turbo": "^2.0.12",
     "typescript": "5.5.4",
-    "vite": "5.4.1",
+    "vite": "5.4.3",
     "run-script-os": "^1.1.6"
   },
   "lint-staged": {
@@ -67,7 +68,7 @@
       "prettier --write"
     ]
   },
-  "packageManager": "pnpm@9.7.1",
+  "packageManager": "pnpm@9.9.0",
   "engines": {
     "node": ">=18.12.0"
   }

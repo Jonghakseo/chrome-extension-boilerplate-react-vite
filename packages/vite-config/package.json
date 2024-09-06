@@ -1,10 +1,14 @@
 {
   "name": "@extension/vite-config",
   "version": "0.3.1",
-  "description": "Vite base configuration",
+  "description": "chrome extension - vite base configuration",
   "main": "index.mjs",
   "type": "module",
   "private": true,
+  "scripts": {
+    "clean:node_modules": "pnpx rimraf node_modules",
+    "clean": "pnpm clean:node_modules"
+  },
   "devDependencies": {
     "@extension/hmr": "workspace:*",
     "@extension/tsconfig": "workspace:*",
