@@ -1,8 +1,8 @@
 import { createRoot } from 'react-dom/client';
-import App from '@lib/app';
+import App from '@src/app';
 // eslint-disable-next-line
 // @ts-ignore
-import injectedStyle from '@lib/index.css?inline';
+import injectedStyle from '@src/index.css?inline';
 
 export function mount() {
   const root = document.createElement('div');

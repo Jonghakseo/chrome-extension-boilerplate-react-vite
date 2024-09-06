@@ -1,4 +1,4 @@
-import { toggleTheme } from '@lib/toggleTheme';
+import { toggleTheme } from '@src/toggleTheme';
 
 console.log('content script loaded');
 

@@ -2,19 +2,19 @@ import { resolve } from 'path';
 import { withPageConfig } from '@extension/vite-config';
 
 const rootDir = resolve(__dirname);
-const libDir = resolve(rootDir, 'lib');
+const srcDir = resolve(rootDir, 'src');
 
 export default withPageConfig({
   resolve: {
     alias: {
-      '@lib': libDir,
+      '@src': srcDir,
     },
   },
   publicDir: resolve(rootDir, 'public'),
   build: {
     lib: {
       formats: ['iife'],
-      entry: resolve(__dirname, 'lib/index.ts'),
+      entry: resolve(__dirname, 'src/index.ts'),
       name: 'ContentRuntimeScript',
       fileName: 'index',
     },
