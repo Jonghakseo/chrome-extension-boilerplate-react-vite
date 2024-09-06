@@ -1,5 +1,5 @@
-import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'fs';
-import { resolve, posix } from 'path';
+import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'node:fs';
+import { posix, resolve } from 'node:path';
 import glob from 'fast-glob';
 import { AsyncZipDeflate, Zip } from 'fflate';
 

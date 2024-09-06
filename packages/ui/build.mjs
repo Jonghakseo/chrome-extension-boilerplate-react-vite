@@ -1,6 +1,6 @@
-import * as esbuild from 'esbuild';
-import * as fs from 'fs';
+import fs from 'node:fs';
 import { resolve } from 'node:path';
+import esbuild from 'esbuild';
 
 /**
  * @type { import('esbuild').BuildOptions }
