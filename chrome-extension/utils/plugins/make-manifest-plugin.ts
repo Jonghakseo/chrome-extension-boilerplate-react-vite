@@ -1,9 +1,9 @@
-import fs from 'fs';
-import { resolve } from 'path';
+import fs from 'node:fs';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import process from 'node:process';
 import { colorLog, ManifestParser } from '@extension/dev-utils';
 import type { PluginOption } from 'vite';
-import { pathToFileURL } from 'url';
-import process from 'process';
 
 const rootDir = resolve(__dirname, '..', '..');
 const manifestFile = resolve(rootDir, 'manifest.js');

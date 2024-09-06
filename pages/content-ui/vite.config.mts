@@ -1,6 +1,6 @@
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import { makeEntryPointPlugin } from '@extension/hmr';
-import { withPageConfig, isDev } from '@extension/vite-config';
+import { isDev, withPageConfig } from '@extension/vite-config';
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');

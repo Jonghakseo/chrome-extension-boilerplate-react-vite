@@ -1,9 +1,9 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import type { PluginOption } from 'vite';
 import { WebSocket } from 'ws';
 import MessageInterpreter from '../interpreter';
 import { BUILD_COMPLETE, LOCAL_RELOAD_SOCKET_URL } from '../constant';
-import fs from 'fs';
-import path from 'path';
 import type { PluginConfig } from '../types';
 
 const injectionsPath = path.resolve(__dirname, '..', '..', '..', 'build', 'injections');
