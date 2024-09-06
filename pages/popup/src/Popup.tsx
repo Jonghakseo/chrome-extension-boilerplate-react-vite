@@ -5,7 +5,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 
 const notificationOptions = {
   type: 'basic',
-  iconUrl: 'icon-34.png',
+  iconUrl: chrome.runtime.getURL('icon-34.png'),
   title: 'Injecting content script error',
   message: 'You cannot inject script here!',
 } as const;
