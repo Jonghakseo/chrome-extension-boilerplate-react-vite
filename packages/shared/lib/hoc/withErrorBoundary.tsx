@@ -28,6 +28,7 @@ class ErrorBoundary extends Component<
     return this.props.children;
   }
 }
+// TODO: NA ES6 PRZEROB
 
 export function withErrorBoundary<T extends Record<string, unknown>>(
   Component: ComponentType<T>,
