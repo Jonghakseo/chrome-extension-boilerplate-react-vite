@@ -8,8 +8,7 @@
       "outputs": [
         "dist/**",
         "build/**"
-      ],
-      "cache": false
+      ]
     },
     "dev": {
       "dependsOn": ["ready"],
