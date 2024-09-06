@@ -1,2 +1,3 @@
-import { ManifestParserImpl } from './impl';
+import { ManifestParserImpl } from './impl.js';
+
 export const ManifestParser = ManifestParserImpl;

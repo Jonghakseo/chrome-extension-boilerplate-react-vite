@@ -1,4 +1,5 @@
 import sucrase from '@rollup/plugin-sucrase';
+import type { RollupOptions } from 'rollup';
 
 const plugins = [
   sucrase({
@@ -7,24 +8,21 @@ const plugins = [
   }),
 ];
 
-/**
- * @type {import("rollup").RollupOptions[]}
- */
 export default [
   {
     plugins,
     input: 'lib/injections/reload.ts',
     output: {
-      format: 'iife',
-      file: 'build/injections/reload.js',
+      format: 'esm',
+      file: 'dist/lib/injections/reload.js',
     },
   },
   {
     plugins,
     input: 'lib/injections/refresh.ts',
     output: {
-      format: 'iife',
-      file: 'build/injections/refresh.js',
+      format: 'esm',
+      file: 'dist/lib/injections/refresh.js',
     },
   },
-];
+] as RollupOptions[];

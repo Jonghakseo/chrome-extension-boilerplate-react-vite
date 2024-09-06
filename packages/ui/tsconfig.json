@@ -8,5 +8,5 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["index.ts", "lib"]
+  "include": ["index.mts", "lib"]
 }

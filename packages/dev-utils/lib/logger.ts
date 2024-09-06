@@ -2,7 +2,7 @@ import type { ValueOf } from '@extension/shared';
 
 type ColorType = 'success' | 'info' | 'error' | 'warning' | keyof typeof COLORS;
 
-export function colorLog(message: string, type: ColorType) {
+export const colorLog = (message: string, type: ColorType) => {
   let color: ValueOf<typeof COLORS>;
 
   switch (type) {
@@ -24,7 +24,7 @@ export function colorLog(message: string, type: ColorType) {
   }
 
   console.log(color, message);
-}
+};
 
 const COLORS = {
   Reset: '\x1b[0m',

@@ -1,4 +1,4 @@
-import initClient from '../initializers/initClient';
+import initClient from '../initializers/initClient.js';
 
 function addReload() {
   const reload = () => {

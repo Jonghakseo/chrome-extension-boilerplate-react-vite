@@ -3,6 +3,8 @@
   "version": "0.3.5",
   "description": "chrome extension boilerplate",
   "license": "MIT",
+  "private": true,
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite.git"
@@ -18,8 +20,8 @@
     "build:firefox": "pnpm clean:bundle && turbo ready && cross-env __FIREFOX__=true turbo build",
     "zip": "pnpm build && pnpm -F zipper zip",
     "zip:firefox": "pnpm build:firefox && cross-env __FIREFOX__=true pnpm -F zipper zip",
-    "dev": "turbo ready && cross-env __DEV__=true turbo watch dev --concurrency 20",
-    "dev:firefox": "turbo ready && cross-env __DEV__=true __FIREFOX__=true turbo watch dev --concurrency 20",
+    "dev": "pnpm clean:bundle && turbo ready && pnpm -F i18n ready:dev && cross-env __DEV__=true turbo watch dev --concurrency 20",
+    "dev:firefox": "pnpm clean:bundle && turbo ready && pnpm -F i18n ready:dev && cross-env __DEV__=true __FIREFOX__=true turbo watch dev --concurrency 20",
     "e2e": "pnpm build && pnpm zip && turbo e2e",
     "e2e:firefox": "pnpm build:firefox && pnpm zip:firefox && cross-env __FIREFOX__=true turbo e2e",
     "type-check": "turbo type-check",
@@ -41,6 +43,7 @@
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
+    "app-root-path": "^3.1.0",
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
     "esbuild": "^0.23.0",
