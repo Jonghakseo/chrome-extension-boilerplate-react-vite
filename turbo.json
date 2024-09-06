@@ -3,7 +3,7 @@
   "ui": "tui",
   "globalEnv": ["__FIREFOX__"],
   "tasks": {
-    "ready:once": {
+    "prepare": {
       "outputs": [
         "dist/**",
         "build/**"
