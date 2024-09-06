@@ -6,13 +6,13 @@
       "@root/*": [
         "./*"
       ],
-      "@lib/*": [
-        "lib/*"
+      "@src/*": [
+        "src/*"
       ]
     }
   },
   "include": [
-    "lib",
+    "src",
     "utils",
     "vite.config.mts",
     "../node_modules/@types"
