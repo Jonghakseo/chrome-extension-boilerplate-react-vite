@@ -1,11 +1,9 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import { ManifestParser, colorLog } from '@extension/dev-utils';
+import fs from 'fs';
+import { resolve } from 'path';
+import { colorLog, ManifestParser } from '@extension/dev-utils';
 import type { PluginOption } from 'vite';
 import { pathToFileURL } from 'url';
-import * as process from 'process';
-
-const { resolve } = path;
+import process from 'process';
 
 const rootDir = resolve(__dirname, '..', '..');
 const manifestFile = resolve(rootDir, 'manifest.js');
@@ -19,6 +17,7 @@ const getManifestWithCacheBurst = (): Promise<{ default: chrome.runtime.Manifest
   if (process.platform === 'win32') {
     return import(withCacheBurst(pathToFileURL(manifestFile).href));
   }
+
   return import(withCacheBurst(manifestFile));
 };
 

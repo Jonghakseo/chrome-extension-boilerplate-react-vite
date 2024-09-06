@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+import fs from 'fs';
 import deepmerge from 'deepmerge';
 
 const packageJson = JSON.parse(fs.readFileSync('../package.json', 'utf8'));

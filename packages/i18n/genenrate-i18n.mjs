@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+import fs from 'fs';
 
 /**
  * @url https://developer.chrome.com/docs/extensions/reference/api/i18n#support_multiple_languages
