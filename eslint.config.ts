@@ -1,6 +1,7 @@
 import { fixupConfigRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
+import eslintPluginImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
@@ -14,23 +15,24 @@ export default ts.config(
   },
 
   // Files to scan
-  { files: ['**/*.{js,ts,tsx}'] },
+  { files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'] },
 
   // Shared configs
   js.configs.recommended,
   ...ts.configs.recommended,
   reactPlugin.configs.flat.recommended,
   jsxA11y.flatConfigs.recommended,
+  eslintPluginImportX.flatConfigs.recommended,
+  eslintPluginImportX.flatConfigs.typescript,
   eslintPluginPrettierRecommended,
 
   // Add compatibility
-  // ts-expect-error - mismatched typings
   ...fixupConfigRules(new FlatCompat().extends('plugin:react-hooks/recommended')),
-  // ...fixupConfigRules(new FlatCompat().extends('plugin:react-hooks/recommended', 'plugin:import/recommended')),
 
   // Custom config
   {
     languageOptions: {
+      parser: ts.parser,
       ecmaVersion: 'latest',
       sourceType: 'module',
       parserOptions: {
