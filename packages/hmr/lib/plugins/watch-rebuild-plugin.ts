@@ -2,7 +2,7 @@ import type { PluginOption } from 'vite';
 import { WebSocket } from 'ws';
 import MessageInterpreter from '../interpreter';
 import { BUILD_COMPLETE, LOCAL_RELOAD_SOCKET_URL } from '../constant';
-import * as fs from 'fs';
+import fs from 'fs';
 import path from 'path';
 import type { PluginConfig } from '../types';
 
