@@ -2,7 +2,6 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Base",
   "compilerOptions": {
-    "outDir": "dist",
     "allowJs": true,
     "noEmit": true,
     "downlevelIteration": true,
