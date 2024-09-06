@@ -1,10 +1,14 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
-  "globalEnv": ["__FIREFOX__"],
+  "globalEnv": [
+    "__FIREFOX__"
+  ],
   "tasks": {
     "ready": {
-      "dependsOn": ["^ready"],
+      "dependsOn": [
+        "^ready"
+      ],
       "outputs": [
         "dist/**",
         "build/**"
@@ -12,7 +16,6 @@
       "cache": false
     },
     "dev": {
-      "dependsOn": ["ready"],
       "outputs": [
         "dist/**",
         "build/**",
@@ -22,7 +25,9 @@
       "persistent": true
     },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": [
+        "^build"
+      ],
       "outputs": [
         "../../dist/**",
         "dist/**",
@@ -43,19 +48,27 @@
       "cache": false
     },
     "clean:node_modules": {
-      "dependsOn": ["^clean:node_modules"],
+      "dependsOn": [
+        "^clean:node_modules"
+      ],
       "cache": false
     },
     "clean:turbo": {
-      "dependsOn": ["^clean:turbo"],
+      "dependsOn": [
+        "^clean:turbo"
+      ],
       "cache": false
     },
     "clean:bundle": {
-      "dependsOn": ["^clean:bundle"],
+      "dependsOn": [
+        "^clean:bundle"
+      ],
       "cache": false
     },
     "clean": {
-      "dependsOn": ["^clean"],
+      "dependsOn": [
+        "^clean"
+      ],
       "cache": false
     }
   }
