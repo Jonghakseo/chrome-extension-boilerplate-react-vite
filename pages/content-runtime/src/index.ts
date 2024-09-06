@@ -1,4 +1,4 @@
-import { mount } from '@src/root';
+import { mount } from '@src/Root';
 
 mount();
 console.log('runtime script loaded');

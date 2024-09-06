@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import App from '@src/app';
+import App from '@src/App';
 // eslint-disable-next-line
 // @ts-ignore
 import injectedStyle from '@src/index.css?inline';
