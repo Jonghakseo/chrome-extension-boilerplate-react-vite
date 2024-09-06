@@ -1,6 +1,6 @@
 import 'webextension-polyfill';
+import { messaging } from '@extension/messaging';
 import { exampleThemeStorage } from '@extension/storage';
-import { addMessageHandler } from '@lib/background/messageHandler';
 
 exampleThemeStorage.get().then(theme => {
   console.log('theme', theme);
@@ -9,4 +9,6 @@ exampleThemeStorage.get().then(theme => {
 console.log('background loaded');
 console.log("Edit 'chrome-extension/src/background/index.ts' and save to reload.");
 
-addMessageHandler();
+messaging.on('foo', (payload, sender) => {
+  return `background received ${payload} message from ${sender?.url}`;
+});
