@@ -127,9 +127,6 @@ importers:
       '@laynezh/vite-plugin-lib-assets':
         specifier: ^0.5.23
         version: 0.5.23(vite@5.4.3(@types/node@20.16.5)(sass@1.77.8)(terser@5.31.1))
-      '@types/node':
-        specifier: ^20.16.5
-        version: 20.16.5
       '@types/ws':
         specifier: ^8.5.12
         version: 8.5.12
@@ -145,9 +142,6 @@ importers:
       ts-loader:
         specifier: ^9.5.1
         version: 9.5.1(typescript@5.5.4)(webpack@5.92.1(@swc/core@1.6.13)(esbuild@0.23.0))
-      vite:
-        specifier: ^5.4.3
-        version: 5.4.3(@types/node@20.16.5)(sass@1.77.8)(terser@5.31.1)
 
   packages/dev-utils:
     devDependencies:
