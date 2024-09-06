@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@types/chrome": "^0.0.270",
-    "@types/node": "^20.16.3",
+    "@types/node": "^20.16.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
@@ -60,7 +60,7 @@
     "tslib": "^2.6.3",
     "turbo": "^2.0.12",
     "typescript": "5.5.4",
-    "vite": "5.4.1",
+    "vite": "5.4.3",
     "run-script-os": "^1.1.6"
   },
   "lint-staged": {

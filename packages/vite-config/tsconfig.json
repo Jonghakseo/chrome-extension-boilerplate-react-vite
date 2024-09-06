@@ -1,0 +1,11 @@
+{
+  "extends": "@extension/tsconfig/utils",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": [
+    "lib",
+    "index.ts",
+    "../../node_modules/@types"
+  ]
+}
