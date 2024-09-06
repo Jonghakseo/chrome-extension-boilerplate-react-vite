@@ -3,7 +3,12 @@
   "ui": "tui",
   "globalEnv": ["__FIREFOX__"],
   "tasks": {
-    "ready:once": {},
+    "ready:once": {
+      "outputs": [
+        "dist/**",
+        "build/**"
+      ]
+    },
     "ready": {
       "dependsOn": ["^ready"],
       "outputs": [
