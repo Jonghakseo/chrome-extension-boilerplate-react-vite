@@ -264,6 +264,9 @@ importers:
 
   pages/content:
     dependencies:
+      '@extension/messaging':
+        specifier: workspace:*
+        version: link:../../packages/messaging
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
@@ -285,6 +288,10 @@ importers:
         version: 7.0.3
 
   pages/content-runtime:
+    dependencies:
+      '@extension/messaging':
+        specifier: workspace:*
+        version: link:../../packages/messaging
     devDependencies:
       '@extension/hmr':
         specifier: workspace:*
@@ -348,6 +355,9 @@ importers:
 
   pages/devtools-panel:
     dependencies:
+      '@extension/messaging':
+        specifier: workspace:*
+        version: link:../../packages/messaging
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
@@ -376,6 +386,9 @@ importers:
       '@extension/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
+      '@extension/messaging':
+        specifier: workspace:*
+        version: link:../../packages/messaging
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
@@ -407,6 +420,9 @@ importers:
 
   pages/options:
     dependencies:
+      '@extension/messaging':
+        specifier: workspace:*
+        version: link:../../packages/messaging
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
@@ -435,9 +451,9 @@ importers:
 
   pages/popup:
     dependencies:
-      '@extension/content-runtime-script':
+      '@extension/messaging':
         specifier: workspace:*
-        version: link:../content-runtime
+        version: link:../../packages/messaging
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
@@ -463,6 +479,9 @@ importers:
 
   pages/side-panel:
     dependencies:
+      '@extension/messaging':
+        specifier: workspace:*
+        version: link:../../packages/messaging
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared

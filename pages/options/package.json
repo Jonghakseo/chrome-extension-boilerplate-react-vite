@@ -21,6 +21,7 @@
   "dependencies": {
     "@extension/shared": "workspace:*",
     "@extension/storage": "workspace:*",
+    "@extension/messaging": "workspace:*",
     "@extension/ui": "workspace:*"
   },
   "devDependencies": {

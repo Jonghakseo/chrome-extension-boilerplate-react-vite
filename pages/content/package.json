@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "@extension/shared": "workspace:*",
-    "@extension/storage": "workspace:*"
+    "@extension/storage": "workspace:*",
+    "@extension/messaging": "workspace:*"
   },
   "devDependencies": {
     "@extension/hmr": "workspace:*",
