@@ -2,11 +2,19 @@
   "extends": "@extension/tsconfig/app",
   "compilerOptions": {
     "baseUrl": ".",
-    "types": ["vite/client", "node", "chrome"],
     "paths": {
-      "@root/*": ["./*"],
-      "@lib/*": ["lib/*"]
+      "@root/*": [
+        "./*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ]
     }
   },
-  "include": ["lib", "utils", "vite.config.mts", "node_modules/@types"]
+  "include": [
+    "lib",
+    "utils",
+    "vite.config.mts",
+    "../node_modules/@types"
+  ]
 }
