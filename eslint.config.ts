@@ -6,7 +6,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
 import globals from 'globals';
-import ts from 'typescript-eslint';
+import * as ts from 'typescript-eslint';
 
 export default ts.config(
   // Ignore patterns (.eslintignore)

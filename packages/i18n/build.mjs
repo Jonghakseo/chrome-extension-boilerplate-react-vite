@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import esbuild from 'esbuild';
+import * as esbuild from 'esbuild';
 import { rimraf } from 'rimraf';
 
 /**

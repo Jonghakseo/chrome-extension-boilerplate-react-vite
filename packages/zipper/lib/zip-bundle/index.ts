@@ -1,6 +1,6 @@
 import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'node:fs';
 import { posix, resolve } from 'node:path';
-import glob from 'fast-glob';
+import { glob } from 'fast-glob';
 import { AsyncZipDeflate, Zip } from 'fflate';
 
 // Converts bytes to megabytes
