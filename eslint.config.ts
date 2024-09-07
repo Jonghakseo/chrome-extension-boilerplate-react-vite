@@ -52,7 +52,7 @@ export default ts.config(
     },
     rules: {
       'react/react-in-jsx-scope': 'off',
-      'import/no-unresolved': 'off',
+      'import-x/no-unresolved': 'off',
       '@typescript-eslint/consistent-type-imports': 'error',
       'react/prop-types': 'off',
     },
