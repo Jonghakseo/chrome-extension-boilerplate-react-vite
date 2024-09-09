@@ -5,28 +5,17 @@
   "tasks": {
     "ready": {
       "dependsOn": ["^ready"],
-      "outputs": [
-        "dist/**",
-        "build/**"
-      ]
+      "outputs": ["dist/**", "build/**"]
     },
     "dev": {
       "dependsOn": ["ready"],
-      "outputs": [
-        "dist/**",
-        "build/**",
-        "i18n/locales/**"
-      ],
+      "outputs": ["dist/**", "build/**", "i18n/locales/**"],
       "cache": false,
       "persistent": true
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [
-        "../../dist/**",
-        "dist/**",
-        "build/**"
-      ],
+      "outputs": ["../../dist/**", "dist/**", "build/**"],
       "cache": false
     },
     "type-check": {
