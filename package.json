@@ -64,7 +64,7 @@
     "run-script-os": "^1.1.6"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.{js,jsx,ts,tsx,json}": [
       "prettier --write"
     ]
   },
