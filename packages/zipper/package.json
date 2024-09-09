@@ -23,9 +23,9 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@extension/tsconfig": "workspace:*",
     "fast-glob": "^3.3.2",
     "fflate": "^0.8.2",
-    "tsx": "^4.16.2"
+    "tsx": "^4.16.2",
+    "@extension/tsconfig": "workspace:*"
   }
 }

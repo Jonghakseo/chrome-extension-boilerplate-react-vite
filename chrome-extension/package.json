@@ -21,15 +21,15 @@
     "@extension/storage": "workspace:*"
   },
   "devDependencies": {
-    "@extension/dev-utils": "workspace:*",
-    "@extension/hmr": "workspace:*",
-    "@extension/tsconfig": "workspace:*",
-    "@extension/vite-config": "workspace:*",
-    "@laynezh/vite-plugin-lib-assets": "^0.5.23",
-    "@types/ws": "^8.5.12",
     "magic-string": "^0.30.10",
     "ts-loader": "^9.5.1",
     "deepmerge": "^4.3.1",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "@laynezh/vite-plugin-lib-assets": "^0.5.23",
+    "@types/ws": "^8.5.12",
+    "@extension/dev-utils": "workspace:*",
+    "@extension/hmr": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
+    "@extension/vite-config": "workspace:*"
   }
 }

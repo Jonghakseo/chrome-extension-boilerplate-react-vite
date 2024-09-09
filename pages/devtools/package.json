@@ -22,8 +22,8 @@
     "@extension/shared": "workspace:*"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "@extension/tsconfig": "workspace:*",
-    "@extension/vite-config": "workspace:*",
-    "cross-env": "^7.0.3"
+    "@extension/vite-config": "workspace:*"
   }
 }

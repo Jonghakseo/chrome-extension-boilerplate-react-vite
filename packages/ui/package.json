@@ -22,12 +22,12 @@
     "prettier": "prettier . --write",
     "type-check": "tsc --noEmit"
   },
-  "devDependencies": {
-    "@extension/tsconfig": "workspace:*",
-    "deepmerge": "^4.3.1"
-  },
   "dependencies": {
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.4.0"
+  },
+  "devDependencies": {
+    "deepmerge": "^4.3.1",
+    "@extension/tsconfig": "workspace:*"
   }
 }

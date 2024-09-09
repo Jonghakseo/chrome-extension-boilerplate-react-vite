@@ -24,10 +24,10 @@
     "@extension/content-runtime-script": "workspace:*"
   },
   "devDependencies": {
+    "postcss-load-config": "^6.0.1",
+    "cross-env": "^7.0.3",
     "@extension/tailwindcss-config": "workspace:*",
     "@extension/tsconfig": "workspace:*",
-    "@extension/vite-config": "workspace:*",
-    "postcss-load-config": "^6.0.1",
-    "cross-env": "^7.0.3"
+    "@extension/vite-config": "workspace:*"
   }
 }

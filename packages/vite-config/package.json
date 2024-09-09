@@ -10,9 +10,9 @@
     "clean": "pnpm clean:node_modules"
   },
   "devDependencies": {
-    "@extension/hmr": "workspace:*",
-    "@extension/tsconfig": "workspace:*",
+    "deepmerge": "^4.3.1",
     "@vitejs/plugin-react-swc": "^3.6.0",
-    "deepmerge": "^4.3.1"
+    "@extension/hmr": "workspace:*",
+    "@extension/tsconfig": "workspace:*"
   }
 }
