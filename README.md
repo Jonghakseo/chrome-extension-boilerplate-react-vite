@@ -64,13 +64,14 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 - [ESLint](https://eslint.org/)
 - [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
 - [Custom I18n Package](/packages/i18n/)
-- Custom HMR(Hot Module Rebuild) Plugin
+- [Custom HMR(Hot Module Rebuild) Plugin](/packages/hmr/)
+- [End to End Testing with WebdriverIO](https://webdriver.io/)
 
 ## Getting started: <a name="getting-started"></a>
 
 1. Clone this repository.
 2. Change `extensionDescription` and `extensionName` in `messages.json` file.
-3. Install pnpm globally: `npm install -g pnpm` (check your node version >= 18.12.0)
+3. Install pnpm globally: `npm install -g pnpm` (check your node version >= 18.19.1)
 4. Run `pnpm install`
 
 ### And then, depending on needs:
@@ -153,7 +154,8 @@ Some shared packages
 - `tsconfig` - shared tsconfig for entire project
 - `ui` - here's a function to merge your tailwind config with global one, and you can save components here
 - `vite-config` - shared vite config for entire project
-- `zipper` - By ```pnpm zip``` you can pack ```dist``` folder into ```extension.zip``` inside newly created ```dist-zip```
+- `zipper` - By ```pnpm zip``` you can pack ```dist``` folder into ```extension.zip``` inside newly created ```dist-zip``` 
+- `e2e` - By ```pnpm e2e``` you can run end to end tests of your zipped extension on different browsers
 
 ### Pages <a name="pages"></a>
 

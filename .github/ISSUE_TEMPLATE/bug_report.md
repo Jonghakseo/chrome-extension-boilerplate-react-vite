@@ -26,7 +26,7 @@ If applicable, add screenshots to help explain your problem.
 **Desktop (please complete the following information):**
  - OS: [e.g. Mac, Window, Linux]
  - Browser [e.g. chrome, firefox]
- - Node Version [e.g. 18.12.0]
+ - Node Version [e.g. 18.19.1]
 
 **Additional context**
 Add any other context about the problem here.

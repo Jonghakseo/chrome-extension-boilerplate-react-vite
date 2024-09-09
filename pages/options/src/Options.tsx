@@ -9,7 +9,7 @@ const Options = () => {
   const logo = isLight ? 'options/logo_horizontal.svg' : 'options/logo_horizontal_dark.svg';
 
   return (
-    <div className={`App-container ${isLight ? 'text-gray-900 bg-slate-50' : 'text-gray-100 bg-gray-800'}`}>
+    <div className={`App ${isLight ? 'text-gray-900 bg-slate-50' : 'text-gray-100 bg-gray-800'}`}>
       <img src={chrome.runtime.getURL(logo)} className="App-logo" alt="logo" />
       <p>
         Edit <code>pages/options/src/Options.tsx</code>

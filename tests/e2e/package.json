@@ -1,0 +1,20 @@
+{
+  "name": "@extension/e2e",
+  "version": "0.3.2",
+  "description": "E2e tests configuration boilerplate",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "e2e": "wdio run ./config/wdio.browser.conf.ts"
+  },
+  "devDependencies": {
+    "@extension/tsconfig": "workspace:*",
+    "@wdio/cli": "^9.0.9",
+    "@wdio/globals": "^9.0.9",
+    "@wdio/local-runner": "^9.0.9",
+    "@wdio/mocha-framework": "^9.0.8",
+    "@wdio/spec-reporter": "^9.0.8",
+    "@wdio/types": "^9.0.8",
+    "tsx": "^4.16.2"
+  }
+}
