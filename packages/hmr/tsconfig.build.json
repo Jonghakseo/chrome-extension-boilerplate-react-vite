@@ -3,15 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "dist",
-    "types": [
-      "chrome"
-    ]
+    "types": ["chrome"]
   },
-  "exclude": [
-    "lib/injections/**/*"
-  ],
-  "include": [
-    "lib",
-    "index.ts"
-  ]
+  "exclude": ["lib/injections/**/*"],
+  "include": ["lib", "index.ts"]
 }
