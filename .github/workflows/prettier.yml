@@ -17,8 +17,7 @@ jobs:
         id: prettier-run
         uses: rutajdash/prettier-cli-action@v1.0.0
         with:
-          config_path: ../../.prettierrc
-          ignore_path: ../../.prettierignore
+          config_path: ./.prettierrc
           file_pattern: "*.{js,jsx,ts,tsx,json}"
 
       # This step only runs if prettier finds errors causing the previous step to fail
