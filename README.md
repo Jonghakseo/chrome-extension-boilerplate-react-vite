@@ -43,6 +43,10 @@
 - [Install dependency](#install-dependency)
     - [For root](#install-dependency-for-root)
     - [For module](#install-dependency-for-module)
+- [Env Variables](#env-variables)
+  - [Add new](#env-variables-new)
+  - [Access for command](#env-variables-access)
+  - [Set via CLI](#env-variables-cli-set)
 - [Community](#community)
 - [Reference](#reference)
 - [Star History](#star-history)
@@ -123,20 +127,18 @@ Then, depending on the target browser:
 
 To add an environment variable:
 
-1. Copy `.example.env` to `.env` (in the same directory)
-2. Add a new record inside `.env`, prefixed with `VITE_`, e.g. `VITE_MY_API_KEY=...`
-3. Edit `./vite-env.d.ts` and in the `ImportMetaEnv` interface, add your variable with the appropriate type, e.g.
+### Add new: <a name="env-variables-new"></a>
+  1. Add a new record inside `.env`
+  2. Now you're able to access it via `process.env.YOUR_KEY`
 
-   `readonly VITE_MY_API_KEY: string;`
-4. Then you can read the variable via `import.meta.env.VITE_MY_API_KEY` (learn more at [Env Variables and Modes](https://vite.dev/guide/env-and-mode))
+### Create access for command: <a name="env-variables-access"></a>
+  1. Let's use `pnpm with-env ...` before that command \
+    `"example": "pnpm with-env turbo example"`
 
-#### If you want to set it for each package independently:
+### Set via CLI: <a name="env-variables-cli-set"></a> 
+  1. Add it as next args like: `pnpm with-env ... NEXT_VALUE=new_data`
 
-1. Create `.env` inside that package
-2. Open related `vite.config.mts` and add `envDir: '.'` at the end of this config
-3. Rest steps like above
-
-#### Remember you can't use global and local at the same time for the same package(It will be overwritten)
+#### `__DEV__` and `__FIREFOX__` have default `false` value
 
 ## Boilerplate structure <a name="structure"></a>
 
