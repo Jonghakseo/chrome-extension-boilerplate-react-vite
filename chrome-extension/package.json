@@ -11,7 +11,7 @@
     "clean": "pnpm clean:turbo && pnpm clean:node_modules",
     "ready": "tsc -b pre-build.tsconfig.json",
     "build": "vite build",
-    "dev": "cross-env __DEV__=true vite build --mode development",
+    "dev": "vite build --mode development",
     "test": "vitest run",
     "lint": "eslint ./ --ext .ts,.js,.tsx,.jsx",
     "lint:fix": "pnpm lint --fix",

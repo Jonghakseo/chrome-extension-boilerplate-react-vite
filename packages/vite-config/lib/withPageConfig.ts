@@ -5,14 +5,14 @@ import react from '@vitejs/plugin-react-swc';
 import deepmerge from 'deepmerge';
 import { isDev, isProduction } from './env.js';
 
-export const watchOption = isDev
-  ? {
-      buildDelay: 100,
-      chokidar: {
-        ignored: [/\/packages\/.*\.(ts|tsx|map)$/],
-      },
-    }
-  : undefined;
+export const watchOption = isDev ? {
+  buildDelay: 100,
+  chokidar: {
+    ignored:[
+      /\/packages\/.*\.(ts|tsx|map)$/,
+    ]
+  }
+}: undefined;
 
 export const withPageConfig = (config: UserConfig) =>
   defineConfig(
@@ -33,7 +33,6 @@ export const withPageConfig = (config: UserConfig) =>
         define: {
           'process.env.NODE_ENV': isDev ? `"development"` : `"production"`,
         },
-        envDir: '../..',
       },
       config,
     ),
