@@ -69,10 +69,16 @@ This boilerplate is made for creating chrome extensions using React and Typescri
 
 ## Getting started: <a name="getting-started"></a>
 
-1. Clone this repository.
-2. Change `extensionDescription` and `extensionName` in `messages.json` file.
-3. Install pnpm globally: `npm install -g pnpm` (check your node version >= 18.19.1)
-4. Run `pnpm install`
+1. When you're using Windows run this:
+   - `git config --global core.eol lf`
+   - `git config --global core.autocrlf input`
+<h4> This will change eol(End of line) to the same as on Linux/Mac. \
+Without this, you will have conflicts with your teammates with those systems \
+and our bash script won't work</h4> 
+2. Clone this repository.
+3. Change `extensionDescription` and `extensionName` in `messages.json` file.
+4. Install pnpm globally: `npm install -g pnpm` (check your node version >= 18.19.1))
+5. Run `pnpm install`
 
 ### And then, depending on needs:
 
