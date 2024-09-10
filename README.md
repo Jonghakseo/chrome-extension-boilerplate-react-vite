@@ -118,7 +118,7 @@ You have to do it on every browser launch.</i>
 
 1. Copy `.example.env` and past it as `.env` in the same path
 2. Add a new record inside `.env`
-3. Add this key with type for value to `vite-end.d.ts` (root) to `ImportMetaEnv`
+3. Add this key with type for value to `vite-env.d.ts` (root) to `ImportMetaEnv`
 4. Then you can use it with `import.meta.env.{YOUR_KEY}` like with standard [Vite Env](https://vitejs.dev/guide/env-and-mode)
 
 #### If you want to set it for each package independently:
