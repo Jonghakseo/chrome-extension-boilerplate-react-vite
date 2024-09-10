@@ -126,7 +126,10 @@ importers:
         version: link:../packages/vite-config
       '@laynezh/vite-plugin-lib-assets':
         specifier: ^0.5.23
-        version: 0.5.23(vite@5.4.3(@types/node@22.5.4)(sass@1.77.8)(terser@5.31.6))
+        version: 0.5.23(vite@5.4.3(@types/node@20.16.5)(sass@1.77.8)(terser@5.31.6))
+      '@types/node':
+        specifier: 20.16.5
+        version: 20.16.5
       '@types/ws':
         specifier: ^8.5.12
         version: 8.5.12
@@ -142,6 +145,9 @@ importers:
       ts-loader:
         specifier: ^9.5.1
         version: 9.5.1(typescript@5.5.4)(webpack@5.92.1(@swc/core@1.6.13)(esbuild@0.23.0))
+      vite:
+        specifier: ^5.4.3
+        version: 5.4.3(@types/node@20.16.5)(sass@1.77.8)(terser@5.31.6)
 
   packages/dev-utils:
     devDependencies:
@@ -4570,13 +4576,13 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@laynezh/vite-plugin-lib-assets@0.5.23(vite@5.4.3(@types/node@22.5.4)(sass@1.77.8)(terser@5.31.6))':
+  '@laynezh/vite-plugin-lib-assets@0.5.23(vite@5.4.3(@types/node@20.16.5)(sass@1.77.8)(terser@5.31.6))':
     dependencies:
       escape-string-regexp: 4.0.0
       loader-utils: 3.3.1
       mrmime: 1.0.1
       semver: 7.6.3
-      vite: 5.4.3(@types/node@22.5.4)(sass@1.77.8)(terser@5.31.6)
+      vite: 5.4.3(@types/node@20.16.5)(sass@1.77.8)(terser@5.31.6)
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
