@@ -34,9 +34,9 @@
 - [Intro](#intro)
 - [Features](#features)
 - [Structure](#structure)
-    - [ChromeExtension](#chrome-extension)
-    - [Packages](#packages)
-    - [Pages](#pages)
+    - [ChromeExtension](#structure-chrome-extension)
+    - [Packages](#structure-packages)
+    - [Pages](#structure-pages)
 - [Getting started](#getting-started)
     - [Chrome](#getting-started-chrome)
     - [Firefox](#getting-started-firefox)
@@ -45,7 +45,7 @@
     - [For module](#install-dependency-for-module)
 - [Community](#community)
 - [Reference](#reference)
-- [Star History](#starhistory)
+- [Star History](#star-history)
 - [Contributors](#contributors)
 
 ## Intro <a name="intro"></a>
@@ -131,7 +131,7 @@ You have to do it on every browser launch.</i>
 
 ## Structure <a name="structure"></a>
 
-### ChromeExtension <a name="chrome-extension"></a>
+### ChromeExtension <a name="structure-chrome-extension"></a>
 
 Main app with background script, manifest
 
@@ -141,7 +141,7 @@ Main app with background script, manifest
   manifest.json)
 - `public/content.css` - content css for user's page injection
 
-### Packages <a name="packages"></a>
+### Packages <a name="structure-packages"></a>
 
 Some shared packages
 
@@ -157,7 +157,7 @@ Some shared packages
 - `zipper` - By ```pnpm zip``` you can pack ```dist``` folder into ```extension.zip``` inside newly created ```dist-zip``` 
 - `e2e` - By ```pnpm e2e``` you can run end to end tests of your zipped extension on different browsers
 
-### Pages <a name="pages"></a>
+### Pages <a name="structure-pages"></a>
 
 - `content` - [content script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/) for chrome
   extension (`content_scripts` in manifest.json)
@@ -193,7 +193,7 @@ Also, suggest new features or share any challenges you've faced while developing
 - [Turborepo](https://turbo.build/repo/docs)
 - [Rollup-plugin-chrome-extension](https://www.extend-chrome.dev/rollup-plugin)
 
-## Star History <a name="starhistory"></a>
+## Star History <a name="star-history"></a>
 
 <a href="https://star-history.com/#Jonghakseo/chrome-extension-boilerplate-react-vite&Date">
  <picture>
