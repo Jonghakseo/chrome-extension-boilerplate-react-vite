@@ -27,6 +27,7 @@
     "lint:fix": "turbo lint:fix --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
     "prettier": "turbo prettier --continue -- --cache --cache-location node_modules/.cache/.prettiercache",
     "prepare": "husky",
+    "postinstall": "esbuild eslint.config.ts --outfile=eslint.config.js && prettier eslint.config.js --write --ignore-path .prettierignore",
     "update-version": "bash update_version.sh"
   },
   "dependencies": {
