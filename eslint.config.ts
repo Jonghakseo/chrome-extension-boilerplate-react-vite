@@ -6,7 +6,7 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
 import globals from 'globals';
-import * as ts from 'typescript-eslint';
+import ts from 'typescript-eslint';
 
 export default ts.config(
   // Ignore patterns (.eslintignore)
@@ -53,6 +53,7 @@ export default ts.config(
     rules: {
       'react/react-in-jsx-scope': 'off',
       'import-x/no-unresolved': 'off',
+      'import-x/no-named-as-default-member': 'off',
       '@typescript-eslint/consistent-type-imports': 'error',
       'react/prop-types': 'off',
     },
