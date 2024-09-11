@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "clean:node_modules": "pnpx rimraf node_modules",
-    "clean:turbo": "pnpx rimraf .turbo",
-    "clean": "pnpm clean:node_modules && pnpm clean:turbo",
+    "clean:turbo": "rimraf .turbo",
+    "clean": "pnpm clean:turbo && pnpm clean:node_modules",
     "build": "vite build",
     "dev": "cross-env __DEV__=true vite build --mode development",
     "test": "vitest run",
