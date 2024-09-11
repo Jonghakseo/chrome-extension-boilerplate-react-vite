@@ -3,7 +3,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { getChromeExtensionPath, getFirefoxExtensionPath } from '../utils/extension-path.js';
 import { extname, join } from 'node:path';
 
-const isFirefox = process.env.__FIREFOX__ === 'true';
+const isFirefox = process.env.CLI_CEB_FIREFOX === 'true';
 const isCI = process.env.CI === 'true';
 const extName = isFirefox ? '.xpi' : '.zip';
 const extensions = await readdir(join(import.meta.dirname, '../../../dist-zip'));

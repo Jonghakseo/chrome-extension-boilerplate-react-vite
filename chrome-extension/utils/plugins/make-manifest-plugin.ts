@@ -45,8 +45,9 @@ export default (config: { outDir: string }): PluginOption => {
     }
 
     const manifestPath = resolve(to, 'manifest.json');
-    const isFirefox = env.__FIREFOX__ === 'true';
-    const isDev = env.__DEV__ === 'true';
+
+    const isFirefox = process.env.CLI_CEB_FIREFOX === 'true';
+    const isDev = process.env.CLI_CEB_DEV === 'true';
 
     isDev && addRefreshContentScript(manifest);
 
