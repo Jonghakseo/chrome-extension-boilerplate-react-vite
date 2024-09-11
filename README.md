@@ -45,7 +45,6 @@
     - [For module](#install-dependency-for-module)
 - [Env Variables](#env-variables)
   - [Add new](#env-variables-new)
-  - [Access for command](#env-variables-access)
   - [Set via CLI](#env-variables-cli-set)
 - [Community](#community)
 - [Reference](#reference)
@@ -131,16 +130,11 @@ To add an environment variable:
   1. Add a new record inside `.env`
   2. Now you're able to access it via `process.env.YOUR_KEY`
 
-### Create access for command: <a name="env-variables-access"></a>
-  1. Let's use `pnpm with-env ...` before that command \
-    `"example": "pnpm with-env turbo example"`
-
 ### Set via CLI: <a name="env-variables-cli-set"></a> 
-  1. Add it as next args like: `pnpm with-env ... NEXT_VALUE=new_data`
+  1. Add it as argument like: `pnpm set-global-env NEXT_VALUE=new_data ...`
 
 #### `__DEV__` and `__FIREFOX__` have default `false` value
-#### All CLI values are overwriting in each script call, that's mean you will have only that values which you defined in current call
-#### Values from previous call are being removed
+#### All CLI values are overwriting for each script call, that's mean you'll have access only to currently defined values
 
 ## Boilerplate structure <a name="structure"></a>
 
