@@ -4,7 +4,9 @@ import { getChromeExtensionPath, getFirefoxExtensionPath } from '../utils/extens
 import { extname, join } from 'node:path';
 
 const isFirefox = process.env.CLI_CEB_FIREFOX === 'true';
-const isCI = process.env.CI === 'true';
+const isCI = process.env.CEB_CI === 'true';
+
+const archiveName = isFirefox ? 'extension.xpi' : 'extension.zip';
 const extName = isFirefox ? '.xpi' : '.zip';
 const extensions = await readdir(join(import.meta.dirname, '../../../dist-zip'));
 const latestExtension = extensions.filter(file => extname(file) === extName).at(-1);
