@@ -20,7 +20,7 @@ jobs:
 
       - run: pnpm install --frozen-lockfile --prefer-offline
 
-      - run: pnpm build
+      - run: pnpm type-check && pnpm build
 
       - uses: actions/upload-artifact@v4
         with:
