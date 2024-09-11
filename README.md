@@ -127,14 +127,14 @@ Then, depending on the target browser:
 To add an environment variable:
 
 ### Add new: <a name="env-variables-new"></a>
-  1. Add a new record inside `.env`
+  1. Add a new record inside `.env` (MUST HAVE `CEB_` PREFIX) or if you want dynamic, then via [CLI](#env-variables-cli-set)
   2. Now you're able to access it via `process.env.YOUR_KEY`
 
 ### Set via CLI: <a name="env-variables-cli-set"></a> 
-  1. Add it as argument like: `pnpm set-global-env NEXT_VALUE=new_data ...`
+  1. Add it as argument like: `pnpm set-global-env CLI_CEB_NEXT_VALUE=new_data ...` (MUST HAVE `CLI_CEB` PREFIX)
 
-#### `__DEV__` and `__FIREFOX__` have default `false` value
-#### All CLI values are overwriting for each script call, that's mean you'll have access only to currently defined values
+#### `CLI_CEB_DEV` and `CLI_CEB_FIREFOX` have default `false` value
+#### All CLI values are overwriting for each call, that's mean you'll have access to currently defined values
 
 ## Boilerplate structure <a name="structure"></a>
 
