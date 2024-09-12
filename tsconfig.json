@@ -1,5 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "./packages/tsconfig/app.json",
+  "compilerOptions": {
+    "noImplicitAny": false
+  },
   "include": ["eslint.config.ts"]
 }
