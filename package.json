@@ -16,7 +16,7 @@
     "clean:install": "pnpm clean:node_modules && pnpm install --frozen-lockfile",
     "build": "pnpm clean:bundle && turbo ready && turbo build",
     "build:firefox": "pnpm clean:bundle && turbo ready && cross-env __FIREFOX__=true turbo build",
-    "build:eslint": "esbuild eslint.config.ts --outfile=eslint.config.js --tsconfig=packages/tsconfig/app.json",
+    "build:eslint": "esbuild eslint.config.ts --outfile=eslint.config.js",
     "zip": "pnpm build && pnpm -F zipper zip",
     "zip:firefox": "pnpm build:firefox && cross-env __FIREFOX__=true pnpm -F zipper zip",
     "dev": "turbo ready && cross-env __DEV__=true turbo watch dev --concurrency 20",
