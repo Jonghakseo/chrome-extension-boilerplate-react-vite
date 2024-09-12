@@ -10,7 +10,7 @@
     "build": "vite build",
     "dev": "cross-env __DEV__=true vite build --mode development",
     "test": "vitest run",
-    "lint": "eslint . --flag unstable_ts_config",
+    "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../.prettierignore",
     "type-check": "tsc --noEmit"
