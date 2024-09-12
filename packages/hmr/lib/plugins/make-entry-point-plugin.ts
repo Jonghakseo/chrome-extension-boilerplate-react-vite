@@ -7,7 +7,7 @@ import type { PluginOption } from 'vite';
  */
 export function makeEntryPointPlugin(): PluginOption {
   const cleanupTargets = new Set<string>();
-  const isFirefox = process.env.__FIREFOX__ === 'true';
+  const isFirefox = process.env.CLI_CEB_FIREFOX === 'true';
 
   return {
     name: 'make-entry-point-plugin',

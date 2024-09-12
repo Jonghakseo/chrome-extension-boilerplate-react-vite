@@ -3,7 +3,7 @@ import deepmerge from 'deepmerge';
 
 const packageJson = JSON.parse(fs.readFileSync('../package.json', 'utf8'));
 
-const isFirefox = process.env.__FIREFOX__ === 'true';
+const isFirefox = process.env.CLI_CEB_FIREFOX === 'true';
 
 const sidePanelConfig = {
   side_panel: {

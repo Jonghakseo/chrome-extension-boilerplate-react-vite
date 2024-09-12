@@ -15,7 +15,7 @@
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
     "build:tailwindcss": "pnpm tailwindcss -i ./src/tailwind-input.css -o ./dist/tailwind-output.css -m",
     "build": "pnpm build:tailwindcss && vite build",
-    "build:watch": "concurrently \"cross-env __DEV__=true vite build --mode development\" \"pnpm build:tailwindcss -- -w\"",
+    "build:watch": "concurrently \"vite build --mode development\" \"pnpm build:tailwindcss -- -w\"",
     "dev": "pnpm build:tailwindcss && pnpm build:watch",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
@@ -32,7 +32,6 @@
     "@extension/tsconfig": "workspace:*",
     "@extension/hmr": "workspace:*",
     "@extension/vite-config": "workspace:*",
-    "concurrently": "^8.2.2",
-    "cross-env": "^7.0.3"
+    "concurrently": "^8.2.2"
   }
 }

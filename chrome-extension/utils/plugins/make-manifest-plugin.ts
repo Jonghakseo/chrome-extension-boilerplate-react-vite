@@ -28,7 +28,7 @@ export default function makeManifestPlugin(config: { outDir: string }): PluginOp
     }
     const manifestPath = resolve(to, 'manifest.json');
 
-    const isFirefox = process.env.__FIREFOX__ === 'true';
+    const isFirefox = process.env.CLI_CEB_FIREFOX === 'true';
     fs.writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox ? 'firefox' : 'chrome'));
 
     colorLog(`Manifest file copy complete: ${manifestPath}`, 'success');

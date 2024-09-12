@@ -12,7 +12,7 @@
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:turbo && pnpm clean:node_modules",
     "build": "vite build",
-    "dev": "cross-env __DEV__=true vite build --mode development",
+    "dev": "vite build --mode development",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
@@ -29,7 +29,6 @@
     "@extension/tsconfig": "workspace:*",
     "@extension/vite-config": "workspace:*",
     "sass": "1.77.8",
-    "postcss-load-config": "^6.0.1",
-    "cross-env": "^7.0.3"
+    "postcss-load-config": "^6.0.1"
   }
 }
