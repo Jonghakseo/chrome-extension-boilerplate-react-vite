@@ -11,7 +11,7 @@ import ts from 'typescript-eslint';
 export default ts.config(
   // Ignore patterns (.eslintignore)
   {
-    ignores: ['**/build/**', '**/dist/**', '**/node_modules/**'],
+    ignores: ['**/build/**', '**/dist/**', '**/node_modules/**', 'eslint.config.js'],
   },
 
   // Files to scan
