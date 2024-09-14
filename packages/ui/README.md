@@ -137,6 +137,10 @@ Create a file named `components.json` in the `packages/ui` directory with the fo
 
 Create a file named `tailwind.config.ts` in the `packages/ui` directory with the following content:
 
+```ts
+import baseConfig from '@extension/tailwindcss-config';
+export default baseConfig;
+```
 
 3. Update `tsconfig.json` in packages/ui
 
@@ -145,7 +149,6 @@ Add the following configuration to the tsconfig.json file in the packages/ui dir
 ```json
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
     }
@@ -165,12 +168,15 @@ Add the following dependencies to the `package.json` file in the `packages/ui` d
 }
 ```
 
+npm install tailwindcss-animate class-variance-authority clsx tailwind-merge
+
+
 5. Install dependencies
 
 Run the following command from the root of your project:
     
 ```shell
-pnpm install
+pnpm add tailwindcss-animate class-variance-authority --filter ui
 ```
 
 6. Add shadcn components
