@@ -2,7 +2,7 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
   },
   "extends": [
     "eslint:recommended",
@@ -11,39 +11,36 @@
     "plugin:react-hooks/recommended",
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
-    "prettier"
+    "plugin:tailwindcss/recommended",
+    "prettier",
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
     },
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
   },
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "react-hooks",
-    "import",
-    "jsx-a11y",
-    "prettier"
-  ],
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "import", "jsx-a11y", "prettier", "tailwindcss"],
   "settings": {
     "react": {
-      "version": "detect"
-    }
+      "version": "detect",
+    },
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
-    "@typescript-eslint/consistent-type-imports": "error"
+    "@typescript-eslint/consistent-type-imports": "error",
   },
   "globals": {
-    "chrome": "readonly"
+    "chrome": "readonly",
   },
-  "ignorePatterns": [
-    "watch.js",
-    "dist/**"
-  ]
+  "ignorePatterns": ["watch.js", "dist/**"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js"],
+      "parser": "@typescript-eslint/parser",
+    },
+  ],
 }
