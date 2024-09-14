@@ -142,21 +142,7 @@ import baseConfig from '@extension/tailwindcss-config';
 export default baseConfig;
 ```
 
-3. Update `tsconfig.json` in packages/ui
-
-Add the following configuration to the tsconfig.json file in the packages/ui directory:
-
-```json
-{
-  "compilerOptions": {
-    "paths": {
-      "@/*": ["./*"]
-    }
-  }
-}
-```
-
-4. Update `package.json` in packages/ui
+3. Update `package.json` in packages/ui
 
 Add the following dependencies to the `package.json` file in the `packages/ui` directory:
 
@@ -171,7 +157,7 @@ Add the following dependencies to the `package.json` file in the `packages/ui` d
 npm install tailwindcss-animate class-variance-authority clsx tailwind-merge
 
 
-5. Install dependencies
+4. Install dependencies
 
 Run the following command from the root of your project:
     
@@ -179,7 +165,7 @@ Run the following command from the root of your project:
 pnpm add tailwindcss-animate class-variance-authority --filter ui
 ```
 
-6. Add shadcn components
+5. Add shadcn components
 
 Finally, run this command from the root of your project to add the button component:
 
