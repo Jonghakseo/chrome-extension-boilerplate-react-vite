@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import { replaceTscAliasPaths } from 'tsc-alias';
 import { resolve } from 'node:path';
 import esbuild from 'esbuild';
-import { aliasPath } from 'esbuild-plugin-alias-path';
 
 /**
  * @type { import('esbuild').BuildOptions }
@@ -14,13 +13,6 @@ const buildOptions = {
   target: 'es6',
   outdir: './dist',
   sourcemap: true,
-  plugins: [
-    aliasPath({
-      alias: {
-        '@lib/*': resolve('./lib'),
-      },
-    }),
-  ],
 };
 
 await esbuild.build(buildOptions);
