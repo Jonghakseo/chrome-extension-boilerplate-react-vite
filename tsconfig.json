@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "ESLint",
+  "extends": "./packages/tsconfig/base.json",
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmit": false,
+    "target": "ESNext"
+  },
+  "include": ["eslint.config.ts"]
+}
