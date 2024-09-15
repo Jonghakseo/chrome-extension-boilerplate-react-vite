@@ -155,14 +155,14 @@ import tailwindAnimate from 'tailwindcss-animate';
 
 export function withUI(tailwindConfig: Config): Config {
   return deepmerge(
-    uiConfig,
+    shadcnConfig,
     deepmerge(tailwindConfig, {
       content: ['./node_modules/@extension/ui/lib/**/*.{tsx,ts,js,jsx}'],
     }),
   );
 }
 
-const uiConfig = {
+const shadcnConfig = {
   darkMode: ['class'],
   theme: {
     container: {
