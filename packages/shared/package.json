@@ -20,6 +20,9 @@
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
+  "dependencies": {
+    "webext-bridge": "^6.0.1"
+  },
   "devDependencies": {
     "@extension/storage": "workspace:*",
     "@extension/tsconfig": "workspace:*"
