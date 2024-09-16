@@ -32,6 +32,9 @@ const convertToFirefoxCompatibleManifest = (manifest: Manifest) => {
       strict_min_version: '109.0',
     },
   };
+  manifestCopy.permissions = (manifestCopy.permissions as string[]).filter(value => value !== 'sidePanel');
+
   delete manifestCopy.options_page;
+  delete manifestCopy.side_panel;
   return manifestCopy as Manifest;
 };
