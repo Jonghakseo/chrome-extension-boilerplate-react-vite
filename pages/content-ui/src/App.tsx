@@ -2,12 +2,19 @@ import { useEffect } from 'react';
 import { Button } from '@extension/ui';
 import { useStorage } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
+import { sendMessage } from 'webext-bridge/content-script';
 
 export default function App() {
   const theme = useStorage(exampleThemeStorage);
 
   useEffect(() => {
     console.log('content ui loaded');
+
+    const message = 'Hello?';
+    sendMessage('Handshake', message).then(response => {
+      console.log('Sending message ', message);
+      console.log('Receiving message ', response);
+    });
   }, []);
 
   return (

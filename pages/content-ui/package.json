@@ -25,12 +25,13 @@
   "dependencies": {
     "@extension/shared": "workspace:*",
     "@extension/storage": "workspace:*",
-    "@extension/ui": "workspace:*"
+    "@extension/ui": "workspace:*",
+    "webext-bridge": "^6.0.1"
   },
   "devDependencies": {
+    "@extension/hmr": "workspace:*",
     "@extension/tailwindcss-config": "workspace:*",
     "@extension/tsconfig": "workspace:*",
-    "@extension/hmr": "workspace:*",
     "@extension/vite-config": "workspace:*",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3"
