@@ -3,6 +3,8 @@
   "display": "Chrome Extension Utils",
   "extends": "./base.json",
   "compilerOptions": {
-    "noEmit": false
+    "noEmit": false,
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext"
   }
 }
