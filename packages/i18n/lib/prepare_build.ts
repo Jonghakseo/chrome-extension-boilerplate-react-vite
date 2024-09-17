@@ -1,7 +1,6 @@
 import { cpSync, existsSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-// TODO: UJEDNOLIĆ NAZWY PLIKÓW I FOLDERÓW
 (() => {
   const isDev = process.env.__DEV__ === 'true';
   const i18nPath = isDev ? 'lib/i18n-dev.ts' : 'lib/i18n-prod.ts';
