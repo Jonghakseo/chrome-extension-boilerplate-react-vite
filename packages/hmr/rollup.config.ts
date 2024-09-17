@@ -1,12 +1,13 @@
 import sucrase from '@rollup/plugin-sucrase';
-import type { RollupOptions } from 'rollup';
+import type { Plugin, RollupOptions } from 'rollup';
 
 const plugins = [
+  // @ts-expect-error I don't know why error happening here
   sucrase({
     exclude: ['node_modules/**'],
     transforms: ['typescript'],
   }),
-];
+] as Plugin[];
 
 export default [
   {
