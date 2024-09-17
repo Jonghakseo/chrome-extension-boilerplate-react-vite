@@ -1,2 +1,1 @@
-export * from './lib/env.js';
-export * from './lib/withPageConfig.js';
+export * from './lib/index.js';
