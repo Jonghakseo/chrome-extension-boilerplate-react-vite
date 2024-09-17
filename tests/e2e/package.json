@@ -1,8 +1,9 @@
 {
   "name": "@extension/e2e",
   "version": "0.3.2",
-  "description": "E2e tests configuration boilerplate",
+  "description": "chrome extension - E2E tests",
   "private": true,
+  "sideEffects": false,
   "type": "module",
   "scripts": {
     "e2e": "wdio run ./config/wdio.browser.conf.ts"
@@ -15,6 +16,6 @@
     "@wdio/mocha-framework": "^9.0.8",
     "@wdio/spec-reporter": "^9.0.8",
     "@wdio/types": "^9.0.8",
-    "tsx": "^4.16.2"
+    "tsx": "^4.19.1"
   }
 }

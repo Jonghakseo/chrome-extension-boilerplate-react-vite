@@ -2,6 +2,7 @@
   "name": "@extension/content-script",
   "version": "0.3.2",
   "description": "chrome extension - content script",
+  "type": "module",
   "private": true,
   "sideEffects": true,
   "files": [

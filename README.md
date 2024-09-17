@@ -139,7 +139,7 @@ You have to do it on every browser launch.</i>
 
 Main app with background script, manifest
 
-- `manifest.js` - manifest for chrome extension
+- `manifest.ts` - manifest for chrome extension
 - `lib/background` - [background script](https://developer.chrome.com/docs/extensions/mv3/background_pages/) for chrome
   extension (`background.service_worker` in
   manifest.json)

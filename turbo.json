@@ -5,17 +5,17 @@
   "tasks": {
     "ready": {
       "dependsOn": ["^ready"],
-      "outputs": ["dist/**", "build/**"]
+      "outputs": ["../../dist/**", "dist/**"]
     },
     "dev": {
       "dependsOn": ["ready"],
-      "outputs": ["dist/**", "build/**", "i18n/locales/**"],
+      "outputs": ["../../dist/**", "dist/**"],
       "cache": false,
       "persistent": true
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["../../dist/**", "dist/**", "build/**"],
+      "outputs": ["../../dist/**", "dist/**"],
       "cache": false
     },
     "e2e": {

@@ -41,12 +41,12 @@ export default withUI({
 Add the following to the `index.tsx` file.
 
 ```tsx
-import '@extension/ui/dist/global.css';
+import '@extension/ui/lib/global.css';
 ```
 
 ## Add Component
 
-Add the following to the `lib/components/index.ts` file.
+Add the following to the `lib/components/index.mts` file.
 
 ```tsx
 export * from './Button';

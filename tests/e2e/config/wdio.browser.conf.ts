@@ -1,16 +1,14 @@
 import { config as baseConfig } from './wdio.conf';
-import path from 'node:path';
-import url from 'node:url';
-import fs from 'node:fs/promises';
+import { readFile } from 'node:fs/promises';
 import { getChromeExtensionPath, getFirefoxExtensionPath } from '../utils/extension-path';
+import { resolve } from 'node:path';
 
 const isFirefox = process.env.__FIREFOX__ === 'true';
 const isCI = process.env.CI === 'true';
 
 const archiveName = isFirefox ? 'extension.xpi' : 'extension.zip';
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
-const extPath = path.join(__dirname, `../../../dist-zip/${archiveName}`);
-const bundledExtension = (await fs.readFile(extPath)).toString('base64');
+const extPath = resolve(import.meta.dirname, '..', '..', '..', 'dist-zip', archiveName);
+const bundledExtension = (await readFile(extPath)).toString('base64');
 
 const chromeCapabilities = {
   browserName: 'chrome',

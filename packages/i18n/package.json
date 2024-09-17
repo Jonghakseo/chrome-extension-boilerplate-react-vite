@@ -2,28 +2,28 @@
   "name": "@extension/i18n",
   "version": "0.3.2",
   "description": "chrome extension - internationalization",
+  "type": "module",
   "private": true,
   "sideEffects": false,
   "files": [
     "dist/**"
   ],
+  "main": "dist/index.js",
   "types": "index.ts",
-  "main": "./dist/index.js",
   "scripts": {
     "clean:bundle": "rimraf dist",
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
-    "genenrate-i8n": "node genenrate-i18n.mjs",
-    "ready": "pnpm genenrate-i8n && node build.dev.mjs",
-    "build": "pnpm genenrate-i8n && node build.prod.mjs",
+    "prepare-build": "tsc -b prepare-build.tsconfig.json && node dist/lib/prepare_build.js",
+    "ready": "pnpm prepare-build && tsc -b",
+    "ready:dev": "cross-env __DEV__=true pnpm ready",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@extension/tsconfig": "workspace:*",
-    "@extension/hmr": "workspace:*"
+    "@extension/tsconfig": "workspace:*"
   }
 }

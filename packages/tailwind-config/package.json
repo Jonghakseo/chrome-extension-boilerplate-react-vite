@@ -3,5 +3,6 @@
   "version": "0.3.2",
   "description": "chrome extension - tailwindcss configuration",
   "main": "tailwind.config.ts",
-  "private": true
+  "private": true,
+  "sideEffects": false
 }

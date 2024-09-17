@@ -1,17 +1,17 @@
 import fs from 'node:fs';
-import path from 'node:path';
+import { resolve } from 'node:path';
 import type { PluginOption } from 'vite';
 import { WebSocket } from 'ws';
-import MessageInterpreter from '../interpreter';
-import { BUILD_COMPLETE, LOCAL_RELOAD_SOCKET_URL } from '../constant';
-import type { PluginConfig } from '../types';
+import MessageInterpreter from '../interpreter/index.js';
+import { BUILD_COMPLETE, LOCAL_RELOAD_SOCKET_URL } from '../consts.js';
+import type { PluginConfig } from '../types.js';
 
-const injectionsPath = path.resolve(__dirname, '..', '..', '..', 'build', 'injections');
+const injectionsPath = resolve(import.meta.dirname, '..', 'injections');
 
-const refreshCode = fs.readFileSync(path.resolve(injectionsPath, 'refresh.js'), 'utf-8');
-const reloadCode = fs.readFileSync(path.resolve(injectionsPath, 'reload.js'), 'utf-8');
+const refreshCode = fs.readFileSync(resolve(injectionsPath, 'refresh.js'), 'utf-8');
+const reloadCode = fs.readFileSync(resolve(injectionsPath, 'reload.js'), 'utf-8');
 
-export function watchRebuildPlugin(config: PluginConfig): PluginOption {
+export const watchRebuildPlugin = (config: PluginConfig): PluginOption => {
   let ws: WebSocket | null = null;
 
   const id = Math.random().toString(36);
@@ -20,7 +20,7 @@ export function watchRebuildPlugin(config: PluginConfig): PluginOption {
   const { refresh, reload } = config;
   const hmrCode = (refresh ? refreshCode : '') + (reload ? reloadCode : '');
 
-  function initializeWebSocket() {
+  const initializeWebSocket = () => {
     ws = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
 
     ws.onopen = () => {
@@ -41,7 +41,7 @@ export function watchRebuildPlugin(config: PluginConfig): PluginOption {
         console.error(`[HMR] Cannot establish connection to server at ${LOCAL_RELOAD_SOCKET_URL}`);
       }
     };
-  }
+  };
 
   return {
     name: 'watch-rebuild',
@@ -65,4 +65,4 @@ export function watchRebuildPlugin(config: PluginConfig): PluginOption {
       }
     },
   };
-}
+};

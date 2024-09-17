@@ -1,6 +1,6 @@
-import { createStorage } from './base';
-import { StorageEnum } from './enums';
-import type { Theme, ThemeStorage } from './types';
+import { createStorage } from './base.js';
+import { StorageEnum } from './enums.js';
+import type { Theme, ThemeStorage } from './types.js';
 
 const storage = createStorage<Theme>('theme-storage-key', 'light', {
   storageEnum: StorageEnum.Local,

@@ -2,19 +2,20 @@
   "name": "@extension/storage",
   "version": "0.3.2",
   "description": "chrome extension - storage",
+  "type": "module",
   "private": true,
   "sideEffects": false,
   "files": [
     "dist/**"
   ],
-  "main": "./dist/index.js",
-  "types": "index.ts",
+  "types": "index.mts",
+  "main": "dist/index.mjs",
   "scripts": {
     "clean:bundle": "rimraf dist",
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
-    "ready": "node build.mjs",
+    "ready": "tsc -b",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
