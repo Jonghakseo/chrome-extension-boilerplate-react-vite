@@ -140,7 +140,7 @@ Create a file named `components.json` in the `packages/ui` directory with the fo
 Run the following command from the root of your project:
 
 ```shell
-pnpm add tailwindcss-animate class-variance-authority --filter ui
+pnpm add tailwindcss-animate class-variance-authority -F ui
 ```
 
 3. Edit `withUI.ts` in `lib` folder
