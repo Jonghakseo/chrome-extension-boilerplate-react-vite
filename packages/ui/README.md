@@ -338,9 +338,15 @@ Remember to adjust any paths or package names if your project structure differs 
 
 6. Export components
 
-Edit the `index.ts` file in the `packages/ui` directory to export the button component:
+Make the `index.ts` file in the `components/ui` directory export the button component:
+
+```ts
+export * from './button';
+```
+
+Edit the `index.ts` file in the `packages/ui` directory to export the shadcn ui component:
 
 ```ts
 // export * from './lib/components'; // remove this line: duplicated button component
-export * from './lib/components/ui/button';
+export * from './lib/components/ui';
 ```
