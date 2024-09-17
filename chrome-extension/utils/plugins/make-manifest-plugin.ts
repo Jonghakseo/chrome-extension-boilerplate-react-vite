@@ -1,50 +1,45 @@
-import fs from 'node:fs';
+import { existsSync, mkdirSync, writeFileSync, copyFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import process from 'node:process';
+import { env, platform } from 'node:process';
 import type { Manifest } from '@extension/dev-utils';
 import { colorLog, ManifestParser } from '@extension/dev-utils';
 import type { PluginOption } from 'vite';
 
 const manifestFile = resolve(import.meta.dirname, '..', '..', 'manifest.js');
 const refreshFile = resolve(import.meta.dirname, '..', 'refresh.js');
-const manifestFile = resolve(rootDir, 'manifest.js');
 
 const getManifestWithCacheBurst = async () => {
   const withCacheBurst = (path: string) => `${path}?${Date.now().toString()}`;
 
-  let rawManifest: { default: Manifest };
   /**
    * In Windows, import() doesn't work without file:// protocol.
    * So, we need to convert path to file:// protocol. (url.pathToFileURL)
    */
-  if (process.platform === 'win32') {
-    rawManifest = await import(withCacheBurst(pathToFileURL(manifestFile).href));
+  if (platform === 'win32') {
+    return (await import(withCacheBurst(pathToFileURL(manifestFile).href))).default;
   } else {
-    rawManifest = await import(withCacheBurst(manifestFile));
+    return (await import(withCacheBurst(manifestFile))).default;
   }
-  return rawManifest.default;
 };
 
 export default (config: { outDir: string }): PluginOption => {
   const makeManifest = (manifest: Manifest, to: string) => {
-    if (!fs.existsSync(to)) {
-      fs.mkdirSync(to);
+    if (!existsSync(to)) {
+      mkdirSync(to);
     }
 
     const manifestPath = resolve(to, 'manifest.json');
-    const isFirefox = process.env.__FIREFOX__ === 'true';
-    fs.writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox));
+    const isFirefox = env.__FIREFOX__ === 'true';
     const isDev = process.env.__DEV__ === 'true';
 
-    if (isDev) {
-      addRefreshContentScript(manifest);
-    }
+    writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox));
 
-    fs.writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox ? 'firefox' : 'chrome'));
-    if (isDev) {
-      fs.copyFileSync(refreshFile, resolve(to, 'refresh.js'));
-    }
+    isDev && addRefreshContentScript(manifest);
+
+    writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox ? 'firefox' : 'chrome'));
+
+    isDev && copyFileSync(refreshFile, resolve(to, 'refresh.js'));
 
     colorLog(`Manifest file copy complete: ${manifestPath}`, 'success');
   };
