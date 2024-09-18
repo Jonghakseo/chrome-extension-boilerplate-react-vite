@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client';
+import '../dist/global-out.css';
 import '@src/index.css';
 import Popup from '@src/Popup';
 

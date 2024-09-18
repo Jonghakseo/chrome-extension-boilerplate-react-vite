@@ -1,45 +1,11 @@
 import { resolve } from 'node:path';
-import { makeEntryPointPlugin } from '@extension/hmr';
 import { isDev, withPageConfig } from '@extension/vite-config';
-import { readdirSync, existsSync, mkdirSync, writeFileSync, Dirent } from 'fs';
 import { processCssPlugin } from '@extension/hmr';
+import { getEntryPoints } from './script/entryPoints';
 
 const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');
 
-const getEntryPoints = (options: { include?: string[], exclude?: string[], createRecursively?: boolean }) => {
-  const entryPoints: Record<string, string> = {};
-
-  const foldersToProcess = options.include ||
-    readdirSync(srcDir, { withFileTypes: true })
-      .filter((item): item is Dirent => item.isDirectory())
-      .map(item => item.name);
-
-  foldersToProcess.forEach(folderName => {
-    const shouldExclude = options.exclude && options.exclude.includes(folderName);
-
-    if (!shouldExclude) {
-      const entryFolder = resolve(srcDir, folderName);
-      const entryFileTS = resolve(entryFolder, 'index.ts');
-      const entryFileTSX = resolve(entryFolder, `${folderName}.tsx`);
-
-      if (!existsSync(entryFolder) && options.createRecursively) {
-        console.log('Creating folder', entryFolder);
-        mkdirSync(entryFolder, { recursive: true });
-        writeFileSync(entryFileTS, `export * from "./${folderName}.tsx";`);
-        writeFileSync(entryFileTSX, '');
-      }
-
-      if (existsSync(entryFolder)) {
-        entryPoints[folderName] = entryFileTS;
-      } else {
-        console.warn(`Folder "${folderName}" does not exist and was not created.`);
-      }
-    }
-  });
-
-  return entryPoints;
-}
 /**
  * Here is the place to add new entry points, u can straight away add new folders here to include
  * without creating folders in src dir manually.

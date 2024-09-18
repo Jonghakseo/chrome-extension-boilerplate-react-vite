@@ -15,6 +15,6 @@
     "@wdio/mocha-framework": "^9.0.8",
     "@wdio/spec-reporter": "^9.0.8",
     "@wdio/types": "^9.0.8",
-    "tsx": "^4.16.2"
+    "tsx": "^4.19.1"
   }
 }

@@ -1,1 +1,1 @@
-export * from './page2.tsx';
+export * from './page2';

@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import App from '@src/App';
-import tailwindcssOutput from '../dist/tailwind-output.css?inline';
+import globalCssOutput from '../dist/global-out.css?inline';
 
 const root = document.createElement('div');
 root.id = 'chrome-extension-boilerplate-react-vite-content-view-root';
@@ -20,12 +20,12 @@ if (navigator.userAgent.includes('Firefox')) {
    * Injecting styles into the document, this may cause style conflicts with the host page
    */
   const styleElement = document.createElement('style');
-  styleElement.innerHTML = tailwindcssOutput;
+  styleElement.innerHTML = globalCssOutput;
   shadowRoot.appendChild(styleElement);
 } else {
   /** Inject styles into shadow dom */
   const globalStyleSheet = new CSSStyleSheet();
-  globalStyleSheet.replaceSync(tailwindcssOutput);
+  globalStyleSheet.replaceSync(globalCssOutput);
   shadowRoot.adoptedStyleSheets = [globalStyleSheet];
 }
 
