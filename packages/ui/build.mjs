@@ -28,5 +28,3 @@ await replaceTscAliasPaths({
   outDir: 'dist',
   declarationDir: 'dist',
 });
-
-fs.copyFileSync(resolve('lib', 'global.css'), resolve('dist', 'global.css'));

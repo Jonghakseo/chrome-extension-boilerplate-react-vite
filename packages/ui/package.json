@@ -7,7 +7,7 @@
   "type": "module",
   "files": [
     "dist/**",
-    "dist/global.css"
+    "dist/global-out.css"
   ],
   "types": "index.ts",
   "main": "./dist/index.js",
@@ -29,6 +29,6 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.4.0"
+    "tailwind-merge": "^2.5.2"
   }
 }
