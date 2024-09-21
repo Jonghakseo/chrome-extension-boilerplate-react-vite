@@ -91,7 +91,7 @@ importers:
         specifier: ^2.6.3
         version: 2.7.0
       turbo:
-        specifier: ^2.0.12
+        specifier: ^2.1.1
         version: 2.1.1
       typescript:
         specifier: 5.5.4
@@ -6485,7 +6485,7 @@ snapshots:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.1.2
+      minimatch: 3.0.8
       once: 1.4.0
       path-is-absolute: 1.0.1
 
