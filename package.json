@@ -27,9 +27,7 @@
     "lint:fix": "turbo lint:fix --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
     "prettier": "turbo prettier --continue -- --cache --cache-location node_modules/.cache/.prettiercache",
     "prepare": "husky",
-    "update-version": "run-script-os",
-    "update-version:win32": "bash update_version.sh",
-    "update-version:default": "./update_version.sh"
+    "update-version": "bash update_version.sh"
   },
   "dependencies": {
     "react": "18.3.1",
@@ -62,8 +60,7 @@
     "tslib": "^2.6.3",
     "turbo": "^2.0.12",
     "typescript": "5.5.4",
-    "vite": "5.4.3",
-    "run-script-os": "^1.1.6"
+    "vite": "5.4.3"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json}": [
