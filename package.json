@@ -28,9 +28,7 @@
     "lint:fix": "eslint . --fix --cache --cache-location node_modules/.cache/.eslintcache",
     "prettier": "turbo prettier --continue -- --cache --cache-location node_modules/.cache/.prettiercache",
     "prepare": "husky",
-    "update-version": "run-script-os",
-    "update-version:win32": "bash update_version.sh",
-    "update-version:default": "./update_version.sh"
+    "update-version": "bash update_version.sh"
   },
   "dependencies": {
     "react": "18.3.1",
@@ -57,9 +55,10 @@
     "eslint-plugin-tailwindcss": "^3.17.4",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.7",
-    "postcss": "^8.4.38",
+    "postcss": "^8.4.47",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
+    "tailwindcss": "^3.4.11",
     "run-script-os": "^1.1.6",
     "tailwindcss": "^3.4.6",
     "tslib": "^2.6.3",
