@@ -22,7 +22,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module",
   },
-  "plugins": ["react", "@typescript-eslint", "react-hooks", "import", "jsx-a11y", "prettier", "tailwindcss"],
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "import", "jsx-a11y", "tailwindcss", "prettier"],
   "settings": {
     "react": {
       "version": "detect",
