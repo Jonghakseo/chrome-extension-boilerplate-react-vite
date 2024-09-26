@@ -1,7 +1,5 @@
 import '@src/Options.css';
-
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
-
 import { Button } from '@extension/ui';
 import { exampleThemeStorage } from '@extension/storage';
 
