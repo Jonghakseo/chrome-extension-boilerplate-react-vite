@@ -73,10 +73,11 @@ This boilerplate is made for creating chrome extensions using React and Typescri
    - `git config --global core.eol lf`
    - `git config --global core.autocrlf input`
    #### This will change eol(End of line) to the same as on Linux/Mac, without this, you will have conflicts with your teammates with those systems and our bash script won't work
-2. Clone this repository.
-3. Change `extensionDescription` and `extensionName` in `messages.json` file.
-4. Install pnpm globally: `npm install -g pnpm` (check your node version >= 18.19.1))
-5. Run `pnpm install`
+2. Clone repository.
+3. Check your node version is >= 22.8.0, recommend to use [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro)
+4. Install pnpm globally: `npm install -g pnpm`
+5. Change `extensionDescription` and `extensionName` in `packages/i18n/locales/{for_all}/messages.json` file.
+6. Run `pnpm install`
 
 ### And then, depending on needs:
 
@@ -168,19 +169,13 @@ Some shared packages
 - `content-ui` - [content script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/) for render UI in
   user's page (`content_scripts` in manifest.json)
 - `content-runtime` - [content runtime script](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts#functionality)
-  this can be inject from `popup` like standard `content`
-- `devtools` - [devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/#creating) for chrome
-  extension (`devtools_page` in manifest.json)
+  this can be injecting from `popup` like standard `content`
+- `devtools` - [devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/#creating) for chrome extension (`devtools_page` in manifest.json)
 - `devtools-panel` - devtools panel for [devtools](pages/devtools/src/index.ts)
-- `new-tab` - [new tab](https://developer.chrome.com/docs/extensions/mv3/override/) for chrome
-  extension (`chrome_url_overrides.newtab` in manifest.json)
-- `options` - [options](https://developer.chrome.com/docs/extensions/mv3/options/) for chrome extension (`options_page`
-  in manifest.json)
-- `popup` - [popup](https://developer.chrome.com/docs/extensions/reference/browserAction/) for chrome
-  extension (`action.default_popup` in
-  manifest.json)
-- `side-panel` - [sidepanel(Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/sidePanel/) for chrome
-  extension (`side_panel.default_path` in manifest.json)
+- `new-tab` - [new tab](https://developer.chrome.com/docs/extensions/mv3/override/) for chrome extension (`chrome_url_overrides.newtab` in manifest.json)
+- `options` - [options](https://developer.chrome.com/docs/extensions/mv3/options/) for chrome extension (`options_page` in manifest.json)
+- `popup` - [popup](https://developer.chrome.com/docs/extensions/reference/browserAction/) for chrome extension (`action.default_popup` in manifest.json)
+- `side-panel` - [sidepanel(Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/sidePanel/) for chrome extension (`side_panel.default_path` in manifest.json)
 
 ## Community <a name="community"></a>
 
