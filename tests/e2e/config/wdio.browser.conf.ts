@@ -14,7 +14,6 @@ const bundledExtension = (await fs.readFile(extPath)).toString('base64');
 
 const chromeCapabilities = {
   browserName: 'chrome',
-  browserVersion: 'latest',
   acceptInsecureCerts: true,
   'goog:chromeOptions': {
     args: [
@@ -31,7 +30,6 @@ const chromeCapabilities = {
 
 const firefoxCapabilities = {
   browserName: 'firefox',
-  browserVersion: 'latest',
   acceptInsecureCerts: true,
   'moz:firefoxOptions': {
     args: [...(isCI ? ['--headless'] : [])],
