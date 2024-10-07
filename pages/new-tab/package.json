@@ -28,7 +28,7 @@
     "@extension/tailwindcss-config": "workspace:*",
     "@extension/tsconfig": "workspace:*",
     "@extension/vite-config": "workspace:*",
-    "sass": "1.77.8",
+    "sass": "1.79.4",
     "postcss-load-config": "^6.0.1",
     "cross-env": "^7.0.3"
   },
