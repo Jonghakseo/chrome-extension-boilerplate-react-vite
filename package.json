@@ -61,7 +61,7 @@
     "tslib": "^2.6.3",
     "turbo": "^2.0.12",
     "typescript": "5.5.4",
-    "vite": "5.4.3"
+    "vite": "5.4.8"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json}": [
