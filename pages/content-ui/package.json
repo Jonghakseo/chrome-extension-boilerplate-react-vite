@@ -32,7 +32,7 @@
     "@extension/tsconfig": "workspace:*",
     "@extension/hmr": "workspace:*",
     "@extension/vite-config": "workspace:*",
-    "concurrently": "^8.2.2",
+    "concurrently": "^9.0.1",
     "cross-env": "^7.0.3"
   }
 }
