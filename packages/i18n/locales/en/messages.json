@@ -1,11 +1,11 @@
 {
   "extensionDescription": {
-    "description": "Extension description",
-    "message": "Chrome extension boilerplate developed with Vite, React and Typescript"
+    "description": "Transform your reading experience with SpeakEasy, the innovative Chrome extension designed to read text aloud seamlessly..",
+    "message": "Chrome extension that reads text on the screen."
   },
   "extensionName": {
-    "description": "Extension name",
-    "message": "Chrome extension boilerplate"
+    "description": "TextFlow",
+    "message": "Enjoy a smooth listening experience as sentences are read one after another without interruptions."
   },
   "toggleTheme": {
     "message": "Toggle theme"
