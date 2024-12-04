@@ -1,10 +1,10 @@
 <!-- Describe what this PR is for in the title. -->
 
-> `*` Please fill in the required items.
+> `*` denotes required fiels
 
 ## Priority*
 
-- [ ] High: This PR needs to be merged first for other tasks.
+- [ ] High: This PR needs to be merged first, before other tasks.
 - [x] Middle: This PR should be merged quickly to prevent conflicts due to common changes. (default)
 - [ ] Low: This PR does not affect other tasks, so it can be merged later.
 
@@ -16,7 +16,7 @@
 
 ## How to check the feature
 <!-- Describe how to check the feature in detail -->
-<!-- If there are any changes to the screen, please attach a screenshot for easy identification. -->
+<!-- If there are any visual changes, please attach a screenshot for easy identification. -->
 
 
 ## Reference
