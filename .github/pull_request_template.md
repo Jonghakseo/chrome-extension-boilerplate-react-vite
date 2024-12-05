@@ -1,6 +1,6 @@
 <!-- Describe what this PR is for in the title. -->
 
-> `*` denotes required fiels
+> `*` denotes required fields
 
 ## Priority*
 
