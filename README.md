@@ -127,7 +127,7 @@ To add an environment variable:
 3. Edit `./vite-env.d.ts` and in the `ImportMetaEnv` interface, add your variable with the appropriate type, e.g.
 
    `readonly VITE_MY_API_KEY: string;`
-4. Then you can read the variable via `import.meta.env.MY_API_KEY` (learn more at [Env Variables and Modes](https://vite.dev/guide/env-and-mode))
+4. Then you can read the variable via `import.meta.env.VITE_MY_API_KEY` (learn more at [Env Variables and Modes](https://vite.dev/guide/env-and-mode))
 
 #### If you want to set it for each package independently:
 
