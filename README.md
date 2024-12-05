@@ -58,7 +58,7 @@ the build speed and development experience by using Vite and Turborepo.
 - [React18](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwindcss](https://tailwindcss.com/)
-- [Vite](https://vitejs.dev/) (and [Rollup](https://rollupjs.org/))
+- [Vite](https://vitejs.dev/) with [Rollup](https://rollupjs.org/)
 - [Turborepo](https://turbo.build/repo)
 - [Prettier](https://prettier.io/)
 - [ESLint](https://eslint.org/)
@@ -204,7 +204,7 @@ For these types of issues, kill and restart `pnpm dev`. Also try reloading the e
 If saving source files doesn't cause the extension HMR code to trigger a reload of the browser page, try this:
 
 1. Ctrl+C the development server and restart it (`pnpm run dev`)
-2. If youget a [`grpc` error](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/612),
+2. If you get a [`grpc` error](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/612),
    [kill the `turbo` process](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/612#issuecomment-2518982339) and run `pnpm dev` again.
 
 ## Community
