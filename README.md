@@ -154,22 +154,6 @@ The extension lives in the `chrome-extension` directory and includes the followi
 > [Declaring permissions](https://developer.chrome.com/docs/extensions/develop/concepts/declare-permissions)
 > and edit `manifest.js` accordingly.
 
-### Packages <a name="structure-packages"></a>
-
-Some shared packages:
-
-- `dev-utils` - utilities for Chrome extension development (manifest-parser, logger)
-- `i18n` - custom internationalization package; provides i18n function with type safety and other validation
-- `hmr` - custom HMR plugin for Vite, injection script for reload/refresh, HMR dev-server
-- `shared` - shared code for the entire project (types, constants, custom hooks, components etc.)
-- `storage` - helpers for easier integration with [storage](https://developer.chrome.com/docs/extensions/reference/api/storage), e.g. local/session storages
-- `tailwind-config` - shared Tailwind config for entire project
-- `tsconfig` - shared tsconfig for the entire project
-- `ui` - function to merge your Tailwind config with the global one; you can save components here
-- `vite-config` - shared Vite config for the entire project
-- `zipper` - run `pnpm zip` to pack the `dist` folder into `extension.zip` inside the newly created `dist-zip`
-- `e2e` - run `pnpm e2e` for end-to-end tests of your zipped extension on different browsers
-
 ### Pages <a name="structure-pages"></a>
 
 Code that is transpiled to be part of the extension lives in the [pages](pages/) directory.
@@ -192,6 +176,36 @@ Code that is transpiled to be part of the extension lives in the [pages](pages/)
   (`action.default_popup` in manifest.json)
 - [`side-panel`](pages/side-panel/) - [sidepanel (Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/api/sidePanel)
   (`side_panel.default_path` in manifest.json)
+
+### Packages <a name="structure-packages"></a>
+
+Some shared packages:
+
+- `dev-utils` - utilities for Chrome extension development (manifest-parser, logger)
+- `i18n` - custom internationalization package; provides i18n function with type safety and other validation
+- `hmr` - custom HMR plugin for Vite, injection script for reload/refresh, HMR dev-server
+- `shared` - shared code for the entire project (types, constants, custom hooks, components etc.)
+- `storage` - helpers for easier integration with [storage](https://developer.chrome.com/docs/extensions/reference/api/storage), e.g. local/session storages
+- `tailwind-config` - shared Tailwind config for entire project
+- `tsconfig` - shared tsconfig for the entire project
+- `ui` - function to merge your Tailwind config with the global one; you can save components here
+- `vite-config` - shared Vite config for the entire project
+- `zipper` - run `pnpm zip` to pack the `dist` folder into `extension.zip` inside the newly created `dist-zip`
+- `e2e` - run `pnpm e2e` for end-to-end tests of your zipped extension on different browsers
+
+## Troubleshooting
+
+### Adding env vars or `content.css` rules does nothing
+
+For these types of issues, kill and restart `pnpm dev`. Also try reloading the extension in the browser.
+
+### Hot module reload seems to have frozen
+
+If saving source files doesn't cause the extension HMR code to trigger a reload of the browser page, try this:
+
+1. Ctrl+C the development server and restart it (`pnpm run dev`)
+2. If youget a [`grpc` error](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/612),
+   [kill the `turbo` process](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/612#issuecomment-2518982339) and run `pnpm dev` again.
 
 ## Community
 
