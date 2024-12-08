@@ -23,7 +23,7 @@ export default defineConfig({
     }) as PluginOption,
     watchPublicPlugin(),
     makeManifestPlugin({ outDir }),
-    isDev && watchRebuildPlugin({ reload: true }),
+    isDev && watchRebuildPlugin({ reload: true, id: 'chrome-extension-hmr' }),
   ],
   publicDir: resolve(rootDir, 'public'),
   build: {
