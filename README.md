@@ -48,47 +48,50 @@
 - [Star History](#star-history)
 - [Contributors](#contributors)
 
-## Intro <a name="intro"></a>
+## Intro
 
-This boilerplate is made for creating chrome extensions using React and Typescript.
-> The focus was on improving the build speed and development experience with Vite(Rollup) & Turborepo.
+This boilerplate helps you create Chrome/Firefox extensions using React and Typescript. It improves
+the build speed and development experience by using Vite and Turborepo.
 
-## Features <a name="features"></a>
+## Features
 
 - [React18](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwindcss](https://tailwindcss.com/)
-- [Vite](https://vitejs.dev/)
+- [Vite](https://vitejs.dev/) with [Rollup](https://rollupjs.org/)
 - [Turborepo](https://turbo.build/repo)
 - [Prettier](https://prettier.io/)
 - [ESLint](https://eslint.org/)
-- [Chrome Extension Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
-- [Custom I18n Package](/packages/i18n/)
-- [Custom HMR(Hot Module Rebuild) Plugin](/packages/hmr/)
-- [End to End Testing with WebdriverIO](https://webdriver.io/)
+- [Chrome Extensions Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
+- [Custom i18n package](/packages/i18n/)
+- [Custom HMR (Hot Module Rebuild) plugin](/packages/hmr/)
+- [End-to-end testing with WebdriverIO](https://webdriver.io/)
 
-## Getting started: <a name="getting-started"></a>
+## Getting started
 
 1. When you're using Windows run this:
    - `git config --global core.eol lf`
    - `git config --global core.autocrlf input`
-   #### This will change eol(End of line) to the same as on Linux/Mac, without this, you will have conflicts with your teammates with those systems and our bash script won't work
-2. Clone this repository.
-3. Change `extensionDescription` and `extensionName` in `messages.json` file in `packages/i18n/locales` folder.
-4. Install pnpm globally: `npm install -g pnpm` (check your node version >= 18.19.1))
-5. Run `pnpm install`
 
-### And then, depending on needs:
+   **This will set the EOL (End of line) character to be the same as on Linux/macOS. Without this, our bash script won't work, and you will have conflicts with developers on Linux/macOS.**
+2. Clone this repository.
+3. Edit `/packages/i18n/locales/`{your locale(s)}/`messages.json`
+4. In the objects `extensionDescription` and `extensionName`, change the `message` fields (leave `description` alone)
+5. In `/.package.json`, change the `version` to the desired version of your extension.
+6. Install pnpm globally: `npm install -g pnpm` (check your node version >= 18.19.1))
+7. Run `pnpm install`
+
+Then, depending on the target browser:
 
 ### For Chrome: <a name="getting-started-chrome"></a>
 
 1. Run:
-    - Dev: `pnpm dev` (On windows, you should run as administrator. [(Issue#456)](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/456)
+    - Dev: `pnpm dev` (on Windows, you should run as administrator; see [issue#456](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/456))
     - Prod: `pnpm build`
 2. Open in browser - `chrome://extensions`
-3. Check - `Developer mode`
-4. Find and Click - `Load unpacked extension`
-5. Select - `dist` folder at root
+3. Check - <kbd>Developer mode</kbd>
+4. Click - <kbd>Load unpacked</kbd> in the upper left corner
+5. Select the `dist` directory from the boilerplate project
 
 ### For Firefox: <a name="getting-started-firefox"></a>
 
@@ -96,14 +99,11 @@ This boilerplate is made for creating chrome extensions using React and Typescri
     - Dev: `pnpm dev:firefox`
     - Prod: `pnpm build:firefox`
 2. Open in browser - `about:debugging#/runtime/this-firefox`
-3. Find and Click - `Load Temporary Add-on...`
-4. Select - `manifest.json` from `dist` folder at root
+3. Click - <kbd>Load Temporary Add-on...</kbd> in the upper right corner
+4. Select the `./dist/manifest.json` file from the boilerplate project
 
-<h3>
-<i>Remember in firefox you add plugin in temporary mode, that's mean it'll disappear after each browser close.
-
-You have to do it on every browser launch.</i>
-</h3>
+> [!NOTE]
+> In Firefox, you load add-ons in temporary mode. That means they'll disappear after each browser close. You have to load the add-on on every browser launch.
 
 ## Install dependency for turborepo: <a name="install-dependency"></a>
 
@@ -118,12 +118,16 @@ You have to do it on every browser launch.</i>
 `package` - Name of the package you want to install e.g. `nodemon` \
 `module-name` - You can find it inside each `package.json` under the key `name`, e.g. `@extension/content-script`, you can use only `content-script` without `@extension/` prefix
 
-## Env Variables
+## Environment variables
 
-1. Copy `.example.env` and paste it as `.env` in the same path
-2. Add a new record inside `.env`
-3. Add this key with type for value to `vite-env.d.ts` (root) to `ImportMetaEnv`
-4. Then you can use it with `import.meta.env.{YOUR_KEY}` like with standard [Vite Env](https://vitejs.dev/guide/env-and-mode)
+To add an environment variable:
+
+1. Copy `.example.env` to `.env` (in the same directory)
+2. Add a new record inside `.env`, prefixed with `VITE_`, e.g. `VITE_MY_API_KEY=...`
+3. Edit `./vite-env.d.ts` and in the `ImportMetaEnv` interface, add your variable with the appropriate type, e.g.
+
+   `readonly VITE_MY_API_KEY: string;`
+4. Then you can read the variable via `import.meta.env.VITE_MY_API_KEY` (learn more at [Env Variables and Modes](https://vite.dev/guide/env-and-mode))
 
 #### If you want to set it for each package independently:
 
@@ -133,66 +137,83 @@ You have to do it on every browser launch.</i>
 
 #### Remember you can't use global and local at the same time for the same package(It will be overwritten)
 
-## Structure <a name="structure"></a>
+## Boilerplate structure <a name="structure"></a>
 
-### ChromeExtension <a name="structure-chrome-extension"></a>
+### Chrome extension <a name="structure-chrome-extension"></a>
 
-Main app with background script, manifest
+The extension lives in the `chrome-extension` directory and includes the following files:
 
-- `manifest.js` - manifest for chrome extension
-- `src/background` - [background script](https://developer.chrome.com/docs/extensions/mv3/background_pages/) for chrome
-  extension (`background.service_worker` in
-  manifest.json)
-- `public/content.css` - content css for user's page injection
+- [`manifest.js`](chrome-extension/manifest.js) - script that outputs the `manifest.json`
+- [`src/background`](chrome-extension/src/background) - [background script](https://developer.chrome.com/docs/extensions/mv3/background_pages/) 
+  (`background.service_worker` in manifest.json)
+- [`public`](chrome-extension/public/) - icons referenced in the manifest; content CSS for user's page injection
 
-### Packages <a name="structure-packages"></a>
-
-Some shared packages
-
-- `dev-utils` - utils for chrome extension development (manifest-parser, logger)
-- `i18n` - custom i18n package for chrome extension. provide i18n function with type safety and other validation.
-- `hmr` - custom HMR plugin for vite, injection script for reload/refresh, hmr dev-server
-- `shared` - shared code for entire project. (types, constants, custom hooks, components, etc.)
-- `storage` - helpers for [storage](https://developer.chrome.com/docs/extensions/reference/api/storage) easier integration with, e.g local, session storages
-- `tailwind-config` - shared tailwind config for entire project
-- `tsconfig` - shared tsconfig for entire project
-- `ui` - here's a function to merge your tailwind config with global one, and you can save components here
-- `vite-config` - shared vite config for entire project
-- `zipper` - By ```pnpm zip``` you can pack ```dist``` folder into ```extension.zip``` inside newly created ```dist-zip```
-- `e2e` - By ```pnpm e2e``` you can run end to end tests of your zipped extension on different browsers
+> [!IMPORTANT]
+> To facilitate development, the boilerplate is configured to "Read and change all your data on all websites".
+> In production, it's best practice to limit the premissions to only the strictly necessary websites. See
+> [Declaring permissions](https://developer.chrome.com/docs/extensions/develop/concepts/declare-permissions)
+> and edit `manifest.js` accordingly.
 
 ### Pages <a name="structure-pages"></a>
 
-- `content` - [content script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/) for chrome
-  extension (`content_scripts` in manifest.json)
-- `content-ui` - [content script](https://developer.chrome.com/docs/extensions/mv3/content_scripts/) for render UI in
-  user's page (`content_scripts` in manifest.json)
-- `content-runtime` - [content runtime script](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts#functionality)
-  this can be inject from `popup` like standard `content`
-- `devtools` - [devtools](https://developer.chrome.com/docs/extensions/mv3/devtools/#creating) for chrome
-  extension (`devtools_page` in manifest.json)
-- `devtools-panel` - devtools panel for [devtools](pages/devtools/src/index.ts)
-- `new-tab` - [new tab](https://developer.chrome.com/docs/extensions/mv3/override/) for chrome
-  extension (`chrome_url_overrides.newtab` in manifest.json)
-- `options` - [options](https://developer.chrome.com/docs/extensions/mv3/options/) for chrome extension (`options_page`
-  in manifest.json)
-- `popup` - [popup](https://developer.chrome.com/docs/extensions/reference/browserAction/) for chrome
-  extension (`action.default_popup` in
-  manifest.json)
-- `side-panel` - [sidepanel(Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/sidePanel/) for chrome
-  extension (`side_panel.default_path` in manifest.json)
+Code that is transpiled to be part of the extension lives in the [pages](pages/) directory.
 
-## Community <a name="community"></a>
+- [`content`](pages/content/) - [content scripts](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts)
+  (`content_scripts` in manifest.json)
+- [`content-ui`](pages/content-ui) - React UI rendered in the current page (you can see it at the very bottom when you get started)
+  (`content_scripts` in manifest.json)
+- [`content-runtime`](pages/content-runtime/src/) - [injected content scripts](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts#functionality);
+  this can be injected from `popup` like standard `content`
+- [`devtools`](pages/devtools/) - [extend the browser DevTools](https://developer.chrome.com/docs/extensions/how-to/devtools/extend-devtools#creating)
+  (`devtools_page` in manifest.json)
+- [`devtools-panel`](pages/devtools-panel/) - [DevTools panel](https://developer.chrome.com/docs/extensions/reference/api/devtools/panels)
+  for [devtools](pages/devtools/src/index.ts)
+- [`new-tab`](pages/new-tab/) - [override the default New Tab page](https://developer.chrome.com/docs/extensions/develop/ui/override-chrome-pages)
+  (`chrome_url_overrides.newtab` in manifest.json)
+- [`options`](pages/options/) - [options page](https://developer.chrome.com/docs/extensions/develop/ui/options-page)
+  (`options_page` in manifest.json)
+- [`popup`](pages/popup/) - [popup](https://developer.chrome.com/docs/extensions/reference/api/action#popup) shown when clicking the extension in the toolbar
+  (`action.default_popup` in manifest.json)
+- [`side-panel`](pages/side-panel/) - [sidepanel (Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/api/sidePanel)
+  (`side_panel.default_path` in manifest.json)
+
+### Packages <a name="structure-packages"></a>
+
+Some shared packages:
+
+- `dev-utils` - utilities for Chrome extension development (manifest-parser, logger)
+- `i18n` - custom internationalization package; provides i18n function with type safety and other validation
+- `hmr` - custom HMR plugin for Vite, injection script for reload/refresh, HMR dev-server
+- `shared` - shared code for the entire project (types, constants, custom hooks, components etc.)
+- `storage` - helpers for easier integration with [storage](https://developer.chrome.com/docs/extensions/reference/api/storage), e.g. local/session storages
+- `tailwind-config` - shared Tailwind config for entire project
+- `tsconfig` - shared tsconfig for the entire project
+- `ui` - function to merge your Tailwind config with the global one; you can save components here
+- `vite-config` - shared Vite config for the entire project
+- `zipper` - run `pnpm zip` to pack the `dist` folder into `extension.zip` inside the newly created `dist-zip`
+- `e2e` - run `pnpm e2e` for end-to-end tests of your zipped extension on different browsers
+
+## Troubleshooting
+
+### Hot module reload seems to have frozen
+
+If saving source files doesn't cause the extension HMR code to trigger a reload of the browser page, try this:
+
+1. Ctrl+C the development server and restart it (`pnpm run dev`)
+2. If you get a [`grpc` error](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/612),
+   [kill the `turbo` process](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/612#issuecomment-2518982339) and run `pnpm dev` again.
+
+## Community
 
 To chat with other community members, you can join the [Discord](https://discord.gg/4ERQ6jgV9a) server.
 You can ask questions on that server, and you can also help others.
 
 Also, suggest new features or share any challenges you've faced while developing Chrome extensions!
 
-## Reference <a name="reference"></a>
+## Reference
 
+- [Chrome Extensions](https://developer.chrome.com/docs/extensions)
 - [Vite Plugin](https://vitejs.dev/guide/api-plugin.html)
-- [ChromeExtension](https://developer.chrome.com/docs/extensions/mv3/)
 - [Rollup](https://rollupjs.org/guide/en/)
 - [Turborepo](https://turbo.build/repo/docs)
 - [Rollup-plugin-chrome-extension](https://www.extend-chrome.dev/rollup-plugin)
