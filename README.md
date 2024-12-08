@@ -195,10 +195,6 @@ Some shared packages:
 
 ## Troubleshooting
 
-### Adding env vars or `content.css` rules does nothing
-
-For these types of issues, kill and restart `pnpm dev`. Also try reloading the extension in the browser.
-
 ### Hot module reload seems to have frozen
 
 If saving source files doesn't cause the extension HMR code to trigger a reload of the browser page, try this:
