@@ -102,7 +102,7 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
   };
 
   const set = async (valueOrUpdate: ValueOrUpdate<D>) => {
-    if (initedCache === false) {
+    if (!initedCache) {
       cache = await get();
     }
     cache = await updateCache(valueOrUpdate, cache);
