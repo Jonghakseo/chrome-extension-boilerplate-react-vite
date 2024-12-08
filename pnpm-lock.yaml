@@ -8318,7 +8318,7 @@ snapshots:
   webdriver@9.4.1:
     dependencies:
       '@types/node': 20.16.10
-      '@types/ws': 8.5.12
+      '@types/ws': 8.5.13
       '@wdio/config': 9.2.8
       '@wdio/logger': 9.1.3
       '@wdio/protocols': 9.2.2
