@@ -190,7 +190,7 @@ Some shared packages:
 - `tsconfig` - shared tsconfig for the entire project
 - `ui` - function to merge your Tailwind config with the global one; you can save components here
 - `vite-config` - shared Vite config for the entire project
-- `zipper` - run `pnpm zip` to pack the `dist` folder into `extension.zip` inside the newly created `dist-zip`
+- `zipper` - run `pnpm zip` to pack the `dist` folder into `./dist-zip/extension.zip`. Note that any contents of `./dist-zip` (e.g. previous versions of the extension) will be erased.
 - `e2e` - run `pnpm e2e` for end-to-end tests of your zipped extension on different browsers
 
 ## Troubleshooting
