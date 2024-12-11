@@ -5,6 +5,13 @@ const packageJson = JSON.parse(fs.readFileSync('../package.json', 'utf8'));
 
 const isFirefox = process.env.__FIREFOX__ === 'true';
 
+/**
+ * If you want to disable the sidePanel, you can delete withSidePanel function and remove the sidePanel HoC on the manifest declaration.
+ *
+ * ```js
+ * const manifest = { // remove `withSidePanel()`
+ * ```
+ */
 function withSidePanel(manifest) {
   // Firefox does not support sidePanel
   if (isFirefox) {
