@@ -9,7 +9,7 @@
   },
   "type": "module",
   "scripts": {
-    "clean:bundle": "rimraf dist && rimraf dist-zip && turbo clean:bundle",
+    "clean:bundle": "rimraf dist && turbo clean:bundle",
     "clean:node_modules": "turbo daemon stop && pnpx rimraf node_modules && pnpx turbo clean:node_modules",
     "clean:turbo": "turbo daemon stop && rimraf .turbo && turbo clean:turbo",
     "clean": "pnpm clean:bundle && pnpm clean:turbo && pnpm clean:node_modules",
