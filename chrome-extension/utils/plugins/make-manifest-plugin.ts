@@ -4,8 +4,10 @@ import { pathToFileURL } from 'node:url';
 import process from 'node:process';
 import { colorLog, ManifestParser } from '@extension/dev-utils';
 import type { PluginOption } from 'vite';
+import type { Manifest } from '@extension/dev-utils/dist/lib/manifest-parser/type';
 
 const rootDir = resolve(__dirname, '..', '..');
+const refreshFile = resolve(__dirname, '..', 'refresh.js');
 const manifestFile = resolve(rootDir, 'manifest.js');
 
 const getManifestWithCacheBurst = (): Promise<{ default: chrome.runtime.ManifestV3 }> => {
@@ -29,7 +31,16 @@ export default function makeManifestPlugin(config: { outDir: string }): PluginOp
     const manifestPath = resolve(to, 'manifest.json');
 
     const isFirefox = process.env.__FIREFOX__ === 'true';
+    const isDev = process.env.__DEV__ === 'true';
+
+    if (isDev) {
+      addRefreshContentScript(manifest);
+    }
+
     fs.writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox ? 'firefox' : 'chrome'));
+    if (isDev) {
+      fs.copyFileSync(refreshFile, resolve(to, 'refresh.js'));
+    }
 
     colorLog(`Manifest file copy complete: ${manifestPath}`, 'success');
   }
@@ -45,4 +56,12 @@ export default function makeManifestPlugin(config: { outDir: string }): PluginOp
       makeManifest(manifest.default, outDir);
     },
   };
+}
+
+function addRefreshContentScript(manifest: Manifest) {
+  manifest.content_scripts = manifest.content_scripts || [];
+  manifest.content_scripts.push({
+    matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+    js: ['refresh.js'], // for public's HMR(refresh) support
+  });
 }
