@@ -43,7 +43,7 @@
     "@typescript-eslint/parser": "^7.18.0",
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
-    "esbuild": "^0.23.0",
+    "esbuild": "^0.24.0",
     "eslint": "8.57.0",
     "eslint-config-airbnb-typescript": "18.0.0",
     "eslint-config-prettier": "9.1.0",
