@@ -67,7 +67,6 @@ const manifest = withSidePanel({
     },
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['refresh.js'], // for public's HMR(refresh) support
       css: ['content.css'], // public folder
     },
   ],
