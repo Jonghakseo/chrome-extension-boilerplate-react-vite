@@ -25,7 +25,7 @@
     "@extension/hmr": "workspace:*",
     "@extension/tsconfig": "workspace:*",
     "@extension/vite-config": "workspace:*",
-    "@laynezh/vite-plugin-lib-assets": "^0.5.23",
+    "@laynezh/vite-plugin-lib-assets": "^0.5.26",
     "@types/ws": "^8.5.13",
     "magic-string": "^0.30.10",
     "ts-loader": "^9.5.1",
