@@ -43,9 +43,9 @@ export default (config: { outDir: string }): PluginOption => {
     const isFirefox = env.__FIREFOX__ === 'true';
     const isDev = env.__DEV__ === 'true';
 
-    writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox));
-
     isDev && addRefreshContentScript(manifest);
+
+    writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox));
 
     isDev && copyFileSync(refreshFile, resolve(to, 'refresh.js'));
 
