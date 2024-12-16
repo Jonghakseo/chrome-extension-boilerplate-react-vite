@@ -7,7 +7,7 @@ const plugins = [
     exclude: ['node_modules/**'],
     transforms: ['typescript'],
   }),
-] as Plugin[];
+] satisfies Plugin[];
 
 export default [
   {
@@ -26,4 +26,4 @@ export default [
       file: 'dist/lib/injections/refresh.js',
     },
   },
-] as RollupOptions[];
+] satisfies RollupOptions[];
