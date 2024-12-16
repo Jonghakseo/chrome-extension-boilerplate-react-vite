@@ -78,7 +78,7 @@ the build speed and development experience by using Vite and Turborepo.
 3. Edit `/packages/i18n/locales/`{your locale(s)}/`messages.json`
 4. In the objects `extensionDescription` and `extensionName`, change the `message` fields (leave `description` alone)
 5. In `/.package.json`, change the `version` to the desired version of your extension.
-6. Install pnpm globally: `npm install -g pnpm` (check your node version >= 18.19.1))
+6. Install pnpm globally: `npm install -g pnpm` (check your node version >= in `.nvmrc` file))
 7. Run `pnpm install`
 
 Then, depending on the target browser:

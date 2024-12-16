@@ -75,8 +75,8 @@
       "prettier --write"
     ]
   },
-  "packageManager": "pnpm@9.9.0",
+  "packageManager": "pnpm@9.10.0",
   "engines": {
-    "node": ">=18.19.1"
+    "node": ">=20.17.0"
   }
 }
