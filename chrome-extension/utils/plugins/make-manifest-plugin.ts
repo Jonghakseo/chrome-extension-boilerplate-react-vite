@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, writeFileSync, copyFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { env, platform } from 'node:process';
@@ -7,7 +7,17 @@ import { colorLog, ManifestParser } from '@extension/dev-utils';
 import type { PluginOption } from 'vite';
 
 const manifestFile = resolve(import.meta.dirname, '..', '..', 'manifest.js');
-const refreshFile = resolve(import.meta.dirname, '..', 'refresh.js');
+const refreshFile = resolve(
+  import.meta.dirname,
+  '..',
+  '..',
+  '..',
+  'packages',
+  'hmr',
+  'lib',
+  'injections',
+  'refresh.js',
+);
 
 const getManifestWithCacheBurst = async () => {
   const withCacheBurst = (path: string) => `${path}?${Date.now().toString()}`;
@@ -31,13 +41,11 @@ export default (config: { outDir: string }): PluginOption => {
 
     const manifestPath = resolve(to, 'manifest.json');
     const isFirefox = env.__FIREFOX__ === 'true';
-    const isDev = process.env.__DEV__ === 'true';
+    const isDev = env.__DEV__ === 'true';
 
     writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox));
 
     isDev && addRefreshContentScript(manifest);
-
-    writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox ? 'firefox' : 'chrome'));
 
     isDev && copyFileSync(refreshFile, resolve(to, 'refresh.js'));
 
