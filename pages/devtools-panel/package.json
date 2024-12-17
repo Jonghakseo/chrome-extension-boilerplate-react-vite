@@ -28,5 +28,11 @@
     "@extension/vite-config": "workspace:*",
     "postcss-load-config": "^6.0.1",
     "cross-env": "^7.0.3"
+  },
+  "postcss": {
+    "plugins": {
+      "tailwindcss": {},
+      "autoprefixer": {}
+    }
   }
 }

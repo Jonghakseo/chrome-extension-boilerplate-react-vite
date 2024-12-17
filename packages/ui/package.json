@@ -24,7 +24,8 @@
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
-    "deepmerge": "^4.3.1"
+    "deepmerge": "^4.3.1",
+    "tsc-alias": "^1.8.10"
   },
   "dependencies": {
     "clsx": "^2.1.1",
