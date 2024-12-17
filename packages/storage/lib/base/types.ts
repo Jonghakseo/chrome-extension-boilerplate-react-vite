@@ -9,12 +9,6 @@ export type BaseStorage<D> = {
   subscribe: (listener: () => void) => () => void;
 };
 
-export type Theme = 'light' | 'dark';
-
-export type ThemeStorage = BaseStorage<Theme> & {
-  toggle: () => Promise<void>;
-};
-
 export type StorageConfig<D = string> = {
   /**
    * Assign the {@link StorageEnum} to use.

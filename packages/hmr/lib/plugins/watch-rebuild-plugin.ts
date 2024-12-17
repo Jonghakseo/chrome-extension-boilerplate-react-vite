@@ -12,13 +12,13 @@ const refreshCode = fs.readFileSync(path.resolve(injectionsPath, 'refresh.js'), 
 const reloadCode = fs.readFileSync(path.resolve(injectionsPath, 'reload.js'), 'utf-8');
 
 export function watchRebuildPlugin(config: PluginConfig): PluginOption {
+  const { refresh, reload, id: _id, onStart } = config;
+  const hmrCode = (refresh ? refreshCode : '') + (reload ? reloadCode : '');
+
   let ws: WebSocket | null = null;
 
-  const id = Math.random().toString(36);
+  const id = _id ?? Math.random().toString(36);
   let reconnectTries = 0;
-
-  const { refresh, reload } = config;
-  const hmrCode = (refresh ? refreshCode : '') + (reload ? reloadCode : '');
 
   function initializeWebSocket() {
     ws = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
@@ -46,7 +46,7 @@ export function watchRebuildPlugin(config: PluginConfig): PluginOption {
   return {
     name: 'watch-rebuild',
     writeBundle() {
-      config.onStart?.();
+      onStart?.();
       if (!ws) {
         initializeWebSocket();
         return;

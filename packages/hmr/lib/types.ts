@@ -16,4 +16,5 @@ export type PluginConfig = {
   onStart?: () => void;
   reload?: boolean;
   refresh?: boolean;
+  id?: string;
 };
