@@ -1,7 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
-  "globalEnv": ["CEB_*"],
+  "globalEnv": ["CEB_*", "CLI_CEB_*"],
   "daemon": false,
   "tasks": {
     "ready": {
