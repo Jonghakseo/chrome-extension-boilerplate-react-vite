@@ -14,6 +14,7 @@ const refreshFile = resolve(
   '..',
   'packages',
   'hmr',
+  'dist',
   'lib',
   'injections',
   'refresh.js',
