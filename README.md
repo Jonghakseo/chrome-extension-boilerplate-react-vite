@@ -43,7 +43,7 @@
 - [Install dependency](#install-dependency)
     - [For root](#install-dependency-for-root)
     - [For module](#install-dependency-for-module)
-- [Env Variables](#env-variables)
+- [Environment variables](#env-variables)
   - [Add new](#env-variables-new)
   - [Set via CLI](#env-variables-cli-set)
 - [Community](#community)
@@ -127,7 +127,7 @@ Then, depending on the target browser:
 To add an environment variable:
 
 ### Add new: <a name="env-variables-new"></a>
-  1. Add a new record inside `.env` (MUST HAVE `CEB_` PREFIX) or if you want dynamic, then via [CLI](#env-variables-cli-set)
+  1. Add a new record inside `.env`(If not exists, run `pnpm i`) (MUST HAVE `CEB_` PREFIX) or if you want dynamic, then via [CLI](#env-variables-cli-set)
   2. Now you're able to access it via `process.env.YOUR_KEY`
 
 ### Set via CLI: <a name="env-variables-cli-set"></a> 
