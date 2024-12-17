@@ -1,19 +1,18 @@
-import { config as baseConfig } from './wdio.conf';
-import { readFile } from 'node:fs/promises';
-import { getChromeExtensionPath, getFirefoxExtensionPath } from '../utils/extension-path';
-import { resolve } from 'node:path';
+import { config as baseConfig } from './wdio.conf.js';
+import { readdir, readFile } from 'node:fs/promises';
+import { getChromeExtensionPath, getFirefoxExtensionPath } from '../utils/extension-path.js';
+import { extname, join } from 'node:path';
 
 const isFirefox = process.env.__FIREFOX__ === 'true';
 const isCI = process.env.CI === 'true';
 const extName = isFirefox ? '.xpi' : '.zip';
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
-const extensions = await fs.readdir(path.join(import.meta.dirname, '../../../dist-zip'));
+const extensions = await readdir(join(import.meta.dirname, '../../../dist-zip'));
 const latestExtension = extensions
-  .filter(file => path.extname(file) === extName)
+  .filter(file => extname(file) === extName)
   .sort()
   .reverse()[0];
-const extPath = path.join(import.meta.dirname, `../../../dist-zip/${latestExtension}`);
-const bundledExtension = (await fs.readFile(extPath)).toString('base64');
+const extPath = join(import.meta.dirname, `../../../dist-zip/${latestExtension}`);
+const bundledExtension = (await readFile(extPath)).toString('base64');
 
 const chromeCapabilities = {
   browserName: 'chrome',
