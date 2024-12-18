@@ -53,6 +53,6 @@ const manifest = {
   side_panel: {
     default_path: 'side-panel/index.html',
   },
-} as chrome.runtime.ManifestV3;
+} satisfies chrome.runtime.ManifestV3;
 
 export default manifest;
