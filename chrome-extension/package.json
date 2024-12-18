@@ -5,7 +5,6 @@
   "type": "module",
   "private": true,
   "sideEffects": false,
-  "types": "src/background/index.mts",
   "scripts": {
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
