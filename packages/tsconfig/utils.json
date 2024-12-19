@@ -4,10 +4,7 @@
   "extends": "./base.json",
   "compilerOptions": {
     "noEmit": false,
-    "declaration": true,
-    "module": "CommonJS",
-    "moduleResolution": "Node",
-    "target": "ES6",
-    "types": ["node"]
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext"
   }
 }

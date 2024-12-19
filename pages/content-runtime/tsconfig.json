@@ -7,5 +7,5 @@
     },
     "types": ["chrome", "../../vite-env.d.ts"]
   },
-  "include": ["src"]
+  "include": ["src", "vite.config.mts"]
 }

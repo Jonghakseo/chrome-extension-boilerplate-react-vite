@@ -3,6 +3,8 @@
   "version": "0.3.5",
   "description": "chrome extension boilerplate",
   "license": "MIT",
+  "private": true,
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite.git"
@@ -18,8 +20,8 @@
     "build:firefox": "pnpm clean:bundle && turbo ready && cross-env __FIREFOX__=true turbo build",
     "zip": "pnpm build && pnpm -F zipper zip",
     "zip:firefox": "pnpm build:firefox && cross-env __FIREFOX__=true pnpm -F zipper zip",
-    "dev": "turbo ready && cross-env __DEV__=true turbo watch dev --concurrency 20",
-    "dev:firefox": "turbo ready && cross-env __DEV__=true __FIREFOX__=true turbo watch dev --concurrency 20",
+    "dev": "turbo ready && pnpm -F i18n ready:dev && cross-env __DEV__=true turbo watch dev --concurrency 20",
+    "dev:firefox": "turbo ready && pnpm -F i18n ready:dev && cross-env __DEV__=true __FIREFOX__=true turbo watch dev --concurrency 20",
     "e2e": "pnpm build && pnpm zip && turbo e2e",
     "e2e:firefox": "pnpm build:firefox && pnpm zip:firefox && cross-env __FIREFOX__=true turbo e2e",
     "type-check": "turbo type-check",
@@ -41,8 +43,10 @@
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
+    "app-root-path": "^3.1.0",
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
+    "deepmerge": "^4.3.1",
     "esbuild": "^0.23.0",
     "eslint": "8.57.0",
     "eslint-config-airbnb-typescript": "18.0.0",
@@ -52,25 +56,26 @@
     "eslint-plugin-prettier": "5.2.1",
     "eslint-plugin-react": "7.35.0",
     "eslint-plugin-react-hooks": "4.6.2",
+    "fast-glob": "^3.3.2",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.7",
     "postcss": "^8.4.47",
+    "postcss-load-config": "^6.0.1",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
     "tailwindcss": "^3.4.14",
     "tslib": "^2.6.3",
     "typescript": "5.5.4",
     "vite": "5.4.9",
-    "turbo": "^2.1.1",
-    "run-script-os": "^1.1.6"
+    "turbo": "^2.1.1"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json}": [
       "prettier --write"
     ]
   },
-  "packageManager": "pnpm@9.9.0",
+  "packageManager": "pnpm@9.10.0",
   "engines": {
-    "node": ">=18.19.1"
+    "node": ">=20.17.0"
   }
 }

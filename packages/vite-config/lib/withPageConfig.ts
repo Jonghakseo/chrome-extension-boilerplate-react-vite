@@ -1,25 +1,21 @@
+import type { UserConfig } from 'vite';
 import { defineConfig } from 'vite';
 import { watchRebuildPlugin } from '@extension/hmr';
 import react from '@vitejs/plugin-react-swc';
 import deepmerge from 'deepmerge';
-import { isDev, isProduction } from './env.mjs';
+import { isDev, isProduction } from './env.js';
 
-export const watchOption = isDev ? {
-  buildDelay: 100,
-  chokidar: {
-    ignored:[
-      /\/packages\/.*\.(ts|tsx|map)$/,
-    ]
-  }
-}: undefined;
+export const watchOption = isDev
+  ? {
+      buildDelay: 100,
+      chokidar: {
+        ignored: [/\/packages\/.*\.(ts|tsx|map)$/],
+      },
+    }
+  : undefined;
 
-/**
- * @typedef {import('vite').UserConfig} UserConfig
- * @param {UserConfig} config
- * @returns {UserConfig}
- */
-export function withPageConfig(config) {
-  return defineConfig(
+export const withPageConfig = (config: UserConfig) =>
+  defineConfig(
     deepmerge(
       {
         base: '',
@@ -37,9 +33,8 @@ export function withPageConfig(config) {
         define: {
           'process.env.NODE_ENV': isDev ? `"development"` : `"production"`,
         },
-        envDir: '../..'
+        envDir: '../..',
       },
       config,
     ),
   );
-}

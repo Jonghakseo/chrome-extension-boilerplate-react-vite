@@ -6,4 +6,4 @@ exampleThemeStorage.get().then(theme => {
 });
 
 console.log('background loaded');
-console.log("Edit 'chrome-extension/src/background/index.ts' and save to reload.");
+console.log("Edit 'chrome-extension/src/background/index.mts' and save to reload.");

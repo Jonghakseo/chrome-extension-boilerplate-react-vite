@@ -1,3 +1,3 @@
-export * from './watch-rebuild-plugin';
-export * from './make-entry-point-plugin';
-export * from './watch-public-plugin';
+export * from './watch-rebuild-plugin.js';
+export * from './make-entry-point-plugin.js';
+export * from './watch-public-plugin.js';
