@@ -21,5 +21,6 @@ export default withPageConfig({
       fileName: 'index',
     },
     outDir: resolve(rootDir, '..', '..', 'dist', 'content'),
+    emptyOutDir: true,
   },
 });
