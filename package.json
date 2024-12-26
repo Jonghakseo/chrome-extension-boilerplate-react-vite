@@ -60,8 +60,8 @@
     "tailwindcss": "^3.4.14",
     "tslib": "^2.6.3",
     "typescript": "5.5.4",
-    "vite": "5.4.9",
     "turbo": "^2.1.1",
+    "vite": "6.0.5",
     "run-script-os": "^1.1.6"
   },
   "lint-staged": {
