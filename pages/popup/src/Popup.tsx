@@ -2,6 +2,7 @@ import '@src/Popup.css';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
 import type { ComponentPropsWithoutRef } from 'react';
+import { t } from '@extension/i18n';
 
 const notificationOptions = {
   type: 'basic',
@@ -54,7 +55,7 @@ const Popup = () => {
           onClick={injectContentScript}>
           Click to inject Content Script
         </button>
-        <ToggleButton>Toggle theme</ToggleButton>
+        <ToggleButton>{t('toggleTheme')}</ToggleButton>
       </header>
     </div>
   );

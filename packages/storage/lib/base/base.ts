@@ -1,5 +1,5 @@
-import type { BaseStorage, StorageConfig, ValueOrUpdate } from './types';
-import { SessionAccessLevelEnum, StorageEnum } from './enums';
+import type { BaseStorage, StorageConfig, ValueOrUpdate } from './types.js';
+import { SessionAccessLevelEnum, StorageEnum } from './enums.js';
 
 /**
  * Chrome reference error while running `processTailwindFeatures` in tailwindcss.
@@ -10,17 +10,17 @@ const chrome = globalThis.chrome;
 /**
  * Sets or updates an arbitrary cache with a new value or the result of an update function.
  */
-async function updateCache<D>(valueOrUpdate: ValueOrUpdate<D>, cache: D | null): Promise<D> {
+const updateCache = async <D>(valueOrUpdate: ValueOrUpdate<D>, cache: D | null): Promise<D> => {
   // Type guard to check if our value or update is a function
-  function isFunction<D>(value: ValueOrUpdate<D>): value is (prev: D) => D | Promise<D> {
+  const isFunction = <D>(value: ValueOrUpdate<D>): value is (prev: D) => D | Promise<D> => {
     return typeof value === 'function';
-  }
+  };
 
   // Type guard to check in case of a function, if its a Promise
-  function returnsPromise<D>(func: (prev: D) => D | Promise<D>): func is (prev: D) => Promise<D> {
+  const returnsPromise = <D>(func: (prev: D) => D | Promise<D>): func is (prev: D) => Promise<D> => {
     // Use ReturnType to infer the return type of the function and check if it's a Promise
     return (func as (prev: D) => Promise<D>) instanceof Promise;
-  }
+  };
 
   if (isFunction(valueOrUpdate)) {
     // Check if the function returns a Promise
@@ -32,7 +32,7 @@ async function updateCache<D>(valueOrUpdate: ValueOrUpdate<D>, cache: D | null):
   } else {
     return valueOrUpdate;
   }
-}
+};
 
 /**
  * If one session storage needs access from content scripts, we need to enable it globally.

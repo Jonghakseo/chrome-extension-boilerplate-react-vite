@@ -8,6 +8,7 @@
 **/dist
 **/build
 **/dist-zip
+chrome-extension/manifest.js
 
 # env
 **/.env.*
@@ -19,5 +20,4 @@
 **/.turbo
 
 # compiled
-chrome-extension/public/manifest.json
 **/tailwind-output.css
