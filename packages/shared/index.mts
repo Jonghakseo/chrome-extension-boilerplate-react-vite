@@ -1,3 +1,3 @@
-export * from './lib/hooks/index.js';
-export * from './lib/hoc/index.js';
-export * from './lib/utils/index.js';
+export * from './lib/hooks';
+export * from './lib/hoc';
+export * from './lib/utils';
