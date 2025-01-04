@@ -1,4 +1,4 @@
-import type { ValueOf } from '@extension/shared';
+type ValueOf<T> = T[keyof T];
 
 type ColorType = 'success' | 'info' | 'error' | 'warning' | keyof typeof COLORS;
 

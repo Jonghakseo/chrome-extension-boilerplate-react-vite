@@ -6,7 +6,8 @@
     "types": ["chrome"],
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "noEmit": false
   },
-  "include": ["index.mts", "lib"]
+  "include": ["index.ts", "lib"]
 }
