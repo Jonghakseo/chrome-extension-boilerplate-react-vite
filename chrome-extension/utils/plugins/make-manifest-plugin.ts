@@ -1,4 +1,4 @@
-import { copyFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { env, platform } from 'node:process';
@@ -7,7 +7,7 @@ import { colorLog, ManifestParser } from '@extension/dev-utils';
 import type { PluginOption } from 'vite';
 
 const manifestFile = resolve(import.meta.dirname, '..', '..', 'manifest.js');
-const refreshFile = resolve(
+const refreshFilePath = resolve(
   import.meta.dirname,
   '..',
   '..',
@@ -19,6 +19,10 @@ const refreshFile = resolve(
   'injections',
   'refresh.js',
 );
+
+const withHMRId = (code: string) => {
+  return `(function() {let __HMR_ID = 'chrome-extension-hmr';${code}\n})();`;
+};
 
 const getManifestWithCacheBurst = async () => {
   const withCacheBurst = (path: string) => `${path}?${Date.now().toString()}`;
@@ -48,7 +52,9 @@ export default (config: { outDir: string }): PluginOption => {
 
     writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox));
 
-    isDev && copyFileSync(refreshFile, resolve(to, 'refresh.js'));
+    const refreshFileString = readFileSync(refreshFilePath, 'utf-8');
+
+    isDev && writeFileSync(resolve(to, 'refresh.js'), withHMRId(refreshFileString));
 
     colorLog(`Manifest file copy complete: ${manifestPath}`, 'success');
   };
