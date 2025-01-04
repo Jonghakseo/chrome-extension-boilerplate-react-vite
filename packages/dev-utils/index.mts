@@ -1,2 +1,2 @@
-export * from './lib/manifest-parser/index';
-export * from './lib/logger';
+export * from './lib/manifest-parser/index.js';
+export * from './lib/logger.js';
