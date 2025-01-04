@@ -1,4 +1,4 @@
-import type { Manifest, ManifestParserInterface } from './types';
+import type { Manifest, ManifestParserInterface } from './types.js';
 
 export const ManifestParserImpl: ManifestParserInterface = {
   convertManifestToString: (manifest, isFirefox) => {
