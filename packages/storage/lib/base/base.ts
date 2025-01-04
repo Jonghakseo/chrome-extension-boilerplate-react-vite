@@ -1,5 +1,5 @@
-import type { BaseStorage, StorageConfig, ValueOrUpdate } from './types.js';
-import { SessionAccessLevelEnum, StorageEnum } from './enums.js';
+import type { BaseStorage, StorageConfig, ValueOrUpdate } from './types';
+import { SessionAccessLevelEnum, StorageEnum } from './enums';
 
 /**
  * Chrome reference error while running `processTailwindFeatures` in tailwindcss.
