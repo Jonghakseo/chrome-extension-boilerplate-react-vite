@@ -2,8 +2,7 @@
   "extends": "@extension/tsconfig/base",
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
-    "types": ["chrome"]
+    "outDir": "dist"
   },
   "include": ["index.ts", "lib"]
 }

@@ -2,7 +2,8 @@
   "extends": "@extension/tsconfig/base",
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist"
+    "outDir": "dist",
+    "noEmit": false
   },
   "include": ["index.ts", "lib"]
 }
