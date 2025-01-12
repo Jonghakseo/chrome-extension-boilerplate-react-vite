@@ -6,7 +6,8 @@
   "tasks": {
     "ready": {
       "dependsOn": ["^ready"],
-      "outputs": ["../../dist/**", "dist/**"]
+      "outputs": ["../../dist/**", "dist/**"],
+      "cache": false
     },
     "dev": {
       "dependsOn": ["ready"],

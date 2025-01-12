@@ -58,3 +58,5 @@ export const SUPPORTED_LANGUAGES = {
   zh_CN: 'Chinese (China)',
   zh_TW: 'Chinese (Taiwan)',
 } as const;
+
+export const I18N_FILE_PATH = './lib/i18n.ts';

@@ -1,11 +1,6 @@
-import { getMessageFromLocale } from './getMessageFromLocale.js';
+// IT WILL BE ADJUSTED TO YOUR LANGUAGE DURING BUILD TIME, DON'T MOVE BELOW IMPORT TO OTHER LINE
+import localeJSON from '../locales/en/messages.json';
 import type { I18nValueType, LocalesJSONType } from './types.js';
-
-let localeJSON: LocalesJSONType;
-
-(async () => {
-  localeJSON = (await getMessageFromLocale()).default;
-})();
 
 const translate = (key: keyof LocalesJSONType, substitutions?: string | string[]) => {
   const localeValues = localeJSON[key] as I18nValueType;
