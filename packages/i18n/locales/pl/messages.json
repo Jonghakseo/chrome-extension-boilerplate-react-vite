@@ -1,11 +1,11 @@
 {
   "extensionDescription": {
     "description": "Opis Wtyczki",
-    "message": "Wtyczka Chrome utworzona z Vite, React i Typescript"
+    "message": "Szablon Rozszerzenia Chrome utworzony z Vite, React i Typescript"
   },
   "extensionName": {
     "description": "Nazwa Wtyczki",
-    "message": "Szablon Wtyczki Chrome"
+    "message": "Szablon Rozszerzenia Chrome"
   },
   "toggleTheme": {
     "message": "Zmień motyw"
