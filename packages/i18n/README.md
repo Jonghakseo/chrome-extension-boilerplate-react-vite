@@ -46,51 +46,19 @@ You can manage translations in the `locales` directory.
 }
 ```
 
-## Delete or Add a new language
+`locales/pl/messages.json`
 
-When you want to delete or add a new language, you don't need to edit some util files like `lib/types.ts` or `lib/getMessageFromLocale.ts`. 
-That's because we provide a script to generate util files automatically by the `generate-i18n.mjs` file.
-
-Following the steps below to delete or add a new language.
-
-### Delete a language
-
-If you want to delete unused languages, you can delete the corresponding directory in the `locales` directory.
-
-```
-locales
-├── en
-│   └── messages.json
-└── ko // delete this directory
-    └── messages.json 
+```json
+{
+  "helloWorld": {
+    "message": "Witaj, Świecie!"
+  }
+}
 ```
 
-Then run the following command. (or just run `pnpm dev` or `pnpm build` on root)
+## Add a new language
 
-```bash
-pnpm genenrate-i8n
-```
-
-### Add a new language
-
-If you want to add a new language, you can create a new directory in the `locales` directory.
-
-```
-locales
-├── en
-│   └── messages.json
-├── ko
-│   └── messages.json
-└── ja // create this directory
-    └── messages.json // and create this file 
-```
-
-Then same as above, run the following command. (or just run `pnpm dev` or `pnpm build` on root)
-
-```bash
-pnpm genenrate-i8n
-```
-
+Create folder inside `locales` with name from [languages](https://developer.chrome.com/docs/extensions/reference/api/i18n?hl=pl#support_multiple_languages), which need include `message.json` file.
 
 ## Usage
 
@@ -164,6 +132,27 @@ If you want to use placeholders, you can use the following format.
 }
 ```
 
+`locales/pl/messages.json`
+
+```json
+{
+  "greeting": {
+    "description": "Wiadomość powitalna",
+    "message": "Cześć, moje imię to $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Patryk Kuniczak"
+      }
+    }
+  },
+  "hello": {
+    "description": "Przykład z placeholder",
+    "message": "Cześć $1"
+  }
+}
+```
+
 If you want to replace the placeholder, you can pass the value as the second argument.
 
 Function `t` has exactly the same interface as the `chrome.i18n.getMessage` function.
@@ -214,6 +203,17 @@ When you forget to add a key to all language's `messages.json` files, you will g
   }
 }
 ```
+
+`locales/pl/messages.json`
+
+```json
+{
+  "helloWorld": {
+    "message": "Witaj, Świecie!"
+  }
+}
+```
+
 
 ```typescript
 import { t } from '@extension/i18n';
