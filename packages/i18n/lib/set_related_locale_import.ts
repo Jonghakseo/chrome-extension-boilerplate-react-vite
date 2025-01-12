@@ -32,7 +32,6 @@ export default () => {
       i18nFileSplitContent[1] = `import localeJSON from '../locales/en/messages.json';`;
     }
   }
-
   // Join lines back together
   const updatedI18nFile = i18nFileSplitContent.join('\n');
 
