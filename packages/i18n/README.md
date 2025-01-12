@@ -170,15 +170,7 @@ console.log(t('hello', ['World'])); // Hello World
 
 ### Locale setting on development
 
-If you want to show specific language, you can set the `devLocale` property. (only for development)
-
-```typescript
-import { t } from '@extension/i18n';
-
-t.devLocale = "ko";
-
-console.log(t('hello')); // 안녕
-```
+If you want to enforce displaying specific language, you need to set `CEB_DEV_LOCALE` in `.env` file (work only for development).
 
 ### Type Safety
 

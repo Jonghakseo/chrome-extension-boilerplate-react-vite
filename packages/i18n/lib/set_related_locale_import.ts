@@ -3,6 +3,8 @@ import { resolve } from 'node:path';
 import type { SupportedLanguagesKeysType, SupportedLanguagesWithoutRegionKeysType } from './types.js';
 import { I18N_FILE_PATH } from './consts.js';
 
+const CEB_DEV_LOCALE = 'en';
+
 export default () => {
   const locale = Intl.DateTimeFormat().resolvedOptions().locale.replace('-', '_') as SupportedLanguagesKeysType;
   const localeWithoutRegion = locale.split('_')[0] as SupportedLanguagesWithoutRegionKeysType;
@@ -19,14 +21,17 @@ export default () => {
 
   const i18nFileSplitContent = readFileSync(I18N_FILE_PATH, 'utf-8').split('\n');
 
-  if (implementedLocales.includes(locale)) {
-    i18nFileSplitContent[1] = `import localeJSON from '../locales/${locale}/messages.json';`;
-  } else if (implementedLocales.includes(localeWithoutRegion)) {
-    i18nFileSplitContent[1] = `import localeJSON from '../locales/${localeWithoutRegion}/messages.json';`;
+  if (CEB_DEV_LOCALE) {
+    i18nFileSplitContent[1] = `import localeJSON from '../locales/${CEB_DEV_LOCALE}/messages.json';`;
   } else {
-    i18nFileSplitContent[1] = `import localeJSON from '../locales/en/messages.json';`;
+    if (implementedLocales.includes(locale)) {
+      i18nFileSplitContent[1] = `import localeJSON from '../locales/${locale}/messages.json';`;
+    } else if (implementedLocales.includes(localeWithoutRegion)) {
+      i18nFileSplitContent[1] = `import localeJSON from '../locales/${localeWithoutRegion}/messages.json';`;
+    } else {
+      i18nFileSplitContent[1] = `import localeJSON from '../locales/en/messages.json';`;
+    }
   }
-
   // Join lines back together
   const updatedI18nFile = i18nFileSplitContent.join('\n');
 
