@@ -24,9 +24,12 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
- - OS: [e.g. Mac, Window, Linux]
- - Browser [e.g. chrome, firefox]
- - Node Version [e.g. 18.19.1]
+ - OS: 
+ - OS Version: 
+ - Browser: 
+ - Browser Version: 
+ - Node Version: 
+ - Other Necessary Packages Version: 
 
 **Additional context**
 Add any other context about the problem here.
