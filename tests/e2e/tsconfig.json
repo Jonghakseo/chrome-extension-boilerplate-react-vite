@@ -1,5 +1,5 @@
 {
-  "extends": "@extension/tsconfig/utils",
+  "extends": "@extension/tsconfig/module",
   "compilerOptions": {
     "lib": ["dom"],
     "types": ["node", "@wdio/globals/types", "@wdio/mocha-framework"],

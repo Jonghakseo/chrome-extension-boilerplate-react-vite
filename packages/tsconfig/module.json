@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Chrome Extension Utils",
+  "display": "Module",
   "extends": "./base.json",
   "compilerOptions": {
     "noEmit": false,
