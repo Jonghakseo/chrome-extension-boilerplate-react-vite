@@ -1,2 +1,2 @@
-export type { BaseStorage } from './base/types';
-export * from './impl';
+export type { BaseStorage } from './base/index.js';
+export * from './impl/index.js';
