@@ -9,14 +9,6 @@ import globals from 'globals';
 import ts from 'typescript-eslint';
 
 export default ts.config(
-  // Ignore patterns (.eslintignore)
-  {
-    ignores: ['**/build/**', '**/dist/**', '**/node_modules/**', 'eslint.config.js'],
-  },
-
-  // Files to scan
-  { files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'] },
-
   // Shared configs
   js.configs.recommended,
   ...ts.configs.recommended,
@@ -25,12 +17,12 @@ export default ts.config(
   eslintPluginImportX.flatConfigs.recommended,
   eslintPluginImportX.flatConfigs.typescript,
   eslintPluginPrettierRecommended,
-
-  // Add compatibility
   ...fixupConfigRules(new FlatCompat().extends('plugin:react-hooks/recommended')),
 
   // Custom config
   {
+    ignores: ['**/build/**', '**/dist/**', '**/node_modules/**', 'eslint.config.js'],
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
     languageOptions: {
       parser: ts.parser,
       ecmaVersion: 'latest',
