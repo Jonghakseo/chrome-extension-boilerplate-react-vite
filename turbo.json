@@ -1,7 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
-  "globalEnv": ["__FIREFOX__"],
+  "globalEnv": ["__FIREFOX__", "__DEV__"],
   "daemon": false,
   "tasks": {
     "ready": {
