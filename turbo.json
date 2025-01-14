@@ -2,7 +2,6 @@
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
   "globalEnv": ["__FIREFOX__", "__DEV__"],
-  "daemon": false,
   "tasks": {
     "ready": {
       "dependsOn": ["^ready"],
@@ -11,15 +10,14 @@
     "dev": {
       "dependsOn": ["ready"],
       "outputs": ["dist/**", "build/**", "i18n/locales/**"],
-      "cache": false,
       "persistent": true
     },
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["../../dist/**", "dist/**", "build/**"],
-      "cache": false
+      "dependsOn": ["ready", "^build"],
+      "outputs": ["dist/**", "build/**"]
     },
     "e2e": {
+      "dependsOn": ["zip"],
       "cache": false
     },
     "type-check": {
@@ -48,6 +46,10 @@
     },
     "clean": {
       "dependsOn": ["^clean"],
+      "cache": false
+    },
+    "zip": {
+      "dependsOn": ["build"],
       "cache": false
     }
   }
