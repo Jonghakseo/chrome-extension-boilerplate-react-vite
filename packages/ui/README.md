@@ -344,7 +344,7 @@ Make the `index.ts` file in the `components/ui` directory export the button comp
 export * from './button';
 ```
 
-Edit the `index.mts` file in the `packages/ui` directory to export the shadcn ui component:
+Edit the `index.ts` file in the `packages/ui` directory to export the shadcn ui component:
 
 ```ts
 // export * from './lib/components'; // remove this line: duplicated button component

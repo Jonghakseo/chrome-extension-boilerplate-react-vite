@@ -9,8 +9,8 @@
     "dist/**",
     "dist/global.css"
   ],
-  "types": "index.mts",
-  "main": "./dist/index.mjs",
+  "types": "index.ts",
+  "main": "./dist/index.js",
   "scripts": {
     "clean:bundle": "rimraf dist",
     "clean:node_modules": "pnpx rimraf node_modules",
