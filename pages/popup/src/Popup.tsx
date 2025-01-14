@@ -3,6 +3,7 @@ import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
 import type { ComponentPropsWithoutRef } from 'react';
 import { t } from '@extension/i18n';
+import { Button } from '@extension/ui';
 
 const notificationOptions = {
   type: 'basic',
@@ -64,7 +65,7 @@ const Popup = () => {
 const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
   const theme = useStorage(exampleThemeStorage);
   return (
-    <button
+    <Button
       className={
         props.className +
         ' ' +
@@ -73,7 +74,7 @@ const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
       }
       onClick={exampleThemeStorage.toggle}>
       {props.children}
-    </button>
+    </Button>
   );
 };
 
