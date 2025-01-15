@@ -1,8 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./",
-    "noEmit": false
+    "outDir": "./"
   },
   "include": ["manifest.ts"],
   "exclude": [""]
