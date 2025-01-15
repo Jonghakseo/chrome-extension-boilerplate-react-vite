@@ -22,14 +22,14 @@ export default () => {
   const i18nFileSplitContent = readFileSync(I18N_FILE_PATH, 'utf-8').split('\n');
 
   if (CEB_DEV_LOCALE) {
-    i18nFileSplitContent[1] = `import localeJSON from '../locales/${CEB_DEV_LOCALE}/messages.json';`;
+    i18nFileSplitContent[1] = `import localeJSON from '../locales/${CEB_DEV_LOCALE}/messages.json' with { type: 'json' };`;
   } else {
     if (implementedLocales.includes(locale)) {
-      i18nFileSplitContent[1] = `import localeJSON from '../locales/${locale}/messages.json';`;
+      i18nFileSplitContent[1] = `import localeJSON from '../locales/${locale}/messages.json' with { type: 'json' };`;
     } else if (implementedLocales.includes(localeWithoutRegion)) {
-      i18nFileSplitContent[1] = `import localeJSON from '../locales/${localeWithoutRegion}/messages.json';`;
+      i18nFileSplitContent[1] = `import localeJSON from '../locales/${localeWithoutRegion}/messages.json' with { type: 'json' };`;
     } else {
-      i18nFileSplitContent[1] = `import localeJSON from '../locales/en/messages.json';`;
+      i18nFileSplitContent[1] = `import localeJSON from '../locales/en/messages.json' with { type: 'json' };`;
     }
   }
   // Join lines back together
