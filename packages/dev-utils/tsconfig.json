@@ -1,9 +1,8 @@
 {
-  "extends": "@extension/tsconfig/utils",
+  "extends": "@extension/tsconfig/module",
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist",
-    "types": ["chrome"]
+    "outDir": "dist"
   },
-  "include": ["index.ts", "lib"]
+  "include": ["index.mts", "lib"]
 }

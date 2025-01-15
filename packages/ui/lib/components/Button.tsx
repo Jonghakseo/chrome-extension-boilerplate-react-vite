@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef } from 'react';
-import { cn } from '../utils';
+import { cn } from '@/lib/utils';
 
 export type ButtonProps = {
   theme?: 'light' | 'dark';

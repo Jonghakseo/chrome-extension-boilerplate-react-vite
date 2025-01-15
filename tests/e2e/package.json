@@ -1,8 +1,9 @@
 {
   "name": "@extension/e2e",
   "version": "0.3.5",
-  "description": "E2e tests configuration boilerplate",
+  "description": "chrome extension - E2E tests",
   "private": true,
+  "sideEffects": false,
   "type": "module",
   "scripts": {
     "e2e": "wdio run ./config/wdio.browser.conf.ts",

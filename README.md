@@ -79,7 +79,7 @@ the build speed and development experience by using Vite and Turborepo.
 4. Edit `/packages/i18n/locales/`{your locale(s)}/`messages.json`
 5. In the objects `extensionDescription` and `extensionName`, change the `message` fields (leave `description` alone)
 6. In `/.package.json`, change the `version` to the desired version of your extension.
-7. Install pnpm globally: `npm install -g pnpm` (check your node version >= 22.12.0))
+7. Install pnpm globally: `npm install -g pnpm`
 8. Run `pnpm install`
 
 Then, depending on the target browser:
@@ -144,7 +144,7 @@ To add an environment variable:
 
 The extension lives in the `chrome-extension` directory and includes the following files:
 
-- [`manifest.js`](chrome-extension/manifest.js) - script that outputs the `manifest.json`
+- [`manifest.ts`](chrome-extension/manifest.js) - script that outputs the `manifest.json`
 - [`src/background`](chrome-extension/src/background) - [background script](https://developer.chrome.com/docs/extensions/mv3/background_pages/) 
   (`background.service_worker` in manifest.json)
 - [`public`](chrome-extension/public/) - icons referenced in the manifest; content CSS for user's page injection

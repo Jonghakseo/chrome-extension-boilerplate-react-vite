@@ -36,12 +36,18 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^7.18.0
         version: 7.18.0(eslint@8.57.0)(typescript@5.5.4)
+      app-root-path:
+        specifier: ^3.1.0
+        version: 3.1.0
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
+      deepmerge:
+        specifier: ^4.3.1
+        version: 4.3.1
       esbuild:
         specifier: ^0.23.0
         version: 0.23.1
@@ -69,6 +75,9 @@ importers:
       eslint-plugin-react-hooks:
         specifier: 4.6.2
         version: 4.6.2(eslint@8.57.0)
+      fast-glob:
+        specifier: ^3.3.2
+        version: 3.3.2
       husky:
         specifier: ^9.1.4
         version: 9.1.5
@@ -78,15 +87,15 @@ importers:
       postcss:
         specifier: ^8.4.47
         version: 8.4.47
+      postcss-load-config:
+        specifier: ^6.0.1
+        version: 6.0.1(jiti@1.21.6)(postcss@8.4.47)(tsx@4.19.2)(yaml@2.5.1)
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
-      run-script-os:
-        specifier: ^1.1.6
-        version: 1.1.6
       tailwindcss:
         specifier: ^3.4.14
         version: 3.4.14(ts-node@10.9.2(@swc/core@1.9.3)(@types/node@22.7.4)(typescript@5.5.4))
@@ -148,9 +157,6 @@ importers:
 
   packages/dev-utils:
     devDependencies:
-      '@extension/shared':
-        specifier: workspace:*
-        version: link:../shared
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -184,9 +190,6 @@ importers:
 
   packages/i18n:
     devDependencies:
-      '@extension/hmr':
-        specifier: workspace:*
-        version: link:../hmr
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -222,9 +225,6 @@ importers:
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
-      deepmerge:
-        specifier: ^4.3.1
-        version: 4.3.1
       tsc-alias:
         specifier: ^1.8.10
         version: 1.8.10
@@ -283,9 +283,6 @@ importers:
 
   pages/content-runtime:
     devDependencies:
-      '@extension/hmr':
-        specifier: workspace:*
-        version: link:../../packages/hmr
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -361,9 +358,6 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
-      postcss-load-config:
-        specifier: ^6.0.1
-        version: 6.0.1(jiti@1.21.6)(postcss@8.4.49)(tsx@4.19.2)(yaml@2.5.1)
 
   pages/new-tab:
     dependencies:
@@ -423,21 +417,24 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
-      postcss-load-config:
-        specifier: ^6.0.1
-        version: 6.0.1(jiti@1.21.6)(postcss@8.4.49)(tsx@4.19.2)(yaml@2.5.1)
 
   pages/popup:
     dependencies:
       '@extension/content-runtime-script':
         specifier: workspace:*
         version: link:../content-runtime
+      '@extension/i18n':
+        specifier: workspace:*
+        version: link:../../packages/i18n
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
       '@extension/storage':
         specifier: workspace:*
         version: link:../../packages/storage
+      '@extension/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
     devDependencies:
       '@extension/tailwindcss-config':
         specifier: workspace:*
@@ -451,9 +448,6 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
-      postcss-load-config:
-        specifier: ^6.0.1
-        version: 6.0.1(jiti@1.21.6)(postcss@8.4.49)(tsx@4.19.2)(yaml@2.5.1)
 
   pages/side-panel:
     dependencies:
@@ -476,9 +470,6 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
-      postcss-load-config:
-        specifier: ^6.0.1
-        version: 6.0.1(jiti@1.21.6)(postcss@8.4.49)(tsx@4.19.2)(yaml@2.5.1)
 
   tests/e2e:
     devDependencies:
@@ -1558,6 +1549,10 @@ packages:
   anymatch@3.1.3:
     resolution: {integrity: sha512-KMReFUr0B4t+D+OBkjR3KYqvocp2XaSzO55UcB6mgQMd3KbcE+mWTyvVV7D/zsdEbNnV6acZUutkiHQXvTr1Rw==}
     engines: {node: '>= 8'}
+
+  app-root-path@3.1.0:
+    resolution: {integrity: sha512-biN3PwB2gUtjaYy/isrU3aNWI5w+fAfvHkSvCKeQGxhmYpwKFUxudR3Yya+KqVRHBmEDYh+/lTozYCFbmzX4nA==}
+    engines: {node: '>= 6.0.0'}
 
   archiver-utils@5.0.2:
     resolution: {integrity: sha512-wuLJMmIBQYCsGZgYLTy5FIB2pF6Lfb6cXMSF8Qywwk3t20zWnAi7zLcQFdKQmIB8wyZpY5ER38x08GbwtR2cLA==}
@@ -3596,10 +3591,6 @@ packages:
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
-  run-script-os@1.1.6:
-    resolution: {integrity: sha512-ql6P2LzhBTTDfzKts+Qo4H94VUKpxKDFz6QxxwaUZN0mwvi7L3lpOI7BqPCq7lgDh3XLl0dpeXwfcVIitlrYrw==}
-    hasBin: true
-
   rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
 
@@ -5429,6 +5420,8 @@ snapshots:
     dependencies:
       normalize-path: 3.0.0
       picomatch: 2.3.1
+
+  app-root-path@3.1.0: {}
 
   archiver-utils@5.0.2:
     dependencies:
@@ -7570,6 +7563,15 @@ snapshots:
       postcss: 8.4.47
       ts-node: 10.9.2(@swc/core@1.9.3)(@types/node@22.7.4)(typescript@5.5.4)
 
+  postcss-load-config@6.0.1(jiti@1.21.6)(postcss@8.4.47)(tsx@4.19.2)(yaml@2.5.1):
+    dependencies:
+      lilconfig: 3.1.2
+    optionalDependencies:
+      jiti: 1.21.6
+      postcss: 8.4.47
+      tsx: 4.19.2
+      yaml: 2.5.1
+
   postcss-load-config@6.0.1(jiti@1.21.6)(postcss@8.4.49)(tsx@4.19.2)(yaml@2.5.1):
     dependencies:
       lilconfig: 3.1.2
@@ -7816,8 +7818,6 @@ snapshots:
   run-parallel@1.2.0:
     dependencies:
       queue-microtask: 1.2.3
-
-  run-script-os@1.1.6: {}
 
   rxjs@7.8.1:
     dependencies:

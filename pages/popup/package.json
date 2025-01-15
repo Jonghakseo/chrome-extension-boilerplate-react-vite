@@ -2,6 +2,7 @@
   "name": "@extension/popup",
   "version": "0.3.5",
   "description": "chrome extension - popup",
+  "type": "module",
   "private": true,
   "sideEffects": true,
   "files": [
@@ -21,13 +22,14 @@
   "dependencies": {
     "@extension/shared": "workspace:*",
     "@extension/storage": "workspace:*",
-    "@extension/content-runtime-script": "workspace:*"
+    "@extension/content-runtime-script": "workspace:*",
+    "@extension/i18n": "workspace:*",
+    "@extension/ui": "workspace:*"
   },
   "devDependencies": {
     "@extension/tailwindcss-config": "workspace:*",
     "@extension/tsconfig": "workspace:*",
     "@extension/vite-config": "workspace:*",
-    "postcss-load-config": "^6.0.1",
     "cross-env": "^7.0.3"
   },
   "postcss": {
