@@ -1,7 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "outDir": "dist"
-  },
   "include": ["lib/prepare_build.ts"]
 }
