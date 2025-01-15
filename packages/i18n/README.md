@@ -46,16 +46,6 @@ You can manage translations in the `locales` directory.
 }
 ```
 
-`locales/pl/messages.json`
-
-```json
-{
-  "helloWorld": {
-    "message": "Witaj, Świecie!"
-  }
-}
-```
-
 ## Add a new language
 
 Create folder inside `locales` with name from [languages](https://developer.chrome.com/docs/extensions/reference/api/i18n?hl=pl#support_multiple_languages), which need include `message.json` file.
@@ -132,27 +122,6 @@ If you want to use placeholders, you can use the following format.
 }
 ```
 
-`locales/pl/messages.json`
-
-```json
-{
-  "greeting": {
-    "description": "Wiadomość powitalna",
-    "message": "Cześć, moje imię to $NAME$",
-    "placeholders": {
-      "name": {
-        "content": "$1",
-        "example": "Patryk Kuniczak"
-      }
-    }
-  },
-  "hello": {
-    "description": "Przykład z placeholder",
-    "message": "Cześć $1"
-  }
-}
-```
-
 If you want to replace the placeholder, you can pass the value as the second argument.
 
 Function `t` has exactly the same interface as the `chrome.i18n.getMessage` function.
@@ -195,17 +164,6 @@ When you forget to add a key to all language's `messages.json` files, you will g
   }
 }
 ```
-
-`locales/pl/messages.json`
-
-```json
-{
-  "helloWorld": {
-    "message": "Witaj, Świecie!"
-  }
-}
-```
-
 
 ```typescript
 import { t } from '@extension/i18n';
