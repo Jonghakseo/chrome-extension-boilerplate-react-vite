@@ -22,6 +22,8 @@ export default ts.config(
   // Custom config
   {
     ignores: ['**/build/**', '**/dist/**', '**/node_modules/**', 'eslint.config.js'],
+  },
+  {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
     languageOptions: {
       parser: ts.parser,
