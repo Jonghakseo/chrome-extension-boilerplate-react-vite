@@ -2,8 +2,6 @@ import { readFileSync } from 'node:fs';
 
 const packageJson = JSON.parse(readFileSync('../package.json', 'utf8'));
 
-const isFirefox = process.env.CLI_CEB_FIREFOX === 'true';
-
 const manifest = {
   manifest_version: 3,
   default_locale: 'en',
