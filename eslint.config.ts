@@ -12,12 +12,15 @@ export default ts.config(
   // Shared configs
   js.configs.recommended,
   ...ts.configs.recommended,
-  reactPlugin.configs.flat.recommended,
   jsxA11y.flatConfigs.recommended,
   eslintPluginImportX.flatConfigs.recommended,
   eslintPluginImportX.flatConfigs.typescript,
   eslintPluginPrettierRecommended,
   ...fixupConfigRules(new FlatCompat().extends('plugin:react-hooks/recommended')),
+  {
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+    ...reactPlugin.configs.flat.recommended,
+  },
 
   // Custom config
   {
