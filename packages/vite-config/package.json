@@ -14,6 +14,9 @@
     "clean": "pnpm clean:bundle && pnpm clean:node_modules",
     "ready": "tsc -b"
   },
+  "dependencies": {
+    "@extension/env": "workspace:*"
+  },
   "devDependencies": {
     "@extension/hmr": "workspace:*",
     "@extension/tsconfig": "workspace:*",

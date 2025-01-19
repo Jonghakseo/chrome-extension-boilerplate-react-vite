@@ -5,6 +5,7 @@ import { platform } from 'node:process';
 import type { Manifest } from '@extension/dev-utils';
 import { colorLog, ManifestParser } from '@extension/dev-utils';
 import type { PluginOption } from 'vite';
+import { IS_DEV, IS_FIREFOX } from '@extension/env';
 
 const manifestFile = resolve(import.meta.dirname, '..', '..', 'manifest.js');
 const refreshFilePath = resolve(
@@ -46,16 +47,13 @@ export default (config: { outDir: string }): PluginOption => {
 
     const manifestPath = resolve(to, 'manifest.json');
 
-    const isFirefox = process.env.CLI_CEB_FIREFOX === 'true';
-    const isDev = process.env.CLI_CEB_DEV === 'true';
+    IS_DEV && addRefreshContentScript(manifest);
 
-    isDev && addRefreshContentScript(manifest);
-
-    writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, isFirefox));
+    writeFileSync(manifestPath, ManifestParser.convertManifestToString(manifest, IS_FIREFOX));
 
     const refreshFileString = readFileSync(refreshFilePath, 'utf-8');
 
-    isDev && writeFileSync(resolve(to, 'refresh.js'), withHMRId(refreshFileString));
+    IS_DEV && writeFileSync(resolve(to, 'refresh.js'), withHMRId(refreshFileString));
 
     colorLog(`Manifest file copy complete: ${manifestPath}`, 'success');
   };

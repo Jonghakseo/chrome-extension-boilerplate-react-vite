@@ -3,9 +3,9 @@ import { defineConfig } from 'vite';
 import { watchRebuildPlugin } from '@extension/hmr';
 import react from '@vitejs/plugin-react-swc';
 import deepmerge from 'deepmerge';
-import { isDev, isProduction } from './env.js';
+import env, { IS_DEV, IS_PROD } from '@extension/env';
 
-export const watchOption = isDev
+export const watchOption = IS_DEV
   ? {
       buildDelay: 100,
       chokidar: {
@@ -18,13 +18,16 @@ export const withPageConfig = (config: UserConfig) =>
   defineConfig(
     deepmerge(
       {
+        define: {
+          'process.env': env,
+        },
         base: '',
-        plugins: [react(), isDev && watchRebuildPlugin({ refresh: true })],
+        plugins: [react(), IS_DEV && watchRebuildPlugin({ refresh: true })],
         build: {
-          sourcemap: isDev,
-          minify: isProduction,
-          reportCompressedSize: isProduction,
-          emptyOutDir: isProduction,
+          sourcemap: IS_DEV,
+          minify: IS_PROD,
+          reportCompressedSize: IS_PROD,
+          emptyOutDir: IS_PROD,
           watch: watchOption,
           rollupOptions: {
             external: ['chrome'],

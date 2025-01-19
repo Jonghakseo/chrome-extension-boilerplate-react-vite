@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
+    "@extension/env": "workspace:*",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@types/ws": "^8.5.13",
     "esm": "^3.2.25",

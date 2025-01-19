@@ -21,6 +21,7 @@
   "dependencies": {
     "@extension/shared": "workspace:*",
     "@extension/storage": "workspace:*",
+    "@extension/env": "workspace:*",
     "webextension-polyfill": "^0.12.0"
   },
   "devDependencies": {

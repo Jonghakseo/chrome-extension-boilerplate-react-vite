@@ -1,6 +1,7 @@
 import { resolve } from 'node:path';
 import { makeEntryPointPlugin } from '@extension/hmr';
-import { isDev, withPageConfig } from '@extension/vite-config';
+import { withPageConfig } from '@extension/vite-config';
+import { IS_DEV } from '@extension/env';
 
 const rootDir = resolve(import.meta.dirname);
 const srcDir = resolve(rootDir, 'src');
@@ -11,7 +12,7 @@ export default withPageConfig({
       '@src': srcDir,
     },
   },
-  plugins: [isDev && makeEntryPointPlugin()],
+  plugins: [IS_DEV && makeEntryPointPlugin()],
   publicDir: resolve(rootDir, 'public'),
   build: {
     lib: {

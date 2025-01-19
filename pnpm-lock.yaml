@@ -114,6 +114,9 @@ importers:
 
   chrome-extension:
     dependencies:
+      '@extension/env':
+        specifier: workspace:*
+        version: link:../packages/env
       '@extension/shared':
         specifier: workspace:*
         version: link:../packages/shared
@@ -173,6 +176,9 @@ importers:
 
   packages/hmr:
     devDependencies:
+      '@extension/env':
+        specifier: workspace:*
+        version: link:../env
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -199,6 +205,10 @@ importers:
         version: 8.18.0
 
   packages/i18n:
+    dependencies:
+      '@extension/env':
+        specifier: workspace:*
+        version: link:../env
     devDependencies:
       '@extension/tsconfig':
         specifier: workspace:*
@@ -240,6 +250,10 @@ importers:
         version: 1.8.10
 
   packages/vite-config:
+    dependencies:
+      '@extension/env':
+        specifier: workspace:*
+        version: link:../env
     devDependencies:
       '@extension/hmr':
         specifier: workspace:*
@@ -271,6 +285,9 @@ importers:
 
   pages/content:
     dependencies:
+      '@extension/env':
+        specifier: workspace:*
+        version: link:../../packages/env
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
@@ -302,6 +319,9 @@ importers:
 
   pages/content-ui:
     dependencies:
+      '@extension/env':
+        specifier: workspace:*
+        version: link:../../packages/env
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
@@ -483,6 +503,9 @@ importers:
 
   tests/e2e:
     devDependencies:
+      '@extension/env':
+        specifier: workspace:*
+        version: link:../../packages/env
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig

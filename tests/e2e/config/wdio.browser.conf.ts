@@ -2,12 +2,11 @@ import { config as baseConfig } from './wdio.conf.js';
 import { readdir, readFile } from 'node:fs/promises';
 import { getChromeExtensionPath, getFirefoxExtensionPath } from '../utils/extension-path.js';
 import { extname, join } from 'node:path';
+import { IS_CI, IS_FIREFOX } from '@extension/env';
 
-const isFirefox = process.env.CLI_CEB_FIREFOX === 'true';
-const isCI = process.env.CEB_CI === 'true';
-
-const archiveName = isFirefox ? 'extension.xpi' : 'extension.zip';
-const extName = isFirefox ? '.xpi' : '.zip';
+// FIXME
+const archiveName = IS_FIREFOX ? 'extension.xpi' : 'extension.zip';
+const extName = IS_FIREFOX ? '.xpi' : '.zip';
 const extensions = await readdir(join(import.meta.dirname, '../../../dist-zip'));
 const latestExtension = extensions.filter(file => extname(file) === extName).at(-1);
 const extPath = join(import.meta.dirname, `../../../dist-zip/${latestExtension}`);
@@ -22,7 +21,7 @@ const chromeCapabilities = {
       '--disable-gpu',
       '--no-sandbox',
       '--disable-dev-shm-usage',
-      ...(isCI ? ['--headless'] : []),
+      ...(IS_CI ? ['--headless'] : []),
     ],
     prefs: { 'extensions.ui.developer_mode': true },
     extensions: [bundledExtension],
@@ -33,17 +32,17 @@ const firefoxCapabilities = {
   browserName: 'firefox',
   acceptInsecureCerts: true,
   'moz:firefoxOptions': {
-    args: [...(isCI ? ['--headless'] : [])],
+    args: [...(IS_CI ? ['--headless'] : [])],
   },
 };
 
 export const config: WebdriverIO.Config = {
   ...baseConfig,
-  capabilities: isFirefox ? [firefoxCapabilities] : [chromeCapabilities],
+  capabilities: IS_FIREFOX ? [firefoxCapabilities] : [chromeCapabilities],
 
-  maxInstances: isCI ? 10 : 1,
+  maxInstances: IS_CI ? 10 : 1,
   logLevel: 'error',
-  execArgv: isCI ? [] : ['--inspect'],
+  execArgv: IS_CI ? [] : ['--inspect'],
   before: async ({ browserName }: WebdriverIO.Capabilities, _specs, browser: WebdriverIO.Browser) => {
     if (browserName === 'firefox') {
       await browser.installAddOn(bundledExtension, true);
@@ -54,7 +53,7 @@ export const config: WebdriverIO.Config = {
     }
   },
   afterTest: async () => {
-    if (!isCI) {
+    if (!IS_CI) {
       await browser.pause(500);
     }
   },
