@@ -7,10 +7,7 @@ const isFirefox = process.env.__FIREFOX__ === 'true';
 const isCI = process.env.CI === 'true';
 const extName = isFirefox ? '.xpi' : '.zip';
 const extensions = await readdir(join(import.meta.dirname, '../../../dist-zip'));
-const latestExtension = extensions
-  .filter(file => extname(file) === extName)
-  .sort()
-  .reverse()[0];
+const latestExtension = extensions.filter(file => extname(file) === extName).at(-1);
 const extPath = join(import.meta.dirname, `../../../dist-zip/${latestExtension}`);
 const bundledExtension = (await readFile(extPath)).toString('base64');
 
