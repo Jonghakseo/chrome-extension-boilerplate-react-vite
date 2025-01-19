@@ -270,6 +270,9 @@ importers:
 
   packages/zipper:
     devDependencies:
+      '@extension/env':
+        specifier: workspace:*
+        version: link:../env
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig

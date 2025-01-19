@@ -16,7 +16,7 @@
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
     "ready": "tsc -b",
-    "zip": "node dist/index.mjs",
+    "zip": "node --env-file=../../.env dist/index.mjs",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
+    "@extension/env": "workspace:*",
     "fast-glob": "^3.3.2",
     "fflate": "^0.8.2",
     "tsx": "^4.19.2"
