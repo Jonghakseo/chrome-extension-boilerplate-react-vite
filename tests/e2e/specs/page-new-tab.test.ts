@@ -1,4 +1,4 @@
-import { canSwitchTheme } from '../helpers/theme';
+import { canSwitchTheme } from '../helpers/theme.js';
 
 describe('Webextension New Tab', () => {
   it('should open the extension page when a new tab is opened', async () => {
