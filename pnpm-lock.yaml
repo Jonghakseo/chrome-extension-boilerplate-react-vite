@@ -42,9 +42,6 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
@@ -145,9 +142,6 @@ importers:
       '@types/ws':
         specifier: ^8.5.13
         version: 8.5.13
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
@@ -307,9 +301,6 @@ importers:
       '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
 
   pages/content-runtime:
     devDependencies:
@@ -350,9 +341,6 @@ importers:
       concurrently:
         specifier: ^9.0.1
         version: 9.0.1
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
 
   pages/devtools:
     dependencies:
@@ -366,9 +354,6 @@ importers:
       '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
 
   pages/devtools-panel:
     dependencies:
@@ -388,9 +373,9 @@ importers:
       '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
+      postcss-load-config:
+        specifier: ^6.0.1
+        version: 6.0.1(jiti@1.21.6)(postcss@8.4.49)(tsx@4.19.2)(yaml@2.5.1)
 
   pages/new-tab:
     dependencies:
@@ -416,9 +401,6 @@ importers:
       '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
       postcss-load-config:
         specifier: ^6.0.1
         version: 6.0.1(jiti@1.21.6)(postcss@8.4.49)(tsx@4.19.2)(yaml@2.5.1)
@@ -447,9 +429,9 @@ importers:
       '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
+      postcss-load-config:
+        specifier: ^6.0.1
+        version: 6.0.1(jiti@1.21.6)(postcss@8.4.49)(tsx@4.19.2)(yaml@2.5.1)
 
   pages/popup:
     dependencies:
@@ -478,9 +460,9 @@ importers:
       '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
+      postcss-load-config:
+        specifier: ^6.0.1
+        version: 6.0.1(jiti@1.21.6)(postcss@8.4.49)(tsx@4.19.2)(yaml@2.5.1)
 
   pages/side-panel:
     dependencies:
@@ -500,9 +482,9 @@ importers:
       '@extension/vite-config':
         specifier: workspace:*
         version: link:../../packages/vite-config
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
+      postcss-load-config:
+        specifier: ^6.0.1
+        version: 6.0.1(jiti@1.21.6)(postcss@8.4.49)(tsx@4.19.2)(yaml@2.5.1)
 
   tests/e2e:
     devDependencies:
@@ -1921,11 +1903,6 @@ packages:
 
   create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
-
-  cross-env@7.0.3:
-    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
-    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
-    hasBin: true
 
   cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
@@ -5925,10 +5902,6 @@ snapshots:
       readable-stream: 4.5.2
 
   create-require@1.1.1: {}
-
-  cross-env@7.0.3:
-    dependencies:
-      cross-spawn: 7.0.3
 
   cross-spawn@7.0.3:
     dependencies:
