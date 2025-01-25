@@ -1,6 +1,6 @@
 # Environment Package
 
-This package contains code which creates env object.
+This package contains code which creates env values.
 To use the code in the package, you need to follow those steps:
 
 1. Add a new record to `.env` (NEED TO CONTAIN `CEB_` PREFIX),
@@ -14,24 +14,18 @@ To use the code in the package, you need to follow those steps:
 
     - If you want dynamic variables go to `lib/index.ts` and edit `dynamicEnvValues` object.
 
-2. Go to: `packages/env/lib/types.ts` and add new value to `ICebEnv` or `ICebCliEnv` (Not necessary for dynamic values).
-
-3. Add the following to the package.json file.
-
-    ```json
-    {
-      "dependencies": {
-        "@extension/env": "workspace:*"
-      }
-    }
-    ```
-
-4. Import:
+2. Use it, for example:
     ```ts
-    import { env } from '@extension/env';
+    console.log(process.env['CEB_EXAMPLE']);
     ```
-
-5. Use it:
-    ```ts
-    console.log(env.CEB_EXAMPLE);
+   or
+   ```ts
+   console.log(process.env.CEB_EXAMPLE);
+   ```
+   but with first solution, autofill should work for IDE:
+   ![img.png](img.png)
+3. You are also able to import const like `IS_DEV` from `@extension/env` like:
+   ```ts
+    import { IS_DEV } from '@extension/env';
     ```
+   For more look [ENV CONST](lib/const.ts)
