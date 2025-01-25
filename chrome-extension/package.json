@@ -19,9 +19,10 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@extension/env": "workspace:*",
     "@extension/shared": "workspace:*",
     "@extension/storage": "workspace:*",
-    "@extension/env": "workspace:*",
+    "vite-plugin-node-polyfills": "^0.23.0",
     "webextension-polyfill": "^0.12.0"
   },
   "devDependencies": {
@@ -31,8 +32,8 @@
     "@extension/vite-config": "workspace:*",
     "@laynezh/vite-plugin-lib-assets": "^0.6.1",
     "@types/ws": "^8.5.13",
+    "deepmerge": "^4.3.1",
     "magic-string": "^0.30.10",
-    "ts-loader": "^9.5.1",
-    "deepmerge": "^4.3.1"
+    "ts-loader": "^9.5.1"
   }
 }
