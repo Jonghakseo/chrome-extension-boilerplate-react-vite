@@ -1,29 +1,28 @@
 {
-  "name": "@extension/i18n",
+  "name": "@extension/env",
   "version": "0.3.5",
-  "description": "chrome extension - internationalization",
+  "description": "chrome extension - environment variables",
   "type": "module",
   "private": true,
   "sideEffects": false,
   "files": [
     "dist/**"
   ],
-  "main": "dist/index.mjs",
   "types": "index.mts",
+  "main": "dist/index.mjs",
   "scripts": {
     "clean:bundle": "rimraf dist",
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
-    "ready": "tsc -b prepare-build.tsconfig.json && node --env-file=../../.env dist/lib/prepare_build.js && tsc -b",
-    "ready:dev": "cross-env __DEV__=true pnpm ready",
+    "ready": "tsc -b",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@extension/env": "workspace:*"
+    "@dotenvx/dotenvx": "^1.33.0"
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*"

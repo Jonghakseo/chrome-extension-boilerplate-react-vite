@@ -1,7 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
-  "globalEnv": ["__FIREFOX__"],
+  "globalEnv": ["CEB_*", "CLI_CEB_*"],
+  "globalDependencies": [".env"],
   "daemon": false,
   "tasks": {
     "ready": {
