@@ -258,9 +258,6 @@ importers:
       fflate:
         specifier: ^0.8.2
         version: 0.8.2
-      tsx:
-        specifier: ^4.19.2
-        version: 4.19.2
 
   pages/content:
     dependencies:
@@ -494,9 +491,6 @@ importers:
       '@wdio/types':
         specifier: ^9.1.2
         version: 9.1.2
-      tsx:
-        specifier: ^4.19.2
-        version: 4.19.2
 
 packages:
 
