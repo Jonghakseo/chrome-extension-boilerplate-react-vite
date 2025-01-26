@@ -70,11 +70,11 @@ the build speed and development experience by using Vite and Turborepo.
 ## Getting started
 
 1. Clone this repository: `git clone https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite`
-2. Check your node version is >= than in `.nvmrc` file, recommend to use [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro)
-3. Edit `/packages/i18n/locales/`{your locale(s)}/`messages.json`
+2. Ensure your node version is >= the version in `.nvmrc`, recommend using [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro)
+3. Edit `/packages/i18n/locales/{your locale(s)}/messages.json`
 4. In the objects `extensionDescription` and `extensionName`, change the `message` fields (leave `description` alone)
-5. In `/.package.json`, change the `version` to the desired version of your extension.
-6. Install pnpm globally: `npm install -g pnpm` (check your node version >= 22.12.0))
+5. In `/package.json`, change the `version` to the desired version of your extension.
+6. Install pnpm globally: `npm install -g pnpm` (ensure your node version >= 22.12.0)
 7. Run `pnpm install`
 
 Then, depending on the target browser:
