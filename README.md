@@ -69,18 +69,13 @@ the build speed and development experience by using Vite and Turborepo.
 
 ## Getting started
 
-1. When you're using Windows run this:
-   - `git config --global core.eol lf`
-   - `git config --global core.autocrlf input`
-
-   **This will set the EOL (End of line) character to be the same as on Linux/macOS. Without this, our bash script won't work, and you will have conflicts with developers on Linux/macOS.**
-2. Clone this repository.( ```git clone https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite``` )
-3. Check your node version is >= than in `.nvmrc` file, recommend to use [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro)
-4. Edit `/packages/i18n/locales/`{your locale(s)}/`messages.json`
-5. In the objects `extensionDescription` and `extensionName`, change the `message` fields (leave `description` alone)
-6. In `/.package.json`, change the `version` to the desired version of your extension.
-7. Install pnpm globally: `npm install -g pnpm` (check your node version >= 22.12.0))
-8. Run `pnpm install`
+1. Clone this repository: `git clone https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite`
+2. Ensure your node version is >= the version in `.nvmrc`, recommend using [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro)
+3. Edit `/packages/i18n/locales/{your locale(s)}/messages.json`
+4. In the objects `extensionDescription` and `extensionName`, change the `message` fields (leave `description` alone)
+5. In `/package.json`, change the `version` to the desired version of your extension.
+6. Install pnpm globally: `npm install -g pnpm` (ensure your node version >= 22.12.0)
+7. Run `pnpm install`
 
 Then, depending on the target browser:
 
@@ -145,7 +140,7 @@ To add an environment variable:
 The extension lives in the `chrome-extension` directory and includes the following files:
 
 - [`manifest.js`](chrome-extension/manifest.js) - script that outputs the `manifest.json`
-- [`src/background`](chrome-extension/src/background) - [background script](https://developer.chrome.com/docs/extensions/mv3/background_pages/) 
+- [`src/background`](chrome-extension/src/background) - [background script](https://developer.chrome.com/docs/extensions/mv3/background_pages/)
   (`background.service_worker` in manifest.json)
 - [`public`](chrome-extension/public/) - icons referenced in the manifest; content CSS for user's page injection
 
