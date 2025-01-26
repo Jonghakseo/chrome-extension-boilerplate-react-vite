@@ -176,9 +176,6 @@ importers:
       esm:
         specifier: ^3.2.25
         version: 3.2.25
-      fast-glob:
-        specifier: ^3.3.2
-        version: 3.3.2
       rollup:
         specifier: ^4.24.0
         version: 4.24.0
@@ -258,9 +255,6 @@ importers:
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
-      fast-glob:
-        specifier: ^3.3.2
-        version: 3.3.2
       fflate:
         specifier: ^0.8.2
         version: 0.8.2
