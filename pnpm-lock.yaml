@@ -139,9 +139,6 @@ importers:
       '@laynezh/vite-plugin-lib-assets':
         specifier: ^0.6.1
         version: 0.6.1(vite@6.0.5(@types/node@22.7.4)(jiti@1.21.6)(sass@1.79.4)(terser@5.34.1)(tsx@4.19.2)(yaml@2.5.1))
-      deepmerge:
-        specifier: ^4.3.1
-        version: 4.3.1
       magic-string:
         specifier: ^0.30.10
         version: 0.30.11
@@ -255,9 +252,6 @@ importers:
       '@vitejs/plugin-react-swc':
         specifier: ^3.7.2
         version: 3.7.2(vite@6.0.5(@types/node@22.7.4)(jiti@1.21.6)(sass@1.79.4)(terser@5.34.1)(tsx@4.19.2)(yaml@2.5.1))
-      deepmerge:
-        specifier: ^4.3.1
-        version: 4.3.1
 
   packages/zipper:
     devDependencies:
