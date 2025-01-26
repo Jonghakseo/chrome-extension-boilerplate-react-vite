@@ -1,11 +1,13 @@
 import type { ComponentPropsWithoutRef } from 'react';
 import { cn } from '../utils';
+import { useStorage } from '@extension/shared';
+import { exampleThemeStorage } from '@extension/storage';
 
-export type ButtonProps = {
-  theme?: 'light' | 'dark';
-} & ComponentPropsWithoutRef<'button'>;
+export type ButtonProps = ComponentPropsWithoutRef<'button'>;
 
-export function Button({ theme, className, children, ...props }: ButtonProps) {
+export const Button = ({ className, children, ...props }: ButtonProps) => {
+  const theme = useStorage(exampleThemeStorage);
+
   return (
     <button
       className={cn(
@@ -17,4 +19,4 @@ export function Button({ theme, className, children, ...props }: ButtonProps) {
       {children}
     </button>
   );
-}
+};
