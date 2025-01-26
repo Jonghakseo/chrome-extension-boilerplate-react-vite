@@ -13,26 +13,24 @@
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
-    "build:tailwindcss": "pnpm tailwindcss -i ./src/tailwind-input.css -o ./dist/tailwind-output.css -m",
     "build": "pnpm build:tailwindcss && vite build",
-    "build:watch": "concurrently \"vite build --mode development\" \"pnpm build:tailwindcss -- -w\"",
-    "dev": "pnpm build:tailwindcss && pnpm build:watch",
+    "ready": "pnpm tailwindcss -i ./src/tailwind-input.css -o ./dist/tailwind-output.css -m",
+    "dev": "vite build --mode development",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@extension/env": "workspace:*",
     "@extension/shared": "workspace:*",
     "@extension/storage": "workspace:*",
-    "@extension/ui": "workspace:*",
-    "@extension/env": "workspace:*"
+    "@extension/ui": "workspace:*"
   },
   "devDependencies": {
     "@extension/hmr": "workspace:*",
     "@extension/tailwindcss-config": "workspace:*",
     "@extension/tsconfig": "workspace:*",
-    "@extension/vite-config": "workspace:*",
-    "concurrently": "^9.0.1"
+    "@extension/vite-config": "workspace:*"
   }
 }
