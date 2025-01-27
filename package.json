@@ -49,7 +49,6 @@
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
-    "app-root-path": "^3.1.0",
     "autoprefixer": "^10.4.20",
     "deepmerge": "^4.3.1",
     "eslint": "8.57.0",
