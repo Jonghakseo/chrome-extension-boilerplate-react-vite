@@ -24,7 +24,7 @@ const manifest = {
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
   host_permissions: ['<all_urls>'],
-  // Firefox doesn't support sidePanel
+  // Firefox doesn't support sidePanel, so we'll remove it in the manifest-parser
   permissions: ['storage', 'scripting', 'tabs', 'notifications', 'sidePanel'],
   options_page: 'options/index.html',
   background: {
