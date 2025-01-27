@@ -7,9 +7,10 @@ import env, { IS_DEV, IS_PROD } from '@extension/env';
 
 export const watchOption = IS_DEV
   ? {
-      buildDelay: 100,
+      exclude: [/\/pages\/content-ui\/dist\/.*\.(css)$/],
       chokidar: {
-        ignored: [/\/packages\/.*\.(ts|tsx|map)$/],
+        awaitWriteFinish: true,
+        ignored: [/\/packages\/.*\.(ts|tsx|map)$/, /\/pages\/content-ui\/dist\/.*/],
       },
     }
   : undefined;
