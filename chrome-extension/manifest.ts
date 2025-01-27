@@ -10,6 +10,17 @@ const manifest = {
    * https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization
    */
   name: '__MSG_extensionName__',
+  browser_specific_settings: {
+    /**
+     * Must be unique to your extension to upload to addons.mozilla.org
+     * https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_specific_settings
+     * (This is not required for Chrome)
+     */
+    gecko: {
+      id: 'example@example.com',
+      strict_min_version: '109.0',
+    },
+  },
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
   host_permissions: ['<all_urls>'],
