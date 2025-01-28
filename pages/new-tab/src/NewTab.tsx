@@ -23,9 +23,7 @@ const NewTab = () => {
           Edit <code>pages/new-tab/src/NewTab.tsx</code>
         </p>
         <h6>The color of this paragraph is defined using SASS.</h6>
-        <ToggleButton className="mt-4" onClick={exampleThemeStorage.toggle}>
-          {t('toggleTheme')}
-        </ToggleButton>
+        <ToggleButton onClick={exampleThemeStorage.toggle}>{t('toggleTheme')}</ToggleButton>
       </header>
     </div>
   );

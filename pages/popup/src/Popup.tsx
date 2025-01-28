@@ -55,9 +55,7 @@ const Popup = () => {
           onClick={injectContentScript}>
           Click to inject Content Script
         </button>
-        <ToggleButton className={`border-2 ${theme === 'light' ? 'border-black' : 'border-white'}`}>
-          {t('toggleTheme')}
-        </ToggleButton>
+        <ToggleButton>{t('toggleTheme')}</ToggleButton>
       </header>
     </div>
   );
