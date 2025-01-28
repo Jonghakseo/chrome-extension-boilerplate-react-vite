@@ -2,7 +2,7 @@ import '@src/NewTab.css';
 import '@src/NewTab.scss';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { Button } from '@extension/ui';
+import { ToggleButton } from '@extension/ui';
 import { t } from '@extension/i18n';
 
 const NewTab = () => {
@@ -23,9 +23,9 @@ const NewTab = () => {
           Edit <code>pages/new-tab/src/NewTab.tsx</code>
         </p>
         <h6>The color of this paragraph is defined using SASS.</h6>
-        <Button className="mt-4" onClick={exampleThemeStorage.toggle} theme={theme}>
+        <ToggleButton className="mt-4" onClick={exampleThemeStorage.toggle}>
           {t('toggleTheme')}
-        </Button>
+        </ToggleButton>
       </header>
     </div>
   );
