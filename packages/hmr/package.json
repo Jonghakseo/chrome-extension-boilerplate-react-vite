@@ -15,7 +15,7 @@
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
-    "ready": "tsc -b && rollup --config dist/rollup.config.js",
+    "ready": "tsx pre-build.ts && tsc -b",
     "dev": "node dist/lib/initializers/initReloadServer.js",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
@@ -23,13 +23,15 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@extension/tsconfig": "workspace:*",
     "@extension/env": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@types/ws": "^8.5.13",
     "esm": "^3.2.25",
-    "rollup": "^4.24.0",
     "ts-node": "^10.9.2",
     "ws": "8.18.0"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.33.0"
   }
 }

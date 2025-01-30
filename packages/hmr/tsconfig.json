@@ -2,7 +2,11 @@
   "extends": "@extension/tsconfig/module",
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "dist"
+    "outDir": "dist",
+    "paths": {
+      "@extension/env": ["../env"]
+    }
   },
-  "include": ["lib", "index.mts", "rollup.config.ts"]
+  "include": ["lib", "index.mts", "pre-build.ts"],
+  "exclude": ["lib/injections"]
 }
