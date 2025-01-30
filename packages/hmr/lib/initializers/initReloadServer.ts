@@ -8,6 +8,7 @@ import {
   LOCAL_RELOAD_SOCKET_URL,
 } from '../consts.js';
 import MessageInterpreter from '../interpreter/index.js';
+import './cleanDistBackgroundOnProcessEnd.js';
 
 const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
 
