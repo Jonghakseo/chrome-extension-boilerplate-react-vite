@@ -7,6 +7,5 @@
       "@extension/env": ["../env"]
     }
   },
-  "include": ["lib", "index.mts", "injections-build.ts"],
-  "exclude": ["lib/injections"]
+  "include": ["lib", "index.mts", "injections-build.ts"]
 }
