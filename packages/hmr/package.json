@@ -15,7 +15,7 @@
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
-    "ready": "tsx pre-build.ts && tsc -b",
+    "ready": "tsc -b && node dist/injections-build.js",
     "dev": "node dist/lib/initializers/initReloadServer.js",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
@@ -29,7 +29,6 @@
     "@types/ws": "^8.5.13",
     "esm": "^3.2.25",
     "ts-node": "^10.9.2",
-    "tsx": "^4.19.2",
     "ws": "8.18.0"
   },
   "dependencies": {
