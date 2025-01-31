@@ -1,6 +1,6 @@
 {
   "name": "chrome-extension",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "chrome extension - core settings",
   "type": "module",
   "private": true,
@@ -13,7 +13,7 @@
     "build": "vite build",
     "dev": "vite build --mode development",
     "test": "vitest run",
-    "lint": "eslint ./ --ext .ts,.js,.tsx,.jsx",
+    "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../.prettierignore",
     "type-check": "tsc --noEmit"
