@@ -1,9 +1,8 @@
 import '@src/Popup.css';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import type { ComponentPropsWithoutRef } from 'react';
 import { t } from '@extension/i18n';
-import { Button } from '@extension/ui';
+import { ToggleButton } from '@extension/ui';
 
 const notificationOptions = {
   type: 'basic',
@@ -59,22 +58,6 @@ const Popup = () => {
         <ToggleButton>{t('toggleTheme')}</ToggleButton>
       </header>
     </div>
-  );
-};
-
-const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
-  const theme = useStorage(exampleThemeStorage);
-  return (
-    <Button
-      className={
-        props.className +
-        ' ' +
-        'font-bold mt-4 py-1 px-4 rounded shadow hover:scale-105 ' +
-        (theme === 'light' ? 'bg-white text-black shadow-black' : 'bg-black text-white')
-      }
-      onClick={exampleThemeStorage.toggle}>
-      {props.children}
-    </Button>
   );
 };
 
