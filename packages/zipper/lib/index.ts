@@ -1,6 +1,6 @@
 import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'node:fs';
 import { posix, resolve } from 'node:path';
-import glob from 'fast-glob';
+import fg from 'fast-glob';
 import { AsyncZipDeflate, Zip } from 'fflate';
 
 // Converts bytes to megabytes
@@ -58,7 +58,7 @@ export const zipBundle = async (
   const zipFilePath = resolve(buildDirectory, archiveName);
   const output = createWriteStream(zipFilePath);
 
-  const fileList = await glob(
+  const fileList = await fg(
     [
       '**/*', // Pick all nested files
       ...(!withMaps ? ['!**/(*.js.map|*.css.map)'] : []), // Exclude source maps conditionally

@@ -8,11 +8,15 @@ import { IS_DEV } from '@extension/env';
   cpSync(i18nPath, resolve('lib', 'i18n.ts'));
 
   const outDir = resolve(import.meta.dirname, '..', '..', '..', '..', 'dist');
-  !existsSync(outDir) && mkdirSync(outDir);
+  if (!existsSync(outDir)) {
+    mkdirSync(outDir);
+  }
 
   const localePath = resolve(outDir, '_locales');
   cpSync(resolve('locales'), localePath, { recursive: true });
 
-  IS_DEV && setRelatedLocaleImports();
+  if (IS_DEV) {
+    setRelatedLocaleImports();
+  }
   console.log('I18n build complete');
 })();

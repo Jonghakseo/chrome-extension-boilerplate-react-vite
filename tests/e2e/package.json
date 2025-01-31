@@ -1,7 +1,7 @@
 {
   "name": "@extension/e2e",
-  "version": "0.3.5",
-  "description": "chrome extension - E2E tests",
+  "version": "0.3.6",
+  "description": "E2e tests configuration boilerplate",
   "private": true,
   "sideEffects": false,
   "type": "module",
