@@ -1,5 +1,6 @@
-import { toggleTheme } from '@src/toggleTheme';
+import { sampleFunction } from '@src/sampleFunction';
 
 console.log('content script loaded');
 
-void toggleTheme();
+// Shows how to call a function defined in another module
+sampleFunction();
