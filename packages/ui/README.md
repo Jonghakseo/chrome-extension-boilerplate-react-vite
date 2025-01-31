@@ -44,35 +44,27 @@ Add the following to the `index.tsx` file.
 import '@extension/ui/lib/global.css';
 ```
 
-## Add Component
+## Add Custom Component
 
 Add the following to the `lib/components/index.ts` file.
 
 ```tsx
-export * from './Button';
+export * from './CustomComponent';
 ```
 
-Add the following to the `lib/components/Button.tsx` file.
+Add the following to the `lib/components/CustomComponent.tsx` file.
 
 ```tsx
 import { ComponentPropsWithoutRef } from 'react';
-import { cn } from '../utils';
+import { cn } from '@/lib/utils';
 
-export type ButtonProps = {
-  theme?: 'light' | 'dark';
-} & ComponentPropsWithoutRef<'button'>;
+type CustomComponentProps = ComponentPropsWithoutRef<'section'>;
 
-export function Button({ theme, className, children, ...props }: ButtonProps) {
+export function CustomComponent({ children, ...props }: CustomComponentProps) {
   return (
-    <button
-      className={cn(
-        className,
-        'mt-4 py-1 px-4 rounded shadow hover:scale-105',
-        theme === 'light' ? 'bg-white text-black' : 'bg-black text-white',
-      )}
-      {...props}>
+    <section {...props}>
       {children}
-    </button>
+    </section>
   );
 }
 ```
@@ -80,19 +72,13 @@ export function Button({ theme, className, children, ...props }: ButtonProps) {
 ## Usage
 
 ```tsx
-import { Button } from '@extension/ui';
+import { CustomComponent } from '@extension/ui';
 
-export default function ToggleButton() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
-
-  const toggle = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
+export default function Page() {
   return (
-    <Button theme={theme} onClick={toggle}>
-      Toggle
-    </Button>
+    <CustomComponent>
+      Hi, I'm a custom component.
+    </CustomComponent>
   );
 }
 ```
@@ -318,15 +304,9 @@ Remember to adjust any paths or package names if your project structure differs 
 
 6. Export components
 
-Make the `index.ts` file in the `components/ui` directory export the button component:
-
-```ts
-export * from './button';
-```
-
 Edit the `index.ts` file in the `packages/ui` directory to export the shadcn ui component:
 
 ```ts
-// export * from './lib/components'; // remove this line: duplicated button component
-export * from './lib/components/ui';
+//...
+export * from './lib/components/ui/button';
 ```
