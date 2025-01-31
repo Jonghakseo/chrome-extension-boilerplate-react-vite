@@ -17,7 +17,7 @@
       "persistent": true
     },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["ready", "^build"],
       "outputs": ["../../dist/**", "dist/**"],
       "cache": false
     },
