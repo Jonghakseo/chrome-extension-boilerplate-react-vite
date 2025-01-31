@@ -300,7 +300,7 @@ pnpm dlx shadcn@latest add button -c ./packages/ui
 
 This will add the shadcn button component to your UI package.
 
-Remember to adjust any paths or package names if your project structure differs from the assumed layout in this guide. 
+Remember to adjust any paths or package names if your project structure differs from the assumed layout in this guide.
 
 6. Export components
 
