@@ -116,13 +116,13 @@ Create a file named `components.json` in the `packages/ui` directory with the fo
 ```json
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "default",
+  "style": "new-york",
   "rsc": false,
   "tsx": true,
   "tailwind": {
     "config": "tailwind.config.ts",
     "css": "lib/global.css",
-    "baseColor": "neutral",
+    "baseColor": "zinc",
     "cssVariables": true,
     "prefix": ""
   },
@@ -130,8 +130,10 @@ Create a file named `components.json` in the `packages/ui` directory with the fo
     "components": "@/lib/components",
     "utils": "@/lib/utils",
     "ui": "@/lib/components/ui",
-    "lib": "@/lib"
-  }
+    "lib": "@/lib",
+    "hooks": "@/lib/hooks"
+  },
+  "iconLibrary": "lucide"
 }
 ```
 
@@ -140,7 +142,7 @@ Create a file named `components.json` in the `packages/ui` directory with the fo
 Run the following command from the root of your project:
 
 ```shell
-pnpm add tailwindcss-animate class-variance-authority -F ui
+pnpm add tailwindcss-animate class-variance-authority tailwind-merge lucide-react -F ui
 ```
 
 3. Edit `withUI.ts` in `lib` folder
@@ -249,67 +251,46 @@ This configuration also comes from the manual guide. You can refer to the manual
     :root {
         --background: 0 0% 100%;
         --foreground: 222.2 47.4% 11.2%;
-
         --muted: 210 40% 96.1%;
         --muted-foreground: 215.4 16.3% 46.9%;
-
         --popover: 0 0% 100%;
         --popover-foreground: 222.2 47.4% 11.2%;
-
         --border: 214.3 31.8% 91.4%;
         --input: 214.3 31.8% 91.4%;
-
         --card: 0 0% 100%;
         --card-foreground: 222.2 47.4% 11.2%;
-
         --primary: 222.2 47.4% 11.2%;
         --primary-foreground: 210 40% 98%;
-
         --secondary: 210 40% 96.1%;
         --secondary-foreground: 222.2 47.4% 11.2%;
-
         --accent: 210 40% 96.1%;
         --accent-foreground: 222.2 47.4% 11.2%;
-
         --destructive: 0 100% 50%;
         --destructive-foreground: 210 40% 98%;
-
         --ring: 215 20.2% 65.1%;
-
         --radius: 0.5rem;
     }
 
     .dark {
         --background: 224 71% 4%;
         --foreground: 213 31% 91%;
-
         --muted: 223 47% 11%;
         --muted-foreground: 215.4 16.3% 56.9%;
-
         --accent: 216 34% 17%;
         --accent-foreground: 210 40% 98%;
-
         --popover: 224 71% 4%;
         --popover-foreground: 215 20.2% 65.1%;
-
         --border: 216 34% 17%;
         --input: 216 34% 17%;
-
         --card: 224 71% 4%;
         --card-foreground: 213 31% 91%;
-
         --primary: 210 40% 98%;
         --primary-foreground: 222.2 47.4% 1.2%;
-
         --secondary: 222.2 47.4% 11.2%;
         --secondary-foreground: 210 40% 98%;
-
         --destructive: 0 63% 31%;
         --destructive-foreground: 210 40% 98%;
-
         --ring: 216 34% 17%;
-
-        --radius: 0.5rem;
     }
 }
 
@@ -318,8 +299,7 @@ This configuration also comes from the manual guide. You can refer to the manual
         @apply border-border;
     }
     body {
-        @apply bg-background text-foreground;
-        font-feature-settings: "rlig" 1, "calt" 1;
+        @apply font-sans antialiased bg-background text-foreground;
     }
 }
 ```
