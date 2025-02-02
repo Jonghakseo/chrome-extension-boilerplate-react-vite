@@ -3,19 +3,17 @@ import { readdirSync, statSync } from 'node:fs';
 
 export const getEntryPoints = (matchesDir: string) => {
   const entryPoints: Record<string, string> = {};
-  const folders = readdirSync(matchesDir);
+  const entries = readdirSync(matchesDir);
 
-  folders.forEach((folder: string) => {
+  entries.forEach((folder: string) => {
     const filePath = resolve(matchesDir, folder);
     const isFolder = statSync(filePath).isDirectory();
     const haveIndexFile = isFolder && readdirSync(filePath).includes('index.ts');
 
-    if (isFolder) {
-      if (!haveIndexFile) {
-        throw new Error(`${folder} in \`matches\` doesn't have index.ts file`);
-      } else {
-        entryPoints[folder] = resolve(filePath, 'index.ts');
-      }
+    if (!haveIndexFile) {
+      throw new Error(`${folder} in \`matches\` doesn't have index.ts file`);
+    } else {
+      entryPoints[folder] = resolve(filePath, 'index.ts');
     }
   });
 
