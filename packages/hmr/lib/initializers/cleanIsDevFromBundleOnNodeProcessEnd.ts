@@ -2,8 +2,9 @@ import { resolve } from 'node:path';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { TERMINATE_SIGNALS } from '../consts.js';
 
-// THIS FUNCTION CHANGE IS_DEV VAR IN BUNDLED BACKGROUND FILE TO FALSE FOR AVOID WS CONNECTING ISSUE: https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/477
-(() => {
+// THIS FUNCTION CHANGE IS_DEV VAR IN BUNDLED BACKGROUND FILE TO FALSE FOR AVOID WS CONNECTING ISSUE:
+// https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/477
+export default () => {
   for (const signal of TERMINATE_SIGNALS) {
     process.on(signal, () => {
       const backgroundFilePath = resolve(import.meta.dirname, '../../../../../dist/background.js');
@@ -14,4 +15,4 @@ import { TERMINATE_SIGNALS } from '../consts.js';
       writeFileSync(backgroundFilePath, newBackgroundFileContent, 'utf-8');
     });
   }
-})();
+};

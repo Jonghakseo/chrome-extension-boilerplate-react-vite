@@ -8,11 +8,12 @@ import {
   LOCAL_RELOAD_SOCKET_URL,
 } from '../consts.js';
 import MessageInterpreter from '../interpreter/index.js';
-import './cleanDistBackgroundOnProcessEnd.js';
+import cleanIsDevFromBundleOnNodeProcessEnd from './cleanIsDevFromBundleOnNodeProcessEnd.js';
 
 const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
 
 (() => {
+  void cleanIsDevFromBundleOnNodeProcessEnd();
   const wss = new WebSocketServer({ port: LOCAL_RELOAD_SOCKET_PORT });
 
   wss.on('listening', () => {
