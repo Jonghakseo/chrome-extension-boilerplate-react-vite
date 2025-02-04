@@ -18,6 +18,11 @@ export function makeEntryPointPlugin(): PluginOption {
         throw new Error('Output directory not found');
       }
 
+      // Ensure the output directory exists.
+      if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+      }
+
       for (const module of Object.values(bundle)) {
         const fileName = path.basename(module.fileName);
         const newFileName = fileName.replace('.js', '_dev.js');
