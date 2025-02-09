@@ -1,22 +1,24 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
-  "globalEnv": ["__FIREFOX__"],
+  "globalEnv": ["CEB_*", "CLI_CEB_*"],
+  "globalDependencies": [".env"],
   "daemon": false,
   "tasks": {
     "ready": {
       "dependsOn": ["^ready"],
-      "outputs": ["dist/**", "build/**"]
+      "outputs": ["../../dist/**", "dist/**"],
+      "cache": false
     },
     "dev": {
       "dependsOn": ["ready"],
-      "outputs": ["dist/**", "build/**", "i18n/locales/**"],
+      "outputs": ["../../dist/**", "dist/**"],
       "cache": false,
       "persistent": true
     },
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["../../dist/**", "dist/**", "build/**"],
+      "dependsOn": ["ready", "^build"],
+      "outputs": ["../../dist/**", "dist/**"],
       "cache": false
     },
     "e2e": {

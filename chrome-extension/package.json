@@ -3,12 +3,15 @@
   "version": "0.3.6",
   "description": "chrome extension - core settings",
   "type": "module",
+  "private": true,
+  "sideEffects": false,
   "scripts": {
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:turbo && pnpm clean:node_modules",
+    "ready": "tsc -b pre-build.tsconfig.json",
     "build": "vite build",
-    "dev": "cross-env __DEV__=true vite build --mode development",
+    "dev": "vite build --mode development",
     "test": "vitest run",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
@@ -16,9 +19,11 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "webextension-polyfill": "^0.12.0",
+    "@extension/env": "workspace:*",
     "@extension/shared": "workspace:*",
-    "@extension/storage": "workspace:*"
+    "@extension/storage": "workspace:*",
+    "vite-plugin-node-polyfills": "^0.23.0",
+    "webextension-polyfill": "^0.12.0"
   },
   "devDependencies": {
     "@extension/dev-utils": "workspace:*",
@@ -26,10 +31,7 @@
     "@extension/tsconfig": "workspace:*",
     "@extension/vite-config": "workspace:*",
     "@laynezh/vite-plugin-lib-assets": "^0.6.1",
-    "@types/ws": "^8.5.13",
     "magic-string": "^0.30.10",
-    "ts-loader": "^9.5.1",
-    "deepmerge": "^4.3.1",
-    "cross-env": "^7.0.3"
+    "ts-loader": "^9.5.1"
   }
 }

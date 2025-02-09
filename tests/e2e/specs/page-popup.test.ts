@@ -1,4 +1,4 @@
-import { canSwitchTheme } from '../helpers/theme';
+import { canSwitchTheme } from '../helpers/theme.js';
 
 describe('Webextension Popup', () => {
   it('should open the popup successfully', async () => {

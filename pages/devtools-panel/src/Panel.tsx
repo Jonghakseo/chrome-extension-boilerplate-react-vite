@@ -2,6 +2,7 @@ import '@src/Panel.css';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
 import type { ComponentPropsWithoutRef } from 'react';
+import { t } from '@extension/i18n';
 
 const Panel = () => {
   const theme = useStorage(exampleThemeStorage);
@@ -19,7 +20,7 @@ const Panel = () => {
         <p>
           Edit <code>pages/devtools-panel/src/Panel.tsx</code>
         </p>
-        <ToggleButton>Toggle theme</ToggleButton>
+        <ToggleButton onClick={exampleThemeStorage.toggle}>{t('toggleTheme')}</ToggleButton>
       </header>
     </div>
   );
