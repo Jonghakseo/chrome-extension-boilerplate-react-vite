@@ -1,2 +1,4 @@
-export { withSuspense } from './withSuspense';
-export { withErrorBoundary } from './withErrorBoundary';
+import { withSuspense } from './withSuspense';
+import { withErrorBoundary } from './withErrorBoundary';
+
+export { withSuspense, withErrorBoundary };

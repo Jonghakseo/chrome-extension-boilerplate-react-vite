@@ -41,30 +41,38 @@ export default withUI({
 Add the following to the `index.tsx` file.
 
 ```tsx
-import '@extension/ui/lib/global.css';
+import '@extension/ui/dist/global.css';
 ```
 
-## Add Custom Component
+## Add Component
 
 Add the following to the `lib/components/index.ts` file.
 
 ```tsx
-export * from './CustomComponent';
+export * from './Button';
 ```
 
-Add the following to the `lib/components/CustomComponent.tsx` file.
+Add the following to the `lib/components/Button.tsx` file.
 
 ```tsx
 import { ComponentPropsWithoutRef } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '../utils';
 
-type CustomComponentProps = ComponentPropsWithoutRef<'section'>;
+export type ButtonProps = {
+  theme?: 'light' | 'dark';
+} & ComponentPropsWithoutRef<'button'>;
 
-export function CustomComponent({ children, ...props }: CustomComponentProps) {
+export function Button({ theme, className, children, ...props }: ButtonProps) {
   return (
-    <section {...props}>
+    <button
+      className={cn(
+        className,
+        'mt-4 py-1 px-4 rounded shadow hover:scale-105',
+        theme === 'light' ? 'bg-white text-black' : 'bg-black text-white',
+      )}
+      {...props}>
       {children}
-    </section>
+    </button>
   );
 }
 ```
@@ -72,13 +80,19 @@ export function CustomComponent({ children, ...props }: CustomComponentProps) {
 ## Usage
 
 ```tsx
-import { CustomComponent } from '@extension/ui';
+import { Button } from '@extension/ui';
 
-export default function Page() {
+export default function ToggleButton() {
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  const toggle = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
   return (
-    <CustomComponent>
-      Hi, I'm a custom component.
-    </CustomComponent>
+    <Button theme={theme} onClick={toggle}>
+      Toggle
+    </Button>
   );
 }
 ```
@@ -102,13 +116,13 @@ Create a file named `components.json` in the `packages/ui` directory with the fo
 ```json
 {
   "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "new-york",
+  "style": "default",
   "rsc": false,
   "tsx": true,
   "tailwind": {
     "config": "tailwind.config.ts",
     "css": "lib/global.css",
-    "baseColor": "zinc",
+    "baseColor": "neutral",
     "cssVariables": true,
     "prefix": ""
   },
@@ -116,10 +130,8 @@ Create a file named `components.json` in the `packages/ui` directory with the fo
     "components": "@/lib/components",
     "utils": "@/lib/utils",
     "ui": "@/lib/components/ui",
-    "lib": "@/lib",
-    "hooks": "@/lib/hooks"
-  },
-  "iconLibrary": "lucide"
+    "lib": "@/lib"
+  }
 }
 ```
 
@@ -128,7 +140,7 @@ Create a file named `components.json` in the `packages/ui` directory with the fo
 Run the following command from the root of your project:
 
 ```shell
-pnpm add tailwindcss-animate class-variance-authority tailwind-merge lucide-react -F ui
+pnpm add tailwindcss-animate class-variance-authority -F ui
 ```
 
 3. Edit `withUI.ts` in `lib` folder
@@ -234,59 +246,83 @@ This configuration also comes from the manual guide. You can refer to the manual
 @tailwind utilities;
 
 @layer base {
-    :root {
-        --background: 0 0% 100%;
-        --foreground: 222.2 47.4% 11.2%;
-        --muted: 210 40% 96.1%;
-        --muted-foreground: 215.4 16.3% 46.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 222.2 47.4% 11.2%;
-        --border: 214.3 31.8% 91.4%;
-        --input: 214.3 31.8% 91.4%;
-        --card: 0 0% 100%;
-        --card-foreground: 222.2 47.4% 11.2%;
-        --primary: 222.2 47.4% 11.2%;
-        --primary-foreground: 210 40% 98%;
-        --secondary: 210 40% 96.1%;
-        --secondary-foreground: 222.2 47.4% 11.2%;
-        --accent: 210 40% 96.1%;
-        --accent-foreground: 222.2 47.4% 11.2%;
-        --destructive: 0 100% 50%;
-        --destructive-foreground: 210 40% 98%;
-        --ring: 215 20.2% 65.1%;
-        --radius: 0.5rem;
-    }
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
 
-    .dark {
-        --background: 224 71% 4%;
-        --foreground: 213 31% 91%;
-        --muted: 223 47% 11%;
-        --muted-foreground: 215.4 16.3% 56.9%;
-        --accent: 216 34% 17%;
-        --accent-foreground: 210 40% 98%;
-        --popover: 224 71% 4%;
-        --popover-foreground: 215 20.2% 65.1%;
-        --border: 216 34% 17%;
-        --input: 216 34% 17%;
-        --card: 224 71% 4%;
-        --card-foreground: 213 31% 91%;
-        --primary: 210 40% 98%;
-        --primary-foreground: 222.2 47.4% 1.2%;
-        --secondary: 222.2 47.4% 11.2%;
-        --secondary-foreground: 210 40% 98%;
-        --destructive: 0 63% 31%;
-        --destructive-foreground: 210 40% 98%;
-        --ring: 216 34% 17%;
-    }
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
 }
 
 @layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply font-sans antialiased bg-background text-foreground;
-    }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
 }
 ```
 
@@ -304,9 +340,15 @@ Remember to adjust any paths or package names if your project structure differs 
 
 6. Export components
 
+Make the `index.ts` file in the `components/ui` directory export the button component:
+
+```ts
+export * from './button';
+```
+
 Edit the `index.ts` file in the `packages/ui` directory to export the shadcn ui component:
 
 ```ts
-//...
-export * from './lib/components/ui/button';
+// export * from './lib/components'; // remove this line: duplicated button component
+export * from './lib/components/ui';
 ```

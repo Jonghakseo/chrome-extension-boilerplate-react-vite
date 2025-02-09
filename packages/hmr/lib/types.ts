@@ -1,4 +1,4 @@
-import type { BUILD_COMPLETE, DO_UPDATE, DONE_UPDATE } from './consts.js';
+import type { BUILD_COMPLETE, DO_UPDATE, DONE_UPDATE } from './constant';
 
 type UpdateRequestMessage = {
   type: typeof DO_UPDATE;

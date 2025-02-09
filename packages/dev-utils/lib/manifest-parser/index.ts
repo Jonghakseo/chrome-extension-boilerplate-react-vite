@@ -1,4 +1,2 @@
-import { ManifestParserImpl } from './impl.js';
-
-export * from './types.js';
+import { ManifestParserImpl } from './impl';
 export const ManifestParser = ManifestParserImpl;

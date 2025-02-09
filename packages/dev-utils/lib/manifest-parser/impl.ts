@@ -1,16 +1,15 @@
-import type { Manifest, ManifestParserInterface } from './types.js';
+import type { ManifestParserInterface, Manifest } from './type';
 
 export const ManifestParserImpl: ManifestParserInterface = {
-  convertManifestToString: (manifest, isFirefox) => {
-    if (isFirefox) {
+  convertManifestToString: (manifest, env) => {
+    if (env === 'firefox') {
       manifest = convertToFirefoxCompatibleManifest(manifest);
     }
-
     return JSON.stringify(manifest, null, 2);
   },
 };
 
-const convertToFirefoxCompatibleManifest = (manifest: Manifest) => {
+function convertToFirefoxCompatibleManifest(manifest: Manifest) {
   const manifestCopy = {
     ...manifest,
   } as { [key: string]: unknown };
@@ -32,9 +31,6 @@ const convertToFirefoxCompatibleManifest = (manifest: Manifest) => {
       strict_min_version: '109.0',
     },
   };
-  manifestCopy.permissions = (manifestCopy.permissions as string[]).filter(value => value !== 'sidePanel');
-
   delete manifestCopy.options_page;
-  delete manifestCopy.side_panel;
   return manifestCopy as Manifest;
-};
+}

@@ -1,4 +1,4 @@
-import { canSwitchTheme } from '../helpers/theme.js';
+import { canSwitchTheme } from '../helpers/theme';
 
 describe('Webextension DevTools Panel', () => {
   it('should make DevTools panel available', async () => {

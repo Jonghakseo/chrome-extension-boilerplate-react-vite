@@ -1,0 +1,10 @@
+{
+  "extends": "@extension/tsconfig/utils",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "types": ["chrome"]
+  },
+  "exclude": ["lib/injections/**/*"],
+  "include": ["lib", "index.ts"]
+}

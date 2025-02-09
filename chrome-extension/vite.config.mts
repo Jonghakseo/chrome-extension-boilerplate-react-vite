@@ -1,20 +1,15 @@
 import { resolve } from 'node:path';
 import { defineConfig, type PluginOption } from 'vite';
 import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets';
-import makeManifestPlugin from './utils/plugins/make-manifest-plugin.js';
+import makeManifestPlugin from './utils/plugins/make-manifest-plugin';
 import { watchPublicPlugin, watchRebuildPlugin } from '@extension/hmr';
-import { watchOption } from '@extension/vite-config';
-import env, { IS_DEV, IS_PROD } from '@extension/env';
-import { nodePolyfills } from 'vite-plugin-node-polyfills';
+import { isDev, isProduction, watchOption } from '@extension/vite-config';
 
-const rootDir = resolve(import.meta.dirname);
+const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');
 
 const outDir = resolve(rootDir, '..', 'dist');
 export default defineConfig({
-  define: {
-    'process.env': env,
-  },
   resolve: {
     alias: {
       '@root': rootDir,
@@ -28,25 +23,25 @@ export default defineConfig({
     }) as PluginOption,
     watchPublicPlugin(),
     makeManifestPlugin({ outDir }),
-    IS_DEV && watchRebuildPlugin({ reload: true, id: 'chrome-extension-hmr' }),
-    nodePolyfills(),
+    isDev && watchRebuildPlugin({ reload: true, id: 'chrome-extension-hmr' }),
   ],
   publicDir: resolve(rootDir, 'public'),
   build: {
     lib: {
+      formats: ['iife'],
+      entry: resolve(__dirname, 'src/background/index.ts'),
       name: 'BackgroundScript',
       fileName: 'background',
-      formats: ['es'],
-      entry: resolve(srcDir, 'background', 'index.ts'),
     },
     outDir,
     emptyOutDir: false,
-    sourcemap: IS_DEV,
-    minify: IS_PROD,
-    reportCompressedSize: IS_PROD,
+    sourcemap: isDev,
+    minify: isProduction,
+    reportCompressedSize: isProduction,
     watch: watchOption,
     rollupOptions: {
       external: ['chrome'],
     },
   },
+  envDir: '../',
 });

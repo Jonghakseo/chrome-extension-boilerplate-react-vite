@@ -1,5 +1,6 @@
-import type { BaseStorage } from '../base';
-import { StorageEnum, createStorage } from '../base';
+import { StorageEnum } from '../base/enums';
+import { createStorage } from '../base/base';
+import type { BaseStorage } from '../base/types';
 
 type Theme = 'light' | 'dark';
 
