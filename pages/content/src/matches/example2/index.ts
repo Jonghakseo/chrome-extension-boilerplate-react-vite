@@ -1,5 +1,5 @@
-import { toggleTheme } from '@src/toggleTheme';
+import { sampleFunction } from '@src/sampleFunction';
 
 console.log('example 2 content script loaded');
 
-void toggleTheme();
+void sampleFunction();
