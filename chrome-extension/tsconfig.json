@@ -4,7 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@src/*": ["src/*"]
-    }
+    },
+    "types": ["../vite-env.d.ts"]
   },
   "include": ["src", "utils", "vite.config.mts", "../node_modules/@types"]
 }
