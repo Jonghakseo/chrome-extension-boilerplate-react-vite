@@ -1,8 +1,35 @@
-import { readFileSync } from 'node:fs';
+import fs from 'node:fs';
+import deepmerge from 'deepmerge';
 
-const packageJson = JSON.parse(readFileSync('../package.json', 'utf8'));
+const packageJson = JSON.parse(fs.readFileSync('../package.json', 'utf8'));
 
-const manifest = {
+const isFirefox = process.env.__FIREFOX__ === 'true';
+
+/**
+ * If you want to disable the sidePanel, you can delete withSidePanel function and remove the sidePanel HoC on the manifest declaration.
+ *
+ * ```js
+ * const manifest = { // remove `withSidePanel()`
+ * ```
+ */
+function withSidePanel(manifest) {
+  // Firefox does not support sidePanel
+  if (isFirefox) {
+    return manifest;
+  }
+  return deepmerge(manifest, {
+    side_panel: {
+      default_path: 'side-panel/index.html',
+    },
+    permissions: ['sidePanel'],
+  });
+}
+
+/**
+ * After changing, please reload the extension at `chrome://extensions`
+ * @type {chrome.runtime.ManifestV3}
+ */
+const manifest = withSidePanel({
   manifest_version: 3,
   default_locale: 'en',
   /**
@@ -13,11 +40,10 @@ const manifest = {
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
   host_permissions: ['<all_urls>'],
-  // Firefox doesn't support sidePanel
-  permissions: ['storage', 'scripting', 'tabs', 'notifications', 'sidePanel'],
+  permissions: ['storage', 'scripting', 'tabs', 'notifications'],
   options_page: 'options/index.html',
   background: {
-    service_worker: 'background.js',
+    service_worker: 'background.iife.js',
     type: 'module',
   },
   action: {
@@ -51,9 +77,6 @@ const manifest = {
       matches: ['*://*/*'],
     },
   ],
-  side_panel: {
-    default_path: 'side-panel/index.html',
-  },
-} satisfies chrome.runtime.ManifestV3;
+});
 
 export default manifest;

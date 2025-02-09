@@ -1,13 +1,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { PluginOption } from 'vite';
-import { IS_FIREFOX } from '@extension/env';
 
 /**
  * make entry point file for content script cache busting
  */
 export function makeEntryPointPlugin(): PluginOption {
   const cleanupTargets = new Set<string>();
+  const isFirefox = process.env.__FIREFOX__ === 'true';
 
   return {
     name: 'make-entry-point-plugin',
@@ -39,7 +39,7 @@ export function makeEntryPointPlugin(): PluginOption {
           case 'chunk': {
             fs.writeFileSync(path.resolve(outputDir, newFileName), module.code);
 
-            if (IS_FIREFOX) {
+            if (isFirefox) {
               const contentDirectory = extractContentDir(outputDir);
               module.code = `import(browser.runtime.getURL("${contentDirectory}/${newFileName}"));`;
             } else {

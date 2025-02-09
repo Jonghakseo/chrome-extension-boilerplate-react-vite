@@ -1,8 +1,7 @@
 import '@src/Popup.css';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { t } from '@extension/i18n';
-import { ToggleButton } from '@extension/ui';
+import type { ComponentPropsWithoutRef } from 'react';
 
 const notificationOptions = {
   type: 'basic',
@@ -55,9 +54,25 @@ const Popup = () => {
           onClick={injectContentScript}>
           Click to inject Content Script
         </button>
-        <ToggleButton>{t('toggleTheme')}</ToggleButton>
+        <ToggleButton>Toggle theme</ToggleButton>
       </header>
     </div>
+  );
+};
+
+const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
+  const theme = useStorage(exampleThemeStorage);
+  return (
+    <button
+      className={
+        props.className +
+        ' ' +
+        'font-bold mt-4 py-1 px-4 rounded shadow hover:scale-105 ' +
+        (theme === 'light' ? 'bg-white text-black shadow-black' : 'bg-black text-white')
+      }
+      onClick={exampleThemeStorage.toggle}>
+      {props.children}
+    </button>
   );
 };
 

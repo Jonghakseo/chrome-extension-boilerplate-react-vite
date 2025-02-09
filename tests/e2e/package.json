@@ -3,7 +3,6 @@
   "version": "0.3.6",
   "description": "E2e tests configuration boilerplate",
   "private": true,
-  "sideEffects": false,
   "type": "module",
   "scripts": {
     "e2e": "wdio run ./config/wdio.browser.conf.ts",
@@ -13,12 +12,12 @@
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
-    "@extension/env": "workspace:*",
     "@wdio/cli": "^9.4.5",
     "@wdio/globals": "^9.4.5",
     "@wdio/local-runner": "^9.1.2",
     "@wdio/mocha-framework": "^9.1.2",
     "@wdio/spec-reporter": "^9.2.14",
-    "@wdio/types": "^9.1.2"
+    "@wdio/types": "^9.1.2",
+    "tsx": "^4.19.2"
   }
 }

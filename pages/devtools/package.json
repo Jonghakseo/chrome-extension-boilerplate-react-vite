@@ -2,7 +2,6 @@
   "name": "@extension/devtools",
   "version": "0.3.6",
   "description": "chrome extension - devtools",
-  "type": "module",
   "private": true,
   "sideEffects": true,
   "files": [
@@ -13,7 +12,7 @@
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:turbo && pnpm clean:node_modules",
     "build": "vite build",
-    "dev": "vite build --mode development",
+    "dev": "cross-env __DEV__=true vite build --mode development",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
@@ -24,6 +23,7 @@
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
-    "@extension/vite-config": "workspace:*"
+    "@extension/vite-config": "workspace:*",
+    "cross-env": "^7.0.3"
   }
 }

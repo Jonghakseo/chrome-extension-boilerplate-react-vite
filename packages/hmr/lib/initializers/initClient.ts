@@ -1,7 +1,7 @@
-import { DO_UPDATE, DONE_UPDATE, LOCAL_RELOAD_SOCKET_URL } from '../consts.js';
-import MessageInterpreter from '../interpreter/index.js';
+import { DO_UPDATE, DONE_UPDATE, LOCAL_RELOAD_SOCKET_URL } from '../constant';
+import MessageInterpreter from '../interpreter';
 
-export default ({ id, onUpdate }: { id: string; onUpdate: () => void }) => {
+export default function initClient({ id, onUpdate }: { id: string; onUpdate: () => void }) {
   const ws = new WebSocket(LOCAL_RELOAD_SOCKET_URL);
 
   ws.onopen = () => {
@@ -11,7 +11,8 @@ export default ({ id, onUpdate }: { id: string; onUpdate: () => void }) => {
       if (message.type === DO_UPDATE && message.id === id) {
         onUpdate();
         ws.send(MessageInterpreter.send({ type: DONE_UPDATE }));
+        return;
       }
     });
   };
-};
+}

@@ -1,17 +1,11 @@
 import type { WebSocket } from 'ws';
 import { WebSocketServer } from 'ws';
-import {
-  BUILD_COMPLETE,
-  DO_UPDATE,
-  DONE_UPDATE,
-  LOCAL_RELOAD_SOCKET_PORT,
-  LOCAL_RELOAD_SOCKET_URL,
-} from '../consts.js';
-import MessageInterpreter from '../interpreter/index.js';
+import { BUILD_COMPLETE, DO_UPDATE, DONE_UPDATE, LOCAL_RELOAD_SOCKET_PORT, LOCAL_RELOAD_SOCKET_URL } from '../constant';
+import MessageInterpreter from '../interpreter';
 
 const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
 
-(() => {
+function initReloadServer() {
   const wss = new WebSocketServer({ port: LOCAL_RELOAD_SOCKET_PORT });
 
   wss.on('listening', () => {
@@ -46,4 +40,6 @@ const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
     console.error(`[HMR] Failed to start server at ${LOCAL_RELOAD_SOCKET_URL}`);
     throw error;
   });
-})();
+}
+
+initReloadServer();

@@ -19,7 +19,7 @@ export const getChromeExtensionPath = async (browser: WebdriverIO.Browser) => {
   const extensionItem = await (async () => {
     const extensionsManager = await $('extensions-manager').getElement();
     const itemList = await extensionsManager.shadow$('#container > #viewManager > extensions-item-list');
-    return itemList.shadow$('extensions-item');
+    return await itemList.shadow$('extensions-item');
   })();
 
   const extensionId = await extensionItem.getAttribute('id');

@@ -2,7 +2,6 @@
   "name": "@extension/new-tab",
   "version": "0.3.6",
   "description": "chrome extension - new tab",
-  "type": "module",
   "private": true,
   "sideEffects": true,
   "files": [
@@ -13,7 +12,7 @@
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:turbo && pnpm clean:node_modules",
     "build": "vite build",
-    "dev": "vite build --mode development",
+    "dev": "cross-env __DEV__=true vite build --mode development",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
@@ -29,7 +28,9 @@
     "@extension/tailwindcss-config": "workspace:*",
     "@extension/tsconfig": "workspace:*",
     "@extension/vite-config": "workspace:*",
-    "sass": "1.79.4"
+    "sass": "1.79.4",
+    "postcss-load-config": "^6.0.1",
+    "cross-env": "^7.0.3"
   },
   "postcss": {
     "plugins": {

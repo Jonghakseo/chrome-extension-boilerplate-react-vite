@@ -1,4 +1,4 @@
-import { canSwitchTheme } from '../helpers/theme.js';
+import { canSwitchTheme } from '../helpers/theme';
 
 describe('Webextension Side Panel', () => {
   it('should make side panel accessible', async () => {

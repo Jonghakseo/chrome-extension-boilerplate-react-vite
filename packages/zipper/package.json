@@ -2,29 +2,30 @@
   "name": "@extension/zipper",
   "version": "0.3.6",
   "description": "chrome extension - zipper",
-  "type": "module",
   "private": true,
   "sideEffects": false,
   "files": [
     "dist/**"
   ],
-  "types": "index.mts",
-  "main": "dist/index.mjs",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "index.ts",
   "scripts": {
     "clean:bundle": "rimraf dist",
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
-    "zip": "node --env-file=../../.env dist/index.mjs",
+    "zip": "tsx index.ts",
+    "ready": "tsc",
     "lint": "eslint .",
-    "ready": "tsc -b",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
-    "@extension/env": "workspace:*",
-    "fflate": "^0.8.2"
+    "fast-glob": "^3.3.2",
+    "fflate": "^0.8.2",
+    "tsx": "^4.19.2"
   }
 }

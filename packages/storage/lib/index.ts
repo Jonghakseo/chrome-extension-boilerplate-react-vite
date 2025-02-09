@@ -1,2 +1,2 @@
-export type { BaseStorage } from './base';
+export type { BaseStorage } from './base/types';
 export * from './impl';

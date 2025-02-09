@@ -1,9 +1,8 @@
 import { resolve } from 'node:path';
 import { makeEntryPointPlugin } from '@extension/hmr';
-import { withPageConfig } from '@extension/vite-config';
-import { IS_DEV } from '@extension/env';
+import { isDev, withPageConfig } from '@extension/vite-config';
 
-const rootDir = resolve(import.meta.dirname);
+const rootDir = resolve(__dirname);
 const srcDir = resolve(rootDir, 'src');
 
 export default withPageConfig({
@@ -12,14 +11,14 @@ export default withPageConfig({
       '@src': srcDir,
     },
   },
-  plugins: [IS_DEV && makeEntryPointPlugin()],
+  plugins: [isDev && makeEntryPointPlugin()],
   publicDir: resolve(rootDir, 'public'),
   build: {
     lib: {
-      name: 'contentUI',
-      fileName: 'index',
-      formats: ['iife'],
       entry: resolve(srcDir, 'index.tsx'),
+      name: 'contentUI',
+      formats: ['iife'],
+      fileName: 'index',
     },
     outDir: resolve(rootDir, '..', '..', 'dist', 'content-ui'),
   },

@@ -1,6 +1,6 @@
-import initClient from '../initializers/initClient.js';
+import initClient from '../initializers/initClient';
 
-(() => {
+function addReload() {
   const reload = () => {
     chrome.runtime.reload();
   };
@@ -10,4 +10,6 @@ import initClient from '../initializers/initClient.js';
     id: __HMR_ID,
     onUpdate: reload,
   });
-})();
+}
+
+addReload();
