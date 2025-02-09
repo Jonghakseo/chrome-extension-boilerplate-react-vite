@@ -8,7 +8,7 @@
     "ready": {
       "dependsOn": ["^ready"],
       "outputs": ["../../dist/**", "dist/**"],
-      "cache": true
+      "cache": false
     },
     "dev": {
       "dependsOn": ["ready"],
