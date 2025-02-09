@@ -2,22 +2,20 @@
   "name": "@extension/hmr",
   "version": "0.3.6",
   "description": "chrome extension - hot module reload/refresh",
+  "type": "module",
   "private": true,
   "sideEffects": true,
   "files": [
     "dist/**"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "index.ts",
+  "types": "index.mts",
+  "main": "dist/index.mjs",
   "scripts": {
     "clean:bundle": "rimraf dist && pnpx rimraf build",
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
-    "build:tsc": "tsc -b tsconfig.build.json",
-    "build:rollup": "rollup --config rollup.config.mjs",
-    "ready": "pnpm run build:tsc && pnpm run build:rollup",
+    "ready": "tsc -b && rollup --config dist/rollup.config.js",
     "dev": "node dist/lib/initializers/initReloadServer.js",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
@@ -26,10 +24,10 @@
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
+    "@extension/env": "workspace:*",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@types/ws": "^8.5.13",
     "esm": "^3.2.25",
-    "fast-glob": "^3.3.2",
     "rollup": "^4.24.0",
     "ts-node": "^10.9.2",
     "ws": "8.18.0"

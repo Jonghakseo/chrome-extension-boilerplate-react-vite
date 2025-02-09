@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Module",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext"
+  }
+}

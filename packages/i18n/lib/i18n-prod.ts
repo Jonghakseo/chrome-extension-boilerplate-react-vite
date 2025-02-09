@@ -1,7 +1,3 @@
-import type { DevLocale, MessageKey } from './type';
+import type { MessageKey } from './types.js';
 
-export function t(key: MessageKey, substitutions?: string | string[]) {
-  return chrome.i18n.getMessage(key, substitutions);
-}
-
-t.devLocale = '' as DevLocale; // for type consistency with i18n-dev.ts
+export const t = (key: MessageKey, substitutions?: string | string[]) => chrome.i18n.getMessage(key, substitutions);

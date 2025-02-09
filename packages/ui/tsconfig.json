@@ -1,9 +1,10 @@
 {
-  "extends": "@extension/tsconfig/utils",
+  "extends": "@extension/tsconfig/base",
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
-    "types": ["chrome"],
+    "types": ["chrome", "node"],
+    "noEmit": false,
     "paths": {
       "@/*": ["./*"]
     }

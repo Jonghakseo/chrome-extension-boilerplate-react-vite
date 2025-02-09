@@ -1,4 +1,4 @@
-import { canSwitchTheme } from '../helpers/theme';
+import { canSwitchTheme } from '../helpers/theme.js';
 
 describe('Webextension Options Page', () => {
   it('should make options page accessible', async () => {

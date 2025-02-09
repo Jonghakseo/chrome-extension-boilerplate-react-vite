@@ -1,9 +1,9 @@
 {
-  "extends": "@extension/tsconfig/utils",
+  "extends": "@extension/tsconfig/base",
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "dist",
-    "types": ["chrome"]
+    "noEmit": false
   },
   "include": ["index.ts", "lib"]
 }
