@@ -1,1 +1,1 @@
-export * from './get-entry-points.js';
+export * from './get-content-script-entries.js';

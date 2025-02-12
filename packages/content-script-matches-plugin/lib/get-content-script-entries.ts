@@ -1,7 +1,7 @@
 import { resolve } from 'node:path';
 import { readdirSync, statSync } from 'node:fs';
 
-export const getEntryPoints = (matchesDir: string) => {
+export const getContentScriptEntries = (matchesDir: string) => {
   const entryPoints: Record<string, string> = {};
   const entries = readdirSync(matchesDir);
 
