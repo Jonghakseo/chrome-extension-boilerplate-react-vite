@@ -1,25 +1,26 @@
 import { resolve } from 'node:path';
 import type { PluginOption } from 'vite';
-import { getEntryPoints } from './get-entry-points.js';
-import esbuild from 'esbuild';
+import { buildSync } from 'esbuild';
 import { IS_DEV, IS_PROD } from '@extension/env';
+import fg from 'fast-glob';
 
 /**
  * Add content with matches URLs to manifest.json while preserving user-defined content scripts.
  */
-export function addScriptWithMatchesToManifestPlugin(matchesDir: string): PluginOption {
-  const distDir = resolve(import.meta.dirname, '../../../../dist');
-
+export function bundleContentScriptWithHmr(scriptName: string): PluginOption {
   return {
     name: 'add-script-with-matches-to-manifest-plugin',
+    writeBundle() {
+      const distContentDir = resolve(import.meta.dirname, '..', '..', '..', '..', '..', 'dist', 'content');
+      const entryPoints = fg.sync('*.js', {
+        cwd: resolve(import.meta.dirname, '..', '..', '..', '..', '..', 'pages', scriptName, 'dist', 'matches'),
+        absolute: true,
+      });
 
-    async buildStart() {
-      const entryPoints = getEntryPoints(matchesDir);
-
-      await esbuild.build({
+      buildSync({
         entryPoints,
         bundle: true,
-        outdir: resolve(distDir, 'content'),
+        outdir: distContentDir,
         entryNames: '[name].iife',
         format: 'iife',
         globalName: 'ContentScripts',
