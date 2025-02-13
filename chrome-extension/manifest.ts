@@ -57,8 +57,12 @@ const manifest = {
       js: ['content/example2.iife.js'],
     },
     {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['content-ui/index.iife.js'],
+      matches: ['https://www.google.com/*'],
+      js: ['content-ui/example.iife.js'],
+    },
+    {
+      matches: ['https://github.com/*'],
+      js: ['content-ui/example2.iife.js'],
     },
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
