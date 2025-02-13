@@ -341,9 +341,6 @@ importers:
 
   pages/content:
     dependencies:
-      '@extension/env':
-        specifier: workspace:*
-        version: link:../../packages/env
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
@@ -379,9 +376,6 @@ importers:
 
   pages/content-ui:
     dependencies:
-      '@extension/env':
-        specifier: workspace:*
-        version: link:../../packages/env
       '@extension/i18n':
         specifier: workspace:*
         version: link:../../packages/i18n
