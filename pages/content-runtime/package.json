@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
-    "@extension/vite-config": "workspace:*"
+    "@extension/vite-config": "workspace:*",
+    "@extension/content-script-matches-plugin": "workspace:*",
+    "@extension/hmr": "workspace:*"
   }
 }

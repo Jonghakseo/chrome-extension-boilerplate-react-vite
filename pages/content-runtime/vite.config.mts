@@ -1,8 +1,13 @@
 import { resolve } from 'node:path';
+import { getContentScriptEntries } from '@extension/content-script-matches-plugin';
 import { withPageConfig } from '@extension/vite-config';
+import { bundleContentScriptWithHmr } from '@extension/hmr';
 
 const rootDir = resolve(import.meta.dirname);
 const srcDir = resolve(rootDir, 'src');
+const matchesDir = resolve(srcDir, 'matches');
+const entryPoints = getContentScriptEntries(matchesDir);
+const distContentDir = resolve(import.meta.dirname, 'dist', 'matches');
 
 export default withPageConfig({
   resolve: {
@@ -12,12 +17,13 @@ export default withPageConfig({
   },
   publicDir: resolve(rootDir, 'public'),
   build: {
-    lib: {
-      name: 'ContentRuntimeScript',
-      fileName: 'index',
-      formats: ['iife'],
-      entry: resolve(srcDir, 'index.ts'),
+    rollupOptions: {
+      input: entryPoints,
+      output: {
+        dir: distContentDir,
+        entryFileNames: '[name].js',
+      },
     },
-    outDir: resolve(rootDir, '..', '..', 'dist', 'content-runtime'),
   },
+  plugins: [bundleContentScriptWithHmr('content-runtime')],
 });

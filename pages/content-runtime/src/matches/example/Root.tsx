@@ -1,5 +1,5 @@
-import App from '@src/App';
-import injectedStyle from '@src/index.css?inline';
+import App from '@src/matches/example/App';
+import injectedStyle from '@src/matches/example/index.css?inline';
 import { createRoot } from 'react-dom/client';
 
 export const mount = () => {
