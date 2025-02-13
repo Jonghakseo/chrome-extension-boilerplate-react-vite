@@ -351,6 +351,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/storage
     devDependencies:
+      '@extension/content-script-matches-plugin':
+        specifier: workspace:*
+        version: link:../../packages/content-script-matches-plugin
       '@extension/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
