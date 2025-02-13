@@ -8,12 +8,13 @@ export const getContentScriptEntries = (matchesDir: string) => {
   entries.forEach((folder: string) => {
     const filePath = resolve(matchesDir, folder);
     const isFolder = statSync(filePath).isDirectory();
-    const haveIndexFile = readdirSync(filePath).includes('index.ts');
+    const haveIndexTsFile = readdirSync(filePath).includes('index.ts');
+    const haveIndexTsxFile = readdirSync(filePath).includes('index.tsx');
 
-    if (isFolder && !haveIndexFile) {
-      throw new Error(`${folder} in \`matches\` doesn't have index.ts file`);
+    if (isFolder && !(haveIndexTsFile || haveIndexTsxFile)) {
+      throw new Error(`${folder} in \`matches\` doesn't have index.ts or index.tsx file`);
     } else {
-      entryPoints[folder] = resolve(filePath, 'index.ts');
+      entryPoints[folder] = resolve(filePath, haveIndexTsFile ? 'index.ts' : 'index.tsx');
     }
   });
 
