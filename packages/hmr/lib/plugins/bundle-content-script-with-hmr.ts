@@ -11,7 +11,7 @@ export function bundleContentScriptWithHmr(scriptName: string): PluginOption {
   return {
     name: 'add-script-with-matches-to-manifest-plugin',
     writeBundle() {
-      const distContentDir = resolve(import.meta.dirname, '..', '..', '..', '..', '..', 'dist', 'content');
+      const distContentDir = resolve(import.meta.dirname, '..', '..', '..', '..', '..', 'dist', scriptName);
       const entryPoints = fg.sync('*.js', {
         cwd: resolve(import.meta.dirname, '..', '..', '..', '..', '..', 'pages', scriptName, 'dist', 'matches'),
         absolute: true,
