@@ -49,11 +49,11 @@ const manifest = {
   },
   content_scripts: [
     {
-      matches: ['https://www.example.com/*'],
+      matches: ['https://example.com/*'],
       js: ['content/example.iife.js'],
     },
     {
-      matches: ['https://www.example.com/*'],
+      matches: ['https://example.com/*'],
       js: ['content-ui/example.iife.js'],
     },
     {
