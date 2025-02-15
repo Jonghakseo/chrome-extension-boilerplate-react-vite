@@ -16,7 +16,7 @@ function convertToFirefoxCompatibleManifest(manifest: Manifest) {
 
   if (manifest.background?.service_worker) {
     manifestCopy.background = {
-      scripts: [manifest.background?.service_worker],
+      scripts: [manifest.background.service_worker],
       type: 'module',
     };
   }
