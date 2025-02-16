@@ -58,7 +58,7 @@ the build speed and development experience by using Vite and Turborepo.
 
 ## Features
 
-- [React18](https://reactjs.org/)
+- [React19](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwindcss](https://tailwindcss.com/)
 - [Vite](https://vitejs.dev/) with [Rollup](https://rollupjs.org/)
