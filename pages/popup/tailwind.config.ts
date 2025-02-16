@@ -1,5 +1,5 @@
 import baseConfig from '@extension/tailwindcss-config';
-import type { Config } from 'tailwindcss/types/config';
+import type { Config } from 'tailwindcss';
 
 export default {
   ...baseConfig,
