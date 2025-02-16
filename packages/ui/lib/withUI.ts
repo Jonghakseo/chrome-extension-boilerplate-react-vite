@@ -1,5 +1,5 @@
 import deepmerge from 'deepmerge';
-import type { Config } from 'tailwindcss/types/config';
+import type { Config } from 'tailwindcss';
 
 export function withUI(tailwindConfig: Config): Config {
   return deepmerge(tailwindConfig, {
