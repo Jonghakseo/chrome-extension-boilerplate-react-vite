@@ -1,7 +1,8 @@
 import { resolve } from 'node:path';
 import { getContentScriptEntries } from '@extension/content-script-matches-plugin';
 import { withPageConfig } from '@extension/vite-config';
-import { bundleContentScriptWithHmr } from '@extension/hmr';
+import { bundleContentScriptWithHmr, makeEntryPointPlugin } from '@extension/hmr';
+import { IS_DEV } from '@extension/env';
 
 const rootDir = resolve(import.meta.dirname);
 const srcDir = resolve(rootDir, 'src');
@@ -25,5 +26,5 @@ export default withPageConfig({
       },
     },
   },
-  plugins: [bundleContentScriptWithHmr('content')],
+  plugins: [IS_DEV && makeEntryPointPlugin(), bundleContentScriptWithHmr('content')],
 });
