@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import { replaceTscAliasPaths } from 'tsc-alias';
 import { resolve } from 'node:path';
-import esbuild from 'esbuild';
+import * as esbuild from 'esbuild';
 
 /**
  * @type { import('esbuild').BuildOptions }

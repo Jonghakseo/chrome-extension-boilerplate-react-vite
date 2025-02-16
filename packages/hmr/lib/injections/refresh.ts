@@ -24,7 +24,9 @@ function addRefresh() {
 
   // reload when tab is visible
   function reloadWhenTabIsVisible(): void {
-    !document.hidden && pendingReload && reload();
+    if (!document.hidden && pendingReload) {
+      reload();
+    }
   }
 
   document.addEventListener('visibilitychange', reloadWhenTabIsVisible);

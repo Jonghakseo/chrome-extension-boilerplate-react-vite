@@ -1,4 +1,4 @@
-import esbuild from 'esbuild';
+import * as esbuild from 'esbuild';
 
 /**
  * @type { import('esbuild').BuildOptions }

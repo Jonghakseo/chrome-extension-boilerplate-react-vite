@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import { defineConfig, type PluginOption } from "vite";
+import { defineConfig, type PluginOption } from 'vite';
 import libAssetsPlugin from '@laynezh/vite-plugin-lib-assets';
 import makeManifestPlugin from './utils/plugins/make-manifest-plugin';
 import { watchPublicPlugin, watchRebuildPlugin } from '@extension/hmr';

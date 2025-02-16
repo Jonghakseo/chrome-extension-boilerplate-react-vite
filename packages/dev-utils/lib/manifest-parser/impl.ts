@@ -14,14 +14,18 @@ function convertToFirefoxCompatibleManifest(manifest: Manifest) {
     ...manifest,
   } as { [key: string]: unknown };
 
-  manifestCopy.background = {
-    scripts: [manifest.background?.service_worker],
-    type: 'module',
-  };
-  manifestCopy.options_ui = {
-    page: manifest.options_page,
-    browser_style: false,
-  };
+  if (manifest.background?.service_worker) {
+    manifestCopy.background = {
+      scripts: [manifest.background.service_worker],
+      type: 'module',
+    };
+  }
+  if (manifest.options_page) {
+    manifestCopy.options_ui = {
+      page: manifest.options_page,
+      browser_style: false,
+    };
+  }
   manifestCopy.content_security_policy = {
     extension_pages: "script-src 'self'; object-src 'self'",
   };

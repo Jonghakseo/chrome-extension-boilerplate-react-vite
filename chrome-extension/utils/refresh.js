@@ -11,7 +11,6 @@
   const DONE_UPDATE = 'done_update';
 
   class MessageInterpreter {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     constructor() {}
 
     static send(message) {

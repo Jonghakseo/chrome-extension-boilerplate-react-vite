@@ -1,6 +1,6 @@
 {
   "name": "@extension/zipper",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "chrome extension - zipper",
   "private": true,
   "sideEffects": false,
@@ -17,7 +17,7 @@
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
     "zip": "tsx index.ts",
     "ready": "tsc",
-    "lint": "eslint . --ext .ts,.tsx",
+    "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
