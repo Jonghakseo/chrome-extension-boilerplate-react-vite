@@ -2,14 +2,16 @@ name: Run E2E Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, dev ]
 
 jobs:
   chrome:
     name: E2E tests for Chrome
     runs-on: ubuntu-latest
+    env:
+      CEB_CI: true
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -23,6 +25,8 @@ jobs:
   firefox:
     name: E2E tests for Firefox
     runs-on: ubuntu-latest
+    env:
+      CEB_CI: true
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4

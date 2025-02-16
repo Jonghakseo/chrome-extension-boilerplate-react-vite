@@ -2,6 +2,7 @@
   "name": "@extension/content-runtime-script",
   "version": "0.3.6",
   "description": "chrome extension - content runtime script",
+  "type": "module",
   "private": true,
   "sideEffects": true,
   "files": [
@@ -12,7 +13,7 @@
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:turbo && pnpm clean:node_modules",
     "build": "vite build",
-    "dev": "cross-env __DEV__=true vite build --mode development",
+    "dev": "vite build --mode development",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
@@ -20,7 +21,6 @@
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
-    "@extension/hmr": "workspace:*",
     "@extension/vite-config": "workspace:*"
   }
 }
