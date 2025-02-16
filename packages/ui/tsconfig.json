@@ -6,7 +6,8 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "noEmit": false
+    "noEmit": false,
+    "declaration": true
   },
   "include": ["index.ts", "lib"]
 }
