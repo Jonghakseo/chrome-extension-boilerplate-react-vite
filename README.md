@@ -127,6 +127,14 @@ Then, depending on the target browser:
 `module-name` - You can find it inside each `package.json` under the key `name`, e.g. `@extension/content-script`, you
 can use only `content-script` without `@extension/` prefix
 
+## How do I disable modules I'm not using?
+
+```bash
+$ pnpm module-manager
+```
+
+Read: [Module Manager](packages/module-manager/README.md)
+
 ## Environment variables
 
 Read: [Env Documentation](packages/env/README.md)

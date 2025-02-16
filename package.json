@@ -35,7 +35,8 @@
     "update-version": "bash bash-scripts/update_version.sh",
     "copy_env": "bash bash-scripts/copy_env.sh",
     "set-global-env": "bash bash-scripts/set_global_env.sh",
-    "postinstall": "pnpm build:eslint && pnpm copy_env"
+    "postinstall": "pnpm build:eslint && pnpm copy_env",
+    "module-manager": "pnpm -F module-manager start"
   },
   "dependencies": {
     "react": "18.3.1",
