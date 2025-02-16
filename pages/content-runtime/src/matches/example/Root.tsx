@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
-import App from '@src/App';
-import injectedStyle from '@src/index.css?inline';
+import App from '@src/matches/example/App';
+import injectedStyle from '@src/matches/example/index.css?inline';
 
 export function mount() {
   const root = document.createElement('div');

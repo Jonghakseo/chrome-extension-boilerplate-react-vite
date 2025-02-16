@@ -55,7 +55,6 @@
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
     "deepmerge": "^4.3.1",
-    "esbuild": "^0.23.0",
     "eslint": "^9.18.0",
     "eslint-config-airbnb-typescript": "18.0.0",
     "eslint-config-prettier": "^10.0.1",

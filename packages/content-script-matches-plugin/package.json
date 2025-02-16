@@ -1,36 +1,28 @@
 {
-  "name": "@extension/hmr",
-  "version": "0.3.6",
-  "description": "chrome extension - hot module reload/refresh",
+  "name": "@extension/content-script-matches-plugin",
+  "version": "0.3.5",
+  "description": "chrome extension - plugin for editing manifest with content scripts with url matches",
   "type": "module",
   "private": true,
-  "sideEffects": true,
+  "sideEffects": false,
   "files": [
     "dist/**"
   ],
   "types": "index.mts",
   "main": "dist/index.mjs",
   "scripts": {
-    "clean:bundle": "rimraf dist && pnpx rimraf build",
+    "clean:bundle": "rimraf dist",
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
-    "ready": "tsc -b && rollup --config dist/rollup.config.js",
-    "dev": "node dist/lib/initializers/initReloadServer.js",
+    "ready": "tsc -b",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "prettier": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@extension/env": "workspace:*",
     "@extension/tsconfig": "workspace:*",
-    "@rollup/plugin-sucrase": "^5.0.2",
-    "@types/ws": "^8.5.13",
-    "esbuild": "^0.25.0",
-    "esm": "^3.2.25",
-    "rollup": "^4.24.0",
-    "ts-node": "^10.9.2",
-    "ws": "8.18.0"
+    "@extension/env": "workspace:*"
   }
 }
