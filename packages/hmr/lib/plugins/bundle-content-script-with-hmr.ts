@@ -10,12 +10,15 @@ import fg from 'fast-glob';
 export function bundleContentScriptWithHmr(scriptName: string): PluginOption {
   return {
     name: 'add-script-with-matches-to-manifest-plugin',
+    enforce: 'post',
     writeBundle() {
       const distContentDir = resolve(import.meta.dirname, '..', '..', '..', '..', '..', 'dist', scriptName);
-      const entryPoints = fg.sync('*.js', {
-        cwd: resolve(import.meta.dirname, '..', '..', '..', '..', '..', 'pages', scriptName, 'dist', 'matches'),
-        absolute: true,
-      });
+      const entryPoints = fg
+        .sync('*.js', {
+          cwd: resolve(import.meta.dirname, '..', '..', '..', '..', '..', 'pages', scriptName, 'dist', 'matches'),
+          absolute: true,
+        })
+        .filter(entry => !entry.includes('_dev.js'));
 
       buildSync({
         entryPoints,
