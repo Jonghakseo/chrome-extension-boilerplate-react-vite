@@ -3,7 +3,7 @@ name: Formating validation
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [ main, dev ]
 
 jobs:
   prettier:

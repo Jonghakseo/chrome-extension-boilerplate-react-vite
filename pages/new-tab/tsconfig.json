@@ -5,7 +5,7 @@
     "paths": {
       "@src/*": ["src/*"]
     },
-    "types": ["chrome", "../../vite-env.d.ts"]
+    "types": ["chrome", "node"]
   },
-  "include": ["src"]
+  "include": ["src", "vite.config.mts"]
 }
