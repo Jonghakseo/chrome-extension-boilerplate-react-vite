@@ -37,6 +37,16 @@ const manifest = withSidePanel({
    * https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization
    */
   name: '__MSG_extensionName__',
+  /**
+   * Must be unique to your extension to upload to addons.mozilla.org 
+   * (you can delete if you only want a chrome extension)
+   */
+  browser_specific_settings: {
+    gecko: {
+      id: 'example@example.com',
+      strict_min_version: '109.0',
+    },
+  },
   version: packageJson.version,
   description: '__MSG_extensionDescription__',
   host_permissions: ['<all_urls>'],
