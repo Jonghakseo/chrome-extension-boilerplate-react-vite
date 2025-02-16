@@ -29,6 +29,12 @@ export default async function deleteModules(manifestObject: chrome.runtime.Manif
     }
     return pageFolders.includes(choice.value);
   });
+
+  if (!choices.length) {
+    console.log('No features to delete');
+    process.exit(0);
+  }
+
   const answers = await checkbox({
     message: 'Choose the features you want to delete',
     loop: false,
@@ -69,6 +75,7 @@ export default async function deleteModules(manifestObject: chrome.runtime.Manif
   if (answers.includes('options')) {
     await deleteOptionsPage(manifestObject);
   }
+  console.log(`Deleted selected features: ${answers.join(', ')}`);
 }
 
 function deleteBackgroundScript(manifestObject: chrome.runtime.ManifestV3) {

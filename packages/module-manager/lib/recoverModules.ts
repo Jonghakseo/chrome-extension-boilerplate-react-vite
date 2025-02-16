@@ -28,6 +28,11 @@ export default async function recoverModules(manifestObject: chrome.runtime.Mani
     return archiveFiles.includes(`${choice.value}.zip`);
   });
 
+  if (!choices.length) {
+    console.log('No features to recover');
+    process.exit(0);
+  }
+
   const answers = await checkbox({
     message: 'Choose the features you want to recover',
     loop: false,
@@ -65,6 +70,7 @@ export default async function recoverModules(manifestObject: chrome.runtime.Mani
   if (answers.includes('options')) {
     recoverOptionsPage(manifestObject);
   }
+  console.log(`Recovered selected features: ${answers.join(', ')}`);
 }
 
 function recoverBackgroundScript(manifestObject: chrome.runtime.ManifestV3) {
