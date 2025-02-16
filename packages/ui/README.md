@@ -49,14 +49,14 @@ import '@extension/ui/lib/global.css';
 Add the following to the `lib/components/index.ts` file.
 
 ```tsx
-export * from './CustomComponent';
+export * from './CustomComponent.js';
 ```
 
 Add the following to the `lib/components/CustomComponent.tsx` file.
 
 ```tsx
 import { ComponentPropsWithoutRef } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils.js';
 
 type CustomComponentProps = ComponentPropsWithoutRef<'section'>;
 
@@ -133,7 +133,8 @@ pnpm add tailwindcss-animate class-variance-authority tailwind-merge lucide-reac
 
 3. Edit `withUI.ts` in `lib` folder
 
-This configuration file is from the manual guide. You can refer to the manual guide to modify the configuration file. ([`Configure tailwind.config.js`](https://ui.shadcn.com/docs/installation/manual))
+This configuration file is from the manual guide. You can refer to the manual guide to modify the configuration file. ([
+`Configure tailwind.config.js`](https://ui.shadcn.com/docs/installation/manual))
 
 ```ts
 import deepmerge from 'deepmerge';
@@ -226,7 +227,8 @@ const shadcnConfig = {
 
 4. Edit `global.css` in `lib` folder
 
-This configuration also comes from the manual guide. You can refer to the manual guide to modify the configuration file. ([`Configure styles`](https://ui.shadcn.com/docs/installation/manual))
+This configuration also comes from the manual guide. You can refer to the manual guide to modify the configuration
+file. ([`Configure styles`](https://ui.shadcn.com/docs/installation/manual))
 
 ```css
 @tailwind base;
@@ -284,6 +286,7 @@ This configuration also comes from the manual guide. You can refer to the manual
     * {
         @apply border-border;
     }
+
     body {
         @apply font-sans antialiased bg-background text-foreground;
     }
@@ -304,9 +307,9 @@ Remember to adjust any paths or package names if your project structure differs 
 
 6. Export components
 
-Edit the `index.ts` file in the `packages/ui` directory to export the shadcn ui component:
+Edit the `index.mts` file in the `packages/ui` directory to export the shadcn ui component:
 
 ```ts
 //...
-export * from './lib/components/ui/button';
+export * from './lib/components/ui/button.js';
 ```
