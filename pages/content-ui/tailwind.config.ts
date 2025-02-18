@@ -3,5 +3,5 @@ import { withUI } from '@extension/ui';
 
 export default withUI({
   ...baseConfig,
-  content: ['src/**/*.{ts,tsx}'],
+  content: ['./src/**/*.{ts,tsx}'],
 });
