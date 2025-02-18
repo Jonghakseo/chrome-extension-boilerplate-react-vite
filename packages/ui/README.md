@@ -303,5 +303,5 @@ Edit the `index.mts` file in the `packages/ui` directory to export the shadcn ui
 
 ```ts
 //...
-export * from './lib/components/ui/button.js';
+export * from './lib/components/ui/button';
 ```
