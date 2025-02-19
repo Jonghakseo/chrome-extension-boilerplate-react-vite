@@ -228,7 +228,7 @@ file. ([`Configure styles`](https://ui.shadcn.com/docs/installation/manual))
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :host, :root {
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
@@ -305,3 +305,13 @@ Edit the `index.mts` file in the `packages/ui` directory to export the shadcn ui
 //...
 export * from './lib/components/ui/button';
 ```
+
+> If you want to use shadcn components in content-ui ShadowDOM, you need to import ui package's global.css in the content-ui tailwind-input.css
+> 
+> ```css
+> @import '@extension/ui/lib/global.css';
+> 
+> @tailwind base;
+> @tailwind components;
+> @tailwind utilities;
+> ```
