@@ -145,7 +145,7 @@ Read: [Env Documentation](packages/env/README.md)
 
 The extension lives in the `chrome-extension` directory and includes the following files:
 
-- [`manifest.ts`](chrome-extension/manifest.js) - script that outputs the `manifest.json`
+- [`manifest.ts`](chrome-extension/manifest.ts) - script that outputs the `manifest.json`
 - [`src/background`](chrome-extension/src/background) - [background script](https://developer.chrome.com/docs/extensions/mv3/background_pages/)
   (`background.service_worker` in manifest.json)
 - [`public`](chrome-extension/public/) - icons referenced in the manifest; content CSS for user's page injection
