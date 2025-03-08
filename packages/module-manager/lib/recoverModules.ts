@@ -6,7 +6,7 @@ import { checkbox } from '@inquirer/prompts';
 const pagesPath = path.resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const archivePath = path.resolve(import.meta.dirname, '..', 'archive');
 
-const archiveFiles = fs.readdirSync(archivePath);
+const archiveFiles = fs.existsSync(archivePath) ? fs.readdirSync(archivePath) : [];
 
 const DEFAULT_CHOICES = [
   { name: 'Background Script', value: 'background' },
