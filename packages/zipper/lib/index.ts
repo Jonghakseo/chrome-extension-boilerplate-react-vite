@@ -32,7 +32,9 @@ function streamFileToZip(
   zip.add(data);
 
   createReadStream(absPath)
-    .on('data', (chunk: Buffer) => data.push(chunk, false))
+    .on('data', (chunk: string | Buffer) =>
+      typeof chunk === 'string' ? data.push(Buffer.from(chunk), false) : data.push(chunk, false),
+    )
     .on('end', () => data.push(new Uint8Array(0), true))
     .on('error', error => {
       onAbort();
