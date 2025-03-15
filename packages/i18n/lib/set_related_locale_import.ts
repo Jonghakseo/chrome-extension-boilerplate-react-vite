@@ -1,7 +1,7 @@
 import { lstatSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import type { SupportedLanguagesKeysType, SupportedLanguagesWithoutRegionKeysType } from './types.js';
 import { I18N_FILE_PATH } from './consts.js';
+import type { SupportedLanguagesKeysType, SupportedLanguagesWithoutRegionKeysType } from './types.js';
 
 export default () => {
   const locale = Intl.DateTimeFormat().resolvedOptions().locale.replace('-', '_') as SupportedLanguagesKeysType;

@@ -1,8 +1,8 @@
 import '@src/Panel.css';
+import { t } from '@extension/i18n';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
 import type { ComponentPropsWithoutRef } from 'react';
-import { t } from '@extension/i18n';
 
 const Panel = () => {
   const theme = useStorage(exampleThemeStorage);

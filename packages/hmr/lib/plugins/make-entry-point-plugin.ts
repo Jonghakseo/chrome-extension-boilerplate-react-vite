@@ -1,12 +1,12 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import type { PluginOption } from 'vite';
+import { unlinkSync, writeFileSync } from 'node:fs';
+import { basename, resolve, sep } from 'node:path';
 import { IS_FIREFOX } from '@extension/env';
+import type { PluginOption } from 'vite';
 
 /**
  * make entry point file for content script cache busting
  */
-export function makeEntryPointPlugin(): PluginOption {
+export const makeEntryPointPlugin = (): PluginOption => {
   const cleanupTargets = new Set<string>();
 
   return {
@@ -19,25 +19,25 @@ export function makeEntryPointPlugin(): PluginOption {
       }
 
       for (const module of Object.values(bundle)) {
-        const fileName = path.basename(module.fileName);
+        const fileName = basename(module.fileName);
         const newFileName = fileName.replace('.js', '_dev.js');
 
         switch (module.type) {
           case 'asset':
             if (fileName.endsWith('.map')) {
-              cleanupTargets.add(path.resolve(outputDir, fileName));
+              cleanupTargets.add(resolve(outputDir, fileName));
 
               const originalFileName = fileName.replace('.map', '');
               const replacedSource = String(module.source).replaceAll(originalFileName, newFileName);
 
               module.source = '';
-              fs.writeFileSync(path.resolve(outputDir, newFileName), replacedSource);
+              writeFileSync(resolve(outputDir, newFileName), replacedSource);
               break;
             }
             break;
 
           case 'chunk': {
-            fs.writeFileSync(path.resolve(outputDir, newFileName), module.code);
+            writeFileSync(resolve(outputDir, newFileName), module.code);
 
             if (IS_FIREFOX) {
               const contentDirectory = extractContentDir(outputDir);
@@ -52,18 +52,18 @@ export function makeEntryPointPlugin(): PluginOption {
     },
     closeBundle() {
       cleanupTargets.forEach(target => {
-        fs.unlinkSync(target);
+        unlinkSync(target);
       });
     },
   };
-}
+};
 
 /**
  * Extract content directory from output directory for Firefox
  * @param outputDir
  */
-function extractContentDir(outputDir: string) {
-  const parts = outputDir.split(path.sep);
+const extractContentDir = (outputDir: string) => {
+  const parts = outputDir.split(sep);
   const distIndex = parts.indexOf('dist');
 
   if (distIndex !== -1 && distIndex < parts.length - 1) {
@@ -71,4 +71,4 @@ function extractContentDir(outputDir: string) {
   }
 
   throw new Error('Output directory does not contain "dist"');
-}
+};

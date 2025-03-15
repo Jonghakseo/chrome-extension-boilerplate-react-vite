@@ -29,10 +29,10 @@ class ErrorBoundary extends Component<
   }
 }
 
-export function withErrorBoundary<T extends Record<string, unknown>>(
+export const withErrorBoundary = <T extends Record<string, unknown>>(
   Component: ComponentType<T>,
   ErrorComponent: ReactElement,
-) {
+) => {
   return function WithErrorBoundary(props: T) {
     return (
       <ErrorBoundary fallback={ErrorComponent}>
@@ -40,4 +40,4 @@ export function withErrorBoundary<T extends Record<string, unknown>>(
       </ErrorBoundary>
     );
   };
-}
+};
