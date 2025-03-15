@@ -2,7 +2,6 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { PluginOption } from 'vite';
 import { WebSocket } from 'ws';
-
 import { BUILD_COMPLETE, LOCAL_RELOAD_SOCKET_URL } from '../consts.js';
 import MessageInterpreter from '../interpreter/index.js';
 import type { PluginConfig } from '../types.js';
