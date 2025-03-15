@@ -33,7 +33,8 @@
     "lint:fix": {
       "cache": false
     },
-    "prettier": {
+    "format": {
+      "dependsOn": ["^format"],
       "cache": false
     },
     "clean:node_modules": {
