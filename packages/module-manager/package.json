@@ -1,0 +1,20 @@
+{
+  "name": "@extension/module-manager",
+  "version": "0.4.2",
+  "description": "chrome extension - module manager",
+  "type": "module",
+  "private": true,
+  "sideEffects": true,
+  "scripts": {
+    "start": "tsx index.mts",
+    "lint": "eslint .",
+    "lint:fix": "pnpm lint --fix",
+    "prettier": "prettier . --write --ignore-path ../../.prettierignore"
+  },
+  "devDependencies": {
+    "@extension/tsconfig": "workspace:*",
+    "@inquirer/prompts": "^7.3.2",
+    "fflate": "^0.8.2",
+    "tsx": "^4.19.2"
+  }
+}

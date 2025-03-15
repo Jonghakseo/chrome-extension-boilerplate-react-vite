@@ -58,7 +58,7 @@ the build speed and development experience by using Vite and Turborepo.
 
 ## Features
 
-- [React18](https://reactjs.org/)
+- [React19](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwindcss](https://tailwindcss.com/)
 - [Vite](https://vitejs.dev/) with [Rollup](https://rollupjs.org/)
@@ -127,6 +127,14 @@ Then, depending on the target browser:
 `module-name` - You can find it inside each `package.json` under the key `name`, e.g. `@extension/content-script`, you
 can use only `content-script` without `@extension/` prefix
 
+## How do I disable modules I'm not using?
+
+```bash
+$ pnpm module-manager
+```
+
+Read: [Module Manager](packages/module-manager/README.md)
+
 ## Environment variables
 
 Read: [Env Documentation](packages/env/README.md)
@@ -137,7 +145,7 @@ Read: [Env Documentation](packages/env/README.md)
 
 The extension lives in the `chrome-extension` directory and includes the following files:
 
-- [`manifest.ts`](chrome-extension/manifest.js) - script that outputs the `manifest.json`
+- [`manifest.ts`](chrome-extension/manifest.ts) - script that outputs the `manifest.json`
 - [`src/background`](chrome-extension/src/background) - [background script](https://developer.chrome.com/docs/extensions/mv3/background_pages/)
   (`background.service_worker` in manifest.json)
 - [`public`](chrome-extension/public/) - icons referenced in the manifest; content CSS for user's page injection
@@ -188,14 +196,17 @@ Some shared packages:
 - `hmr` - custom HMR plugin for Vite, injection script for reload/refresh, HMR dev-server
 - `i18n` - custom internationalization package; provides i18n function with type safety and other validation
 - `shared` - shared code for the entire project (types, constants, custom hooks, components etc.)
-- `storage` - helpers for easier integration
-  with [storage](https://developer.chrome.com/docs/extensions/reference/api/storage), e.g. local/session storages
+- `storage` - helpers for easier integration with [storage](https://developer.chrome.com/docs/extensions/reference/api/storage), e.g. local/session storages
 - `tailwind-config` - shared Tailwind config for entire project
 - `tsconfig` - shared tsconfig for the entire project
 - `ui` - function to merge your Tailwind config with the global one; you can save components here
 - `vite-config` - shared Vite config for the entire project
+
+Other useful packages:
+
 - `zipper` - run `pnpm zip` to pack the `dist` folder into `extension-YYYYMMDD-HHmmss.zip` inside the newly created
   `dist-zip`
+- `module-manager` - run `pnpm module-manager` to enable/disable modules
 - `e2e` - run `pnpm e2e` for end-to-end tests of your zipped extension on different browsers
 
 ## Troubleshooting
