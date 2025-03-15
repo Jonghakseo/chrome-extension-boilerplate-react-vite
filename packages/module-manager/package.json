@@ -9,7 +9,7 @@
     "start": "tsx index.mts",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write --ignore-path ../../.prettierignore"
+    "format": "prettier . --write --ignore-path ../../.prettierignore"
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
