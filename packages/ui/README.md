@@ -306,7 +306,19 @@ Edit the `index.ts` file in the `packages/ui` directory to export the shadcn ui 
 export * from './lib/components/ui/button';
 ```
 
+7. Apply global.css
+
 If you want to use shadcn components in content-ui ShadowDOM, you need to import ui package's global.css in the content-ui `tailwind-input.css`
+
+```css
+@import '@extension/ui/lib/global.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+If you want to use shadcn components in other pages, you need to import ui package's global.css in the `src/index.css`
 
 ```css
 @import '@extension/ui/lib/global.css';
