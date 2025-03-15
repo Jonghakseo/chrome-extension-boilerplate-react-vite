@@ -1,6 +1,6 @@
-import { IS_DEV } from '@extension/env';
 import { cpSync, existsSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { IS_DEV } from '@extension/env';
 import setRelatedLocaleImports from './set_related_locale_import.js';
 
 (() => {

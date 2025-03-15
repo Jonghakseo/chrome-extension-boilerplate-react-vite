@@ -1,7 +1,7 @@
-import { checkbox } from '@inquirer/prompts';
-import { unzipSync } from 'fflate';
 import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
+import { checkbox } from '@inquirer/prompts';
+import { unzipSync } from 'fflate';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');

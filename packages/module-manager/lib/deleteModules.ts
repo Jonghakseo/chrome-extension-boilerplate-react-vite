@@ -1,8 +1,8 @@
+import fs, { createReadStream, createWriteStream } from 'node:fs';
+import { posix, resolve } from 'node:path';
 import { checkbox } from '@inquirer/prompts';
 import fg from 'fast-glob';
 import { AsyncZipDeflate, Zip } from 'fflate';
-import fs, { createReadStream, createWriteStream } from 'node:fs';
-import { posix, resolve } from 'node:path';
 import { rimraf } from 'rimraf';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
