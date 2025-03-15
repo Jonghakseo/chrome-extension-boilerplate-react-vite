@@ -1,5 +1,5 @@
 import type { SUPPORTED_LANGUAGES } from './consts.js';
-import type enMessage from '../locales/en/messages.json';
+import enMessage from '../locales/en/messages.json' assert { type: 'json' };
 
 export type SupportedLanguagesKeysType = keyof typeof SUPPORTED_LANGUAGES;
 export type SupportedLanguagesWithoutRegionKeysType = Exclude<SupportedLanguagesKeysType, `${string}_${string}`>;

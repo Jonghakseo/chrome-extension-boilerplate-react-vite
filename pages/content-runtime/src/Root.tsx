@@ -1,8 +1,8 @@
-import { createRoot } from 'react-dom/client';
 import App from '@src/App';
 import injectedStyle from '@src/index.css?inline';
+import { createRoot } from 'react-dom/client';
 
-export function mount() {
+export const mount = () => {
   const root = document.createElement('div');
   root.id = 'chrome-extension-boilerplate-react-vite-runtime-content-view-root';
 
@@ -32,4 +32,4 @@ export function mount() {
 
   shadowRoot.appendChild(rootIntoShadow);
   createRoot(rootIntoShadow).render(<App />);
-}
+};

@@ -1,33 +1,33 @@
-import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'node:fs';
-import { posix, resolve } from 'node:path';
 import fg from 'fast-glob';
 import { AsyncZipDeflate, Zip } from 'fflate';
+import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'node:fs';
+import { posix, resolve } from 'node:path';
 
 // Converts bytes to megabytes
-function toMB(bytes: number): number {
+const toMB = (bytes: number): number => {
   return bytes / 1024 / 1024;
-}
+};
 
 // Creates the build directory if it doesn't exist
-function ensureBuildDirectoryExists(buildDirectory: string): void {
+const ensureBuildDirectoryExists = (buildDirectory: string): void => {
   if (!existsSync(buildDirectory)) {
     mkdirSync(buildDirectory, { recursive: true });
   }
-}
+};
 
 // Logs the package size and duration
-function logPackageSize(size: number, startTime: number): void {
+const logPackageSize = (size: number, startTime: number): void => {
   console.log(`Zip Package size: ${toMB(size).toFixed(2)} MB in ${Date.now() - startTime}ms`);
-}
+};
 
 // Handles file streaming and zipping
-function streamFileToZip(
+const streamFileToZip = (
   absPath: string,
   relPath: string,
   zip: Zip,
   onAbort: () => void,
   onError: (error: Error) => void,
-): void {
+): void => {
   const data = new AsyncZipDeflate(relPath, { level: 9 });
   zip.add(data);
 
@@ -40,7 +40,7 @@ function streamFileToZip(
       onAbort();
       onError(error);
     });
-}
+};
 
 // Zips the bundle
 export const zipBundle = async (

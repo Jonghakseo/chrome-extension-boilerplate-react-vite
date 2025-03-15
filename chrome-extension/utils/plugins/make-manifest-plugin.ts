@@ -1,11 +1,11 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
-import { pathToFileURL } from 'node:url';
-import { platform } from 'node:process';
 import type { Manifest } from '@extension/dev-utils';
 import { colorLog, ManifestParser } from '@extension/dev-utils';
-import type { PluginOption } from 'vite';
 import { IS_DEV, IS_FIREFOX } from '@extension/env';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { platform } from 'node:process';
+import { pathToFileURL } from 'node:url';
+import type { PluginOption } from 'vite';
 
 const manifestFile = resolve(import.meta.dirname, '..', '..', 'manifest.js');
 const refreshFilePath = resolve(
@@ -75,10 +75,10 @@ export default (config: { outDir: string }): PluginOption => {
   };
 };
 
-function addRefreshContentScript(manifest: Manifest) {
+const addRefreshContentScript = (manifest: Manifest) => {
   manifest.content_scripts = manifest.content_scripts || [];
   manifest.content_scripts.push({
     matches: ['http://*/*', 'https://*/*', '<all_urls>'],
     js: ['refresh.js'], // for public's HMR(refresh) support
   });
-}
+};

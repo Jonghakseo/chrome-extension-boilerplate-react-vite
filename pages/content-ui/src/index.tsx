@@ -1,5 +1,5 @@
-import { createRoot } from 'react-dom/client';
 import App from '@src/App';
+import { createRoot } from 'react-dom/client';
 // @ts-expect-error Because file doesn't exist before build
 import tailwindcssOutput from '../dist/tailwind-output.css?inline';
 
