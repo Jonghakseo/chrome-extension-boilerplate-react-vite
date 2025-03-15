@@ -1,17 +1,17 @@
 import { select } from '@inquirer/prompts';
+import { execSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
+import { deleteModules } from './deleteModules.js';
+import { recoverModules } from './recoverModules.js';
 import manifest from '../../../chrome-extension/manifest.ts';
-import deleteModules from './deleteModules.js';
-import recoverModules from './recoverModules.ts';
-import { execSync } from 'node:child_process';
 
 const manifestPath = path.resolve(import.meta.dirname, '..', '..', '..', 'chrome-extension', 'manifest.ts');
 
 const manifestObject = JSON.parse(JSON.stringify(manifest)) as chrome.runtime.ManifestV3;
 const manifestString = fs.readFileSync(manifestPath, 'utf-8');
 
-async function runModuleManager() {
+const runModuleManager = async () => {
   const tool = await select({
     message: 'Choose a tool',
     choices: [
@@ -42,6 +42,6 @@ async function runModuleManager() {
     setTimeout(resolve, 1500);
   });
   execSync('pnpm install', { stdio: 'inherit' });
-}
+};
 
 export default runModuleManager;

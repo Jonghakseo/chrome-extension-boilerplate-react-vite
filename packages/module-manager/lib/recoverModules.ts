@@ -1,12 +1,12 @@
-import path from 'node:path';
-import fs from 'node:fs';
-import { unzipSync } from 'fflate';
 import { checkbox } from '@inquirer/prompts';
+import { unzipSync } from 'fflate';
+import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
 
-const pagesPath = path.resolve(import.meta.dirname, '..', '..', '..', 'pages');
-const archivePath = path.resolve(import.meta.dirname, '..', 'archive');
+const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
+const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
-const archiveFiles = fs.existsSync(archivePath) ? fs.readdirSync(archivePath) : [];
+const archiveFiles = existsSync(archivePath) ? readdirSync(archivePath) : [];
 
 const DEFAULT_CHOICES = [
   { name: 'Background Script', value: 'background' },
@@ -20,7 +20,7 @@ const DEFAULT_CHOICES = [
   { name: 'Options Page', value: 'options' },
 ];
 
-export default async function recoverModules(manifestObject: chrome.runtime.ManifestV3) {
+export const recoverModules = async (manifestObject: chrome.runtime.ManifestV3) => {
   const choices = DEFAULT_CHOICES.filter(choice => {
     if (choice.value === 'background') {
       return !manifestObject.background;
@@ -71,16 +71,16 @@ export default async function recoverModules(manifestObject: chrome.runtime.Mani
     recoverOptionsPage(manifestObject);
   }
   console.log(`Recovered selected features: ${answers.join(', ')}`);
-}
+};
 
-function recoverBackgroundScript(manifestObject: chrome.runtime.ManifestV3) {
+const recoverBackgroundScript = (manifestObject: chrome.runtime.ManifestV3) => {
   manifestObject.background = {
     service_worker: 'background.js',
     type: 'module',
   };
-}
+};
 
-function recoverContentScript(manifestObject: chrome.runtime.ManifestV3) {
+const recoverContentScript = (manifestObject: chrome.runtime.ManifestV3) => {
   if (!manifestObject.content_scripts) {
     manifestObject.content_scripts = [];
   }
@@ -88,11 +88,11 @@ function recoverContentScript(manifestObject: chrome.runtime.ManifestV3) {
     matches: ['http://*/*', 'https://*/*', '<all_urls>'],
     js: ['content/index.iife.js'],
   });
-  const zipFilePath = path.resolve(archivePath, 'content.zip');
-  upZipAndDelete(zipFilePath, path.resolve(pagesPath, 'content'));
-}
+  const zipFilePath = resolve(archivePath, 'content.zip');
+  upZipAndDelete(zipFilePath, resolve(pagesPath, 'content'));
+};
 
-function recoverContentScriptUI(manifestObject: chrome.runtime.ManifestV3) {
+const recoverContentScriptUI = (manifestObject: chrome.runtime.ManifestV3) => {
   if (!manifestObject.content_scripts) {
     manifestObject.content_scripts = [];
   }
@@ -100,11 +100,11 @@ function recoverContentScriptUI(manifestObject: chrome.runtime.ManifestV3) {
     matches: ['http://*/*', 'https://*/*', '<all_urls>'],
     js: ['content-ui/index.iife.js'],
   });
-  const zipFilePath = path.resolve(archivePath, 'content-ui.zip');
-  upZipAndDelete(zipFilePath, path.resolve(pagesPath, 'content-ui'));
-}
+  const zipFilePath = resolve(archivePath, 'content-ui.zip');
+  upZipAndDelete(zipFilePath, resolve(pagesPath, 'content-ui'));
+};
 
-function recoverContentScriptRuntime(manifestObject: chrome.runtime.ManifestV3) {
+const recoverContentScriptRuntime = (manifestObject: chrome.runtime.ManifestV3) => {
   if (!manifestObject.content_scripts) {
     manifestObject.content_scripts = [];
   }
@@ -112,36 +112,36 @@ function recoverContentScriptRuntime(manifestObject: chrome.runtime.ManifestV3) 
     matches: ['http://*/*', 'https://*/*', '<all_urls>'],
     js: ['content-runtime/index.iife.js'],
   });
-  const zipFilePath = path.resolve(archivePath, 'content-runtime.zip');
-  upZipAndDelete(zipFilePath, path.resolve(pagesPath, 'content-runtime'));
-}
+  const zipFilePath = resolve(archivePath, 'content-runtime.zip');
+  upZipAndDelete(zipFilePath, resolve(pagesPath, 'content-runtime'));
+};
 
-function recoverNewTabOverride(manifestObject: chrome.runtime.ManifestV3) {
+const recoverNewTabOverride = (manifestObject: chrome.runtime.ManifestV3) => {
   manifestObject.chrome_url_overrides = {
     newtab: 'new-tab/index.html',
   };
-  const zipFilePath = path.resolve(archivePath, 'new-tab.zip');
-  upZipAndDelete(zipFilePath, path.resolve(pagesPath, 'new-tab'));
-}
+  const zipFilePath = resolve(archivePath, 'new-tab.zip');
+  upZipAndDelete(zipFilePath, resolve(pagesPath, 'new-tab'));
+};
 
-function recoverPopup(manifestObject: chrome.runtime.ManifestV3) {
+const recoverPopup = (manifestObject: chrome.runtime.ManifestV3) => {
   manifestObject.action = {
     default_popup: 'popup/index.html',
     default_icon: 'icon-34.png',
   };
-  const zipFilePath = path.resolve(archivePath, 'popup.zip');
-  upZipAndDelete(zipFilePath, path.resolve(pagesPath, 'popup'));
-}
+  const zipFilePath = resolve(archivePath, 'popup.zip');
+  upZipAndDelete(zipFilePath, resolve(pagesPath, 'popup'));
+};
 
-function recoverDevTools(manifestObject: chrome.runtime.ManifestV3) {
+const recoverDevTools = (manifestObject: chrome.runtime.ManifestV3) => {
   manifestObject.devtools_page = 'devtools/index.html';
-  const zipFilePath = path.resolve(archivePath, 'devtools.zip');
-  upZipAndDelete(zipFilePath, path.resolve(pagesPath, 'devtools'));
-  const zipFilePathPanel = path.resolve(archivePath, 'devtools-panel.zip');
-  upZipAndDelete(zipFilePathPanel, path.resolve(pagesPath, 'devtools-panel'));
-}
+  const zipFilePath = resolve(archivePath, 'devtools.zip');
+  upZipAndDelete(zipFilePath, resolve(pagesPath, 'devtools'));
+  const zipFilePathPanel = resolve(archivePath, 'devtools-panel.zip');
+  upZipAndDelete(zipFilePathPanel, resolve(pagesPath, 'devtools-panel'));
+};
 
-function recoverSidePanel(manifestObject: chrome.runtime.ManifestV3) {
+const recoverSidePanel = (manifestObject: chrome.runtime.ManifestV3) => {
   manifestObject.side_panel = {
     default_path: 'side-panel/index.html',
   };
@@ -149,24 +149,24 @@ function recoverSidePanel(manifestObject: chrome.runtime.ManifestV3) {
     manifestObject.permissions = [];
   }
   manifestObject.permissions.push('sidePanel');
-  const zipFilePath = path.resolve(archivePath, 'side-panel.zip');
-  upZipAndDelete(zipFilePath, path.resolve(pagesPath, 'side-panel'));
-}
+  const zipFilePath = resolve(archivePath, 'side-panel.zip');
+  upZipAndDelete(zipFilePath, resolve(pagesPath, 'side-panel'));
+};
 
-function recoverOptionsPage(manifestObject: chrome.runtime.ManifestV3) {
+const recoverOptionsPage = (manifestObject: chrome.runtime.ManifestV3) => {
   manifestObject.options_page = 'options/index.html';
-  const zipFilePath = path.resolve(archivePath, 'options.zip');
-  upZipAndDelete(zipFilePath, path.resolve(pagesPath, 'options'));
-}
+  const zipFilePath = resolve(archivePath, 'options.zip');
+  upZipAndDelete(zipFilePath, resolve(pagesPath, 'options'));
+};
 
-function upZipAndDelete(zipFilePath: string, destPath: string) {
-  const unzipped = unzipSync(fs.readFileSync(zipFilePath));
-  fs.mkdirSync(destPath, { recursive: true });
+const upZipAndDelete = (zipFilePath: string, destPath: string) => {
+  const unzipped = unzipSync(readFileSync(zipFilePath));
+  mkdirSync(destPath, { recursive: true });
   for (const [filename, fileData] of Object.entries(unzipped)) {
-    const filePath = path.join(destPath, filename);
-    const dir = path.dirname(filePath);
-    fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(filePath, fileData);
+    const filePath = join(destPath, filename);
+    const dir = dirname(filePath);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(filePath, fileData);
   }
-  fs.unlinkSync(zipFilePath);
-}
+  unlinkSync(zipFilePath);
+};
