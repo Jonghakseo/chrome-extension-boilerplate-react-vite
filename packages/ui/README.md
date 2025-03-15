@@ -299,19 +299,19 @@ Remember to adjust any paths or package names if your project structure differs 
 
 6. Export components
 
-Edit the `index.mts` file in the `packages/ui` directory to export the shadcn ui component:
+Edit the `index.ts` file in the `packages/ui` directory to export the shadcn ui component:
 
 ```ts
 //...
 export * from './lib/components/ui/button';
 ```
 
-> If you want to use shadcn components in content-ui ShadowDOM, you need to import ui package's global.css in the content-ui tailwind-input.css
-> 
-> ```css
-> @import '@extension/ui/lib/global.css';
-> 
-> @tailwind base;
-> @tailwind components;
-> @tailwind utilities;
-> ```
+If you want to use shadcn components in content-ui ShadowDOM, you need to import ui package's global.css in the content-ui `tailwind-input.css`
+
+```css
+@import '@extension/ui/lib/global.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
