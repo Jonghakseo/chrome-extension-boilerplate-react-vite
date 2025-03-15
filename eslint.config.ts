@@ -52,9 +52,23 @@ export default ts.config(
     rules: {
       'react/react-in-jsx-scope': 'off',
       'import-x/no-unresolved': 'off',
-      'import-x/no-named-as-default-member': 'off',
       '@typescript-eslint/consistent-type-imports': 'error',
       'react/prop-types': 'off',
+      'import-x/order': [
+        'error',
+        {
+          groups: [['builtin', 'external', 'internal']],
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
+      ],
+      'prefer-const': 'error',
+      'no-var': 'error',
+      'import-x/named': 'error',
+      'import-x/namespace': 'error',
+      'import-x/default': 'error',
+      'import-x/export': 'error',
+      'import-x/no-named-as-default': 'error',
+      'func-style': ['error', 'expression', { allowArrowFunctions: true }],
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
