@@ -8,4 +8,4 @@ export const DEFAULT_CHOICES = [
   { name: 'DevTools (Include DevTools Panel)', value: 'devtools' },
   { name: 'Side Panel', value: 'side-panel' },
   { name: 'Options Page', value: 'options' },
-];
+] as const;
