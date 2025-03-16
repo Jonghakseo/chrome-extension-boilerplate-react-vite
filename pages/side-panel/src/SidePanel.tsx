@@ -1,8 +1,8 @@
 import '@src/SidePanel.css';
+import { t } from '@extension/i18n';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
 import { ToggleButton } from '@extension/ui';
-import { t } from '@extension/i18n';
 
 const SidePanel = () => {
   const theme = useStorage(exampleThemeStorage);

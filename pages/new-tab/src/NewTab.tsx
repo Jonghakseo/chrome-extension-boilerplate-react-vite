@@ -1,9 +1,9 @@
 import '@src/NewTab.css';
 import '@src/NewTab.scss';
+import { t } from '@extension/i18n';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
 import { ToggleButton } from '@extension/ui';
-import { t } from '@extension/i18n';
 
 const NewTab = () => {
   const theme = useStorage(exampleThemeStorage);

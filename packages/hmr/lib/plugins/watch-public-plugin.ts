@@ -1,7 +1,7 @@
-import type { PluginOption } from 'vite';
 import fg from 'fast-glob';
+import type { PluginOption } from 'vite';
 
-export function watchPublicPlugin(): PluginOption {
+export const watchPublicPlugin = (): PluginOption => {
   return {
     name: 'watch-public-plugin',
     async buildStart() {
@@ -12,4 +12,4 @@ export function watchPublicPlugin(): PluginOption {
       }
     },
   };
-}
+};

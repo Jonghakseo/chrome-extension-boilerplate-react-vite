@@ -1,5 +1,5 @@
-import type { BaseStorage, StorageConfig, ValueOrUpdate } from './types.js';
 import { SessionAccessLevelEnum, StorageEnum } from './enums.js';
+import type { BaseStorage, StorageConfig, ValueOrUpdate } from './types.js';
 
 /**
  * Chrome reference error while running `processTailwindFeatures` in tailwindcss.
@@ -43,7 +43,7 @@ let globalSessionAccessLevelFlag: StorageConfig['sessionAccessForContentScripts'
 /**
  * Checks if the storage permission is granted in the manifest.json.
  */
-function checkStoragePermission(storageEnum: StorageEnum): void {
+const checkStoragePermission = (storageEnum: StorageEnum): void => {
   if (!chrome) {
     return;
   }
@@ -51,12 +51,12 @@ function checkStoragePermission(storageEnum: StorageEnum): void {
   if (chrome.storage[storageEnum] === undefined) {
     throw new Error(`Check your storage permission in manifest.json: ${storageEnum} is not defined`);
   }
-}
+};
 
 /**
  * Creates a storage area for persisting and exchanging data.
  */
-export function createStorage<D = string>(key: string, fallback: D, config?: StorageConfig<D>): BaseStorage<D> {
+export const createStorage = <D = string>(key: string, fallback: D, config?: StorageConfig<D>): BaseStorage<D> => {
   let cache: D | null = null;
   let initedCache = false;
   let listeners: Array<() => void> = [];
@@ -130,7 +130,7 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
   });
 
   // Listener for live updates from the browser
-  async function _updateFromStorageOnChanged(changes: { [key: string]: chrome.storage.StorageChange }) {
+  const _updateFromStorageOnChanged = async (changes: { [key: string]: chrome.storage.StorageChange }) => {
     // Check if the key we are listening for is in the changes object
     if (changes[key] === undefined) return;
 
@@ -141,7 +141,7 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
     cache = await updateCache(valueOrUpdate, cache);
 
     _emitChange();
-  }
+  };
 
   // Register listener for live updates for our storage area
   if (liveUpdate) {
@@ -154,4 +154,4 @@ export function createStorage<D = string>(key: string, fallback: D, config?: Sto
     getSnapshot,
     subscribe,
   };
-}
+};
