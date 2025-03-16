@@ -1,15 +1,15 @@
-import fs from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { PluginOption } from 'vite';
 import { WebSocket } from 'ws';
-import MessageInterpreter from '../interpreter/index.js';
 import { BUILD_COMPLETE, LOCAL_RELOAD_SOCKET_URL } from '../consts.js';
+import MessageInterpreter from '../interpreter/index.js';
 import type { PluginConfig } from '../types.js';
 
 const injectionsPath = resolve(import.meta.dirname, '..', 'injections');
 
-const refreshCode = fs.readFileSync(resolve(injectionsPath, 'refresh.js'), 'utf-8');
-const reloadCode = fs.readFileSync(resolve(injectionsPath, 'reload.js'), 'utf-8');
+const refreshCode = readFileSync(resolve(injectionsPath, 'refresh.js'), 'utf-8');
+const reloadCode = readFileSync(resolve(injectionsPath, 'reload.js'), 'utf-8');
 
 export const watchRebuildPlugin = (config: PluginConfig): PluginOption => {
   const { refresh, reload, id: _id, onStart } = config;
