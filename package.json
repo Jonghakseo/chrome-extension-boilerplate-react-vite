@@ -30,7 +30,7 @@
     "eslint:build": "tsc -b",
     "lint": "pnpm eslint:build && turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:fix": "pnpm eslint:build && turbo lint:fix --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
-    "prettier": "turbo prettier --continue -- --cache --cache-location node_modules/.cache/.prettiercache",
+    "format": "turbo format --continue -- --cache --cache-location node_modules/.cache/.prettiercache",
     "prepare": "husky",
     "update-version": "bash bash-scripts/update_version.sh",
     "copy_env": "bash bash-scripts/copy_env.sh",
@@ -86,7 +86,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json}": [
-      "prettier --write"
+      "prettier --write",
+      "eslint --fix"
     ]
   },
   "packageManager": "pnpm@9.15.1",

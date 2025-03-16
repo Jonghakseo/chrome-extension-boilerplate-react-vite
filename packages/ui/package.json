@@ -20,7 +20,7 @@
     "ready": "tsc -b && tsc-alias -p tsconfig.json",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write",
+    "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
