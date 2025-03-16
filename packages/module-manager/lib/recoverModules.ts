@@ -2,23 +2,12 @@ import { checkbox } from '@inquirer/prompts';
 import { unzipSync } from 'fflate';
 import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
+import { DEFAULT_CHOICES } from './const.js';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
 const archiveFiles = existsSync(archivePath) ? readdirSync(archivePath) : [];
-
-const DEFAULT_CHOICES = [
-  { name: 'Background Script', value: 'background' },
-  { name: 'Content Script (Execute JS on Web Page)', value: 'content' },
-  { name: 'Content Script UI (Render Custom React Component on Web Page)', value: 'content-ui' },
-  { name: 'Content Script Runtime (Inject JS on Specific Actions like Popup Click)', value: 'content-runtime' },
-  { name: 'New Tab Override', value: 'new-tab' },
-  { name: 'Popup (On Extension Icon Click)', value: 'popup' },
-  { name: 'DevTools (Include DevTools Panel)', value: 'devtools' },
-  { name: 'Side Panel', value: 'side-panel' },
-  { name: 'Options Page', value: 'options' },
-];
 
 const recoverBackgroundScript = (manifestObject: chrome.runtime.ManifestV3) => {
   manifestObject.background = {
