@@ -1,15 +1,15 @@
-import { deleteModules } from './deleteModules.js';
+import deleteModules  from './deleteModules.js';
 import { recoverModules } from './recoverModules.js';
 import manifest from '../../../chrome-extension/manifest.ts';
 import { select } from '@inquirer/prompts';
 import { execSync } from 'node:child_process';
-import * as fs from 'node:fs';
-import * as path from 'node:path';
+import { resolve } from 'node:path';
+import { readFileSync, writeFileSync } from 'node:fs';
 
-const manifestPath = path.resolve(import.meta.dirname, '..', '..', '..', 'chrome-extension', 'manifest.ts');
+const manifestPath = resolve(import.meta.dirname, '..', '..', '..', 'chrome-extension', 'manifest.ts');
 
 const manifestObject = JSON.parse(JSON.stringify(manifest)) as chrome.runtime.ManifestV3;
-const manifestString = fs.readFileSync(manifestPath, 'utf-8');
+const manifestString = readFileSync(manifestPath, 'utf-8');
 
 const runModuleManager = async () => {
   const tool = await select({
@@ -26,7 +26,6 @@ const runModuleManager = async () => {
       break;
     case 'recover':
       await recoverModules(manifestObject);
-      break;
   }
 
   const updatedManifest = manifestString
@@ -36,12 +35,13 @@ const runModuleManager = async () => {
     )
     .replace(/ {2}"version": "[\s\S]*?",/, '  version: packageJson.version,');
 
-  fs.writeFileSync(manifestPath, updatedManifest);
+  writeFileSync(manifestPath, updatedManifest);
   execSync('eslint --fix ' + manifestPath, { stdio: 'inherit' });
+
   await new Promise(resolve => {
     setTimeout(resolve, 1500);
   });
-  execSync('pnpm install', { stdio: 'inherit' });
-};
+  execSync('pnpm i', { stdio: 'inherit' });
+}
 
 export default runModuleManager;
