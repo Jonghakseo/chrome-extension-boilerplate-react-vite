@@ -9,10 +9,6 @@ const rootDir = resolve(import.meta.dirname);
 const srcDir = resolve(rootDir, 'src');
 const matchesDir = resolve(srcDir, 'matches');
 
-// Suppress fs.Stats deprecation warning
-// @ts-ignore
-process.noDeprecation = true;
-
 // Dynamically find all entry points
 const entryPoints = glob.sync('*/index.ts', { cwd: matchesDir });
 
