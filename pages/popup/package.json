@@ -1,6 +1,6 @@
 {
   "name": "@extension/popup",
-  "version": "0.3.6",
+  "version": "0.4.2",
   "description": "chrome extension - popup",
   "type": "module",
   "private": true,
@@ -16,13 +16,12 @@
     "dev": "vite build --mode development",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
+    "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@extension/shared": "workspace:*",
     "@extension/storage": "workspace:*",
-    "@extension/content-runtime-script": "workspace:*",
     "@extension/i18n": "workspace:*",
     "@extension/ui": "workspace:*"
   },

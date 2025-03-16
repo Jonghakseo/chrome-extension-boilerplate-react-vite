@@ -61,11 +61,7 @@ import { cn } from '@/lib/utils.js';
 type CustomComponentProps = ComponentPropsWithoutRef<'section'>;
 
 export function CustomComponent({ children, ...props }: CustomComponentProps) {
-  return (
-    <section {...props}>
-      {children}
-    </section>
-  );
+  return <section {...props}>{children}</section>;
 }
 ```
 
@@ -75,11 +71,7 @@ export function CustomComponent({ children, ...props }: CustomComponentProps) {
 import { CustomComponent } from '@extension/ui';
 
 export default function Page() {
-  return (
-    <CustomComponent>
-      Hi, I'm a custom component.
-    </CustomComponent>
-  );
+  return <CustomComponent>Hi, I'm a custom component.</CustomComponent>;
 }
 ```
 
@@ -138,7 +130,7 @@ This configuration file is from the manual guide. You can refer to the manual gu
 
 ```ts
 import deepmerge from 'deepmerge';
-import type { Config } from 'tailwindcss/types/config';
+import type { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
 import tailwindAnimate from 'tailwindcss-animate';
 
@@ -236,60 +228,60 @@ file. ([`Configure styles`](https://ui.shadcn.com/docs/installation/manual))
 @tailwind utilities;
 
 @layer base {
-    :root {
-        --background: 0 0% 100%;
-        --foreground: 222.2 47.4% 11.2%;
-        --muted: 210 40% 96.1%;
-        --muted-foreground: 215.4 16.3% 46.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 222.2 47.4% 11.2%;
-        --border: 214.3 31.8% 91.4%;
-        --input: 214.3 31.8% 91.4%;
-        --card: 0 0% 100%;
-        --card-foreground: 222.2 47.4% 11.2%;
-        --primary: 222.2 47.4% 11.2%;
-        --primary-foreground: 210 40% 98%;
-        --secondary: 210 40% 96.1%;
-        --secondary-foreground: 222.2 47.4% 11.2%;
-        --accent: 210 40% 96.1%;
-        --accent-foreground: 222.2 47.4% 11.2%;
-        --destructive: 0 100% 50%;
-        --destructive-foreground: 210 40% 98%;
-        --ring: 215 20.2% 65.1%;
-        --radius: 0.5rem;
-    }
+  :host, :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 215 20.2% 65.1%;
+    --radius: 0.5rem;
+  }
 
-    .dark {
-        --background: 224 71% 4%;
-        --foreground: 213 31% 91%;
-        --muted: 223 47% 11%;
-        --muted-foreground: 215.4 16.3% 56.9%;
-        --accent: 216 34% 17%;
-        --accent-foreground: 210 40% 98%;
-        --popover: 224 71% 4%;
-        --popover-foreground: 215 20.2% 65.1%;
-        --border: 216 34% 17%;
-        --input: 216 34% 17%;
-        --card: 224 71% 4%;
-        --card-foreground: 213 31% 91%;
-        --primary: 210 40% 98%;
-        --primary-foreground: 222.2 47.4% 1.2%;
-        --secondary: 222.2 47.4% 11.2%;
-        --secondary-foreground: 210 40% 98%;
-        --destructive: 0 63% 31%;
-        --destructive-foreground: 210 40% 98%;
-        --ring: 216 34% 17%;
-    }
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 216 34% 17%;
+  }
 }
 
 @layer base {
-    * {
-        @apply border-border;
-    }
+  * {
+    @apply border-border;
+  }
 
-    body {
-        @apply font-sans antialiased bg-background text-foreground;
-    }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
 }
 ```
 
@@ -311,5 +303,15 @@ Edit the `index.mts` file in the `packages/ui` directory to export the shadcn ui
 
 ```ts
 //...
-export * from './lib/components/ui/button.js';
+export * from './lib/components/ui/button';
 ```
+
+> If you want to use shadcn components in content-ui ShadowDOM, you need to import ui package's global.css in the content-ui tailwind-input.css
+> 
+> ```css
+> @import '@extension/ui/lib/global.css';
+> 
+> @tailwind base;
+> @tailwind components;
+> @tailwind utilities;
+> ```
