@@ -1,5 +1,7 @@
 import { checkbox } from '@inquirer/prompts';
 import fg from 'fast-glob';
+import { DEFAULT_CHOICES } from './const.js';
+import { streamFileToZip } from '@extension/shared';
 import { AsyncZipDeflate, Zip } from 'fflate';
 import { rimraf } from 'rimraf';
 import fs, { createReadStream, createWriteStream } from 'node:fs';
@@ -10,19 +12,7 @@ const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
 const pageFolders = fs.readdirSync(pagesPath);
 
-const DEFAULT_CHOICES = [
-  { name: 'Background Script', value: 'background' },
-  { name: 'Content Script (Execute JS on Web Page)', value: 'content' },
-  { name: 'Content Script UI (Render Custom React Component on Web Page)', value: 'content-ui' },
-  { name: 'Content Script Runtime (Inject JS on Specific Actions like Popup Click)', value: 'content-runtime' },
-  { name: 'New Tab Override', value: 'new-tab' },
-  { name: 'Popup (On Extension Icon Click)', value: 'popup' },
-  { name: 'DevTools (Include DevTools Panel)', value: 'devtools' },
-  { name: 'Side Panel', value: 'side-panel' },
-  { name: 'Options Page', value: 'options' },
-];
-
-export const deleteModules = async (manifestObject: chrome.runtime.ManifestV3) => {
+export default async function deleteModules(manifestObject: chrome.runtime.ManifestV3) {
   const choices = DEFAULT_CHOICES.filter(choice => {
     if (choice.value === 'background') {
       return !!manifestObject.background;
