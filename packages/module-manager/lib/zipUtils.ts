@@ -4,7 +4,7 @@ import { unzipSync, Zip } from 'fflate';
 import fg from 'fast-glob';
 import { streamFileToZip } from '@extension/shared';
 
-export function upZipAndDelete(zipFilePath: string, destPath: string) {
+export const upZipAndDelete = (zipFilePath: string, destPath: string) => {
   const unzipped = unzipSync(readFileSync(zipFilePath));
   mkdirSync(destPath, { recursive: true });
 
@@ -16,9 +16,9 @@ export function upZipAndDelete(zipFilePath: string, destPath: string) {
     writeFileSync(filePath, fileData);
   }
   unlinkSync(zipFilePath);
-}
+};
 
-export async function zipFolder(folderPath: string, out: string) {
+export const zipFolder = async (folderPath: string, out: string) => {
   const fileList = await fg(['**/*', '!node_modules', '!dist'], { cwd: folderPath, onlyFiles: true });
   const output = createWriteStream(out);
 
@@ -55,4 +55,4 @@ export async function zipFolder(folderPath: string, out: string) {
 
     zip.end();
   });
-}
+};

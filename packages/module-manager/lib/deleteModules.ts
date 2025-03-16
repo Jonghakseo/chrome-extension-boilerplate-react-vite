@@ -1,22 +1,16 @@
-import { posix, resolve } from 'node:path';
+import { resolve } from 'node:path';
 import { checkbox } from '@inquirer/prompts';
-import fg from 'fast-glob';
 import { DEFAULT_CHOICES } from './const.js';
 import type { ModuleType } from './modulesHandler.js';
 import { deleteModule } from './modulesHandler.js';
 import { existsSync, mkdirSync, readdirSync } from 'node:fs';
-import { streamFileToZip } from '@extension/shared';
-import { AsyncZipDeflate, Zip } from 'fflate';
-import { rimraf } from 'rimraf';
-import fs, { createReadStream, createWriteStream } from 'node:fs';
-import { posix, resolve } from 'node:path';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
 const pageFolders = readdirSync(pagesPath);
 
-export default async function deleteModules(manifestObject: chrome.runtime.ManifestV3) {
+export const deleteModules = async (manifestObject: chrome.runtime.ManifestV3) => {
   const choices = DEFAULT_CHOICES.filter(choice => {
     if (choice.value === 'background') {
       return !!manifestObject.background;

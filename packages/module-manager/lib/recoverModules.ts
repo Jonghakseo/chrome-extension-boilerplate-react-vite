@@ -1,12 +1,9 @@
 import { checkbox } from '@inquirer/prompts';
-import { unzipSync } from 'fflate';
-import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
+import { existsSync, readdirSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { DEFAULT_CHOICES } from './const.js';
 import type { ModuleType } from './modulesHandler.js';
 import { recoverModule } from './modulesHandler.js';
-import { resolve } from 'node:path';
-import { existsSync, readdirSync } from 'node:fs';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');
