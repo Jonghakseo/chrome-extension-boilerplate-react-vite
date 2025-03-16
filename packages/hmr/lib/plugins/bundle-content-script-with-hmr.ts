@@ -1,13 +1,13 @@
 import { resolve } from 'node:path';
-import type { PluginOption } from 'vite';
-import { buildSync } from 'esbuild';
 import { IS_DEV, IS_PROD } from '@extension/env';
+import { buildSync } from 'esbuild';
 import fg from 'fast-glob';
+import type { PluginOption } from 'vite';
 
 /**
  * Add content with matches URLs to manifest.json while preserving user-defined content scripts.
  */
-export function bundleContentScriptWithHmr(scriptName: string): PluginOption {
+export const bundleContentScriptWithHmr = (scriptName: string): PluginOption => {
   return {
     name: 'add-script-with-matches-to-manifest-plugin',
     enforce: 'post',
@@ -33,4 +33,4 @@ export function bundleContentScriptWithHmr(scriptName: string): PluginOption {
       });
     },
   };
-}
+};
