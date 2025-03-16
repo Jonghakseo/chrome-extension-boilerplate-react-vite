@@ -79,18 +79,16 @@ the build speed and development experience by using Vite and Turborepo.
 5. In root `package.json`, change the `version` to the desired version of your extension.
 6. Install pnpm globally: `npm install -g pnpm`
 7. Run `pnpm install`
-8. Check if you have these settings in your IDE/Editor:
+8. Check if you have that configuration in your IDE/Editor:
     - <b>VSCode</b>:
         - Installed [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
         - Installed [Prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
         - Enabled `Typescript Workbench version` in settings:
             - CTRL + SHIFT + P -> Search: `Typescript: Select Typescript version...` -> `Use Workbench version`
+            - [Read more](https://code.visualstudio.com/docs/languages/typescript#_using-newer-typescript-versions)
     - <b>WebStorm</b>:
-      - Installed [Prettier plugin](https://plugins.jetbrains.com/plugin/10456-prettier)
-      - Enabled `File | Settings | Languages & Frameworks | JavaScript | Code Quality Tools | ESLint`\
-      -> `Automatic ESLint configuration` and `Run eslint --fix on save`
-      - Enabled `File | Settings | Languages & Frameworks | JavaScript | Prettier`\
-      -> `Automatic Prettier configuration` and `Run on save`
+      - Configured [ESLint](https://www.jetbrains.com/help/webstorm/eslint.html#ws_eslint_configure_run_eslint_on_save)
+      - Configured [Prettier](https://prettier.io/docs/en/webstorm.html)
       - Optional, but useful `File | Settings | Tools | Actions on Save`\
       -> `Optimize imports` and `Reformat code`
 
