@@ -1,11 +1,8 @@
 import { rimraf } from 'rimraf';
 import type { ValueOf } from '@extension/shared';
-import { upZipAndDelete, zipFolder } from './zipUtils.ts';
+import { upZipAndDelete, zipFolder } from './zipUtils.js';
 import { resolve } from 'node:path';
-
-const archivePath = resolve(import.meta.dirname, '..', 'archive');
-
-export type ModuleType = 'content' | 'background' | 'new-tab' | 'popup' | 'devtools' | 'side-panel' | 'options';
+import type { ModuleType } from './types.ts';
 
 interface IModuleConfig {
   [key: string]: ValueOf<chrome.runtime.ManifestV3>;
@@ -47,7 +44,12 @@ const moduleConfig: Record<ModuleType, IModuleConfig> = {
   },
 };
 
-export const recoverModule = (manifestObject: chrome.runtime.ManifestV3, moduleType: ModuleType, pagesPath: string) => {
+export const recoverModule = (
+  manifestObject: chrome.runtime.ManifestV3,
+  moduleType: ModuleType,
+  pagesPath: string,
+  archivePath: string,
+) => {
   Object.assign(manifestObject, moduleConfig[moduleType]);
   const zipFilePath = resolve(archivePath, `${moduleType}.zip`);
   upZipAndDelete(zipFilePath, resolve(pagesPath, moduleType));
@@ -57,6 +59,7 @@ export const deleteModule = async (
   manifestObject: chrome.runtime.ManifestV3,
   moduleType: ModuleType,
   pagesPath: string,
+  archivePath: string,
 ) => {
   await zipFolder(resolve(pagesPath, moduleType), resolve(archivePath, `${moduleType}.zip`));
   void rimraf(resolve(pagesPath, moduleType));
