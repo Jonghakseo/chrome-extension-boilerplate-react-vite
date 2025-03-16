@@ -1,7 +1,7 @@
 import { cpSync, existsSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import setRelatedLocaleImports from './set_related_locale_import.js';
 import { IS_DEV } from '@extension/env';
+import setRelatedLocaleImports from './set_related_locale_import.js';
 
 (() => {
   const i18nPath = IS_DEV ? 'lib/i18n-dev.ts' : 'lib/i18n-prod.ts';

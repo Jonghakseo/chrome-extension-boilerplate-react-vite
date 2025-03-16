@@ -1,9 +1,9 @@
-import { checkbox } from '@inquirer/prompts';
 import fs, { createReadStream, createWriteStream } from 'node:fs';
-import { rimraf } from 'rimraf';
 import { posix, resolve } from 'node:path';
-import { AsyncZipDeflate, Zip } from 'fflate';
+import { checkbox } from '@inquirer/prompts';
 import fg from 'fast-glob';
+import { AsyncZipDeflate, Zip } from 'fflate';
+import { rimraf } from 'rimraf';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');
@@ -22,7 +22,7 @@ const DEFAULT_CHOICES = [
   { name: 'Options Page', value: 'options' },
 ];
 
-export default async function deleteModules(manifestObject: chrome.runtime.ManifestV3) {
+export const deleteModules = async (manifestObject: chrome.runtime.ManifestV3) => {
   const choices = DEFAULT_CHOICES.filter(choice => {
     if (choice.value === 'background') {
       return !!manifestObject.background;
@@ -76,58 +76,58 @@ export default async function deleteModules(manifestObject: chrome.runtime.Manif
     await deleteOptionsPage(manifestObject);
   }
   console.log(`Deleted selected features: ${answers.join(', ')}`);
-}
+};
 
-function deleteBackgroundScript(manifestObject: chrome.runtime.ManifestV3) {
+const deleteBackgroundScript = (manifestObject: chrome.runtime.ManifestV3) => {
   if (manifestObject.background) {
     delete manifestObject.background;
   }
-}
+};
 
-async function deleteContentScript(manifestObject: chrome.runtime.ManifestV3) {
+const deleteContentScript = async (manifestObject: chrome.runtime.ManifestV3) => {
   await zipFolder(resolve(pagesPath, 'content'), resolve(archivePath, 'content.zip'));
   void rimraf(resolve(pagesPath, 'content'));
   const jsName = 'content/index.iife.js';
   manifestObject.content_scripts = manifestObject.content_scripts?.filter(script => {
     return !script.js?.includes(jsName);
   });
-}
+};
 
-async function deleteContentScriptUI(manifestObject: chrome.runtime.ManifestV3) {
+const deleteContentScriptUI = async (manifestObject: chrome.runtime.ManifestV3) => {
   await zipFolder(resolve(pagesPath, 'content-ui'), resolve(archivePath, 'content-ui.zip'));
   void rimraf(resolve(pagesPath, 'content-ui'));
   const jsName = 'content-ui/index.iife.js';
   manifestObject.content_scripts = manifestObject.content_scripts?.filter(script => {
     return !script.js?.includes(jsName);
   });
-}
+};
 
-async function deleteContentScriptRuntime(manifestObject: chrome.runtime.ManifestV3) {
+const deleteContentScriptRuntime = async (manifestObject: chrome.runtime.ManifestV3) => {
   await zipFolder(resolve(pagesPath, 'content-runtime'), resolve(archivePath, 'content-runtime.zip'));
   void rimraf(resolve(pagesPath, 'content-runtime'));
   const jsName = 'content-runtime/index.iife.js';
   manifestObject.content_scripts = manifestObject.content_scripts?.filter(script => {
     return !script.js?.includes(jsName);
   });
-}
+};
 
-async function deleteNewTabOverride(manifestObject: chrome.runtime.ManifestV3) {
+const deleteNewTabOverride = async (manifestObject: chrome.runtime.ManifestV3) => {
   await zipFolder(resolve(pagesPath, 'new-tab'), resolve(archivePath, 'new-tab.zip'));
   void rimraf(resolve(pagesPath, 'new-tab'));
   if (manifestObject.chrome_url_overrides) {
     delete manifestObject.chrome_url_overrides.newtab;
   }
-}
+};
 
-async function deletePopup(manifestObject: chrome.runtime.ManifestV3) {
+const deletePopup = async (manifestObject: chrome.runtime.ManifestV3) => {
   await zipFolder(resolve(pagesPath, 'popup'), resolve(archivePath, 'popup.zip'));
   void rimraf(resolve(pagesPath, 'popup'));
   if (manifestObject.action) {
     delete manifestObject.action.default_popup;
   }
-}
+};
 
-async function deleteDevTools(manifestObject: chrome.runtime.ManifestV3) {
+const deleteDevTools = async (manifestObject: chrome.runtime.ManifestV3) => {
   await zipFolder(resolve(pagesPath, 'devtools'), resolve(archivePath, 'devtools.zip'));
   await zipFolder(resolve(pagesPath, 'devtools-panel'), resolve(archivePath, 'devtools-panel.zip'));
   void rimraf(resolve(pagesPath, 'devtools'));
@@ -135,9 +135,9 @@ async function deleteDevTools(manifestObject: chrome.runtime.ManifestV3) {
   if (manifestObject.devtools_page) {
     delete manifestObject.devtools_page;
   }
-}
+};
 
-async function deleteSidePanel(manifestObject: chrome.runtime.ManifestV3) {
+const deleteSidePanel = async (manifestObject: chrome.runtime.ManifestV3) => {
   await zipFolder(resolve(pagesPath, 'side-panel'), resolve(archivePath, 'side-panel.zip'));
   void rimraf(resolve(pagesPath, 'side-panel'));
   if (manifestObject.side_panel) {
@@ -146,17 +146,17 @@ async function deleteSidePanel(manifestObject: chrome.runtime.ManifestV3) {
   if (manifestObject.permissions?.includes('sidePanel')) {
     manifestObject.permissions = manifestObject.permissions.filter(permission => permission !== 'sidePanel');
   }
-}
+};
 
-async function deleteOptionsPage(manifestObject: chrome.runtime.ManifestV3) {
+const deleteOptionsPage = async (manifestObject: chrome.runtime.ManifestV3) => {
   await zipFolder(resolve(pagesPath, 'options'), resolve(archivePath, 'options.zip'));
   void rimraf(resolve(pagesPath, 'options'));
   if (manifestObject.options_page) {
     delete manifestObject.options_page;
   }
-}
+};
 
-async function zipFolder(path: string, out: string) {
+const zipFolder = async (path: string, out: string) => {
   const fileList = await fg(['**/*', '!node_modules', '!dist'], {
     cwd: path,
     onlyFiles: true,
@@ -205,15 +205,15 @@ async function zipFolder(path: string, out: string) {
 
     zip.end();
   });
-}
+};
 
-function streamFileToZip(
+const streamFileToZip = (
   absPath: string,
   relPath: string,
   zip: Zip,
   onAbort: () => void,
   onError: (error: Error) => void,
-): void {
+): void => {
   const data = new AsyncZipDeflate(relPath, { level: 1 });
   void zip.add(data);
 
@@ -226,4 +226,4 @@ function streamFileToZip(
       onAbort();
       onError(error);
     });
-}
+};
