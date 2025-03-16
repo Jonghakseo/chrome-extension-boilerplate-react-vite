@@ -12,8 +12,8 @@
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:turbo && pnpm clean:node_modules",
-    "build": "vite build",
-    "dev": "vite build --mode development",
+    "build": "tsx build.mts",
+    "dev": "tsx build.mts",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "format": "prettier . --write --ignore-path ../../.prettierignore",
@@ -27,6 +27,7 @@
   "devDependencies": {
     "@extension/hmr": "workspace:*",
     "@extension/tsconfig": "workspace:*",
-    "@extension/vite-config": "workspace:*"
+    "@extension/vite-config": "workspace:*",
+    "tsx": "4.19.3"
   }
 }

@@ -48,8 +48,12 @@ const manifest = {
   },
   content_scripts: [
     {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['content/index.iife.js'],
+      matches: ['https://*.tistory.com/*', 'https://nookpi.tistory.com/*'],
+      js: ['content/example.iife.js'],
+    },
+    {
+      matches: ['https://www.google.com/*', 'https://google.com/*'],
+      js: ['content/google.iife.js'],
     },
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
