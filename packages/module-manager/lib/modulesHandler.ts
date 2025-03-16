@@ -7,11 +7,11 @@ const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
 export type ModuleType = 'content' | 'background' | 'new-tab' | 'popup' | 'devtools' | 'side-panel' | 'options';
 
-interface ModuleConfig {
+interface IModuleConfig {
   [key: string]: ValueOf<chrome.runtime.ManifestV3>;
 }
 
-const moduleConfig: Record<ModuleType, ModuleConfig> = {
+const moduleConfig: Record<ModuleType, IModuleConfig> = {
   content: {
     matches: ['http://*/*', 'https://*/*', '<all_urls>'],
     js: [`content/index.iife.js`],
