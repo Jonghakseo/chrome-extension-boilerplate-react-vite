@@ -68,6 +68,7 @@
     "eslint-plugin-react-hooks": "5.1.0",
     "eslint-plugin-tailwindcss": "^3.17.5",
     "fast-glob": "^3.3.3",
+    "fflate": "^0.8.2",
     "globals": "^15.14.0",
     "husky": "^9.1.4",
     "jiti": "^2.4.2",

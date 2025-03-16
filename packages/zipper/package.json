@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
-    "@extension/env": "workspace:*",
-    "fflate": "^0.8.2"
+    "@extension/shared": "workspace:*",
+    "@extension/env": "workspace:*"
   }
 }

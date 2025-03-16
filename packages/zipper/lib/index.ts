@@ -1,7 +1,8 @@
 import fg from 'fast-glob';
-import { AsyncZipDeflate, Zip } from 'fflate';
+import { Zip } from 'fflate';
 import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'node:fs';
 import { posix, resolve } from 'node:path';
+import { streamFileToZip } from '@extension/shared';
 
 // Converts bytes to megabytes
 const toMB = (bytes: number): number => {
@@ -18,28 +19,6 @@ const ensureBuildDirectoryExists = (buildDirectory: string): void => {
 // Logs the package size and duration
 const logPackageSize = (size: number, startTime: number): void => {
   console.log(`Zip Package size: ${toMB(size).toFixed(2)} MB in ${Date.now() - startTime}ms`);
-};
-
-// Handles file streaming and zipping
-const streamFileToZip = (
-  absPath: string,
-  relPath: string,
-  zip: Zip,
-  onAbort: () => void,
-  onError: (error: Error) => void,
-): void => {
-  const data = new AsyncZipDeflate(relPath, { level: 9 });
-  zip.add(data);
-
-  createReadStream(absPath)
-    .on('data', (chunk: string | Buffer) =>
-      typeof chunk === 'string' ? data.push(Buffer.from(chunk), false) : data.push(chunk, false),
-    )
-    .on('end', () => data.push(new Uint8Array(0), true))
-    .on('error', error => {
-      onAbort();
-      onError(error);
-    });
 };
 
 // Zips the bundle
