@@ -1,6 +1,6 @@
-import deleteModules  from './deleteModules.js';
 import { recoverModules } from './recoverModules.js';
 import manifest from '../../../chrome-extension/manifest.ts';
+import { deleteModules } from './deleteModules.js';
 import { select } from '@inquirer/prompts';
 import { execSync } from 'node:child_process';
 import { resolve } from 'node:path';
@@ -42,6 +42,6 @@ const runModuleManager = async () => {
     setTimeout(resolve, 1500);
   });
   execSync('pnpm i', { stdio: 'inherit' });
-}
+};
 
 export default runModuleManager;

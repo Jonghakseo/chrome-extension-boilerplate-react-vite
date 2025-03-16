@@ -47,19 +47,19 @@ const moduleConfig: Record<ModuleType, ModuleConfig> = {
   },
 };
 
-export function recoverModule(manifestObject: chrome.runtime.ManifestV3, moduleType: ModuleType, pagesPath: string) {
+export const recoverModule = (manifestObject: chrome.runtime.ManifestV3, moduleType: ModuleType, pagesPath: string) => {
   Object.assign(manifestObject, moduleConfig[moduleType]);
   const zipFilePath = resolve(archivePath, `${moduleType}.zip`);
   upZipAndDelete(zipFilePath, resolve(pagesPath, moduleType));
-}
+};
 
-export async function deleteModule(
+export const deleteModule = async (
   manifestObject: chrome.runtime.ManifestV3,
   moduleType: ModuleType,
   pagesPath: string,
-) {
+) => {
   await zipFolder(resolve(pagesPath, moduleType), resolve(archivePath, `${moduleType}.zip`));
   void rimraf(resolve(pagesPath, moduleType));
   const jsName = `${moduleType}/index.iife.js`;
   manifestObject.content_scripts = manifestObject.content_scripts?.filter(script => !script.js?.includes(jsName));
-}
+};
