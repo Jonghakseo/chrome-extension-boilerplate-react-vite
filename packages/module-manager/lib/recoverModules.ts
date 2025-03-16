@@ -3,109 +3,15 @@ import { unzipSync } from 'fflate';
 import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { DEFAULT_CHOICES } from './const.js';
+import type { ModuleType } from './modulesHandler.js';
+import { recoverModule } from './modulesHandler.js';
+import { resolve } from 'node:path';
+import { existsSync, readdirSync } from 'node:fs';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
 const archiveFiles = existsSync(archivePath) ? readdirSync(archivePath) : [];
-
-const recoverBackgroundScript = (manifestObject: chrome.runtime.ManifestV3) => {
-  manifestObject.background = {
-    service_worker: 'background.js',
-    type: 'module',
-  };
-};
-
-const recoverContentScript = (manifestObject: chrome.runtime.ManifestV3) => {
-  if (!manifestObject.content_scripts) {
-    manifestObject.content_scripts = [];
-  }
-  manifestObject.content_scripts.push({
-    matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-    js: ['content/index.iife.js'],
-  });
-  const zipFilePath = resolve(archivePath, 'content.zip');
-  upZipAndDelete(zipFilePath, resolve(pagesPath, 'content'));
-};
-
-const recoverContentScriptUI = (manifestObject: chrome.runtime.ManifestV3) => {
-  if (!manifestObject.content_scripts) {
-    manifestObject.content_scripts = [];
-  }
-  manifestObject.content_scripts.push({
-    matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-    js: ['content-ui/index.iife.js'],
-  });
-  const zipFilePath = resolve(archivePath, 'content-ui.zip');
-  upZipAndDelete(zipFilePath, resolve(pagesPath, 'content-ui'));
-};
-
-const recoverContentScriptRuntime = (manifestObject: chrome.runtime.ManifestV3) => {
-  if (!manifestObject.content_scripts) {
-    manifestObject.content_scripts = [];
-  }
-  manifestObject.content_scripts.push({
-    matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-    js: ['content-runtime/index.iife.js'],
-  });
-  const zipFilePath = resolve(archivePath, 'content-runtime.zip');
-  upZipAndDelete(zipFilePath, resolve(pagesPath, 'content-runtime'));
-};
-
-const recoverNewTabOverride = (manifestObject: chrome.runtime.ManifestV3) => {
-  manifestObject.chrome_url_overrides = {
-    newtab: 'new-tab/index.html',
-  };
-  const zipFilePath = resolve(archivePath, 'new-tab.zip');
-  upZipAndDelete(zipFilePath, resolve(pagesPath, 'new-tab'));
-};
-
-const recoverPopup = (manifestObject: chrome.runtime.ManifestV3) => {
-  manifestObject.action = {
-    default_popup: 'popup/index.html',
-    default_icon: 'icon-34.png',
-  };
-  const zipFilePath = resolve(archivePath, 'popup.zip');
-  upZipAndDelete(zipFilePath, resolve(pagesPath, 'popup'));
-};
-
-const recoverDevTools = (manifestObject: chrome.runtime.ManifestV3) => {
-  manifestObject.devtools_page = 'devtools/index.html';
-  const zipFilePath = resolve(archivePath, 'devtools.zip');
-  upZipAndDelete(zipFilePath, resolve(pagesPath, 'devtools'));
-  const zipFilePathPanel = resolve(archivePath, 'devtools-panel.zip');
-  upZipAndDelete(zipFilePathPanel, resolve(pagesPath, 'devtools-panel'));
-};
-
-const recoverSidePanel = (manifestObject: chrome.runtime.ManifestV3) => {
-  manifestObject.side_panel = {
-    default_path: 'side-panel/index.html',
-  };
-  if (!manifestObject.permissions) {
-    manifestObject.permissions = [];
-  }
-  manifestObject.permissions.push('sidePanel');
-  const zipFilePath = resolve(archivePath, 'side-panel.zip');
-  upZipAndDelete(zipFilePath, resolve(pagesPath, 'side-panel'));
-};
-
-const recoverOptionsPage = (manifestObject: chrome.runtime.ManifestV3) => {
-  manifestObject.options_page = 'options/index.html';
-  const zipFilePath = resolve(archivePath, 'options.zip');
-  upZipAndDelete(zipFilePath, resolve(pagesPath, 'options'));
-};
-
-const upZipAndDelete = (zipFilePath: string, destPath: string) => {
-  const unzipped = unzipSync(readFileSync(zipFilePath));
-  mkdirSync(destPath, { recursive: true });
-  for (const [filename, fileData] of Object.entries(unzipped)) {
-    const filePath = join(destPath, filename);
-    const dir = dirname(filePath);
-    mkdirSync(dir, { recursive: true });
-    writeFileSync(filePath, fileData);
-  }
-  unlinkSync(zipFilePath);
-};
 
 export const recoverModules = async (manifestObject: chrome.runtime.ManifestV3) => {
   const choices = DEFAULT_CHOICES.filter(choice => {
@@ -126,36 +32,13 @@ export const recoverModules = async (manifestObject: chrome.runtime.ManifestV3) 
     choices,
   });
 
-  if (answers.length === 0) {
+  if (!answers.length) {
     console.log('No features selected');
     process.exit(0);
   }
-  if (answers.includes('background')) {
-    recoverBackgroundScript(manifestObject);
-  }
-  if (answers.includes('content')) {
-    recoverContentScript(manifestObject);
-  }
-  if (answers.includes('content-ui')) {
-    recoverContentScriptUI(manifestObject);
-  }
-  if (answers.includes('content-runtime')) {
-    recoverContentScriptRuntime(manifestObject);
-  }
-  if (answers.includes('new-tab')) {
-    recoverNewTabOverride(manifestObject);
-  }
-  if (answers.includes('popup')) {
-    recoverPopup(manifestObject);
-  }
-  if (answers.includes('devtools')) {
-    recoverDevTools(manifestObject);
-  }
-  if (answers.includes('side-panel')) {
-    recoverSidePanel(manifestObject);
-  }
-  if (answers.includes('options')) {
-    recoverOptionsPage(manifestObject);
+
+  for (const answer of answers) {
+    recoverModule(manifestObject, answer as ModuleType, pagesPath);
   }
   console.log(`Recovered selected features: ${answers.join(', ')}`);
 };
