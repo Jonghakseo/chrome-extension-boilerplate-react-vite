@@ -2,7 +2,7 @@ import { existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { DEFAULT_CHOICES } from './const.js';
 import { deleteModule } from './modulesHandler.js';
-import type { ChoiceType, ModuleType } from './types.ts';
+import type { ChoiceType, ModuleNameType } from './types.ts';
 import { selectFeatures } from './utils.js';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
@@ -24,6 +24,6 @@ export const deleteModules = async (manifestObject: chrome.runtime.ManifestV3) =
     mkdirSync(archivePath, { recursive: true });
   }
 
-  await deleteModule(manifestObject, answer as ModuleType, pagesPath, archivePath);
+  await deleteModule(manifestObject, answer as ModuleNameType, pagesPath, archivePath);
   console.log(`Deleted: ${answer}`);
 };
