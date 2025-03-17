@@ -1,14 +1,14 @@
 import { resolve } from 'node:path';
 import type { ValueOf } from '@extension/shared';
 import { rimraf } from 'rimraf';
-import type { ModuleType } from './types.ts';
+import type { ModuleNameType } from './types.ts';
 import { upZipAndDelete, zipFolder } from './zipUtils.js';
 
 interface IModuleConfig {
   [key: string]: ValueOf<chrome.runtime.ManifestV3>;
 }
 
-const moduleConfig: Record<ModuleType, IModuleConfig> = {
+const moduleConfig: Record<ModuleNameType, IModuleConfig> = {
   content: {
     matches: ['http://*/*', 'https://*/*', '<all_urls>'],
     js: [`content/index.iife.js`],
@@ -46,23 +46,23 @@ const moduleConfig: Record<ModuleType, IModuleConfig> = {
 
 export const recoverModule = (
   manifestObject: chrome.runtime.ManifestV3,
-  moduleType: ModuleType,
+  moduleName: ModuleNameType,
   pagesPath: string,
   archivePath: string,
 ) => {
-  Object.assign(manifestObject, moduleConfig[moduleType]);
-  const zipFilePath = resolve(archivePath, `${moduleType}.zip`);
-  upZipAndDelete(zipFilePath, resolve(pagesPath, moduleType));
+  Object.assign(manifestObject, moduleConfig[moduleName]);
+  const zipFilePath = resolve(archivePath, `${moduleName}.zip`);
+  upZipAndDelete(zipFilePath, resolve(pagesPath, moduleName));
 };
 
 export const deleteModule = async (
   manifestObject: chrome.runtime.ManifestV3,
-  moduleType: ModuleType,
+  moduleName: ModuleNameType,
   pagesPath: string,
   archivePath: string,
 ) => {
-  await zipFolder(resolve(pagesPath, moduleType), resolve(archivePath, `${moduleType}.zip`));
-  void rimraf(resolve(pagesPath, moduleType));
-  const jsName = `${moduleType}/index.iife.js`;
+  await zipFolder(resolve(pagesPath, moduleName), resolve(archivePath, `${moduleName}.zip`));
+  void rimraf(resolve(pagesPath, moduleName));
+  const jsName = `${moduleName}/index.iife.js`;
   manifestObject.content_scripts = manifestObject.content_scripts?.filter(script => !script.js?.includes(jsName));
 };

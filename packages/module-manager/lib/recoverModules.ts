@@ -2,7 +2,7 @@ import { existsSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { DEFAULT_CHOICES } from './const.js';
 import { recoverModule } from './modulesHandler.js';
-import type { ChoiceType, ModuleType } from './types.ts';
+import type { ChoiceType, ModuleNameType } from './types.ts';
 import { selectFeatures } from './utils.js';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
@@ -20,6 +20,6 @@ export const recoverModules = async (manifestObject: chrome.runtime.ManifestV3) 
 
   const answer = await selectFeatures('recover', choices);
 
-  recoverModule(manifestObject, answer as ModuleType, pagesPath, archivePath);
+  recoverModule(manifestObject, answer as ModuleNameType, pagesPath, archivePath);
   console.log(`Recovered: ${answer}`);
 };
