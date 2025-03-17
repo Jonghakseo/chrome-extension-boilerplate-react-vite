@@ -53,6 +53,7 @@ export const recoverModule = (
   Object.assign(manifestObject, moduleConfig[moduleName]);
   const zipFilePath = resolve(archivePath, `${moduleName}.zip`);
   upZipAndDelete(zipFilePath, resolve(pagesPath, moduleName));
+  console.log(`Recovered: ${moduleName}`);
 };
 
 export const deleteModule = async (
@@ -65,4 +66,5 @@ export const deleteModule = async (
   void rimraf(resolve(pagesPath, moduleName));
   const jsName = `${moduleName}/index.iife.js`;
   manifestObject.content_scripts = manifestObject.content_scripts?.filter(script => !script.js?.includes(jsName));
+  console.log(`Deleted: ${moduleName}`);
 };

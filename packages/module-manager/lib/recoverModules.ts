@@ -21,5 +21,4 @@ export const recoverModules = async (manifestObject: chrome.runtime.ManifestV3) 
   const answer = await selectFeatures('recover', choices);
 
   recoverModule(manifestObject, answer as ModuleNameType, pagesPath, archivePath);
-  console.log(`Recovered: ${answer}`);
 };
