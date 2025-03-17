@@ -18,14 +18,12 @@ export const deleteModules = async (manifestObject: chrome.runtime.ManifestV3) =
     return pageFolders.includes(choice.value);
   });
 
-  const answers = await selectFeatures('delete', choices);
+  const answer = await selectFeatures('delete', choices);
 
   if (!existsSync(archivePath)) {
     mkdirSync(archivePath, { recursive: true });
   }
 
-  for (const answer of answers) {
-    await deleteModule(manifestObject, answer as ModuleType, pagesPath, archivePath);
-  }
-  console.log(`Deleted selected features: ${answers.join(', ')}`);
+  await deleteModule(manifestObject, answer as ModuleType, pagesPath, archivePath);
+  console.log(`Deleted: ${answer}`);
 };
