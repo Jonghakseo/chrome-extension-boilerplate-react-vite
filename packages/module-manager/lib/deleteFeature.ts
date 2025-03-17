@@ -10,7 +10,7 @@ const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
 const pageFolders = readdirSync(pagesPath);
 
-export const deleteModules = async (manifestObject: chrome.runtime.ManifestV3) => {
+export const deleteFeature = async (manifestObject: chrome.runtime.ManifestV3) => {
   const choices: ChoiceType[] = DEFAULT_CHOICES.filter(choice => {
     if (choice.value === 'background') {
       return !!manifestObject.background;

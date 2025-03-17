@@ -10,7 +10,7 @@ const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
 const archiveFiles = existsSync(archivePath) ? readdirSync(archivePath) : [];
 
-export const recoverModules = async (manifestObject: chrome.runtime.ManifestV3) => {
+export const recoverFeature = async (manifestObject: chrome.runtime.ManifestV3) => {
   const choices: ChoiceType[] = DEFAULT_CHOICES.filter(choice => {
     if (choice.value === 'background') {
       return !manifestObject.background;
