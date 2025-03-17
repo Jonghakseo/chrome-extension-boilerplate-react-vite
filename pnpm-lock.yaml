@@ -240,9 +240,9 @@ importers:
 
   packages/module-manager:
     devDependencies:
-      '@extension/shared':
+      '@extension/dev-utils':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../dev-utils
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -312,12 +312,12 @@ importers:
 
   packages/zipper:
     devDependencies:
+      '@extension/dev-utils':
+        specifier: workspace:*
+        version: link:../dev-utils
       '@extension/env':
         specifier: workspace:*
         version: link:../env
-      '@extension/shared':
-        specifier: workspace:*
-        version: link:../shared
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig

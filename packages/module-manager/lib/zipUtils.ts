@@ -1,6 +1,6 @@
 import { createWriteStream, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, posix, resolve } from 'node:path';
-import { streamFileToZip } from '@extension/shared';
+import { streamFileToZip } from '@extension/dev-utils';
 import fg from 'fast-glob';
 import { unzipSync, Zip } from 'fflate';
 
