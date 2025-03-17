@@ -1,12 +1,7 @@
 import { resolve } from 'node:path';
-import type { ValueOf } from '@extension/shared';
 import { rimraf } from 'rimraf';
-import type { ModuleNameType } from './types.ts';
+import type { IModuleConfig, ModuleNameType } from './types.ts';
 import { upZipAndDelete, zipFolder } from './zipUtils.js';
-
-interface IModuleConfig {
-  [key: string]: ValueOf<chrome.runtime.ManifestV3>;
-}
 
 const moduleConfig: Record<ModuleNameType, IModuleConfig> = {
   content: {
