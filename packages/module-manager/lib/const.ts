@@ -9,3 +9,5 @@ export const DEFAULT_CHOICES = [
   { name: 'Side Panel', value: 'side-panel' },
   { name: 'Options Page', value: 'options' },
 ] as const;
+
+export const EXIT_PROMPT_ERROR = 'ExitPromptError';

@@ -1,4 +1,5 @@
 import { select } from '@inquirer/prompts';
+import { EXIT_PROMPT_ERROR } from './const.js';
 import type { ActionType, ChoiceType } from './types.ts';
 
 export const selectFeatures = async (action: ActionType, choices: ChoiceType[]): Promise<string> => {
@@ -11,6 +12,12 @@ export const selectFeatures = async (action: ActionType, choices: ChoiceType[]):
     message: `Choose the features you want to ${action}`,
     loop: false,
     choices,
+  }).catch(err => {
+    if (err.name === EXIT_PROMPT_ERROR) {
+      process.exit(0);
+    } else {
+      console.error(err.message);
+    }
   });
 
   if (!answer) {
