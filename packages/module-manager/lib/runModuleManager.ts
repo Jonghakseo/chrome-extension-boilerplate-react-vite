@@ -1,6 +1,7 @@
 import { recoverModules } from './recoverModules.js';
-import manifest from '../../../chrome-extension/manifest.js';
 import { deleteModules } from './deleteModules.js';
+import manifest from '../../../chrome-extension/manifest.js';
+import { EXIT_PROMPT_ERROR } from './const.js';
 import { select } from '@inquirer/prompts';
 import { execSync } from 'node:child_process';
 import { resolve } from 'node:path';
@@ -13,13 +14,19 @@ const manifestObject = JSON.parse(JSON.stringify(manifest)) as chrome.runtime.Ma
 const manifestString = readFileSync(manifestPath, 'utf-8');
 
 const runModuleManager = async () => {
-  const tool: ActionType = await select({
+  const tool = (await select({
     message: 'Choose a tool',
     choices: [
       { name: 'Delete Feature', value: 'delete' },
       { name: 'Recover Feature', value: 'recover' },
     ],
-  });
+  }).catch(err => {
+    if (err.name === EXIT_PROMPT_ERROR) {
+      process.exit(0);
+    } else {
+      console.error(err.message);
+    }
+  })) as ActionType;
 
   switch (tool) {
     case 'delete':
