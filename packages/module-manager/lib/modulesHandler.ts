@@ -1,43 +1,8 @@
 import { resolve } from 'node:path';
 import { rimraf } from 'rimraf';
-import type { IModuleConfig, ModuleNameType } from './types.ts';
+import { MODULE_CONFIG } from './const.js';
+import type { ModuleNameType } from './types.ts';
 import { upZipAndDelete, zipFolder } from './zipUtils.js';
-
-const moduleConfig: Record<ModuleNameType, IModuleConfig> = {
-  content: {
-    matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-    js: [`content/index.iife.js`],
-  },
-  background: {
-    background: {
-      service_worker: 'background.js',
-      type: 'module',
-    },
-  },
-  'new-tab': {
-    chrome_url_overrides: {
-      newtab: 'new-tab/index.html',
-    },
-  },
-  popup: {
-    action: {
-      default_popup: 'popup/index.html',
-      default_icon: 'icon-34.png',
-    },
-  },
-  devtools: {
-    devtools_page: 'devtools/index.html',
-  },
-  'side-panel': {
-    side_panel: {
-      default_path: 'side-panel/index.html',
-    },
-    permissions: ['sidePanel'],
-  },
-  options: {
-    options_page: 'options/index.html',
-  },
-};
 
 export const recoverModule = (
   manifestObject: chrome.runtime.ManifestV3,
@@ -45,7 +10,7 @@ export const recoverModule = (
   pagesPath: string,
   archivePath: string,
 ) => {
-  Object.assign(manifestObject, moduleConfig[moduleName]);
+  Object.assign(manifestObject, MODULE_CONFIG[moduleName]);
   const zipFilePath = resolve(archivePath, `${moduleName}.zip`);
   upZipAndDelete(zipFilePath, resolve(pagesPath, moduleName));
   console.log(`Recovered: ${moduleName}`);
