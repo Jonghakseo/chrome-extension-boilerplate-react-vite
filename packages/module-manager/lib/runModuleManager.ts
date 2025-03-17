@@ -1,5 +1,5 @@
 import { recoverModules } from './recoverModules.js';
-import manifest from '../../../chrome-extension/manifest.ts';
+import manifest from '../../../chrome-extension/manifest.js';
 import { deleteModules } from './deleteModules.js';
 import { select } from '@inquirer/prompts';
 import { execSync } from 'node:child_process';
