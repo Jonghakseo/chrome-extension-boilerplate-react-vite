@@ -23,10 +23,10 @@ const runModuleManager = async () => {
 
   switch (tool) {
     case 'delete':
-      await deleteModules(manifestObject);
+      await deleteFeature(manifestObject);
       break;
     case 'recover':
-      await recoverModules(manifestObject);
+      await recoverFeature(manifestObject);
   }
 
   const updatedManifest = manifestString
