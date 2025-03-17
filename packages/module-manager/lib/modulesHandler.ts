@@ -25,6 +25,19 @@ export const deleteModule = async (
   await zipFolder(resolve(pagesPath, moduleName), resolve(archivePath, `${moduleName}.zip`));
   void rimraf(resolve(pagesPath, moduleName));
   const jsName = `${moduleName}/index.iife.js`;
-  manifestObject.content_scripts = manifestObject.content_scripts?.filter(script => !script.js?.includes(jsName));
+
+  if (moduleName.startsWith('content')) {
+    manifestObject.content_scripts = manifestObject.content_scripts?.filter(script => !script.js?.includes(jsName));
+  } else {
+    const config = MODULE_CONFIG[moduleName];
+
+    if (config) {
+      Object.keys(config).forEach(key => {
+        if (manifestObject[key]) {
+          delete manifestObject[key];
+        }
+      });
+    }
+  }
   console.log(`Deleted: ${moduleName}`);
 };
