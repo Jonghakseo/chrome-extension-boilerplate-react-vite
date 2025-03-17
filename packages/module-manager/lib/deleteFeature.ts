@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { DEFAULT_CHOICES } from './const.js';
 import { deleteModule } from './modulesHandler.js';
 import type { ChoiceType, ModuleNameType } from './types.ts';
-import { selectFeatures } from './utils.js';
+import { promptSelection } from './utils.js';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');
@@ -18,7 +18,12 @@ export const deleteFeature = async (manifestObject: chrome.runtime.ManifestV3) =
     return pageFolders.includes(choice.value);
   });
 
-  const answer = await selectFeatures('delete', choices);
+  const inputConfig = {
+    message: 'Choose feature to delete',
+    choices,
+  } as const;
+
+  const answer = await promptSelection(inputConfig);
 
   if (!existsSync(archivePath)) {
     mkdirSync(archivePath, { recursive: true });

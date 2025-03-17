@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { DEFAULT_CHOICES } from './const.js';
 import { recoverModule } from './modulesHandler.js';
 import type { ChoiceType, ModuleNameType } from './types.ts';
-import { selectFeatures } from './utils.js';
+import { promptSelection } from './utils.js';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');
@@ -18,7 +18,12 @@ export const recoverFeature = async (manifestObject: chrome.runtime.ManifestV3) 
     return archiveFiles.includes(`${choice.value}.zip`);
   });
 
-  const answer = await selectFeatures('recover', choices);
+  const inputConfig = {
+    message: 'Choose feature to recover',
+    choices,
+  } as const;
+
+  const answer = await promptSelection(inputConfig);
 
   recoverModule(manifestObject, answer as ModuleNameType, pagesPath, archivePath);
 };
