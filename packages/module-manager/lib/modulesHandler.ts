@@ -29,15 +29,12 @@ export const deleteModule = async (
   if (moduleName.startsWith('content')) {
     manifestObject.content_scripts = manifestObject.content_scripts?.filter(script => !script.js?.includes(jsName));
   } else {
-    const config = MODULE_CONFIG[moduleName];
-
-    if (config) {
-      Object.keys(config).forEach(key => {
-        if (manifestObject[key]) {
-          delete manifestObject[key];
-        }
-      });
-    }
+    Object.keys(MODULE_CONFIG[moduleName]).forEach(key => {
+      if (manifestObject[key]) {
+        delete manifestObject[key];
+      }
+    });
   }
+
   console.log(`Deleted: ${moduleName}`);
 };
