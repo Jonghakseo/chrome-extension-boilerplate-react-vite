@@ -18,10 +18,8 @@ export const recoverModules = async (manifestObject: chrome.runtime.ManifestV3) 
     return archiveFiles.includes(`${choice.value}.zip`);
   });
 
-  const answers = await selectFeatures('recover', choices);
+  const answer = await selectFeatures('recover', choices);
 
-  for (const answer of answers) {
-    recoverModule(manifestObject, answer as ModuleType, pagesPath, archivePath);
-  }
-  console.log(`Recovered selected features: ${answers.join(', ')}`);
+  recoverModule(manifestObject, answer as ModuleType, pagesPath, archivePath);
+  console.log(`Recovered: ${answer}`);
 };
