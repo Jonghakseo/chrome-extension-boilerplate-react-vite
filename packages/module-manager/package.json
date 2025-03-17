@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
-    "@extension/shared": "workspace:*",
+    "@extension/dev-utils": "workspace:*",
     "@inquirer/prompts": "^7.4.0",
     "tsx": "^4.19.3"
   }
