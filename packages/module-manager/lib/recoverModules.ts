@@ -2,8 +2,8 @@ import { existsSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { DEFAULT_CHOICES } from './const.js';
 import { recoverModule } from './modulesHandler.js';
-import { selectFeatures } from './utils.js';
 import type { ChoiceType, ModuleType } from './types.ts';
+import { selectFeatures } from './utils.js';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');

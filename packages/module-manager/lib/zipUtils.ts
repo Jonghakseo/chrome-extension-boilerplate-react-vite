@@ -1,8 +1,8 @@
 import { createWriteStream, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, posix, resolve } from 'node:path';
-import { unzipSync, Zip } from 'fflate';
-import fg from 'fast-glob';
 import { streamFileToZip } from '@extension/shared';
+import fg from 'fast-glob';
+import { unzipSync, Zip } from 'fflate';
 
 export const upZipAndDelete = (zipFilePath: string, destPath: string) => {
   const unzipped = unzipSync(readFileSync(zipFilePath));

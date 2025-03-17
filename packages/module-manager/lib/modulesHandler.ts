@@ -1,8 +1,8 @@
-import { rimraf } from 'rimraf';
-import type { ValueOf } from '@extension/shared';
-import { upZipAndDelete, zipFolder } from './zipUtils.js';
 import { resolve } from 'node:path';
+import type { ValueOf } from '@extension/shared';
+import { rimraf } from 'rimraf';
 import type { ModuleType } from './types.ts';
+import { upZipAndDelete, zipFolder } from './zipUtils.js';
 
 interface IModuleConfig {
   [key: string]: ValueOf<chrome.runtime.ManifestV3>;
