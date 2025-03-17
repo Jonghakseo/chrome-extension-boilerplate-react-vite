@@ -25,5 +25,4 @@ export const deleteModules = async (manifestObject: chrome.runtime.ManifestV3) =
   }
 
   await deleteModule(manifestObject, answer as ModuleNameType, pagesPath, archivePath);
-  console.log(`Deleted: ${answer}`);
 };
