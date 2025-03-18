@@ -1,4 +1,4 @@
-import { unlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { basename, resolve, sep } from 'node:path';
 import { IS_FIREFOX } from '@extension/env';
 import type { PluginOption } from 'vite';
@@ -7,8 +7,6 @@ import type { PluginOption } from 'vite';
  * make entry point file for content script cache busting
  */
 export const makeEntryPointPlugin = (): PluginOption => {
-  const cleanupTargets = new Set<string>();
-
   return {
     name: 'make-entry-point-plugin',
     generateBundle(options, bundle) {
@@ -19,41 +17,34 @@ export const makeEntryPointPlugin = (): PluginOption => {
       }
 
       for (const module of Object.values(bundle)) {
-        const fileName = basename(module.fileName);
+        const fileName = module.fileName;
         const newFileName = fileName.replace('.js', '_dev.js');
 
         switch (module.type) {
           case 'asset':
             if (fileName.endsWith('.map')) {
-              cleanupTargets.add(resolve(outputDir, fileName));
-
               const originalFileName = fileName.replace('.map', '');
               const replacedSource = String(module.source).replaceAll(originalFileName, newFileName);
 
               module.source = '';
-              writeFileSync(resolve(outputDir, newFileName), replacedSource);
+              safeWriteFileSync(resolve(outputDir, newFileName), replacedSource);
               break;
             }
             break;
 
           case 'chunk': {
-            writeFileSync(resolve(outputDir, newFileName), module.code);
+            safeWriteFileSync(resolve(outputDir, newFileName), module.code);
 
             if (IS_FIREFOX) {
               const contentDirectory = extractContentDir(outputDir);
-              module.code = `import(browser.runtime.getURL("${contentDirectory}/${newFileName}"));`;
+              module.code = `import(browser.runtime.getURL("${contentDirectory}/${basename(newFileName)}"));`;
             } else {
-              module.code = `import('./${newFileName}');`;
+              module.code = `import('./${basename(newFileName)}');`;
             }
             break;
           }
         }
       }
-    },
-    closeBundle() {
-      cleanupTargets.forEach(target => {
-        unlinkSync(target);
-      });
     },
   };
 };
@@ -71,4 +62,12 @@ const extractContentDir = (outputDir: string) => {
   }
 
   throw new Error('Output directory does not contain "dist"');
+};
+
+const safeWriteFileSync = (path: string, data: string) => {
+  const folder = path.split(sep).slice(0, -1).join(sep);
+  if (!existsSync(folder)) {
+    mkdirSync(folder, { recursive: true });
+  }
+  writeFileSync(path, data);
 };

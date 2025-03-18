@@ -7,10 +7,9 @@ import { defineConfig } from 'vite';
 
 export const watchOption = IS_DEV
   ? {
-      exclude: [/\/pages\/content-ui\/dist\/.*\.(css)$/],
       chokidar: {
         awaitWriteFinish: true,
-        ignored: [/\/packages\/.*\.(ts|tsx|map)$/, /\/pages\/content-ui\/dist\/.*/],
+        ignored: [/\/packages\/.*\.(ts|tsx|map)$/],
       },
     }
   : undefined;
