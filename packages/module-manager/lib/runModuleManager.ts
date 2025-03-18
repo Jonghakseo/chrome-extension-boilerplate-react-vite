@@ -39,7 +39,7 @@ const runModuleManager = async () => {
     .replace(/ {2}"version": "[\s\S]*?",/, '  version: packageJson.version,');
 
   writeFileSync(manifestPath, updatedManifest);
-  execSync('pnpm lint:fix ', { stdio: 'inherit' });
+  execSync('pnpm lint:fix', { stdio: 'inherit' });
 
   await new Promise(resolve => {
     setTimeout(resolve, 1500);
