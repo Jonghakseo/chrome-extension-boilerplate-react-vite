@@ -18,8 +18,11 @@ export const upZipAndDelete = (zipFilePath: string, destPath: string) => {
   unlinkSync(zipFilePath);
 };
 
-export const zipFolder = async (folderPath: string, out: string) => {
-  const fileList = await fg(['**/*', '!node_modules', '!dist'], { cwd: folderPath, onlyFiles: true });
+export const zipFolder = async (folderPath: string, out: string, filesToInclude?: string[]) => {
+  const fileList = await fg(['!node_modules', '!dist'].concat(filesToInclude?.length ? filesToInclude : ['**/*']), {
+    cwd: folderPath,
+    onlyFiles: true,
+  });
   const output = createWriteStream(out);
 
   return new Promise<void>((resolvePromise, rejectPromise) => {

@@ -5,10 +5,12 @@ import { MODULE_CONFIG } from './const.js';
 import type { ModuleNameType } from './types.ts';
 import { upZipAndDelete, zipFolder } from './zipUtils.js';
 
+const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
+const testsPath = resolve(pagesPath, '..', 'tests', 'e2e', 'specs');
+
 export const recoverModule = (
   manifestObject: chrome.runtime.ManifestV3,
   moduleName: ModuleNameType,
-  pagesPath: string,
   archivePath: string,
 ) => {
   if (moduleName !== 'content-runtime') {
@@ -23,16 +25,21 @@ export const recoverModule = (
 export const deleteModule = async (
   manifestObject: chrome.runtime.ManifestV3,
   moduleName: ModuleNameType,
-  pagesPath: string,
   archivePath: string,
 ) => {
-  await zipFolder(resolve(pagesPath, moduleName), resolve(archivePath, `${moduleName}.zip`));
-  void rimraf(resolve(pagesPath, moduleName));
-  const jsName = `${moduleName}/index.iife.js`;
-
   const popupTsxPath = resolve(pagesPath, 'popup', 'src', 'Popup.tsx');
   const popupContent = readFileSync(popupTsxPath, 'utf-8');
 
+  const jsName = `${moduleName}/index.iife.js`;
+  const moduleTestName = `page-${moduleName}.test.ts`;
+
+  await zipFolder(resolve(pagesPath, moduleName), resolve(archivePath, `${moduleName}.zip`));
+  await zipFolder(testsPath, resolve(archivePath, `${moduleName}-test.zip`), [moduleTestName]);
+
+  const modulePath = resolve(pagesPath, moduleName);
+  const moduleTestsPath = resolve(testsPath, moduleTestName);
+
+  void rimraf([modulePath, moduleTestsPath]);
   if (moduleName.startsWith('content')) {
     if (moduleName === 'content-runtime') {
       await zipFolder(resolve(pagesPath, 'popup'), resolve(archivePath, 'popup.zip'));

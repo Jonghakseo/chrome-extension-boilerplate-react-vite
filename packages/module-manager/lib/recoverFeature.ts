@@ -5,7 +5,6 @@ import { recoverModule } from './modulesHandler.js';
 import type { ChoiceType, ModuleNameType } from './types.ts';
 import { promptSelection } from './utils.js';
 
-const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
 const archiveFiles = existsSync(archivePath) ? readdirSync(archivePath) : [];
@@ -25,5 +24,5 @@ export const recoverFeature = async (manifestObject: chrome.runtime.ManifestV3) 
 
   const answer = await promptSelection(inputConfig);
 
-  recoverModule(manifestObject, answer as ModuleNameType, pagesPath, archivePath);
+  recoverModule(manifestObject, answer as ModuleNameType, archivePath);
 };
