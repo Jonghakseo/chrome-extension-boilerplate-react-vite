@@ -27,7 +27,6 @@
   "devDependencies": {
     "@extension/hmr": "workspace:*",
     "@extension/tsconfig": "workspace:*",
-    "@extension/vite-config": "workspace:*",
-    "tsx": "4.19.3"
+    "@extension/vite-config": "workspace:*"
   }
 }
