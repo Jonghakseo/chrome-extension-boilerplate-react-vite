@@ -3,34 +3,46 @@ import { makeEntryPointPlugin } from '@extension/hmr';
 import { getContentScriptEntries, withPageConfig } from "@extension/vite-config";
 import { IS_DEV } from '@extension/env';
 import { build } from "vite";
+import { build as buildTW } from "tailwindcss/lib/cli/build";
 
 const rootDir = resolve(import.meta.dirname);
 const srcDir = resolve(rootDir, 'src');
 const matchesDir = resolve(srcDir, 'matches');
 
 const configs = Object.entries(getContentScriptEntries(matchesDir)).map(([name, entry]) => {
-  return withPageConfig({
-    mode: IS_DEV ? 'development' : undefined,
-    resolve: {
-      alias: {
-        '@src': srcDir,
+  return {
+    name,
+    config: withPageConfig({
+      mode: IS_DEV ? 'development' : undefined,
+      resolve: {
+        alias: {
+          '@src': srcDir,
+        },
       },
-    },
-    publicDir: resolve(rootDir, 'public'),
-    plugins: [IS_DEV && makeEntryPointPlugin()],
-    build: {
-      lib: {
-        name: name,
-        formats: ['iife'],
-        entry,
-        fileName: () => `${name}/index.iife.js`,
+      publicDir: resolve(rootDir, 'public'),
+      plugins: [IS_DEV && makeEntryPointPlugin()],
+      build: {
+        lib: {
+          name: name,
+          formats: ['iife'],
+          entry,
+          fileName: () => `${name}/index.iife.js`,
+        },
+        outDir: resolve(rootDir, '..', '..', 'dist', 'content-ui'),
       },
-      outDir: resolve(rootDir, '..', '..', 'dist', 'content-ui'),
-    },
-  })
+    })
+  };
 });
 
-const builds = configs.map(async (config) => {
+const builds = configs.map(async ({ name, config }) => {
+  const folder = resolve(matchesDir, name)
+  const args = {
+    ['--input']: resolve(folder, 'index.css'),
+    ['--output']: resolve(rootDir, 'dist', name, 'index.css'),
+    ['--config']: resolve(rootDir, 'tailwind.config.ts'),
+    ['--watch']: true,
+  }
+  await buildTW(args)
   //@ts-expect-error this is hidden property into vite's resolveConfig()
   config.configFile = false
   await build(config);
