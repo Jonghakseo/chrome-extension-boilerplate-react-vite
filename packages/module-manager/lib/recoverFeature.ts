@@ -1,6 +1,6 @@
 import { existsSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { DEFAULT_CHOICES } from './const.js';
+import { DEFAULT_CHOICES, RECOVER_CHOICE_QUESTION } from './const.js';
 import { recoverModule } from './modulesHandler.js';
 import type { ChoiceType, ModuleNameType } from './types.ts';
 import { promptSelection } from './utils.js';
@@ -18,7 +18,7 @@ export const recoverFeature = async (manifestObject: chrome.runtime.ManifestV3) 
   });
 
   const inputConfig = {
-    message: 'Choose feature to recover',
+    message: RECOVER_CHOICE_QUESTION,
     choices,
   } as const;
 

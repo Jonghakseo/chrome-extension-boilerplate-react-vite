@@ -55,3 +55,7 @@ export const MODULE_CONFIG = {
 } as const;
 
 export const EXIT_PROMPT_ERROR = 'ExitPromptError';
+
+const CHOICE_QUESTION = 'Choose feature to';
+export const RECOVER_CHOICE_QUESTION = `${CHOICE_QUESTION} recover`;
+export const DELETE_CHOICE_QUESTION = `${CHOICE_QUESTION} delete`;
