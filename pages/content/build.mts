@@ -1,8 +1,8 @@
 import { resolve } from 'node:path';
 import { makeEntryPointPlugin } from '@extension/hmr';
-import { getContentScriptEntries, withPageConfig } from "@extension/vite-config";
+import { getContentScriptEntries, withPageConfig } from '@extension/vite-config';
 import { IS_DEV } from '@extension/env';
-import { build } from "vite";
+import { build } from 'vite';
 
 const rootDir = resolve(import.meta.dirname);
 const srcDir = resolve(rootDir, 'src');
@@ -30,11 +30,10 @@ const configs = Object.entries(getContentScriptEntries(matchesDir)).map(([name, 
   });
 });
 
-
-const builds = configs.map(async (config) => {
+const builds = configs.map(async config => {
   //@ts-expect-error this is hidden property into vite's resolveConfig()
-  config.configFile = false
+  config.configFile = false;
   await build(config);
-})
+});
 
 await Promise.all(builds);

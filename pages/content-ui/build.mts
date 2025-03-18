@@ -1,9 +1,9 @@
 import { resolve } from 'node:path';
 import { makeEntryPointPlugin } from '@extension/hmr';
-import { getContentScriptEntries, withPageConfig } from "@extension/vite-config";
+import { getContentScriptEntries, withPageConfig } from '@extension/vite-config';
 import { IS_DEV } from '@extension/env';
-import { build } from "vite";
-import { build as buildTW } from "tailwindcss/lib/cli/build";
+import { build } from 'vite';
+import { build as buildTW } from 'tailwindcss/lib/cli/build';
 
 const rootDir = resolve(import.meta.dirname);
 const srcDir = resolve(rootDir, 'src');
@@ -30,22 +30,22 @@ const configs = Object.entries(getContentScriptEntries(matchesDir)).map(([name, 
         },
         outDir: resolve(rootDir, '..', '..', 'dist', 'content-ui'),
       },
-    })
+    }),
   };
 });
 
 const builds = configs.map(async ({ name, config }) => {
-  const folder = resolve(matchesDir, name)
+  const folder = resolve(matchesDir, name);
   const args = {
     ['--input']: resolve(folder, 'index.css'),
     ['--output']: resolve(rootDir, 'dist', name, 'index.css'),
     ['--config']: resolve(rootDir, 'tailwind.config.ts'),
-    ['--watch']: true,
-  }
-  await buildTW(args)
+    ['--watch']: IS_DEV,
+  };
+  await buildTW(args);
   //@ts-expect-error this is hidden property into vite's resolveConfig()
-  config.configFile = false
+  config.configFile = false;
   await build(config);
-})
+});
 
 await Promise.all(builds);
