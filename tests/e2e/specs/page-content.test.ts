@@ -10,6 +10,7 @@ describe('Webextension Content Script', () => {
     await browser.url('https://www.example.com');
 
     const EXPECTED_LOG_MESSAGE = '[CEB] content script loaded';
+    await browser.waitUntil(() => logs.includes(EXPECTED_LOG_MESSAGE));
 
     expect(logs).toContain(EXPECTED_LOG_MESSAGE);
   });
@@ -24,10 +25,9 @@ describe('Webextension Content Script', () => {
 
     await browser.url('https://www.google.com');
 
-    const EXPECTED_LOG_MESSAGE_1 = '[CEB] content script loaded from Google.com';
-    const EXPECTED_LOG_MESSAGE_2 = '[CEB] content script loaded';
+    const EXPECTED_LOG_MESSAGE = '[CEB] content script loaded from Google.com';
+    await browser.waitUntil(() => logs.includes(EXPECTED_LOG_MESSAGE));
 
-    expect(logs).toContain(EXPECTED_LOG_MESSAGE_1);
-    expect(logs).toContain(EXPECTED_LOG_MESSAGE_2);
+    expect(logs).toContain(EXPECTED_LOG_MESSAGE);
   });
 });
