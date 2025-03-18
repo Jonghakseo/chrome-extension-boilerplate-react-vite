@@ -29,5 +29,5 @@ export const deleteFeature = async (manifestObject: chrome.runtime.ManifestV3) =
     mkdirSync(archivePath, { recursive: true });
   }
 
-  await deleteModule(manifestObject, answer as ModuleNameType, pagesPath, archivePath);
+  await deleteModule(manifestObject, answer as ModuleNameType, archivePath);
 };
