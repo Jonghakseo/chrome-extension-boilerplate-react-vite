@@ -46,6 +46,9 @@
 - [Environment variables](#env-variables)
     - [Add new](#env-variables-new)
     - [Set via CLI](#env-variables-cli-set)
+- [Troubleshooting](#troubleshooting)
+    - [Hot module reload seems to have frozen](#hot-module-reload-seems-to-have-frozen)
+    - [Imports not resolving correctly](#imports-not-resolving-correctly)
 - [Community](#community)
 - [Reference](#reference)
 - [Star History](#star-history)
@@ -80,12 +83,13 @@ the build speed and development experience by using Vite and Turborepo.
 6. Install pnpm globally: `npm install -g pnpm`
 7. Run `pnpm install`
 8. Check if you have that configuration in your IDE/Editor:
-    - <b>VSCode</b>:
+    - <b>VS Code</b>:
         - Installed [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
         - Installed [Prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
         - Enabled `Typescript Workbench version` in settings:
             - CTRL + SHIFT + P -> Search: `Typescript: Select Typescript version...` -> `Use Workbench version`
             - [Read more](https://code.visualstudio.com/docs/languages/typescript#_using-newer-typescript-versions)
+        - Optional, for imports to work correctly in WSL, you might need to install the [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) extension and connect to WSL remotely from VS Code. See overview section in the extension page for more information.
     - <b>WebStorm</b>:
       - Configured [ESLint](https://www.jetbrains.com/help/webstorm/eslint.html#ws_eslint_configure_run_eslint_on_save)
       - Configured [Prettier](https://prettier.io/docs/en/webstorm.html)
@@ -225,6 +229,10 @@ If saving source files doesn't cause the extension HMR code to trigger a reload 
    [kill the
    `turbo` process](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/612#issuecomment-2518982339)
    and run `pnpm dev` again.
+
+### Imports not resolving correctly
+
+If you are using WSL and imports are not resolving correctly, ensure that you have connected VS Code to WSL remotely using the [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) extension.
 
 ## Community
 
