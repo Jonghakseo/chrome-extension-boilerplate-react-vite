@@ -1,10 +1,14 @@
 import { resolve } from 'node:path';
-import { makeEntryPointPlugin } from '@extension/hmr';
+import { getContentScriptEntries } from '@extension/content-script-matches-plugin';
 import { withPageConfig } from '@extension/vite-config';
+import { bundleContentScriptWithHmr, makeEntryPointPlugin } from '@extension/hmr';
 import { IS_DEV } from '@extension/env';
 
 const rootDir = resolve(import.meta.dirname);
 const srcDir = resolve(rootDir, 'src');
+const matchesDir = resolve(srcDir, 'matches');
+const entryPoints = getContentScriptEntries(matchesDir);
+const distContentDir = resolve(import.meta.dirname, 'dist', 'matches');
 
 export default withPageConfig({
   resolve: {
@@ -12,15 +16,15 @@ export default withPageConfig({
       '@src': srcDir,
     },
   },
-  plugins: [IS_DEV && makeEntryPointPlugin()],
   publicDir: resolve(rootDir, 'public'),
   build: {
-    lib: {
-      name: 'contentUI',
-      fileName: 'index',
-      formats: ['iife'],
-      entry: resolve(srcDir, 'index.tsx'),
+    rollupOptions: {
+      input: entryPoints,
+      output: {
+        dir: distContentDir,
+        entryFileNames: '[name].js',
+      },
     },
-    outDir: resolve(rootDir, '..', '..', 'dist', 'content-ui'),
   },
+  plugins: [IS_DEV && makeEntryPointPlugin(), bundleContentScriptWithHmr('content-ui')],
 });

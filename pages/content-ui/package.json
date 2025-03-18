@@ -22,16 +22,17 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@extension/env": "workspace:*",
     "@extension/shared": "workspace:*",
     "@extension/storage": "workspace:*",
     "@extension/ui": "workspace:*",
-    "@extension/i18n": "workspace:*"
+    "@extension/i18n": "workspace:*",
+    "@extension/env": "workspace:*"
   },
   "devDependencies": {
     "@extension/hmr": "workspace:*",
     "@extension/tailwindcss-config": "workspace:*",
     "@extension/tsconfig": "workspace:*",
-    "@extension/vite-config": "workspace:*"
+    "@extension/vite-config": "workspace:*",
+    "@extension/content-script-matches-plugin": "workspace:*"
   }
 }

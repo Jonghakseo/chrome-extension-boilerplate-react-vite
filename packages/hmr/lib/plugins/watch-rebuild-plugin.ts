@@ -45,7 +45,7 @@ export const watchRebuildPlugin = (config: PluginConfig): PluginOption => {
 
   return {
     name: 'watch-rebuild',
-    writeBundle() {
+    closeBundle() {
       onStart?.();
       if (!ws) {
         initializeWebSocket();

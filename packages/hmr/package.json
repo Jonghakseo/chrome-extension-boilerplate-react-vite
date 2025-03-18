@@ -23,10 +23,11 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@extension/tsconfig": "workspace:*",
     "@extension/env": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@types/ws": "^8.5.13",
+    "esbuild": "^0.25.0",
     "esm": "^3.2.25",
     "rollup": "^4.24.0",
     "ts-node": "^10.9.2",
