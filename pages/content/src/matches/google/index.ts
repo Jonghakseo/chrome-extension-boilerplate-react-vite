@@ -1,1 +1,1 @@
-console.log('Hello world from Google.com Content Script~!');
+console.log('[CEB] content script loaded from Google.com');

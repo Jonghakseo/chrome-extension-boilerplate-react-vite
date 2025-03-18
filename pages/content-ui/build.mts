@@ -25,11 +25,10 @@ const configs = Object.entries(getContentScriptEntries(matchesDir)).map(([name, 
         entry,
         fileName: () => `${name}/index.iife.js`,
       },
-      outDir: resolve(rootDir, '..', '..', 'dist', 'content'),
+      outDir: resolve(rootDir, '..', '..', 'dist', 'content-ui'),
     },
-  });
+  })
 });
-
 
 const builds = configs.map(async (config) => {
   //@ts-expect-error this is hidden property into vite's resolveConfig()
