@@ -46,6 +46,9 @@
 - [Environment variables](#env-variables)
     - [Add new](#env-variables-new)
     - [Set via CLI](#env-variables-cli-set)
+- [Troubleshooting](#troubleshooting)
+    - [Hot module reload seems to have frozen](#hot-module-reload-seems-to-have-frozen)
+    - [Imports not resolving correctly](#imports-not-resolving-correctly)
 - [Community](#community)
 - [Reference](#reference)
 - [Star History](#star-history)
@@ -80,7 +83,7 @@ the build speed and development experience by using Vite and Turborepo.
 6. Install pnpm globally: `npm install -g pnpm`
 7. Run `pnpm install`
 8. Check if you have that configuration in your IDE/Editor:
-    - <b>VSCode</b>:
+    - <b>VS Code</b>:
         - Installed [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
         - Installed [Prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
         - Enabled `Typescript Workbench version` in settings:
