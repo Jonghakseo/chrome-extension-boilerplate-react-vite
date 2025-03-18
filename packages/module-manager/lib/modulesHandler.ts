@@ -1,9 +1,8 @@
-import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { rimraf } from 'rimraf';
 import { MODULE_CONFIG } from './const.js';
 import type { ModuleNameType } from './types.ts';
-import { upZipAndDelete, zipFolder } from './zipUtils.js';
+import { removeContentRuntimeReferencesFromPopup, zipAndDeleteModuleWithTest } from './utils.js';
+import { upZipAndDelete } from './zipUtils.js';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const testsPath = resolve(pagesPath, '..', 'tests', 'e2e', 'specs');
@@ -27,34 +26,20 @@ export const deleteModule = async (
   moduleName: ModuleNameType,
   archivePath: string,
 ) => {
-  const popupTsxPath = resolve(pagesPath, 'popup', 'src', 'Popup.tsx');
-  const popupContent = readFileSync(popupTsxPath, 'utf-8');
+  await zipAndDeleteModuleWithTest(moduleName, pagesPath, archivePath, testsPath);
 
-  const jsName = `${moduleName}/index.iife.js`;
-  const moduleTestName = `page-${moduleName}.test.ts`;
-
-  await zipFolder(resolve(pagesPath, moduleName), resolve(archivePath, `${moduleName}.zip`));
-  await zipFolder(testsPath, resolve(archivePath, `${moduleName}-test.zip`), [moduleTestName]);
-
-  const modulePath = resolve(pagesPath, moduleName);
-  const moduleTestsPath = resolve(testsPath, moduleTestName);
-
-  void rimraf([modulePath, moduleTestsPath]);
   if (moduleName.startsWith('content')) {
     if (moduleName === 'content-runtime') {
-      await zipFolder(resolve(pagesPath, 'popup'), resolve(archivePath, 'popup.zip'));
-
-      const updatedContent = popupContent
-        .replace(/const injectContentScript = async \(\) => {[\s\S]*?};(\r?\n)*/, '')
-        .replace(/<button[^>]*onClick=\{injectContentScript}[^>]*>[^<]*<\/button>(\r?\n)*/, '')
-        .replace(/const notificationOptions = {[\s\S]*?} as const;(\r?\n)*/, '');
-
-      writeFileSync(popupTsxPath, updatedContent);
+      await removeContentRuntimeReferencesFromPopup(pagesPath, archivePath);
       return;
     }
-    manifestObject.content_scripts = manifestObject.content_scripts?.filter(script => !script.js?.includes(jsName));
+    const outputFileName = `${moduleName}/index.iife.js`;
+
+    manifestObject.content_scripts = manifestObject.content_scripts?.filter(
+      script => !script.js?.includes(outputFileName),
+    );
   } else {
-    // @ts-expect-error TS recognizing error
+    // @ts-expect-error recognizing .startsWith() error
     Object.keys(MODULE_CONFIG[moduleName]).forEach(key => {
       if (manifestObject[key]) {
         delete manifestObject[key];
