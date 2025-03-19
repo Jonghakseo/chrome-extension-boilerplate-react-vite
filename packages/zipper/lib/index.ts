@@ -1,7 +1,7 @@
-import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'node:fs';
-import { posix, resolve } from 'node:path';
 import fg from 'fast-glob';
 import { AsyncZipDeflate, Zip } from 'fflate';
+import { createReadStream, createWriteStream, existsSync, mkdirSync } from 'node:fs';
+import { posix, resolve } from 'node:path';
 
 // Converts bytes to megabytes
 const toMB = (bytes: number): number => {
