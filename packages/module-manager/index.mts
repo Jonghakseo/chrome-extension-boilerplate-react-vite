@@ -1,3 +1,3 @@
-import runModuleManager from 'lib/runModuleManager.ts';
+import runModuleManager from './lib/runModuleManager.js';
 
 void runModuleManager();
