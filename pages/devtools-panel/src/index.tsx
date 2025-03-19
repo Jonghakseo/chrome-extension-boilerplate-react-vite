@@ -1,5 +1,5 @@
-import { createRoot } from 'react-dom/client';
 import Panel from '@src/Panel';
+import { createRoot } from 'react-dom/client';
 import '@src/index.css';
 
 const init = () => {
