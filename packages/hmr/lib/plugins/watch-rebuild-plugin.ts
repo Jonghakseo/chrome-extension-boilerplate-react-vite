@@ -1,10 +1,10 @@
+import { BUILD_COMPLETE, LOCAL_RELOAD_SOCKET_URL } from '../consts.js';
+import MessageInterpreter from '../interpreter/index.js';
 import { WebSocket } from 'ws';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { PluginConfig } from '../types.js';
 import type { PluginOption } from 'vite';
-import { BUILD_COMPLETE, LOCAL_RELOAD_SOCKET_URL } from '../consts.js';
-import MessageInterpreter from '../interpreter/index.js';
 
 const injectionsPath = resolve(import.meta.dirname, '..', 'injections');
 
