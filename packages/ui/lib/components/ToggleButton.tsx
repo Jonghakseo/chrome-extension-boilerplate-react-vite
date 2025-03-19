@@ -1,6 +1,6 @@
+import { cn } from '@/lib/utils';
 import { useStorage } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { cn } from '@/lib/utils';
 import type { ComponentPropsWithoutRef } from 'react';
 
 type ToggleButtonProps = ComponentPropsWithoutRef<'button'>;
