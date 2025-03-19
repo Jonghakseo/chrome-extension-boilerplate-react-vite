@@ -8,12 +8,12 @@ import reactPlugin from 'eslint-plugin-react';
 import fg from 'fast-glob';
 import globals from 'globals';
 import { config, configs as tsConfigs, parser as tsParser } from 'typescript-eslint';
-import path from 'path';
+import { relative } from 'path';
 import type { FixupConfigArray } from '@eslint/compat';
 
 const getTsConfigPaths = async () => {
   const files = await fg(['tsconfig.json', '**/tsconfig.json', '!**/node_modules/**']);
-  return files.map(file => path.relative(process.cwd(), file));
+  return files.map(file => relative(process.cwd(), file));
 };
 
 const tsConfigPaths = await getTsConfigPaths();
@@ -74,7 +74,15 @@ export default config(
         {
           'newlines-between': 'never',
           alphabetize: { order: 'asc', caseInsensitive: true },
-          groups: ['external', 'internal', 'builtin', 'type', 'object'],
+          groups: ['index', 'sibling', 'parent', 'internal', 'external', 'builtin', 'object', 'type'],
+          pathGroups: [
+            {
+              pattern: '@src/**',
+              group: 'internal',
+              position: 'before',
+            },
+          ],
+          pathGroupsExcludedImportTypes: ['internal'],
         },
       ],
       'import-x/no-unresolved': 'off',
