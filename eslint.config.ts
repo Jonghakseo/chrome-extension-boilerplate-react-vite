@@ -5,9 +5,18 @@ import eslintPluginImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
+import fg from 'fast-glob';
 import globals from 'globals';
 import { config, configs as tsConfigs, parser as tsParser } from 'typescript-eslint';
+import path from 'path';
 import type { FixupConfigArray } from '@eslint/compat';
+
+const getTsConfigPaths = async () => {
+  const files = await fg(['tsconfig.json', '**/tsconfig.json', '!**/node_modules/**']);
+  return files.map(file => path.relative(process.cwd(), file));
+};
+
+const tsConfigPaths = await getTsConfigPaths();
 
 export default config(
   // Shared configs
@@ -24,11 +33,8 @@ export default config(
     ...reactPlugin.configs.flat['jsx-runtime'],
   },
 
-  // Custom config
   {
-    ignores: ['**/build/**', '**/dist/**', '**/node_modules/**', 'eslint.config.js', 'chrome-extension/manifest.js'],
-  },
-  {
+    ignores: ['**/build/**', '**/dist/**', '**/node_modules/**', 'chrome-extension/manifest.js'],
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
     languageOptions: {
       parser: tsParser,
@@ -47,6 +53,11 @@ export default config(
     settings: {
       react: {
         version: 'detect',
+      },
+      'import-x/resolver': {
+        typescript: {
+          project: tsConfigPaths,
+        },
       },
     },
     rules: {
