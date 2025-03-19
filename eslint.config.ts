@@ -26,7 +26,7 @@ export default config(
 
   // Custom config
   {
-    ignores: ['**/build/**', '**/dist/**', '**/node_modules/**', 'eslint.config.js'],
+    ignores: ['**/build/**', '**/dist/**', '**/node_modules/**', 'eslint.config.js', 'chrome-extension/manifest.js'],
   },
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
@@ -51,9 +51,11 @@ export default config(
     },
     rules: {
       'react/react-in-jsx-scope': 'off',
-      'import-x/no-unresolved': 'off',
       '@typescript-eslint/consistent-type-imports': 'error',
       'react/prop-types': 'off',
+      'prefer-const': 'error',
+      'no-var': 'error',
+      'func-style': ['error', 'expression', { allowArrowFunctions: true }],
       'import-x/order': [
         'error',
         {
@@ -61,14 +63,11 @@ export default config(
           alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],
-      'prefer-const': 'error',
-      'no-var': 'error',
-      'import-x/named': 'error',
-      'import-x/namespace': 'error',
+      'import-x/no-unresolved': 'off',
       'import-x/default': 'error',
       'import-x/export': 'error',
       'import-x/no-named-as-default': 'error',
-      'func-style': ['error', 'expression', { allowArrowFunctions: true }],
+      'import-x/newline-after-import': 'error',
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
