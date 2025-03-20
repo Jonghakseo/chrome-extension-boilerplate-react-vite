@@ -1,9 +1,9 @@
-import { existsSync, mkdirSync, readdirSync } from 'node:fs';
-import { resolve } from 'node:path';
 import { DEFAULT_CHOICES, DELETE_CHOICE_QUESTION } from './const.js';
 import { deleteModule } from './modulesHandler.js';
-import type { ChoiceType, ModuleNameType } from './types.ts';
 import { promptSelection } from './utils.js';
+import { existsSync, mkdirSync, readdirSync } from 'node:fs';
+import { resolve } from 'node:path';
+import type { ChoiceType, ModuleNameType } from './types.ts';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');

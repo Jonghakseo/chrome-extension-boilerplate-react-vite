@@ -1,8 +1,8 @@
-import { resolve } from 'node:path';
 import { MODULE_CONFIG } from './const.js';
-import type { ModuleNameType } from './types.ts';
 import { removeContentRuntimeReferencesFromPopup, zipAndDeleteModuleWithTest } from './utils.js';
 import { upZipAndDelete } from './zipUtils.js';
+import { resolve } from 'node:path';
+import type { ModuleNameType } from './types.ts';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const testsPath = resolve(pagesPath, '..', 'tests', 'e2e', 'specs');

@@ -1,11 +1,10 @@
-import { recoverModules } from './recoverModules.js';
-import { deleteModules } from './deleteModules.js';
-import manifest from '../../../chrome-extension/manifest.js';
-import { EXIT_PROMPT_ERROR } from './const.js';
+import { deleteFeature } from './deleteFeature.js';
+import { recoverFeature } from './recoverFeature.js';
 import { promptSelection } from './utils.js';
+import manifest from '../../../chrome-extension/manifest.js';
 import { execSync } from 'node:child_process';
-import { resolve } from 'node:path';
 import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 
 const manifestPath = resolve(import.meta.dirname, '..', '..', '..', 'chrome-extension', 'manifest.ts');
 

@@ -1,10 +1,10 @@
-import { readFileSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { EXIT_PROMPT_ERROR } from './const.js';
+import { zipFolder } from './zipUtils.js';
 import { select } from '@inquirer/prompts';
 import { rimraf } from 'rimraf';
-import { EXIT_PROMPT_ERROR } from './const.js';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import type { InputConfigType, ModuleNameType } from './types.js';
-import { zipFolder } from './zipUtils.js';
 
 export const promptSelection = async (inputConfig: InputConfigType) => {
   if (!inputConfig.choices.length) {
