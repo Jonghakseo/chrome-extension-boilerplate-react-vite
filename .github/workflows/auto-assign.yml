@@ -1,5 +1,5 @@
 name: 'Auto Assign'
-on: [ pull_request_target ]
+on: [ pull_request_target, push ]
 
 jobs:
   add-reviews:
