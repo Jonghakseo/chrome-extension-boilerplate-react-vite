@@ -2,6 +2,7 @@ import { EXIT_PROMPT_ERROR } from './const.js';
 import { zipFolder } from './zipUtils.js';
 import { select } from '@inquirer/prompts';
 import { rimraf } from 'rimraf';
+import { execSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { InputConfigType, ModuleNameType } from './types.js';
@@ -33,6 +34,7 @@ export const removeContentRuntimeReferencesFromPopup = async (pagesPath: string,
     .replace(/const notificationOptions = {[\s\S]*?} as const;(\r?\n)*/, '');
 
   writeFileSync(popupTsxPath, updatedContent);
+  execSync('pnpm lint:fix', { stdio: 'inherit', cwd: resolve('..', '..', 'pages', 'popup') });
 };
 
 export const zipAndDeleteModuleWithTest = async (
