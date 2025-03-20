@@ -14,9 +14,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          target: "main"
-          exclude: "dev"
-          change-to: "dev"
+          target: main
+          exclude: dev
+          change-to: dev
           comment: |
             Your PR's base branch was set to `main`, PRs should be set to target `development`.
             The base branch of this PR has been automatically changed to `dev`, please check that there are no merge conflicts
