@@ -1,0 +1,20 @@
+name: 'Auto Assign'
+on:
+  pull_request:
+    types: [ opened, ready_for_review ]
+
+jobs:
+  add-reviews:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: kentaro-m/auto-assign-action@v1.2.5
+        with:
+          configuration-path: '.github/auto_assign.yml'
+
+  add_assignees:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-ecosystem/action-add-assignees@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          assignees: ${{ github.actor }}
