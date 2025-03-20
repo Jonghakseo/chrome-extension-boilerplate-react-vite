@@ -4,11 +4,12 @@ on:
   pull_request_target:
     types: [ opened ]
 
+permissions:
+  pull-requests: write
+
 jobs:
   check-branch:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
     steps:
       - uses: Vankka/pr-target-branch-action@v3
         env:
