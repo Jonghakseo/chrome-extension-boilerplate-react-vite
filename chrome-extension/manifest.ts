@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 
 const packageJson = JSON.parse(readFileSync('./package.json', 'utf8'));
 
+console.log('TEST');
 /**
  * @prop default_locale
  * if you want to support multiple languages, you can use the following reference
