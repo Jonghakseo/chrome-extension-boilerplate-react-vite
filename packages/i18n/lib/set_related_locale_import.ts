@@ -1,6 +1,6 @@
+import { I18N_FILE_PATH } from './consts.js';
 import { lstatSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { I18N_FILE_PATH } from './consts.js';
 import type { SupportedLanguagesKeysType, SupportedLanguagesWithoutRegionKeysType } from './types.js';
 
 export default () => {

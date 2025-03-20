@@ -1,4 +1,3 @@
-import type { FixupConfigArray } from '@eslint/compat';
 import { fixupConfigRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
@@ -6,8 +5,18 @@ import eslintPluginImportX from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
+import fg from 'fast-glob';
 import globals from 'globals';
 import { config, configs as tsConfigs, parser as tsParser } from 'typescript-eslint';
+import { relative } from 'path';
+import type { FixupConfigArray } from '@eslint/compat';
+
+const getTsConfigPaths = async () => {
+  const files = await fg(['tsconfig.json', '**/tsconfig.json', '!**/node_modules/**']);
+  return files.map(file => relative(process.cwd(), file));
+};
+
+const tsConfigPaths = await getTsConfigPaths();
 
 export default config(
   // Shared configs
@@ -23,10 +32,9 @@ export default config(
     ...reactPlugin.configs.flat.recommended,
     ...reactPlugin.configs.flat['jsx-runtime'],
   },
-
   // Custom config
   {
-    ignores: ['**/build/**', '**/dist/**', '**/node_modules/**', 'eslint.config.js'],
+    ignores: ['**/build/**', '**/dist/**', '**/node_modules/**', 'chrome-extension/manifest.js'],
   },
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
@@ -48,27 +56,40 @@ export default config(
       react: {
         version: 'detect',
       },
+      'import-x/resolver': {
+        typescript: {
+          project: tsConfigPaths,
+        },
+      },
     },
     rules: {
       'react/react-in-jsx-scope': 'off',
-      'import-x/no-unresolved': 'off',
       '@typescript-eslint/consistent-type-imports': 'error',
       'react/prop-types': 'off',
+      'prefer-const': 'error',
+      'no-var': 'error',
+      'func-style': ['error', 'expression', { allowArrowFunctions: true }],
       'import-x/order': [
         'error',
         {
           'newlines-between': 'never',
           alphabetize: { order: 'asc', caseInsensitive: true },
+          groups: ['index', 'sibling', 'parent', 'internal', 'external', 'builtin', 'object', 'type'],
+          pathGroups: [
+            {
+              pattern: '@src/**',
+              group: 'internal',
+              position: 'before',
+            },
+          ],
+          pathGroupsExcludedImportTypes: ['internal'],
         },
       ],
-      'prefer-const': 'error',
-      'no-var': 'error',
-      'import-x/named': 'error',
-      'import-x/namespace': 'error',
+      'import-x/no-unresolved': 'off',
       'import-x/default': 'error',
       'import-x/export': 'error',
       'import-x/no-named-as-default': 'error',
-      'func-style': ['error', 'expression', { allowArrowFunctions: true }],
+      'import-x/newline-after-import': 'error',
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
