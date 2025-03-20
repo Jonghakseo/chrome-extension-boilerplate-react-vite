@@ -1,8 +1,6 @@
 name: Make sure new PRs are sent to development
 
-on:
-  pull_request_target:
-    types: [ opened ]
+on: [ pull_request_target ]
 
 permissions:
   pull-requests: write
