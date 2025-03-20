@@ -3,6 +3,8 @@ addReviewers: true
 reviewers:
   - Jonghakseo
 
+addAssignees: author
+
 filterLabels:
   exclude:
     - dependencies
