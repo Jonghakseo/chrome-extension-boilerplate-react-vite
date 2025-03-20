@@ -16,4 +16,3 @@ jobs:
           comment: |
             Your PR's base branch was set to `main`, PRs should be set to target `development`.
             The base branch of this PR has been automatically changed to `dev`, please check that there are no merge conflicts
-          already-exists-action: close_other_continue
