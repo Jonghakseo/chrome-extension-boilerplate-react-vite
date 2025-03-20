@@ -1,5 +1,9 @@
 name: 'Auto Assign'
-on: [ pull_request_target, push ]
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
 
 jobs:
   add-reviews:
