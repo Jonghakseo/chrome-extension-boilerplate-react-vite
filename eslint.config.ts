@@ -89,7 +89,9 @@ export default config(
       'import-x/default': 'error',
       'import-x/export': 'error',
       'import-x/no-named-as-default': 'error',
+      'import-x/no-named-as-default-member': 'error',
       'import-x/newline-after-import': 'error',
+      'import-x/no-deprecated': 'error',
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
