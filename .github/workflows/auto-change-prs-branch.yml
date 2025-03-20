@@ -1,6 +1,8 @@
 name: Make sure new PRs are sent to development
 
-on: [ pull_request_target ]
+on:
+  pull_request:
+    types: [ opened, edited, reopened ]
 
 jobs:
   check-branch:
