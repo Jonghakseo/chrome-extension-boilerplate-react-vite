@@ -1,12 +1,15 @@
 # Set to true to add reviewers to pull requests
 addReviewers: true
 
-# Set to true to add assignees to pull requests
-addAssignees: author
-
 # A list of reviewers to be added to pull requests (GitHub user name)
 reviewers:
   - Jonghakseo
+
+# Set to true to add assignees to pull requests
+addAssignees: true
+
+assignees:
+  - ${{github.actor}}
 
 # A number of reviewers added to the pull request
 # Set 0 to add all the reviewers (default: 0)
