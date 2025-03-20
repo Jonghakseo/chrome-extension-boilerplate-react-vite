@@ -38,12 +38,10 @@ const runModuleManager = async () => {
     .replace(/ {2}"version": "[\s\S]*?",/, '  version: packageJson.version,');
 
   writeFileSync(manifestPath, updatedManifest);
-  execSync('pnpm lint:fix', { stdio: 'inherit' });
-
-  await new Promise(resolve => {
-    setTimeout(resolve, 1500);
+  execSync('pnpm i && pnpm -F module-manager lint:fix && pnpm -F chrome-extension lint:fix', {
+    stdio: 'inherit',
+    cwd: resolve('..', '..'),
   });
-  execSync('pnpm i', { stdio: 'inherit' });
 };
 
 export default runModuleManager;
