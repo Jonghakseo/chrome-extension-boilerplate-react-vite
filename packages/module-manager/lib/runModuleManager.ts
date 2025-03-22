@@ -5,10 +5,11 @@ import manifest from '../../../chrome-extension/manifest.js';
 import { execSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import type { ManifestType } from '@extension/shared';
 
 const manifestPath = resolve(import.meta.dirname, '..', '..', '..', 'chrome-extension', 'manifest.ts');
 
-const manifestObject = JSON.parse(JSON.stringify(manifest)) as chrome.runtime.ManifestV3;
+const manifestObject = JSON.parse(JSON.stringify(manifest)) as ManifestType;
 const manifestString = readFileSync(manifestPath, 'utf-8');
 
 const runModuleManager = async () => {
@@ -30,6 +31,7 @@ const runModuleManager = async () => {
       await recoverFeature(manifestObject);
   }
 
+  console.log(manifestObject);
   const updatedManifest = manifestString
     .replace(
       /const manifest = {[\s\S]*?} satisfies/,

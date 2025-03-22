@@ -243,6 +243,9 @@ importers:
       '@extension/dev-utils':
         specifier: workspace:*
         version: link:../dev-utils
+      '@extension/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig

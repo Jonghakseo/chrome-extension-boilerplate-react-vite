@@ -4,12 +4,13 @@ import { promptSelection } from './utils.js';
 import { existsSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { ChoiceType, ModuleNameType } from './types.ts';
+import type { ManifestType } from '@extension/shared';
 
 const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
 const archiveFiles = existsSync(archivePath) ? readdirSync(archivePath) : [];
 
-export const recoverFeature = async (manifestObject: chrome.runtime.ManifestV3) => {
+export const recoverFeature = async (manifestObject: ManifestType) => {
   const choices: ChoiceType[] = DEFAULT_CHOICES.filter(choice => {
     if (choice.value === 'background') {
       return !manifestObject.background;
