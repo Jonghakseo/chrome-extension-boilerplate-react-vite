@@ -2,10 +2,10 @@ import { deleteFeature } from './deleteFeature.js';
 import { recoverFeature } from './recoverFeature.js';
 import { promptSelection } from './utils.js';
 import manifest from '../../../chrome-extension/manifest.js';
+import { type ManifestType, sleep } from '@extension/shared';
 import { execSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import type { ManifestType } from '@extension/shared';
 
 const manifestPath = resolve(import.meta.dirname, '..', '..', '..', 'chrome-extension', 'manifest.ts');
 
@@ -39,7 +39,18 @@ const runModuleManager = async () => {
     .replace(/ {2}"version": "[\s\S]*?",/, '  version: packageJson.version,');
 
   writeFileSync(manifestPath, updatedManifest);
-  execSync('pnpm i && pnpm -F chrome-extension lint:fix && git add .', {
+  execSync('pnpm i', {
+    stdio: 'inherit',
+    cwd: resolve('..', '..'),
+  });
+
+  execSync('pnpm -F chrome-extension lint:fix', {
+    stdio: 'inherit',
+    cwd: resolve('..', '..'),
+  });
+
+  await sleep(1000);
+  execSync('git add .', {
     stdio: 'inherit',
     cwd: resolve('..', '..'),
   });
