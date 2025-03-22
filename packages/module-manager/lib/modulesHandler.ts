@@ -10,11 +10,19 @@ const testsPath = resolve(pagesPath, '..', 'tests', 'e2e', 'specs');
 
 export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNameType, archivePath: string) => {
   if (moduleName !== 'content-runtime') {
-    Object.assign(manifestObject, MODULE_CONFIG[moduleName]);
+    if (moduleName.startsWith('content'))
+      // @ts-expect-error recognizing .startsWith() error
+      manifestObject.content_scripts?.push(MODULE_CONFIG[moduleName].content_scripts);
+    else {
+      Object.assign(manifestObject, MODULE_CONFIG[moduleName]);
+    }
   }
 
   const zipFilePath = resolve(archivePath, `${moduleName}.zip`);
-  upZipAndDelete(zipFilePath, resolve(pagesPath, moduleName));
+  const zipTestFilePath = resolve(archivePath, `${moduleName}-test.zip`);
+
+  upZipAndDelete(zipFilePath, moduleName);
+  upZipAndDelete(zipTestFilePath, testsPath.at(-1) as NonNullable<string>);
   console.log(`Recovered: ${moduleName}`);
 };
 
