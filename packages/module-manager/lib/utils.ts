@@ -46,7 +46,7 @@ export const zipAndDeleteModuleWithTest = async (
   const moduleTestName = `page-${moduleName}.test.ts`;
 
   await zipFolder(resolve(pagesPath, moduleName), resolve(archivePath, `${moduleName}.zip`));
-  await zipFolder(testsPath, resolve(archivePath, `${moduleName}-test.zip`), [moduleTestName]);
+  await zipFolder(testsPath, resolve(archivePath, `${moduleName}.test.zip`), [moduleTestName]);
 
   const modulePath = resolve(pagesPath, moduleName);
   const moduleTestsPath = resolve(testsPath, moduleTestName);

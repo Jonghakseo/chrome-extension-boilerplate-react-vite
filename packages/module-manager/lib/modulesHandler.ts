@@ -19,10 +19,10 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
   }
 
   const zipFilePath = resolve(archivePath, `${moduleName}.zip`);
-  const zipTestFilePath = resolve(archivePath, `${moduleName}-test.zip`);
+  const zipTestFilePath = resolve(archivePath, `${moduleName}.test.zip`);
 
   upZipAndDelete(zipFilePath, moduleName);
-  upZipAndDelete(zipTestFilePath, testsPath.at(-1) as NonNullable<string>);
+  upZipAndDelete(zipTestFilePath, `${moduleName}.test`);
   console.log(`Recovered: ${moduleName}`);
 };
 
