@@ -31,7 +31,6 @@ const runModuleManager = async () => {
       await recoverFeature(manifestObject);
   }
 
-  console.log(manifestObject);
   const updatedManifest = manifestString
     .replace(
       /const manifest = {[\s\S]*?} satisfies/,
