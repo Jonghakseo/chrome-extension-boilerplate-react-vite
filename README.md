@@ -228,6 +228,8 @@ You can ask questions on that server, and you can also help others.
 
 Also, suggest new features or share any challenges you've faced while developing Chrome extensions!
 
+If you're debugging one, you can use [Brie](https://go.briehq.com/github?utm_source=CEB) lets you capture screenshots, errors, and network activity, making it easier for us to help.
+
 ## Reference
 
 - [Chrome Extensions](https://developer.chrome.com/docs/extensions)
