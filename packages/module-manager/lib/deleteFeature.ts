@@ -4,13 +4,14 @@ import { promptSelection } from './utils.js';
 import { existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { ChoiceType, ModuleNameType } from './types.ts';
+import type { ManifestType } from '@extension/shared';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
 const pageFolders = readdirSync(pagesPath);
 
-export const deleteFeature = async (manifestObject: chrome.runtime.ManifestV3) => {
+export const deleteFeature = async (manifestObject: ManifestType) => {
   const choices: ChoiceType[] = DEFAULT_CHOICES.filter(choice => {
     if (choice.value === 'background') {
       return !!manifestObject.background;

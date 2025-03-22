@@ -3,15 +3,12 @@ import { removeContentRuntimeReferencesFromPopup, zipAndDeleteModuleWithTest } f
 import { upZipAndDelete } from './zipUtils.js';
 import { resolve } from 'node:path';
 import type { ModuleNameType } from './types.ts';
+import type { ManifestType } from '@extension/shared';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const testsPath = resolve(pagesPath, '..', 'tests', 'e2e', 'specs');
 
-export const recoverModule = (
-  manifestObject: chrome.runtime.ManifestV3,
-  moduleName: ModuleNameType,
-  archivePath: string,
-) => {
+export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNameType, archivePath: string) => {
   if (moduleName !== 'content-runtime') {
     Object.assign(manifestObject, MODULE_CONFIG[moduleName]);
   }
@@ -21,11 +18,7 @@ export const recoverModule = (
   console.log(`Recovered: ${moduleName}`);
 };
 
-export const deleteModule = async (
-  manifestObject: chrome.runtime.ManifestV3,
-  moduleName: ModuleNameType,
-  archivePath: string,
-) => {
+export const deleteModule = async (manifestObject: ManifestType, moduleName: ModuleNameType, archivePath: string) => {
   await zipAndDeleteModuleWithTest(moduleName, pagesPath, archivePath, testsPath);
 
   if (moduleName.startsWith('content')) {
