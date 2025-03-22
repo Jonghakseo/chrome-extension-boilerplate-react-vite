@@ -39,7 +39,7 @@ const runModuleManager = async () => {
     .replace(/ {2}"version": "[\s\S]*?",/, '  version: packageJson.version,');
 
   writeFileSync(manifestPath, updatedManifest);
-  execSync('pnpm i && pnpm -F module-manager lint:fix && pnpm -F chrome-extension lint:fix && git add .', {
+  execSync('pnpm i && pnpm -F chrome-extension lint:fix && git add .', {
     stdio: 'inherit',
     cwd: resolve('..', '..'),
   });
