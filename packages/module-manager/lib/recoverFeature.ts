@@ -25,5 +25,10 @@ export const recoverFeature = async (manifestObject: ManifestType) => {
 
   const answer = await promptSelection(inputConfig);
 
-  recoverModule(manifestObject, answer as ModuleNameType, archivePath);
+  if (answer === 'devtools') {
+    recoverModule(manifestObject, answer as ModuleNameType, archivePath);
+    recoverModule(manifestObject, 'devtools-panel', archivePath);
+  } else {
+    recoverModule(manifestObject, answer as ModuleNameType, archivePath);
+  }
 };

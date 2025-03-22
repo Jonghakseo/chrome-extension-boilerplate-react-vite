@@ -29,6 +29,10 @@ export const deleteFeature = async (manifestObject: ManifestType) => {
   if (!existsSync(archivePath)) {
     mkdirSync(archivePath, { recursive: true });
   }
-
-  await deleteModule(manifestObject, answer as ModuleNameType, archivePath);
+  if (answer === 'devtools') {
+    await deleteModule(manifestObject, answer as ModuleNameType, archivePath);
+    await deleteModule(manifestObject, 'devtools-panel', archivePath);
+  } else {
+    await deleteModule(manifestObject, answer as ModuleNameType, archivePath);
+  }
 };

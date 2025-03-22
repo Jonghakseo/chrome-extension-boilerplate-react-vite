@@ -9,7 +9,7 @@ const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const testsPath = resolve(pagesPath, '..', 'tests', 'e2e', 'specs');
 
 export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNameType, archivePath: string) => {
-  if (moduleName !== 'content-runtime') {
+  if (moduleName !== 'content-runtime' && moduleName !== 'devtools-panel') {
     if (moduleName.startsWith('content'))
       // @ts-expect-error recognizing .startsWith() error
       manifestObject.content_scripts?.push(MODULE_CONFIG[moduleName].content_scripts);
@@ -39,7 +39,7 @@ export const deleteModule = async (manifestObject: ManifestType, moduleName: Mod
     manifestObject.content_scripts = manifestObject.content_scripts?.filter(
       script => !script.js?.includes(outputFileName),
     );
-  } else {
+  } else if (moduleName !== 'devtools-panel') {
     // @ts-expect-error recognizing .startsWith() error
     Object.keys(MODULE_CONFIG[moduleName]).forEach(key => {
       if (manifestObject[key]) {
