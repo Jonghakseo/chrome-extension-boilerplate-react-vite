@@ -93,6 +93,9 @@ importers:
       fast-glob:
         specifier: ^3.3.3
         version: 3.3.3
+      fflate:
+        specifier: ^0.8.2
+        version: 0.8.2
       globals:
         specifier: ^15.14.0
         version: 15.14.0
@@ -237,15 +240,18 @@ importers:
 
   packages/module-manager:
     devDependencies:
+      '@extension/dev-utils':
+        specifier: workspace:*
+        version: link:../dev-utils
+      '@extension/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       '@inquirer/prompts':
         specifier: ^7.3.2
         version: 7.3.2(@types/node@22.7.4)
-      fflate:
-        specifier: ^0.8.2
-        version: 0.8.2
       tsx:
         specifier: ^4.19.2
         version: 4.19.2
@@ -309,15 +315,15 @@ importers:
 
   packages/zipper:
     devDependencies:
+      '@extension/dev-utils':
+        specifier: workspace:*
+        version: link:../dev-utils
       '@extension/env':
         specifier: workspace:*
         version: link:../env
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
-      fflate:
-        specifier: ^0.8.2
-        version: 0.8.2
 
   pages/content:
     dependencies:
