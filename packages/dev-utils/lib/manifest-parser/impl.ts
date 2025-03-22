@@ -1,6 +1,7 @@
-import type { Manifest, ManifestParserInterface } from './types.js';
+import type { ManifestParserInterface } from './types.js';
+import type { ManifestType } from '@extension/shared';
 
-const convertToFirefoxCompatibleManifest = (manifest: Manifest) => {
+const convertToFirefoxCompatibleManifest = (manifest: ManifestType) => {
   const manifestCopy = {
     ...manifest,
   } as { [key: string]: unknown };
@@ -24,7 +25,7 @@ const convertToFirefoxCompatibleManifest = (manifest: Manifest) => {
 
   delete manifestCopy.options_page;
   delete manifestCopy.side_panel;
-  return manifestCopy as Manifest;
+  return manifestCopy as ManifestType;
 };
 
 export const ManifestParserImpl: ManifestParserInterface = {
