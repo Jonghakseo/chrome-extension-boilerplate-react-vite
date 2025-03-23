@@ -1,5 +1,5 @@
 import { MODULE_CONFIG } from './const.js';
-import { removeContentRuntimeReferencesFromPopup, zipAndDeleteModuleWithTest } from './utils.js';
+import { zipAndDeleteModuleWithTest } from './utils.js';
 import { unZipAndDelete } from './zipUtils.js';
 import { existsSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -10,7 +10,7 @@ const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const testsPath = resolve(pagesPath, '..', 'tests', 'e2e', 'specs');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
-export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNameType, archivePath: string) => {
+export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNameType) => {
   const zipFilePath = resolve(archivePath, `${moduleName}.zip`);
   const zipTestFilePath = resolve(archivePath, `${moduleName}.test.zip`);
 
@@ -34,20 +34,9 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
 };
 
 export const deleteModule = async (manifestObject: ManifestType, moduleName: ModuleNameType) => {
-  await zipAndDeleteModuleWithTest(moduleName, pagesPath, archivePath, testsPath);
-  const popupZipExists = existsSync(resolve(archivePath, 'popup.zip'));
   const outputFileName = `${moduleName}/index.iife.js`;
 
-  if (!existsSync(archivePath)) {
-    mkdirSync(archivePath, { recursive: true });
-  }
-
-  if (moduleName.startsWith('content')) {
-    if (moduleName === 'content-runtime' && !popupZipExists) {
-      await removeContentRuntimeReferencesFromPopup(pagesPath, archivePath);
-      return;
-    }
-
+  if (moduleName.startsWith('content') && moduleName !== 'content-runtime') {
     manifestObject.content_scripts = manifestObject.content_scripts?.filter(
       script => !script.js?.includes(outputFileName),
     );
@@ -59,6 +48,12 @@ export const deleteModule = async (manifestObject: ManifestType, moduleName: Mod
       }
     });
   }
+
+  if (!existsSync(archivePath)) {
+    mkdirSync(archivePath, { recursive: true });
+  }
+
+  await zipAndDeleteModuleWithTest(moduleName, pagesPath, archivePath, testsPath);
 
   console.log(`Deleted: ${moduleName}`);
 };
