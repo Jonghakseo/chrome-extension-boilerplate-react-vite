@@ -20,10 +20,10 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
   }
 
   if (moduleName !== 'content-runtime' && moduleName !== 'devtools-panel') {
-    if (moduleName.startsWith('content'))
+    if (moduleName.startsWith('content')) {
       // @ts-expect-error recognizing .startsWith() error
       manifestObject.content_scripts?.push(MODULE_CONFIG[moduleName].content_scripts);
-    else {
+    } else {
       Object.assign(manifestObject, MODULE_CONFIG[moduleName]);
     }
   }
@@ -36,17 +36,18 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
 export const deleteModule = async (manifestObject: ManifestType, moduleName: ModuleNameType) => {
   const outputFileName = `${moduleName}/index.iife.js`;
 
-  if (moduleName.startsWith('content') && moduleName !== 'content-runtime') {
-    manifestObject.content_scripts = manifestObject.content_scripts?.filter(
-      script => !script.js?.includes(outputFileName),
-    );
-  } else if (moduleName !== 'devtools-panel') {
-    // @ts-expect-error recognizing .startsWith() error
-    Object.keys(MODULE_CONFIG[moduleName]).forEach(key => {
-      if (manifestObject[key]) {
-        delete manifestObject[key];
-      }
-    });
+  if (moduleName !== 'content-runtime' && moduleName !== 'devtools-panel') {
+    if (moduleName.startsWith('content')) {
+      manifestObject.content_scripts = manifestObject.content_scripts?.filter(
+        script => !script.js?.includes(outputFileName),
+      );
+    } else {
+      Object.keys(MODULE_CONFIG[moduleName]).forEach(key => {
+        if (manifestObject[key]) {
+          delete manifestObject[key];
+        }
+      });
+    }
   }
 
   if (!existsSync(archivePath)) {
