@@ -1,5 +1,5 @@
 import { MODULE_CONFIG } from './const.js';
-import { zipAndDeleteModuleWithTest } from './utils.js';
+import { processModuleConfig, zipAndDeleteModuleWithTest } from './utils.js';
 import { unZipAndDelete } from './zipUtils.js';
 import { existsSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -42,11 +42,7 @@ export const deleteModule = async (manifestObject: ManifestType, moduleName: Mod
         script => !script.js?.includes(outputFileName),
       );
     } else {
-      Object.keys(MODULE_CONFIG[moduleName]).forEach(key => {
-        if (manifestObject[key]) {
-          delete manifestObject[key];
-        }
-      });
+      processModuleConfig(manifestObject, moduleName);
     }
   }
 
