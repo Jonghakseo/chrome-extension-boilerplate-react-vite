@@ -1,17 +1,23 @@
 import { MODULE_CONFIG } from './const.js';
 import { removeContentRuntimeReferencesFromPopup, zipAndDeleteModuleWithTest } from './utils.js';
 import { unZipAndDelete } from './zipUtils.js';
-import { existsSync } from 'node:fs';
+import { existsSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { ModuleNameType } from './types.ts';
 import type { ManifestType } from '@extension/shared';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const testsPath = resolve(pagesPath, '..', 'tests', 'e2e', 'specs');
+const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
 export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNameType, archivePath: string) => {
   const zipFilePath = resolve(archivePath, `${moduleName}.zip`);
   const zipTestFilePath = resolve(archivePath, `${moduleName}.test.zip`);
+
+  if (!existsSync(zipFilePath) || !existsSync(zipTestFilePath)) {
+    console.log(`No archive found for ${moduleName}`);
+    return;
+  }
 
   if (moduleName !== 'content-runtime' && moduleName !== 'devtools-panel') {
     if (moduleName.startsWith('content'))
@@ -27,10 +33,14 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
   console.log(`Recovered: ${moduleName}`);
 };
 
-export const deleteModule = async (manifestObject: ManifestType, moduleName: ModuleNameType, archivePath: string) => {
+export const deleteModule = async (manifestObject: ManifestType, moduleName: ModuleNameType) => {
   await zipAndDeleteModuleWithTest(moduleName, pagesPath, archivePath, testsPath);
   const popupZipExists = existsSync(resolve(archivePath, 'popup.zip'));
   const outputFileName = `${moduleName}/index.iife.js`;
+
+  if (!existsSync(archivePath)) {
+    mkdirSync(archivePath, { recursive: true });
+  }
 
   if (moduleName.startsWith('content')) {
     if (moduleName === 'content-runtime' && !popupZipExists) {

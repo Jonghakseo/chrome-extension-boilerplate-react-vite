@@ -1,13 +1,12 @@
 import { DEFAULT_CHOICES, DELETE_CHOICE_QUESTION } from './const.js';
 import { deleteModule } from './modulesHandler.js';
 import { promptSelection } from './utils.js';
-import { existsSync, mkdirSync, readdirSync } from 'node:fs';
+import { readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { ChoiceType, ModuleNameType } from './types.ts';
 import type { ManifestType } from '@extension/shared';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
-const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
 const pageFolders = readdirSync(pagesPath);
 
@@ -26,13 +25,10 @@ export const deleteFeature = async (manifestObject: ManifestType) => {
 
   const answer = await promptSelection(inputConfig);
 
-  if (!existsSync(archivePath)) {
-    mkdirSync(archivePath, { recursive: true });
-  }
   if (answer === 'devtools') {
-    await deleteModule(manifestObject, answer as ModuleNameType, archivePath);
-    await deleteModule(manifestObject, 'devtools-panel', archivePath);
+    await deleteModule(manifestObject, answer as ModuleNameType);
+    await deleteModule(manifestObject, 'devtools-panel');
   } else {
-    await deleteModule(manifestObject, answer as ModuleNameType, archivePath);
+    await deleteModule(manifestObject, answer as ModuleNameType);
   }
 };
