@@ -33,3 +33,6 @@ When you select an unused module, Module Manager compresses the contents of that
 ### Recover Feature
 
 When you select a module that has been deleted, Module Manager will recover the module from the snapshot and add it back to the manifest.
+
+> [!IMPORTANT]  
+> SAVE ALL FILES FROM /ARCHIVE, WITHOUT THAT FILES RECOVERING PROCESS WON'T WORK
