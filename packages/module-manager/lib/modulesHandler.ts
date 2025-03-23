@@ -28,8 +28,8 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
     }
   }
 
-  unZipAndDelete(zipFilePath, pagesPath.at(-1) as NonNullable<string>);
-  unZipAndDelete(zipTestFilePath, testsPath.at(-1) as NonNullable<string>);
+  unZipAndDelete(zipFilePath, 'pages');
+  unZipAndDelete(zipTestFilePath, 'specs');
   console.log(`Recovered: ${moduleName}`);
 };
 
