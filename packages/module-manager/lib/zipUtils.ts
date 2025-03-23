@@ -4,7 +4,7 @@ import { unzipSync, Zip } from 'fflate';
 import { createWriteStream, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, posix, resolve } from 'node:path';
 
-export const upZipAndDelete = (zipFilePath: string, destPath: string) => {
+export const unZipAndDelete = (zipFilePath: string, destPath: string) => {
   const unzipped = unzipSync(readFileSync(zipFilePath));
   mkdirSync(destPath, { recursive: true });
 

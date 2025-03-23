@@ -1,6 +1,6 @@
 import { MODULE_CONFIG } from './const.js';
 import { removeContentRuntimeReferencesFromPopup, zipAndDeleteModuleWithTest } from './utils.js';
-import { upZipAndDelete } from './zipUtils.js';
+import { unZipAndDelete } from './zipUtils.js';
 import { resolve } from 'node:path';
 import type { ModuleNameType } from './types.ts';
 import type { ManifestType } from '@extension/shared';
@@ -21,8 +21,8 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
   const zipFilePath = resolve(archivePath, `${moduleName}.zip`);
   const zipTestFilePath = resolve(archivePath, `${moduleName}.test.zip`);
 
-  upZipAndDelete(zipFilePath, moduleName);
-  upZipAndDelete(zipTestFilePath, `${moduleName}.test`);
+  unZipAndDelete(zipFilePath, pagesPath.at(-1) as NonNullable<string>);
+  unZipAndDelete(zipTestFilePath, testsPath.at(-1) as NonNullable<string>);
   console.log(`Recovered: ${moduleName}`);
 };
 
