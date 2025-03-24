@@ -41,10 +41,11 @@ export const zipAndDeleteModuleWithTest = async (
 export const processModuleConfig = (
   manifestObject: ManifestType,
   moduleName: Exclude<ModuleNameType, 'content-runtime' | 'devtools-panel'>,
+  isRecovering?: boolean,
 ) => {
-  const moduleConfigKeysOfKeys = Object.keys(MODULE_CONFIG[moduleName]);
+  const moduleConfigEntriesOfKeys = Object.entries(MODULE_CONFIG[moduleName]);
 
-  moduleConfigKeysOfKeys.forEach(key => {
+  moduleConfigEntriesOfKeys.forEach(([key, value]) => {
     const manifestValue = manifestObject[key];
 
     if (manifestValue) {
@@ -52,10 +53,16 @@ export const processModuleConfig = (
         // @ts-expect-error error recognizing array
         const arrayValues = Object.values(MODULE_CONFIG[moduleName][key]) as string[];
 
-        manifestObject[key] = manifestValue.filter((value: string) => !arrayValues.includes(value));
+        if (isRecovering) {
+          manifestObject[key] = manifestValue.concat(arrayValues);
+        } else {
+          manifestObject[key] = manifestValue.filter((value: string) => !arrayValues.includes(value));
+        }
       } else {
         delete manifestObject[key];
       }
+    } else if (isRecovering) {
+      Object.assign(manifestObject, { [key]: value });
     } else {
       throw new Error(`Key ${key} not found in manifest.ts`);
     }

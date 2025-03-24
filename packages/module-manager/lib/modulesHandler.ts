@@ -24,7 +24,7 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
       // @ts-expect-error recognizing .startsWith() error
       manifestObject.content_scripts?.push(MODULE_CONFIG[moduleName].content_scripts);
     } else {
-      Object.assign(manifestObject, MODULE_CONFIG[moduleName]);
+      processModuleConfig(manifestObject, moduleName, true);
     }
   }
 
