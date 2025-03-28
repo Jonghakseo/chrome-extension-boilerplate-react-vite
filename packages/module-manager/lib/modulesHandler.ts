@@ -1,6 +1,6 @@
-import { processModuleConfig, zipAndDeleteModuleWithTest } from './utils.js';
+import { isFolderEmpty, processModuleConfig, zipAndDeleteModuleWithTest } from './utils.js';
 import { unZipAndDelete } from './zipUtils.js';
-import { existsSync, mkdirSync } from 'node:fs';
+import { existsSync, mkdirSync, rmdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { ModuleNameType } from './types.ts';
 import type { ManifestType } from '@extension/dev-utils';
@@ -23,6 +23,10 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
   unZipAndDelete(zipFilePath, 'pages');
   unZipAndDelete(zipTestFilePath, 'specs');
   console.log(`Recovered: ${moduleName}`);
+
+  if (isFolderEmpty(archivePath)) {
+    rmdirSync(archivePath);
+  }
 };
 
 export const deleteModule = async (manifestObject: ManifestType, moduleName: ModuleNameType) => {

@@ -2,9 +2,12 @@ import { EXIT_PROMPT_ERROR, MODULE_CONFIG } from './const.js';
 import { zipFolder } from './zipUtils.js';
 import { select } from '@inquirer/prompts';
 import { rimraf } from 'rimraf';
+import { readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { InputConfigType, ModuleNameType, WritableModuleConfigValuesType } from './types.js';
 import type { ConditionalPickDeep, Entries, ManifestType } from '@extension/dev-utils';
+
+export const isFolderEmpty = (path: string) => !readdirSync(path).length;
 
 export const promptSelection = async (inputConfig: InputConfigType) => {
   if (!inputConfig.choices.length) {
