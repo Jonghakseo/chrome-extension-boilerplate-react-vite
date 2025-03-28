@@ -172,12 +172,12 @@ importers:
 
   packages/dev-utils:
     devDependencies:
-      '@extension/shared':
-        specifier: workspace:*
-        version: link:../shared
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      type-fest:
+        specifier: ^4.38.0
+        version: 4.38.0
 
   packages/env:
     dependencies:
@@ -249,9 +249,6 @@ importers:
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
-      type-fest:
-        specifier: ^4.38.0
-        version: 4.38.0
 
   packages/storage:
     devDependencies:

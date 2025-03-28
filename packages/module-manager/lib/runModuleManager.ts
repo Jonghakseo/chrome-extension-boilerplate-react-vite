@@ -2,10 +2,11 @@ import { deleteFeature } from './deleteFeature.js';
 import { recoverFeature } from './recoverFeature.js';
 import { promptSelection } from './utils.js';
 import manifest from '../../../chrome-extension/manifest.js';
-import { type ManifestType, sleep } from '@extension/shared';
+import { sleep } from '@extension/shared';
 import { execSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import type { ManifestType } from '@extension/dev-utils';
 
 const manifestPath = resolve(import.meta.dirname, '..', '..', '..', 'chrome-extension', 'manifest.ts');
 

@@ -30,7 +30,6 @@
     "@extension/hmr": "workspace:*",
     "@extension/tsconfig": "workspace:*",
     "@extension/vite-config": "workspace:*",
-    "@extension/shared": "workspace:*",
     "@laynezh/vite-plugin-lib-assets": "^0.6.1",
     "magic-string": "^0.30.17",
     "ts-loader": "^9.5.2"

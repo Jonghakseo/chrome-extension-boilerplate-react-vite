@@ -4,7 +4,7 @@ import { select } from '@inquirer/prompts';
 import { rimraf } from 'rimraf';
 import { resolve } from 'node:path';
 import type { InputConfigType, ModuleNameType, WritableModuleConfigValuesType } from './types.js';
-import type { ConditionalPickDeep, Entries, ManifestType } from '@extension/shared';
+import type { ConditionalPickDeep, Entries, ManifestType } from '@extension/dev-utils';
 
 export const promptSelection = async (inputConfig: InputConfigType) => {
   if (!inputConfig.choices.length) {

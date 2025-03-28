@@ -3,7 +3,7 @@ import { unZipAndDelete } from './zipUtils.js';
 import { existsSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { ModuleNameType } from './types.ts';
-import type { ManifestType } from '@extension/shared';
+import type { ManifestType } from '@extension/dev-utils';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 const testsPath = resolve(pagesPath, '..', 'tests', 'e2e', 'specs');

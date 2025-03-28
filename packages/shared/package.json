@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@extension/storage": "workspace:*",
-    "@extension/tsconfig": "workspace:*",
-    "type-fest": "^4.38.0"
+    "@extension/tsconfig": "workspace:*"
   }
 }
