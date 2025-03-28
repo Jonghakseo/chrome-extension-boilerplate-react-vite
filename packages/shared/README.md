@@ -10,3 +10,7 @@ To use the code in the package, you need to add the following to the package.jso
   }
 }
 ```
+
+## Additional Information
+
+`utils/types.ts` contains the types used in the package `type-fest`
