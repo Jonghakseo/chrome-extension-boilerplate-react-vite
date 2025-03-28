@@ -1,5 +1,5 @@
-import { isFolderEmpty, processModuleConfig, zipAndDeleteModuleWithTest } from './utils.js';
-import { unZipAndDelete } from './zipUtils.js';
+import { isFolderEmpty, processModuleConfig } from './utils.js';
+import { unZipAndDelete, zipAndDeleteModuleWithTest } from './zipUtils.js';
 import { existsSync, mkdirSync, rmdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { ModuleNameType } from './types.ts';

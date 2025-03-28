@@ -1,9 +1,6 @@
 import { EXIT_PROMPT_ERROR, MODULE_CONFIG } from './const.js';
-import { zipFolder } from './zipUtils.js';
 import { select } from '@inquirer/prompts';
-import { rimraf } from 'rimraf';
 import { readdirSync } from 'node:fs';
-import { resolve } from 'node:path';
 import type { InputConfigType, ModuleNameType, WritableModuleConfigValuesType } from './types.js';
 import type { ConditionalPickDeep, Entries, ManifestType } from '@extension/dev-utils';
 
@@ -22,23 +19,6 @@ export const promptSelection = async (inputConfig: InputConfigType) => {
       console.error(err.message);
     }
   }) as Promise<string>;
-};
-
-export const zipAndDeleteModuleWithTest = async (
-  moduleName: ModuleNameType,
-  pagesPath: string,
-  archivePath: string,
-  testsPath: string,
-) => {
-  const moduleTestName = `page-${moduleName}.test.ts`;
-
-  await zipFolder(resolve(pagesPath, moduleName), resolve(archivePath, `${moduleName}.zip`));
-  await zipFolder(testsPath, resolve(archivePath, `${moduleName}.test.zip`), [moduleTestName]);
-
-  const modulePath = resolve(pagesPath, moduleName);
-  const moduleTestsPath = resolve(testsPath, moduleTestName);
-
-  void rimraf([modulePath, moduleTestsPath]);
 };
 
 export const processModuleConfig = (

@@ -1,8 +1,10 @@
 import { streamFileToZip } from '@extension/dev-utils';
 import fg from 'fast-glob';
 import { unzipSync, Zip } from 'fflate';
+import { rimraf } from 'rimraf';
 import { createWriteStream, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import { dirname, join, posix, resolve } from 'node:path';
+import type { ModuleNameType } from './types.js';
 
 export const unZipAndDelete = (zipFilePath: string, destPath: string) => {
   const unzipped = unzipSync(readFileSync(zipFilePath));
@@ -15,6 +17,23 @@ export const unZipAndDelete = (zipFilePath: string, destPath: string) => {
     writeFileSync(filePath, fileData);
   }
   unlinkSync(zipFilePath);
+};
+
+export const zipAndDeleteModuleWithTest = async (
+  moduleName: ModuleNameType,
+  pagesPath: string,
+  archivePath: string,
+  testsPath: string,
+) => {
+  const moduleTestName = `page-${moduleName}.test.ts`;
+
+  await zipFolder(resolve(pagesPath, moduleName), resolve(archivePath, `${moduleName}.zip`));
+  await zipFolder(testsPath, resolve(archivePath, `${moduleName}.test.zip`), [moduleTestName]);
+
+  const modulePath = resolve(pagesPath, moduleName);
+  const moduleTestsPath = resolve(testsPath, moduleTestName);
+
+  void rimraf([modulePath, moduleTestsPath]);
 };
 
 export const zipFolder = async (folderPath: string, out: string, filesToInclude?: string[]) => {
