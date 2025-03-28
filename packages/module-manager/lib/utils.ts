@@ -3,8 +3,8 @@ import { zipFolder } from './zipUtils.js';
 import { select } from '@inquirer/prompts';
 import { rimraf } from 'rimraf';
 import { resolve } from 'node:path';
-import type { InputConfigType, ModuleNameType } from './types.js';
-import type { ManifestType } from '@extension/shared';
+import type { InputConfigType, ModuleNameType, ProcessModuleNameType } from './types.js';
+import type { ConditionalPickDeep, Entries, ManifestType } from '@extension/shared';
 
 export const promptSelection = async (inputConfig: InputConfigType) => {
   if (!inputConfig.choices.length) {
@@ -40,18 +40,20 @@ export const zipAndDeleteModuleWithTest = async (
 
 export const processModuleConfig = (
   manifestObject: ManifestType,
-  moduleName: Exclude<ModuleNameType, 'content-runtime' | 'devtools-panel'>,
+  moduleName: ProcessModuleNameType,
   isRecovering?: boolean,
 ) => {
-  const moduleConfigEntriesOfKeys = Object.entries(MODULE_CONFIG[moduleName]);
+  const moduleConfigValues = MODULE_CONFIG[moduleName];
+  const moduleConfigEntriesOfKeys = Object.entries(moduleConfigValues) as Entries<typeof moduleConfigValues>;
 
   moduleConfigEntriesOfKeys.forEach(([key, value]) => {
     const manifestValue = manifestObject[key];
 
     if (manifestValue) {
       if (manifestValue instanceof Array) {
-        // @ts-expect-error error recognizing array
-        const arrayValues = Object.values(MODULE_CONFIG[moduleName][key]) as string[];
+        const arrayValues = Object.values(
+          moduleConfigValues[key as ConditionalPickDeep<keyof typeof moduleConfigValues, typeof moduleName>],
+        );
 
         if (isRecovering) {
           manifestObject[key] = manifestValue.concat(arrayValues);
