@@ -15,7 +15,7 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
 
   if (!existsSync(zipFilePath) || !existsSync(zipTestFilePath)) {
     console.log(`No archive found for ${moduleName}`);
-    return;
+    process.exit(0);
   }
 
   processModuleConfig(manifestObject, moduleName, true);
