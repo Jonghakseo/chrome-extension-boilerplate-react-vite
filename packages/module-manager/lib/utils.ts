@@ -3,7 +3,7 @@ import { zipFolder } from './zipUtils.js';
 import { select } from '@inquirer/prompts';
 import { rimraf } from 'rimraf';
 import { resolve } from 'node:path';
-import type { InputConfigType, ModuleNameType, ProcessModuleNameType } from './types.js';
+import type { InputConfigType, ModuleNameType, WritableModuleConfigValuesType } from './types.js';
 import type { ConditionalPickDeep, Entries, ManifestType } from '@extension/shared';
 
 export const promptSelection = async (inputConfig: InputConfigType) => {
@@ -40,11 +40,30 @@ export const zipAndDeleteModuleWithTest = async (
 
 export const processModuleConfig = (
   manifestObject: ManifestType,
-  moduleName: ProcessModuleNameType,
+  moduleName: ModuleNameType,
   isRecovering?: boolean,
 ) => {
+  if (moduleName === 'content-runtime' || moduleName === 'devtools-panel') {
+    return;
+  }
+
   const moduleConfigValues = MODULE_CONFIG[moduleName];
   const moduleConfigEntriesOfKeys = Object.entries(moduleConfigValues) as Entries<typeof moduleConfigValues>;
+
+  if (moduleName === 'content' || moduleName === 'content-ui') {
+    if (isRecovering) {
+      manifestObject.content_scripts?.push(
+        (moduleConfigValues as WritableModuleConfigValuesType<typeof moduleName>).content_scripts,
+      );
+    } else {
+      const outputFileName = `${moduleName}/index.iife.js`;
+
+      manifestObject.content_scripts = manifestObject.content_scripts?.filter(
+        script => !script.js?.includes(outputFileName),
+      );
+    }
+    return;
+  }
 
   moduleConfigEntriesOfKeys.forEach(([key, value]) => {
     const manifestValue = manifestObject[key];

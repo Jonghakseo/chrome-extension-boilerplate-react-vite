@@ -1,4 +1,3 @@
-import { MODULE_CONFIG } from './const.js';
 import { processModuleConfig, zipAndDeleteModuleWithTest } from './utils.js';
 import { unZipAndDelete } from './zipUtils.js';
 import { existsSync, mkdirSync } from 'node:fs';
@@ -19,14 +18,7 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
     return;
   }
 
-  if (moduleName !== 'content-runtime' && moduleName !== 'devtools-panel') {
-    if (moduleName.startsWith('content')) {
-      // @ts-expect-error recognizing .startsWith() error
-      manifestObject.content_scripts?.push(MODULE_CONFIG[moduleName].content_scripts);
-    } else {
-      processModuleConfig(manifestObject, moduleName, true);
-    }
-  }
+  processModuleConfig(manifestObject, moduleName, true);
 
   unZipAndDelete(zipFilePath, 'pages');
   unZipAndDelete(zipTestFilePath, 'specs');
@@ -34,17 +26,7 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
 };
 
 export const deleteModule = async (manifestObject: ManifestType, moduleName: ModuleNameType) => {
-  const outputFileName = `${moduleName}/index.iife.js`;
-
-  if (moduleName !== 'content-runtime' && moduleName !== 'devtools-panel') {
-    if (moduleName.startsWith('content')) {
-      manifestObject.content_scripts = manifestObject.content_scripts?.filter(
-        script => !script.js?.includes(outputFileName),
-      );
-    } else {
-      processModuleConfig(manifestObject, moduleName);
-    }
-  }
+  processModuleConfig(manifestObject, moduleName);
 
   if (!existsSync(archivePath)) {
     mkdirSync(archivePath, { recursive: true });
