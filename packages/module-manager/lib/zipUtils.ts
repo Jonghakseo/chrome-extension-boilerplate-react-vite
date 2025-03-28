@@ -6,7 +6,6 @@ import { dirname, join, posix, resolve } from 'node:path';
 
 export const unZipAndDelete = (zipFilePath: string, destPath: string) => {
   const unzipped = unzipSync(readFileSync(zipFilePath));
-  mkdirSync(destPath, { recursive: true });
 
   for (const [filename, fileData] of Object.entries(unzipped)) {
     const filePath = join(destPath, filename);
