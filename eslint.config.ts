@@ -5,18 +5,9 @@ import { flatConfigs as importXFlatConfig } from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
-import fg from 'fast-glob';
 import { browser, es2020, node } from 'globals';
 import { config, configs as tsConfigs, parser as tsParser } from 'typescript-eslint';
-import { relative } from 'path';
 import type { FixupConfigArray } from '@eslint/compat';
-
-const getTsConfigPaths = async () => {
-  const files = await fg(['tsconfig.json', '**/tsconfig.json', '!**/node_modules/**']);
-  return files.map(file => relative(process.cwd(), file));
-};
-
-const tsConfigPaths = await getTsConfigPaths();
 
 export default config(
   // Shared configs
@@ -44,7 +35,7 @@ export default config(
       sourceType: 'module',
       parserOptions: {
         ecmaFeatures: { jsx: true },
-        project: true,
+        projectService: true,
       },
       globals: {
         ...browser,
@@ -56,11 +47,6 @@ export default config(
     settings: {
       react: {
         version: 'detect',
-      },
-      'import-x/resolver': {
-        typescript: {
-          project: tsConfigPaths,
-        },
       },
     },
     rules: {
