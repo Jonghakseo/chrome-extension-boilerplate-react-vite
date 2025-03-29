@@ -1,1 +1,1 @@
-export * from './shared-types.js';
+export type * from './shared-types.js';
