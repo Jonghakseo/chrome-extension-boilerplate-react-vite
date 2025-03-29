@@ -2,7 +2,7 @@ import '@src/Options.css';
 import { t } from '@extension/i18n';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { ToggleButton } from '@extension/ui';
+import { cn, ToggleButton } from '@extension/ui';
 
 const Options = () => {
   const { isLight } = useStorage(exampleThemeStorage);
@@ -12,7 +12,7 @@ const Options = () => {
     chrome.tabs.create({ url: 'https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite' });
 
   return (
-    <div className={`App ${isLight ? 'bg-slate-50 text-gray-900' : 'bg-gray-800 text-gray-100'}`}>
+    <div className={cn('App', isLight ? 'bg-slate-50 text-gray-900' : 'bg-gray-800 text-gray-100')}>
       <button onClick={goGithubSite}>
         <img src={chrome.runtime.getURL(logo)} className="App-logo" alt="logo" />
       </button>

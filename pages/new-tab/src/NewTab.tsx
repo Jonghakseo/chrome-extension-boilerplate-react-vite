@@ -3,7 +3,7 @@ import '@src/NewTab.scss';
 import { t } from '@extension/i18n';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { ToggleButton } from '@extension/ui';
+import { cn, ToggleButton } from '@extension/ui';
 
 const NewTab = () => {
   const { isLight } = useStorage(exampleThemeStorage);
@@ -14,8 +14,8 @@ const NewTab = () => {
 
   console.log(t('hello', 'World'));
   return (
-    <div className={`App ${isLight ? 'bg-slate-50' : 'bg-gray-800'}`}>
-      <header className={`App-header ${isLight ? 'text-gray-900' : 'text-gray-100'}`}>
+    <div className={cn('App', isLight ? 'bg-slate-50' : 'bg-gray-800')}>
+      <header className={cn('App-header', isLight ? 'text-gray-900' : 'text-gray-100')}>
         <button onClick={goGithubSite}>
           <img src={chrome.runtime.getURL(logo)} className="App-logo" alt="logo" />
         </button>

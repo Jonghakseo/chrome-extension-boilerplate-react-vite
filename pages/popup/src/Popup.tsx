@@ -2,7 +2,7 @@ import '@src/Popup.css';
 import { t } from '@extension/i18n';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { ToggleButton } from '@extension/ui';
+import { cn, ToggleButton } from '@extension/ui';
 
 const notificationOptions = {
   type: 'basic',
@@ -39,8 +39,8 @@ const Popup = () => {
   };
 
   return (
-    <div className={`App ${isLight ? 'bg-slate-50' : 'bg-gray-800'}`}>
-      <header className={`App-header ${isLight ? 'text-gray-900' : 'text-gray-100'}`}>
+    <div className={cn('App', isLight ? 'bg-slate-50' : 'bg-gray-800')}>
+      <header className={cn('App-header', isLight ? 'text-gray-900' : 'text-gray-100')}>
         <button onClick={goGithubSite}>
           <img src={chrome.runtime.getURL(logo)} className="App-logo" alt="logo" />
         </button>
@@ -48,10 +48,10 @@ const Popup = () => {
           Edit <code>pages/popup/src/Popup.tsx</code>
         </p>
         <button
-          className={
-            'font-bold mt-4 py-1 px-4 rounded shadow hover:scale-105 ' +
-            (isLight ? 'bg-blue-200 text-black' : 'bg-gray-700 text-white')
-          }
+          className={cn(
+            'font-bold mt-4 py-1 px-4 rounded shadow hover:scale-105 ',
+            isLight ? 'bg-blue-200 text-black' : 'bg-gray-700 text-white',
+          )}
           onClick={injectContentScript}>
           Click to inject Content Script
         </button>
