@@ -1,12 +1,12 @@
 import { fixupConfigRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
-import eslintPluginImportX from 'eslint-plugin-import-x';
+import { flatConfigs as importXFlatConfig } from 'eslint-plugin-import-x';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactPlugin from 'eslint-plugin-react';
 import fg from 'fast-glob';
-import globals from 'globals';
+import { browser, es2020, node } from 'globals';
 import { config, configs as tsConfigs, parser as tsParser } from 'typescript-eslint';
 import { relative } from 'path';
 import type { FixupConfigArray } from '@eslint/compat';
@@ -23,8 +23,8 @@ export default config(
   js.configs.recommended,
   ...tsConfigs.recommended,
   jsxA11y.flatConfigs.recommended,
-  eslintPluginImportX.flatConfigs.recommended,
-  eslintPluginImportX.flatConfigs.typescript,
+  importXFlatConfig.recommended,
+  importXFlatConfig.typescript,
   eslintPluginPrettierRecommended,
   ...fixupConfigRules(new FlatCompat().extends('plugin:react-hooks/recommended') as FixupConfigArray),
   {
@@ -46,9 +46,9 @@ export default config(
         ecmaFeatures: { jsx: true },
       },
       globals: {
-        ...globals.browser,
-        ...globals.es2020,
-        ...globals.node,
+        ...browser,
+        ...es2020,
+        ...node,
         chrome: 'readonly',
       },
     },
