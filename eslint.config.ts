@@ -37,7 +37,7 @@ export default config(
     ignores: ['**/build/**', '**/dist/**', '**/node_modules/**', 'chrome-extension/manifest.js'],
   },
   {
-    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+    files: ['**/*.{ts,tsx,mtsx}'],
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 'latest',
