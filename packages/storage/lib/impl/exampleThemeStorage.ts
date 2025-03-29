@@ -1,23 +1,37 @@
 import { createStorage, StorageEnum } from '../base/index.js';
 import type { BaseStorage } from '../base/index.js';
 
-type Theme = 'light' | 'dark';
+interface ThemeState {
+  theme: 'light' | 'dark';
+  isLight: boolean;
+}
 
-type ThemeStorage = BaseStorage<Theme> & {
+type ThemeStorage = BaseStorage<ThemeState> & {
   toggle: () => Promise<void>;
 };
 
-const storage = createStorage<Theme>('theme-storage-key', 'light', {
-  storageEnum: StorageEnum.Local,
-  liveUpdate: true,
-});
+const storage = createStorage<ThemeState>(
+  'theme-storage-key',
+  {
+    theme: 'light',
+    isLight: true,
+  },
+  {
+    storageEnum: StorageEnum.Local,
+    liveUpdate: true,
+  },
+);
 
-// You can extend it with your own methods
 export const exampleThemeStorage: ThemeStorage = {
   ...storage,
   toggle: async () => {
-    await storage.set(currentTheme => {
-      return currentTheme === 'light' ? 'dark' : 'light';
+    await storage.set(currentState => {
+      const newTheme = currentState.theme === 'light' ? 'dark' : 'light';
+
+      return {
+        theme: newTheme,
+        isLight: newTheme === 'light',
+      };
     });
   },
 };
