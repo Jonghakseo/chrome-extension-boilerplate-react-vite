@@ -28,7 +28,7 @@ export default config(
   eslintPluginPrettierRecommended,
   ...fixupConfigRules(new FlatCompat().extends('plugin:react-hooks/recommended') as FixupConfigArray),
   {
-    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+    files: ['**/*.{ts,tsx,mtsx}'],
     ...reactPlugin.configs.flat.recommended,
     ...reactPlugin.configs.flat['jsx-runtime'],
   },
@@ -44,6 +44,7 @@ export default config(
       sourceType: 'module',
       parserOptions: {
         ecmaFeatures: { jsx: true },
+        project: true,
       },
       globals: {
         ...browser,
@@ -64,11 +65,12 @@ export default config(
     },
     rules: {
       'react/react-in-jsx-scope': 'off',
-      '@typescript-eslint/consistent-type-imports': 'error',
       'react/prop-types': 'off',
       'prefer-const': 'error',
       'no-var': 'error',
       'func-style': ['error', 'expression', { allowArrowFunctions: true }],
+      '@typescript-eslint/consistent-type-exports': 'error',
+      '@typescript-eslint/consistent-type-imports': 'error',
       'import-x/order': [
         'error',
         {
