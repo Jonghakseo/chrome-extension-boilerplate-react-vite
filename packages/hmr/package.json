@@ -26,10 +26,10 @@
     "@extension/tsconfig": "workspace:*",
     "@extension/env": "workspace:*",
     "@rollup/plugin-sucrase": "^5.0.2",
-    "@types/ws": "^8.5.13",
+    "@types/ws": "^8.18.0",
     "esm": "^3.2.25",
-    "rollup": "^4.24.0",
+    "rollup": "^4.38.0",
     "ts-node": "^10.9.2",
-    "ws": "8.18.0"
+    "ws": "^8.18.1"
   }
 }

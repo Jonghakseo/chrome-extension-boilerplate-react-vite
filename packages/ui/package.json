@@ -27,10 +27,10 @@
     "@extension/storage": "workspace:*",
     "@extension/shared": "workspace:*",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.4.0"
+    "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
-    "tsc-alias": "^1.8.10"
+    "tsc-alias": "^1.8.13"
   }
 }
