@@ -4,6 +4,21 @@ import { basename, resolve, sep } from 'node:path';
 import type { PluginOption } from 'vite';
 
 /**
+ * Extract content directory from output directory for Firefox
+ * @param outputDir
+ */
+const extractContentDir = (outputDir: string) => {
+  const parts = outputDir.split(sep);
+  const distIndex = parts.indexOf('dist');
+
+  if (distIndex !== -1 && distIndex < parts.length - 1) {
+    return parts.slice(distIndex + 1);
+  }
+
+  throw new Error('Output directory does not contain "dist"');
+};
+
+/**
  * make entry point file for content script cache busting
  */
 export const makeEntryPointPlugin = (): PluginOption => {
@@ -56,19 +71,4 @@ export const makeEntryPointPlugin = (): PluginOption => {
       });
     },
   };
-};
-
-/**
- * Extract content directory from output directory for Firefox
- * @param outputDir
- */
-const extractContentDir = (outputDir: string) => {
-  const parts = outputDir.split(sep);
-  const distIndex = parts.indexOf('dist');
-
-  if (distIndex !== -1 && distIndex < parts.length - 1) {
-    return parts.slice(distIndex + 1);
-  }
-
-  throw new Error('Output directory does not contain "dist"');
 };

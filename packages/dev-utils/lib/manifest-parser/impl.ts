@@ -1,15 +1,5 @@
 import type { Manifest, ManifestParserInterface } from './types.js';
 
-export const ManifestParserImpl: ManifestParserInterface = {
-  convertManifestToString: (manifest, isFirefox) => {
-    if (isFirefox) {
-      manifest = convertToFirefoxCompatibleManifest(manifest);
-    }
-
-    return JSON.stringify(manifest, null, 2);
-  },
-};
-
 const convertToFirefoxCompatibleManifest = (manifest: Manifest) => {
   const manifestCopy = {
     ...manifest,
@@ -35,4 +25,14 @@ const convertToFirefoxCompatibleManifest = (manifest: Manifest) => {
   delete manifestCopy.options_page;
   delete manifestCopy.side_panel;
   return manifestCopy as Manifest;
+};
+
+export const ManifestParserImpl: ManifestParserInterface = {
+  convertManifestToString: (manifest, isFirefox) => {
+    if (isFirefox) {
+      manifest = convertToFirefoxCompatibleManifest(manifest);
+    }
+
+    return JSON.stringify(manifest, null, 2);
+  },
 };
