@@ -13,8 +13,8 @@
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
-    "@inquirer/prompts": "^7.3.2",
+    "@inquirer/prompts": "^7.4.0",
     "fflate": "^0.8.2",
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.3"
   }
 }
