@@ -20,59 +20,6 @@ const DEFAULT_CHOICES = [
   { name: 'Options Page', value: 'options' },
 ];
 
-export const recoverModules = async (manifestObject: chrome.runtime.ManifestV3) => {
-  const choices = DEFAULT_CHOICES.filter(choice => {
-    if (choice.value === 'background') {
-      return !manifestObject.background;
-    }
-    return archiveFiles.includes(`${choice.value}.zip`);
-  });
-
-  if (!choices.length) {
-    console.log('No features to recover');
-    process.exit(0);
-  }
-
-  const answers = await checkbox({
-    message: 'Choose the features you want to recover',
-    loop: false,
-    choices,
-  });
-
-  if (answers.length === 0) {
-    console.log('No features selected');
-    process.exit(0);
-  }
-  if (answers.includes('background')) {
-    recoverBackgroundScript(manifestObject);
-  }
-  if (answers.includes('content')) {
-    recoverContentScript(manifestObject);
-  }
-  if (answers.includes('content-ui')) {
-    recoverContentScriptUI(manifestObject);
-  }
-  if (answers.includes('content-runtime')) {
-    recoverContentScriptRuntime(manifestObject);
-  }
-  if (answers.includes('new-tab')) {
-    recoverNewTabOverride(manifestObject);
-  }
-  if (answers.includes('popup')) {
-    recoverPopup(manifestObject);
-  }
-  if (answers.includes('devtools')) {
-    recoverDevTools(manifestObject);
-  }
-  if (answers.includes('side-panel')) {
-    recoverSidePanel(manifestObject);
-  }
-  if (answers.includes('options')) {
-    recoverOptionsPage(manifestObject);
-  }
-  console.log(`Recovered selected features: ${answers.join(', ')}`);
-};
-
 const recoverBackgroundScript = (manifestObject: chrome.runtime.ManifestV3) => {
   manifestObject.background = {
     service_worker: 'background.js',
@@ -169,4 +116,57 @@ const upZipAndDelete = (zipFilePath: string, destPath: string) => {
     writeFileSync(filePath, fileData);
   }
   unlinkSync(zipFilePath);
+};
+
+export const recoverModules = async (manifestObject: chrome.runtime.ManifestV3) => {
+  const choices = DEFAULT_CHOICES.filter(choice => {
+    if (choice.value === 'background') {
+      return !manifestObject.background;
+    }
+    return archiveFiles.includes(`${choice.value}.zip`);
+  });
+
+  if (!choices.length) {
+    console.log('No features to recover');
+    process.exit(0);
+  }
+
+  const answers = await checkbox({
+    message: 'Choose the features you want to recover',
+    loop: false,
+    choices,
+  });
+
+  if (answers.length === 0) {
+    console.log('No features selected');
+    process.exit(0);
+  }
+  if (answers.includes('background')) {
+    recoverBackgroundScript(manifestObject);
+  }
+  if (answers.includes('content')) {
+    recoverContentScript(manifestObject);
+  }
+  if (answers.includes('content-ui')) {
+    recoverContentScriptUI(manifestObject);
+  }
+  if (answers.includes('content-runtime')) {
+    recoverContentScriptRuntime(manifestObject);
+  }
+  if (answers.includes('new-tab')) {
+    recoverNewTabOverride(manifestObject);
+  }
+  if (answers.includes('popup')) {
+    recoverPopup(manifestObject);
+  }
+  if (answers.includes('devtools')) {
+    recoverDevTools(manifestObject);
+  }
+  if (answers.includes('side-panel')) {
+    recoverSidePanel(manifestObject);
+  }
+  if (answers.includes('options')) {
+    recoverOptionsPage(manifestObject);
+  }
+  console.log(`Recovered selected features: ${answers.join(', ')}`);
 };
