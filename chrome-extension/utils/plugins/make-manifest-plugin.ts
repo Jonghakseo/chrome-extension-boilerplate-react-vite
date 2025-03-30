@@ -39,6 +39,14 @@ const getManifestWithCacheBurst = async () => {
   }
 };
 
+const addRefreshContentScript = (manifest: Manifest) => {
+  manifest.content_scripts = manifest.content_scripts || [];
+  manifest.content_scripts.push({
+    matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+    js: ['refresh.js'], // for public's HMR(refresh) support
+  });
+};
+
 export default (config: { outDir: string }): PluginOption => {
   const makeManifest = (manifest: Manifest, to: string) => {
     if (!existsSync(to)) {
@@ -73,12 +81,4 @@ export default (config: { outDir: string }): PluginOption => {
       makeManifest(manifest, outDir);
     },
   };
-};
-
-const addRefreshContentScript = (manifest: Manifest) => {
-  manifest.content_scripts = manifest.content_scripts || [];
-  manifest.content_scripts.push({
-    matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-    js: ['refresh.js'], // for public's HMR(refresh) support
-  });
 };
