@@ -2,7 +2,6 @@ import { deleteFeature } from './deleteFeature.js';
 import { recoverFeature } from './recoverFeature.js';
 import { promptSelection } from './utils.js';
 import manifest from '../../../chrome-extension/manifest.js';
-import { sleep } from '@extension/shared';
 import { execSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -46,12 +45,6 @@ const runModuleManager = async () => {
   });
 
   execSync('pnpm -F chrome-extension lint:fix', {
-    stdio: 'inherit',
-    cwd: resolve('..', '..'),
-  });
-
-  await sleep(1000);
-  execSync('git add .', {
     stdio: 'inherit',
     cwd: resolve('..', '..'),
   });
