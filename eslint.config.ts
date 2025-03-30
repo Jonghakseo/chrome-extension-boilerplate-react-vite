@@ -55,8 +55,6 @@ export default config(
       'prefer-const': 'error',
       'no-var': 'error',
       'func-style': ['error', 'expression', { allowArrowFunctions: true }],
-      '@typescript-eslint/consistent-type-exports': 'error',
-      '@typescript-eslint/consistent-type-imports': 'error',
       'import-x/order': [
         'error',
         {
@@ -74,12 +72,14 @@ export default config(
         },
       ],
       'import-x/no-unresolved': 'off',
-      'import-x/default': 'error',
-      'import-x/export': 'error',
       'import-x/no-named-as-default': 'error',
       'import-x/no-named-as-default-member': 'error',
       'import-x/newline-after-import': 'error',
       'import-x/no-deprecated': 'error',
+      'import-x/no-duplicates': ['error', { considerQueryString: true, 'prefer-inline': false }],
+      'import-x/consistent-type-specifier-style': 'error',
+      'import-x/exports-last': 'error',
+      'import-x/first': 'error',
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
