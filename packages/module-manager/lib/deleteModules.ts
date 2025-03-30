@@ -22,62 +22,6 @@ const DEFAULT_CHOICES = [
   { name: 'Options Page', value: 'options' },
 ];
 
-export const deleteModules = async (manifestObject: chrome.runtime.ManifestV3) => {
-  const choices = DEFAULT_CHOICES.filter(choice => {
-    if (choice.value === 'background') {
-      return !!manifestObject.background;
-    }
-    return pageFolders.includes(choice.value);
-  });
-
-  if (!choices.length) {
-    console.log('No features to delete');
-    process.exit(0);
-  }
-
-  const answers = await checkbox({
-    message: 'Choose the features you want to delete',
-    loop: false,
-    choices,
-  });
-
-  if (answers.length === 0) {
-    console.log('No features selected');
-    process.exit(0);
-  }
-  if (!fs.existsSync(archivePath)) {
-    fs.mkdirSync(archivePath, { recursive: true });
-  }
-  if (answers.includes('background')) {
-    deleteBackgroundScript(manifestObject);
-  }
-  if (answers.includes('content')) {
-    await deleteContentScript(manifestObject);
-  }
-  if (answers.includes('content-ui')) {
-    await deleteContentScriptUI(manifestObject);
-  }
-  if (answers.includes('content-runtime')) {
-    await deleteContentScriptRuntime(manifestObject);
-  }
-  if (answers.includes('new-tab')) {
-    await deleteNewTabOverride(manifestObject);
-  }
-  if (answers.includes('popup')) {
-    await deletePopup(manifestObject);
-  }
-  if (answers.includes('devtools')) {
-    await deleteDevTools(manifestObject);
-  }
-  if (answers.includes('side-panel')) {
-    await deleteSidePanel(manifestObject);
-  }
-  if (answers.includes('options')) {
-    await deleteOptionsPage(manifestObject);
-  }
-  console.log(`Deleted selected features: ${answers.join(', ')}`);
-};
-
 const deleteBackgroundScript = (manifestObject: chrome.runtime.ManifestV3) => {
   if (manifestObject.background) {
     delete manifestObject.background;
@@ -226,4 +170,60 @@ const streamFileToZip = (
       onAbort();
       onError(error);
     });
+};
+
+export const deleteModules = async (manifestObject: chrome.runtime.ManifestV3) => {
+  const choices = DEFAULT_CHOICES.filter(choice => {
+    if (choice.value === 'background') {
+      return !!manifestObject.background;
+    }
+    return pageFolders.includes(choice.value);
+  });
+
+  if (!choices.length) {
+    console.log('No features to delete');
+    process.exit(0);
+  }
+
+  const answers = await checkbox({
+    message: 'Choose the features you want to delete',
+    loop: false,
+    choices,
+  });
+
+  if (answers.length === 0) {
+    console.log('No features selected');
+    process.exit(0);
+  }
+  if (!fs.existsSync(archivePath)) {
+    fs.mkdirSync(archivePath, { recursive: true });
+  }
+  if (answers.includes('background')) {
+    deleteBackgroundScript(manifestObject);
+  }
+  if (answers.includes('content')) {
+    await deleteContentScript(manifestObject);
+  }
+  if (answers.includes('content-ui')) {
+    await deleteContentScriptUI(manifestObject);
+  }
+  if (answers.includes('content-runtime')) {
+    await deleteContentScriptRuntime(manifestObject);
+  }
+  if (answers.includes('new-tab')) {
+    await deleteNewTabOverride(manifestObject);
+  }
+  if (answers.includes('popup')) {
+    await deletePopup(manifestObject);
+  }
+  if (answers.includes('devtools')) {
+    await deleteDevTools(manifestObject);
+  }
+  if (answers.includes('side-panel')) {
+    await deleteSidePanel(manifestObject);
+  }
+  if (answers.includes('options')) {
+    await deleteOptionsPage(manifestObject);
+  }
+  console.log(`Deleted selected features: ${answers.join(', ')}`);
 };
