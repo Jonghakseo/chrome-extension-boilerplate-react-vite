@@ -1,32 +1,64 @@
-import '@src/NewTab.css';
-import '@src/NewTab.scss';
-import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
-import { exampleThemeStorage } from '@extension/storage';
-import { ToggleButton } from '@extension/ui';
-import { t } from '@extension/i18n';
+import useLocalStorage from './useLocalStorage'
 
 const NewTab = () => {
-  const theme = useStorage(exampleThemeStorage);
-  const isLight = theme === 'light';
-  const logo = isLight ? 'new-tab/logo_horizontal.svg' : 'new-tab/logo_horizontal_dark.svg';
-  const goGithubSite = () =>
-    chrome.tabs.create({ url: 'https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite' });
+  const [generatedLinks, setGeneratedLinks] = useLocalStorage('generatedLinks', [])
 
-  console.log(t('hello', 'World'));
+  function clearGeneratedLinks() {
+    setGeneratedLinks([])
+  }
+
+  const parseLink = (link: string) => {
+    console.log('url: ', link)
+    const urlObj = new URL(link)
+    return urlObj
+  }
+
   return (
-    <div className={`App ${isLight ? 'bg-slate-50' : 'bg-gray-800'}`}>
-      <header className={`App-header ${isLight ? 'text-gray-900' : 'text-gray-100'}`}>
-        <button onClick={goGithubSite}>
-          <img src={chrome.runtime.getURL(logo)} className="App-logo" alt="logo" />
-        </button>
-        <p>
-          Edit <code>pages/new-tab/src/NewTab.tsx</code>
-        </p>
-        <h6>The color of this paragraph is defined using SASS.</h6>
-        <ToggleButton onClick={exampleThemeStorage.toggle}>{t('toggleTheme')}</ToggleButton>
-      </header>
+    <div className="flex flex-col items-start w-3/4 m-auto gap-6">
+      <h1 className="text-4xl font-bold">Branch Link Generator</h1>
+      <button
+        onClick={clearGeneratedLinks}
+        className="bg-red-500 text-white hover:bg-red-700 font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+        Clear All Links
+      </button>
+      <table className="text-sm text-left rtl:text-right text-black w-full">
+        <thead className="text-xs text-black uppercase bg-white">
+          <tr>
+            <th scope="col" className="px-6 py-3">
+              Name
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Markets
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Campaign
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Tags
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Branch Link
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {generatedLinks.map(link => (
+            <tr className="even:bg-white odd:bg-gray-100">
+              <th className="px-6 py-4 font-medium text-black whitespace-nowrap">{link.title}</th>
+              <td className="px-6 py-4">{link.eventNames}</td>
+              <td className="px-6 py-4">{parseLink(link.link).searchParams.getAll('campaign')}</td>
+              <td className="px-6 py-4">{parseLink(link.link).searchParams.getAll('tags')}</td>
+              <td className="px-6 py-4">
+                <a className="text-blue-600 font-bold" href={link.link}>
+                  Preview
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
-  );
-};
+  )
+}
 
-export default withErrorBoundary(withSuspense(NewTab, <div>{t('loading')}</div>), <div> Error Occur </div>);
+export default NewTab

@@ -1,11 +1,11 @@
 {
   "extensionDescription": {
     "description": "Extension description",
-    "message": "Chrome extension boilerplate developed with Vite, React and Typescript"
+    "message": "A browser extension to generate branch links for ESPN Bet"
   },
   "extensionName": {
     "description": "Extension name",
-    "message": "Chrome extension boilerplate"
+    "message": "Branch Link Generator"
   },
   "toggleTheme": {
     "message": "Toggle theme"
