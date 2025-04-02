@@ -1,1 +1,1 @@
-export { type ValueOf } from './shared-types.js';
+export type * from './shared-types.js';

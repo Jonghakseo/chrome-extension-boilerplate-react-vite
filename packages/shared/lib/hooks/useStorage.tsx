@@ -8,6 +8,7 @@ const storageMap: Map<BaseStorage<any>, WrappedPromise> = new Map();
 const wrapPromise = <R,>(promise: Promise<R>) => {
   let status = 'pending';
   let result: R;
+
   const suspender = promise.then(
     r => {
       status = 'success';
@@ -45,7 +46,8 @@ export const useStorage = <
   if (!storageMap.has(storage)) {
     storageMap.set(storage, wrapPromise(storage.get()));
   }
-  if (_data !== null || initializedRef.current) {
+
+  if (_data || initializedRef.current) {
     storageMap.set(storage, { read: () => _data });
     initializedRef.current = true;
   }
