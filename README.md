@@ -138,10 +138,6 @@ can use only `content-script` without `@extension/` prefix
 
 ## How do I disable modules I'm not using?
 
-> [!IMPORTANT]
-> Make sure you have built project before
-> `pnpm build` or `pnpm build:firefox`
-
 ```bash
 $ pnpm module-manager
 ```
