@@ -4,7 +4,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { platform } from 'node:process';
 import { pathToFileURL } from 'node:url';
-import type { Manifest } from '@extension/dev-utils';
+import type { ManifestType } from '@extension/dev-utils';
 import type { PluginOption } from 'vite';
 
 const manifestFile = resolve(import.meta.dirname, '..', '..', 'manifest.js');
@@ -39,7 +39,7 @@ const getManifestWithCacheBurst = async () => {
   }
 };
 
-const addRefreshContentScript = (manifest: Manifest) => {
+const addRefreshContentScript = (manifest: ManifestType) => {
   manifest.content_scripts = manifest.content_scripts || [];
   manifest.content_scripts.push({
     matches: ['http://*/*', 'https://*/*', '<all_urls>'],
@@ -48,7 +48,7 @@ const addRefreshContentScript = (manifest: Manifest) => {
 };
 
 export default (config: { outDir: string }): PluginOption => {
-  const makeManifest = (manifest: Manifest, to: string) => {
+  const makeManifest = (manifest: ManifestType, to: string) => {
     if (!existsSync(to)) {
       mkdirSync(to);
     }

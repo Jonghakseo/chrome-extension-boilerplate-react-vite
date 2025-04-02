@@ -1,32 +1,34 @@
-import { deleteModules } from './deleteModules.js';
-import { recoverModules } from './recoverModules.js';
-import manifest from '../../../chrome-extension/manifest.ts';
-import { select } from '@inquirer/prompts';
+import { deleteFeature } from './deleteFeature.js';
+import { recoverFeature } from './recoverFeature.js';
+import { promptSelection } from './utils.js';
+import manifest from '../../../chrome-extension/manifest.js';
 import { execSync } from 'node:child_process';
-import * as fs from 'node:fs';
-import * as path from 'node:path';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import type { ManifestType } from '@extension/dev-utils';
 
-const manifestPath = path.resolve(import.meta.dirname, '..', '..', '..', 'chrome-extension', 'manifest.ts');
+const manifestPath = resolve(import.meta.dirname, '..', '..', '..', 'chrome-extension', 'manifest.ts');
 
-const manifestObject = JSON.parse(JSON.stringify(manifest)) as chrome.runtime.ManifestV3;
-const manifestString = fs.readFileSync(manifestPath, 'utf-8');
+const manifestObject = JSON.parse(JSON.stringify(manifest)) as ManifestType;
+const manifestString = readFileSync(manifestPath, 'utf-8');
 
 const runModuleManager = async () => {
-  const tool = await select({
+  const inputConfig = {
     message: 'Choose a tool',
     choices: [
       { name: 'Delete Feature', value: 'delete' },
       { name: 'Recover Feature', value: 'recover' },
     ],
-  });
+  } as const;
+
+  const tool = await promptSelection(inputConfig);
 
   switch (tool) {
     case 'delete':
-      await deleteModules(manifestObject);
+      await deleteFeature(manifestObject);
       break;
     case 'recover':
-      await recoverModules(manifestObject);
-      break;
+      await recoverFeature(manifestObject);
   }
 
   const updatedManifest = manifestString
@@ -36,12 +38,16 @@ const runModuleManager = async () => {
     )
     .replace(/ {2}"version": "[\s\S]*?",/, '  version: packageJson.version,');
 
-  fs.writeFileSync(manifestPath, updatedManifest);
-  execSync('eslint --fix ' + manifestPath, { stdio: 'inherit' });
-  await new Promise(resolve => {
-    setTimeout(resolve, 1500);
+  writeFileSync(manifestPath, updatedManifest);
+  execSync('pnpm i', {
+    stdio: 'inherit',
+    cwd: resolve('..', '..'),
   });
-  execSync('pnpm install', { stdio: 'inherit' });
+
+  execSync('pnpm -F chrome-extension lint:fix', {
+    stdio: 'inherit',
+    cwd: resolve('..', '..'),
+  });
 };
 
 export default runModuleManager;
