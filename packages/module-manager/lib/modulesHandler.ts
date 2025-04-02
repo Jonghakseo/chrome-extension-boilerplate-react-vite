@@ -20,8 +20,8 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
 
   processModuleConfig(manifestObject, moduleName, true);
 
-  unZipAndDelete(zipFilePath, 'pages');
-  unZipAndDelete(zipTestFilePath, 'specs');
+  unZipAndDelete(zipFilePath, pagesPath);
+  unZipAndDelete(zipTestFilePath, testsPath);
   console.log(`Recovered: ${moduleName}`);
 
   if (isFolderEmpty(archivePath)) {
