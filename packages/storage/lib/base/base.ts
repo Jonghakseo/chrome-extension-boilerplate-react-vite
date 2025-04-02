@@ -48,7 +48,7 @@ const checkStoragePermission = (storageEnum: StorageEnum): void => {
     return;
   }
 
-  if (chrome.storage[storageEnum]) {
+  if (!chrome.storage[storageEnum]) {
     throw new Error(`"storage" permission in manifest.ts: "storage ${storageEnum}" isn't defined`);
   }
 };
