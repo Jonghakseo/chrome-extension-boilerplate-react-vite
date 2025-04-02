@@ -1,4 +1,4 @@
-import type { StorageEnum } from './enums.js';
+import type { StorageEnum } from './base/enums.js';
 
 export type ValueOrUpdate<D> = D | ((prev: D) => Promise<D> | D);
 
@@ -42,4 +42,13 @@ export type StorageConfig<D = string> = {
      */
     deserialize: (text: string) => D;
   };
+};
+
+export interface ThemeState {
+  theme: 'light' | 'dark';
+  isLight: boolean;
+}
+
+export type ThemeStorage = BaseStorage<ThemeState> & {
+  toggle: () => Promise<void>;
 };
