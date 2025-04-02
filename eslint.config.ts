@@ -80,6 +80,7 @@ export default config(
       'import-x/consistent-type-specifier-style': 'error',
       'import-x/exports-last': 'error',
       'import-x/first': 'error',
+      '@typescript-eslint/consistent-type-imports': 'error',
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
