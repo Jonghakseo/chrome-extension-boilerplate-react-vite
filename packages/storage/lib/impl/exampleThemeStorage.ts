@@ -1,14 +1,5 @@
 import { createStorage, StorageEnum } from '../base/index.js';
-import type { BaseStorage } from '../base/index.js';
-
-interface ThemeState {
-  theme: 'light' | 'dark';
-  isLight: boolean;
-}
-
-type ThemeStorage = BaseStorage<ThemeState> & {
-  toggle: () => Promise<void>;
-};
+import type { ThemeState, ThemeStorage } from '../types.js';
 
 const storage = createStorage<ThemeState>(
   'theme-storage-key',

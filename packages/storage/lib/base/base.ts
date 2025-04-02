@@ -1,5 +1,5 @@
 import { SessionAccessLevelEnum, StorageEnum } from './enums.js';
-import type { BaseStorage, StorageConfig, ValueOrUpdate } from './types.js';
+import type { BaseStorage, StorageConfig, ValueOrUpdate } from '../types.js';
 
 /**
  * Chrome reference error while running `processTailwindFeatures` in tailwindcss.
@@ -48,8 +48,8 @@ const checkStoragePermission = (storageEnum: StorageEnum): void => {
     return;
   }
 
-  if (chrome.storage[storageEnum] === undefined) {
-    throw new Error(`Check your storage permission in manifest.json: ${storageEnum} is not defined`);
+  if (chrome.storage[storageEnum]) {
+    throw new Error(`"storage" permission in manifest.ts: "storage ${storageEnum}" isn't defined`);
   }
 };
 
@@ -58,7 +58,7 @@ const checkStoragePermission = (storageEnum: StorageEnum): void => {
  */
 export const createStorage = <D = string>(key: string, fallback: D, config?: StorageConfig<D>): BaseStorage<D> => {
   let cache: D | null = null;
-  let initedCache = false;
+  let initialCache = false;
   let listeners: Array<() => void> = [];
 
   const storageEnum = config?.storageEnum ?? StorageEnum.Local;
@@ -74,13 +74,14 @@ export const createStorage = <D = string>(key: string, fallback: D, config?: Sto
     config?.sessionAccessForContentScripts === true
   ) {
     checkStoragePermission(storageEnum);
+
     chrome?.storage[storageEnum]
       .setAccessLevel({
         accessLevel: SessionAccessLevelEnum.ExtensionPagesAndContentScripts,
       })
       .catch(error => {
-        console.warn(error);
-        console.warn('Please call setAccessLevel into different context, like a background script.');
+        console.error(error);
+        console.error('Please call .setAccessLevel() into different context, like a background script.');
       });
     globalSessionAccessLevelFlag = true;
   }
@@ -97,12 +98,8 @@ export const createStorage = <D = string>(key: string, fallback: D, config?: Sto
     return deserialize(value[key]) ?? fallback;
   };
 
-  const _emitChange = () => {
-    listeners.forEach(listener => listener());
-  };
-
   const set = async (valueOrUpdate: ValueOrUpdate<D>) => {
-    if (!initedCache) {
+    if (!initialCache) {
       cache = await get();
     }
     cache = await updateCache(valueOrUpdate, cache);
@@ -123,11 +120,9 @@ export const createStorage = <D = string>(key: string, fallback: D, config?: Sto
     return cache;
   };
 
-  get().then(data => {
-    cache = data;
-    initedCache = true;
-    _emitChange();
-  });
+  const _emitChange = () => {
+    listeners.forEach(listener => listener());
+  };
 
   // Listener for live updates from the browser
   const _updateFromStorageOnChanged = async (changes: { [key: string]: chrome.storage.StorageChange }) => {
@@ -142,6 +137,12 @@ export const createStorage = <D = string>(key: string, fallback: D, config?: Sto
 
     _emitChange();
   };
+
+  get().then(data => {
+    cache = data;
+    initialCache = true;
+    _emitChange();
+  });
 
   // Register listener for live updates for our storage area
   if (liveUpdate) {
