@@ -1,5 +1,4 @@
 import { t } from '@extension/i18n';
-import { exampleThemeStorage } from '@extension/storage';
 import { ToggleButton } from '@extension/ui';
 import { useEffect } from 'react';
 
@@ -13,7 +12,7 @@ export default function App() {
       <div className="flex gap-1 text-blue-500">
         Edit <strong className="text-blue-700">pages/content-ui/src/app.tsx</strong> and save to reload.
       </div>
-      <ToggleButton onClick={exampleThemeStorage.toggle}>{t('toggleTheme')}</ToggleButton>
+      <ToggleButton>{t('toggleTheme')}</ToggleButton>
     </div>
   );
 }
