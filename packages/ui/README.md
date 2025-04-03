@@ -98,7 +98,7 @@ Create a file named `components.json` in the `packages/ui` directory with the fo
   "rsc": false,
   "tsx": true,
   "tailwind": {
-    "config": "tailwind.config.ts",
+    "config": "lib/withUI.ts",
     "css": "lib/global.css",
     "baseColor": "zinc",
     "cssVariables": true,
