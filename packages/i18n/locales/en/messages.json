@@ -10,9 +10,6 @@
   "toggleTheme": {
     "message": "Toggle theme"
   },
-  "loading": {
-    "message": "Loading..."
-  },
   "greeting": {
     "description": "Greeting message",
     "message": "Hello, My name is $NAME$",
