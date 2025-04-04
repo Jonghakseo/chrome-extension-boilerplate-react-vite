@@ -352,9 +352,6 @@ importers:
       '@extension/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@extension/storage':
-        specifier: workspace:*
-        version: link:../../packages/storage
       '@extension/ui':
         specifier: workspace:*
         version: link:../../packages/ui

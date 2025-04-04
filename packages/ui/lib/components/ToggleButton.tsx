@@ -11,11 +11,9 @@ export const ToggleButton = ({ className, children, ...props }: ToggleButtonProp
   return (
     <button
       className={cn(
+        'py-1 px-4 rounded shadow hover:scale-105 mt-4 border-2 font-bold',
+        isLight ? 'bg-white border-black text-black' : 'bg-black text-white border-white',
         className,
-        'py-1 px-4 rounded shadow hover:scale-105',
-        isLight ? 'bg-white text-black' : 'bg-black text-white',
-        isLight ? 'border-black' : 'border-white',
-        'mt-4 border-2 font-bold',
       )}
       onClick={exampleThemeStorage.toggle}
       {...props}>
