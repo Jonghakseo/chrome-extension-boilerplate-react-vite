@@ -56,6 +56,7 @@ export default config(
       'no-var': 'error',
       'func-style': ['error', 'expression', { allowArrowFunctions: true }],
       '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/consistent-type-exports': 'error',
       'import-x/order': [
         'error',
         {
