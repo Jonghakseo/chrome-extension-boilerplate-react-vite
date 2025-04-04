@@ -3,6 +3,6 @@ import type { Config } from 'tailwindcss';
 
 export const withUI = (tailwindConfig: Config): Config => {
   return deepmerge(tailwindConfig, {
-    content: ['../../packages/ui/lib/**/*.{tsx,ts,js,jsx}'],
+    content: ['../../packages/ui/lib/**/*.tsx'],
   });
 };
