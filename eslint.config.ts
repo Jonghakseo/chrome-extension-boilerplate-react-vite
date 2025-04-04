@@ -55,6 +55,8 @@ export default config(
       'prefer-const': 'error',
       'no-var': 'error',
       'func-style': ['error', 'expression', { allowArrowFunctions: true }],
+      '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/consistent-type-exports': 'error',
       'import-x/order': [
         'error',
         {
@@ -63,12 +65,12 @@ export default config(
           groups: ['index', 'sibling', 'parent', 'internal', 'external', 'builtin', 'object', 'type'],
           pathGroups: [
             {
-              pattern: '@src/**',
+              pattern: '@*/**',
               group: 'internal',
               position: 'before',
             },
           ],
-          pathGroupsExcludedImportTypes: ['internal'],
+          pathGroupsExcludedImportTypes: ['type'],
         },
       ],
       'import-x/no-unresolved': 'off',
@@ -80,7 +82,6 @@ export default config(
       'import-x/consistent-type-specifier-style': 'error',
       'import-x/exports-last': 'error',
       'import-x/first': 'error',
-      '@typescript-eslint/consistent-type-imports': 'error',
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
