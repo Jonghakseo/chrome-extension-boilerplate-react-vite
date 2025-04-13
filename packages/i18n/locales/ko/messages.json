@@ -23,5 +23,20 @@
   "hello": {
     "description": "Placeholder 예시",
     "message": "안녕 $1"
+  },
+  "displayErrorInfo": {
+    "message": "오류 발생"
+  },
+  "displayErrorDescription": {
+    "message": "죄송합니다. 페이지를 로드하는 중 문제가 발생했습니다."
+  },
+  "displayErrorDetailsInfo": {
+    "message": "오류 세부 정보:"
+  },
+  "displayErrorUnknownErrorInfo": {
+    "message": "알 수 없는 오류"
+  },
+  "displayErrorReset": {
+    "message": "다시 실행"
   }
 }

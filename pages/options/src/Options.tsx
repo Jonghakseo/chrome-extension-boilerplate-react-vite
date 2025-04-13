@@ -2,7 +2,7 @@ import '@src/Options.css';
 import { t } from '@extension/i18n';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { cn, LoadingSpinner, ToggleButton } from '@extension/ui';
+import { cn, ErrorDisplay, LoadingSpinner, ToggleButton } from '@extension/ui';
 
 const Options = () => {
   const { isLight } = useStorage(exampleThemeStorage);
@@ -24,4 +24,4 @@ const Options = () => {
   );
 };
 
-export default withErrorBoundary(withSuspense(Options, <LoadingSpinner />), <div> Error Occur </div>);
+export default withErrorBoundary(withSuspense(Options, <LoadingSpinner />), ErrorDisplay);

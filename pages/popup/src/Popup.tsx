@@ -2,7 +2,7 @@ import '@src/Popup.css';
 import { t } from '@extension/i18n';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { cn, LoadingSpinner, ToggleButton } from '@extension/ui';
+import { cn, ErrorDisplay, LoadingSpinner, ToggleButton } from '@extension/ui';
 
 const notificationOptions = {
   type: 'basic',
@@ -61,4 +61,4 @@ const Popup = () => {
   );
 };
 
-export default withErrorBoundary(withSuspense(Popup, <LoadingSpinner />), <div> Error Occur </div>);
+export default withErrorBoundary(withSuspense(Popup, <LoadingSpinner />), ErrorDisplay);

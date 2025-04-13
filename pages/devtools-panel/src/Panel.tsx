@@ -2,7 +2,7 @@ import '@src/Panel.css';
 import { t } from '@extension/i18n';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { cn, LoadingSpinner } from '@extension/ui';
+import { cn, ErrorDisplay, LoadingSpinner } from '@extension/ui';
 import type { ComponentPropsWithoutRef } from 'react';
 
 const Panel = () => {
@@ -43,4 +43,4 @@ const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
   );
 };
 
-export default withErrorBoundary(withSuspense(Panel, <LoadingSpinner />), <div> Error Occur </div>);
+export default withErrorBoundary(withSuspense(Panel, <LoadingSpinner />), ErrorDisplay);
