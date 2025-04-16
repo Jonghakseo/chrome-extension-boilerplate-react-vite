@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
-    "types": ["node"]
+    "types": ["chrome", "node"]
   },
   "include": ["index.mts", "rollup.config.ts", "lib"]
 }
