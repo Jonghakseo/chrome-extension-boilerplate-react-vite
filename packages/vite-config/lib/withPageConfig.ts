@@ -1,5 +1,5 @@
 import env, { IS_DEV, IS_PROD } from '@extension/env';
-import { watchRebuildPlugin } from '@extension/hmr';
+import { importMetaPlugin, watchRebuildPlugin } from '@extension/hmr';
 import react from '@vitejs/plugin-react-swc';
 import deepmerge from 'deepmerge';
 import { defineConfig } from 'vite';
@@ -24,7 +24,7 @@ export const withPageConfig = (config: UserConfig) =>
           'process.env': env,
         },
         base: '',
-        plugins: [react(), IS_DEV && watchRebuildPlugin({ refresh: true }), nodePolyfills()],
+        plugins: [react(), IS_DEV && watchRebuildPlugin({ refresh: true }), nodePolyfills(), importMetaPlugin()],
         build: {
           sourcemap: IS_DEV,
           minify: IS_PROD,
