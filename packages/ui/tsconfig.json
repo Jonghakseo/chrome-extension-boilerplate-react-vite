@@ -1,13 +1,11 @@
 {
-  "extends": "@extension/tsconfig/base",
+  "extends": "@extension/tsconfig/module",
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
-    },
-    "noEmit": false,
-    "declaration": true
+    }
   },
-  "include": ["index.ts", "lib"]
+  "include": ["index.mts", "lib"]
 }
