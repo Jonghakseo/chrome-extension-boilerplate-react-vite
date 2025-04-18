@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import type { ManifestType } from '@extension/dev-utils';
 
 const packageJson = JSON.parse(readFileSync('./package.json', 'utf8'));
 
@@ -44,7 +45,7 @@ const manifest = {
     newtab: 'new-tab/index.html',
   },
   icons: {
-    128: 'icon-128.png',
+    '128': 'icon-128.png',
   },
   content_scripts: [
     {
@@ -70,6 +71,6 @@ const manifest = {
   side_panel: {
     default_path: 'side-panel/index.html',
   },
-} satisfies chrome.runtime.ManifestV3;
+} satisfies ManifestType;
 
 export default manifest;
