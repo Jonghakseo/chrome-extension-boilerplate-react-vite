@@ -10,9 +10,6 @@
   "toggleTheme": {
     "message": "Toggle theme"
   },
-  "loading": {
-    "message": "Loading..."
-  },
   "greeting": {
     "description": "Greeting message",
     "message": "Hello, My name is $NAME$",
@@ -26,5 +23,20 @@
   "hello": {
     "description": "Placeholder example",
     "message": "Hello $1"
+  },
+  "displayErrorInfo": {
+    "message": "Error occur"
+  },
+  "displayErrorDescription": {
+    "message": "Sorry, something went wrong while loading the page."
+  },
+  "displayErrorDetailsInfo": {
+    "message": "Error details:"
+  },
+  "displayErrorUnknownErrorInfo": {
+    "message": "Unknown error"
+  },
+  "displayErrorReset": {
+    "message": "Run Again"
   }
 }

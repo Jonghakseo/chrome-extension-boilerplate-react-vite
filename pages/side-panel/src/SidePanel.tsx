@@ -2,7 +2,7 @@ import '@src/SidePanel.css';
 import { t } from '@extension/i18n';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { cn, ToggleButton } from '@extension/ui';
+import { cn, ErrorDisplay, LoadingSpinner, ToggleButton } from '@extension/ui';
 
 const SidePanel = () => {
   const { isLight } = useStorage(exampleThemeStorage);
@@ -26,4 +26,4 @@ const SidePanel = () => {
   );
 };
 
-export default withErrorBoundary(withSuspense(SidePanel, <div> Loading ... </div>), <div> Error Occur </div>);
+export default withErrorBoundary(withSuspense(SidePanel, <LoadingSpinner />), ErrorDisplay);

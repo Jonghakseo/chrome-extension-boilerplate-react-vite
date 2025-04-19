@@ -24,5 +24,8 @@
   "devDependencies": {
     "@extension/storage": "workspace:*",
     "@extension/tsconfig": "workspace:*"
+  },
+  "dependencies": {
+    "react-error-boundary": "^5.0.0"
   }
 }
