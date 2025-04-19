@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import type { ManifestType } from '@extension/dev-utils';
+import type { ManifestType } from '@extension/shared';
 
 const packageJson = JSON.parse(readFileSync('./package.json', 'utf8'));
 

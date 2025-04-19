@@ -5,7 +5,7 @@ import manifest from '../../../chrome-extension/manifest.js';
 import { execSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import type { ManifestType } from '@extension/dev-utils';
+import type { ManifestType } from '@extension/shared';
 
 const manifestPath = resolve(import.meta.dirname, '..', '..', '..', 'chrome-extension', 'manifest.ts');
 

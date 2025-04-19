@@ -4,7 +4,7 @@ import { promptSelection } from './utils.js';
 import { readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { ChoiceType, ModuleNameType } from './types.ts';
-import type { ManifestType } from '@extension/dev-utils';
+import type { ManifestType } from '@extension/shared';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 
