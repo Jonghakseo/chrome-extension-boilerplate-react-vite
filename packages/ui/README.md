@@ -68,15 +68,18 @@ export const CustomComponent = ({ children, ...props }: CustomComponentProps) =>
 ## Usage
 
 ```tsx
-import { CustomComponent } from '@extension/ui';
+import { CustomComponent, ErrorDisplay, LoadingSpinner } from '@extension/ui';
 
 const Page = () => {
   return <CustomComponent>Hi, I'm a custom component.</CustomComponent>;
 }
 
-export default withErrorBoundary(withSuspense(Page, <div> Loading ... </div>), <div> Error Occur </div>);
+export default withErrorBoundary(withSuspense(Page, <LoadingSpinner />), ErrorDisplay);
 
 ```
+
+> [!TIP]
+> You are able to set other size of the loading spinner by passing the `size` prop to the `<LoadingSpinner />`.
 
 ## Modifying the tailwind config of the UI library
 

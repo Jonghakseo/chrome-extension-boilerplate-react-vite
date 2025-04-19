@@ -3,7 +3,7 @@ import '@src/NewTab.scss';
 import { t } from '@extension/i18n';
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
-import { cn, ToggleButton } from '@extension/ui';
+import { cn, ErrorDisplay, LoadingSpinner, ToggleButton } from '@extension/ui';
 
 const NewTab = () => {
   const { isLight } = useStorage(exampleThemeStorage);
@@ -29,4 +29,4 @@ const NewTab = () => {
   );
 };
 
-export default withErrorBoundary(withSuspense(NewTab, <div>{t('loading')}</div>), <div> Error Occur </div>);
+export default withErrorBoundary(withSuspense(NewTab, <LoadingSpinner />), ErrorDisplay);

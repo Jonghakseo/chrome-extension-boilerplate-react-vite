@@ -5,7 +5,7 @@ export const withSuspense = <T extends Record<string, unknown>>(
   Component: ComponentType<T>,
   SuspenseComponent: ReactElement,
 ) => {
-  return function WithSuspense(props: T) {
+  return (props: T) => {
     return (
       <Suspense fallback={SuspenseComponent}>
         <Component {...props} />
