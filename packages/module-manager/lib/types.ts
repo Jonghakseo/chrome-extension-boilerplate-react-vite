@@ -1,5 +1,5 @@
 import type { DEFAULT_CHOICES, MODULE_CONFIG } from './const.js';
-import type { WritableDeep } from '@extension/dev-utils';
+import type { WritableDeep } from '@extension/shared';
 import type { select } from '@inquirer/prompts';
 
 type ModuleConfigType = typeof MODULE_CONFIG;

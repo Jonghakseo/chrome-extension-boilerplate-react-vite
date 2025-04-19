@@ -21,11 +21,12 @@
     "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
-  "devDependencies": {
-    "@extension/storage": "workspace:*",
-    "@extension/tsconfig": "workspace:*"
-  },
   "dependencies": {
     "react-error-boundary": "^5.0.0"
+  },
+  "devDependencies": {
+    "@extension/storage": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
+    "type-fest": "^4.40.0"
   }
 }
