@@ -19,7 +19,8 @@
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "format": "prettier . --write --ignore-path ../../.prettierignore",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "postinstall": "pnpm ready"
   },
   "dependencies": {
     "react-error-boundary": "^5.0.0"
