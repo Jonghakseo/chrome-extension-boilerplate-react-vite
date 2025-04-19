@@ -1,8 +1,9 @@
-import { EXIT_PROMPT_ERROR, MODULE_CONFIG } from './const.js';
+import { DEFAULT_CHOICES_VALUES, EXIT_PROMPT_ERROR, MODULE_CONFIG } from './const.js';
 import { select } from '@inquirer/prompts';
 import { readdirSync } from 'node:fs';
-import type { InputConfigType, ModuleNameType, WritableModuleConfigValuesType } from './types.js';
-import type { ConditionalPickDeep, Entries, ManifestType } from '@extension/dev-utils';
+import type { CliEntries, InputConfigType, ModuleNameType, WritableModuleConfigValuesType } from './types.js';
+import type { ConditionalPickDeep, Entries, ManifestType } from '@extension/shared';
+import type { Arguments } from 'yargs';
 
 export const isFolderEmpty = (path: string) => !readdirSync(path).length;
 
@@ -71,4 +72,14 @@ export const processModuleConfig = (
       throw new Error(`Key ${key} not found in manifest.ts`);
     }
   });
+};
+
+export const checkCliArgsIsValid = <T extends Arguments>(argv: T) => {
+  const [key, values] = Object.entries(argv)[1] as CliEntries;
+
+  for (const value of values) {
+    if (!DEFAULT_CHOICES_VALUES.some(moduleName => value.includes(moduleName))) {
+      throw new Error(`All values after --${key} must be name of page`);
+    }
+  }
 };
