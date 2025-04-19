@@ -10,25 +10,27 @@ const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
 
 const pageFolders = readdirSync(pagesPath);
 
-export const deleteFeature = async (manifestObject: ManifestType) => {
-  const choices: ChoiceType[] = DEFAULT_CHOICES.filter(choice => {
-    if (choice.value === 'background') {
-      return !!manifestObject.background;
-    }
-    return pageFolders.includes(choice.value);
-  });
+export const deleteFeature = async (manifestObject: ManifestType, moduleName?: ModuleNameType) => {
+  if (!moduleName) {
+    const choices: ChoiceType[] = DEFAULT_CHOICES.filter(choice => {
+      if (choice.value === 'background') {
+        return !!manifestObject.background;
+      }
+      return pageFolders.includes(choice.value);
+    });
 
-  const inputConfig = {
-    message: DELETE_CHOICE_QUESTION,
-    choices,
-  } as const;
+    const inputConfig = {
+      message: DELETE_CHOICE_QUESTION,
+      choices,
+    } as const;
 
-  const answer = await promptSelection(inputConfig);
+    moduleName = (await promptSelection(inputConfig)) as Awaited<ModuleNameType>;
+  }
 
-  if (answer === 'devtools') {
-    await deleteModule(manifestObject, answer as ModuleNameType, false);
+  if (moduleName === 'devtools') {
+    await deleteModule(manifestObject, moduleName as ModuleNameType, false);
     await deleteModule(manifestObject, 'devtools-panel');
   } else {
-    await deleteModule(manifestObject, answer as ModuleNameType);
+    await deleteModule(manifestObject, moduleName as ModuleNameType);
   }
 };

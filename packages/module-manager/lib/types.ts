@@ -11,7 +11,8 @@ export type WritableModuleConfigValuesType<T extends keyof ModuleConfigType> = W
 
 export interface ICLIOptions {
   action: 'delete' | 'recover';
-  targets: ModuleNameType[number][];
+  targets: ModuleNameType[];
 }
 
 export type CliEntries = [string, (string | number)[]][];
+export type CliActionType = 'delete' | 'recover';
