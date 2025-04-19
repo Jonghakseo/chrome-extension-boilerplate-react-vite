@@ -26,7 +26,7 @@ export const recoverFeature = async (manifestObject: ManifestType) => {
   const answer = await promptSelection(inputConfig);
 
   if (answer === 'devtools') {
-    recoverModule(manifestObject, answer as ModuleNameType);
+    recoverModule(manifestObject, answer as ModuleNameType, false);
     recoverModule(manifestObject, 'devtools-panel');
   } else {
     recoverModule(manifestObject, answer as ModuleNameType);

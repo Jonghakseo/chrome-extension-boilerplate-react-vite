@@ -6,7 +6,31 @@ import { createWriteStream, mkdirSync, readFileSync, unlinkSync, writeFileSync }
 import { dirname, resolve } from 'node:path';
 import type { ModuleNameType } from './types.js';
 
-export const unZipAndDelete = (zipFilePath: string, destPath: string) => {
+const zipAndDeleteModuleTest = async (moduleName: ModuleNameType, archivePath: string, testsPath: string) => {
+  const moduleTestName = `page-${moduleName}.test.ts`;
+  const moduleTestsPath = resolve(testsPath, moduleTestName);
+
+  await zipFolder(testsPath, resolve(archivePath, `${moduleName}.test.zip`), [moduleTestName]);
+  void rimraf([moduleTestsPath]);
+};
+
+export const zipAndDeleteModule = async (
+  moduleName: ModuleNameType,
+  pagesPath: string,
+  archivePath: string,
+  testsPath?: string,
+) => {
+  const modulePath = resolve(pagesPath, moduleName);
+
+  await zipFolder(resolve(pagesPath, moduleName), resolve(archivePath, `${moduleName}.zip`));
+  void rimraf([modulePath]);
+
+  if (testsPath) {
+    await zipAndDeleteModuleTest(moduleName, archivePath, testsPath);
+  }
+};
+
+export const unZipAndDeleteModule = (zipFilePath: string, destPath: string) => {
   const unzipped = unzipSync(readFileSync(zipFilePath));
 
   mkdirSync(destPath, { recursive: true });
@@ -19,23 +43,6 @@ export const unZipAndDelete = (zipFilePath: string, destPath: string) => {
   }
 
   unlinkSync(zipFilePath);
-};
-
-export const zipAndDeleteModuleWithTest = async (
-  moduleName: ModuleNameType,
-  pagesPath: string,
-  archivePath: string,
-  testsPath: string,
-) => {
-  const moduleTestName = `page-${moduleName}.test.ts`;
-
-  await zipFolder(resolve(pagesPath, moduleName), resolve(archivePath, `${moduleName}.zip`));
-  await zipFolder(testsPath, resolve(archivePath, `${moduleName}.test.zip`), [moduleTestName]);
-
-  const modulePath = resolve(pagesPath, moduleName);
-  const moduleTestsPath = resolve(testsPath, moduleTestName);
-
-  void rimraf([modulePath, moduleTestsPath]);
 };
 
 export const zipFolder = async (folderPath: string, out: string, filesToInclude?: string[]) => {
