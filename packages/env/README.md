@@ -23,7 +23,7 @@ To use the code in the package, you need to follow those steps:
    console.log(process.env.CEB_EXAMPLE);
    ```
    but with first solution, autofill should work for IDE:
-   ![img.png](img.png)
+   ![img.png](use-env-example.png)
 3. You are also able to import const like `IS_DEV` from `@extension/env` like:
    ```ts
     import { IS_DEV } from '@extension/env';
