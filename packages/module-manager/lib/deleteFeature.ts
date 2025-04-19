@@ -26,7 +26,7 @@ export const deleteFeature = async (manifestObject: ManifestType) => {
   const answer = await promptSelection(inputConfig);
 
   if (answer === 'devtools') {
-    await deleteModule(manifestObject, answer as ModuleNameType);
+    await deleteModule(manifestObject, answer as ModuleNameType, false);
     await deleteModule(manifestObject, 'devtools-panel');
   } else {
     await deleteModule(manifestObject, answer as ModuleNameType);
