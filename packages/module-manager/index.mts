@@ -5,9 +5,11 @@ import runModuleManager from './lib/runModuleManager.js';
 const cliOptions = processCLIArgs();
 
 if (cliOptions) {
-  for (const moduleName of cliOptions.targets) {
+  const targets = cliOptions.targets;
+  for (const moduleName of targets) {
     colorfulLog(`Processing module: ${moduleName}`, 'info');
-    void runModuleManager(moduleName, cliOptions.action);
+    const isLastIndex = targets.at(-1) === moduleName;
+    void runModuleManager(moduleName, cliOptions.action, isLastIndex);
   }
 } else {
   void runModuleManager();
