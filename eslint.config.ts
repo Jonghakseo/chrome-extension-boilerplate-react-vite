@@ -55,6 +55,13 @@ export default config(
       'prefer-const': 'error',
       'no-var': 'error',
       'func-style': ['error', 'expression', { allowArrowFunctions: true }],
+      'no-restricted-imports': [
+        'error',
+        {
+          name: 'type-fest',
+          message: 'Please import from `@extension/dev-utils` instead of `type-fest`.',
+        },
+      ],
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/consistent-type-exports': 'error',
       'import-x/order': [
