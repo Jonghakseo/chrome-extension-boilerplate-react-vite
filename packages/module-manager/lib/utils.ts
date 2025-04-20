@@ -79,7 +79,7 @@ export const checkCliArgsIsValid = <T extends Arguments>(argv: T) => {
 
   if (Array.isArray(values)) {
     for (const value of values) {
-      if (!DEFAULT_CHOICES_VALUES.some(moduleName => value.includes(moduleName))) {
+      if (!DEFAULT_CHOICES_VALUES.some(moduleName => value === moduleName)) {
         throw new Error(`All values after --${key} must be name of pages`);
       }
     }
