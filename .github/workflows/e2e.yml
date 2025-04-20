@@ -3,8 +3,8 @@ name: Run E2E Tests
 on:
   push:
     branches: [ main, dev ]
-  pull_request:
-    branches: [ main, dev ]
+  pull_request_target:
+    types: [ edited, reopened, ready_for_review ]
 
 jobs:
   chrome:
