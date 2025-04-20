@@ -3,7 +3,8 @@ name: Build And Upload Extension Zip Via Artifact
 on:
   push:
     branches: [ main, dev ]
-  pull_request:
+  pull_request_target:
+    types: [ edited, reopened, ready_for_review ]
 
 jobs:
   build:
