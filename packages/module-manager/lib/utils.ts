@@ -1,4 +1,5 @@
 import { DEFAULT_CHOICES_VALUES, EXIT_PROMPT_ERROR, MODULE_CONFIG } from './const.js';
+import { colorfulLog } from '@extension/shared';
 import { select } from '@inquirer/prompts';
 import { readdirSync } from 'node:fs';
 import type { CliEntries, InputConfigType, ModuleNameType, WritableModuleConfigValuesType } from './types.js';
@@ -9,7 +10,7 @@ export const isFolderEmpty = (path: string) => !readdirSync(path).length;
 
 export const promptSelection = async (inputConfig: InputConfigType) => {
   if (!inputConfig.choices.length) {
-    console.log('No choices available');
+    colorfulLog('No choices available', 'warning');
     process.exit(0);
   }
 
@@ -17,7 +18,7 @@ export const promptSelection = async (inputConfig: InputConfigType) => {
     if (err.name === EXIT_PROMPT_ERROR) {
       process.exit(0);
     } else {
-      console.error(err.message);
+      colorfulLog(err.message, 'error');
     }
   }) as Promise<string>;
 };

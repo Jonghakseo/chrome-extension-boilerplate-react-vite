@@ -1,5 +1,6 @@
 import { isFolderEmpty, processModuleConfig } from './utils.js';
 import { unZipAndDeleteModule, zipAndDeleteModule } from './zipUtils.js';
+import { colorfulLog } from '@extension/shared';
 import { existsSync, mkdirSync, rmdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { ModuleNameType } from './types.ts';
@@ -14,7 +15,7 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
   const zipTestFilePath = resolve(archivePath, `${moduleName}.test.zip`);
 
   if (!existsSync(zipFilePath) || (withTest && !existsSync(zipTestFilePath))) {
-    console.log(`No archive found for ${moduleName}`);
+    colorfulLog(`No archive found for ${moduleName}`, 'info');
     process.exit(0);
   }
 
@@ -26,7 +27,7 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
     unZipAndDeleteModule(zipTestFilePath, testsPath);
   }
 
-  console.log(`Recovered: ${moduleName}`);
+  colorfulLog(`Recovered: ${moduleName}`, 'info');
 
   if (isFolderEmpty(archivePath)) {
     rmdirSync(archivePath);
@@ -46,5 +47,5 @@ export const deleteModule = async (manifestObject: ManifestType, moduleName: Mod
     await zipAndDeleteModule(moduleName, pagesPath, archivePath);
   }
 
-  console.log(`Deleted: ${moduleName}`);
+  colorfulLog(`Deleted: ${moduleName}`, 'info');
 };
