@@ -23,4 +23,5 @@ export const colorfulLog = (message: string, type: ColorType) => {
   }
 
   console.info(color, message);
+  console.info(COLORS['Reset']);
 };
