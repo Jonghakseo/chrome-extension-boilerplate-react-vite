@@ -4,7 +4,7 @@ import runModuleManager from './lib/runModuleManager.js';
 
 const cliOptions = processCLIArgs();
 
-if (cliOptions && cliOptions.targets) {
+if (cliOptions) {
   for (const moduleName of cliOptions.targets) {
     colorfulLog(`Processing module: ${moduleName}`, 'info');
     void runModuleManager(moduleName, cliOptions.action);

@@ -16,7 +16,7 @@ export const processCLIArgs = (): ICLIOptions | null => {
     .strict()
     .example(HELP_EXAMPLES as WritableDeep<typeof HELP_EXAMPLES>)
     .help()
-    .showHelpOnFail()
+    .showHelpOnFail(true)
     .parseSync();
 
   if (argv.delete) {
