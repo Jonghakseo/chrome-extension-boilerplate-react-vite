@@ -20,5 +20,6 @@ jobs:
           comment: |
             Your PR's base branch was set to `main`, PRs should be set to target `dev`.
             The base branch of this PR has been automatically changed to `dev`, please check that there are no merge conflicts
+          already-exists-action: nothing
           already-exists-comment: "Closing {url} as it has the same base branch"
           already-exists-other-comment: "This PR was closed in favor of {url}"
