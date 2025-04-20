@@ -19,7 +19,7 @@ export default config(
   eslintPluginPrettierRecommended,
   ...fixupConfigRules(new FlatCompat().extends('plugin:react-hooks/recommended') as FixupConfigArray),
   {
-    files: ['**/*.{ts,tsx,mtsx}'],
+    files: ['**/*.{ts,tsx}'],
     ...reactPlugin.configs.flat.recommended,
     ...reactPlugin.configs.flat['jsx-runtime'],
   },
@@ -28,7 +28,7 @@ export default config(
     ignores: ['**/build/**', '**/dist/**', '**/node_modules/**', 'chrome-extension/manifest.js'],
   },
   {
-    files: ['**/*.{ts,tsx,mtsx}'],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 'latest',
@@ -92,6 +92,13 @@ export default config(
     },
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
+    },
+  },
+  // Overrides Rules
+  {
+    files: ['**/packages/dev-utils/**/*.ts'],
+    rules: {
+      'no-restricted-imports': 'off',
     },
   },
 );
