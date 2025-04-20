@@ -1,4 +1,4 @@
-import { DEFAULT_CHOICES_VALUES, EXIT_PROMPT_ERROR, MODULE_CONFIG } from './const.js';
+import { CLI_OPTIONS, DEFAULT_CHOICES_VALUES, EXIT_PROMPT_ERROR, MODULE_CONFIG } from './const.js';
 import { select } from '@inquirer/prompts';
 import { readdirSync } from 'node:fs';
 import type { CliEntries, InputConfigType, ModuleNameType, WritableModuleConfigValuesType } from './types.js';
@@ -77,9 +77,13 @@ export const processModuleConfig = (
 export const checkCliArgsIsValid = <T extends Arguments>(argv: T) => {
   const [key, values] = Object.entries(argv)[1] as CliEntries;
 
+  if (!CLI_OPTIONS.some(({ alias }) => alias === key)) {
+    throw new Error(`flag --${key} doesn't exists`);
+  }
+
   for (const value of values) {
     if (!DEFAULT_CHOICES_VALUES.some(moduleName => value.includes(moduleName))) {
-      throw new Error(`All values after --${key} must be name of page`);
+      throw new Error(`All values after --${key} must be name of pages`);
     }
   }
 };
