@@ -19,6 +19,9 @@
     "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
+  "dependencies": {
+    "@extension/ui": "workspace:*"
+  },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
     "@extension/vite-config": "workspace:*"

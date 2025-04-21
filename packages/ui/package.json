@@ -6,8 +6,7 @@
   "private": true,
   "sideEffects": true,
   "files": [
-    "dist/**",
-    "dist/global.css"
+    "dist/**"
   ],
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
@@ -32,6 +31,7 @@
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
+    "@extension/tailwindcss-config": "workspace:*",
     "react-spinners": "^0.15.0",
     "tsc-alias": "^1.8.13"
   }

@@ -1,3 +1,5 @@
+@import '@extension/ui/global.css';
+
 .runtime-content-view-text {
-  font-size: 20px;
+    font-size: 20px;
 }
