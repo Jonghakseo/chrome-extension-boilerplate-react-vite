@@ -1,10 +1,6 @@
 name: Formating validation
 
-on:
-  push:
-    branches: [ main, dev ]
-  pull_request_target:
-    types: [ edited, reopened, ready_for_review ]
+on: [ pull_request ]
 
 jobs:
   prettier:
