@@ -1,0 +1,7 @@
+{
+  "extends": "@extension/tsconfig/base",
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "include": ["tailwind.config.ts"]
+}
