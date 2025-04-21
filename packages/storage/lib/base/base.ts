@@ -149,10 +149,15 @@ export const createStorage = <D = string>(key: string, fallback: D, config?: Sto
     chrome?.storage[storageEnum].onChanged.addListener(_updateFromStorageOnChanged);
   }
 
+  const onChanged = (callback: (changes: { oldValue?: D; newValue?: D }) => void) => {
+    chrome.storage[storageEnum].onChanged.addListener(storageChange => callback(storageChange[key]));
+  };
+
   return {
     get,
     set,
     getSnapshot,
     subscribe,
+    onChanged,
   };
 };

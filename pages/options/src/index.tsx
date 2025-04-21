@@ -15,8 +15,8 @@ const init = () => {
 
   exampleThemeStorage.get().then(themeState => toggleTheme(themeState.theme));
 
-  chrome.storage.local.onChanged.addListener(changes => {
-    toggleTheme(changes['theme-storage-key'].newValue.theme as ThemeState['theme']);
+  exampleThemeStorage.onChanged(changes => {
+    toggleTheme(changes.newValue?.theme);
   });
 
   const appContainer = document.querySelector('#app-container');

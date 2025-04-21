@@ -7,6 +7,7 @@ export type BaseStorage<D> = {
   set: (value: ValueOrUpdate<D>) => Promise<void>;
   getSnapshot: () => D | null;
   subscribe: (listener: () => void) => () => void;
+  onChanged: (callback: (changes: { oldValue?: D; newValue?: D }) => void) => void;
 };
 
 export type StorageConfig<D = string> = {
