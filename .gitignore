@@ -25,5 +25,3 @@ tsconfig.tsbuildinfo
 **/tailwind-output.css
 
 .pnpm-store
-
-eslint.config.js
