@@ -16,16 +16,17 @@
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
-    "ready": "tsc -b && tsc-alias -p tsconfig.json",
+    "build:tailwind": "tailwindcss -i lib/styles.css -o dist/lib/ui.css --minify",
+    "ready": "tsc -b && tsc-alias -p tsconfig.json && pnpm build:tailwind",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@extension/i18n": "workspace:*",
     "@extension/shared": "workspace:*",
     "@extension/storage": "workspace:*",
-    "@extension/i18n": "workspace:*",
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.0.2"
   },
