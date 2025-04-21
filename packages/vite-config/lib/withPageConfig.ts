@@ -6,13 +6,11 @@ import { defineConfig } from 'vite';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import type { UserConfig } from 'vite';
 
+// todo: nie dziala workflow zaraz po otwarciu
 export const watchOption = IS_DEV
   ? {
-      exclude: [/\/pages\/content-ui\/dist\/.*\.(css)$/],
-      delay: 500,
       chokidar: {
         awaitWriteFinish: true,
-        ignored: [/\/packages\/.*\.(ts|tsx|map)$/, /\/pages\/content-ui\/dist\/.*/],
       },
     }
   : undefined;
