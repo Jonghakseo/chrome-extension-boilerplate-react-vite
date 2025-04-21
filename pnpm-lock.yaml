@@ -263,7 +263,11 @@ importers:
         specifier: workspace:*
         version: link:../tsconfig
 
-  packages/tailwind-config: {}
+  packages/tailwindcss-config:
+    devDependencies:
+      '@extension/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
 
   packages/tsconfig: {}
 
@@ -285,6 +289,9 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
     devDependencies:
+      '@extension/tailwindcss-config':
+        specifier: workspace:*
+        version: link:../tailwindcss-config
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -346,6 +353,10 @@ importers:
         version: link:../../packages/vite-config
 
   pages/content-runtime:
+    dependencies:
+      '@extension/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
     devDependencies:
       '@extension/tsconfig':
         specifier: workspace:*
@@ -374,7 +385,7 @@ importers:
         version: link:../../packages/hmr
       '@extension/tailwindcss-config':
         specifier: workspace:*
-        version: link:../../packages/tailwind-config
+        version: link:../../packages/tailwindcss-config
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -412,7 +423,7 @@ importers:
     devDependencies:
       '@extension/tailwindcss-config':
         specifier: workspace:*
-        version: link:../../packages/tailwind-config
+        version: link:../../packages/tailwindcss-config
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -437,7 +448,7 @@ importers:
     devDependencies:
       '@extension/tailwindcss-config':
         specifier: workspace:*
-        version: link:../../packages/tailwind-config
+        version: link:../../packages/tailwindcss-config
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -465,7 +476,7 @@ importers:
     devDependencies:
       '@extension/tailwindcss-config':
         specifier: workspace:*
-        version: link:../../packages/tailwind-config
+        version: link:../../packages/tailwindcss-config
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -490,7 +501,7 @@ importers:
     devDependencies:
       '@extension/tailwindcss-config':
         specifier: workspace:*
-        version: link:../../packages/tailwind-config
+        version: link:../../packages/tailwindcss-config
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -515,7 +526,7 @@ importers:
     devDependencies:
       '@extension/tailwindcss-config':
         specifier: workspace:*
-        version: link:../../packages/tailwind-config
+        version: link:../../packages/tailwindcss-config
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
