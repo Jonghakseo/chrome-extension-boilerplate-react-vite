@@ -18,7 +18,7 @@
 
 > This boilerplate
 > has [Legacy version](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/tree/legacy)
-
+sssss
 </div>
 
 > [!NOTE]
