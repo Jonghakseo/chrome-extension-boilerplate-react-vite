@@ -1,6 +1,13 @@
 name: Lint Check
 
-on: [ pull_request_target ]
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - ready_for_review
+      - edited
+      - synchronize
 
 jobs:
   eslint:
