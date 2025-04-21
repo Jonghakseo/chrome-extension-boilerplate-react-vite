@@ -42,7 +42,6 @@ Add the following to the first line of `index.css` file.
 
 ```css
 @import '@extension/ui/global.css';
-@import '@extension/ui/dist/lib/ui.css';
 ```
 
 ## Add Custom Component
