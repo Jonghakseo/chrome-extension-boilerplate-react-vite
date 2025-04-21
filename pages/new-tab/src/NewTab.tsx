@@ -1,29 +1,30 @@
 import '@src/NewTab.css';
 import '@src/NewTab.scss';
+import { ErrorDisplay, LoadingSpinner, ToggleButton } from '@extension/ui';
+import { withErrorBoundary, withSuspense } from '@extension/shared';
 import { t } from '@extension/i18n';
-import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
-import { exampleThemeStorage } from '@extension/storage';
-import { cn, ErrorDisplay, LoadingSpinner, ToggleButton } from '@extension/ui';
 
 const NewTab = () => {
-  const { isLight } = useStorage(exampleThemeStorage);
-  const logo = isLight ? 'new-tab/logo_horizontal.svg' : 'new-tab/logo_horizontal_dark.svg';
-
   const goGithubSite = () =>
     chrome.tabs.create({ url: 'https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite' });
 
   console.log(t('hello', 'World'));
   return (
-    <div className={cn('App', isLight ? 'bg-slate-50' : 'bg-gray-800')}>
-      <header className={cn('App-header', isLight ? 'text-gray-900' : 'text-gray-100')}>
+    <div className="App bg-slate-50 dark:bg-gray-800">
+      <header className="App-header text-gray-900 dark:text-gray-100">
         <button onClick={goGithubSite}>
-          <img src={chrome.runtime.getURL(logo)} className="App-logo" alt="logo" />
+          <img src={chrome.runtime.getURL('new-tab/logo_horizontal.svg')} className="App-logo dark:hidden" alt="logo" />
+          <img
+            src={chrome.runtime.getURL('new-tab/logo_horizontal_dark.svg')}
+            className="App-logo hidden dark:block"
+            alt="logo"
+          />
         </button>
         <p>
           Edit <code>pages/new-tab/src/NewTab.tsx</code>
         </p>
         <h6>The color of this paragraph is defined using SASS.</h6>
-        <ToggleButton onClick={exampleThemeStorage.toggle}>{t('toggleTheme')}</ToggleButton>
+        <ToggleButton>{t('toggleTheme')}</ToggleButton>
       </header>
     </div>
   );
