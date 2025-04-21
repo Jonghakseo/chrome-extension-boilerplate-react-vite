@@ -2,6 +2,10 @@ name: Run E2E Tests
 
 on:
   pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   chrome:

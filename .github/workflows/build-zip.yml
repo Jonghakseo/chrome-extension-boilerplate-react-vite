@@ -2,6 +2,10 @@ name: Build And Upload Extension Zip Via Artifact
 
 on:
   pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   build:
