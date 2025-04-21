@@ -1,6 +1,6 @@
 name: Build And Upload Extension Zip Via Artifact
 
-on: [ pull_request ]
+on: [ pull_request_target ]
 
 jobs:
   build:
