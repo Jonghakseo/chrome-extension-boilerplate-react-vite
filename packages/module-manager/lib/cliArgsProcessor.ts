@@ -34,22 +34,16 @@ export const processCLIArgs = (): ICLIOptions | null => {
   }
 
   if (argv.deleteExclude) {
-    const moduleNames = argv.deleteExclude;
-    const targets = excludeValuesFromBaseArray(DEFAULT_CHOICES_VALUES, moduleNames);
-
     return {
       action: 'delete',
-      targets,
+      targets: excludeValuesFromBaseArray(DEFAULT_CHOICES_VALUES, argv.deleteExclude),
     };
   }
 
   if (argv.recoverExclude) {
-    const moduleNames = argv.recoverExclude;
-    const targets = excludeValuesFromBaseArray(DEFAULT_CHOICES_VALUES, moduleNames);
-
     return {
       action: 'recover',
-      targets,
+      targets: excludeValuesFromBaseArray(DEFAULT_CHOICES_VALUES, argv.recoverExclude),
     };
   }
 
