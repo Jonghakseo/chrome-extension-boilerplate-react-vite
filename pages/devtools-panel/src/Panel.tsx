@@ -1,6 +1,7 @@
 import '@src/Panel.css';
 import { t } from '@extension/i18n';
 import { withErrorBoundary, withSuspense } from '@extension/shared';
+import { exampleThemeStorage } from '@extension/storage/lib';
 import { cn, ErrorDisplay, LoadingSpinner } from '@extension/ui';
 import type { ComponentPropsWithoutRef } from 'react';
 
@@ -33,14 +34,6 @@ const Panel = () => {
 };
 
 const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
-  const onClick = async () => {
-    chrome.storage.local.get(['theme']).then(({ theme }) => {
-      chrome.storage.local.set({
-        theme: theme === 'dark' ? 'light' : 'dark',
-      });
-    });
-  };
-
   return (
     <button
       className={cn(
@@ -48,7 +41,7 @@ const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
         'font-bold mt-4 py-1 px-4 rounded shadow hover:scale-105 ',
         'bg-white text-black dark:bg-black dark:text-white',
       )}
-      onClick={onClick}>
+      onClick={exampleThemeStorage.toggle}>
       {props.children}
     </button>
   );

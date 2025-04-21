@@ -1,17 +1,10 @@
-import type { ComponentPropsWithoutRef } from 'react';
 import { cn } from '@/lib/utils';
+import { exampleThemeStorage } from '@extension/storage/lib';
+import type { ComponentPropsWithoutRef } from 'react';
 
 type ToggleButtonProps = ComponentPropsWithoutRef<'button'>;
 
 export const ToggleButton = ({ className, children, ...props }: ToggleButtonProps) => {
-  const onClick = async () => {
-    chrome.storage.local.get(['theme']).then(({ theme }) => {
-      chrome.storage.local.set({
-        theme: theme === 'dark' ? 'light' : 'dark',
-      });
-    });
-  };
-
   return (
     <button
       className={cn(
@@ -19,7 +12,7 @@ export const ToggleButton = ({ className, children, ...props }: ToggleButtonProp
         'dark:bg-black dark:text-white dark:border-white',
         className,
       )}
-      onClick={onClick}
+      onClick={exampleThemeStorage.toggle}
       {...props}>
       {children}
     </button>
