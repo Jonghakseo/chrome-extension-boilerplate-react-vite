@@ -2,12 +2,6 @@ name: Run E2E Tests
 
 on:
   pull_request_target:
-    types:
-      - opened
-      - reopened
-      - ready_for_review
-      - edited
-      - synchronize
 
 jobs:
   chrome:
