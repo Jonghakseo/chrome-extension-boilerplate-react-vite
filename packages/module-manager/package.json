@@ -13,9 +13,9 @@
     "postinstall": "cd ../.. && pnpm -F dev-utils ready"
   },
   "devDependencies": {
-    "@extension/tsconfig": "workspace:*",
     "@extension/dev-utils": "workspace:*",
-    "@inquirer/prompts": "^7.4.0",
+    "@extension/tsconfig": "workspace:*",
+    "@inquirer/prompts": "^7.4.1",
     "tsx": "^4.19.3"
   }
 }
