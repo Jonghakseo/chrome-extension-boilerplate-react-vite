@@ -51,9 +51,6 @@ importers:
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
-      esbuild:
-        specifier: ^0.25.1
-        version: 0.25.3
       eslint:
         specifier: ^9.25.1
         version: 9.25.1(jiti@2.4.2)
@@ -171,7 +168,7 @@ importers:
         version: 0.30.17
       ts-loader:
         specifier: ^9.5.2
-        version: 9.5.2(typescript@5.8.3)(webpack@5.94.0(@swc/core@1.11.22)(esbuild@0.25.3))
+        version: 9.5.2(typescript@5.8.3)(webpack@5.94.0(@swc/core@1.11.22))
 
   packages/dev-utils:
     devDependencies:
@@ -9166,17 +9163,16 @@ snapshots:
       fast-fifo: 1.3.2
       streamx: 2.22.0
 
-  terser-webpack-plugin@5.3.14(@swc/core@1.11.22)(esbuild@0.25.3)(webpack@5.94.0(@swc/core@1.11.22)(esbuild@0.25.3)):
+  terser-webpack-plugin@5.3.14(@swc/core@1.11.22)(webpack@5.94.0(@swc/core@1.11.22)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
       schema-utils: 4.3.2
       serialize-javascript: 6.0.2
       terser: 5.39.0
-      webpack: 5.94.0(@swc/core@1.11.22)(esbuild@0.25.3)
+      webpack: 5.94.0(@swc/core@1.11.22)
     optionalDependencies:
       '@swc/core': 1.11.22
-      esbuild: 0.25.3
 
   terser@5.39.0:
     dependencies:
@@ -9222,7 +9218,7 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-loader@9.5.2(typescript@5.8.3)(webpack@5.94.0(@swc/core@1.11.22)(esbuild@0.25.3)):
+  ts-loader@9.5.2(typescript@5.8.3)(webpack@5.94.0(@swc/core@1.11.22)):
     dependencies:
       chalk: 4.1.2
       enhanced-resolve: 5.18.1
@@ -9230,7 +9226,7 @@ snapshots:
       semver: 7.7.1
       source-map: 0.7.4
       typescript: 5.8.3
-      webpack: 5.94.0(@swc/core@1.11.22)(esbuild@0.25.3)
+      webpack: 5.94.0(@swc/core@1.11.22)
 
   ts-node@10.9.2(@swc/core@1.11.22)(@types/node@22.14.1)(typescript@5.8.3):
     dependencies:
@@ -9541,7 +9537,7 @@ snapshots:
 
   webpack-sources@3.2.3: {}
 
-  webpack@5.94.0(@swc/core@1.11.22)(esbuild@0.25.3):
+  webpack@5.94.0(@swc/core@1.11.22):
     dependencies:
       '@types/estree': 1.0.7
       '@webassemblyjs/ast': 1.14.1
@@ -9563,7 +9559,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.14(@swc/core@1.11.22)(esbuild@0.25.3)(webpack@5.94.0(@swc/core@1.11.22)(esbuild@0.25.3))
+      terser-webpack-plugin: 5.3.14(@swc/core@1.11.22)(webpack@5.94.0(@swc/core@1.11.22))
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:
