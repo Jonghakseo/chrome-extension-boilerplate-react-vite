@@ -12,13 +12,13 @@
     "clean": "pnpm clean:turbo && pnpm clean:node_modules"
   },
   "devDependencies": {
-    "@extension/tsconfig": "workspace:*",
     "@extension/env": "workspace:*",
-    "@wdio/cli": "^9.4.5",
-    "@wdio/globals": "^9.4.5",
-    "@wdio/local-runner": "^9.1.2",
-    "@wdio/mocha-framework": "^9.1.2",
-    "@wdio/spec-reporter": "^9.2.14",
-    "@wdio/types": "^9.1.2"
+    "@extension/tsconfig": "workspace:*",
+    "@wdio/cli": "^9.12.7",
+    "@wdio/globals": "^9.12.7",
+    "@wdio/local-runner": "^9.12.7",
+    "@wdio/mocha-framework": "^9.12.6",
+    "@wdio/spec-reporter": "^9.12.6",
+    "@wdio/types": "^9.12.6"
   }
 }
