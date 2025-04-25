@@ -1,5 +1,13 @@
 packages:
-  - 'chrome-extension'
-  - 'pages/*'
-  - 'packages/*'
-  - 'tests/*'
+  - chrome-extension
+  - pages/*
+  - packages/*
+  - tests/*
+
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@swc/core'
+  - edgedriver
+  - esbuild
+  - geckodriver
+  - unrs-resolver
