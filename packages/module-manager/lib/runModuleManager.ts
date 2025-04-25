@@ -1,3 +1,4 @@
+import { MANAGER_ACTION_PROMPT_CONFIG } from './const.js';
 import { deleteFeature } from './deleteFeature.js';
 import { recoverFeature } from './recoverFeature.js';
 import { promptSelection } from './utils.js';
@@ -5,30 +6,25 @@ import manifest from '../../../chrome-extension/manifest.js';
 import { execSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import type { ManifestType } from '@extension/dev-utils';
+import type { CliActionType, ModuleNameType } from './types.js';
+import type { ManifestType } from '@extension/shared';
 
 const manifestPath = resolve(import.meta.dirname, '..', '..', '..', 'chrome-extension', 'manifest.ts');
 
 const manifestObject = JSON.parse(JSON.stringify(manifest)) as ManifestType;
 const manifestString = readFileSync(manifestPath, 'utf-8');
 
-const runModuleManager = async () => {
-  const inputConfig = {
-    message: 'Choose a tool',
-    choices: [
-      { name: 'Delete Feature', value: 'delete' },
-      { name: 'Recover Feature', value: 'recover' },
-    ],
-  } as const;
+const runModuleManager = async (moduleName?: ModuleNameType, action?: CliActionType, runLinter = true) => {
+  if (!action) {
+    action = (await promptSelection(MANAGER_ACTION_PROMPT_CONFIG)) as Awaited<CliActionType>;
+  }
 
-  const tool = await promptSelection(inputConfig);
-
-  switch (tool) {
+  switch (action) {
     case 'delete':
-      await deleteFeature(manifestObject);
+      await deleteFeature(manifestObject, moduleName);
       break;
     case 'recover':
-      await recoverFeature(manifestObject);
+      await recoverFeature(manifestObject, moduleName);
   }
 
   const updatedManifest = manifestString
@@ -44,10 +40,12 @@ const runModuleManager = async () => {
     cwd: resolve('..', '..'),
   });
 
-  execSync('pnpm -F chrome-extension lint:fix', {
-    stdio: 'inherit',
-    cwd: resolve('..', '..'),
-  });
+  if (runLinter) {
+    execSync('pnpm -F chrome-extension lint:fix', {
+      stdio: 'inherit',
+      cwd: resolve('..', '..'),
+    });
+  }
 };
 
 export default runModuleManager;

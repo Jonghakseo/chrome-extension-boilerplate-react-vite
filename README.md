@@ -137,11 +137,7 @@ can use only `content-script` without `@extension/` prefix
 
 ## How do I disable modules I'm not using?
 
-```bash
-$ pnpm module-manager
-```
-
-Read: [Module Manager](packages/module-manager/README.md)
+[Read here](packages/module-manager/README.md)
 
 ## Environment variables
 
