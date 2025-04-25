@@ -14,6 +14,30 @@ export const DEFAULT_CHOICES = [
   { name: 'Options Page', value: 'options' },
 ] as const;
 
+export const DEFAULT_CHOICES_VALUES = DEFAULT_CHOICES.map(item => item.value);
+
+export const HELP_EXAMPLES = [
+  ['-d content-ui content-runtime', 'Delete content-ui and content-runtime'],
+  ['--de content devtools', 'Delete everything exclude content and devtools'],
+  ['-r options side-panel', 'Recover options and side-panel'],
+  ['--re popup new-tab', 'Recover everything exclude popup and new-tab'],
+] as const;
+
+export const CLI_OPTIONS = [
+  { alias: 'd', type: 'array', description: 'Delete specified features' },
+  { alias: 'r', type: 'array', description: 'Recover specified features' },
+  { alias: 'de', type: 'array', description: 'Delete all features except specified' },
+  { alias: 're', type: 'array', description: 'Recover all features except specified' },
+] as const;
+
+export const MANAGER_ACTION_PROMPT_CONFIG = {
+  message: 'Choose a tool',
+  choices: [
+    { name: 'Delete Feature', value: 'delete' },
+    { name: 'Recover Feature', value: 'recover' },
+  ],
+} as const;
+
 export const MODULE_CONFIG = {
   content: {
     content_scripts: {
