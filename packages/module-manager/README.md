@@ -10,11 +10,27 @@ Module manager is a tool to manage modules in a project. It can be used to delet
 $ pnpm module-manager
 ```
 
+OR
+
+```bash
+pnpm module-manager -d popup
+```
+
 ### On Module
 
 ```bash
 $ pnpm start
 ```
+
+OR
+
+```bash
+pnpm start -d popup
+```
+
+> [!INFO]  
+> For complete info about CLI support run:
+> ```bash pnpm module-manager --help ```
 
 ### Choose a tool
 
@@ -28,11 +44,13 @@ $ pnpm start
 
 ### Delete Feature
 
-When you select an unused module, Module Manager compresses the contents of that folder, takes a snapshot of it, and removes it. It also automatically removes anything that needs to be cleared from the manifest.
+When you select an unused module, Module Manager compresses the contents of that folder, takes a snapshot of it, and removes it.
+
+It also automatically removes anything that needs to be cleared from the manifest.
 
 ### Recover Feature
 
 When you select a module that has been deleted, Module Manager will recover the module from the snapshot and add it back to the manifest.
 
 > [!IMPORTANT]  
-> SAVE ALL FILES FROM /ARCHIVE, WITHOUT THOSE FILES RECOVERING PROCESS WON'T WORK
+> SAVE ALL FILES FROM /ARCHIVE, WITHOUT THESE FILES' RECOVERING PROCESS WON'T WORK

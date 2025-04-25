@@ -172,12 +172,12 @@ importers:
 
   packages/dev-utils:
     devDependencies:
+      '@extension/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
-      type-fest:
-        specifier: ^4.40.0
-        version: 4.40.0
 
   packages/env:
     dependencies:
@@ -231,15 +231,24 @@ importers:
       '@extension/dev-utils':
         specifier: workspace:*
         version: link:../dev-utils
+      '@extension/shared':
+        specifier: workspace:*
+        version: link:../shared
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
       '@inquirer/prompts':
         specifier: ^7.4.1
         version: 7.4.1(@types/node@22.14.1)
+      '@types/yargs':
+        specifier: ^17.0.33
+        version: 17.0.33
       tsx:
         specifier: ^4.19.3
         version: 4.19.3
+      yargs:
+        specifier: ^17.7.2
+        version: 17.7.2
 
   packages/shared:
     dependencies:
@@ -253,6 +262,9 @@ importers:
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      type-fest:
+        specifier: ^4.40.0
+        version: 4.40.0
 
   packages/storage:
     devDependencies:
