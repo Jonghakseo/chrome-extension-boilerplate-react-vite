@@ -33,7 +33,7 @@ interface IBuilderProps {
   contentName: 'content' | 'content-ui';
 }
 
-const configBuilder = ({ matchesDir, srcDir, rootDir, contentName }: IBuilderProps) =>
+const configsBuilder = ({ matchesDir, srcDir, rootDir, contentName }: IBuilderProps) =>
   Object.entries(getContentScriptEntries(matchesDir)).map(([name, entry]) => ({
     name,
     config: withPageConfig({
@@ -50,7 +50,7 @@ const configBuilder = ({ matchesDir, srcDir, rootDir, contentName }: IBuilderPro
           name: name,
           formats: ['iife'],
           entry,
-          fileName: `${name}/index.iife.js`,
+          fileName: name,
         },
         outDir: resolve(rootDir, '..', '..', 'dist', contentName),
       },
@@ -58,7 +58,7 @@ const configBuilder = ({ matchesDir, srcDir, rootDir, contentName }: IBuilderPro
   }));
 
 interface IBuildsProps extends Omit<IBuilderProps, 'srcDir' | 'contentName'> {
-  configs: ReturnType<typeof configBuilder>;
+  configs: ReturnType<typeof configsBuilder>;
 }
 
 const builds = async ({ configs, rootDir, matchesDir }: IBuildsProps) =>
@@ -79,6 +79,6 @@ const builds = async ({ configs, rootDir, matchesDir }: IBuildsProps) =>
 
 // FIXME: USE THIS FOR BOTH CONTENTS
 export const contentBuilder = async ({ matchesDir, srcDir, rootDir, contentName }: IBuilderProps) => {
-  const configs = configBuilder({ matchesDir, srcDir, rootDir, contentName });
+  const configs = configsBuilder({ matchesDir, srcDir, rootDir, contentName });
   return builds({ configs, rootDir, matchesDir });
 };
