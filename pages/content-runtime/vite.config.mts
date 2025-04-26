@@ -1,7 +1,6 @@
 import { resolve } from 'node:path';
 import { getContentScriptEntries } from '@extension/content-script-matches-plugin';
 import { withPageConfig } from '@extension/vite-config';
-import { bundleContentScriptWithHmr } from '@extension/hmr';
 
 const rootDir = resolve(import.meta.dirname);
 const srcDir = resolve(rootDir, 'src');
@@ -25,5 +24,4 @@ export default withPageConfig({
       },
     },
   },
-  plugins: [bundleContentScriptWithHmr('content-runtime')],
 });
