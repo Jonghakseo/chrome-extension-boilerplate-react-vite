@@ -1,7 +1,7 @@
-import { resolve } from 'node:path';
 import { IS_DEV, IS_PROD } from '@extension/env';
 import { buildSync } from 'esbuild';
-import fg from 'fast-glob';
+import fs from 'fast-glob';
+import { resolve } from 'node:path';
 import type { PluginOption } from 'vite';
 
 /**
@@ -13,7 +13,8 @@ export const bundleContentScriptWithHmr = (scriptName: string): PluginOption => 
     enforce: 'post',
     writeBundle() {
       const distContentDir = resolve(import.meta.dirname, '..', '..', '..', '..', '..', 'dist', scriptName);
-      const entryPoints = fg
+      // eslint-disable-next-line import-x/no-named-as-default-member
+      const entryPoints = fs
         .sync('*.js', {
           cwd: resolve(import.meta.dirname, '..', '..', '..', '..', '..', 'pages', scriptName, 'dist', 'matches'),
           absolute: true,
