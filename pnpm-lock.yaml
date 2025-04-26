@@ -170,6 +170,15 @@ importers:
         specifier: ^9.5.2
         version: 9.5.2(typescript@5.8.3)(webpack@5.94.0(@swc/core@1.11.24))
 
+  packages/content-script-matches-plugin:
+    devDependencies:
+      '@extension/env':
+        specifier: workspace:*
+        version: link:../env
+      '@extension/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+
   packages/dev-utils:
     devDependencies:
       '@extension/shared':
