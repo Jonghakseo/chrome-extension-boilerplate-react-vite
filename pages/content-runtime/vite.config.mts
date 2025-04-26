@@ -1,6 +1,5 @@
 import { resolve } from 'node:path';
-import { getContentScriptEntries } from '@extension/content-script-matches-plugin';
-import { withPageConfig } from '@extension/vite-config';
+import { getContentScriptEntries, withPageConfig } from '@extension/vite-config';
 
 const rootDir = resolve(import.meta.dirname);
 const srcDir = resolve(rootDir, 'src');
