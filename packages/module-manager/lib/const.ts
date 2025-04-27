@@ -41,16 +41,28 @@ export const MANAGER_ACTION_PROMPT_CONFIG = {
 
 export const MODULE_CONFIG = {
   content: {
-    content_scripts: {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: [`content/index.iife.js`],
-    },
+    content_scripts: [
+      {
+        matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+        js: ['content/all.iife.js'],
+      },
+      {
+        matches: ['https://example.com/*'],
+        js: ['content/example.iife.js'],
+      },
+    ],
   },
   'content-ui': {
-    content_scripts: {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: [`content-ui/index.iife.js`],
-    },
+    content_scripts: [
+      {
+        matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+        js: ['content-ui/all.iife.js'],
+      },
+      {
+        matches: ['https://example.com/*'],
+        js: ['content-ui/example.iife.js'],
+      },
+    ],
   },
   background: {
     background: {
