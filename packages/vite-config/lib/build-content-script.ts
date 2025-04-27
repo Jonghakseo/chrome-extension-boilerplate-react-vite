@@ -6,6 +6,20 @@ import { build } from 'vite';
 import { readdirSync, statSync } from 'node:fs';
 import { resolve } from 'node:path';
 
+interface IContentBuilderProps {
+  matchesDir: string;
+  srcDir: string;
+  rootDir: string;
+  contentName: 'content' | 'content-ui';
+  withTw: boolean;
+}
+
+type BuilderPropsType = Omit<IContentBuilderProps, 'withTw'>;
+
+interface IBuildsProps extends Omit<IContentBuilderProps, 'srcDir' | 'contentName'> {
+  configs: ReturnType<typeof configsBuilder>;
+}
+
 const getContentScriptEntries = (matchesDir: string) => {
   const entryPoints: Record<string, string> = {};
   const entries = readdirSync(matchesDir);
@@ -26,14 +40,7 @@ const getContentScriptEntries = (matchesDir: string) => {
   return entryPoints;
 };
 
-interface IBuilderProps {
-  matchesDir: string;
-  srcDir: string;
-  rootDir: string;
-  contentName: 'content' | 'content-ui';
-}
-
-const configsBuilder = ({ matchesDir, srcDir, rootDir, contentName }: IBuilderProps) =>
+const configsBuilder = ({ matchesDir, srcDir, rootDir, contentName }: BuilderPropsType) =>
   Object.entries(getContentScriptEntries(matchesDir)).map(([name, entry]) => ({
     name,
     config: withPageConfig({
@@ -57,28 +64,33 @@ const configsBuilder = ({ matchesDir, srcDir, rootDir, contentName }: IBuilderPr
     }),
   }));
 
-interface IBuildsProps extends Omit<IBuilderProps, 'srcDir' | 'contentName'> {
-  configs: ReturnType<typeof configsBuilder>;
-}
-
-const builds = async ({ configs, rootDir, matchesDir }: IBuildsProps) =>
+const builds = async ({ configs, rootDir, matchesDir, withTw }: IBuildsProps) =>
   configs.map(async ({ name, config }) => {
-    const folder = resolve(matchesDir, name);
-    const args = {
-      ['--input']: resolve(folder, 'index.css'),
-      ['--output']: resolve(rootDir, 'dist', name, 'index.css'),
-      ['--config']: resolve(rootDir, 'tailwind.config.ts'),
-      ['--watch']: IS_DEV,
-    };
+    if (withTw) {
+      const folder = resolve(matchesDir, name);
+      const args = {
+        ['--input']: resolve(folder, 'index.css'),
+        ['--output']: resolve(rootDir, 'dist', name, 'index.css'),
+        ['--config']: resolve(rootDir, 'tailwind.config.ts'),
+        ['--watch']: IS_DEV,
+      };
 
-    await buildTW(args);
+      await buildTW(args);
+    }
+
     //@ts-expect-error This is hidden property from vite's resolveConfig()
     config.configFile = false;
     return build(config);
   });
 
 // FIXME: USE THIS FOR BOTH CONTENTS
-export const contentBuilder = async ({ matchesDir, srcDir, rootDir, contentName }: IBuilderProps) => {
+export const contentBuilder = async ({
+  matchesDir,
+  srcDir,
+  rootDir,
+  contentName,
+  withTw = true,
+}: IContentBuilderProps) => {
   const configs = configsBuilder({ matchesDir, srcDir, rootDir, contentName });
-  return builds({ configs, rootDir, matchesDir });
+  return builds({ configs, rootDir, matchesDir, withTw });
 };
