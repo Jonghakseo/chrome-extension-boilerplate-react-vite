@@ -27,7 +27,7 @@ const Popup = () => {
     await chrome.scripting
       .executeScript({
         target: { tabId: tab.id! },
-        files: ['/content-runtime/example.iife.js'],
+        files: ['/content-runtime/example.iife.js', '/content-runtime/all.iife.js'],
       })
       .catch(err => {
         // Handling errors related to other paths
@@ -52,7 +52,7 @@ const Popup = () => {
             isLight ? 'bg-blue-200 text-black' : 'bg-gray-700 text-white',
           )}
           onClick={injectContentScript}>
-          Click to inject Content Script
+          {t('injectButton')}
         </button>
         <ToggleButton>{t('toggleTheme')}</ToggleButton>
       </header>

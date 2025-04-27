@@ -10,6 +10,9 @@
   "toggleTheme": {
     "message": "테마 변경"
   },
+  "injectButton": {
+    "message": "콘텐츠 스크립트를 삽입하려면 클릭하세요."
+  },
   "greeting": {
     "description": "인사 메시지",
     "message": "안녕하세요, 제 이름은 $NAME$입니다.",

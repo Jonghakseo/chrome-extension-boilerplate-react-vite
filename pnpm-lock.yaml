@@ -369,6 +369,9 @@ importers:
 
   pages/content-runtime:
     dependencies:
+      '@extension/env':
+        specifier: workspace:*
+        version: link:../../packages/env
       '@extension/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -376,6 +379,9 @@ importers:
       '@extension/hmr':
         specifier: workspace:*
         version: link:../../packages/hmr
+      '@extension/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
