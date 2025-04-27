@@ -39,6 +39,7 @@
 - [Getting started](#getting-started)
     - [Chrome](#getting-started-chrome)
     - [Firefox](#getting-started-firefox)
+- [With docker](#with-docker)
 - [Install dependency](#install-dependency)
     - [For root](#install-dependency-for-root)
     - [For module](#install-dependency-for-module)
@@ -134,6 +135,26 @@ the build speed and development experience by using Vite and Turborepo.
 `package` - Name of the package you want to install e.g. `nodemon` \
 `module-name` - You can find it inside each `package.json` under the key `name`, e.g. `@extension/content-script`, you
 can use only `content-script` without `@extension/` prefix
+
+## With docker
+First, you will have to update the file `./.husky/pre-commit`, replace 
+```bash
+pnpm dlx lint-staged --allow-empty
+```
+To
+```bash
+docker compose exec -T node pnpm dlx lint-staged --allow-empty
+```
+
+Then you can build your entire extension with just this command :
+
+```bash
+docker compose up
+```
+
+Depending on which browser you want to target you have a "TARGET" environment variable in ./docker-compose.yml
+
+By default, you will build a Chrome extension, if you want a firefox extension you can just uncomment the "TARGET" variable
 
 ## How do I disable modules I'm not using?
 

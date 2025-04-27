@@ -1,0 +1,14 @@
+services:
+  node:
+    container_name: extension-boilerplate
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    # Replace with your current user PID/GID if you are on linux you can know which one it is with the command "id"
+    user: 1000:1000
+    # Uncomment these lines if you want to build a firefox extension
+    #environment:
+    #  TARGET: firefox
+    network_mode: host
+    volumes:
+      - .:/app
