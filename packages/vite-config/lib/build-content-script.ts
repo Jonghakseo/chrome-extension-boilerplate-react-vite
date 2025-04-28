@@ -10,15 +10,11 @@ interface IContentBuilderProps {
   matchesDir: string;
   srcDir: string;
   rootDir: string;
-  contentName: 'content' | 'content-ui';
+  contentName: 'content' | 'content-ui' | 'content-runtime';
   withTw: boolean;
 }
 
 type BuilderPropsType = Omit<IContentBuilderProps, 'withTw'>;
-
-interface IBuildsProps extends Omit<IContentBuilderProps, 'srcDir' | 'contentName'> {
-  configs: ReturnType<typeof configsBuilder>;
-}
 
 const getContentScriptEntries = (matchesDir: string) => {
   const entryPoints: Record<string, string> = {};
@@ -64,8 +60,8 @@ const configsBuilder = ({ matchesDir, srcDir, rootDir, contentName }: BuilderPro
     }),
   }));
 
-const builds = async ({ configs, rootDir, matchesDir, withTw }: IBuildsProps) =>
-  configs.map(async ({ name, config }) => {
+const builds = async ({ srcDir, contentName, rootDir, matchesDir, withTw }: IContentBuilderProps) =>
+  configsBuilder({ matchesDir, srcDir, rootDir, contentName }).map(async ({ name, config }) => {
     if (withTw) {
       const folder = resolve(matchesDir, name);
       const args = {
@@ -83,14 +79,18 @@ const builds = async ({ configs, rootDir, matchesDir, withTw }: IBuildsProps) =>
     return build(config);
   });
 
-// FIXME: USE THIS FOR BOTH CONTENTS
+// FIXME: USE THIS FOR ALL CONTENT SCRIPTs
 export const contentBuilder = async ({
   matchesDir,
   srcDir,
   rootDir,
   contentName,
   withTw = true,
-}: IContentBuilderProps) => {
-  const configs = configsBuilder({ matchesDir, srcDir, rootDir, contentName });
-  return builds({ configs, rootDir, matchesDir, withTw });
-};
+}: IContentBuilderProps) =>
+  builds({
+    srcDir,
+    contentName,
+    rootDir,
+    matchesDir,
+    withTw,
+  });
