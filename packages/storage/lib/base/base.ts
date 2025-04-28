@@ -3,7 +3,7 @@ import type { BaseStorage, StorageConfig, ValueOrUpdate } from '../types.js';
 
 /**
  * Chrome reference error while running `processTailwindFeatures` in tailwindcss.
- *  To avoid this, we need to check if the globalThis.chrome is available and add fallback logic.
+ *  To avoid this, we need to check if globalThis.chrome is available and add fallback logic.
  */
 const chrome = globalThis.chrome;
 
@@ -12,16 +12,12 @@ const chrome = globalThis.chrome;
  */
 const updateCache = async <D>(valueOrUpdate: ValueOrUpdate<D>, cache: D | null): Promise<D> => {
   // Type guard to check if our value or update is a function
-  const isFunction = <D>(value: ValueOrUpdate<D>): value is (prev: D) => D | Promise<D> => {
-    return typeof value === 'function';
-  };
+  const isFunction = <D>(value: ValueOrUpdate<D>): value is (prev: D) => D | Promise<D> => typeof value === 'function';
 
-  // Type guard to check in case of a function, if its a Promise
-  const returnsPromise = <D>(func: (prev: D) => D | Promise<D>): func is (prev: D) => Promise<D> => {
+  // Type guard to check in case of a function if it's a Promise
+  const returnsPromise = <D>(func: (prev: D) => D | Promise<D>): func is (prev: D) => Promise<D> =>
     // Use ReturnType to infer the return type of the function and check if it's a Promise
-    return (func as (prev: D) => Promise<D>) instanceof Promise;
-  };
-
+    (func as (prev: D) => Promise<D>) instanceof Promise;
   if (isFunction(valueOrUpdate)) {
     // Check if the function returns a Promise
     if (returnsPromise(valueOrUpdate)) {
@@ -116,9 +112,7 @@ export const createStorage = <D = string>(key: string, fallback: D, config?: Sto
     };
   };
 
-  const getSnapshot = () => {
-    return cache;
-  };
+  const getSnapshot = () => cache;
 
   const _emitChange = () => {
     listeners.forEach(listener => listener());
