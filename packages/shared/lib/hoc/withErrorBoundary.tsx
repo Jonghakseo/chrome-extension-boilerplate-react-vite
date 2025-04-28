@@ -5,12 +5,11 @@ import type { FallbackProps } from 'react-error-boundary';
 export const withErrorBoundary = <T extends Record<string, unknown>>(
   Component: ComponentType<T>,
   FallbackComponent: ComponentType<FallbackProps>,
-) => {
-  return function WithErrorBoundary(props: T) {
+) =>
+  function WithErrorBoundary(props: T) {
     return (
       <ErrorBoundary FallbackComponent={FallbackComponent}>
         <Component {...props} />
       </ErrorBoundary>
     );
   };
-};

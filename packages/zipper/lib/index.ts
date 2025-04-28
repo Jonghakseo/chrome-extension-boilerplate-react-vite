@@ -5,9 +5,7 @@ import { createWriteStream, existsSync, mkdirSync } from 'node:fs';
 import { posix, resolve } from 'node:path';
 
 // Converts bytes to megabytes
-const toMB = (bytes: number): number => {
-  return bytes / 1024 / 1024;
-};
+const toMB = (bytes: number): number => bytes / 1024 / 1024;
 
 // Creates the build directory if it doesn't exist
 const ensureBuildDirectoryExists = (buildDirectory: string): void => {
