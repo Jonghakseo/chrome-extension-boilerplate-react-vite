@@ -22,9 +22,7 @@ const refreshFilePath = resolve(
   'refresh.js',
 );
 
-const withHMRId = (code: string) => {
-  return `(function() {let __HMR_ID = 'chrome-extension-hmr';${code}\n})();`;
-};
+const withHMRId = (code: string) => `(function() {let __HMR_ID = 'chrome-extension-hmr';${code}\n})();`;
 
 const getManifestWithCacheBurst = async () => {
   const withCacheBurst = (path: string) => `${path}?${Date.now().toString()}`;
