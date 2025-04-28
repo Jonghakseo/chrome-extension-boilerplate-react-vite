@@ -1,7 +1,7 @@
 import '@src/NewTab.css';
 import '@src/NewTab.scss';
 import { t } from '@extension/i18n';
-import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
+import { PROJECT_URL_OBJECT, useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
 import { cn, ErrorDisplay, LoadingSpinner, ToggleButton } from '@extension/ui';
 
@@ -9,8 +9,7 @@ const NewTab = () => {
   const { isLight } = useStorage(exampleThemeStorage);
   const logo = isLight ? 'new-tab/logo_horizontal.svg' : 'new-tab/logo_horizontal_dark.svg';
 
-  const goGithubSite = () =>
-    chrome.tabs.create({ url: 'https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite' });
+  const goGithubSite = () => chrome.tabs.create(PROJECT_URL_OBJECT);
 
   console.log(t('hello', 'World'));
   return (
