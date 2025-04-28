@@ -4,10 +4,9 @@ This tool allows you to inject Scripts (Console and UI) during runtime into all 
 
 ### Add New Script
 
-1. Copy `matches/example` folder and paste it with other name or make folder manually, but you need to be sure
-   `index.ts` is included.
+1. Copy `matches/example` folder and paste it with other name and edit content.
+2. Define somewhere(e.g in `popup`):
 
-2. Define somewhere:
 ```ts
 await chrome.scripting.executeScript({
   ...,
