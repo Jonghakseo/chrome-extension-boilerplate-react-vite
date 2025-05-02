@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: GitHub Community Support
+    url: https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/discussions
+    about: Please leave your questions here or on Discord - Link below "Security Bug Bounty"
+  - name: GitHub Security Bug Bounty
+    url: https://discord.gg/RhETcmdW
+    about: Please report security vulnerabilities here(On DM's for Patryk Kuniczak or Jonghakseo).
