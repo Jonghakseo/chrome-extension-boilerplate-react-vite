@@ -1,4 +1,4 @@
-import { mount } from '@src/Root';
+import { mount } from '@src/index.tsx';
 
 mount();
 console.log('runtime script loaded');

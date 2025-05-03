@@ -1,1 +1,1 @@
-export * from './withPageConfig.js';
+export * from './with-page-config.js';

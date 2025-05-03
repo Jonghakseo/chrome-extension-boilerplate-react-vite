@@ -1,5 +1,5 @@
 import { DEFAULT_CHOICES, DELETE_CHOICE_QUESTION } from './const.js';
-import { deleteModule } from './modulesHandler.js';
+import { deleteModule } from './modules-handler.js';
 import { promptSelection } from './utils.js';
 import { readdirSync } from 'node:fs';
 import { resolve } from 'node:path';

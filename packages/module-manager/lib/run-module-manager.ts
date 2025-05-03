@@ -1,6 +1,6 @@
 import { MANAGER_ACTION_PROMPT_CONFIG } from './const.js';
-import { deleteFeature } from './deleteFeature.js';
-import { recoverFeature } from './recoverFeature.js';
+import { deleteFeature } from './delete-feature.js';
+import { recoverFeature } from './recover-feature.js';
 import { promptSelection } from './utils.js';
 import manifest from '../../../chrome-extension/manifest.js';
 import { execSync } from 'node:child_process';
@@ -14,7 +14,7 @@ const manifestPath = resolve(import.meta.dirname, '..', '..', '..', 'chrome-exte
 const manifestObject = JSON.parse(JSON.stringify(manifest)) as ManifestType;
 const manifestString = readFileSync(manifestPath, 'utf-8');
 
-const runModuleManager = async (moduleName?: ModuleNameType, action?: CliActionType, runLinter = true) => {
+export const runModuleManager = async (moduleName?: ModuleNameType, action?: CliActionType, runLinter = true) => {
   if (!action) {
     action = (await promptSelection(MANAGER_ACTION_PROMPT_CONFIG)) as Awaited<CliActionType>;
   }
@@ -47,5 +47,3 @@ const runModuleManager = async (moduleName?: ModuleNameType, action?: CliActionT
     });
   }
 };
-
-export default runModuleManager;
