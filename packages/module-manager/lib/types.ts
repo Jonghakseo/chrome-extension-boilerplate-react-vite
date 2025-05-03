@@ -15,5 +15,5 @@ export interface ICLIOptions {
   targets: ModuleNameType[];
 }
 
-export type CliEntries = [string, (string | number)[]][];
+export type CliEntriesType = [string, (string | number)[]][];
 export type CliActionType = 'delete' | 'recover';

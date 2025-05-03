@@ -5,7 +5,7 @@ import { readdirSync } from 'node:fs';
 import type { DELETE_CHOICE_QUESTION, RECOVER_CHOICE_QUESTION } from '../const.js';
 import type {
   ChoicesType,
-  CliEntries,
+  CliEntriesType,
   InputConfigType,
   ModuleNameType,
   WritableModuleConfigValuesType,
@@ -77,7 +77,7 @@ export const processModuleConfig = (
 };
 
 export const checkCliArgsIsValid = <T extends Arguments>(argv: T) => {
-  const [key, values] = Object.entries(argv)[1] as CliEntries;
+  const [key, values] = Object.entries(argv)[1] as CliEntriesType;
 
   if (Array.isArray(values)) {
     for (const value of values) {

@@ -1,7 +1,7 @@
 import { createStorage, StorageEnum } from '../base/index.js';
-import type { ThemeState, ThemeStorage } from '../base/index.js';
+import type { ThemeStateType, ThemeStorageType } from '../base/index.js';
 
-const storage = createStorage<ThemeState>(
+const storage = createStorage<ThemeStateType>(
   'theme-storage-key',
   {
     theme: 'light',
@@ -13,7 +13,7 @@ const storage = createStorage<ThemeState>(
   },
 );
 
-export const exampleThemeStorage: ThemeStorage = {
+export const exampleThemeStorage: ThemeStorageType = {
   ...storage,
   toggle: async () => {
     await storage.set(currentState => {
