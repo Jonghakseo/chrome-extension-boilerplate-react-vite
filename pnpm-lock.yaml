@@ -576,12 +576,12 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@babel/code-frame@7.26.2':
-    resolution: {integrity: sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ==}
+  '@babel/code-frame@7.27.1':
+    resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/helper-validator-identifier@7.25.9':
-    resolution: {integrity: sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ==}
+  '@babel/helper-validator-identifier@7.27.1':
+    resolution: {integrity: sha512-D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow==}
     engines: {node: '>=6.9.0'}
 
   '@babel/runtime@7.27.0':
@@ -1166,8 +1166,8 @@ packages:
   '@promptbook/utils@0.69.5':
     resolution: {integrity: sha512-xm5Ti/Hp3o4xHrsK9Yy3MS6KbDxYbq485hDsFvxqaNA7equHLPdo8H8faTitTeb14QCDfLW4iwCxdVYu5sn6YQ==}
 
-  '@puppeteer/browsers@2.10.2':
-    resolution: {integrity: sha512-i4Ez+s9oRWQbNjtI/3+jxr7OH508mjAKvza0ekPJem0ZtmsYHP3B5dq62+IaBHKaGCOuqJxXzvFLUhJvQ6jtsQ==}
+  '@puppeteer/browsers@2.10.3':
+    resolution: {integrity: sha512-iPpnFpX25gKIVsHsqVjHV+/GzW36xPgsscWkCnrrETndcdxNsXLdCrTwhkCJNR/FGWr122dJUBeyV4niz/j3TA==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -1449,8 +1449,8 @@ packages:
   '@types/mute-stream@0.0.4':
     resolution: {integrity: sha512-CPM9nzrCPPJHQNA9keH9CVkVI+WR5kMa+7XEs5jcGQ0VoAGnLv242w8lIVgwAEfmE4oufJRaTc9PNLQl0ioAow==}
 
-  '@types/node@20.17.30':
-    resolution: {integrity: sha512-7zf4YyHA+jvBNfVrk2Gtvs6x7E8V+YDW05bNfG2XkWDJfYRXrTiP/DsB2zSYTaHX0bGIujTBQdMVAhb+j7mwpg==}
+  '@types/node@20.17.32':
+    resolution: {integrity: sha512-zeMXFn8zQ+UkjK4ws0RiOC9EWByyW1CcVmLe+2rQocXRsGEDxUCwPEIVgpsGcLHS/P8JkT0oa3839BRABS0oPw==}
 
   '@types/node@22.14.1':
     resolution: {integrity: sha512-u0HuPQwe/dHrItgHHpmw3N2fYCR6x4ivMNbPHRkBVP4CvN+kiRrKHWk3i8tXiO/joPwXLMYvF9TTF0eqgHIuOw==}
@@ -1938,8 +1938,8 @@ packages:
   bare-events@2.5.4:
     resolution: {integrity: sha512-+gFfDkR8pj4/TrWCGUGWmJIkBwuxPS5F+a5yWjOHQt2hHvNZd5YLzadjmDUtFmMM4y429bnKLa8bYBMHcYdnQA==}
 
-  bare-fs@4.1.2:
-    resolution: {integrity: sha512-8wSeOia5B7LwD4+h465y73KOdj5QHsbbuoUfPBi+pXgFJIPuG7SsiOdJuijWMyfid49eD+WivpfY7KT8gbAzBA==}
+  bare-fs@4.1.4:
+    resolution: {integrity: sha512-r8+26Voz8dGX3AYpJdFb1ZPaUSM8XOLCZvy+YGpRTmwPHIxA7Z3Jov/oMPtV7hfRQbOnH8qGlLTzQAbgtdNN0Q==}
     engines: {bare: '>=1.16.0'}
     peerDependencies:
       bare-buffer: '*'
@@ -4876,13 +4876,13 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@babel/code-frame@7.26.2':
+  '@babel/code-frame@7.27.1':
     dependencies:
-      '@babel/helper-validator-identifier': 7.25.9
+      '@babel/helper-validator-identifier': 7.27.1
       js-tokens: 4.0.0
       picocolors: 1.1.1
 
-  '@babel/helper-validator-identifier@7.25.9': {}
+  '@babel/helper-validator-identifier@7.27.1': {}
 
   '@babel/runtime@7.27.0':
     dependencies:
@@ -5428,7 +5428,7 @@ snapshots:
     dependencies:
       spacetrim: 0.11.59
 
-  '@puppeteer/browsers@2.10.2':
+  '@puppeteer/browsers@2.10.3':
     dependencies:
       debug: 4.4.0(supports-color@8.1.1)
       extract-zip: 2.0.1
@@ -5645,9 +5645,9 @@ snapshots:
 
   '@types/mute-stream@0.0.4':
     dependencies:
-      '@types/node': 20.17.30
+      '@types/node': 22.14.1
 
-  '@types/node@20.17.30':
+  '@types/node@20.17.32':
     dependencies:
       undici-types: 6.19.8
 
@@ -5685,7 +5685,7 @@ snapshots:
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 20.17.30
+      '@types/node': 22.14.1
     optional: true
 
   '@typescript-eslint/eslint-plugin@8.31.0(@typescript-eslint/parser@8.31.0(eslint@9.25.1(jiti@2.4.2))(typescript@5.8.3))(eslint@9.25.1(jiti@2.4.2))(typescript@5.8.3)':
@@ -5834,7 +5834,7 @@ snapshots:
 
   '@wdio/cli@9.12.7':
     dependencies:
-      '@types/node': 20.17.30
+      '@types/node': 20.17.32
       '@vitest/snapshot': 2.1.9
       '@wdio/config': 9.12.6
       '@wdio/globals': 9.12.7(@wdio/logger@9.4.4)
@@ -5897,7 +5897,7 @@ snapshots:
 
   '@wdio/local-runner@9.12.7':
     dependencies:
-      '@types/node': 20.17.30
+      '@types/node': 20.17.32
       '@wdio/logger': 9.4.4
       '@wdio/repl': 9.4.4
       '@wdio/runner': 9.12.7
@@ -5922,7 +5922,7 @@ snapshots:
   '@wdio/mocha-framework@9.12.6':
     dependencies:
       '@types/mocha': 10.0.10
-      '@types/node': 20.17.30
+      '@types/node': 20.17.32
       '@wdio/logger': 9.4.4
       '@wdio/types': 9.12.6
       '@wdio/utils': 9.12.6
@@ -5935,11 +5935,11 @@ snapshots:
 
   '@wdio/repl@9.4.4':
     dependencies:
-      '@types/node': 20.17.30
+      '@types/node': 20.17.32
 
   '@wdio/reporter@9.12.6':
     dependencies:
-      '@types/node': 20.17.30
+      '@types/node': 20.17.32
       '@wdio/logger': 9.4.4
       '@wdio/types': 9.12.6
       diff: 7.0.0
@@ -5947,7 +5947,7 @@ snapshots:
 
   '@wdio/runner@9.12.7':
     dependencies:
-      '@types/node': 20.17.30
+      '@types/node': 20.17.32
       '@wdio/config': 9.12.6
       '@wdio/dot-reporter': 9.12.6
       '@wdio/globals': 9.12.7(@wdio/logger@9.4.4)
@@ -5975,11 +5975,11 @@ snapshots:
 
   '@wdio/types@9.12.6':
     dependencies:
-      '@types/node': 20.17.30
+      '@types/node': 20.17.32
 
   '@wdio/utils@9.12.6':
     dependencies:
-      '@puppeteer/browsers': 2.10.2
+      '@puppeteer/browsers': 2.10.3
       '@wdio/logger': 9.4.4
       '@wdio/types': 9.12.6
       decamelize: 6.0.0
@@ -6301,7 +6301,7 @@ snapshots:
   bare-events@2.5.4:
     optional: true
 
-  bare-fs@4.1.2:
+  bare-fs@4.1.4:
     dependencies:
       bare-events: 2.5.4
       bare-path: 3.0.0
@@ -7893,7 +7893,7 @@ snapshots:
 
   jest-message-util@29.7.0:
     dependencies:
-      '@babel/code-frame': 7.26.2
+      '@babel/code-frame': 7.27.1
       '@jest/types': 29.6.3
       '@types/stack-utils': 2.0.3
       chalk: 4.1.2
@@ -8399,7 +8399,7 @@ snapshots:
 
   parse-json@7.1.1:
     dependencies:
-      '@babel/code-frame': 7.26.2
+      '@babel/code-frame': 7.27.1
       error-ex: 1.3.2
       json-parse-even-better-errors: 3.0.2
       lines-and-columns: 2.0.4
@@ -9164,7 +9164,7 @@ snapshots:
       pump: 3.0.2
       tar-stream: 3.1.7
     optionalDependencies:
-      bare-fs: 4.1.2
+      bare-fs: 4.1.4
       bare-path: 3.0.0
     transitivePeerDependencies:
       - bare-buffer
@@ -9496,7 +9496,7 @@ snapshots:
 
   webdriver@9.12.6:
     dependencies:
-      '@types/node': 20.17.30
+      '@types/node': 20.17.32
       '@types/ws': 8.18.1
       '@wdio/config': 9.12.6
       '@wdio/logger': 9.4.4
@@ -9514,7 +9514,7 @@ snapshots:
 
   webdriverio@9.12.7:
     dependencies:
-      '@types/node': 20.17.30
+      '@types/node': 20.17.32
       '@types/sinonjs__fake-timers': 8.1.5
       '@wdio/config': 9.12.6
       '@wdio/logger': 9.4.4

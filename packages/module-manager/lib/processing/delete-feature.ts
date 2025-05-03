@@ -1,17 +1,14 @@
-import { DEFAULT_CHOICES, DELETE_CHOICE_QUESTION } from './const.js';
 import { deleteModule } from './modules-handler.js';
-import { processSelection } from './utils.js';
+import { DEFAULT_CHOICES, DELETE_CHOICE_QUESTION } from '../const.js';
+import { processSelection } from '../helpers/utils.js';
+import { pagesPath, testsPath } from '../paths.js';
 import { existsSync, readdirSync } from 'node:fs';
-import { resolve } from 'node:path';
-import type { ChoicesType, ModuleNameType } from './types.ts';
+import type { ChoicesType, ModuleNameType } from '../types.ts';
 import type { ManifestType } from '@extension/shared';
 
-const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
-const testsPath = resolve(pagesPath, '..', 'tests');
-
-const pageFolders = readdirSync(pagesPath);
-
 export const deleteFeature = async (manifestObject: ManifestType, moduleName?: ModuleNameType) => {
+  const pageFolders = readdirSync(pagesPath);
+
   const choices: ChoicesType = DEFAULT_CHOICES.filter(choice => {
     if (choice.value === 'background') {
       return !!manifestObject.background;
@@ -29,9 +26,9 @@ export const deleteFeature = async (manifestObject: ManifestType, moduleName?: M
   }
 
   if (moduleName === 'devtools') {
-    await deleteModule(manifestObject, moduleName as ModuleNameType, false);
-    await deleteModule(manifestObject, 'devtools-panel', existsSync(testsPath));
+    await deleteModule(manifestObject, moduleName as ModuleNameType);
+    await deleteModule(manifestObject, 'devtools-panel');
   } else {
-    await deleteModule(manifestObject, moduleName as ModuleNameType, existsSync(testsPath));
+    await deleteModule(manifestObject, moduleName as ModuleNameType);
   }
 };
