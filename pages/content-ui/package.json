@@ -13,7 +13,7 @@
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
-    "ready": "pnpm tailwindcss -i ./src/tailwind-input.css -o ./dist/tailwind-output.css -m",
+    "ready": "pnpm tailwindcss -i src/index.css -o dist/tailwind-output.css -m",
     "build": "pnpm ready && vite build",
     "dev": "vite build --mode development",
     "lint": "eslint .",
