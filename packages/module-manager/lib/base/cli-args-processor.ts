@@ -1,9 +1,9 @@
-import { CLI_OPTIONS, DEFAULT_CHOICES_VALUES, HELP_EXAMPLES } from './const.js';
-import { checkCliArgsIsValid } from './utils.js';
+import { CLI_OPTIONS, DEFAULT_CHOICES_VALUES, HELP_EXAMPLES } from '../const.js';
+import { checkCliArgsIsValid } from '../helpers/utils.js';
 import { excludeValuesFromBaseArray } from '@extension/shared';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import type { ICLIOptions, ModuleNameType } from './types.js';
+import type { ICLIOptions, ModuleNameType } from '../types.js';
 import type { WritableDeep } from '@extension/shared';
 
 export const processCLIArgs = (): ICLIOptions | null => {
