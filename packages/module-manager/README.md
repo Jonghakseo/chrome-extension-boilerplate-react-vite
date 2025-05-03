@@ -28,9 +28,13 @@ OR
 pnpm start -d popup
 ```
 
-> [!INFO]  
+> [!NOTE]  
 > For complete info about CLI support run:
 > ```bash pnpm module-manager --help ```
+
+> [!IMPORTANT]
+> If you want to remove all tests, and something else with one command, you need to set `tests` as first argument like:
+> ```bash pnpm module-manager -d tests popup ...```
 
 ### Choose a tool
 
