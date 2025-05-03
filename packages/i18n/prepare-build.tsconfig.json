@@ -1,4 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["lib/prepare_build.ts"]
+  "include": ["lib/prepare-build.ts"]
 }
