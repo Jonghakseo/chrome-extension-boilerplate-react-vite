@@ -1,21 +1,17 @@
-import { isFolderEmpty, processModuleConfig } from './utils.js';
-import { unZipAndDeleteModule, zipAndDeleteModule, zipAndDeleteTests } from './zip-utils.js';
+import { unZipAndDeleteModule, zipAndDeleteModule, zipAndDeleteTests } from '../helpers/index.js';
+import { isFolderEmpty, processModuleConfig } from '../helpers/utils.js';
+import { archivePath, pagesPath, specsPath, testsPath } from '../paths.js';
 import { colorfulLog } from '@extension/shared';
 import { existsSync, mkdirSync, rmdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import type { ModuleNameType } from './types.ts';
+import type { ModuleNameType } from '../types.ts';
 import type { ManifestType } from '@extension/shared';
 
-const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
-const testsPath = resolve(pagesPath, '..', 'tests');
-const specsPath = resolve(testsPath, 'e2e', 'specs');
-const archivePath = resolve(import.meta.dirname, '..', 'archive');
-
-export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNameType, withTest: boolean) => {
+export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNameType) => {
   const zipFilePath = resolve(archivePath, `${moduleName}.zip`);
   const zipTestFilePath = resolve(archivePath, `${moduleName}.test.zip`);
 
-  if (!existsSync(zipFilePath) || (withTest && !existsSync(zipTestFilePath))) {
+  if (!existsSync(zipFilePath)) {
     colorfulLog(`No archive found for ${moduleName}`, 'info');
     process.exit(0);
   }
@@ -24,7 +20,7 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
 
   unZipAndDeleteModule(zipFilePath, pagesPath);
 
-  if (withTest) {
+  if (existsSync(zipTestFilePath)) {
     unZipAndDeleteModule(zipTestFilePath, specsPath);
   }
 
@@ -35,7 +31,7 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
   }
 };
 
-export const deleteModule = async (manifestObject: ManifestType, moduleName: ModuleNameType, withTest: boolean) => {
+export const deleteModule = async (manifestObject: ManifestType, moduleName: ModuleNameType) => {
   processModuleConfig(manifestObject, moduleName);
 
   if (!existsSync(archivePath)) {
@@ -44,10 +40,8 @@ export const deleteModule = async (manifestObject: ManifestType, moduleName: Mod
 
   if (moduleName === 'tests') {
     await zipAndDeleteTests(testsPath, archivePath);
-  } else if (withTest) {
-    await zipAndDeleteModule(moduleName, pagesPath, archivePath, specsPath);
   } else {
-    await zipAndDeleteModule(moduleName, pagesPath, archivePath);
+    await zipAndDeleteModule(moduleName, pagesPath, archivePath, specsPath);
   }
 
   colorfulLog(`Deleted: ${moduleName}`, 'info');
