@@ -6,7 +6,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "e2e": "wdio run ./config/wdio.browser.conf.ts",
+    "e2e": "wdio run config/wdio.browser.conf.ts",
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "pnpx rimraf .turbo",
     "clean": "pnpm clean:turbo && pnpm clean:node_modules"

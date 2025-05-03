@@ -1,5 +1,5 @@
 import { isFolderEmpty, processModuleConfig } from './utils.js';
-import { unZipAndDeleteModule, zipAndDeleteModule } from './zipUtils.js';
+import { unZipAndDeleteModule, zipAndDeleteModule } from './zip-utils.js';
 import { colorfulLog } from '@extension/shared';
 import { existsSync, mkdirSync, rmdirSync } from 'node:fs';
 import { resolve } from 'node:path';

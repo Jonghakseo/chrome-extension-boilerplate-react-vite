@@ -1,5 +1,5 @@
 import { createStorage, StorageEnum } from '../base/index.js';
-import type { ThemeState, ThemeStorage } from '../types.js';
+import type { ThemeState, ThemeStorage } from '../base/index.js';
 
 const storage = createStorage<ThemeState>(
   'theme-storage-key',

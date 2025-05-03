@@ -1,6 +1,5 @@
 import { colorfulLog } from '@extension/shared';
-import { processCLIArgs } from './lib/cliArgsProcessor.js';
-import runModuleManager from './lib/runModuleManager.js';
+import { processCLIArgs, runModuleManager } from './lib/index.js';
 
 const cliOptions = processCLIArgs();
 
