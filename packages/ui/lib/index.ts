@@ -1,3 +1,3 @@
 export * from './components/index';
 export * from './utils';
-export * from './with-uI';
+export * from './with-ui';
