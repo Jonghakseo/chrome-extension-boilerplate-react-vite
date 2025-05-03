@@ -14,7 +14,7 @@ const manifestPath = resolve(import.meta.dirname, '..', '..', '..', 'chrome-exte
 const manifestObject = JSON.parse(JSON.stringify(manifest)) as ManifestType;
 const manifestString = readFileSync(manifestPath, 'utf-8');
 
-export const runModuleManager = async (moduleName?: ModuleNameType, action?: CliActionType, runLinter = true) => {
+export const runModuleManager = async (moduleName?: ModuleNameType, action?: CliActionType, isLastLap = true) => {
   if (!action) {
     action = (await promptSelection(MANAGER_ACTION_PROMPT_CONFIG)) as Awaited<CliActionType>;
   }
@@ -35,12 +35,13 @@ export const runModuleManager = async (moduleName?: ModuleNameType, action?: Cli
     .replace(/ {2}"version": "[\s\S]*?",/, '  version: packageJson.version,');
 
   writeFileSync(manifestPath, updatedManifest);
-  execSync('pnpm i', {
-    stdio: 'inherit',
-    cwd: resolve('..', '..'),
-  });
 
-  if (runLinter) {
+  if (isLastLap) {
+    execSync('pnpm i', {
+      stdio: 'inherit',
+      cwd: resolve('..', '..'),
+    });
+
     execSync('pnpm -F chrome-extension lint:fix', {
       stdio: 'inherit',
       cwd: resolve('..', '..'),
