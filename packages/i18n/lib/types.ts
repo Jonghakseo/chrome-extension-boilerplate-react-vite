@@ -8,5 +8,5 @@ export type I18nValueType = {
   placeholders?: Record<string, { content?: string; example?: string }>;
 };
 
-export type MessageKey = keyof typeof enMessage;
+export type MessageKeyType = keyof typeof enMessage;
 export type LocalesJSONType = typeof enMessage;
