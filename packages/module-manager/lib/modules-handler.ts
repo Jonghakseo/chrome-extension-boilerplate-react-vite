@@ -11,7 +11,7 @@ const testsPath = resolve(pagesPath, '..', 'tests');
 const specsPath = resolve(testsPath, 'e2e', 'specs');
 const archivePath = resolve(import.meta.dirname, '..', 'archive');
 
-export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNameType, withTest = true) => {
+export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNameType, withTest: boolean) => {
   const zipFilePath = resolve(archivePath, `${moduleName}.zip`);
   const zipTestFilePath = resolve(archivePath, `${moduleName}.test.zip`);
 
@@ -35,7 +35,7 @@ export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNa
   }
 };
 
-export const deleteModule = async (manifestObject: ManifestType, moduleName: ModuleNameType, withTest = true) => {
+export const deleteModule = async (manifestObject: ManifestType, moduleName: ModuleNameType, withTest: boolean) => {
   processModuleConfig(manifestObject, moduleName);
 
   if (!existsSync(archivePath)) {

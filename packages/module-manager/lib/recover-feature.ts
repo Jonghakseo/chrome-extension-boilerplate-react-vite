@@ -38,8 +38,8 @@ export const recoverFeature = async (manifestObject: ManifestType, moduleName?: 
     }
   } else if (moduleName === 'devtools') {
     recoverModule(manifestObject, moduleName as ModuleNameType, false);
-    recoverModule(manifestObject, 'devtools-panel');
+    recoverModule(manifestObject, 'devtools-panel', existsSync(testsPath));
   } else {
-    recoverModule(manifestObject, moduleName as ModuleNameType);
+    recoverModule(manifestObject, moduleName as ModuleNameType, existsSync(testsPath));
   }
 };

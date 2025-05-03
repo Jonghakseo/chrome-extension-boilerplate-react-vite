@@ -30,8 +30,8 @@ export const deleteFeature = async (manifestObject: ManifestType, moduleName?: M
 
   if (moduleName === 'devtools') {
     await deleteModule(manifestObject, moduleName as ModuleNameType, false);
-    await deleteModule(manifestObject, 'devtools-panel');
+    await deleteModule(manifestObject, 'devtools-panel', existsSync(testsPath));
   } else {
-    await deleteModule(manifestObject, moduleName as ModuleNameType);
+    await deleteModule(manifestObject, moduleName as ModuleNameType, existsSync(testsPath));
   }
 };
