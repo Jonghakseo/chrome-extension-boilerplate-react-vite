@@ -2,7 +2,7 @@ import { streamFileToZip } from '@extension/dev-utils';
 import fg from 'fast-glob';
 import { unzipSync, Zip } from 'fflate';
 import { rimraf } from 'rimraf';
-import { createWriteStream, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
+import { createWriteStream, existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import type { ModuleNameType } from '../types.js';
 
@@ -25,7 +25,7 @@ export const zipAndDeleteModule = async (
   await zipFolder(resolve(pagesPath, moduleName), resolve(archivePath, `${moduleName}.zip`));
   void rimraf([modulePath]);
 
-  if (testsPath) {
+  if (testsPath && existsSync(testsPath)) {
     await zipAndDeleteModuleTest(moduleName, archivePath, testsPath);
   }
 };

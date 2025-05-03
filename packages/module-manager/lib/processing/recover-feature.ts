@@ -8,7 +8,6 @@ import type { ChoicesType, ModuleNameType } from '../types.ts';
 import type { ManifestType } from '@extension/shared';
 
 const archivePath = resolve(import.meta.dirname, '..', '..', 'archive');
-const testsPath = resolve(import.meta.dirname, '..', '..', '..', '..', 'tests');
 
 const archiveFiles = existsSync(archivePath) ? readdirSync(archivePath) : [];
 
@@ -16,8 +15,6 @@ export const recoverFeature = async (manifestObject: ManifestType, moduleName?: 
   const choices: ChoicesType = DEFAULT_CHOICES.filter(choice => {
     if (choice.value === 'background') {
       return !manifestObject.background;
-    } else if (choice.value === 'tests') {
-      return !existsSync(testsPath);
     }
 
     return archiveFiles.includes(`${choice.value}.zip`);
@@ -29,17 +26,17 @@ export const recoverFeature = async (manifestObject: ManifestType, moduleName?: 
     moduleName = processResult;
   }
 
-  if (moduleName === 'tests' || !existsSync(testsPath)) {
-    recoverModule(manifestObject, moduleName as ModuleNameType, false);
+  if (moduleName === 'tests') {
+    recoverModule(manifestObject, moduleName as ModuleNameType);
     const testZipFilePath = resolve(archivePath, `${moduleName}.test.zip`);
 
     if (existsSync(testZipFilePath)) {
       await rimraf(testZipFilePath);
     }
   } else if (moduleName === 'devtools') {
-    recoverModule(manifestObject, moduleName as ModuleNameType, false);
-    recoverModule(manifestObject, 'devtools-panel', existsSync(testsPath));
+    recoverModule(manifestObject, moduleName as ModuleNameType);
+    recoverModule(manifestObject, 'devtools-panel');
   } else {
-    recoverModule(manifestObject, moduleName as ModuleNameType, existsSync(testsPath));
+    recoverModule(manifestObject, moduleName as ModuleNameType);
   }
 };

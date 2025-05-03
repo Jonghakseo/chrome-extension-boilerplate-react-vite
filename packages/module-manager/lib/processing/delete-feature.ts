@@ -15,6 +15,8 @@ export const deleteFeature = async (manifestObject: ManifestType, moduleName?: M
   const choices: ChoicesType = DEFAULT_CHOICES.filter(choice => {
     if (choice.value === 'background') {
       return !!manifestObject.background;
+    } else if (choice.value === 'tests') {
+      return existsSync(testsPath);
     }
 
     return pageFolders.includes(choice.value);
@@ -27,9 +29,9 @@ export const deleteFeature = async (manifestObject: ManifestType, moduleName?: M
   }
 
   if (moduleName === 'devtools') {
-    await deleteModule(manifestObject, moduleName as ModuleNameType, false);
-    await deleteModule(manifestObject, 'devtools-panel', existsSync(testsPath));
+    await deleteModule(manifestObject, moduleName as ModuleNameType);
+    await deleteModule(manifestObject, 'devtools-panel');
   } else {
-    await deleteModule(manifestObject, moduleName as ModuleNameType, existsSync(testsPath));
+    await deleteModule(manifestObject, moduleName as ModuleNameType);
   }
 };

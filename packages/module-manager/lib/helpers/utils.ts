@@ -95,8 +95,8 @@ export const processSelection = async (
   question: typeof RECOVER_CHOICE_QUESTION | typeof DELETE_CHOICE_QUESTION,
   moduleName?: ModuleNameType,
 ) => {
-  if (!choices?.some(choice => choice.value === moduleName)) {
-    colorfulLog('Not available option', 'warning');
+  if (!choices.length) {
+    colorfulLog('No options available', 'warning');
     process.exit(0);
   }
 
