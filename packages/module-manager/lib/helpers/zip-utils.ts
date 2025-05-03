@@ -4,7 +4,7 @@ import { unzipSync, Zip } from 'fflate';
 import { rimraf } from 'rimraf';
 import { createWriteStream, mkdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
-import type { ModuleNameType } from './types.js';
+import type { ModuleNameType } from '../types.js';
 
 const zipAndDeleteModuleTest = async (moduleName: ModuleNameType, archivePath: string, testsPath: string) => {
   const moduleTestName = `page-${moduleName}.test.ts`;

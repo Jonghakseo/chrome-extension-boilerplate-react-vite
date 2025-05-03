@@ -1,15 +1,15 @@
-import { isFolderEmpty, processModuleConfig } from './utils.js';
-import { unZipAndDeleteModule, zipAndDeleteModule, zipAndDeleteTests } from './zip-utils.js';
+import { unZipAndDeleteModule, zipAndDeleteModule, zipAndDeleteTests } from '../helpers/index.js';
+import { isFolderEmpty, processModuleConfig } from '../helpers/utils.js';
 import { colorfulLog } from '@extension/shared';
 import { existsSync, mkdirSync, rmdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import type { ModuleNameType } from './types.ts';
+import type { ModuleNameType } from '../types.ts';
 import type { ManifestType } from '@extension/shared';
 
-const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
+const pagesPath = resolve(import.meta.dirname, '..', '..', '..', '..', 'pages');
 const testsPath = resolve(pagesPath, '..', 'tests');
 const specsPath = resolve(testsPath, 'e2e', 'specs');
-const archivePath = resolve(import.meta.dirname, '..', 'archive');
+const archivePath = resolve(import.meta.dirname, '..', '..', 'archive');
 
 export const recoverModule = (manifestObject: ManifestType, moduleName: ModuleNameType, withTest: boolean) => {
   const zipFilePath = resolve(archivePath, `${moduleName}.zip`);

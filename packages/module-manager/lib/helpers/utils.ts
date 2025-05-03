@@ -1,15 +1,15 @@
-import { DEFAULT_CHOICES_VALUES, EXIT_PROMPT_ERROR, MODULE_CONFIG } from './const.js';
+import { DEFAULT_CHOICES_VALUES, EXIT_PROMPT_ERROR, MODULE_CONFIG } from '../const.js';
 import { colorfulLog } from '@extension/shared';
 import { select } from '@inquirer/prompts';
 import { readdirSync } from 'node:fs';
-import type { DELETE_CHOICE_QUESTION, RECOVER_CHOICE_QUESTION } from './const.js';
+import type { DELETE_CHOICE_QUESTION, RECOVER_CHOICE_QUESTION } from '../const.js';
 import type {
   ChoicesType,
   CliEntries,
   InputConfigType,
   ModuleNameType,
   WritableModuleConfigValuesType,
-} from './types.js';
+} from '../types.js';
 import type { ConditionalPickDeep, Entries, ManifestType } from '@extension/shared';
 import type { Arguments } from 'yargs';
 
