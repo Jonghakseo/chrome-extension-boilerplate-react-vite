@@ -1,5 +1,5 @@
 import { SessionAccessLevelEnum, StorageEnum } from './enums.js';
-import type { BaseStorage, StorageConfig, ValueOrUpdate } from './types.js';
+import type { BaseStorageType, StorageConfigType, ValueOrUpdateType } from './types.js';
 
 /**
  * Chrome reference error while running `processTailwindFeatures` in tailwindcss.
@@ -10,9 +10,10 @@ const chrome = globalThis.chrome;
 /**
  * Sets or updates an arbitrary cache with a new value or the result of an update function.
  */
-const updateCache = async <D>(valueOrUpdate: ValueOrUpdate<D>, cache: D | null): Promise<D> => {
+const updateCache = async <D>(valueOrUpdate: ValueOrUpdateType<D>, cache: D | null): Promise<D> => {
   // Type guard to check if our value or update is a function
-  const isFunction = <D>(value: ValueOrUpdate<D>): value is (prev: D) => D | Promise<D> => typeof value === 'function';
+  const isFunction = <D>(value: ValueOrUpdateType<D>): value is (prev: D) => D | Promise<D> =>
+    typeof value === 'function';
 
   // Type guard to check in case of a function if it's a Promise
   const returnsPromise = <D>(func: (prev: D) => D | Promise<D>): func is (prev: D) => Promise<D> =>
@@ -34,7 +35,7 @@ const updateCache = async <D>(valueOrUpdate: ValueOrUpdate<D>, cache: D | null):
  * If one session storage needs access from content scripts, we need to enable it globally.
  * @default false
  */
-let globalSessionAccessLevelFlag: StorageConfig['sessionAccessForContentScripts'] = false;
+let globalSessionAccessLevelFlag: StorageConfigType['sessionAccessForContentScripts'] = false;
 
 /**
  * Checks if the storage permission is granted in the manifest.json.
@@ -52,7 +53,11 @@ const checkStoragePermission = (storageEnum: StorageEnum): void => {
 /**
  * Creates a storage area for persisting and exchanging data.
  */
-export const createStorage = <D = string>(key: string, fallback: D, config?: StorageConfig<D>): BaseStorage<D> => {
+export const createStorage = <D = string>(
+  key: string,
+  fallback: D,
+  config?: StorageConfigType<D>,
+): BaseStorageType<D> => {
   let cache: D | null = null;
   let initialCache = false;
   let listeners: Array<() => void> = [];
@@ -94,7 +99,7 @@ export const createStorage = <D = string>(key: string, fallback: D, config?: Sto
     return deserialize(value[key]) ?? fallback;
   };
 
-  const set = async (valueOrUpdate: ValueOrUpdate<D>) => {
+  const set = async (valueOrUpdate: ValueOrUpdateType<D>) => {
     if (!initialCache) {
       cache = await get();
     }
@@ -123,7 +128,7 @@ export const createStorage = <D = string>(key: string, fallback: D, config?: Sto
     // Check if the key we are listening for is in the changes object
     if (changes[key] === undefined) return;
 
-    const valueOrUpdate: ValueOrUpdate<D> = deserialize(changes[key].newValue);
+    const valueOrUpdate: ValueOrUpdateType<D> = deserialize(changes[key].newValue);
 
     if (cache === valueOrUpdate) return;
 

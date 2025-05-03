@@ -1,8 +1,8 @@
-import type { ValueOrUpdate } from './base/index.js';
+import type { ValueOrUpdateType } from './base/index.js';
 
-export type BaseStorage<D> = {
+export type BaseStorageType<D> = {
   get: () => Promise<D>;
-  set: (value: ValueOrUpdate<D>) => Promise<void>;
+  set: (value: ValueOrUpdateType<D>) => Promise<void>;
   getSnapshot: () => D | null;
   subscribe: (listener: () => void) => () => void;
 };

@@ -1,9 +1,9 @@
 import { useRef, useSyncExternalStore } from 'react';
-import type { BaseStorage } from '@extension/storage';
+import type { BaseStorageType } from '@extension/storage';
 
 type WrappedPromise = ReturnType<typeof wrapPromise>;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const storageMap: Map<BaseStorage<any>, WrappedPromise> = new Map();
+const storageMap: Map<BaseStorageType<any>, WrappedPromise> = new Map();
 
 const wrapPromise = <R,>(promise: Promise<R>) => {
   let status = 'pending';
@@ -35,8 +35,8 @@ const wrapPromise = <R,>(promise: Promise<R>) => {
 };
 
 export const useStorage = <
-  Storage extends BaseStorage<Data>,
-  Data = Storage extends BaseStorage<infer Data> ? Data : unknown,
+  Storage extends BaseStorageType<Data>,
+  Data = Storage extends BaseStorageType<infer Data> ? Data : unknown,
 >(
   storage: Storage,
 ) => {
