@@ -30,6 +30,11 @@ export const zipAndDeleteModule = async (
   }
 };
 
+export const zipAndDeleteTests = async (testsPath: string, archivePath: string) => {
+  await zipFolder(testsPath, resolve(archivePath, `tests.zip`));
+  void rimraf(testsPath);
+};
+
 export const unZipAndDeleteModule = (zipFilePath: string, destPath: string) => {
   const unzipped = unzipSync(readFileSync(zipFilePath));
 
@@ -46,10 +51,15 @@ export const unZipAndDeleteModule = (zipFilePath: string, destPath: string) => {
 };
 
 export const zipFolder = async (folderPath: string, out: string, filesToInclude?: string[]) => {
-  const fileList = await fg(['!node_modules', '!dist'].concat(filesToInclude?.length ? filesToInclude : ['**/*']), {
-    cwd: folderPath,
-    onlyFiles: true,
-  });
+  const fileList = await fg(
+    ['!node_modules', '!dist', '!**/*/node_modules', '!**/*/dist'].concat(
+      filesToInclude?.length ? filesToInclude : ['**/*'],
+    ),
+    {
+      cwd: folderPath,
+      onlyFiles: true,
+    },
+  );
   const output = createWriteStream(out);
 
   return new Promise<void>((resolvePromise, rejectPromise) => {
