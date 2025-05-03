@@ -12,6 +12,7 @@ export const DEFAULT_CHOICES = [
   { name: 'DevTools (Include DevTools Panel)', value: 'devtools' },
   { name: 'Side Panel', value: 'side-panel' },
   { name: 'Options Page', value: 'options' },
+  { name: 'All tests', value: 'tests' },
 ] as const;
 
 export const DEFAULT_CHOICES_VALUES = DEFAULT_CHOICES.map(item => item.value);

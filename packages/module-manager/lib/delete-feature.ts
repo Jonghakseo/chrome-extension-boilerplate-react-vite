@@ -1,36 +1,37 @@
 import { DEFAULT_CHOICES, DELETE_CHOICE_QUESTION } from './const.js';
 import { deleteModule } from './modules-handler.js';
-import { promptSelection } from './utils.js';
-import { readdirSync } from 'node:fs';
+import { processSelection } from './utils.js';
+import { existsSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import type { ChoiceType, ModuleNameType } from './types.ts';
+import type { ChoicesType, ModuleNameType } from './types.ts';
 import type { ManifestType } from '@extension/shared';
 
 const pagesPath = resolve(import.meta.dirname, '..', '..', '..', 'pages');
+const testsPath = resolve(pagesPath, '..', 'tests');
 
 const pageFolders = readdirSync(pagesPath);
 
 export const deleteFeature = async (manifestObject: ManifestType, moduleName?: ModuleNameType) => {
-  if (!moduleName) {
-    const choices: ChoiceType[] = DEFAULT_CHOICES.filter(choice => {
-      if (choice.value === 'background') {
-        return !!manifestObject.background;
-      }
-      return pageFolders.includes(choice.value);
-    });
+  const choices: ChoicesType = DEFAULT_CHOICES.filter(choice => {
+    if (choice.value === 'background') {
+      return !!manifestObject.background;
+    } else if (choice.value === 'tests') {
+      return existsSync(testsPath);
+    }
 
-    const inputConfig = {
-      message: DELETE_CHOICE_QUESTION,
-      choices,
-    } as const;
+    return pageFolders.includes(choice.value);
+  });
 
-    moduleName = (await promptSelection(inputConfig)) as Awaited<ModuleNameType>;
+  const processResult = await processSelection(choices, DELETE_CHOICE_QUESTION, moduleName);
+
+  if (processResult) {
+    moduleName = processResult;
   }
 
   if (moduleName === 'devtools') {
     await deleteModule(manifestObject, moduleName as ModuleNameType, false);
-    await deleteModule(manifestObject, 'devtools-panel');
+    await deleteModule(manifestObject, 'devtools-panel', existsSync(testsPath));
   } else {
-    await deleteModule(manifestObject, moduleName as ModuleNameType);
+    await deleteModule(manifestObject, moduleName as ModuleNameType, existsSync(testsPath));
   }
 };

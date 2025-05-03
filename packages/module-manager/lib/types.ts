@@ -5,6 +5,7 @@ import type { select } from '@inquirer/prompts';
 type ModuleConfigType = typeof MODULE_CONFIG;
 
 export type ChoiceType = (typeof DEFAULT_CHOICES)[number];
+export type ChoicesType = (typeof DEFAULT_CHOICES)[number][];
 export type ModuleNameType = ChoiceType['value'] | 'devtools-panel';
 export type InputConfigType = Parameters<typeof select>[0];
 export type WritableModuleConfigValuesType<T extends keyof ModuleConfigType> = WritableDeep<ModuleConfigType[T]>;

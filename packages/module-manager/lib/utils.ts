@@ -2,33 +2,34 @@ import { DEFAULT_CHOICES_VALUES, EXIT_PROMPT_ERROR, MODULE_CONFIG } from './cons
 import { colorfulLog } from '@extension/shared';
 import { select } from '@inquirer/prompts';
 import { readdirSync } from 'node:fs';
-import type { CliEntries, InputConfigType, ModuleNameType, WritableModuleConfigValuesType } from './types.js';
+import type { DELETE_CHOICE_QUESTION, RECOVER_CHOICE_QUESTION } from './const.js';
+import type {
+  ChoicesType,
+  CliEntries,
+  InputConfigType,
+  ModuleNameType,
+  WritableModuleConfigValuesType,
+} from './types.js';
 import type { ConditionalPickDeep, Entries, ManifestType } from '@extension/shared';
 import type { Arguments } from 'yargs';
 
 export const isFolderEmpty = (path: string) => !readdirSync(path).length;
 
-export const promptSelection = async (inputConfig: InputConfigType) => {
-  if (!inputConfig.choices.length) {
-    colorfulLog('No choices available', 'warning');
-    process.exit(0);
-  }
-
-  return select(inputConfig).catch(err => {
+export const promptSelection = async (inputConfig: InputConfigType) =>
+  select(inputConfig).catch(err => {
     if (err.name === EXIT_PROMPT_ERROR) {
       process.exit(0);
     } else {
       colorfulLog(err.message, 'error');
     }
   }) as Promise<string>;
-};
 
 export const processModuleConfig = (
   manifestObject: ManifestType,
   moduleName: ModuleNameType,
   isRecovering?: boolean,
 ) => {
-  if (moduleName === 'content-runtime' || moduleName === 'devtools-panel') {
+  if (moduleName === 'content-runtime' || moduleName === 'devtools-panel' || moduleName === 'tests') {
     return;
   }
 
@@ -87,4 +88,26 @@ export const checkCliArgsIsValid = <T extends Arguments>(argv: T) => {
   }
 
   return true;
+};
+
+export const processSelection = async (
+  choices: ChoicesType,
+  question: typeof RECOVER_CHOICE_QUESTION | typeof DELETE_CHOICE_QUESTION,
+  moduleName?: ModuleNameType,
+) => {
+  if (!choices?.some(choice => choice.value === moduleName)) {
+    colorfulLog('Not available option', 'warning');
+    process.exit(0);
+  }
+
+  if (!moduleName) {
+    const inputConfig = {
+      message: question,
+      choices,
+    } as const;
+
+    return (await promptSelection(inputConfig)) as Awaited<ModuleNameType>;
+  }
+
+  return null;
 };
