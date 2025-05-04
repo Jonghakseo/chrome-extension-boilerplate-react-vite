@@ -33,7 +33,7 @@ const ToggleButton = (props: ComponentPropsWithoutRef<'button'>) => {
     <button
       className={cn(
         props.className,
-        'font-bold mt-4 py-1 px-4 rounded shadow hover:scale-105 ',
+        'mt-4 rounded px-4 py-1 font-bold shadow hover:scale-105',
         isLight ? 'bg-white text-black' : 'bg-black text-white',
       )}
       onClick={exampleThemeStorage.toggle}>
