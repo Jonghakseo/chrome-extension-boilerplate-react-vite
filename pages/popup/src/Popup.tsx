@@ -48,7 +48,7 @@ const Popup = () => {
         </p>
         <button
           className={cn(
-            'font-bold mt-4 py-1 px-4 rounded shadow hover:scale-105',
+            'mt-4 rounded px-4 py-1 font-bold shadow hover:scale-105',
             isLight ? 'bg-blue-200 text-black' : 'bg-gray-700 text-white',
           )}
           onClick={injectContentScript}>
