@@ -7,5 +7,5 @@
     },
     "types": ["chrome", "node"]
   },
-  "include": ["src", "vite.config.mts"]
+  "include": ["src", "build.mts"]
 }

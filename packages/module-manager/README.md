@@ -54,7 +54,11 @@ It also automatically removes anything that needs to be cleared from the manifes
 
 ### Recover Feature
 
-When you select a module that has been deleted, Module Manager will recover the module from the snapshot and add it back to the manifest.
+When you select a module that has been deleted, The Module Manager will recover that module from the snapshot and add it back to the manifest.
 
 > [!IMPORTANT]  
-> SAVE ALL FILES FROM /ARCHIVE, WITHOUT THESE FILES' RECOVERING PROCESS WON'T WORK
+> SAVE ALL FILES FROM /ARCHIVE, WITHOUT THESE FILES' RECOVERING PROCESS WON'T WORK>
+
+> [!IMPORTANT]  
+> IF YOU DECIDE TO REMOVE ONE OF CONTENT SCRIPTs AFTER EDIT, E.G YOU REMOVE OR ADD ANY MATCHES,
+> REMEMBER TO EDIT ALSO [MODULE_CONFIG](./lib/const.ts) TO BE ABLE TO RECOVER IT EASILY IN THE FUTURE. 

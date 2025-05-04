@@ -1,15 +1,14 @@
-import App from '@src/App';
-import injectedStyle from '@src/index.css?inline';
 import { createRoot } from 'react-dom/client';
+import type { ReactElement } from 'react';
 
-export const mount = () => {
+export const initAppWithShadow = ({ id, app, inlineCss }: { id: string; inlineCss: string; app: ReactElement }) => {
   const root = document.createElement('div');
-  root.id = 'chrome-extension-boilerplate-react-vite-runtime-content-view-root';
+  root.id = id;
 
   document.body.append(root);
 
   const rootIntoShadow = document.createElement('div');
-  rootIntoShadow.id = 'shadow-root';
+  rootIntoShadow.id = `shadow-root-${id}`;
 
   const shadowRoot = root.attachShadow({ mode: 'open' });
 
@@ -21,15 +20,15 @@ export const mount = () => {
      * Injecting styles into the document, this may cause style conflicts with the host page
      */
     const styleElement = document.createElement('style');
-    styleElement.innerHTML = injectedStyle;
+    styleElement.innerHTML = inlineCss;
     shadowRoot.appendChild(styleElement);
   } else {
     /** Inject styles into shadow dom */
     const globalStyleSheet = new CSSStyleSheet();
-    globalStyleSheet.replaceSync(injectedStyle);
+    globalStyleSheet.replaceSync(inlineCss);
     shadowRoot.adoptedStyleSheets = [globalStyleSheet];
   }
 
   shadowRoot.appendChild(rootIntoShadow);
-  createRoot(rootIntoShadow).render(<App />);
+  createRoot(rootIntoShadow).render(app);
 };
