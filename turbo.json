@@ -4,7 +4,6 @@
   "globalEnv": ["CEB_*", "CLI_CEB_*"],
   "globalDependencies": [".env"],
   "concurrency": "12",
-  "daemon": false,
   "tasks": {
     "ready": {
       "dependsOn": ["^ready"],
