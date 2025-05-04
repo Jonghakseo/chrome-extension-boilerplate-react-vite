@@ -38,14 +38,14 @@ export const processModuleConfig = (
 
   if (moduleName === 'content' || moduleName === 'content-ui') {
     if (isRecovering) {
-      manifestObject.content_scripts?.push(
-        (moduleConfigValues as WritableModuleConfigValuesType<typeof moduleName>).content_scripts,
+      (moduleConfigValues as WritableModuleConfigValuesType<typeof moduleName>).content_scripts.map(script =>
+        manifestObject.content_scripts?.push(script),
       );
     } else {
-      const outputFileName = `${moduleName}/index.iife.js`;
+      const outputFileName = new RegExp(`${moduleName}/+`);
 
       manifestObject.content_scripts = manifestObject.content_scripts?.filter(
-        script => !script.js?.includes(outputFileName),
+        script => !outputFileName.test(script.js ? script.js[0] : ''),
       );
     }
     return;

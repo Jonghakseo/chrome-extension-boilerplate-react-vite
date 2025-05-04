@@ -13,19 +13,18 @@
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
-    "ready": "pnpm tailwindcss -i src/index.css -o dist/tailwind-output.css -m",
-    "build": "pnpm ready && vite build",
-    "dev": "vite build --mode development",
+    "build": "tsx build.mts",
+    "dev": "tsx build.mts",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@extension/env": "workspace:*",
     "@extension/shared": "workspace:*",
     "@extension/ui": "workspace:*",
-    "@extension/i18n": "workspace:*"
+    "@extension/i18n": "workspace:*",
+    "@extension/env": "workspace:*"
   },
   "devDependencies": {
     "@extension/hmr": "workspace:*",

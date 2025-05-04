@@ -27,6 +27,7 @@
     "@extension/tsconfig": "workspace:*",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@types/ws": "^8.18.1",
+    "esbuild": "^0.25.3",
     "esm": "^3.2.25",
     "rollup": "^4.40.1",
     "ts-node": "^10.9.2",
