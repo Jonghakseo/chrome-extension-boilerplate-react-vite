@@ -23,11 +23,11 @@
     "postinstall": "pnpm ready"
   },
   "dependencies": {
-    "react-error-boundary": "^5.0.0"
+    "react-error-boundary": "^6.0.0"
   },
   "devDependencies": {
     "@extension/storage": "workspace:*",
     "@extension/tsconfig": "workspace:*",
-    "type-fest": "^4.40.0"
+    "type-fest": "^4.40.1"
   }
 }
