@@ -1,4 +1,4 @@
-import { sampleFunction } from '@src/utils/sampleFunction';
+import { sampleFunction } from '@src/sample-function';
 
 console.log('example content script loaded');
 
