@@ -1,6 +1,6 @@
 name: Cancel PR workflows on close
 on:
-  pull_request:
+  pull_request_target:
     types: [ closed ]
 
 jobs:
