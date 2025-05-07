@@ -4,9 +4,7 @@ on: [ pull_request_target ]
 
 jobs:
   eslint:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -16,5 +14,4 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile --prefer-offline
-
       - run: pnpm lint
