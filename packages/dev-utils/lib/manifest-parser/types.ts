@@ -1,5 +1,5 @@
-import type { ManifestType } from '../shared-types.js';
+import type { ManifestType } from '@extension/shared';
 
-export interface ManifestParserInterface {
+export interface IManifestParser {
   convertManifestToString: (manifest: ManifestType, isFirefox: boolean) => string;
 }

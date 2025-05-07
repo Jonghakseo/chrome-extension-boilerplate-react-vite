@@ -19,10 +19,11 @@
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "format": "prettier . --write --ignore-path ../../.prettierignore",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "postinstall": "pnpm ready"
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
-    "type-fest": "^4.38.0"
+    "@extension/shared": "workspace:*"
   }
 }

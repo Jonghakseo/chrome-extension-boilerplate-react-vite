@@ -12,20 +12,57 @@ export const DEFAULT_CHOICES = [
   { name: 'DevTools (Include DevTools Panel)', value: 'devtools' },
   { name: 'Side Panel', value: 'side-panel' },
   { name: 'Options Page', value: 'options' },
+  { name: 'All tests', value: 'tests' },
 ] as const;
+
+export const DEFAULT_CHOICES_VALUES = DEFAULT_CHOICES.map(item => item.value);
+
+export const HELP_EXAMPLES = [
+  ['-d content-ui content-runtime', 'Delete content-ui and content-runtime'],
+  ['--de content devtools', 'Delete everything exclude content and devtools'],
+  ['-r options side-panel', 'Recover options and side-panel'],
+  ['--re popup new-tab', 'Recover everything exclude popup and new-tab'],
+] as const;
+
+export const CLI_OPTIONS = [
+  { alias: 'd', type: 'array', description: 'Delete specified features' },
+  { alias: 'r', type: 'array', description: 'Recover specified features' },
+  { alias: 'de', type: 'array', description: 'Delete all features except specified' },
+  { alias: 're', type: 'array', description: 'Recover all features except specified' },
+] as const;
+
+export const MANAGER_ACTION_PROMPT_CONFIG = {
+  message: 'Choose a tool',
+  choices: [
+    { name: 'Delete Feature', value: 'delete' },
+    { name: 'Recover Feature', value: 'recover' },
+  ],
+} as const;
 
 export const MODULE_CONFIG = {
   content: {
-    content_scripts: {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: [`content/index.iife.js`],
-    },
+    content_scripts: [
+      {
+        matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+        js: ['content/all.iife.js'],
+      },
+      {
+        matches: ['https://example.com/*'],
+        js: ['content/example.iife.js'],
+      },
+    ],
   },
   'content-ui': {
-    content_scripts: {
-      matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: [`content-ui/index.iife.js`],
-    },
+    content_scripts: [
+      {
+        matches: ['http://*/*', 'https://*/*', '<all_urls>'],
+        js: ['content-ui/all.iife.js'],
+      },
+      {
+        matches: ['https://example.com/*'],
+        js: ['content-ui/example.iife.js'],
+      },
+    ],
   },
   background: {
     background: {

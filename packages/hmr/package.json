@@ -16,20 +16,21 @@
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
     "ready": "tsc -b && rollup --config dist/rollup.config.js",
-    "dev": "node dist/lib/initializers/initReloadServer.js",
+    "dev": "node dist/lib/initializers/init-reload-server.js",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@extension/tsconfig": "workspace:*",
     "@extension/env": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
     "@rollup/plugin-sucrase": "^5.0.2",
-    "@types/ws": "^8.18.0",
+    "@types/ws": "^8.18.1",
+    "esbuild": "^0.25.3",
     "esm": "^3.2.25",
-    "rollup": "^4.38.0",
+    "rollup": "^4.40.1",
     "ts-node": "^10.9.2",
-    "ws": "^8.18.1"
+    "ws": "^8.18.2"
   }
 }

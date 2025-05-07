@@ -10,4 +10,4 @@ interface ICebCliEnv {
   readonly CLI_CEB_FIREFOX: string;
 }
 
-export type IEnv = ICebEnv & ICebCliEnv & typeof dynamicEnvValues;
+export type EnvType = ICebEnv & ICebCliEnv & typeof dynamicEnvValues;

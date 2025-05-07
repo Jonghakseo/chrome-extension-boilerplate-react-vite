@@ -5,7 +5,7 @@ interface ILoadingSpinnerProps {
 }
 
 export const LoadingSpinner = ({ size }: ILoadingSpinnerProps) => (
-  <div className={'flex justify-center items-center min-h-screen'}>
+  <div className={'flex min-h-screen items-center justify-center'}>
     <RingLoader size={size ?? 100} color={'aqua'} />
   </div>
 );

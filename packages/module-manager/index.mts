@@ -1,3 +1,3 @@
-import runModuleManager from './lib/runModuleManager.js';
+import { startManager } from './lib/index.js';
 
-void runModuleManager();
+startManager();

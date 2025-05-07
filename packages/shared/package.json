@@ -19,13 +19,15 @@
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "format": "prettier . --write --ignore-path ../../.prettierignore",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "postinstall": "pnpm ready"
+  },
+  "dependencies": {
+    "react-error-boundary": "^6.0.0"
   },
   "devDependencies": {
     "@extension/storage": "workspace:*",
-    "@extension/tsconfig": "workspace:*"
-  },
-  "dependencies": {
-    "react-error-boundary": "^5.0.0"
+    "@extension/tsconfig": "workspace:*",
+    "type-fest": "^4.40.1"
   }
 }

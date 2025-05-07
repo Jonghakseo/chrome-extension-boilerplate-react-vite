@@ -59,9 +59,10 @@ export default config(
         'error',
         {
           name: 'type-fest',
-          message: 'Please import from `@extension/dev-utils` instead of `type-fest`.',
+          message: 'Please import from `@extension/shared` instead of `type-fest`.',
         },
       ],
+      'arrow-body-style': ['error', 'as-needed'],
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/consistent-type-exports': 'error',
       'import-x/order': [
@@ -96,7 +97,7 @@ export default config(
   },
   // Overrides Rules
   {
-    files: ['**/packages/dev-utils/**/*.ts'],
+    files: ['**/packages/shared/**/*.ts'],
     rules: {
       'no-restricted-imports': 'off',
     },

@@ -1,6 +1,6 @@
 import '@src/SidePanel.css';
 import { t } from '@extension/i18n';
-import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
+import { PROJECT_URL_OBJECT, useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { exampleThemeStorage } from '@extension/storage';
 import { cn, ErrorDisplay, LoadingSpinner, ToggleButton } from '@extension/ui';
 
@@ -8,8 +8,7 @@ const SidePanel = () => {
   const { isLight } = useStorage(exampleThemeStorage);
   const logo = isLight ? 'side-panel/logo_vertical.svg' : 'side-panel/logo_vertical_dark.svg';
 
-  const goGithubSite = () =>
-    chrome.tabs.create({ url: 'https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite' });
+  const goGithubSite = () => chrome.tabs.create(PROJECT_URL_OBJECT);
 
   return (
     <div className={cn('App', isLight ? 'bg-slate-50' : 'bg-gray-800')}>

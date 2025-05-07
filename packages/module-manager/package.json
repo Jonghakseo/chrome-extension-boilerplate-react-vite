@@ -9,13 +9,15 @@
     "start": "tsx index.mts",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "format": "prettier . --write --ignore-path ../../.prettierignore",
-    "postinstall": "cd ../.. && pnpm -F dev-utils ready"
+    "format": "prettier . --write --ignore-path ../../.prettierignore"
   },
   "devDependencies": {
-    "@extension/tsconfig": "workspace:*",
     "@extension/dev-utils": "workspace:*",
-    "@inquirer/prompts": "^7.4.0",
-    "tsx": "^4.19.3"
+    "@extension/shared": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
+    "@inquirer/prompts": "^7.5.0",
+    "@types/yargs": "^17.0.33",
+    "tsx": "^4.19.4",
+    "yargs": "^17.7.2"
   }
 }

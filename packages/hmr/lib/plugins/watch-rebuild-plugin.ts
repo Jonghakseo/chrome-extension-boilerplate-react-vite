@@ -3,7 +3,7 @@ import MessageInterpreter from '../interpreter/index.js';
 import { WebSocket } from 'ws';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import type { PluginConfig } from '../types.js';
+import type { PluginConfigType } from '../types.js';
 import type { PluginOption } from 'vite';
 
 const injectionsPath = resolve(import.meta.dirname, '..', 'injections');
@@ -11,7 +11,7 @@ const injectionsPath = resolve(import.meta.dirname, '..', 'injections');
 const refreshCode = readFileSync(resolve(injectionsPath, 'refresh.js'), 'utf-8');
 const reloadCode = readFileSync(resolve(injectionsPath, 'reload.js'), 'utf-8');
 
-export const watchRebuildPlugin = (config: PluginConfig): PluginOption => {
+export const watchRebuildPlugin = (config: PluginConfigType): PluginOption => {
   const { refresh, reload, id: _id, onStart } = config;
   const hmrCode = (refresh ? refreshCode : '') + (reload ? reloadCode : '');
 
@@ -45,7 +45,7 @@ export const watchRebuildPlugin = (config: PluginConfig): PluginOption => {
 
   return {
     name: 'watch-rebuild',
-    writeBundle() {
+    closeBundle() {
       onStart?.();
       if (!ws) {
         initializeWebSocket();

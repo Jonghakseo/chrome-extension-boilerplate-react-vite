@@ -1,10 +1,11 @@
-import { colorLog, ManifestParser } from '@extension/dev-utils';
+import { ManifestParser } from '@extension/dev-utils';
 import { IS_DEV, IS_FIREFOX } from '@extension/env';
+import { colorfulLog } from '@extension/shared';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { platform } from 'node:process';
 import { pathToFileURL } from 'node:url';
-import type { ManifestType } from '@extension/dev-utils';
+import type { ManifestType } from '@extension/shared';
 import type { PluginOption } from 'vite';
 
 const manifestFile = resolve(import.meta.dirname, '..', '..', 'manifest.js');
@@ -21,9 +22,7 @@ const refreshFilePath = resolve(
   'refresh.js',
 );
 
-const withHMRId = (code: string) => {
-  return `(function() {let __HMR_ID = 'chrome-extension-hmr';${code}\n})();`;
-};
+const withHMRId = (code: string) => `(function() {let __HMR_ID = 'chrome-extension-hmr';${code}\n})();`;
 
 const getManifestWithCacheBurst = async () => {
   const withCacheBurst = (path: string) => `${path}?${Date.now().toString()}`;
@@ -67,7 +66,7 @@ export default (config: { outDir: string }): PluginOption => {
       writeFileSync(resolve(to, 'refresh.js'), withHMRId(refreshFileString));
     }
 
-    colorLog(`Manifest file copy complete: ${manifestPath}`, 'success');
+    colorfulLog(`Manifest file copy complete: ${manifestPath}`, 'success');
   };
 
   return {
