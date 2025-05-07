@@ -11,10 +11,12 @@ jobs:
     if: ${{ github.event.pull_request.merged == false }}
     steps:
       - name: Cancel all queued/in_progress workflows for this PR
+        env:
+          BRANCH: ${{ github.event.pull_request.head.ref }}
         run: |
           owner="${GITHUB_REPOSITORY%%/*}"
           repo="${GITHUB_REPOSITORY##*/}"
-          branch="${{ github.event.pull_request.head.ref }}"
+          branch="$BRANCH"
           token="${{ secrets.GITHUB_TOKEN }}"
           
           runs=$(curl -s -H "Accept: application/vnd.github+json" \
