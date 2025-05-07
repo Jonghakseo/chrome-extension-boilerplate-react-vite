@@ -1,0 +1,42 @@
+name: Cancel PR workflows on close
+on:
+  pull_request_target:
+    types: [ closed ]
+
+jobs:
+  cancel:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    if: ${{ github.event.pull_request.merged == false }}
+    steps:
+      - name: Cancel all queued/in_progress workflows for this PR
+        env:
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          owner="${GITHUB_REPOSITORY%%/*}"
+          repo="${GITHUB_REPOSITORY##*/}"
+          branch="$BRANCH"
+          token="${{ secrets.GITHUB_TOKEN }}"
+          
+          runs=$(curl -s -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $token" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/$owner/$repo/actions/runs?branch=$branch&status=queued" | jq -r '.workflow_runs[].id')
+
+          runs+=" "
+          runs+=$(curl -s -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $token" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/$owner/$repo/actions/runs?branch=$branch&status=in_progress" | jq -r '.workflow_runs[].id')
+
+          for run_id in $runs; do
+            if [ -n "$run_id" ]; then
+              echo "Cancelling workflow run: $run_id"
+              curl -s -X POST \
+                -H "Accept: application/vnd.github+json" \
+                -H "Authorization: Bearer $token" \
+                -H "X-GitHub-Api-Version: 2022-11-28" \
+                "https://api.github.com/repos/$owner/$repo/actions/runs/$run_id/cancel"
+            fi
+          done

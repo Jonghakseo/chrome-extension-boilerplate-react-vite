@@ -1,6 +1,8 @@
 name: Make sure new PRs are sent to development
 
-on: [ pull_request_target ]
+on:
+  pull_request_target:
+    types: [ opened ]
 
 jobs:
   check-branch:
@@ -17,4 +19,6 @@ jobs:
           change-to: dev
           comment: |
             Your PR's base branch was set to `main`, PRs should be set to target `dev`.
-            The base branch of this PR has been automatically changed to `dev`, please check that there are no merge conflicts
+            The base branch of this PR has been automatically changed to `dev`, please check that there are no merge conflicts.
+          already-exists-action: close_this
+          already-exists-comment: "Closing, because {url} basing on the same branch"
