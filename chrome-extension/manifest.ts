@@ -74,3 +74,4 @@ const manifest = {
 } satisfies ManifestType;
 
 export default manifest;
+console.log('xd');
