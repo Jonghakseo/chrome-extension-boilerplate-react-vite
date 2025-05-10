@@ -16,7 +16,7 @@
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
     "ready": "tsc -b && rollup --config dist/rollup.config.js",
-    "dev": "node dist/lib/initializers/init-reload-server.js",
+    "dev": "tsx lib/initializers/init-reload-server.ts",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
     "format": "prettier . --write --ignore-path ../../.prettierignore",
