@@ -8,5 +8,5 @@
     "types": ["chrome", "node", "./tailwind.d.ts"],
     "allowImportingTsExtensions": true
   },
-  "include": ["src", "build.mts", "tailwind.config.ts"]
+  "include": ["src", "build.mts"]
 }

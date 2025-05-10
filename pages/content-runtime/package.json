@@ -28,5 +28,10 @@
     "@extension/vite-config": "workspace:*",
     "@extension/hmr": "workspace:*",
     "@extension/shared": "workspace:*"
+  },
+  "postcss": {
+    "plugins": {
+      "@tailwindcss/postcss": {}
+    }
   }
 }
