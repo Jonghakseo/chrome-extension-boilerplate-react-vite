@@ -20,7 +20,7 @@ const buildTW = async (args: string[]): Promise<void> =>
     });
   });
 
-export const tailwindBuilder = ({
+export const tailwindCssBuilder = ({
   folder,
   rootDir,
   name,
@@ -29,7 +29,7 @@ export const tailwindBuilder = ({
   rootDir: string;
   name: string;
 }): Plugin => ({
-  name: 'vite-plugin-tailwind',
+  name: 'tailwindcss-builder-plugin',
   async buildStart() {
     const args = [
       '--input',
