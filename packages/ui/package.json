@@ -4,7 +4,7 @@
   "description": "chrome extension - ui components",
   "type": "module",
   "private": true,
-  "sideEffects": true,
+  "sideEffects": false,
   "files": [
     "dist/**"
   ],
