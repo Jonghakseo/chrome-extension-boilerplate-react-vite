@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import { makeEntryPointPlugin, tailwindBuilder } from '@extension/hmr';
+import { makeEntryPointPlugin, tailwindCssBuilder } from '@extension/hmr';
 import { getContentScriptEntries, withPageConfig } from '@extension/vite-config';
 import { IS_DEV } from '@extension/env';
 import { build } from 'vite';
@@ -18,7 +18,14 @@ const configs = Object.entries(getContentScriptEntries(matchesDir)).map(([name, 
       },
     },
     publicDir: resolve(rootDir, 'public'),
-    plugins: [IS_DEV && makeEntryPointPlugin(), tailwindBuilder({ name, rootDir, folder: resolve(matchesDir, name) })],
+    plugins: [
+      IS_DEV && makeEntryPointPlugin(),
+      tailwindCssBuilder({
+        name,
+        rootDir,
+        folder: resolve(matchesDir, name),
+      }),
+    ],
     build: {
       lib: {
         name: name,
