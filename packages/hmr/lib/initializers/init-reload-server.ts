@@ -42,8 +42,12 @@ const clientsThatNeedToUpdate: Set<WebSocket> = new Set();
     });
   });
 
-  wss.on('error', error => {
-    console.error(`[HMR] Failed to start server at ${LOCAL_RELOAD_SOCKET_URL}`);
-    throw error;
+  wss.on('error', (error: Error & { code: string }) => {
+    if (error.code === 'EADDRINUSE') {
+      console.info(`[HMR] Server already running at ${LOCAL_RELOAD_SOCKET_URL}, skipping reload server initialization`);
+    } else {
+      console.error(`[HMR] Failed to start server at ${LOCAL_RELOAD_SOCKET_URL}`);
+      throw error;
+    }
   });
 })();
