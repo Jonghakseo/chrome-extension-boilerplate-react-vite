@@ -16,7 +16,7 @@ export const watchOption = IS_DEV
     }
   : undefined;
 
-export const withPageConfig = (config: UserConfig) =>
+export const withPageConfig = (config: UserConfig, disableTW = false) =>
   defineConfig(
     deepmerge(
       {
@@ -24,7 +24,12 @@ export const withPageConfig = (config: UserConfig) =>
           'process.env': env,
         },
         base: '',
-        plugins: [react(), IS_DEV && watchRebuildPlugin({ refresh: true }), nodePolyfills(), tailwindcss()],
+        plugins: [
+          react(),
+          IS_DEV && watchRebuildPlugin({ refresh: true }),
+          nodePolyfills(),
+          !disableTW && tailwindcss(),
+        ],
         build: {
           sourcemap: IS_DEV,
           minify: IS_PROD,
