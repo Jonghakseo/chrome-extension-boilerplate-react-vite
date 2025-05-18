@@ -10,32 +10,35 @@ const matchesDir = resolve(srcDir, 'matches');
 
 const configs = Object.entries(getContentScriptEntries(matchesDir)).map(([name, entry]) => ({
   name,
-  config: withPageConfig({
-    mode: IS_DEV ? 'development' : undefined,
-    resolve: {
-      alias: {
-        '@src': srcDir,
+  config: withPageConfig(
+    {
+      mode: IS_DEV ? 'development' : undefined,
+      resolve: {
+        alias: {
+          '@src': srcDir,
+        },
+      },
+      publicDir: resolve(rootDir, 'public'),
+      plugins: [
+        IS_DEV && makeEntryPointPlugin(),
+        tailwindCssBuilder({
+          name,
+          rootDir,
+          folder: resolve(matchesDir, name),
+        }),
+      ],
+      build: {
+        lib: {
+          name: name,
+          formats: ['iife'],
+          entry,
+          fileName: name,
+        },
+        outDir: resolve(rootDir, '..', '..', 'dist', 'content-runtime'),
       },
     },
-    publicDir: resolve(rootDir, 'public'),
-    plugins: [
-      IS_DEV && makeEntryPointPlugin(),
-      tailwindCssBuilder({
-        name,
-        rootDir,
-        folder: resolve(matchesDir, name),
-      }),
-    ],
-    build: {
-      lib: {
-        name: name,
-        formats: ['iife'],
-        entry,
-        fileName: name,
-      },
-      outDir: resolve(rootDir, '..', '..', 'dist', 'content-runtime'),
-    },
-  }),
+    true,
+  ),
 }));
 
 const builds = configs.map(async ({ config }) => {
