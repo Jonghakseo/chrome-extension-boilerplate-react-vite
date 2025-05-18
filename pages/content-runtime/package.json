@@ -1,7 +1,7 @@
 {
-  "name": "@extension/content-runtime-script",
+  "name": "@extension/content-runtime",
   "version": "0.5.0",
-  "description": "chrome extension - content runtime script",
+  "description": "chrome extension - content runtime",
   "type": "module",
   "private": true,
   "sideEffects": true,
@@ -24,10 +24,10 @@
     "@extension/ui": "workspace:*"
   },
   "devDependencies": {
-    "@extension/tsconfig": "workspace:*",
-    "@extension/vite-config": "workspace:*",
     "@extension/hmr": "workspace:*",
-    "@extension/shared": "workspace:*"
+    "@extension/shared": "workspace:*",
+    "@extension/tsconfig": "workspace:*",
+    "@extension/vite-config": "workspace:*"
   },
   "postcss": {
     "plugins": {

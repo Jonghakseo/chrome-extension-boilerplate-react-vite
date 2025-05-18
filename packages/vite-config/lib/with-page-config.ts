@@ -9,6 +9,7 @@ import type { UserConfig } from 'vite';
 
 export const watchOption = IS_DEV
   ? {
+      exclude: ['**/node_modules/**', '**/dist/**'],
       chokidar: {
         awaitWriteFinish: true,
       },
