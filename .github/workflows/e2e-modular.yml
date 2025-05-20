@@ -1,0 +1,71 @@
+name: Modular E2E Tests Matrix
+
+on: [ pull_request_target ]
+
+permissions:
+  contents: read
+  
+env:
+  ALL_SCENARIOS: '["content", "content-ui", "content-runtime", "background", "new-tab", "popup", "devtools", "side-panel", "options"]'
+
+jobs:
+  e2e-tests:
+    name: '${{ matrix.browser }} | Scenario: ${{ matrix.scenario }}'
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: ['chrome', 'firefox']
+        scenario: ['content', 'content-ui', 'content-runtime', 'background', 'new-tab', 'popup', 'devtools', 'side-panel', 'options']
+
+    env:
+      CEB_CI: true
+      CURRENT_SCENARIO: ${{ matrix.scenario }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile --prefer-offline
+
+      - name: Configure modules | scenario "${{ matrix.scenario }}"
+        run: |
+          echo "Deleting all features except '${{ matrix.scenario }}'"
+          pnpm module-manager --de ${{ matrix.scenario }} tests
+
+      - name: Run E2E tests (${{ matrix.browser }})
+        run: pnpm e2e${{ matrix.browser == 'firefox' && ':firefox' || '' }}
+
+      - name: Restore one random feature and re-run E2E tests
+        run: |
+          echo "ALL_SCENARIOS=$ALL_SCENARIOS"
+          echo "CURRENT_SCENARIO=$CURRENT_SCENARIO"
+
+          scenarios=($(echo "$ALL_SCENARIOS" | jq -r '.[]'))
+
+          # Filter out current scenario
+          filtered_scenarios=()
+          for scenario in "${scenarios[@]}"; do
+            if [ "$scenario" != "$CURRENT_SCENARIO" ]; then
+              filtered_scenarios+=("$scenario")
+            fi
+          done
+
+          if [ ${#filtered_scenarios[@]} -eq 0 ]; then
+            echo "::warning::No other scenario available, skipping restoration."
+            exit 0
+          fi
+
+          random_feature="${filtered_scenarios[$RANDOM % ${#filtered_scenarios[@]}]}"
+
+          echo "Restoring feature: $random_feature"
+          pnpm module-manager -r "$random_feature"
+
+      - name: Run again E2E tests (${{ matrix.browser }})
+        run: pnpm ${{ matrix.browser == 'chrome' && 'e2e' || 'e2e:firefox' }}
+
