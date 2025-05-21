@@ -1,6 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
+    target-branch: 'dev'
     directory: "/"
     schedule:
       interval: "daily"
@@ -15,8 +16,10 @@ updates:
     versioning-strategy: increase
 
   - package-ecosystem: "github-actions"
+    target-branch: 'dev'
     directory: "/"
     schedule:
       interval: "daily"
     labels:
       - "dependencies"
+      - "github-actions"
