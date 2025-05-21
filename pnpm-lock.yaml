@@ -5706,6 +5706,7 @@ snapshots:
       '@types/react': 19.1.5
 
   '@types/react@19.1.5':
+
     dependencies:
       csstype: 3.1.3
 
