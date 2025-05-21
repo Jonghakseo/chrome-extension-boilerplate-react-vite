@@ -12,7 +12,9 @@ body:
     attributes:
       label: To Reproduce
       description: Steps to reproduce the behavior.
-      placeholder: Describe the steps to reproduce the issue.
+      placeholder: |
+        Describe the steps to reproduce the issue.
+        Use [Brie](https://go.briehq.com/github?utm_source=CEB) to capture screenshots, errors, and network activity for faster issue resolution.
     validations:
       required: true
 
