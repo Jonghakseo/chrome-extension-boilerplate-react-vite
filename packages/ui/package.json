@@ -4,7 +4,7 @@
   "description": "chrome extension - ui components",
   "type": "module",
   "private": true,
-  "sideEffects": true,
+  "sideEffects": false,
   "files": [
     "dist/**"
   ],
@@ -29,9 +29,13 @@
     "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {
-    "@extension/tailwindcss-config": "workspace:*",
     "@extension/tsconfig": "workspace:*",
     "react-spinners": "^0.17.0",
     "tsc-alias": "^1.8.16"
+  },
+  "postcss": {
+    "plugins": {
+      "@tailwindcss/postcss": {}
+    }
   }
 }

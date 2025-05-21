@@ -20,6 +20,3 @@ tsconfig.tsbuildinfo
 .DS_Store
 .idea
 **/.turbo
-
-# compiled
-**/tailwind-output.css
