@@ -95,6 +95,11 @@ the build speed and development experience by using Vite and Turborepo.
       - Optional, but useful `File | Settings | Tools | Actions on Save`\
       -> `Optimize imports` and `Reformat code`
 
+> [!IMPORTANT]
+> On Windows, make sure you have WSL enabled and Linux distribution (e.g. Ubuntu) installed for WSL.
+> 
+> [Installation Guide](https://learn.microsoft.com/en-us/windows/wsl/install)
+
 <b>Then, depending on the target browser:</b>
 
 ### For Chrome: <a name="getting-started-chrome"></a>
