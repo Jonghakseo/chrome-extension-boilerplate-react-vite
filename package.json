@@ -48,7 +48,7 @@
     "@types/chrome": "^0.0.323",
     "@types/eslint-plugin-jsx-a11y": "^6.10.0",
     "@types/node": "^22.15.21",
-    "@types/react": "^19.1.4",
+    "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
     "@typescript-eslint/parser": "^8.32.1",
     "autoprefixer": "^10.4.21",
