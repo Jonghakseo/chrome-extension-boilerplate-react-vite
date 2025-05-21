@@ -1,6 +1,6 @@
 {
   "name": "chrome-extension-boilerplate-react-vite",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "chrome extension boilerplate",
   "license": "MIT",
   "private": true,
@@ -51,7 +51,7 @@
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
     "@typescript-eslint/parser": "^8.32.1",
-    "autoprefixer": "^10.4.21",
+    "autoprefixer": "^10.5.01",
     "cross-env": "^7.0.3",
     "deepmerge": "^4.3.1",
     "eslint": "^9.27.0",
