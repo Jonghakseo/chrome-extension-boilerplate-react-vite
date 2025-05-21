@@ -32,10 +32,10 @@
     "format": "turbo format --continue -- --cache --cache-location node_modules/.cache/.prettiercache",
     "prepare": "husky",
     "update-version": "bash bash-scripts/update_version.sh",
-    "copy_env": "bash bash-scripts/copy_env.sh",
+    "copy-env": "bash bash-scripts/copy_env.sh",
     "set-global-env": "bash bash-scripts/set_global_env.sh",
     "module-manager": "pnpm -F module-manager start",
-    "postinstall": "pnpm copy_env"
+    "postinstall": "pnpm copy-env"
   },
   "dependencies": {
     "react": "^19.1.0",
