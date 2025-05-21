@@ -97,6 +97,7 @@ the build speed and development experience by using Vite and Turborepo.
 
 > [!IMPORTANT]
 > On Windows, make sure you have WSL enabled and Linux distribution (e.g. Ubuntu) installed for WSL.
+> 
 > [Installation Guide](https://learn.microsoft.com/en-us/windows/wsl/install)
 
 <b>Then, depending on the target browser:</b>
