@@ -10,8 +10,9 @@ updates:
       - "npm"
     groups:
       dev-dependencies:
-        patterns:
-          - "*"
+        dependency-type: development
+      dependencies:
+        dependency-type: production
     versioning-strategy: increase
 
   - package-ecosystem: "github-actions"
