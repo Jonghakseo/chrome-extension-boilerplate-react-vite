@@ -25,13 +25,13 @@ importers:
         specifier: ^9.27.0
         version: 9.27.0
       '@tailwindcss/cli':
-        specifier: ^4.1.6
+        specifier: ^4.1.7
         version: 4.1.7
       '@tailwindcss/postcss':
-        specifier: ^4.1.6
+        specifier: ^4.1.7
         version: 4.1.7
       '@tailwindcss/vite':
-        specifier: ^4.1.6
+        specifier: ^4.1.7
         version: 4.1.7(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(sass@1.89.0)(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0))
       '@types/chrome':
         specifier: ^0.0.323
@@ -130,7 +130,7 @@ importers:
         specifier: ^1.1.6
         version: 1.1.6
       tailwindcss:
-        specifier: ^4.1.6
+        specifier: ^4.1.7
         version: 4.1.7
       tslib:
         specifier: ^2.8.1
