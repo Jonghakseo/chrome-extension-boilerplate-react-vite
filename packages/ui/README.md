@@ -306,9 +306,8 @@ You can refer to the this [manual guide](https://ui.shadcn.com/docs/installation
 6. Export components
 
     Edit the `index.ts` file in the `packages/ui` directory to export the shadcn ui component:
-    
+
     ```ts
     //...
     export * from './lib/components/ui/button';
     ```
-   

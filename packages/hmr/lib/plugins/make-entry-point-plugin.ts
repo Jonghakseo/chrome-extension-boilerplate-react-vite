@@ -28,7 +28,7 @@ const safeWriteFileSync = (path: string, data: string) => {
 };
 
 /**
- * make entry point file for content script cache busting
+ * Make an entry point file for content script cache busting
  */
 export const makeEntryPointPlugin = (): PluginOption => ({
   name: 'make-entry-point-plugin',

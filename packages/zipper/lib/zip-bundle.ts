@@ -4,22 +4,18 @@ import { Zip } from 'fflate';
 import { createWriteStream, existsSync, mkdirSync } from 'node:fs';
 import { posix, resolve } from 'node:path';
 
-// Converts bytes to megabytes
 const toMB = (bytes: number): number => bytes / 1024 / 1024;
 
-// Creates the build directory if it doesn't exist
 const ensureBuildDirectoryExists = (buildDirectory: string): void => {
   if (!existsSync(buildDirectory)) {
     mkdirSync(buildDirectory, { recursive: true });
   }
 };
 
-// Logs the package size and duration
 const logPackageSize = (size: number, startTime: number): void => {
   console.log(`Zip Package size: ${toMB(size).toFixed(2)} MB in ${Date.now() - startTime}ms`);
 };
 
-// Zips the bundle
 export const zipBundle = async (
   {
     distDirectory,
@@ -66,7 +62,6 @@ export const zipBundle = async (
       }
     });
 
-    // Handle file read streams
     for (const file of fileList) {
       if (aborted) return;
 
