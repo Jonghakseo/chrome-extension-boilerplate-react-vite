@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 export default function App() {
   useEffect(() => {
-    console.log('content ui all loaded');
+    console.log('[CEB] Content ui all loaded');
   }, []);
 
   return (
