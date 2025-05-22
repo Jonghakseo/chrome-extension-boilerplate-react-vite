@@ -1,5 +1,5 @@
 import { sampleFunction } from '@src/sample-function';
 
-console.log('all content script loaded');
+console.log('[CEB] All content script loaded');
 
 void sampleFunction();
