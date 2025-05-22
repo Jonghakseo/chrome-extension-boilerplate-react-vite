@@ -96,7 +96,7 @@ the build speed and development experience by using Vite and Turborepo.
 8. Run `pnpm update-version <version>` for change the `version` to the desired version of your extension.
 
 > [!IMPORTANT]
-> On Windows, make sure you have WSL enabled and Linux distribution (e.g. Ubuntu) installed for WSL.
+> On Windows, make sure you have WSL enabled and Linux distribution (e.g. Ubuntu) installed on WSL.
 > 
 > [Installation Guide](https://learn.microsoft.com/en-us/windows/wsl/install)
 
