@@ -49,6 +49,7 @@
     - [Hot module reload seems to have frozen](#hot-module-reload-seems-to-have-frozen)
     - [Imports not resolving correctly](#imports-not-resolving-correctly)
 - [Community](#community)
+- [Debugging](#debugging)
 - [Reference](#reference)
 - [Star History](#star-history)
 - [Contributors](#contributors)
@@ -231,6 +232,8 @@ To chat with other community members, you can join the [Discord](https://discord
 You can ask questions on that server, and you can also help others.
 
 Also, suggest new features or share any challenges you've faced while developing Chrome extensions!
+
+## Debugging
 
 If you're debugging one, you can use [Brie](https://go.briehq.com/github?utm_source=CEB) lets you capture screenshots, errors, and network activity, making it easier for us to help.
 
