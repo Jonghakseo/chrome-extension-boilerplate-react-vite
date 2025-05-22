@@ -31,7 +31,7 @@ const configs = Object.entries(getContentScriptEntries(matchesDir)).map(([name, 
 );
 
 const builds = configs.map(async config => {
-  //@ts-expect-error this is hidden property into vite's resolveConfig()
+  //@ts-expect-error This is hidden property into vite's resolveConfig()
   config.configFile = false;
   await build(config);
 });

@@ -41,7 +41,7 @@ const builds = configs.map(async ({ name, config }) => {
     ['--watch']: IS_DEV,
   };
   await buildTW(args);
-  //@ts-expect-error this is hidden property into vite's resolveConfig()
+  //@ts-expect-error This is hidden property into vite's resolveConfig()
   config.configFile = false;
   await build(config);
 });
