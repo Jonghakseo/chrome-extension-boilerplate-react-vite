@@ -17,8 +17,6 @@ jobs:
           config_path: ./.prettierrc
           file_pattern: "*.{js,jsx,ts,tsx,json}"
 
-      # This step only runs if prettier finds errors causing the previous step to fail
-      # This steps lists the files where errors were found
       - name: Prettier Output
         if: ${{ failure() }}
         shell: bash
