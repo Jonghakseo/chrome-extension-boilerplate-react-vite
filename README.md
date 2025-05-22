@@ -36,9 +36,9 @@
     - [ChromeExtension](#structure-chrome-extension)
     - [Packages](#structure-packages)
     - [Pages](#structure-pages)
-- [Getting started](#getting-started)
-    - [Chrome](#getting-started-chrome)
-    - [Firefox](#getting-started-firefox)
+- [Installation](#installation)
+    - [Chrome](#installation-chrome)
+    - [Firefox](#installation-firefox)
 - [Install dependency](#install-dependency)
     - [For root](#install-dependency-for-root)
     - [For module](#install-dependency-for-module)
@@ -72,16 +72,15 @@ the build speed and development experience by using Vite and Turborepo.
 - [Custom HMR (Hot Module Rebuild) plugin](/packages/hmr)
 - [End-to-end testing with WebdriverIO](https://webdriver.io/)
 
-## Getting started
+## Installation
 
 1. Clone this repository.( ```git clone https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite``` )
 2. Ensure your node version is >= than in `.nvmrc` file, recommend to use [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro)
 3. Edit `/packages/i18n/locales/`{your locale(s)}/`messages.json`
 4. In the objects `extensionDescription` and `extensionName`, change the `message` fields (leave `description` alone)
-5. In root `package.json`, change the `version` to the desired version of your extension.
-6. Install pnpm globally: `npm install -g pnpm`
-7. Run `pnpm install`
-8. Check if you have that configuration in your IDE/Editor:
+5. Install pnpm globally: `npm install -g pnpm`
+6. Run `pnpm install`
+7. Check if you have that configuration in your IDE/Editor:
     - <b>VS Code</b>:
         - Installed [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
         - Installed [Prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
@@ -94,6 +93,7 @@ the build speed and development experience by using Vite and Turborepo.
       - Configured [Prettier](https://prettier.io/docs/en/webstorm.html)
       - Optional, but useful `File | Settings | Tools | Actions on Save`\
       -> `Optimize imports` and `Reformat code`
+8. Run `pnpm update-version <version>` for change the `version` to the desired version of your extension.
 
 > [!IMPORTANT]
 > On Windows, make sure you have WSL enabled and Linux distribution (e.g. Ubuntu) installed for WSL.
@@ -102,7 +102,7 @@ the build speed and development experience by using Vite and Turborepo.
 
 <b>Then, depending on the target browser:</b>
 
-### For Chrome: <a name="getting-started-chrome"></a>
+### For Chrome: <a name="installation-chrome"></a>
 
 1. Run:
     - Dev: `pnpm dev` (on Windows, you should run as administrator;
@@ -113,7 +113,7 @@ the build speed and development experience by using Vite and Turborepo.
 4. Click - <kbd>Load unpacked</kbd> in the upper left corner
 5. Select the `dist` directory from the boilerplate project
 
-### For Firefox: <a name="getting-started-firefox"></a>
+### For Firefox: <a name="installation-firefox"></a>
 
 1. Run:
     - Dev: `pnpm dev:firefox`
