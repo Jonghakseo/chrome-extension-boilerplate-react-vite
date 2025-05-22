@@ -1,6 +1,6 @@
 # Content Runtime Script
 
-This tool allows user to inject scripts (Console and UI) during runtime into all pages specified by you.
+This tool allows users to inject scripts (Console and UI) during runtime into all pages specified by you.
 
 ### Add New Script
 
