@@ -6,7 +6,7 @@ This tool allows you to inject React Components into all pages specified by you.
 
 1. Copy `matches/example` folder and paste it with other name and edit content.
 
-   > [!INFO]  
+   > [!NOTE]
    > Remember to edit import:
    > ```ts
    > import App from '@src/matches/{new_folder}/App';
