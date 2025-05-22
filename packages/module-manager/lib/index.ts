@@ -6,6 +6,7 @@ const cliOptions = processCLIArgs();
 export const startManager = () => {
   if (cliOptions) {
     const targets = cliOptions.targets;
+
     (async () => {
       for (const moduleName of targets) {
         colorfulLog(`Processing module: ${moduleName}`, 'info');
