@@ -36,6 +36,7 @@ const Popup = () => {
         }
       });
   };
+  console.log('test');
 
   return (
     <div className={cn('App', isLight ? 'bg-slate-50' : 'bg-gray-800')}>
