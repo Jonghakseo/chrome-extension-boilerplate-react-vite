@@ -1,5 +1,5 @@
-export type Manifest = chrome.runtime.ManifestV3;
+import type { ManifestType } from '@extension/shared';
 
-export interface ManifestParserInterface {
-  convertManifestToString: (manifest: Manifest, isFirefox: boolean) => string;
+export interface IManifestParser {
+  convertManifestToString: (manifest: ManifestType, isFirefox: boolean) => string;
 }

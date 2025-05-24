@@ -1,15 +1,13 @@
-import type { PluginOption } from 'vite';
 import fg from 'fast-glob';
+import type { PluginOption } from 'vite';
 
-export function watchPublicPlugin(): PluginOption {
-  return {
-    name: 'watch-public-plugin',
-    async buildStart() {
-      const files = await fg(['public/**/*']);
+export const watchPublicPlugin = (): PluginOption => ({
+  name: 'watch-public-plugin',
+  async buildStart() {
+    const files = await fg(['public/**/*']);
 
-      for (const file of files) {
-        this.addWatchFile(file);
-      }
-    },
-  };
-}
+    for (const file of files) {
+      this.addWatchFile(file);
+    }
+  },
+});

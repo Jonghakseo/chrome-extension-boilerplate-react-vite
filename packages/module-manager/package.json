@@ -1,6 +1,6 @@
 {
   "name": "@extension/module-manager",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "chrome extension - module manager",
   "type": "module",
   "private": true,
@@ -9,12 +9,15 @@
     "start": "tsx index.mts",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write --ignore-path ../../.prettierignore"
+    "format": "prettier . --write --ignore-path ../../.prettierignore"
   },
   "devDependencies": {
+    "@extension/dev-utils": "workspace:*",
+    "@extension/shared": "workspace:*",
     "@extension/tsconfig": "workspace:*",
-    "@inquirer/prompts": "^7.3.2",
-    "fflate": "^0.8.2",
-    "tsx": "^4.19.2"
+    "@inquirer/prompts": "^7.5.1",
+    "@types/yargs": "^17.0.33",
+    "tsx": "^4.19.4",
+    "yargs": "^17.7.2"
   }
 }

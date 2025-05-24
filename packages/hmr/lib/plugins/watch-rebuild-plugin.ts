@@ -1,17 +1,17 @@
-import fs from 'node:fs';
-import { resolve } from 'node:path';
-import type { PluginOption } from 'vite';
-import { WebSocket } from 'ws';
-import MessageInterpreter from '../interpreter/index.js';
 import { BUILD_COMPLETE, LOCAL_RELOAD_SOCKET_URL } from '../consts.js';
-import type { PluginConfig } from '../types.js';
+import MessageInterpreter from '../interpreter/index.js';
+import { WebSocket } from 'ws';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import type { PluginConfigType } from '../types.js';
+import type { PluginOption } from 'vite';
 
 const injectionsPath = resolve(import.meta.dirname, '..', 'injections');
 
-const refreshCode = fs.readFileSync(resolve(injectionsPath, 'refresh.js'), 'utf-8');
-const reloadCode = fs.readFileSync(resolve(injectionsPath, 'reload.js'), 'utf-8');
+const refreshCode = readFileSync(resolve(injectionsPath, 'refresh.js'), 'utf-8');
+const reloadCode = readFileSync(resolve(injectionsPath, 'reload.js'), 'utf-8');
 
-export const watchRebuildPlugin = (config: PluginConfig): PluginOption => {
+export const watchRebuildPlugin = (config: PluginConfigType): PluginOption => {
   const { refresh, reload, id: _id, onStart } = config;
   const hmrCode = (refresh ? refreshCode : '') + (reload ? reloadCode : '');
 
@@ -45,7 +45,7 @@ export const watchRebuildPlugin = (config: PluginConfig): PluginOption => {
 
   return {
     name: 'watch-rebuild',
-    writeBundle() {
+    closeBundle() {
       onStart?.();
       if (!ws) {
         initializeWebSocket();

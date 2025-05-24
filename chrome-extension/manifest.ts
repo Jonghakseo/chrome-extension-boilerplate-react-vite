@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import type { ManifestType } from '@extension/shared';
 
 const packageJson = JSON.parse(readFileSync('./package.json', 'utf8'));
 
@@ -44,16 +45,24 @@ const manifest = {
     newtab: 'new-tab/index.html',
   },
   icons: {
-    128: 'icon-128.png',
+    '128': 'icon-128.png',
   },
   content_scripts: [
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['content/index.iife.js'],
+      js: ['content/all.iife.js'],
+    },
+    {
+      matches: ['https://example.com/*'],
+      js: ['content/example.iife.js'],
     },
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
-      js: ['content-ui/index.iife.js'],
+      js: ['content-ui/all.iife.js'],
+    },
+    {
+      matches: ['https://example.com/*'],
+      js: ['content-ui/example.iife.js'],
     },
     {
       matches: ['http://*/*', 'https://*/*', '<all_urls>'],
@@ -70,6 +79,6 @@ const manifest = {
   side_panel: {
     default_path: 'side-panel/index.html',
   },
-} satisfies chrome.runtime.ManifestV3;
+} satisfies ManifestType;
 
 export default manifest;

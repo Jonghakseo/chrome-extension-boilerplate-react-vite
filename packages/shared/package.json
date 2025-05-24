@@ -1,6 +1,6 @@
 {
   "name": "@extension/shared",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "chrome extension - shared code",
   "type": "module",
   "private": true,
@@ -18,11 +18,16 @@
     "ready": "tsc -b",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
-    "type-check": "tsc --noEmit"
+    "format": "prettier . --write --ignore-path ../../.prettierignore",
+    "type-check": "tsc --noEmit",
+    "postinstall": "pnpm ready"
+  },
+  "dependencies": {
+    "react-error-boundary": "^6.0.0"
   },
   "devDependencies": {
     "@extension/storage": "workspace:*",
-    "@extension/tsconfig": "workspace:*"
+    "@extension/tsconfig": "workspace:*",
+    "type-fest": "^4.41.0"
   }
 }

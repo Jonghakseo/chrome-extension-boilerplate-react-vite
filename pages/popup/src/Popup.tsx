@@ -1,8 +1,8 @@
 import '@src/Popup.css';
-import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
-import { exampleThemeStorage } from '@extension/storage';
 import { t } from '@extension/i18n';
-import { ToggleButton } from '@extension/ui';
+import { PROJECT_URL_OBJECT, useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
+import { exampleThemeStorage } from '@extension/storage';
+import { cn, ErrorDisplay, LoadingSpinner, ToggleButton } from '@extension/ui';
 
 const notificationOptions = {
   type: 'basic',
@@ -12,11 +12,10 @@ const notificationOptions = {
 } as const;
 
 const Popup = () => {
-  const theme = useStorage(exampleThemeStorage);
-  const isLight = theme === 'light';
+  const { isLight } = useStorage(exampleThemeStorage);
   const logo = isLight ? 'popup/logo_vertical.svg' : 'popup/logo_vertical_dark.svg';
-  const goGithubSite = () =>
-    chrome.tabs.create({ url: 'https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite' });
+
+  const goGithubSite = () => chrome.tabs.create(PROJECT_URL_OBJECT);
 
   const injectContentScript = async () => {
     const [tab] = await chrome.tabs.query({ currentWindow: true, active: true });
@@ -28,7 +27,7 @@ const Popup = () => {
     await chrome.scripting
       .executeScript({
         target: { tabId: tab.id! },
-        files: ['/content-runtime/index.iife.js'],
+        files: ['/content-runtime/example.iife.js', '/content-runtime/all.iife.js'],
       })
       .catch(err => {
         // Handling errors related to other paths
@@ -39,8 +38,8 @@ const Popup = () => {
   };
 
   return (
-    <div className={`App ${isLight ? 'bg-slate-50' : 'bg-gray-800'}`}>
-      <header className={`App-header ${isLight ? 'text-gray-900' : 'text-gray-100'}`}>
+    <div className={cn('App', isLight ? 'bg-slate-50' : 'bg-gray-800')}>
+      <header className={cn('App-header', isLight ? 'text-gray-900' : 'text-gray-100')}>
         <button onClick={goGithubSite}>
           <img src={chrome.runtime.getURL(logo)} className="App-logo" alt="logo" />
         </button>
@@ -48,12 +47,12 @@ const Popup = () => {
           Edit <code>pages/popup/src/Popup.tsx</code>
         </p>
         <button
-          className={
-            'font-bold mt-4 py-1 px-4 rounded shadow hover:scale-105 ' +
-            (isLight ? 'bg-blue-200 text-black' : 'bg-gray-700 text-white')
-          }
+          className={cn(
+            'mt-4 rounded px-4 py-1 font-bold shadow hover:scale-105',
+            isLight ? 'bg-blue-200 text-black' : 'bg-gray-700 text-white',
+          )}
           onClick={injectContentScript}>
-          Click to inject Content Script
+          {t('injectButton')}
         </button>
         <ToggleButton>{t('toggleTheme')}</ToggleButton>
       </header>
@@ -61,4 +60,4 @@ const Popup = () => {
   );
 };
 
-export default withErrorBoundary(withSuspense(Popup, <div> Loading ... </div>), <div> Error Occur </div>);
+export default withErrorBoundary(withSuspense(Popup, <LoadingSpinner />), ErrorDisplay);

@@ -1,8 +1,8 @@
 import { config as baseConfig } from './wdio.conf.js';
-import { readdir, readFile } from 'node:fs/promises';
 import { getChromeExtensionPath, getFirefoxExtensionPath } from '../utils/extension-path.js';
-import { extname, join } from 'node:path';
 import { IS_CI, IS_FIREFOX } from '@extension/env';
+import { readdir, readFile } from 'node:fs/promises';
+import { extname, join } from 'node:path';
 
 const extName = IS_FIREFOX ? '.xpi' : '.zip';
 const extensions = await readdir(join(import.meta.dirname, '../../../dist-zip'));

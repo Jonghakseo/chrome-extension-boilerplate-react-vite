@@ -1,6 +1,6 @@
 {
   "name": "@extension/env",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "chrome extension - environment variables",
   "type": "module",
   "private": true,
@@ -18,11 +18,11 @@
     "ready": "tsc -b",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
+    "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@dotenvx/dotenvx": "^1.33.0"
+    "@dotenvx/dotenvx": "^1.44.1"
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*"

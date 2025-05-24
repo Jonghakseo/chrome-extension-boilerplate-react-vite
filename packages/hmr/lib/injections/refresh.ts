@@ -1,4 +1,4 @@
-import initClient from '../initializers/initClient.js';
+import initClient from '../initializers/init-client.js';
 
 (() => {
   let pendingReload = false;
@@ -17,17 +17,17 @@ import initClient from '../initializers/initClient.js';
   });
 
   // reload
-  function reload(): void {
+  const reload = (): void => {
     pendingReload = false;
     window.location.reload();
-  }
+  };
 
   // reload when tab is visible
-  function reloadWhenTabIsVisible(): void {
+  const reloadWhenTabIsVisible = (): void => {
     if (!document.hidden && pendingReload) {
       reload();
     }
-  }
+  };
 
   document.addEventListener('visibilitychange', reloadWhenTabIsVisible);
 })();

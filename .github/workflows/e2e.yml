@@ -1,15 +1,17 @@
 name: Run E2E Tests
 
-on:
-  push:
-    branches: [ main, dev ]
-  pull_request:
-    branches: [ main, dev ]
+on: [ pull_request_target ]
+
+permissions:
+  contents: read
 
 jobs:
-  chrome:
-    name: E2E tests for Chrome
+  e2e:
+    name: E2E tests on ${{ matrix.browser }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: [chrome, firefox]
     env:
       CEB_CI: true
     steps:
@@ -20,19 +22,4 @@ jobs:
           node-version-file: '.nvmrc'
           cache: pnpm
       - run: pnpm install --frozen-lockfile --prefer-offline
-      - run: pnpm e2e
-
-  firefox:
-    name: E2E tests for Firefox
-    runs-on: ubuntu-latest
-    env:
-      CEB_CI: true
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile --prefer-offline
-      - run: pnpm e2e:firefox
+      - run: pnpm ${{ matrix.browser == 'chrome' && 'e2e' || 'e2e:firefox' }}

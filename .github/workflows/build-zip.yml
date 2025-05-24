@@ -1,15 +1,10 @@
 name: Build And Upload Extension Zip Via Artifact
 
-on:
-  push:
-    branches: [ main, dev ]
-  pull_request:
+on: [ pull_request_target ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -17,11 +12,8 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: pnpm
-
       - run: pnpm install --frozen-lockfile --prefer-offline
-
       - run: pnpm build
-
       - uses: actions/upload-artifact@v4
         with:
           path: dist/*

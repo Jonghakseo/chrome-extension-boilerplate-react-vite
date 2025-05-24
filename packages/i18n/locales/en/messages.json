@@ -10,8 +10,8 @@
   "toggleTheme": {
     "message": "Toggle theme"
   },
-  "loading": {
-    "message": "Loading..."
+  "injectButton": {
+    "message": "Click to inject Content Scripts"
   },
   "greeting": {
     "description": "Greeting message",
@@ -26,5 +26,20 @@
   "hello": {
     "description": "Placeholder example",
     "message": "Hello $1"
+  },
+  "displayErrorInfo": {
+    "message": "Error occur"
+  },
+  "displayErrorDescription": {
+    "message": "Sorry, something went wrong while loading the page."
+  },
+  "displayErrorDetailsInfo": {
+    "message": "Error details:"
+  },
+  "displayErrorUnknownErrorInfo": {
+    "message": "Unknown error"
+  },
+  "displayErrorReset": {
+    "message": "Run Again"
   }
 }

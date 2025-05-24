@@ -1,0 +1,40 @@
+name: Feature Request
+description: Suggest an idea for improvement.
+title: "[Feature Request]: "
+labels: [ "request-new-feature", "triage" ]
+assignees:
+  - Jonghakseo
+  - PatrykKuniczak
+
+body:
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Problem Description
+      description: A clear and concise description of what's the problem. Ex. I'm looking for a way to...
+      placeholder: Describe the problem or frustration.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: A clear and concise description of what you want to happen.
+      placeholder: Describe the solution you'd like.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: A clear and concise description of any alternative solutions.
+      placeholder: Describe alternative solutions or features.
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context or screenshots about the feature request here.
+      placeholder: Provide additional details if necessary.

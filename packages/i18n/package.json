@@ -1,6 +1,6 @@
 {
   "name": "@extension/i18n",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "chrome extension - internationalization",
   "type": "module",
   "private": true,
@@ -15,10 +15,10 @@
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
     "clean": "pnpm clean:bundle && pnpm clean:node_modules && pnpm clean:turbo",
-    "ready": "tsc -b prepare-build.tsconfig.json && node --env-file=../../.env dist/lib/prepare_build.js && tsc -b",
+    "ready": "tsc -b prepare-build.tsconfig.json && node --env-file=../../.env dist/lib/prepare-build.js && tsc -b",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
+    "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {

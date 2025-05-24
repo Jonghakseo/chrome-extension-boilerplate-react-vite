@@ -1,17 +1,15 @@
 {
   "name": "@extension/ui",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "chrome extension - ui components",
   "type": "module",
   "private": true,
   "sideEffects": true,
   "files": [
-    "dist/**",
-    "dist/global.css"
+    "dist/**"
   ],
-  "types": "dist/index.d.ts",
+  "types": "index.ts",
   "main": "dist/index.js",
-  "module": "dist/index.js",
   "scripts": {
     "clean:bundle": "rimraf dist",
     "clean:node_modules": "pnpx rimraf node_modules",
@@ -20,17 +18,20 @@
     "ready": "tsc -b && tsc-alias -p tsconfig.json",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write",
+    "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@extension/storage": "workspace:*",
+    "@extension/i18n": "workspace:*",
     "@extension/shared": "workspace:*",
+    "@extension/storage": "workspace:*",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.4.0"
+    "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {
+    "@extension/tailwindcss-config": "workspace:*",
     "@extension/tsconfig": "workspace:*",
-    "tsc-alias": "^1.8.10"
+    "react-spinners": "^0.17.0",
+    "tsc-alias": "^1.8.16"
   }
 }

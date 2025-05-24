@@ -1,6 +1,6 @@
 {
   "name": "@extension/content-script",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "chrome extension - content script",
   "type": "module",
   "private": true,
@@ -9,14 +9,15 @@
     "dist/**"
   ],
   "scripts": {
+    "clean:bundle": "rimraf dist",
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "rimraf .turbo",
-    "clean": "pnpm clean:turbo && pnpm clean:node_modules",
-    "build": "vite build",
-    "dev": "vite build --mode development",
+    "clean": "pnpm clean:bundle && pnpm clean:turbo && pnpm clean:node_modules",
+    "build": "tsx build.mts",
+    "dev": "tsx build.mts",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
+    "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {

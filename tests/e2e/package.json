@@ -1,24 +1,24 @@
 {
   "name": "@extension/e2e",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "E2e tests configuration boilerplate",
   "private": true,
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "e2e": "wdio run ./config/wdio.browser.conf.ts",
+    "e2e": "wdio run config/wdio.browser.conf.ts",
     "clean:node_modules": "pnpx rimraf node_modules",
     "clean:turbo": "pnpx rimraf .turbo",
     "clean": "pnpm clean:turbo && pnpm clean:node_modules"
   },
   "devDependencies": {
-    "@extension/tsconfig": "workspace:*",
     "@extension/env": "workspace:*",
-    "@wdio/cli": "^9.4.5",
-    "@wdio/globals": "^9.4.5",
-    "@wdio/local-runner": "^9.1.2",
-    "@wdio/mocha-framework": "^9.1.2",
-    "@wdio/spec-reporter": "^9.2.14",
-    "@wdio/types": "^9.1.2"
+    "@extension/tsconfig": "workspace:*",
+    "@wdio/cli": "^9.14.0",
+    "@wdio/globals": "^9.14.0",
+    "@wdio/local-runner": "^9.14.0",
+    "@wdio/mocha-framework": "^9.14.0",
+    "@wdio/spec-reporter": "^9.14.0",
+    "@wdio/types": "^9.14.0"
   }
 }

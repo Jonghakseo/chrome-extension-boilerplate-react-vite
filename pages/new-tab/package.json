@@ -1,6 +1,6 @@
 {
   "name": "@extension/new-tab",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "chrome extension - new tab",
   "type": "module",
   "private": true,
@@ -16,20 +16,20 @@
     "dev": "vite build --mode development",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
+    "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@extension/i18n": "workspace:*",
     "@extension/shared": "workspace:*",
     "@extension/storage": "workspace:*",
-    "@extension/ui": "workspace:*",
-    "@extension/i18n": "workspace:*"
+    "@extension/ui": "workspace:*"
   },
   "devDependencies": {
     "@extension/tailwindcss-config": "workspace:*",
     "@extension/tsconfig": "workspace:*",
     "@extension/vite-config": "workspace:*",
-    "sass": "1.79.4"
+    "sass": "^1.89.0"
   },
   "postcss": {
     "plugins": {

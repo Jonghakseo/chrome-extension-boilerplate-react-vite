@@ -1,16 +1,7 @@
-import type { Manifest, ManifestParserInterface } from './types.js';
+import type { IManifestParser } from './types.js';
+import type { ManifestType } from '@extension/shared';
 
-export const ManifestParserImpl: ManifestParserInterface = {
-  convertManifestToString: (manifest, isFirefox) => {
-    if (isFirefox) {
-      manifest = convertToFirefoxCompatibleManifest(manifest);
-    }
-
-    return JSON.stringify(manifest, null, 2);
-  },
-};
-
-const convertToFirefoxCompatibleManifest = (manifest: Manifest) => {
+const convertToFirefoxCompatibleManifest = (manifest: ManifestType) => {
   const manifestCopy = {
     ...manifest,
   } as { [key: string]: unknown };
@@ -34,5 +25,15 @@ const convertToFirefoxCompatibleManifest = (manifest: Manifest) => {
 
   delete manifestCopy.options_page;
   delete manifestCopy.side_panel;
-  return manifestCopy as Manifest;
+  return manifestCopy as ManifestType;
+};
+
+export const ManifestParserImpl: IManifestParser = {
+  convertManifestToString: (manifest, isFirefox) => {
+    if (isFirefox) {
+      manifest = convertToFirefoxCompatibleManifest(manifest);
+    }
+
+    return JSON.stringify(manifest, null, 2);
+  },
 };

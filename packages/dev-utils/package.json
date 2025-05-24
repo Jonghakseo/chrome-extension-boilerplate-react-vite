@@ -1,6 +1,6 @@
 {
   "name": "@extension/dev-utils",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "chrome extension - dev utils",
   "type": "module",
   "private": true,
@@ -18,10 +18,12 @@
     "ready": "tsc -b",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
-    "type-check": "tsc --noEmit"
+    "format": "prettier . --write --ignore-path ../../.prettierignore",
+    "type-check": "tsc --noEmit",
+    "postinstall": "pnpm ready"
   },
   "devDependencies": {
-    "@extension/tsconfig": "workspace:*"
+    "@extension/tsconfig": "workspace:*",
+    "@extension/shared": "workspace:*"
   }
 }

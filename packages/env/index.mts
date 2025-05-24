@@ -1,12 +1,9 @@
 import { baseEnv, dynamicEnvValues } from './lib/index.js';
-import type { IEnv } from './lib/types.js';
+import type { EnvType } from './lib/types.js';
 
-export * from './lib/const.js';
 export * from './lib/index.js';
 
-const env = {
+export default {
   ...baseEnv,
   ...dynamicEnvValues,
-} as IEnv;
-
-export default env;
+} as EnvType;

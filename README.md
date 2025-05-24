@@ -13,7 +13,6 @@
 ![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/build-zip.yml/badge.svg)
 ![GitHub action badge](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/actions/workflows/lint.yml/badge.svg)
 
-<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://github.com/Jonghakseo/chrome-extension-boilerplate-react-viteFactions&count_bg=%23#222222&title_bg=%23#454545&title=😀&edge_flat=true" alt="hits"/>
 <a href="https://discord.gg/4ERQ6jgV9a" target="_blank"><img src="https://discord.com/api/guilds/1263404974830915637/widget.png"/></a>
 
 > This boilerplate
@@ -37,16 +36,20 @@
     - [ChromeExtension](#structure-chrome-extension)
     - [Packages](#structure-packages)
     - [Pages](#structure-pages)
-- [Getting started](#getting-started)
-    - [Chrome](#getting-started-chrome)
-    - [Firefox](#getting-started-firefox)
+- [Installation](#installation)
+    - [Chrome](#installation-chrome)
+    - [Firefox](#installation-firefox)
 - [Install dependency](#install-dependency)
     - [For root](#install-dependency-for-root)
     - [For module](#install-dependency-for-module)
 - [Environment variables](#env-variables)
     - [Add new](#env-variables-new)
     - [Set via CLI](#env-variables-cli-set)
+- [Troubleshooting](#troubleshooting)
+    - [Hot module reload seems to have frozen](#hot-module-reload-seems-to-have-frozen)
+    - [Imports not resolving correctly](#imports-not-resolving-correctly)
 - [Community](#community)
+- [Debugging](#debugging)
 - [Reference](#reference)
 - [Star History](#star-history)
 - [Contributors](#contributors)
@@ -58,7 +61,7 @@ the build speed and development experience by using Vite and Turborepo.
 
 ## Features
 
-- [React19](https://reactjs.org/)
+- [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwindcss](https://tailwindcss.com/)
 - [Vite](https://vitejs.dev/) with [Rollup](https://rollupjs.org/)
@@ -67,29 +70,40 @@ the build speed and development experience by using Vite and Turborepo.
 - [ESLint](https://eslint.org/)
 - [Chrome Extensions Manifest Version 3](https://developer.chrome.com/docs/extensions/mv3/intro/)
 - [Custom i18n package](/packages/i18n/)
-- [Custom HMR (Hot Module Rebuild) plugin](/packages/hmr/)
+- [Custom HMR (Hot Module Rebuild) plugin](/packages/hmr)
 - [End-to-end testing with WebdriverIO](https://webdriver.io/)
 
-## Getting started
+## Installation
 
-1. When you're using Windows run this:
-    - `git config --global core.eol lf`
-    - `git config --global core.autocrlf input`
+1. Clone this repository.( ```git clone https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite``` )
+2. Ensure your node version is >= than in `.nvmrc` file, recommend to use [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro)
+3. Edit `/packages/i18n/locales/`{your locale(s)}/`messages.json`
+4. In the objects `extensionDescription` and `extensionName`, change the `message` fields (leave `description` alone)
+5. Install pnpm globally: `npm install -g pnpm`
+6. Run `pnpm install`
+7. Check if you have that configuration in your IDE/Editor:
+    - <b>VS Code</b>:
+        - Installed [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+        - Installed [Prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+        - Enabled `Typescript Workbench version` in settings:
+            - CTRL + SHIFT + P -> Search: `Typescript: Select Typescript version...` -> `Use Workbench version`
+            - [Read more](https://code.visualstudio.com/docs/languages/typescript#_using-newer-typescript-versions)
+        - Optional, for imports to work correctly in WSL, you might need to install the [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) extension and connect to WSL remotely from VS Code. See overview section in the extension page for more information.
+    - <b>WebStorm</b>:
+      - Configured [ESLint](https://www.jetbrains.com/help/webstorm/eslint.html#ws_eslint_configure_run_eslint_on_save)
+      - Configured [Prettier](https://prettier.io/docs/en/webstorm.html)
+      - Optional, but useful `File | Settings | Tools | Actions on Save`\
+      -> `Optimize imports` and `Reformat code`
+8. Run `pnpm update-version <version>` for change the `version` to the desired version of your extension.
 
-   **This will set the EOL (End of line) character to be the same as on Linux/macOS. Without this, our bash script won't
-   work, and you will have conflicts with developers on Linux/macOS.**
-2. Clone this repository.( ```git clone https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite``` )
-3. Ensure your node version is >= than in `.nvmrc` file, recommend to
-   use [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro)
-4. Edit `/packages/i18n/locales/`{your locale(s)}/`messages.json`
-5. In the objects `extensionDescription` and `extensionName`, change the `message` fields (leave `description` alone)
-6. In `/.package.json`, change the `version` to the desired version of your extension.
-7. Install pnpm globally: `npm install -g pnpm` (ensure your node version >= 22.12.0)
-8. Run `pnpm install`
+> [!IMPORTANT]
+> On Windows, make sure you have WSL enabled and Linux distribution (e.g. Ubuntu) installed on WSL.
+> 
+> [Installation Guide](https://learn.microsoft.com/en-us/windows/wsl/install)
 
-Then, depending on the target browser:
+<b>Then, depending on the target browser:</b>
 
-### For Chrome: <a name="getting-started-chrome"></a>
+### For Chrome: <a name="installation-chrome"></a>
 
 1. Run:
     - Dev: `pnpm dev` (on Windows, you should run as administrator;
@@ -100,7 +114,7 @@ Then, depending on the target browser:
 4. Click - <kbd>Load unpacked</kbd> in the upper left corner
 5. Select the `dist` directory from the boilerplate project
 
-### For Firefox: <a name="getting-started-firefox"></a>
+### For Firefox: <a name="installation-firefox"></a>
 
 1. Run:
     - Dev: `pnpm dev:firefox`
@@ -129,11 +143,7 @@ can use only `content-script` without `@extension/` prefix
 
 ## How do I disable modules I'm not using?
 
-```bash
-$ pnpm module-manager
-```
-
-Read: [Module Manager](packages/module-manager/README.md)
+[Read here](packages/module-manager/README.md)
 
 ## Environment variables
 
@@ -158,33 +168,24 @@ The extension lives in the `chrome-extension` directory and includes the followi
 
 ### Pages <a name="structure-pages"></a>
 
-Code that is transpiled to be part of the extension lives in the [pages](pages/) directory.
+Code that is transpiled to be part of the extension lives in the [pages](pages) directory.
 
-- [
-  `content`](pages/content/) - [content scripts](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts)
-  (`content_scripts` in manifest.json)
-- [`content-ui`](pages/content-ui) - React UI rendered in the current page (you can see it at the very bottom when you
-  get started)
-  (`content_scripts` in manifest.json)
-- [
-  `content-runtime`](pages/content-runtime/src/) - [injected content scripts](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts#functionality);
-  this can be injected from `popup` like standard `content`
-- [
-  `devtools`](pages/devtools/) - [extend the browser DevTools](https://developer.chrome.com/docs/extensions/how-to/devtools/extend-devtools#creating)
+- [`content`](pages/content) - Scripts injected into specified pages (You can see it in console)
+- [`content-ui`](pages/content-ui) - React Components injected into specified pages (You can see it at the very bottom of pages)
+- [`content-runtime`](pages/content-runtime/src/) - [injected content scripts](https://developer.chrome.com/docs/extensions/develop/concepts/content-scripts#functionality)
+  This can be injected from e.g. `popup` like standard `content`
+- [`devtools`](pages/devtools/) - [extend the browser DevTools](https://developer.chrome.com/docs/extensions/how-to/devtools/extend-devtools#creating)
   (`devtools_page` in manifest.json)
-- [
-  `devtools-panel`](pages/devtools-panel/) - [DevTools panel](https://developer.chrome.com/docs/extensions/reference/api/devtools/panels)
+- [`devtools-panel`](pages/devtools-panel/) - [DevTools panel](https://developer.chrome.com/docs/extensions/reference/api/devtools/panels)
   for [devtools](pages/devtools/src/index.ts)
-- [
-  `new-tab`](pages/new-tab/) - [override the default New Tab page](https://developer.chrome.com/docs/extensions/develop/ui/override-chrome-pages)
+- [`new-tab`](pages/new-tab/) - [override the default New Tab page](https://developer.chrome.com/docs/extensions/develop/ui/override-chrome-pages)
   (`chrome_url_overrides.newtab` in manifest.json)
 - [`options`](pages/options/) - [options page](https://developer.chrome.com/docs/extensions/develop/ui/options-page)
   (`options_page` in manifest.json)
 - [`popup`](pages/popup/) - [popup](https://developer.chrome.com/docs/extensions/reference/api/action#popup) shown when
   clicking the extension in the toolbar
   (`action.default_popup` in manifest.json)
-- [
-  `side-panel`](pages/side-panel/) - [sidepanel (Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/api/sidePanel)
+- [`side-panel`](pages/side-panel/) - [sidepanel (Chrome 114+)](https://developer.chrome.com/docs/extensions/reference/api/sidePanel)
   (`side_panel.default_path` in manifest.json)
 
 ### Packages <a name="structure-packages"></a>
@@ -221,12 +222,18 @@ If saving source files doesn't cause the extension HMR code to trigger a reload 
    `turbo` process](https://github.com/Jonghakseo/chrome-extension-boilerplate-react-vite/issues/612#issuecomment-2518982339)
    and run `pnpm dev` again.
 
+### Imports not resolving correctly
+
+If you are using WSL and imports are not resolving correctly, ensure that you have connected VS Code to WSL remotely using the [Remote - WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) extension.
+
 ## Community
 
 To chat with other community members, you can join the [Discord](https://discord.gg/4ERQ6jgV9a) server.
 You can ask questions on that server, and you can also help others.
 
 Also, suggest new features or share any challenges you've faced while developing Chrome extensions!
+
+## Debugging
 
 If you're debugging one, you can use [Brie](https://go.briehq.com/github?utm_source=CEB) lets you capture screenshots, errors, and network activity, making it easier for us to help.
 

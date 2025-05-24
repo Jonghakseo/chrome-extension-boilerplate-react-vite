@@ -3,7 +3,7 @@
   "ui": "tui",
   "globalEnv": ["CEB_*", "CLI_CEB_*"],
   "globalDependencies": [".env"],
-  "daemon": false,
+  "concurrency": "12",
   "tasks": {
     "ready": {
       "dependsOn": ["^ready"],
@@ -33,7 +33,8 @@
     "lint:fix": {
       "cache": false
     },
-    "prettier": {
+    "format": {
+      "dependsOn": ["^format"],
       "cache": false
     },
     "clean:node_modules": {

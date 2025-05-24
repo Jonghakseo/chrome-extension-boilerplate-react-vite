@@ -1,6 +1,6 @@
 {
   "name": "@extension/options",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "chrome extension - options",
   "type": "module",
   "private": true,
@@ -16,7 +16,7 @@
     "dev": "vite build --mode development",
     "lint": "eslint .",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
+    "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {

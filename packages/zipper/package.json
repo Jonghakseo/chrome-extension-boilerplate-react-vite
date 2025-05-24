@@ -1,6 +1,6 @@
 {
   "name": "@extension/zipper",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "chrome extension - zipper",
   "type": "module",
   "private": true,
@@ -19,12 +19,12 @@
     "lint": "eslint .",
     "ready": "tsc -b",
     "lint:fix": "pnpm lint --fix",
-    "prettier": "prettier . --write --ignore-path ../../.prettierignore",
+    "format": "prettier . --write --ignore-path ../../.prettierignore",
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
     "@extension/tsconfig": "workspace:*",
-    "@extension/env": "workspace:*",
-    "fflate": "^0.8.2"
+    "@extension/dev-utils": "workspace:*",
+    "@extension/env": "workspace:*"
   }
 }

@@ -10,8 +10,8 @@
   "toggleTheme": {
     "message": "테마 변경"
   },
-  "loading": {
-    "message": "로딩 중..."
+  "injectButton": {
+    "message": "콘텐츠 스크립트를 삽입하려면 클릭하세요."
   },
   "greeting": {
     "description": "인사 메시지",
@@ -19,12 +19,27 @@
     "placeholders": {
       "name": {
         "content": "$1",
-        "example": "서종학"
+        "example": "홍길동"
       }
     }
   },
   "hello": {
     "description": "Placeholder 예시",
-    "message": "안녕 $1"
+    "message": "안녕하세요, $1님."
+  },
+  "displayErrorInfo": {
+    "message": "오류 발생"
+  },
+  "displayErrorDescription": {
+    "message": "죄송합니다. 페이지를 로드하는 중 문제가 발생했습니다."
+  },
+  "displayErrorDetailsInfo": {
+    "message": "오류 세부 정보:"
+  },
+  "displayErrorUnknownErrorInfo": {
+    "message": "알 수 없는 오류"
+  },
+  "displayErrorReset": {
+    "message": "다시 실행합니다."
   }
 }

@@ -1,15 +1,15 @@
-import type { StorageEnum } from './enums.js';
+import type { StorageEnum } from './index.js';
 
-export type ValueOrUpdate<D> = D | ((prev: D) => Promise<D> | D);
+export type ValueOrUpdateType<D> = D | ((prev: D) => Promise<D> | D);
 
-export type BaseStorage<D> = {
+export type BaseStorageType<D> = {
   get: () => Promise<D>;
-  set: (value: ValueOrUpdate<D>) => Promise<void>;
+  set: (value: ValueOrUpdateType<D>) => Promise<void>;
   getSnapshot: () => D | null;
   subscribe: (listener: () => void) => () => void;
 };
 
-export type StorageConfig<D = string> = {
+export type StorageConfigType<D = string> = {
   /**
    * Assign the {@link StorageEnum} to use.
    * @default Local
@@ -23,7 +23,7 @@ export type StorageConfig<D = string> = {
   /**
    * Keeps state live in sync between all instances of the extension. Like between popup, side panel and content scripts.
    * To allow chrome background scripts to stay in sync as well, use {@link StorageEnum.Session} storage area with
-   * {@link StorageConfig.sessionAccessForContentScripts} potentially also set to true.
+   * {@link StorageConfigType.sessionAccessForContentScripts} potentially also set to true.
    * @see https://stackoverflow.com/a/75637138/2763239
    * @default false
    */
@@ -42,4 +42,13 @@ export type StorageConfig<D = string> = {
      */
     deserialize: (text: string) => D;
   };
+};
+
+export interface ThemeStateType {
+  theme: 'light' | 'dark';
+  isLight: boolean;
+}
+
+export type ThemeStorageType = BaseStorageType<ThemeStateType> & {
+  toggle: () => Promise<void>;
 };
