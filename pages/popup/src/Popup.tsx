@@ -60,4 +60,5 @@ const Popup = () => {
   );
 };
 
+console.log('test');
 export default withErrorBoundary(withSuspense(Popup, <LoadingSpinner />), ErrorDisplay);
