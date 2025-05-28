@@ -80,6 +80,7 @@ const builds = async ({ srcDir, contentName, rootDir, matchesDir, withTw }: ICon
   });
 
 // FIXME: USE THIS FOR ALL CONTENT SCRIPTs
+// FIXME: CHECK IMPORTS(PACKAGES) FOR REDUNDANCY AND MOVE IT TO THIS PACKAGE
 export const contentBuilder = async ({
   matchesDir,
   srcDir,

@@ -79,258 +79,61 @@ export default withErrorBoundary(withSuspense(Page, <LoadingSpinner />), ErrorDi
 ```
 
 > [!TIP]
-> You are able to set other size of the loading spinner by passing the `size` prop to the `<LoadingSpinner />`.
+> You are able to set another size of the loading spinner by passing the `size` prop to the `<LoadingSpinner />`.
 
 ## Modifying the tailwind config of the UI library
 
-Modify the `tailwind.config.ts` file to make global style changes to the package.
+Modify the `global.css` `@theme` section to edit tailwind config.
 
-## Modifying the css variable of the UI library
+## Modifying the CSS variable of the UI library
 
-Modify the css variable in the `ui/lib/global.css` code to change the css variable of all pages(with UI).
+Modify the CSS variable in the `global.css` code to change the CSS variable of all pages(with UI).
 
 ## Guide for Adding shadcn to the UI Package
 
-You can refer to the this [manual guide](https://ui.shadcn.com/docs/installation/manual)
-
-1. Create components.json in packages/ui
-
-    Create a file named `components.json` in the `packages/ui` directory with the following content:
-    
-    ```json
-    {
-      "$schema": "https://ui.shadcn.com/schema.json",
-      "style": "new-york",
-      "rsc": false,
-      "tsx": true,
-      "tailwind": {
-        "config": "tailwind.config.ts",
-        "css": "lib/global.css",
-        "baseColor": "zinc",
-        "cssVariables": true,
-        "prefix": ""
+1. Run `pnpm -F ui add class-variance-authority lucide-react tw-animate-css`
+2. Add [Step 4](https://ui.shadcn.com/docs/installation/manual) to `global.css`.
+3. Create `components.json` in that package root with the following content:
+   ```json
+   {
+   "$schema": "https://ui.shadcn.com/schema.json",
+   "style": "new-york",
+   "rsc": false,
+   "tsx": true,
+   "tailwind": {
+      "config": "",
+      "css": "globals.css",
+      "baseColor": "neutral",
+      "cssVariables": true,
+      "prefix": ""
+   },
+   "aliases": {
+      "components": "@/lib/components",
+      "utils": "@/lib/utils",
+      "ui": "@/lib/components/ui",
+      "lib": "@/lib",
+      "hooks": "@/hooks"
       },
-      "aliases": {
-        "components": "@/lib/components",
-        "utils": "@/lib/utils",
-        "ui": "@/lib/components/ui",
-        "lib": "@/lib",
-        "hooks": "@/lib/hooks"
-      },
-      "iconLibrary": "lucide"
-    }
-    ```
+   "iconLibrary": "lucide"
+   }
+   ```
+   
+> [!NOTE]
+> If you've changed the structure of this package, let's adjust `components.json`
 
-2. Install dependencies
-    
-    Run the following command from the root of your project:
-    
-    ```shell
-    pnpm add tailwindcss-animate class-variance-authority tailwind-merge lucide-react -F ui
-    ```
+## Guide for Adding shadcn components
 
-3. Edit `with-ui.ts` in `lib` folder
-
-    This configuration file is from the manual guide. You can refer to the manual guide to modify the configuration file. ([
-    `Configure tailwind.config.js`](https://ui.shadcn.com/docs/installation/manual))
-    
-    ```ts
-    import deepmerge from 'deepmerge';
-    import { fontFamily } from 'tailwindcss/defaultTheme';
-    import tailwindAnimate from 'tailwindcss-animate';
-    import type { Config } from 'tailwindcss';
-    
-    export function withUI(tailwindConfig: Config): Config {
-      return deepmerge(
-        shadcnConfig,
-        deepmerge(tailwindConfig, {
-          content: ['./node_modules/@extension/ui/lib/**/*.{tsx,ts,js,jsx}'],
-        }),
-      );
-    }
-    
-    const shadcnConfig = {
-      darkMode: ['class'],
-      theme: {
-        container: {
-          center: true,
-          padding: '2rem',
-          screens: {
-            '2xl': '1400px',
-          },
-        },
-        extend: {
-          colors: {
-            border: 'hsl(var(--border))',
-            input: 'hsl(var(--input))',
-            ring: 'hsl(var(--ring))',
-            background: 'hsl(var(--background))',
-            foreground: 'hsl(var(--foreground))',
-            primary: {
-              DEFAULT: 'hsl(var(--primary))',
-              foreground: 'hsl(var(--primary-foreground))',
-            },
-            secondary: {
-              DEFAULT: 'hsl(var(--secondary))',
-              foreground: 'hsl(var(--secondary-foreground))',
-            },
-            destructive: {
-              DEFAULT: 'hsl(var(--destructive))',
-              foreground: 'hsl(var(--destructive-foreground))',
-            },
-            muted: {
-              DEFAULT: 'hsl(var(--muted))',
-              foreground: 'hsl(var(--muted-foreground))',
-            },
-            accent: {
-              DEFAULT: 'hsl(var(--accent))',
-              foreground: 'hsl(var(--accent-foreground))',
-            },
-            popover: {
-              DEFAULT: 'hsl(var(--popover))',
-              foreground: 'hsl(var(--popover-foreground))',
-            },
-            card: {
-              DEFAULT: 'hsl(var(--card))',
-              foreground: 'hsl(var(--card-foreground))',
-            },
-          },
-          borderRadius: {
-            lg: `var(--radius)`,
-            md: `calc(var(--radius) - 2px)`,
-            sm: 'calc(var(--radius) - 4px)',
-          },
-          fontFamily: {
-            sans: ['var(--font-sans)', ...fontFamily.sans],
-          },
-          keyframes: {
-            'accordion-down': {
-              from: { height: '0' },
-              to: { height: 'var(--radix-accordion-content-height)' },
-            },
-            'accordion-up': {
-              from: { height: 'var(--radix-accordion-content-height)' },
-              to: { height: '0' },
-            },
-          },
-          animation: {
-            'accordion-down': 'accordion-down 0.2s ease-out',
-            'accordion-up': 'accordion-up 0.2s ease-out',
-          },
-        },
-      },
-      plugins: [tailwindAnimate],
-    };
-    ```
-
-4. Edit `global.css` in `lib` folder
-
-    This configuration also comes from the manual guide. You can refer to the manual guide to modify the configuration
-    file. ([`Configure styles`](https://ui.shadcn.com/docs/installation/manual))
-    
-    ```css
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
-    
-    @layer base {
-      :host, :root {
-        --background: 0 0% 100%;
-        --foreground: 222.2 47.4% 11.2%;
-        --muted: 210 40% 96.1%;
-        --muted-foreground: 215.4 16.3% 46.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 222.2 47.4% 11.2%;
-        --border: 214.3 31.8% 91.4%;
-        --input: 214.3 31.8% 91.4%;
-        --card: 0 0% 100%;
-        --card-foreground: 222.2 47.4% 11.2%;
-        --primary: 222.2 47.4% 11.2%;
-        --primary-foreground: 210 40% 98%;
-        --secondary: 210 40% 96.1%;
-        --secondary-foreground: 222.2 47.4% 11.2%;
-        --accent: 210 40% 96.1%;
-        --accent-foreground: 222.2 47.4% 11.2%;
-        --destructive: 0 100% 50%;
-        --destructive-foreground: 210 40% 98%;
-        --ring: 215 20.2% 65.1%;
-        --radius: 0.5rem;
-      }
-    
-      .dark {
-        --background: 224 71% 4%;
-        --foreground: 213 31% 91%;
-        --muted: 223 47% 11%;
-        --muted-foreground: 215.4 16.3% 56.9%;
-        --accent: 216 34% 17%;
-        --accent-foreground: 210 40% 98%;
-        --popover: 224 71% 4%;
-        --popover-foreground: 215 20.2% 65.1%;
-        --border: 216 34% 17%;
-        --input: 216 34% 17%;
-        --card: 224 71% 4%;
-        --card-foreground: 213 31% 91%;
-        --primary: 210 40% 98%;
-        --primary-foreground: 222.2 47.4% 1.2%;
-        --secondary: 222.2 47.4% 11.2%;
-        --secondary-foreground: 210 40% 98%;
-        --destructive: 0 63% 31%;
-        --destructive-foreground: 210 40% 98%;
-        --ring: 216 34% 17%;
-      }
-    }
-    
-    @layer base {
-      * {
-        @apply border-border;
-      }
-    
-      body {
-        @apply font-sans antialiased bg-background text-foreground;
-      }
-    }
-    ```
-
-
-5. Add shadcn components
-
-    Finally, run this command from the root of your project to add the button component:
-    
+1. Add shadcn component
     ```shell
     pnpm dlx shadcn@latest add button -c ./packages/ui
     ```
-    
-    This will add the shadcn button component to your UI package.
-    
-    Remember to adjust any paths or package names if your project structure differs from the assumed layout in this guide.
-    
-6. Export components
 
-Edit the `index.ts` file in the `packages/ui` directory to export the shadcn ui component:
-
-```ts
-//...
-export * from './lib/components/ui/button';
-```
-
-7. Apply global.css
-
-If you want to use shadcn components in content-ui ShadowDOM, you need to import ui package's global.css in the content-ui `tailwind-input.css`
-
-```css
-@import '@extension/ui/lib/global.css';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-If you want to use shadcn components in other pages, you need to import ui package's global.css in the `src/index.css`
-
-```css
-@import '@extension/ui/lib/global.css';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
+2. Export component
+   - After first:
+     - Create `index.ts` inside `lib/components/ui`
+   - After each run:
+     - Add
+       ```ts
+       export * from './your-component';
+       ```
+      in `lib/components/ui/index.ts` file.
