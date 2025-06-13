@@ -12,7 +12,7 @@ jobs:
 
       - name: Run Prettier
         id: prettier-run
-        uses: rutajdash/prettier-cli-action@v1.0.0
+        uses: rutajdash/prettier-cli-action@v1.0.2
         with:
           config_path: ./.prettierrc
           file_pattern: "*.{js,jsx,ts,tsx,json}"
