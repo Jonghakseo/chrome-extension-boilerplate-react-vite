@@ -265,9 +265,6 @@ importers:
         specifier: ^6.0.0
         version: 6.0.0(react@19.1.0)
     devDependencies:
-      '@extension/storage':
-        specifier: workspace:*
-        version: link:../storage
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
@@ -5706,7 +5703,6 @@ snapshots:
       '@types/react': 19.1.5
 
   '@types/react@19.1.5':
-
     dependencies:
       csstype: 3.1.3
 

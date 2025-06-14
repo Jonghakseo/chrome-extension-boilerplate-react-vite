@@ -1,7 +1,7 @@
 import '@src/Panel.css';
 import { t } from '@extension/i18n';
-import { PROJECT_URL_OBJECT, useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
-import { exampleThemeStorage } from '@extension/storage';
+import { PROJECT_URL_OBJECT, withErrorBoundary, withSuspense } from '@extension/shared';
+import { useStorage, exampleThemeStorage } from '@extension/storage';
 import { cn, ErrorDisplay, LoadingSpinner } from '@extension/ui';
 import type { ComponentPropsWithoutRef } from 'react';
 
