@@ -5,6 +5,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 
 type ToggleButtonProps = ComponentPropsWithoutRef<'button'>;
 
+// FIXME: FIX BORDER FOR DARK THEME AND TRIGGERING HMR RELOAD AFTER TAILWIND CSS UPDATE
 export const ToggleButton = ({ className, children, ...props }: ToggleButtonProps) => {
   const { isLight } = useStorage(exampleThemeStorage);
 

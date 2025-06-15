@@ -3,10 +3,10 @@ packages:
   - pages/*
   - packages/*
   - tests/*
-
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - '@swc/core'
+  - '@tailwindcss/oxide'
   - edgedriver
   - esbuild
   - geckodriver
