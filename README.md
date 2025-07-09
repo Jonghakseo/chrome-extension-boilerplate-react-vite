@@ -26,7 +26,7 @@
 > [!TIP]
 > Share storage state between all pages
 >
-> https://github.com/user-attachments/assets/3b8e189f-6443-490e-a455-4f9570267f8c
+> https://github.com/user-attachments/assets/819edc19-f68e-48e7-8a30-800f7b6da1e4
 
 ## Table of Contents
 
