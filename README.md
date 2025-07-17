@@ -164,7 +164,7 @@ The extension lives in the `chrome-extension` directory and includes the followi
 > To facilitate development, the boilerplate is configured to "Read and change all your data on all websites".
 > In production, it's best practice to limit the premissions to only the strictly necessary websites. See
 > [Declaring permissions](https://developer.chrome.com/docs/extensions/develop/concepts/declare-permissions)
-> and edit `manifest.js` accordingly.
+> and edit `manifest.ts` accordingly.
 
 ### Pages <a name="structure-pages"></a>
 
