@@ -4,7 +4,6 @@ title: "[Bug]: "
 labels: [ "bug", "triage" ]
 assignees:
   - Jonghakseo
-  - PatrykKuniczak
 
 body:
   - type: textarea
