@@ -1,8 +1,8 @@
 import '@src/NewTab.css';
 import '@src/NewTab.scss';
 import { t } from '@extension/i18n';
-import { PROJECT_URL_OBJECT, useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
-import { exampleThemeStorage } from '@extension/storage';
+import { PROJECT_URL_OBJECT, withErrorBoundary, withSuspense } from '@extension/shared';
+import { exampleThemeStorage, useStorage } from '@extension/storage';
 import { cn, ErrorDisplay, LoadingSpinner, ToggleButton } from '@extension/ui';
 
 const NewTab = () => {

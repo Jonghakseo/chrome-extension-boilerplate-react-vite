@@ -26,7 +26,6 @@
     "react-error-boundary": "^6.0.0"
   },
   "devDependencies": {
-    "@extension/storage": "workspace:*",
     "@extension/tsconfig": "workspace:*",
     "type-fest": "^4.41.0"
   }
