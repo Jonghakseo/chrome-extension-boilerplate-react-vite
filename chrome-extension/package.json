@@ -30,7 +30,6 @@
     "@extension/tsconfig": "workspace:*",
     "@extension/vite-config": "workspace:*",
     "@laynezh/vite-plugin-lib-assets": "^1.1.0",
-    "magic-string": "^0.30.17",
     "ts-loader": "^9.5.2"
   }
 }
