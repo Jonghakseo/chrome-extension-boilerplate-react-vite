@@ -1,0 +1,45 @@
+{
+  "extensionDescription": {
+    "description": "Extension description",
+    "message": "Chrome-Erweiterung Boilerplate entwickelt mit Vite, React und Typescript"
+  },
+  "extensionName": {
+    "description": "Extension name",
+    "message": "Chrome-Erweiterung Boilerplate"
+  },
+  "toggleTheme": {
+    "message": "Theme wechseln"
+  },
+  "injectButton": {
+    "message": "Klicken um Content Scripts zu injizieren"
+  },
+  "greeting": {
+    "description": "Greeting message",
+    "message": "Hallo, mein Name ist $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Max Mustermann"
+      }
+    }
+  },
+  "hello": {
+    "description": "Placeholder example",
+    "message": "Hallo $1"
+  },
+  "displayErrorInfo": {
+    "message": "Fehler aufgetreten"
+  },
+  "displayErrorDescription": {
+    "message": "Entschuldigung, beim Laden der Seite ist etwas schief gelaufen."
+  },
+  "displayErrorDetailsInfo": {
+    "message": "Fehlerdetails:"
+  },
+  "displayErrorUnknownErrorInfo": {
+    "message": "Unbekannter Fehler"
+  },
+  "displayErrorReset": {
+    "message": "Erneut ausführen"
+  }
+}
